@@ -1,0 +1,23 @@
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+
+    <!-- ── GPS Mode ─────────────────────────────────────────────── -->
+    <setting propertyKey="@Properties.GpsMode" title="@Strings.SettingGpsModeTitle">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.SettingGpsModeGps</listEntry>
+            <listEntry value="1">@Strings.SettingGpsModeGpsGlonass</listEntry>
+            <listEntry value="2">@Strings.SettingGpsModeAllSat</listEntry>
+            <listEntry value="3">@Strings.SettingGpsModeAviation</listEntry>
+        </settingConfig>
+    </setting>
+
+    <!-- ── Timer Interval ────────────────────────────────────────── -->
+    <setting propertyKey="@Properties.TimerInterval" title="@Strings.SettingTimerTitle">
+        <settingConfig type="numeric" min="0" max="30"/>
+    </setting>
+
+    <!-- ── Takeoff Speed ─────────────────────────────────────────── -->
+    <setting propertyKey="@Properties.TakeoffSpeed" title="@Strings.SettingTakeoffTitle">
+        <settingConfig type="numeric" min="0" max="100"/>
+    </setting>
+
+</settings>

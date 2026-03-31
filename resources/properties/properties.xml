@@ -1,0 +1,10 @@
+<properties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <!-- 0=GPS only  1=GPS+GLONASS  2=All constellations  3=Aviation (default) -->
+    <property id="GpsMode" type="number">3</property>
+
+    <!-- Timer alert interval in minutes (0 = disabled).  Default 5 min. -->
+    <property id="TimerInterval" type="number">5</property>
+
+    <!-- Auto-start speed threshold in knots (0 = disabled).  Default 30 kts. -->
+    <property id="TakeoffSpeed" type="number">30</property>
+</properties>

@@ -1,0 +1,1570 @@
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 2; @symbol_usingdef<0> = [Toybox,2,6,12]; @symbol_usingdef<1> = [WatchUi,2,13,20]; ]
+using Toybox.WatchUi;
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 3; @symbol_usingdef<0> = [Toybox,3,6,12]; @symbol_usingdef<1> = [WatchUi,3,13,20]; @symbol_usingAlias = [Ui,3,24,26]; ]
+using Toybox.WatchUi as :Ui;
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 4; @symbol_usingdef<0> = [Toybox,4,6,12]; @symbol_usingdef<1> = [Graphics,4,13,21]; ]
+using Toybox.Graphics;
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 5; @symbol_usingdef<0> = [Toybox,5,6,12]; @symbol_usingdef<1> = [Graphics,5,13,21]; @symbol_usingAlias = [Gfx,5,25,28]; ]
+using Toybox.Graphics as :Gfx;
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 7; @symbol_moduledef = [Rez,7,7,10]; ]
+module Rez {
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 7; ]
+    <init> {
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 8; @symbol_moduledef = [Drawables,8,11,20]; ]
+    module Drawables {
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 8; ]
+        <init> {
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 9; @position = 27; initialized = true; @symbol_vardef = [LauncherIcon,9,27,39]; @symbol_type<0> = [ResourceId,9,43,53]; ]
+        var LauncherIcon as ResourceId;
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 12; @symbol_moduledef = [Layouts,12,11,18]; ]
+    module Layouts {
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 12; ]
+        <init> {
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 13; @symbol_functiondef = [MainLayout,13,17,27]; @symbol_param<0> = [dc,13,28,30]; @symbol_param<0>_type<0> = [Graphics,13,34,42]; @symbol_param<0>_type<1> = [Dc,13,43,45]; @symbol_return<0> = [Array,13,50,55]; @symbol_return<1> = [WatchUi,13,56,63]; @symbol_return<2> = [Drawable,13,64,72]; ]
+        function MainLayout(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_bin_gen_006_B3869_00_source_Rez_mcgen_13_74_15_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 14 12 ]
+            %tmp.1 = newa 0 Array<WatchUi.Drawable>;
+            symbol [ Array %tmp.1 14 25 30 ];
+            symbol [ WatchUi %tmp.1 14 31 38 ];
+            symbol [ Drawable %tmp.1 14 39 47 ];
+            ret %tmp.1;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_bin_gen_006_B3869_00_source_Rez_mcgen_13_74_15_8_stop:
+        }
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 18; @symbol_moduledef = [Menus,18,11,16]; ]
+    module Menus {
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 18; ]
+        <init> {
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 19; @symbol_classdef = [MainMenu,19,14,22]; @symbol_extends<0> = [WatchUi,19,31,38]; @symbol_extends<1> = [Menu,19,39,43]; ]
+        class MainMenu extends WatchUi.Menu {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 19; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 19; ]
+            static
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 20; @symbol_functiondef = [initialize,20,21,31]; ]
+            function initialize() as Void {
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_bin_gen_006_B3869_00_source_Rez_mcgen_20_34_25_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 21 16 ]
+                symbol [ Menu %tmp.2 21 16 20 ];
+                %tmp.2 = getv ? :Menu;
+                symbol [ initialize %tmp.3 21 21 31 ];
+                %tmp.3 = getv function %tmp.2 :initialize;
+                invoke %tmp.2 %tmp.3();
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 22 16 ]
+                %tmp.4 = self;
+                symbol [ addItem %tmp.5 22 16 23 ];
+                %tmp.5 = getv function %tmp.4 :addItem;
+                symbol [ WatchUi %tmp.6 22 25 32 ];
+                %tmp.6 = getm $.Toybox.WatchUi;
+                symbol [ loadResource %tmp.7 22 33 45 ];
+                %tmp.7 = getv function %tmp.6 :loadResource;
+                symbol [ $ %tmp.8 22 46 47 ];
+                %tmp.8 = getm $;
+                symbol [ Rez %tmp.9 22 48 51 ];
+                %tmp.9 = getv %tmp.8 :Rez;
+                symbol [ Strings %tmp.10 22 52 59 ];
+                %tmp.10 = getv %tmp.9 :Strings;
+                symbol [ menu_label_1 %tmp.11 22 60 72 ];
+                %tmp.11 = getv %tmp.10 :menu_label_1;
+                %tmp.12 = invoke %tmp.6 %tmp.7(%tmp.11);
+                %tmp.13 = as %tmp.12 String;
+                symbol [ String %tmp.13 22 77 83 ];
+                %tmp.15 = const :item_1;
+                symbol [ item_1 %tmp.15 22 87 93 const ];
+                invoke %tmp.4 %tmp.5(%tmp.13, %tmp.15);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 23 16 ]
+                %tmp.16 = self;
+                symbol [ addItem %tmp.17 23 16 23 ];
+                %tmp.17 = getv function %tmp.16 :addItem;
+                symbol [ WatchUi %tmp.18 23 25 32 ];
+                %tmp.18 = getm $.Toybox.WatchUi;
+                symbol [ loadResource %tmp.19 23 33 45 ];
+                %tmp.19 = getv function %tmp.18 :loadResource;
+                symbol [ $ %tmp.20 23 46 47 ];
+                %tmp.20 = getm $;
+                symbol [ Rez %tmp.21 23 48 51 ];
+                %tmp.21 = getv %tmp.20 :Rez;
+                symbol [ Strings %tmp.22 23 52 59 ];
+                %tmp.22 = getv %tmp.21 :Strings;
+                symbol [ menu_label_2 %tmp.23 23 60 72 ];
+                %tmp.23 = getv %tmp.22 :menu_label_2;
+                %tmp.24 = invoke %tmp.18 %tmp.19(%tmp.23);
+                %tmp.25 = as %tmp.24 String;
+                symbol [ String %tmp.25 23 77 83 ];
+                %tmp.27 = const :item_2;
+                symbol [ item_2 %tmp.27 23 87 93 const ];
+                invoke %tmp.16 %tmp.17(%tmp.25, %tmp.27);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 24 16 ]
+                %tmp.28 = self;
+                symbol [ addItem %tmp.29 24 16 23 ];
+                %tmp.29 = getv function %tmp.28 :addItem;
+                symbol [ WatchUi %tmp.30 24 25 32 ];
+                %tmp.30 = getm $.Toybox.WatchUi;
+                symbol [ loadResource %tmp.31 24 33 45 ];
+                %tmp.31 = getv function %tmp.30 :loadResource;
+                symbol [ $ %tmp.32 24 46 47 ];
+                %tmp.32 = getm $;
+                symbol [ Rez %tmp.33 24 48 51 ];
+                %tmp.33 = getv %tmp.32 :Rez;
+                symbol [ Strings %tmp.34 24 52 59 ];
+                %tmp.34 = getv %tmp.33 :Strings;
+                symbol [ menu_label_3 %tmp.35 24 60 72 ];
+                %tmp.35 = getv %tmp.34 :menu_label_3;
+                %tmp.36 = invoke %tmp.30 %tmp.31(%tmp.35);
+                %tmp.37 = as %tmp.36 String;
+                symbol [ String %tmp.37 24 77 83 ];
+                %tmp.39 = const :item_3;
+                symbol [ item_3 %tmp.39 24 87 93 const ];
+                invoke %tmp.28 %tmp.29(%tmp.37, %tmp.39);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_bin_gen_006_B3869_00_source_Rez_mcgen_20_34_25_12_stop:
+            }
+        }
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 29; @symbol_moduledef = [Strings,29,11,18]; ]
+    module Strings {
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 29; ]
+        <init> {
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 30; @position = 27; initialized = true; @symbol_vardef = [SettingTakeoffTitle,30,27,46]; @symbol_type<0> = [ResourceId,30,50,60]; ]
+        var SettingTakeoffTitle as ResourceId;
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 31; @position = 27; initialized = true; @symbol_vardef = [SettingGpsModeGpsGlonass,31,27,51]; @symbol_type<0> = [ResourceId,31,55,65]; ]
+        var SettingGpsModeGpsGlonass as ResourceId;
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 32; @position = 27; initialized = true; @symbol_vardef = [SettingGpsModeAviation,32,27,49]; @symbol_type<0> = [ResourceId,32,53,63]; ]
+        var SettingGpsModeAviation as ResourceId;
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 33; @position = 27; initialized = true; @symbol_vardef = [menu_label_3,33,27,39]; @symbol_type<0> = [ResourceId,33,43,53]; ]
+        var menu_label_3 as ResourceId;
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 34; @position = 27; initialized = true; @symbol_vardef = [SettingGpsModeAllSat,34,27,47]; @symbol_type<0> = [ResourceId,34,51,61]; ]
+        var SettingGpsModeAllSat as ResourceId;
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 35; @position = 27; initialized = true; @symbol_vardef = [menu_label_1,35,27,39]; @symbol_type<0> = [ResourceId,35,43,53]; ]
+        var menu_label_1 as ResourceId;
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 36; @position = 27; initialized = true; @symbol_vardef = [SettingTimerTitle,36,27,44]; @symbol_type<0> = [ResourceId,36,48,58]; ]
+        var SettingTimerTitle as ResourceId;
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 37; @position = 27; initialized = true; @symbol_vardef = [menu_label_2,37,27,39]; @symbol_type<0> = [ResourceId,37,43,53]; ]
+        var menu_label_2 as ResourceId;
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 38; @position = 27; initialized = true; @symbol_vardef = [SettingGpsModeTitle,38,27,46]; @symbol_type<0> = [ResourceId,38,50,60]; ]
+        var SettingGpsModeTitle as ResourceId;
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 39; @position = 27; initialized = true; @symbol_vardef = [SettingGpsModeGps,39,27,44]; @symbol_type<0> = [ResourceId,39,48,58]; ]
+        var SettingGpsModeGps as ResourceId;
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 40; @position = 27; initialized = true; @symbol_vardef = [prompt,40,27,33]; @symbol_type<0> = [ResourceId,40,37,47]; ]
+        var prompt as ResourceId;
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 41; @position = 27; initialized = true; @symbol_vardef = [AppName,41,27,34]; @symbol_type<0> = [ResourceId,41,38,48]; ]
+        var AppName as ResourceId;
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 44; @symbol_moduledef = [Styles,44,11,17]; ]
+    module Styles {
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 44; ]
+        <init> {
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 45; @symbol_moduledef = [prompt_font_enhanced_readability__body_with_title,45,15,64]; ]
+        module prompt_font_enhanced_readability__body_with_title {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 45; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 46; @position = 18; @symbol_constdef = [exclude,46,18,25]; @symbol_type<0> = [Boolean,46,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 49; @symbol_moduledef = [system_size__menu_header,49,15,39]; ]
+        module system_size__menu_header {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 49; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 50; @position = 18; @symbol_constdef = [width,50,18,23]; @symbol_type<0> = [Number,50,27,33]; ]
+            const width as Number = 208;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 51; @position = 18; @symbol_constdef = [height,51,18,24]; @symbol_type<0> = [Number,51,28,34]; ]
+            const height as Number = 65;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 54; @symbol_moduledef = [system_loc__hint_button_left_bottom,54,15,50]; ]
+        module system_loc__hint_button_left_bottom {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 54; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 55; @position = 18; @symbol_constdef = [x,55,18,19]; @symbol_type<0> = [Number,55,23,29]; ]
+            const x as Number = 11;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 56; @position = 18; @symbol_constdef = [y,56,18,19]; @symbol_type<0> = [Number,56,23,29]; ]
+            const y as Number = 138;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 59; @symbol_moduledef = [prompt_font_enhanced_readability__body_no_title,59,15,62]; ]
+        module prompt_font_enhanced_readability__body_no_title {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 59; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 60; @position = 18; @symbol_constdef = [exclude,60,18,25]; @symbol_type<0> = [Boolean,60,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 63; @symbol_moduledef = [prompt_loc__body_no_title,63,15,40]; ]
+        module prompt_loc__body_no_title {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 63; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 64; @position = 18; @symbol_constdef = [x,64,18,19]; @symbol_type<0> = [Number,64,23,29]; ]
+            const x as Number = 21;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 65; @position = 18; @symbol_constdef = [y,65,18,19]; @symbol_type<0> = [Number,65,23,29]; ]
+            const y as Number = 21;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 68; @symbol_moduledef = [system_icon_dark__about,68,15,38]; ]
+        module system_icon_dark__about {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 68; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 69; @position = 18; @symbol_constdef = [filename,69,18,26]; @symbol_type<0> = [String,69,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_dark__about.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 70; @position = 18; @symbol_constdef = [compress,70,18,26]; @symbol_type<0> = [String,70,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 71; @position = 18; @symbol_constdef = [dithering,71,18,27]; @symbol_type<0> = [String,71,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 72; @position = 18; @symbol_constdef = [automaticPalette,72,18,34]; @symbol_type<0> = [String,72,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 75; @symbol_moduledef = [system_icon_light__question,75,15,42]; ]
+        module system_icon_light__question {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 75; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 76; @position = 18; @symbol_constdef = [filename,76,18,26]; @symbol_type<0> = [String,76,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_light__question.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 77; @position = 18; @symbol_constdef = [dithering,77,18,27]; @symbol_type<0> = [String,77,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 80; @symbol_moduledef = [system_loc__hint_button_left_top,80,15,47]; ]
+        module system_loc__hint_button_left_top {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 80; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 81; @position = 18; @symbol_constdef = [exclude,81,18,25]; @symbol_type<0> = [Boolean,81,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 84; @symbol_moduledef = [prompt_font__title,84,15,33]; ]
+        module prompt_font__title {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 84; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 85 18 ]
+                symbol [ Graphics %tmp.40 85 34 42 ];
+                %tmp.40 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.41 85 43 62 ];
+                %tmp.41 = getv %tmp.40 :TEXT_JUSTIFY_CENTER;
+                symbol [ Graphics %tmp.42 85 63 71 ];
+                %tmp.42 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_VCENTER %tmp.43 85 72 92 ];
+                %tmp.43 = getv %tmp.42 :TEXT_JUSTIFY_VCENTER;
+                %tmp.44 = bitor %tmp.41 %tmp.43;
+                putv self :justification %tmp.44;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 86 18 ]
+                symbol [ Graphics %tmp.45 86 25 33 ];
+                %tmp.45 = getm $.Toybox.Graphics;
+                symbol [ FONT_XTINY %tmp.46 86 34 44 ];
+                %tmp.46 = getv %tmp.45 :FONT_XTINY;
+                putv self :font %tmp.46;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 85; @position = 18; @symbol_constdef = [justification,85,18,31]; ]
+            const justification;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 86; @position = 18; @symbol_constdef = [font,86,18,22]; ]
+            const font;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 89; @symbol_moduledef = [system_icon_dark__discard,89,15,40]; ]
+        module system_icon_dark__discard {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 89; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 90; @position = 18; @symbol_constdef = [filename,90,18,26]; @symbol_type<0> = [String,90,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_dark__discard.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 91; @position = 18; @symbol_constdef = [compress,91,18,26]; @symbol_type<0> = [String,91,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 92; @position = 18; @symbol_constdef = [dithering,92,18,27]; @symbol_type<0> = [String,92,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 93; @position = 18; @symbol_constdef = [automaticPalette,93,18,34]; @symbol_type<0> = [String,93,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 96; @symbol_moduledef = [system_size__menu_item,96,15,37]; ]
+        module system_size__menu_item {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 96; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 97; @position = 18; @symbol_constdef = [width,97,18,23]; @symbol_type<0> = [Number,97,27,33]; ]
+            const width as Number = 208;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 98; @position = 18; @symbol_constdef = [height,98,18,24]; @symbol_type<0> = [Number,98,28,34]; ]
+            const height as Number = 54;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 101; @symbol_moduledef = [system_color_dark__text,101,15,38]; ]
+        module system_color_dark__text {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 101; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 103 18 ]
+                symbol [ Graphics %tmp.47 103 31 39 ];
+                %tmp.47 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.48 103 40 57 ];
+                %tmp.48 = getv %tmp.47 :COLOR_TRANSPARENT;
+                putv self :background %tmp.48;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 102; @position = 18; @symbol_constdef = [color,102,18,23]; @symbol_type<0> = [Number,102,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 103; @position = 18; @symbol_constdef = [background,103,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 106; @symbol_moduledef = [system_icon_destructive__discard,106,15,47]; ]
+        module system_icon_destructive__discard {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 106; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 107; @position = 18; @symbol_constdef = [filename,107,18,26]; @symbol_type<0> = [String,107,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_destructive__discard.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 108; @position = 18; @symbol_constdef = [dithering,108,18,27]; @symbol_type<0> = [String,108,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 111; @symbol_moduledef = [system_icon_dark__hint_action_menu,111,15,49]; ]
+        module system_icon_dark__hint_action_menu {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 111; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 112; @position = 18; @symbol_constdef = [filename,112,18,26]; @symbol_type<0> = [String,112,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_dark__hint_button_right_top.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 113; @position = 18; @symbol_constdef = [dithering,113,18,27]; @symbol_type<0> = [String,113,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 116; @symbol_moduledef = [prompt_size__title,116,15,33]; ]
+        module prompt_size__title {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 116; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 117; @position = 18; @symbol_constdef = [width,117,18,23]; @symbol_type<0> = [Number,117,27,33]; ]
+            const width as Number = 166;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 118; @position = 18; @symbol_constdef = [height,118,18,24]; @symbol_type<0> = [Number,118,28,34]; ]
+            const height as Number = 38;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 121; @symbol_moduledef = [confirmation_font__body,121,15,38]; ]
+        module confirmation_font__body {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 121; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 122 18 ]
+                symbol [ Graphics %tmp.49 122 34 42 ];
+                %tmp.49 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.50 122 43 62 ];
+                %tmp.50 = getv %tmp.49 :TEXT_JUSTIFY_CENTER;
+                symbol [ Graphics %tmp.51 122 63 71 ];
+                %tmp.51 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_VCENTER %tmp.52 122 72 92 ];
+                %tmp.52 = getv %tmp.51 :TEXT_JUSTIFY_VCENTER;
+                %tmp.53 = bitor %tmp.50 %tmp.52;
+                putv self :justification %tmp.53;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 123 18 ]
+                symbol [ Graphics %tmp.54 123 25 33 ];
+                %tmp.54 = getm $.Toybox.Graphics;
+                symbol [ FONT_TINY %tmp.55 123 34 43 ];
+                %tmp.55 = getv %tmp.54 :FONT_TINY;
+                putv self :font %tmp.55;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 122; @position = 18; @symbol_constdef = [justification,122,18,31]; ]
+            const justification;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 123; @position = 18; @symbol_constdef = [font,123,18,22]; ]
+            const font;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 126; @symbol_moduledef = [system_color_dark__background,126,15,44]; ]
+        module system_color_dark__background {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 126; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 127; @position = 18; @symbol_constdef = [color,127,18,23]; @symbol_type<0> = [Number,127,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 128; @position = 18; @symbol_constdef = [background,128,18,28]; @symbol_type<0> = [Number,128,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 131; @symbol_moduledef = [system_icon_destructive__hint_button_left_top,131,15,60]; ]
+        module system_icon_destructive__hint_button_left_top {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 131; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 132; @position = 18; @symbol_constdef = [filename,132,18,26]; @symbol_type<0> = [String,132,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_destructive__hint_button_left_top.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 133; @position = 18; @symbol_constdef = [dithering,133,18,27]; @symbol_type<0> = [String,133,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 136; @symbol_moduledef = [system_size__launch_icon,136,15,39]; ]
+        module system_size__launch_icon {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 136; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 137; @position = 18; @symbol_constdef = [scaleX,137,18,24]; @symbol_type<0> = [Number,137,28,34]; ]
+            const scaleX as Number = 35;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 138; @position = 18; @symbol_constdef = [scaleY,138,18,24]; @symbol_type<0> = [Number,138,28,34]; ]
+            const scaleY as Number = 35;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 139; @position = 18; @symbol_constdef = [scaleRelativeTo,139,18,33]; @symbol_type<0> = [String,139,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 142; @symbol_moduledef = [confirmation_input__confirm,142,15,42]; ]
+        module confirmation_input__confirm {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 142; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 143 18 ]
+                symbol [ WatchUi %tmp.56 143 27 34 ];
+                %tmp.56 = getm $.Toybox.WatchUi;
+                symbol [ KEY_ENTER %tmp.57 143 35 44 ];
+                %tmp.57 = getv %tmp.56 :KEY_ENTER;
+                putv self :button %tmp.57;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 143; @position = 18; @symbol_constdef = [button,143,18,24]; ]
+            const button;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 146; @symbol_moduledef = [prompt_font__body_with_title,146,15,43]; ]
+        module prompt_font__body_with_title {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 146; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 147 18 ]
+                symbol [ Graphics %tmp.58 147 34 42 ];
+                %tmp.58 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.59 147 43 62 ];
+                %tmp.59 = getv %tmp.58 :TEXT_JUSTIFY_CENTER;
+                putv self :justification %tmp.59;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 148 18 ]
+                symbol [ Graphics %tmp.60 148 25 33 ];
+                %tmp.60 = getm $.Toybox.Graphics;
+                symbol [ FONT_TINY %tmp.61 148 34 43 ];
+                %tmp.61 = getv %tmp.60 :FONT_TINY;
+                putv self :font %tmp.61;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 147; @position = 18; @symbol_constdef = [justification,147,18,31]; ]
+            const justification;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 148; @position = 18; @symbol_constdef = [font,148,18,22]; ]
+            const font;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 151; @symbol_moduledef = [confirmation_loc__body,151,15,37]; ]
+        module confirmation_loc__body {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 151; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 152; @position = 18; @symbol_constdef = [x,152,18,19]; @symbol_type<0> = [Number,152,23,29]; ]
+            const x as Number = 42;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 153; @position = 18; @symbol_constdef = [y,153,18,19]; @symbol_type<0> = [Number,153,23,29]; ]
+            const y as Number = 42;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 156; @symbol_moduledef = [system_icon_destructive__hint_button_left_bottom,156,15,63]; ]
+        module system_icon_destructive__hint_button_left_bottom {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 156; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 157; @position = 18; @symbol_constdef = [filename,157,18,26]; @symbol_type<0> = [String,157,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_destructive__hint_button_left_bottom.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 158; @position = 18; @symbol_constdef = [dithering,158,18,27]; @symbol_type<0> = [String,158,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 161; @symbol_moduledef = [prompt_color_dark__background,161,15,44]; ]
+        module prompt_color_dark__background {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 161; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 162; @position = 18; @symbol_constdef = [color,162,18,23]; @symbol_type<0> = [Number,162,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 163; @position = 18; @symbol_constdef = [background,163,18,28]; @symbol_type<0> = [Number,163,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 166; @symbol_moduledef = [system_icon_destructive__hint_action_menu,166,15,56]; ]
+        module system_icon_destructive__hint_action_menu {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 166; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 167; @position = 18; @symbol_constdef = [filename,167,18,26]; @symbol_type<0> = [String,167,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_destructive__hint_button_right_top.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 168; @position = 18; @symbol_constdef = [dithering,168,18,27]; @symbol_type<0> = [String,168,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 171; @symbol_moduledef = [system_loc__hint_action_menu,171,15,43]; ]
+        module system_loc__hint_action_menu {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 171; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 172; @position = 18; @symbol_constdef = [x,172,18,19]; @symbol_type<0> = [Number,172,23,29]; ]
+            const x as Number = 175;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 173; @position = 18; @symbol_constdef = [y,173,18,19]; @symbol_type<0> = [Number,173,23,29]; ]
+            const y as Number = 33;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 176; @symbol_moduledef = [confirmation_icon__hint_confirm,176,15,46]; ]
+        module confirmation_icon__hint_confirm {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 176; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 177; @position = 18; @symbol_constdef = [filename,177,18,26]; @symbol_type<0> = [String,177,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/confirmation_icon__hint_completion.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 178; @position = 18; @symbol_constdef = [dithering,178,18,27]; @symbol_type<0> = [String,178,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 181; @symbol_moduledef = [system_loc__hint_button_left_middle,181,15,50]; ]
+        module system_loc__hint_button_left_middle {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 181; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 182; @position = 18; @symbol_constdef = [x,182,18,19]; @symbol_type<0> = [Number,182,23,29]; ]
+            const x as Number = 4;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 183; @position = 18; @symbol_constdef = [y,183,18,19]; @symbol_type<0> = [Number,183,23,29]; ]
+            const y as Number = 88;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 186; @symbol_moduledef = [prompt_size__body_no_title,186,15,41]; ]
+        module prompt_size__body_no_title {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 186; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 187; @position = 18; @symbol_constdef = [width,187,18,23]; @symbol_type<0> = [Number,187,27,33]; ]
+            const width as Number = 166;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 188; @position = 18; @symbol_constdef = [height,188,18,24]; @symbol_type<0> = [Number,188,28,34]; ]
+            const height as Number = 166;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 191; @symbol_moduledef = [system_icon_light__hint_button_left_top,191,15,54]; ]
+        module system_icon_light__hint_button_left_top {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 191; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 192; @position = 18; @symbol_constdef = [filename,192,18,26]; @symbol_type<0> = [String,192,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_light__hint_button_left_top.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 193; @position = 18; @symbol_constdef = [dithering,193,18,27]; @symbol_type<0> = [String,193,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 196; @symbol_moduledef = [prompt_color_light__background,196,15,45]; ]
+        module prompt_color_light__background {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 196; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 197; @position = 18; @symbol_constdef = [color,197,18,23]; @symbol_type<0> = [Number,197,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 198; @position = 18; @symbol_constdef = [background,198,18,28]; @symbol_type<0> = [Number,198,32,38]; ]
+            const background as Number = 0xFFFFFF;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 201; @symbol_moduledef = [confirmation_input__delete,201,15,41]; ]
+        module confirmation_input__delete {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 201; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 202 18 ]
+                symbol [ WatchUi %tmp.62 202 27 34 ];
+                %tmp.62 = getm $.Toybox.WatchUi;
+                symbol [ KEY_ENTER %tmp.63 202 35 44 ];
+                %tmp.63 = getv %tmp.62 :KEY_ENTER;
+                putv self :button %tmp.63;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 202; @position = 18; @symbol_constdef = [button,202,18,24]; ]
+            const button;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 205; @symbol_moduledef = [system_icon_dark__hint_button_left_top,205,15,53]; ]
+        module system_icon_dark__hint_button_left_top {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 205; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 206; @position = 18; @symbol_constdef = [filename,206,18,26]; @symbol_type<0> = [String,206,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_dark__hint_button_left_top.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 207; @position = 18; @symbol_constdef = [dithering,207,18,27]; @symbol_type<0> = [String,207,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 210; @symbol_moduledef = [system_input__action_menu,210,15,40]; ]
+        module system_input__action_menu {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 210; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 211 18 ]
+                symbol [ WatchUi %tmp.64 211 27 34 ];
+                %tmp.64 = getm $.Toybox.WatchUi;
+                symbol [ KEY_ENTER %tmp.65 211 35 44 ];
+                %tmp.65 = getv %tmp.64 :KEY_ENTER;
+                putv self :button %tmp.65;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 211; @position = 18; @symbol_constdef = [button,211,18,24]; ]
+            const button;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 214; @symbol_moduledef = [system_icon_light__save,214,15,38]; ]
+        module system_icon_light__save {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 214; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 215; @position = 18; @symbol_constdef = [filename,215,18,26]; @symbol_type<0> = [String,215,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_light__save.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 216; @position = 18; @symbol_constdef = [dithering,216,18,27]; @symbol_type<0> = [String,216,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 219; @symbol_moduledef = [prompt_color_light__body,219,15,39]; ]
+        module prompt_color_light__body {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 219; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 221 18 ]
+                symbol [ Graphics %tmp.66 221 31 39 ];
+                %tmp.66 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.67 221 40 57 ];
+                %tmp.67 = getv %tmp.66 :COLOR_TRANSPARENT;
+                putv self :background %tmp.67;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 220; @position = 18; @symbol_constdef = [color,220,18,23]; @symbol_type<0> = [Number,220,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 221; @position = 18; @symbol_constdef = [background,221,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 224; @symbol_moduledef = [system_loc__subwindow,224,15,36]; ]
+        module system_loc__subwindow {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 224; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 225; @position = 18; @symbol_constdef = [exclude,225,18,25]; @symbol_type<0> = [Boolean,225,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 228; @symbol_moduledef = [system_icon_light__warning,228,15,41]; ]
+        module system_icon_light__warning {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 228; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 229; @position = 18; @symbol_constdef = [filename,229,18,26]; @symbol_type<0> = [String,229,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_light__warning.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 230; @position = 18; @symbol_constdef = [dithering,230,18,27]; @symbol_type<0> = [String,230,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 233; @symbol_moduledef = [confirmation_color_light__body,233,15,45]; ]
+        module confirmation_color_light__body {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 233; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 235 18 ]
+                symbol [ Graphics %tmp.68 235 31 39 ];
+                %tmp.68 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.69 235 40 57 ];
+                %tmp.69 = getv %tmp.68 :COLOR_TRANSPARENT;
+                putv self :background %tmp.69;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 234; @position = 18; @symbol_constdef = [color,234,18,23]; @symbol_type<0> = [Number,234,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 235; @position = 18; @symbol_constdef = [background,235,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 238; @symbol_moduledef = [confirmation_icon_light__hint_keep,238,15,49]; ]
+        module confirmation_icon_light__hint_keep {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 238; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 239; @position = 18; @symbol_constdef = [filename,239,18,26]; @symbol_type<0> = [String,239,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/confirmation_icon__hint_keep.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 240; @position = 18; @symbol_constdef = [dithering,240,18,27]; @symbol_type<0> = [String,240,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 243; @symbol_moduledef = [activity_color_light__background,243,15,47]; ]
+        module activity_color_light__background {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 243; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 244; @position = 18; @symbol_constdef = [color,244,18,23]; @symbol_type<0> = [Number,244,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 245; @position = 18; @symbol_constdef = [background,245,18,28]; @symbol_type<0> = [Number,245,32,38]; ]
+            const background as Number = 0xFFFFFF;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 248; @symbol_moduledef = [system_icon_positive__hint_button_right_top,248,15,58]; ]
+        module system_icon_positive__hint_button_right_top {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 248; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 249; @position = 18; @symbol_constdef = [filename,249,18,26]; @symbol_type<0> = [String,249,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_positive__hint_button_right_top.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 250; @position = 18; @symbol_constdef = [dithering,250,18,27]; @symbol_type<0> = [String,250,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 253; @symbol_moduledef = [system_size__screen,253,15,34]; ]
+        module system_size__screen {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 253; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 254; @position = 18; @symbol_constdef = [width,254,18,23]; @symbol_type<0> = [Number,254,27,33]; ]
+            const width as Number = 208;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 255; @position = 18; @symbol_constdef = [height,255,18,24]; @symbol_type<0> = [Number,255,28,34]; ]
+            const height as Number = 208;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 258; @symbol_moduledef = [system_icon_destructive__hint_button_right_bottom,258,15,64]; ]
+        module system_icon_destructive__hint_button_right_bottom {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 258; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 259; @position = 18; @symbol_constdef = [filename,259,18,26]; @symbol_type<0> = [String,259,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_destructive__hint_button_right_bottom.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 260; @position = 18; @symbol_constdef = [dithering,260,18,27]; @symbol_type<0> = [String,260,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 263; @symbol_moduledef = [system_color_light__background,263,15,45]; ]
+        module system_color_light__background {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 263; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 264; @position = 18; @symbol_constdef = [color,264,18,23]; @symbol_type<0> = [Number,264,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 265; @position = 18; @symbol_constdef = [background,265,18,28]; @symbol_type<0> = [Number,265,32,38]; ]
+            const background as Number = 0xFFFFFF;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 268; @symbol_moduledef = [system_icon_destructive__hint_button_right_top,268,15,61]; ]
+        module system_icon_destructive__hint_button_right_top {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 268; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 269; @position = 18; @symbol_constdef = [filename,269,18,26]; @symbol_type<0> = [String,269,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_destructive__hint_button_right_top.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 270; @position = 18; @symbol_constdef = [dithering,270,18,27]; @symbol_type<0> = [String,270,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 273; @symbol_moduledef = [confirmation_loc__hint_confirm,273,15,45]; ]
+        module confirmation_loc__hint_confirm {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 273; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 274; @position = 18; @symbol_constdef = [x,274,18,19]; @symbol_type<0> = [Number,274,23,29]; ]
+            const x as Number = 169;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 275; @position = 18; @symbol_constdef = [y,275,18,19]; @symbol_type<0> = [Number,275,23,29]; ]
+            const y as Number = 42;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 278; @symbol_moduledef = [activity_color_dark__text,278,15,40]; ]
+        module activity_color_dark__text {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 278; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 280 18 ]
+                symbol [ Graphics %tmp.70 280 31 39 ];
+                %tmp.70 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.71 280 40 57 ];
+                %tmp.71 = getv %tmp.70 :COLOR_TRANSPARENT;
+                putv self :background %tmp.71;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 279; @position = 18; @symbol_constdef = [color,279,18,23]; @symbol_type<0> = [Number,279,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 280; @position = 18; @symbol_constdef = [background,280,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 283; @symbol_moduledef = [confirmation_input__keep,283,15,39]; ]
+        module confirmation_input__keep {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 283; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 284 18 ]
+                symbol [ WatchUi %tmp.72 284 27 34 ];
+                %tmp.72 = getm $.Toybox.WatchUi;
+                symbol [ KEY_DOWN %tmp.73 284 35 43 ];
+                %tmp.73 = getv %tmp.72 :KEY_DOWN;
+                putv self :button %tmp.73;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 284; @position = 18; @symbol_constdef = [button,284,18,24]; ]
+            const button;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 287; @symbol_moduledef = [prompt_loc__body_with_title,287,15,42]; ]
+        module prompt_loc__body_with_title {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 287; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 288; @position = 18; @symbol_constdef = [x,288,18,19]; @symbol_type<0> = [Number,288,23,29]; ]
+            const x as Number = 21;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 289; @position = 18; @symbol_constdef = [y,289,18,19]; @symbol_type<0> = [Number,289,23,29]; ]
+            const y as Number = 63;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 292; @symbol_moduledef = [system_icon_dark__search,292,15,39]; ]
+        module system_icon_dark__search {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 292; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 293; @position = 18; @symbol_constdef = [filename,293,18,26]; @symbol_type<0> = [String,293,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_dark__search.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 294; @position = 18; @symbol_constdef = [compress,294,18,26]; @symbol_type<0> = [String,294,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 295; @position = 18; @symbol_constdef = [dithering,295,18,27]; @symbol_type<0> = [String,295,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 296; @position = 18; @symbol_constdef = [automaticPalette,296,18,34]; @symbol_type<0> = [String,296,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 299; @symbol_moduledef = [activity_color_light__text,299,15,41]; ]
+        module activity_color_light__text {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 299; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 301 18 ]
+                symbol [ Graphics %tmp.74 301 31 39 ];
+                %tmp.74 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.75 301 40 57 ];
+                %tmp.75 = getv %tmp.74 :COLOR_TRANSPARENT;
+                putv self :background %tmp.75;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 300; @position = 18; @symbol_constdef = [color,300,18,23]; @symbol_type<0> = [Number,300,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 301; @position = 18; @symbol_constdef = [background,301,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 304; @symbol_moduledef = [confirmation_icon__hint_keep,304,15,43]; ]
+        module confirmation_icon__hint_keep {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 304; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 305; @position = 18; @symbol_constdef = [filename,305,18,26]; @symbol_type<0> = [String,305,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/confirmation_icon__hint_keep.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 306; @position = 18; @symbol_constdef = [dithering,306,18,27]; @symbol_type<0> = [String,306,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 309; @symbol_moduledef = [system_icon_dark__save,309,15,37]; ]
+        module system_icon_dark__save {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 309; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 310; @position = 18; @symbol_constdef = [filename,310,18,26]; @symbol_type<0> = [String,310,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_dark__save.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 311; @position = 18; @symbol_constdef = [compress,311,18,26]; @symbol_type<0> = [String,311,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 312; @position = 18; @symbol_constdef = [dithering,312,18,27]; @symbol_type<0> = [String,312,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 313; @position = 18; @symbol_constdef = [automaticPalette,313,18,34]; @symbol_type<0> = [String,313,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 316; @symbol_moduledef = [system_icon_destructive__hint_button_left_middle,316,15,63]; ]
+        module system_icon_destructive__hint_button_left_middle {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 316; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 317; @position = 18; @symbol_constdef = [filename,317,18,26]; @symbol_type<0> = [String,317,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_destructive__hint_button_left_middle.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 318; @position = 18; @symbol_constdef = [dithering,318,18,27]; @symbol_type<0> = [String,318,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 321; @symbol_moduledef = [system_icon_light__search,321,15,40]; ]
+        module system_icon_light__search {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 321; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 322; @position = 18; @symbol_constdef = [filename,322,18,26]; @symbol_type<0> = [String,322,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_light__search.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 323; @position = 18; @symbol_constdef = [dithering,323,18,27]; @symbol_type<0> = [String,323,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 326; @symbol_moduledef = [system_icon_dark__hint_button_left_bottom,326,15,56]; ]
+        module system_icon_dark__hint_button_left_bottom {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 326; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 327; @position = 18; @symbol_constdef = [filename,327,18,26]; @symbol_type<0> = [String,327,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_dark__hint_button_left_bottom.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 328; @position = 18; @symbol_constdef = [dithering,328,18,27]; @symbol_type<0> = [String,328,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 331; @symbol_moduledef = [system_icon_positive__hint_button_left_top,331,15,57]; ]
+        module system_icon_positive__hint_button_left_top {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 331; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 332; @position = 18; @symbol_constdef = [filename,332,18,26]; @symbol_type<0> = [String,332,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_positive__hint_button_left_top.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 333; @position = 18; @symbol_constdef = [dithering,333,18,27]; @symbol_type<0> = [String,333,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 336; @symbol_moduledef = [system_loc__hint_button_right_bottom,336,15,51]; ]
+        module system_loc__hint_button_right_bottom {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 336; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 337; @position = 18; @symbol_constdef = [x,337,18,19]; @symbol_type<0> = [Number,337,23,29]; ]
+            const x as Number = 178;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 338; @position = 18; @symbol_constdef = [y,338,18,19]; @symbol_type<0> = [Number,338,23,29]; ]
+            const y as Number = 137;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 341; @symbol_moduledef = [confirmation_icon_dark__hint_reject,341,15,50]; ]
+        module confirmation_icon_dark__hint_reject {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 341; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 342; @position = 18; @symbol_constdef = [filename,342,18,26]; @symbol_type<0> = [String,342,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/confirmation_icon__hint_reject.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 343; @position = 18; @symbol_constdef = [dithering,343,18,27]; @symbol_type<0> = [String,343,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 346; @symbol_moduledef = [confirmation_color_dark__body,346,15,44]; ]
+        module confirmation_color_dark__body {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 346; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 348 18 ]
+                symbol [ Graphics %tmp.76 348 31 39 ];
+                %tmp.76 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.77 348 40 57 ];
+                %tmp.77 = getv %tmp.76 :COLOR_TRANSPARENT;
+                putv self :background %tmp.77;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 347; @position = 18; @symbol_constdef = [color,347,18,23]; @symbol_type<0> = [Number,347,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 348; @position = 18; @symbol_constdef = [background,348,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 351; @symbol_moduledef = [confirmation_icon_light__hint_confirm,351,15,52]; ]
+        module confirmation_icon_light__hint_confirm {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 351; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 352; @position = 18; @symbol_constdef = [filename,352,18,26]; @symbol_type<0> = [String,352,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/confirmation_icon__hint_completion.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 353; @position = 18; @symbol_constdef = [dithering,353,18,27]; @symbol_type<0> = [String,353,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 356; @symbol_moduledef = [prompt_color_dark__title,356,15,39]; ]
+        module prompt_color_dark__title {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 356; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 358 18 ]
+                symbol [ Graphics %tmp.78 358 31 39 ];
+                %tmp.78 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.79 358 40 57 ];
+                %tmp.79 = getv %tmp.78 :COLOR_TRANSPARENT;
+                putv self :background %tmp.79;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 357; @position = 18; @symbol_constdef = [color,357,18,23]; @symbol_type<0> = [Number,357,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 358; @position = 18; @symbol_constdef = [background,358,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 361; @symbol_moduledef = [system_icon_destructive__cancel,361,15,46]; ]
+        module system_icon_destructive__cancel {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 361; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 362; @position = 18; @symbol_constdef = [filename,362,18,26]; @symbol_type<0> = [String,362,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_destructive__cancel.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 363; @position = 18; @symbol_constdef = [dithering,363,18,27]; @symbol_type<0> = [String,363,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 366; @symbol_moduledef = [system_icon_light__hint_button_right_bottom,366,15,58]; ]
+        module system_icon_light__hint_button_right_bottom {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 366; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 367; @position = 18; @symbol_constdef = [filename,367,18,26]; @symbol_type<0> = [String,367,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_light__hint_button_right_bottom.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 368; @position = 18; @symbol_constdef = [dithering,368,18,27]; @symbol_type<0> = [String,368,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 371; @symbol_moduledef = [prompt_loc__title,371,15,32]; ]
+        module prompt_loc__title {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 371; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 372; @position = 18; @symbol_constdef = [x,372,18,19]; @symbol_type<0> = [Number,372,23,29]; ]
+            const x as Number = 21;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 373; @position = 18; @symbol_constdef = [y,373,18,19]; @symbol_type<0> = [Number,373,23,29]; ]
+            const y as Number = 15;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 376; @symbol_moduledef = [confirmation_font_enhanced_readability__body,376,15,59]; ]
+        module confirmation_font_enhanced_readability__body {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 376; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 377; @position = 18; @symbol_constdef = [exclude,377,18,25]; @symbol_type<0> = [Boolean,377,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 380; @symbol_moduledef = [prompt_color_light__title,380,15,40]; ]
+        module prompt_color_light__title {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 380; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 382 18 ]
+                symbol [ Graphics %tmp.80 382 31 39 ];
+                %tmp.80 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.81 382 40 57 ];
+                %tmp.81 = getv %tmp.80 :COLOR_TRANSPARENT;
+                putv self :background %tmp.81;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 381; @position = 18; @symbol_constdef = [color,381,18,23]; @symbol_type<0> = [Number,381,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 382; @position = 18; @symbol_constdef = [background,382,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 385; @symbol_moduledef = [system_icon_dark__hint_button_right_top,385,15,54]; ]
+        module system_icon_dark__hint_button_right_top {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 385; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 386; @position = 18; @symbol_constdef = [filename,386,18,26]; @symbol_type<0> = [String,386,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_dark__hint_button_right_top.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 387; @position = 18; @symbol_constdef = [dithering,387,18,27]; @symbol_type<0> = [String,387,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 390; @symbol_moduledef = [system_icon_dark__hint_button_left_middle,390,15,56]; ]
+        module system_icon_dark__hint_button_left_middle {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 390; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 391; @position = 18; @symbol_constdef = [filename,391,18,26]; @symbol_type<0> = [String,391,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_dark__hint_button_left_middle.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 392; @position = 18; @symbol_constdef = [dithering,392,18,27]; @symbol_type<0> = [String,392,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 395; @symbol_moduledef = [confirmation_icon_dark__hint_keep,395,15,48]; ]
+        module confirmation_icon_dark__hint_keep {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 395; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 396; @position = 18; @symbol_constdef = [filename,396,18,26]; @symbol_type<0> = [String,396,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/confirmation_icon__hint_keep.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 397; @position = 18; @symbol_constdef = [dithering,397,18,27]; @symbol_type<0> = [String,397,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 400; @symbol_moduledef = [system_icon_light__cancel,400,15,40]; ]
+        module system_icon_light__cancel {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 400; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 401; @position = 18; @symbol_constdef = [filename,401,18,26]; @symbol_type<0> = [String,401,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_light__cancel.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 402; @position = 18; @symbol_constdef = [dithering,402,18,27]; @symbol_type<0> = [String,402,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 405; @symbol_moduledef = [confirmation_icon_light__hint_reject,405,15,51]; ]
+        module confirmation_icon_light__hint_reject {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 405; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 406; @position = 18; @symbol_constdef = [filename,406,18,26]; @symbol_type<0> = [String,406,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/confirmation_icon__hint_reject.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 407; @position = 18; @symbol_constdef = [dithering,407,18,27]; @symbol_type<0> = [String,407,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 410; @symbol_moduledef = [system_icon_light__about,410,15,39]; ]
+        module system_icon_light__about {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 410; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 411; @position = 18; @symbol_constdef = [filename,411,18,26]; @symbol_type<0> = [String,411,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_light__about.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 412; @position = 18; @symbol_constdef = [dithering,412,18,27]; @symbol_type<0> = [String,412,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 415; @symbol_moduledef = [system_size__toast_icon,415,15,38]; ]
+        module system_size__toast_icon {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 415; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 416; @position = 18; @symbol_constdef = [scaleX,416,18,24]; @symbol_type<0> = [Number,416,28,34]; ]
+            const scaleX as Number = 21;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 417; @position = 18; @symbol_constdef = [scaleY,417,18,24]; @symbol_type<0> = [Number,417,28,34]; ]
+            const scaleY as Number = 21;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 418; @position = 18; @symbol_constdef = [scaleRelativeTo,418,18,33]; @symbol_type<0> = [String,418,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 421; @symbol_moduledef = [system_icon_dark__hint_button_right_middle,421,15,57]; ]
+        module system_icon_dark__hint_button_right_middle {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 421; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 422; @position = 18; @symbol_constdef = [exclude,422,18,25]; @symbol_type<0> = [Boolean,422,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 425; @symbol_moduledef = [confirmation_icon__hint_reject,425,15,45]; ]
+        module confirmation_icon__hint_reject {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 425; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 426; @position = 18; @symbol_constdef = [filename,426,18,26]; @symbol_type<0> = [String,426,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/confirmation_icon__hint_reject.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 427; @position = 18; @symbol_constdef = [dithering,427,18,27]; @symbol_type<0> = [String,427,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 430; @symbol_moduledef = [system_icon_light__hint_action_menu,430,15,50]; ]
+        module system_icon_light__hint_action_menu {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 430; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 431; @position = 18; @symbol_constdef = [filename,431,18,26]; @symbol_type<0> = [String,431,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_light__hint_button_right_top.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 432; @position = 18; @symbol_constdef = [dithering,432,18,27]; @symbol_type<0> = [String,432,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 435; @symbol_moduledef = [system_icon_light__hint_button_right_middle,435,15,58]; ]
+        module system_icon_light__hint_button_right_middle {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 435; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 436; @position = 18; @symbol_constdef = [exclude,436,18,25]; @symbol_type<0> = [Boolean,436,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 439; @symbol_moduledef = [system_icon_destructive__hint_button_right_middle,439,15,64]; ]
+        module system_icon_destructive__hint_button_right_middle {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 439; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 440; @position = 18; @symbol_constdef = [exclude,440,18,25]; @symbol_type<0> = [Boolean,440,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 443; @symbol_moduledef = [confirmation_loc__hint_reject,443,15,44]; ]
+        module confirmation_loc__hint_reject {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 443; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 444; @position = 18; @symbol_constdef = [x,444,18,19]; @symbol_type<0> = [Number,444,23,29]; ]
+            const x as Number = 10;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 445; @position = 18; @symbol_constdef = [y,445,18,19]; @symbol_type<0> = [Number,445,23,29]; ]
+            const y as Number = 139;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 446; @position = 18; @symbol_constdef = [horizontalJustification,446,18,41]; @symbol_type<0> = [String,446,45,51]; ]
+            const horizontalJustification as String = "left";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 449; @symbol_moduledef = [confirmation_icon_dark__hint_delete,449,15,50]; ]
+        module confirmation_icon_dark__hint_delete {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 449; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 450; @position = 18; @symbol_constdef = [filename,450,18,26]; @symbol_type<0> = [String,450,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/confirmation_icon__hint_delete.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 451; @position = 18; @symbol_constdef = [dithering,451,18,27]; @symbol_type<0> = [String,451,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 454; @symbol_moduledef = [activity_color_dark__background,454,15,46]; ]
+        module activity_color_dark__background {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 454; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 455; @position = 18; @symbol_constdef = [color,455,18,23]; @symbol_type<0> = [Number,455,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 456; @position = 18; @symbol_constdef = [background,456,18,28]; @symbol_type<0> = [Number,456,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 459; @symbol_moduledef = [system_icon_light__hint_button_left_bottom,459,15,57]; ]
+        module system_icon_light__hint_button_left_bottom {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 459; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 460; @position = 18; @symbol_constdef = [filename,460,18,26]; @symbol_type<0> = [String,460,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_light__hint_button_left_bottom.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 461; @position = 18; @symbol_constdef = [dithering,461,18,27]; @symbol_type<0> = [String,461,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 464; @symbol_moduledef = [system_icon_positive__hint_button_left_middle,464,15,60]; ]
+        module system_icon_positive__hint_button_left_middle {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 464; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 465; @position = 18; @symbol_constdef = [filename,465,18,26]; @symbol_type<0> = [String,465,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_positive__hint_button_left_middle.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 466; @position = 18; @symbol_constdef = [dithering,466,18,27]; @symbol_type<0> = [String,466,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 469; @symbol_moduledef = [system_size__menu_icon,469,15,37]; ]
+        module system_size__menu_icon {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 469; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 470; @position = 18; @symbol_constdef = [scaleX,470,18,24]; @symbol_type<0> = [Number,470,28,34]; ]
+            const scaleX as Number = 35;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 471; @position = 18; @symbol_constdef = [scaleY,471,18,24]; @symbol_type<0> = [Number,471,28,34]; ]
+            const scaleY as Number = 35;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 472; @position = 18; @symbol_constdef = [scaleRelativeTo,472,18,33]; @symbol_type<0> = [String,472,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 475; @symbol_moduledef = [system_icon_destructive__warning,475,15,47]; ]
+        module system_icon_destructive__warning {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 475; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 476; @position = 18; @symbol_constdef = [filename,476,18,26]; @symbol_type<0> = [String,476,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_destructive__warning.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 477; @position = 18; @symbol_constdef = [dithering,477,18,27]; @symbol_type<0> = [String,477,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 480; @symbol_moduledef = [system_loc__hint_button_right_middle,480,15,51]; ]
+        module system_loc__hint_button_right_middle {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 480; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 481; @position = 18; @symbol_constdef = [exclude,481,18,25]; @symbol_type<0> = [Boolean,481,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 484; @symbol_moduledef = [system_icon_dark__cancel,484,15,39]; ]
+        module system_icon_dark__cancel {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 484; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 485; @position = 18; @symbol_constdef = [filename,485,18,26]; @symbol_type<0> = [String,485,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_dark__cancel.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 486; @position = 18; @symbol_constdef = [compress,486,18,26]; @symbol_type<0> = [String,486,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 487; @position = 18; @symbol_constdef = [dithering,487,18,27]; @symbol_type<0> = [String,487,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 488; @position = 18; @symbol_constdef = [automaticPalette,488,18,34]; @symbol_type<0> = [String,488,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 491; @symbol_moduledef = [prompt_size__body_with_title,491,15,43]; ]
+        module prompt_size__body_with_title {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 491; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 492; @position = 18; @symbol_constdef = [width,492,18,23]; @symbol_type<0> = [Number,492,27,33]; ]
+            const width as Number = 166;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 493; @position = 18; @symbol_constdef = [height,493,18,24]; @symbol_type<0> = [Number,493,28,34]; ]
+            const height as Number = 125;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 496; @symbol_moduledef = [system_loc__hint_button_right_top,496,15,48]; ]
+        module system_loc__hint_button_right_top {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 496; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 497; @position = 18; @symbol_constdef = [x,497,18,19]; @symbol_type<0> = [Number,497,23,29]; ]
+            const x as Number = 175;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 498; @position = 18; @symbol_constdef = [y,498,18,19]; @symbol_type<0> = [Number,498,23,29]; ]
+            const y as Number = 33;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 501; @symbol_moduledef = [system_color_light__text,501,15,39]; ]
+        module system_color_light__text {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 501; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 503 18 ]
+                symbol [ Graphics %tmp.82 503 31 39 ];
+                %tmp.82 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.83 503 40 57 ];
+                %tmp.83 = getv %tmp.82 :COLOR_TRANSPARENT;
+                putv self :background %tmp.83;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 502; @position = 18; @symbol_constdef = [color,502,18,23]; @symbol_type<0> = [Number,502,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 503; @position = 18; @symbol_constdef = [background,503,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 506; @symbol_moduledef = [system_icon_light__check,506,15,39]; ]
+        module system_icon_light__check {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 506; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 507; @position = 18; @symbol_constdef = [filename,507,18,26]; @symbol_type<0> = [String,507,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_light__check.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 508; @position = 18; @symbol_constdef = [dithering,508,18,27]; @symbol_type<0> = [String,508,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 511; @symbol_moduledef = [confirmation_input__reject,511,15,41]; ]
+        module confirmation_input__reject {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 511; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 512 18 ]
+                symbol [ WatchUi %tmp.84 512 27 34 ];
+                %tmp.84 = getm $.Toybox.WatchUi;
+                symbol [ KEY_DOWN %tmp.85 512 35 43 ];
+                %tmp.85 = getv %tmp.84 :KEY_DOWN;
+                putv self :button %tmp.85;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 512; @position = 18; @symbol_constdef = [button,512,18,24]; ]
+            const button;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 515; @symbol_moduledef = [system_icon_light__revert,515,15,40]; ]
+        module system_icon_light__revert {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 515; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 516; @position = 18; @symbol_constdef = [filename,516,18,26]; @symbol_type<0> = [String,516,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_light__revert.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 517; @position = 18; @symbol_constdef = [dithering,517,18,27]; @symbol_type<0> = [String,517,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 520; @symbol_moduledef = [system_size__subwindow,520,15,37]; ]
+        module system_size__subwindow {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 520; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 521; @position = 18; @symbol_constdef = [exclude,521,18,25]; @symbol_type<0> = [Boolean,521,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 524; @symbol_moduledef = [system_icon_positive__hint_button_left_bottom,524,15,60]; ]
+        module system_icon_positive__hint_button_left_bottom {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 524; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 525; @position = 18; @symbol_constdef = [filename,525,18,26]; @symbol_type<0> = [String,525,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_positive__hint_button_left_bottom.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 526; @position = 18; @symbol_constdef = [dithering,526,18,27]; @symbol_type<0> = [String,526,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 529; @symbol_moduledef = [system_icon_dark__check,529,15,38]; ]
+        module system_icon_dark__check {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 529; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 530; @position = 18; @symbol_constdef = [filename,530,18,26]; @symbol_type<0> = [String,530,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_dark__check.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 531; @position = 18; @symbol_constdef = [compress,531,18,26]; @symbol_type<0> = [String,531,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 532; @position = 18; @symbol_constdef = [dithering,532,18,27]; @symbol_type<0> = [String,532,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 533; @position = 18; @symbol_constdef = [automaticPalette,533,18,34]; @symbol_type<0> = [String,533,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 536; @symbol_moduledef = [confirmation_loc__hint_keep,536,15,42]; ]
+        module confirmation_loc__hint_keep {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 536; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 537; @position = 18; @symbol_constdef = [x,537,18,19]; @symbol_type<0> = [Number,537,23,29]; ]
+            const x as Number = 10;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 538; @position = 18; @symbol_constdef = [y,538,18,19]; @symbol_type<0> = [Number,538,23,29]; ]
+            const y as Number = 139;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 539; @position = 18; @symbol_constdef = [horizontalJustification,539,18,41]; @symbol_type<0> = [String,539,45,51]; ]
+            const horizontalJustification as String = "left";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 542; @symbol_moduledef = [confirmation_loc__hint_delete,542,15,44]; ]
+        module confirmation_loc__hint_delete {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 542; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 543; @position = 18; @symbol_constdef = [x,543,18,19]; @symbol_type<0> = [Number,543,23,29]; ]
+            const x as Number = 169;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 544; @position = 18; @symbol_constdef = [y,544,18,19]; @symbol_type<0> = [Number,544,23,29]; ]
+            const y as Number = 42;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 547; @symbol_moduledef = [system_icon_positive__hint_action_menu,547,15,53]; ]
+        module system_icon_positive__hint_action_menu {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 547; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 548; @position = 18; @symbol_constdef = [filename,548,18,26]; @symbol_type<0> = [String,548,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_positive__hint_button_right_top.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 549; @position = 18; @symbol_constdef = [dithering,549,18,27]; @symbol_type<0> = [String,549,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 552; @symbol_moduledef = [system_icon_positive__hint_button_right_middle,552,15,61]; ]
+        module system_icon_positive__hint_button_right_middle {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 552; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 553; @position = 18; @symbol_constdef = [exclude,553,18,25]; @symbol_type<0> = [Boolean,553,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 556; @symbol_moduledef = [system_icon_light__hint_button_left_middle,556,15,57]; ]
+        module system_icon_light__hint_button_left_middle {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 556; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 557; @position = 18; @symbol_constdef = [filename,557,18,26]; @symbol_type<0> = [String,557,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_light__hint_button_left_middle.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 558; @position = 18; @symbol_constdef = [dithering,558,18,27]; @symbol_type<0> = [String,558,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 561; @symbol_moduledef = [system_icon_dark__hint_button_right_bottom,561,15,57]; ]
+        module system_icon_dark__hint_button_right_bottom {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 561; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 562; @position = 18; @symbol_constdef = [filename,562,18,26]; @symbol_type<0> = [String,562,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_dark__hint_button_right_bottom.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 563; @position = 18; @symbol_constdef = [dithering,563,18,27]; @symbol_type<0> = [String,563,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 566; @symbol_moduledef = [system_icon_positive__hint_button_right_bottom,566,15,61]; ]
+        module system_icon_positive__hint_button_right_bottom {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 566; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 567; @position = 18; @symbol_constdef = [filename,567,18,26]; @symbol_type<0> = [String,567,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_positive__hint_button_right_bottom.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 568; @position = 18; @symbol_constdef = [dithering,568,18,27]; @symbol_type<0> = [String,568,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 571; @symbol_moduledef = [system_icon_dark__revert,571,15,39]; ]
+        module system_icon_dark__revert {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 571; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 572; @position = 18; @symbol_constdef = [filename,572,18,26]; @symbol_type<0> = [String,572,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_dark__revert.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 573; @position = 18; @symbol_constdef = [compress,573,18,26]; @symbol_type<0> = [String,573,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 574; @position = 18; @symbol_constdef = [dithering,574,18,27]; @symbol_type<0> = [String,574,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 575; @position = 18; @symbol_constdef = [automaticPalette,575,18,34]; @symbol_type<0> = [String,575,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 578; @symbol_moduledef = [confirmation_icon_light__hint_delete,578,15,51]; ]
+        module confirmation_icon_light__hint_delete {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 578; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 579; @position = 18; @symbol_constdef = [filename,579,18,26]; @symbol_type<0> = [String,579,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/confirmation_icon__hint_delete.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 580; @position = 18; @symbol_constdef = [dithering,580,18,27]; @symbol_type<0> = [String,580,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 583; @symbol_moduledef = [system_icon_dark__question,583,15,41]; ]
+        module system_icon_dark__question {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 583; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 584; @position = 18; @symbol_constdef = [filename,584,18,26]; @symbol_type<0> = [String,584,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_dark__question.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 585; @position = 18; @symbol_constdef = [compress,585,18,26]; @symbol_type<0> = [String,585,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 586; @position = 18; @symbol_constdef = [dithering,586,18,27]; @symbol_type<0> = [String,586,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 587; @position = 18; @symbol_constdef = [automaticPalette,587,18,34]; @symbol_type<0> = [String,587,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 590; @symbol_moduledef = [system_icon_light__discard,590,15,41]; ]
+        module system_icon_light__discard {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 590; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 591; @position = 18; @symbol_constdef = [filename,591,18,26]; @symbol_type<0> = [String,591,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_light__discard.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 592; @position = 18; @symbol_constdef = [dithering,592,18,27]; @symbol_type<0> = [String,592,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 595; @symbol_moduledef = [device_info,595,15,26]; ]
+        module device_info {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 595; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 597 18 ]
+                symbol [ Toybox %tmp.87 597 32 38 ];
+                %tmp.87 = getv ? :Toybox;
+                symbol [ System %tmp.88 597 39 45 ];
+                %tmp.88 = getv %tmp.87 :System;
+                symbol [ SCREEN_SHAPE_ROUND %tmp.89 597 46 64 ];
+                %tmp.89 = getv %tmp.88 :SCREEN_SHAPE_ROUND;
+                putv self :screenShape %tmp.89;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 596; @position = 18; @symbol_constdef = [screenWidth,596,18,29]; @symbol_type<0> = [Number,596,33,39]; ]
+            const screenWidth as Number = 208;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 597; @position = 18; @symbol_constdef = [screenShape,597,18,29]; ]
+            const screenShape;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 598; @position = 18; @symbol_constdef = [hasNightMode,598,18,30]; @symbol_type<0> = [Boolean,598,34,41]; ]
+            const hasNightMode as Boolean = false;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 599; @position = 18; @symbol_constdef = [hasGpu,599,18,24]; @symbol_type<0> = [Boolean,599,28,35]; ]
+            const hasGpu as Boolean = false;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 600; @position = 18; @symbol_constdef = [screenHeight,600,18,30]; @symbol_type<0> = [Number,600,34,40]; ]
+            const screenHeight as Number = 208;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 601; @position = 18; @symbol_constdef = [hasTouchScreen,601,18,32]; @symbol_type<0> = [Boolean,601,36,43]; ]
+            const hasTouchScreen as Boolean = true;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 602; @position = 18; @symbol_constdef = [hasEnhancedReadabilityMode,602,18,44]; @symbol_type<0> = [Boolean,602,48,55]; ]
+            const hasEnhancedReadabilityMode as Boolean = false;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 605; @symbol_moduledef = [confirmation_icon_dark__hint_confirm,605,15,51]; ]
+        module confirmation_icon_dark__hint_confirm {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 605; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 606; @position = 18; @symbol_constdef = [filename,606,18,26]; @symbol_type<0> = [String,606,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/confirmation_icon__hint_completion.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 607; @position = 18; @symbol_constdef = [dithering,607,18,27]; @symbol_type<0> = [String,607,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 610; @symbol_moduledef = [prompt_font__body_no_title,610,15,41]; ]
+        module prompt_font__body_no_title {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 610; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 611 18 ]
+                symbol [ Graphics %tmp.90 611 34 42 ];
+                %tmp.90 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.91 611 43 62 ];
+                %tmp.91 = getv %tmp.90 :TEXT_JUSTIFY_CENTER;
+                symbol [ Graphics %tmp.92 611 63 71 ];
+                %tmp.92 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_VCENTER %tmp.93 611 72 92 ];
+                %tmp.93 = getv %tmp.92 :TEXT_JUSTIFY_VCENTER;
+                %tmp.94 = bitor %tmp.91 %tmp.93;
+                putv self :justification %tmp.94;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 612 18 ]
+                symbol [ Graphics %tmp.95 612 25 33 ];
+                %tmp.95 = getm $.Toybox.Graphics;
+                symbol [ FONT_TINY %tmp.96 612 34 43 ];
+                %tmp.96 = getv %tmp.95 :FONT_TINY;
+                putv self :font %tmp.96;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 611; @position = 18; @symbol_constdef = [justification,611,18,31]; ]
+            const justification;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 612; @position = 18; @symbol_constdef = [font,612,18,22]; ]
+            const font;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 615; @symbol_moduledef = [prompt_size__title_icon,615,15,38]; ]
+        module prompt_size__title_icon {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 615; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 616; @position = 18; @symbol_constdef = [scaleX,616,18,24]; @symbol_type<0> = [Float,616,28,33]; ]
+            const scaleX as Float = 0.1539;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 617; @position = 18; @symbol_constdef = [scaleRelativeTo,617,18,33]; @symbol_type<0> = [String,617,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 620; @symbol_moduledef = [system_icon_dark__warning,620,15,40]; ]
+        module system_icon_dark__warning {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 620; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 621; @position = 18; @symbol_constdef = [filename,621,18,26]; @symbol_type<0> = [String,621,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_dark__warning.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 622; @position = 18; @symbol_constdef = [compress,622,18,26]; @symbol_type<0> = [String,622,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 623; @position = 18; @symbol_constdef = [dithering,623,18,27]; @symbol_type<0> = [String,623,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 624; @position = 18; @symbol_constdef = [automaticPalette,624,18,34]; @symbol_type<0> = [String,624,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 627; @symbol_moduledef = [prompt_loc__title_icon,627,15,37]; ]
+        module prompt_loc__title_icon {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 627; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 628; @position = 18; @symbol_constdef = [x,628,18,19]; @symbol_type<0> = [Number,628,23,29]; ]
+            const x as Number = 104;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 629; @position = 18; @symbol_constdef = [y,629,18,19]; @symbol_type<0> = [Number,629,23,29]; ]
+            const y as Number = 31;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 630; @position = 18; @symbol_constdef = [horizontalJustification,630,18,41]; @symbol_type<0> = [String,630,45,51]; ]
+            const horizontalJustification as String = "center";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 631; @position = 18; @symbol_constdef = [verticalJustification,631,18,39]; @symbol_type<0> = [String,631,43,49]; ]
+            const verticalJustification as String = "center";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 634; @symbol_moduledef = [prompt_font_enhanced_readability__title,634,15,54]; ]
+        module prompt_font_enhanced_readability__title {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 634; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 635; @position = 18; @symbol_constdef = [exclude,635,18,25]; @symbol_type<0> = [Boolean,635,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 638; @symbol_moduledef = [prompt_color_dark__body,638,15,38]; ]
+        module prompt_color_dark__body {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 638; ]
+            <init> {
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" 640 18 ]
+                symbol [ Graphics %tmp.97 640 31 39 ];
+                %tmp.97 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.98 640 40 57 ];
+                %tmp.98 = getv %tmp.97 :COLOR_TRANSPARENT;
+                putv self :background %tmp.98;
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 639; @position = 18; @symbol_constdef = [color,639,18,23]; @symbol_type<0> = [Number,639,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 640; @position = 18; @symbol_constdef = [background,640,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 643; @symbol_moduledef = [confirmation_icon__hint_delete,643,15,45]; ]
+        module confirmation_icon__hint_delete {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 643; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 644; @position = 18; @symbol_constdef = [filename,644,18,26]; @symbol_type<0> = [String,644,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/confirmation_icon__hint_delete.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 645; @position = 18; @symbol_constdef = [dithering,645,18,27]; @symbol_type<0> = [String,645,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 648; @symbol_moduledef = [system_icon_light__hint_button_right_top,648,15,55]; ]
+        module system_icon_light__hint_button_right_top {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 648; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 649; @position = 18; @symbol_constdef = [filename,649,18,26]; @symbol_type<0> = [String,649,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_light__hint_button_right_top.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 650; @position = 18; @symbol_constdef = [dithering,650,18,27]; @symbol_type<0> = [String,650,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 653; @symbol_moduledef = [confirmation_size__body,653,15,38]; ]
+        module confirmation_size__body {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 653; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 654; @position = 18; @symbol_constdef = [width,654,18,23]; @symbol_type<0> = [Number,654,27,33]; ]
+            const width as Number = 125;
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 655; @position = 18; @symbol_constdef = [height,655,18,24]; @symbol_type<0> = [Number,655,28,34]; ]
+            const height as Number = 125;
+        }
+        [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 658; @symbol_moduledef = [system_icon_positive__check,658,15,42]; ]
+        module system_icon_positive__check {
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 658; ]
+            <init> {
+            }
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 659; @position = 18; @symbol_constdef = [filename,659,18,26]; @symbol_type<0> = [String,659,30,36]; ]
+            const filename as String = "/Users/matiaszayamendez/Library/Application Support/Garmin/ConnectIQ/Devices/fr55/system_icon_positive__check.svg";
+            [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 660; @position = 18; @symbol_constdef = [dithering,660,18,27]; @symbol_type<0> = [String,660,31,37]; ]
+            const dithering as String = "none";
+        }
+    }
+}
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen"; @line = 1; ]
+<init> {
+}

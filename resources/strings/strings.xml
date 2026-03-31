@@ -1,0 +1,18 @@
+<strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <string id="AppName">VFRStopWatch</string>
+
+    <string id="prompt"></string>
+
+    <string id="menu_label_1">Start/Stop</string>
+    <string id="menu_label_2">Reset</string>
+    <string id="menu_label_3">Settings</string>
+
+    <!-- Settings labels -->
+    <string id="SettingGpsModeTitle">GPS Mode</string>
+    <string id="SettingGpsModeGps">GPS</string>
+    <string id="SettingGpsModeGpsGlonass">GPS+GLONASS</string>
+    <string id="SettingGpsModeAllSat">All Systems</string>
+    <string id="SettingGpsModeAviation">Aviation</string>
+    <string id="SettingTimerTitle">Timer (min)</string>
+    <string id="SettingTakeoffTitle">Takeoff (kts)</string>
+</strings>

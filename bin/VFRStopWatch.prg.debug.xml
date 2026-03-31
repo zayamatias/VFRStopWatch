@@ -1,0 +1,1119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<debugInfo>
+    <manifest filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/manifest.xml"/>
+    <pcToLineNum>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" id="1" lineNum="39" parent="globals" pc="268435460" symbol="getApp"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" id="1" lineNum="40" parent="globals" pc="268435470" symbol="getApp"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="2" lineNum="8" parent="globals/VFRSummaryView" pc="268435486" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" id="3" lineNum="7" parent="globals/Rez" pc="268435505" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="4" lineNum="101" parent="globals/VFRSummaryDelegate" pc="268435529" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchMenuDelegate.mc" id="5" lineNum="6" parent="globals/VFRStopWatchMenuDelegate" pc="268435548" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="6" lineNum="5" parent="globals/VFRStopWatchDelegate" pc="268435567" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="7" lineNum="158" parent="globals/VFRSettingsMenuDelegate" pc="268435586" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="8" lineNum="10" parent="globals/VFRGpsMenuDelegate" pc="268435605" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="9" lineNum="13" parent="globals/VFRStopWatchView" pc="268435624" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="10" lineNum="122" parent="globals/VFRNumberPickerDelegate" pc="268435643" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="11" lineNum="33" parent="globals/VFRNumberPickerView" pc="268435662" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" id="12" lineNum="5" parent="globals/VFRStopWatchApp" pc="268435681" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="13" lineNum="16" parent="globals/VFRSummaryView" pc="268435700" symbol="onLayout"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="14" lineNum="18" parent="globals/VFRSummaryView" pc="268435703" symbol="fmtTimeMs"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="14" lineNum="19" parent="globals/VFRSummaryView" pc="268435707" symbol="fmtTimeMs"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="14" lineNum="20" parent="globals/VFRSummaryView" pc="268435726" symbol="fmtTimeMs"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="14" lineNum="21" parent="globals/VFRSummaryView" pc="268435745" symbol="fmtTimeMs"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="14" lineNum="22" parent="globals/VFRSummaryView" pc="268435770" symbol="fmtTimeMs"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="14" lineNum="23" parent="globals/VFRSummaryView" pc="268435789" symbol="fmtTimeMs"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="14" lineNum="24" parent="globals/VFRSummaryView" pc="268435802" symbol="fmtTimeMs"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="14" lineNum="25" parent="globals/VFRSummaryView" pc="268435846" symbol="fmtTimeMs"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="14" lineNum="26" parent="globals/VFRSummaryView" pc="268435890" symbol="fmtTimeMs"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="15" lineNum="11" parent="globals/VFRSummaryView" pc="268435911" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="15" lineNum="12" parent="globals/VFRSummaryView" pc="268435913" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="15" lineNum="13" parent="globals/VFRSummaryView" pc="268435931" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="29" parent="globals/VFRSummaryView" pc="268435942" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="30" parent="globals/VFRSummaryView" pc="268435946" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="31" parent="globals/VFRSummaryView" pc="268435968" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="33" parent="globals/VFRSummaryView" pc="268435980" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="34" parent="globals/VFRSummaryView" pc="268435993" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="35" parent="globals/VFRSummaryView" pc="268436006" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="38" parent="globals/VFRSummaryView" pc="268436016" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="39" parent="globals/VFRSummaryView" pc="268436023" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="40" parent="globals/VFRSummaryView" pc="268436042" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="41" parent="globals/VFRSummaryView" pc="268436058" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="42" parent="globals/VFRSummaryView" pc="268436068" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="43" parent="globals/VFRSummaryView" pc="268436078" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="44" parent="globals/VFRSummaryView" pc="268436122" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="45" parent="globals/VFRSummaryView" pc="268436166" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="49" parent="globals/VFRSummaryView" pc="268436188" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="50" parent="globals/VFRSummaryView" pc="268436195" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="51" parent="globals/VFRSummaryView" pc="268436214" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="52" parent="globals/VFRSummaryView" pc="268436250" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="53" parent="globals/VFRSummaryView" pc="268436260" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="54" parent="globals/VFRSummaryView" pc="268436270" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="55" parent="globals/VFRSummaryView" pc="268436314" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="56" parent="globals/VFRSummaryView" pc="268436358" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="60" parent="globals/VFRSummaryView" pc="268436380" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="61" parent="globals/VFRSummaryView" pc="268436396" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="64" parent="globals/VFRSummaryView" pc="268436411" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="65" parent="globals/VFRSummaryView" pc="268436442" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="66" parent="globals/VFRSummaryView" pc="268436473" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="67" parent="globals/VFRSummaryView" pc="268436486" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="68" parent="globals/VFRSummaryView" pc="268436502" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="69" parent="globals/VFRSummaryView" pc="268436521" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="69" parent="globals/VFRSummaryView" pc="268436532" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="70" parent="globals/VFRSummaryView" pc="268436542" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="71" parent="globals/VFRSummaryView" pc="268436579" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="72" parent="globals/VFRSummaryView" pc="268436592" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="73" parent="globals/VFRSummaryView" pc="268436608" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="74" parent="globals/VFRSummaryView" pc="268436627" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="74" parent="globals/VFRSummaryView" pc="268436638" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="75" parent="globals/VFRSummaryView" pc="268436648" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="77" parent="globals/VFRSummaryView" pc="268436685" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="78" parent="globals/VFRSummaryView" pc="268436707" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="81" parent="globals/VFRSummaryView" pc="268436747" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="82" parent="globals/VFRSummaryView" pc="268436769" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="85" parent="globals/VFRSummaryView" pc="268436809" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="86" parent="globals/VFRSummaryView" pc="268436831" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="89" parent="globals/VFRSummaryView" pc="268436871" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="90" parent="globals/VFRSummaryView" pc="268436893" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="93" parent="globals/VFRSummaryView" pc="268436933" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="94" parent="globals/VFRSummaryView" pc="268436955" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="16" lineNum="97" parent="globals/VFRSummaryView" pc="268436995" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="17" lineNum="104" parent="globals/VFRSummaryDelegate" pc="268437012" symbol="onBack"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="17" lineNum="105" parent="globals/VFRSummaryDelegate" pc="268437014" symbol="onBack"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="17" lineNum="106" parent="globals/VFRSummaryDelegate" pc="268437035" symbol="onBack"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="18" lineNum="102" parent="globals/VFRSummaryDelegate" pc="268437038" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="18" lineNum="102" parent="globals/VFRSummaryDelegate" pc="268437040" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="19" lineNum="109" parent="globals/VFRSummaryDelegate" pc="268437059" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="19" lineNum="111" parent="globals/VFRSummaryDelegate" pc="268437061" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" id="19" lineNum="112" parent="globals/VFRSummaryDelegate" pc="268437082" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchMenuDelegate.mc" id="20" lineNum="12" parent="globals/VFRStopWatchMenuDelegate" pc="268437085" symbol="onMenuItem"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchMenuDelegate.mc" id="20" lineNum="13" parent="globals/VFRStopWatchMenuDelegate" pc="268437089" symbol="onMenuItem"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchMenuDelegate.mc" id="20" lineNum="15" parent="globals/VFRStopWatchMenuDelegate" pc="268437100" symbol="onMenuItem"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchMenuDelegate.mc" id="20" lineNum="16" parent="globals/VFRStopWatchMenuDelegate" pc="268437117" symbol="onMenuItem"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchMenuDelegate.mc" id="20" lineNum="17" parent="globals/VFRStopWatchMenuDelegate" pc="268437124" symbol="onMenuItem"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchMenuDelegate.mc" id="20" lineNum="19" parent="globals/VFRStopWatchMenuDelegate" pc="268437142" symbol="onMenuItem"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchMenuDelegate.mc" id="20" lineNum="21" parent="globals/VFRStopWatchMenuDelegate" pc="268437153" symbol="onMenuItem"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchMenuDelegate.mc" id="20" lineNum="22" parent="globals/VFRStopWatchMenuDelegate" pc="268437170" symbol="onMenuItem"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchMenuDelegate.mc" id="20" lineNum="23" parent="globals/VFRStopWatchMenuDelegate" pc="268437177" symbol="onMenuItem"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchMenuDelegate.mc" id="20" lineNum="25" parent="globals/VFRStopWatchMenuDelegate" pc="268437195" symbol="onMenuItem"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchMenuDelegate.mc" id="20" lineNum="27" parent="globals/VFRStopWatchMenuDelegate" pc="268437206" symbol="onMenuItem"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchMenuDelegate.mc" id="20" lineNum="28" parent="globals/VFRStopWatchMenuDelegate" pc="268437225" symbol="onMenuItem"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchMenuDelegate.mc" id="20" lineNum="29" parent="globals/VFRStopWatchMenuDelegate" pc="268437232" symbol="onMenuItem"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchMenuDelegate.mc" id="21" lineNum="8" parent="globals/VFRStopWatchMenuDelegate" pc="268437251" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchMenuDelegate.mc" id="21" lineNum="9" parent="globals/VFRStopWatchMenuDelegate" pc="268437253" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="22" lineNum="21" parent="globals/VFRStopWatchDelegate" pc="268437272" symbol="onBack"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="22" lineNum="22" parent="globals/VFRStopWatchDelegate" pc="268437274" symbol="onBack"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="22" lineNum="23" parent="globals/VFRStopWatchDelegate" pc="268437290" symbol="onBack"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="23" lineNum="27" parent="globals/VFRStopWatchDelegate" pc="268437293" symbol="onPreviousPage"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="23" lineNum="29" parent="globals/VFRStopWatchDelegate" pc="268437295" symbol="onPreviousPage"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="23" lineNum="30" parent="globals/VFRStopWatchDelegate" pc="268437336" symbol="onPreviousPage"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="23" lineNum="31" parent="globals/VFRStopWatchDelegate" pc="268437409" symbol="onPreviousPage"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="23" lineNum="33" parent="globals/VFRStopWatchDelegate" pc="268437415" symbol="onPreviousPage"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="23" lineNum="34" parent="globals/VFRStopWatchDelegate" pc="268437433" symbol="onPreviousPage"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="24" lineNum="43" parent="globals/VFRStopWatchDelegate" pc="268437436" symbol="onMenu"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="24" lineNum="44" parent="globals/VFRStopWatchDelegate" pc="268437438" symbol="onMenu"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="24" lineNum="45" parent="globals/VFRStopWatchDelegate" pc="268437519" symbol="onMenu"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="25" lineNum="9" parent="globals/VFRStopWatchDelegate" pc="268437522" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="25" lineNum="10" parent="globals/VFRStopWatchDelegate" pc="268437524" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="25" lineNum="11" parent="globals/VFRStopWatchDelegate" pc="268437542" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="26" lineNum="15" parent="globals/VFRStopWatchDelegate" pc="268437553" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="26" lineNum="16" parent="globals/VFRStopWatchDelegate" pc="268437555" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="26" lineNum="17" parent="globals/VFRStopWatchDelegate" pc="268437573" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="27" lineNum="38" parent="globals/VFRStopWatchDelegate" pc="268437576" symbol="onNextPage"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="27" lineNum="39" parent="globals/VFRStopWatchDelegate" pc="268437578" symbol="onNextPage"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" id="27" lineNum="40" parent="globals/VFRStopWatchDelegate" pc="268437596" symbol="onNextPage"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="28" lineNum="161" parent="globals/VFRSettingsMenuDelegate" pc="268437599" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="28" lineNum="162" parent="globals/VFRSettingsMenuDelegate" pc="268437601" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="28" lineNum="163" parent="globals/VFRSettingsMenuDelegate" pc="268437619" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="166" parent="globals/VFRSettingsMenuDelegate" pc="268437630" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="167" parent="globals/VFRSettingsMenuDelegate" pc="268437634" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="169" parent="globals/VFRSettingsMenuDelegate" pc="268437647" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="171" parent="globals/VFRSettingsMenuDelegate" pc="268437666" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="172" parent="globals/VFRSettingsMenuDelegate" pc="268437688" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="173" parent="globals/VFRSettingsMenuDelegate" pc="268437707" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="173" parent="globals/VFRSettingsMenuDelegate" pc="268437729" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="175" parent="globals/VFRSettingsMenuDelegate" pc="268437739" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="176" parent="globals/VFRSettingsMenuDelegate" pc="268437786" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="177" parent="globals/VFRSettingsMenuDelegate" pc="268437855" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="178" parent="globals/VFRSettingsMenuDelegate" pc="268437924" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="179" parent="globals/VFRSettingsMenuDelegate" pc="268437993" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="180" parent="globals/VFRSettingsMenuDelegate" pc="268438062" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="182" parent="globals/VFRSettingsMenuDelegate" pc="268438118" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="183" parent="globals/VFRSettingsMenuDelegate" pc="268438137" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="184" parent="globals/VFRSettingsMenuDelegate" pc="268438159" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="185" parent="globals/VFRSettingsMenuDelegate" pc="268438218" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="187" parent="globals/VFRSettingsMenuDelegate" pc="268438268" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="188" parent="globals/VFRSettingsMenuDelegate" pc="268438287" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="189" parent="globals/VFRSettingsMenuDelegate" pc="268438309" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="190" parent="globals/VFRSettingsMenuDelegate" pc="268438328" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="29" lineNum="191" parent="globals/VFRSettingsMenuDelegate" pc="268438387" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="30" lineNum="13" parent="globals/VFRGpsMenuDelegate" pc="268438438" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="30" lineNum="14" parent="globals/VFRGpsMenuDelegate" pc="268438440" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="30" lineNum="15" parent="globals/VFRGpsMenuDelegate" pc="268438458" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="31" lineNum="19" parent="globals/VFRGpsMenuDelegate" pc="268438469" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="31" lineNum="20" parent="globals/VFRGpsMenuDelegate" pc="268438473" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="31" lineNum="21" parent="globals/VFRGpsMenuDelegate" pc="268438486" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="31" lineNum="22" parent="globals/VFRGpsMenuDelegate" pc="268438509" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="31" lineNum="23" parent="globals/VFRGpsMenuDelegate" pc="268438525" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="31" lineNum="24" parent="globals/VFRGpsMenuDelegate" pc="268438543" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="31" lineNum="25" parent="globals/VFRGpsMenuDelegate" pc="268438564" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="32" lineNum="181" parent="globals/VFRStopWatchView" pc="268438586" symbol="onPosition"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="32" lineNum="183" parent="globals/VFRStopWatchView" pc="268438590" symbol="onPosition"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="32" lineNum="184" parent="globals/VFRStopWatchView" pc="268438597" symbol="onPosition"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="32" lineNum="184" parent="globals/VFRStopWatchView" pc="268438610" symbol="onPosition"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="32" lineNum="187" parent="globals/VFRStopWatchView" pc="268438629" symbol="onPosition"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="32" lineNum="188" parent="globals/VFRStopWatchView" pc="268438668" symbol="onPosition"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="32" lineNum="189" parent="globals/VFRStopWatchView" pc="268438690" symbol="onPosition"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="32" lineNum="192" parent="globals/VFRStopWatchView" pc="268438738" symbol="onPosition"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="32" lineNum="193" parent="globals/VFRStopWatchView" pc="268438761" symbol="onPosition"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="33" lineNum="283" parent="globals/VFRStopWatchView" pc="268438778" symbol="subTimer"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="33" lineNum="284" parent="globals/VFRStopWatchView" pc="268438782" symbol="subTimer"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="33" lineNum="285" parent="globals/VFRStopWatchView" pc="268438799" symbol="subTimer"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="33" lineNum="287" parent="globals/VFRStopWatchView" pc="268438816" symbol="subTimer"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="33" lineNum="288" parent="globals/VFRStopWatchView" pc="268438826" symbol="subTimer"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="33" lineNum="289" parent="globals/VFRStopWatchView" pc="268438839" symbol="subTimer"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="33" lineNum="290" parent="globals/VFRStopWatchView" pc="268438855" symbol="subTimer"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="33" lineNum="292" parent="globals/VFRStopWatchView" pc="268438872" symbol="subTimer"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="33" lineNum="293" parent="globals/VFRStopWatchView" pc="268438891" symbol="subTimer"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="33" lineNum="296" parent="globals/VFRStopWatchView" pc="268438907" symbol="subTimer"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="33" lineNum="298" parent="globals/VFRStopWatchView" pc="268438920" symbol="subTimer"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="34" lineNum="590" parent="globals/VFRStopWatchView" pc="268438937" symbol="doHrAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="34" lineNum="591" parent="globals/VFRStopWatchView" pc="268438941" symbol="doHrAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="34" lineNum="591" parent="globals/VFRStopWatchView" pc="268438957" symbol="doHrAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="34" lineNum="593" parent="globals/VFRStopWatchView" pc="268438961" symbol="doHrAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="34" lineNum="600" parent="globals/VFRStopWatchView" pc="268439189" symbol="doHrAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="34" lineNum="601" parent="globals/VFRStopWatchView" pc="268439213" symbol="doHrAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="34" lineNum="602" parent="globals/VFRStopWatchView" pc="268439235" symbol="doHrAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="196" parent="globals/VFRStopWatchView" pc="268439281" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="197" parent="globals/VFRStopWatchView" pc="268439285" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="199" parent="globals/VFRStopWatchView" pc="268439297" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="200" parent="globals/VFRStopWatchView" pc="268439307" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="201" parent="globals/VFRStopWatchView" pc="268439317" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="202" parent="globals/VFRStopWatchView" pc="268439327" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="204" parent="globals/VFRStopWatchView" pc="268439359" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="205" parent="globals/VFRStopWatchView" pc="268439382" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="207" parent="globals/VFRStopWatchView" pc="268439405" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="208" parent="globals/VFRStopWatchView" pc="268439430" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="210" parent="globals/VFRStopWatchView" pc="268439453" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="211" parent="globals/VFRStopWatchView" pc="268439468" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="216" parent="globals/VFRStopWatchView" pc="268439536" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="217" parent="globals/VFRStopWatchView" pc="268439554" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="219" parent="globals/VFRStopWatchView" pc="268439578" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="220" parent="globals/VFRStopWatchView" pc="268439597" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="222" parent="globals/VFRStopWatchView" pc="268439637" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="224" parent="globals/VFRStopWatchView" pc="268439647" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="225" parent="globals/VFRStopWatchView" pc="268439664" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="226" parent="globals/VFRStopWatchView" pc="268439677" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="227" parent="globals/VFRStopWatchView" pc="268439696" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="228" parent="globals/VFRStopWatchView" pc="268439706" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="229" parent="globals/VFRStopWatchView" pc="268439745" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="232" parent="globals/VFRStopWatchView" pc="268439764" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="233" parent="globals/VFRStopWatchView" pc="268439774" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="234" parent="globals/VFRStopWatchView" pc="268439806" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="236" parent="globals/VFRStopWatchView" pc="268439816" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="237" parent="globals/VFRStopWatchView" pc="268439829" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="238" parent="globals/VFRStopWatchView" pc="268439849" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="240" parent="globals/VFRStopWatchView" pc="268439870" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="241" parent="globals/VFRStopWatchView" pc="268439888" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="242" parent="globals/VFRStopWatchView" pc="268439897" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="35" lineNum="244" parent="globals/VFRStopWatchView" pc="268439921" symbol="startStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="36" lineNum="522" parent="globals/VFRStopWatchView" pc="268439938" symbol="lap"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="36" lineNum="523" parent="globals/VFRStopWatchView" pc="268439940" symbol="lap"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="36" lineNum="525" parent="globals/VFRStopWatchView" pc="268439951" symbol="lap"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="36" lineNum="528" parent="globals/VFRStopWatchView" pc="268439964" symbol="lap"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="36" lineNum="529" parent="globals/VFRStopWatchView" pc="268439974" symbol="lap"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="36" lineNum="530" parent="globals/VFRStopWatchView" pc="268440015" symbol="lap"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="36" lineNum="531" parent="globals/VFRStopWatchView" pc="268440037" symbol="lap"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="36" lineNum="533" parent="globals/VFRStopWatchView" pc="268440059" symbol="lap"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="37" lineNum="537" parent="globals/VFRStopWatchView" pc="268440076" symbol="openSettingsMenu"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="37" lineNum="538" parent="globals/VFRStopWatchView" pc="268440080" symbol="openSettingsMenu"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="37" lineNum="539" parent="globals/VFRStopWatchView" pc="268440102" symbol="openSettingsMenu"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="37" lineNum="540" parent="globals/VFRStopWatchView" pc="268440121" symbol="openSettingsMenu"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="37" lineNum="540" parent="globals/VFRStopWatchView" pc="268440143" symbol="openSettingsMenu"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="37" lineNum="541" parent="globals/VFRStopWatchView" pc="268440153" symbol="openSettingsMenu"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="37" lineNum="545" parent="globals/VFRStopWatchView" pc="268440217" symbol="openSettingsMenu"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="37" lineNum="546" parent="globals/VFRStopWatchView" pc="268440233" symbol="openSettingsMenu"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="37" lineNum="547" parent="globals/VFRStopWatchView" pc="268440255" symbol="openSettingsMenu"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="37" lineNum="548" parent="globals/VFRStopWatchView" pc="268440274" symbol="openSettingsMenu"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="37" lineNum="549" parent="globals/VFRStopWatchView" pc="268440321" symbol="openSettingsMenu"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="37" lineNum="550" parent="globals/VFRStopWatchView" pc="268440372" symbol="openSettingsMenu"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="37" lineNum="551" parent="globals/VFRStopWatchView" pc="268440438" symbol="openSettingsMenu"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="37" lineNum="552" parent="globals/VFRStopWatchView" pc="268440504" symbol="openSettingsMenu"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="38" lineNum="85" parent="globals/VFRStopWatchView" pc="268440552" symbol="onLayout"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="39" lineNum="122" parent="globals/VFRStopWatchView" pc="268440555" symbol="restartGps"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="39" lineNum="123" parent="globals/VFRStopWatchView" pc="268440557" symbol="restartGps"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="39" lineNum="123" parent="globals/VFRStopWatchView" pc="268440573" symbol="restartGps"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="39" lineNum="124" parent="globals/VFRStopWatchView" pc="268440577" symbol="restartGps"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="39" lineNum="126" parent="globals/VFRStopWatchView" pc="268440609" symbol="restartGps"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="39" lineNum="131" parent="globals/VFRStopWatchView" pc="268440676" symbol="restartGps"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="39" lineNum="133" parent="globals/VFRStopWatchView" pc="268440693" symbol="restartGps"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="39" lineNum="136" parent="globals/VFRStopWatchView" pc="268440746" symbol="restartGps"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="39" lineNum="141" parent="globals/VFRStopWatchView" pc="268440813" symbol="restartGps"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="39" lineNum="144" parent="globals/VFRStopWatchView" pc="268440866" symbol="restartGps"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="39" lineNum="149" parent="globals/VFRStopWatchView" pc="268440933" symbol="restartGps"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="39" lineNum="150" parent="globals/VFRStopWatchView" pc="268440948" symbol="restartGps"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="39" lineNum="157" parent="globals/VFRStopWatchView" pc="268441042" symbol="restartGps"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="39" lineNum="159" parent="globals/VFRStopWatchView" pc="268441082" symbol="restartGps"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="39" lineNum="161" parent="globals/VFRStopWatchView" pc="268441114" symbol="restartGps"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="39" lineNum="169" parent="globals/VFRStopWatchView" pc="268441208" symbol="restartGps"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="40" lineNum="90" parent="globals/VFRStopWatchView" pc="268441246" symbol="loadSettings"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="40" lineNum="92" parent="globals/VFRStopWatchView" pc="268441250" symbol="loadSettings"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="40" lineNum="93" parent="globals/VFRStopWatchView" pc="268441272" symbol="loadSettings"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="40" lineNum="96" parent="globals/VFRStopWatchView" pc="268441297" symbol="loadSettings"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="40" lineNum="97" parent="globals/VFRStopWatchView" pc="268441319" symbol="loadSettings"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="40" lineNum="98" parent="globals/VFRStopWatchView" pc="268441338" symbol="loadSettings"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="40" lineNum="98" parent="globals/VFRStopWatchView" pc="268441349" symbol="loadSettings"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="40" lineNum="99" parent="globals/VFRStopWatchView" pc="268441359" symbol="loadSettings"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="40" lineNum="99" parent="globals/VFRStopWatchView" pc="268441370" symbol="loadSettings"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="40" lineNum="100" parent="globals/VFRStopWatchView" pc="268441380" symbol="loadSettings"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="40" lineNum="103" parent="globals/VFRStopWatchView" pc="268441396" symbol="loadSettings"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="40" lineNum="104" parent="globals/VFRStopWatchView" pc="268441418" symbol="loadSettings"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="40" lineNum="105" parent="globals/VFRStopWatchView" pc="268441437" symbol="loadSettings"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="40" lineNum="106" parent="globals/VFRStopWatchView" pc="268441448" symbol="loadSettings"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="40" lineNum="108" parent="globals/VFRStopWatchView" pc="268441464" symbol="loadSettings"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="40" lineNum="112" parent="globals/VFRStopWatchView" pc="268441489" symbol="loadSettings"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="40" lineNum="113" parent="globals/VFRStopWatchView" pc="268441518" symbol="loadSettings"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="40" lineNum="115" parent="globals/VFRStopWatchView" pc="268441537" symbol="loadSettings"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="248" parent="globals/VFRStopWatchView" pc="268441625" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="250" parent="globals/VFRStopWatchView" pc="268441627" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="251" parent="globals/VFRStopWatchView" pc="268441640" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="252" parent="globals/VFRStopWatchView" pc="268441660" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="254" parent="globals/VFRStopWatchView" pc="268441681" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="255" parent="globals/VFRStopWatchView" pc="268441699" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="256" parent="globals/VFRStopWatchView" pc="268441708" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="258" parent="globals/VFRStopWatchView" pc="268441732" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="259" parent="globals/VFRStopWatchView" pc="268441742" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="260" parent="globals/VFRStopWatchView" pc="268441755" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="261" parent="globals/VFRStopWatchView" pc="268441765" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="262" parent="globals/VFRStopWatchView" pc="268441778" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="263" parent="globals/VFRStopWatchView" pc="268441791" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="264" parent="globals/VFRStopWatchView" pc="268441804" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="265" parent="globals/VFRStopWatchView" pc="268441814" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="266" parent="globals/VFRStopWatchView" pc="268441855" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="267" parent="globals/VFRStopWatchView" pc="268441865" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="268" parent="globals/VFRStopWatchView" pc="268441881" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="269" parent="globals/VFRStopWatchView" pc="268441894" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="270" parent="globals/VFRStopWatchView" pc="268441904" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="271" parent="globals/VFRStopWatchView" pc="268441917" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="272" parent="globals/VFRStopWatchView" pc="268441930" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="273" parent="globals/VFRStopWatchView" pc="268441943" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="274" parent="globals/VFRStopWatchView" pc="268441956" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="275" parent="globals/VFRStopWatchView" pc="268441969" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="276" parent="globals/VFRStopWatchView" pc="268441982" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="277" parent="globals/VFRStopWatchView" pc="268442005" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="278" parent="globals/VFRStopWatchView" pc="268442014" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="279" parent="globals/VFRStopWatchView" pc="268442023" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="41" lineNum="280" parent="globals/VFRStopWatchView" pc="268442046" symbol="reset"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="42" lineNum="559" parent="globals/VFRStopWatchView" pc="268442063" symbol="onDownPressed"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="42" lineNum="560" parent="globals/VFRStopWatchView" pc="268442065" symbol="onDownPressed"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="42" lineNum="561" parent="globals/VFRStopWatchView" pc="268442094" symbol="onDownPressed"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="42" lineNum="562" parent="globals/VFRStopWatchView" pc="268442106" symbol="onDownPressed"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="42" lineNum="563" parent="globals/VFRStopWatchView" pc="268442130" symbol="onDownPressed"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="42" lineNum="564" parent="globals/VFRStopWatchView" pc="268442142" symbol="onDownPressed"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="42" lineNum="565" parent="globals/VFRStopWatchView" pc="268442154" symbol="onDownPressed"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="42" lineNum="567" parent="globals/VFRStopWatchView" pc="268442178" symbol="onDownPressed"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="42" lineNum="568" parent="globals/VFRStopWatchView" pc="268442190" symbol="onDownPressed"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="43" lineNum="607" parent="globals/VFRStopWatchView" pc="268442212" symbol="doFuelAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="43" lineNum="608" parent="globals/VFRStopWatchView" pc="268442216" symbol="doFuelAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="43" lineNum="608" parent="globals/VFRStopWatchView" pc="268442232" symbol="doFuelAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="43" lineNum="610" parent="globals/VFRStopWatchView" pc="268442236" symbol="doFuelAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="43" lineNum="611" parent="globals/VFRStopWatchView" pc="268442288" symbol="doFuelAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="43" lineNum="612" parent="globals/VFRStopWatchView" pc="268442312" symbol="doFuelAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="43" lineNum="613" parent="globals/VFRStopWatchView" pc="268442334" symbol="doFuelAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="44" lineNum="617" parent="globals/VFRStopWatchView" pc="268442380" symbol="onHide"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="44" lineNum="618" parent="globals/VFRStopWatchView" pc="268442382" symbol="onHide"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="44" lineNum="619" parent="globals/VFRStopWatchView" pc="268442397" symbol="onHide"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="45" lineNum="173" parent="globals/VFRStopWatchView" pc="268442423" symbol="onShow"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="45" lineNum="174" parent="globals/VFRStopWatchView" pc="268442425" symbol="onShow"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="45" lineNum="175" parent="globals/VFRStopWatchView" pc="268442448" symbol="onShow"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="45" lineNum="176" parent="globals/VFRStopWatchView" pc="268442460" symbol="onShow"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="45" lineNum="177" parent="globals/VFRStopWatchView" pc="268442472" symbol="onShow"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="46" lineNum="573" parent="globals/VFRStopWatchView" pc="268442489" symbol="doFiveMinAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="46" lineNum="574" parent="globals/VFRStopWatchView" pc="268442493" symbol="doFiveMinAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="46" lineNum="574" parent="globals/VFRStopWatchView" pc="268442509" symbol="doFiveMinAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="46" lineNum="576" parent="globals/VFRStopWatchView" pc="268442513" symbol="doFiveMinAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="46" lineNum="583" parent="globals/VFRStopWatchView" pc="268442741" symbol="doFiveMinAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="46" lineNum="584" parent="globals/VFRStopWatchView" pc="268442765" symbol="doFiveMinAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="46" lineNum="585" parent="globals/VFRStopWatchView" pc="268442787" symbol="doFiveMinAlert"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="47" lineNum="80" parent="globals/VFRStopWatchView" pc="268442833" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="47" lineNum="81" parent="globals/VFRStopWatchView" pc="268442835" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="301" parent="globals/VFRStopWatchView" pc="268442854" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="302" parent="globals/VFRStopWatchView" pc="268442858" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="304" parent="globals/VFRStopWatchView" pc="268442875" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="306" parent="globals/VFRStopWatchView" pc="268442892" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="307" parent="globals/VFRStopWatchView" pc="268442903" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="310" parent="globals/VFRStopWatchView" pc="268442922" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="311" parent="globals/VFRStopWatchView" pc="268442935" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="312" parent="globals/VFRStopWatchView" pc="268442964" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="313" parent="globals/VFRStopWatchView" pc="268442974" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="315" parent="globals/VFRStopWatchView" pc="268442981" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="316" parent="globals/VFRStopWatchView" pc="268443003" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="319" parent="globals/VFRStopWatchView" pc="268443025" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="322" parent="globals/VFRStopWatchView" pc="268443035" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="323" parent="globals/VFRStopWatchView" pc="268443083" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="324" parent="globals/VFRStopWatchView" pc="268443128" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="325" parent="globals/VFRStopWatchView" pc="268443150" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="326" parent="globals/VFRStopWatchView" pc="268443172" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="327" parent="globals/VFRStopWatchView" pc="268443182" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="328" parent="globals/VFRStopWatchView" pc="268443204" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="329" parent="globals/VFRStopWatchView" pc="268443225" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="330" parent="globals/VFRStopWatchView" pc="268443237" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="333" parent="globals/VFRStopWatchView" pc="268443261" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="334" parent="globals/VFRStopWatchView" pc="268443281" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="335" parent="globals/VFRStopWatchView" pc="268443297" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="336" parent="globals/VFRStopWatchView" pc="268443309" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="341" parent="globals/VFRStopWatchView" pc="268443337" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="342" parent="globals/VFRStopWatchView" pc="268443344" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="343" parent="globals/VFRStopWatchView" pc="268443354" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="344" parent="globals/VFRStopWatchView" pc="268443372" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="347" parent="globals/VFRStopWatchView" pc="268443385" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="348" parent="globals/VFRStopWatchView" pc="268443395" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="349" parent="globals/VFRStopWatchView" pc="268443402" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="351" parent="globals/VFRStopWatchView" pc="268443412" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="358" parent="globals/VFRStopWatchView" pc="268443441" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="359" parent="globals/VFRStopWatchView" pc="268443461" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="360" parent="globals/VFRStopWatchView" pc="268443478" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="365" parent="globals/VFRStopWatchView" pc="268443497" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="366" parent="globals/VFRStopWatchView" pc="268443544" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="367" parent="globals/VFRStopWatchView" pc="268443554" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="368" parent="globals/VFRStopWatchView" pc="268443575" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="369" parent="globals/VFRStopWatchView" pc="268443614" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="372" parent="globals/VFRStopWatchView" pc="268443632" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="373" parent="globals/VFRStopWatchView" pc="268443669" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="374" parent="globals/VFRStopWatchView" pc="268443706" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="375" parent="globals/VFRStopWatchView" pc="268443718" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="376" parent="globals/VFRStopWatchView" pc="268443728" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="378" parent="globals/VFRStopWatchView" pc="268443744" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="379" parent="globals/VFRStopWatchView" pc="268443758" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="380" parent="globals/VFRStopWatchView" pc="268443770" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="383" parent="globals/VFRStopWatchView" pc="268443792" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="384" parent="globals/VFRStopWatchView" pc="268443802" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="388" parent="globals/VFRStopWatchView" pc="268443812" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="389" parent="globals/VFRStopWatchView" pc="268443822" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="390" parent="globals/VFRStopWatchView" pc="268443839" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="395" parent="globals/VFRStopWatchView" pc="268443855" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="396" parent="globals/VFRStopWatchView" pc="268443862" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="397" parent="globals/VFRStopWatchView" pc="268443869" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="398" parent="globals/VFRStopWatchView" pc="268443886" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="399" parent="globals/VFRStopWatchView" pc="268443909" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="400" parent="globals/VFRStopWatchView" pc="268443919" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="401" parent="globals/VFRStopWatchView" pc="268443930" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="402" parent="globals/VFRStopWatchView" pc="268443940" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="404" parent="globals/VFRStopWatchView" pc="268443950" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="406" parent="globals/VFRStopWatchView" pc="268443985" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="407" parent="globals/VFRStopWatchView" pc="268444002" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="408" parent="globals/VFRStopWatchView" pc="268444012" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="410" parent="globals/VFRStopWatchView" pc="268444029" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="411" parent="globals/VFRStopWatchView" pc="268444063" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="413" parent="globals/VFRStopWatchView" pc="268444092" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="416" parent="globals/VFRStopWatchView" pc="268444099" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="417" parent="globals/VFRStopWatchView" pc="268444131" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="418" parent="globals/VFRStopWatchView" pc="268444163" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="421" parent="globals/VFRStopWatchView" pc="268444187" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="422" parent="globals/VFRStopWatchView" pc="268444200" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="423" parent="globals/VFRStopWatchView" pc="268444205" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="424" parent="globals/VFRStopWatchView" pc="268444239" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="425" parent="globals/VFRStopWatchView" pc="268444250" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="427" parent="globals/VFRStopWatchView" pc="268444260" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="431" parent="globals/VFRStopWatchView" pc="268444270" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="432" parent="globals/VFRStopWatchView" pc="268444280" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="433" parent="globals/VFRStopWatchView" pc="268444290" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="434" parent="globals/VFRStopWatchView" pc="268444300" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="435" parent="globals/VFRStopWatchView" pc="268444344" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="438" parent="globals/VFRStopWatchView" pc="268444388" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="439" parent="globals/VFRStopWatchView" pc="268444401" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="440" parent="globals/VFRStopWatchView" pc="268444414" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="443" parent="globals/VFRStopWatchView" pc="268444424" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="444" parent="globals/VFRStopWatchView" pc="268444446" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="446" parent="globals/VFRStopWatchView" pc="268444471" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="448" parent="globals/VFRStopWatchView" pc="268444493" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="451" parent="globals/VFRStopWatchView" pc="268444505" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="452" parent="globals/VFRStopWatchView" pc="268444522" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="453" parent="globals/VFRStopWatchView" pc="268444532" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="454" parent="globals/VFRStopWatchView" pc="268444542" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="455" parent="globals/VFRStopWatchView" pc="268444586" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="456" parent="globals/VFRStopWatchView" pc="268444630" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="458" parent="globals/VFRStopWatchView" pc="268444649" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="459" parent="globals/VFRStopWatchView" pc="268444666" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="460" parent="globals/VFRStopWatchView" pc="268444690" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="461" parent="globals/VFRStopWatchView" pc="268444700" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="462" parent="globals/VFRStopWatchView" pc="268444710" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="463" parent="globals/VFRStopWatchView" pc="268444754" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="464" parent="globals/VFRStopWatchView" pc="268444798" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="467" parent="globals/VFRStopWatchView" pc="268444817" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="468" parent="globals/VFRStopWatchView" pc="268444843" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="469" parent="globals/VFRStopWatchView" pc="268444893" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="470" parent="globals/VFRStopWatchView" pc="268444912" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="474" parent="globals/VFRStopWatchView" pc="268444952" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="475" parent="globals/VFRStopWatchView" pc="268444957" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="476" parent="globals/VFRStopWatchView" pc="268444970" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="477" parent="globals/VFRStopWatchView" pc="268444986" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="478" parent="globals/VFRStopWatchView" pc="268445005" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="478" parent="globals/VFRStopWatchView" pc="268445016" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="479" parent="globals/VFRStopWatchView" pc="268445026" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="480" parent="globals/VFRStopWatchView" pc="268445063" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="481" parent="globals/VFRStopWatchView" pc="268445085" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="486" parent="globals/VFRStopWatchView" pc="268445128" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="487" parent="globals/VFRStopWatchView" pc="268445150" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="491" parent="globals/VFRStopWatchView" pc="268445190" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="492" parent="globals/VFRStopWatchView" pc="268445209" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="496" parent="globals/VFRStopWatchView" pc="268445252" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="497" parent="globals/VFRStopWatchView" pc="268445274" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="502" parent="globals/VFRStopWatchView" pc="268445314" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="503" parent="globals/VFRStopWatchView" pc="268445319" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="504" parent="globals/VFRStopWatchView" pc="268445332" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="505" parent="globals/VFRStopWatchView" pc="268445348" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="506" parent="globals/VFRStopWatchView" pc="268445367" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="506" parent="globals/VFRStopWatchView" pc="268445378" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="507" parent="globals/VFRStopWatchView" pc="268445388" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="508" parent="globals/VFRStopWatchView" pc="268445425" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="509" parent="globals/VFRStopWatchView" pc="268445447" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="511" parent="globals/VFRStopWatchView" pc="268445490" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="512" parent="globals/VFRStopWatchView" pc="268445519" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="513" parent="globals/VFRStopWatchView" pc="268445541" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="517" parent="globals/VFRStopWatchView" pc="268445587" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc" id="48" lineNum="518" parent="globals/VFRStopWatchView" pc="268445659" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="49" lineNum="147" parent="globals/VFRNumberPickerDelegate" pc="268445679" symbol="onBack"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="49" lineNum="148" parent="globals/VFRNumberPickerDelegate" pc="268445681" symbol="onBack"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="49" lineNum="149" parent="globals/VFRNumberPickerDelegate" pc="268445702" symbol="onBack"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="50" lineNum="130" parent="globals/VFRNumberPickerDelegate" pc="268445705" symbol="onPreviousPage"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="50" lineNum="131" parent="globals/VFRNumberPickerDelegate" pc="268445707" symbol="onPreviousPage"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="50" lineNum="132" parent="globals/VFRNumberPickerDelegate" pc="268445725" symbol="onPreviousPage"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="51" lineNum="125" parent="globals/VFRNumberPickerDelegate" pc="268445728" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="51" lineNum="126" parent="globals/VFRNumberPickerDelegate" pc="268445730" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="51" lineNum="127" parent="globals/VFRNumberPickerDelegate" pc="268445748" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="52" lineNum="135" parent="globals/VFRNumberPickerDelegate" pc="268445759" symbol="onNextPage"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="52" lineNum="136" parent="globals/VFRNumberPickerDelegate" pc="268445761" symbol="onNextPage"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="52" lineNum="137" parent="globals/VFRNumberPickerDelegate" pc="268445779" symbol="onNextPage"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="53" lineNum="140" parent="globals/VFRNumberPickerDelegate" pc="268445782" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="53" lineNum="141" parent="globals/VFRNumberPickerDelegate" pc="268445784" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="53" lineNum="142" parent="globals/VFRNumberPickerDelegate" pc="268445802" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="53" lineNum="143" parent="globals/VFRNumberPickerDelegate" pc="268445823" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="53" lineNum="144" parent="globals/VFRNumberPickerDelegate" pc="268445844" symbol="onSelect"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="54" lineNum="65" parent="globals/VFRNumberPickerView" pc="268445847" symbol="decrement"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="54" lineNum="66" parent="globals/VFRNumberPickerView" pc="268445849" symbol="decrement"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="54" lineNum="67" parent="globals/VFRNumberPickerView" pc="268445871" symbol="decrement"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="54" lineNum="67" parent="globals/VFRNumberPickerView" pc="268445891" symbol="decrement"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="54" lineNum="68" parent="globals/VFRNumberPickerView" pc="268445910" symbol="decrement"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="55" lineNum="74" parent="globals/VFRNumberPickerView" pc="268445927" symbol="save"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="55" lineNum="75" parent="globals/VFRNumberPickerView" pc="268445931" symbol="save"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="55" lineNum="76" parent="globals/VFRNumberPickerView" pc="268445963" symbol="save"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="55" lineNum="77" parent="globals/VFRNumberPickerView" pc="268445988" symbol="save"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="55" lineNum="78" parent="globals/VFRNumberPickerView" pc="268446004" symbol="save"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="55" lineNum="80" parent="globals/VFRNumberPickerView" pc="268446020" symbol="save"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="55" lineNum="81" parent="globals/VFRNumberPickerView" pc="268446049" symbol="save"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="55" lineNum="83" parent="globals/VFRNumberPickerView" pc="268446071" symbol="save"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="55" lineNum="84" parent="globals/VFRNumberPickerView" pc="268446096" symbol="save"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="55" lineNum="85" parent="globals/VFRNumberPickerView" pc="268446113" symbol="save"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="55" lineNum="87" parent="globals/VFRNumberPickerView" pc="268446135" symbol="save"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="55" lineNum="90" parent="globals/VFRNumberPickerView" pc="268446175" symbol="save"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="56" lineNum="59" parent="globals/VFRNumberPickerView" pc="268446230" symbol="increment"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="56" lineNum="60" parent="globals/VFRNumberPickerView" pc="268446232" symbol="increment"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="56" lineNum="61" parent="globals/VFRNumberPickerView" pc="268446254" symbol="increment"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="56" lineNum="61" parent="globals/VFRNumberPickerView" pc="268446274" symbol="increment"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="56" lineNum="62" parent="globals/VFRNumberPickerView" pc="268446293" symbol="increment"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="57" lineNum="42" parent="globals/VFRNumberPickerView" pc="268446310" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="57" lineNum="49" parent="globals/VFRNumberPickerView" pc="268446312" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="57" lineNum="50" parent="globals/VFRNumberPickerView" pc="268446330" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="57" lineNum="51" parent="globals/VFRNumberPickerView" pc="268446340" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="57" lineNum="52" parent="globals/VFRNumberPickerView" pc="268446350" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="57" lineNum="53" parent="globals/VFRNumberPickerView" pc="268446360" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="57" lineNum="54" parent="globals/VFRNumberPickerView" pc="268446370" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="57" lineNum="55" parent="globals/VFRNumberPickerView" pc="268446380" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="57" lineNum="56" parent="globals/VFRNumberPickerView" pc="268446390" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="58" lineNum="93" parent="globals/VFRNumberPickerView" pc="268446401" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="58" lineNum="94" parent="globals/VFRNumberPickerView" pc="268446405" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="58" lineNum="95" parent="globals/VFRNumberPickerView" pc="268446418" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="58" lineNum="96" parent="globals/VFRNumberPickerView" pc="268446431" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="58" lineNum="98" parent="globals/VFRNumberPickerView" pc="268446441" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="58" lineNum="99" parent="globals/VFRNumberPickerView" pc="268446463" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="58" lineNum="102" parent="globals/VFRNumberPickerView" pc="268446475" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="58" lineNum="107" parent="globals/VFRNumberPickerView" pc="268446515" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="58" lineNum="112" parent="globals/VFRNumberPickerView" pc="268446564" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" id="58" lineNum="113" parent="globals/VFRNumberPickerView" pc="268446586" symbol="onUpdate"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" id="59" lineNum="15" parent="globals/VFRStopWatchApp" pc="268446630" symbol="onStart"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" id="60" lineNum="29" parent="globals/VFRStopWatchApp" pc="268446633" symbol="onSettingsChanged"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" id="60" lineNum="30" parent="globals/VFRStopWatchApp" pc="268446635" symbol="onSettingsChanged"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" id="60" lineNum="31" parent="globals/VFRStopWatchApp" pc="268446648" symbol="onSettingsChanged"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" id="60" lineNum="32" parent="globals/VFRStopWatchApp" pc="268446666" symbol="onSettingsChanged"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" id="60" lineNum="33" parent="globals/VFRStopWatchApp" pc="268446684" symbol="onSettingsChanged"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" id="61" lineNum="23" parent="globals/VFRStopWatchApp" pc="268446704" symbol="getInitialView"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" id="61" lineNum="24" parent="globals/VFRStopWatchApp" pc="268446706" symbol="getInitialView"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" id="61" lineNum="25" parent="globals/VFRStopWatchApp" pc="268446736" symbol="getInitialView"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" id="62" lineNum="10" parent="globals/VFRStopWatchApp" pc="268446797" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" id="62" lineNum="11" parent="globals/VFRStopWatchApp" pc="268446799" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" id="63" lineNum="19" parent="globals/VFRStopWatchApp" pc="268446818" symbol="onStop"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" id="64" lineNum="13" parent="globals/Rez/Layouts" pc="268446821" symbol="MainLayout"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" id="64" lineNum="14" parent="globals/Rez/Layouts" pc="268446831" symbol="MainLayout"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" id="65" lineNum="19" parent="globals/Rez/Menus/MainMenu" pc="268446838" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" id="66" lineNum="20" parent="globals/Rez/Menus/MainMenu" pc="268446857" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" id="66" lineNum="21" parent="globals/Rez/Menus/MainMenu" pc="268446859" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" id="66" lineNum="22" parent="globals/Rez/Menus/MainMenu" pc="268446877" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" id="66" lineNum="23" parent="globals/Rez/Menus/MainMenu" pc="268446933" symbol="initialize"/>
+        <entry filename="/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/bin/gen/006-B3869-00/source/Rez.mcgen" id="66" lineNum="24" parent="globals/Rez/Menus/MainMenu" pc="268446989" symbol="initialize"/>
+    </pcToLineNum>
+    <symbolTable>
+        <entry id="8388639" module="true" symbol="Graphics"/>
+        <entry id="14" object="true" symbol="VFRStopWatchView"/>
+        <entry field="true" id="75" symbol="&lt;globals/VFRNumberPickerView/&lt;&gt;_value&gt;"/>
+        <entry field="true" id="37" symbol="gpsQuality"/>
+        <entry field="true" id="83" symbol="SettingGpsModeAviation"/>
+        <entry id="8391711" symbol="constellations"/>
+        <entry id="8388632" method="true" symbol="&lt;init&gt;"/>
+        <entry field="true" id="52" symbol="nextVibrateAt"/>
+        <entry id="54" method="true" symbol="onDownPressed"/>
+        <entry id="5" module="true" symbol="globals/Rez/Menus"/>
+        <entry id="8391715" symbol="acquisitionType"/>
+        <entry field="true" id="17" symbol="&lt;globals/VFRSummaryView/&lt;&gt;_main&gt;"/>
+        <entry field="true" id="8388731" symbol="startTime"/>
+        <entry id="12" object="true" symbol="VFRStopWatchDelegate"/>
+        <entry id="8388638" module="true" symbol="ActivityRecording"/>
+        <entry id="79" method="true" symbol="MainLayout"/>
+        <entry field="true" id="88" symbol="SettingTimerTitle"/>
+        <entry id="8389683" method="true" symbol="onSettingsChanged"/>
+        <entry field="true" id="51" symbol="nextFuelCheckAt"/>
+        <entry field="true" id="8392040" symbol="CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1"/>
+        <entry field="true" id="8388890" symbol="sport"/>
+        <entry field="true" id="28" symbol="autoStartEnabled"/>
+        <entry field="true" id="61" symbol="subTimerElapsed"/>
+        <entry id="55" method="true" symbol="onPosition"/>
+        <entry id="8388924" module="true" symbol="Gregorian"/>
+        <entry id="32" method="true" symbol="doFuelAlert"/>
+        <entry id="59" method="true" symbol="startStop"/>
+        <entry field="true" id="8388611" module="true" symbol="Toybox"/>
+        <entry id="33" method="true" symbol="doHrAlert"/>
+        <entry id="31" method="true" symbol="doFiveMinAlert"/>
+        <entry id="8392382" method="true" symbol="reset"/>
+        <entry field="true" id="53" symbol="nmAtCheckpoint"/>
+        <entry field="true" id="87" symbol="SettingTakeoffTitle"/>
+        <entry field="true" id="86" symbol="SettingGpsModeTitle"/>
+        <entry field="true" id="46" symbol="lapNm"/>
+        <entry id="15" object="true" symbol="VFRSummaryDelegate"/>
+        <entry id="8392043" symbol="configuration"/>
+        <entry field="true" id="84" symbol="SettingGpsModeGps"/>
+        <entry field="true" id="81" symbol="AppName"/>
+        <entry field="true" id="44" symbol="lapKm"/>
+        <entry field="true" id="71" symbol="&lt;globals/VFRNumberPickerView/&lt;&gt;_min&gt;"/>
+        <entry id="6" module="true" symbol="globals/Rez/Strings"/>
+        <entry field="true" id="36" symbol="gpsMode"/>
+        <entry id="8389080" method="true" symbol="onMenu"/>
+        <entry field="true" id="67" symbol="tripStartUtcMoment"/>
+        <entry id="8388631" module="true" symbol="Activity"/>
+        <entry id="8388648" module="true" symbol="WatchUi"/>
+        <entry id="8389081" method="true" symbol="onBack"/>
+        <entry id="2" module="true" symbol="globals/Rez"/>
+        <entry field="true" id="27" symbol="_session"/>
+        <entry field="true" id="92" symbol="prompt"/>
+        <entry field="true" id="8391706" symbol="CONSTELLATION_GLONASS"/>
+        <entry field="true" id="24" symbol="AUTO_START_SPEED_MS"/>
+        <entry id="8389124" method="true" symbol="onUpdate"/>
+        <entry field="true" id="45" symbol="lapMode"/>
+        <entry id="56" method="true" symbol="openSettingsMenu"/>
+        <entry field="true" id="73" symbol="&lt;globals/VFRNumberPickerView/&lt;&gt;_step&gt;"/>
+        <entry id="8388771" module="true" object="true" symbol="Drawables"/>
+        <entry id="8392044" method="true" symbol="hasConfigurationSupport"/>
+        <entry id="95" symbol="item_3"/>
+        <entry id="94" symbol="item_2"/>
+        <entry id="93" symbol="item_1"/>
+        <entry id="8389079" method="true" symbol="onPreviousPage"/>
+        <entry id="20" module="true" symbol="Menus"/>
+        <entry id="8389275" method="true" symbol="getApp"/>
+        <entry id="4" module="true" symbol="globals/Rez/Layouts"/>
+        <entry field="true" id="23" symbol="&lt;globals/VFRGpsMenuDelegate/&lt;&gt;_view&gt;"/>
+        <entry id="8389122" method="true" symbol="onLayout"/>
+        <entry id="77" method="true" symbol="increment"/>
+        <entry field="true" id="70" symbol="&lt;globals/VFRNumberPickerView/&lt;&gt;_max&gt;"/>
+        <entry id="8388987" method="true" symbol="vibrate"/>
+        <entry field="true" id="43" symbol="lapElapsed"/>
+        <entry field="true" id="41" symbol="kmAtCheckpoint"/>
+        <entry field="true" id="8390041" method="true" symbol="mode"/>
+        <entry id="8388882" method="true" symbol="save"/>
+        <entry id="76" method="true" symbol="decrement"/>
+        <entry field="true" id="34" symbol="elapsed"/>
+        <entry id="8388877" method="true" symbol="createSession"/>
+        <entry id="3" module="true" symbol="globals/Rez/Drawables"/>
+        <entry field="true" id="64" symbol="timerIntervalMs"/>
+        <entry id="10" object="true" symbol="VFRSettingsMenuDelegate"/>
+        <entry id="80" object="true" symbol="MainMenu"/>
+        <entry field="true" id="47" symbol="lastHr"/>
+        <entry id="42" method="true" symbol="lap"/>
+        <entry field="true" id="25" symbol="FUEL_CHECK_INTERVAL_MS"/>
+        <entry field="true" id="29" symbol="checkpointActive"/>
+        <entry id="8388644" module="true" symbol="System"/>
+        <entry id="57" method="true" symbol="restartGps"/>
+        <entry id="8389619" method="true" symbol="onSelect"/>
+        <entry id="8388645" module="true" symbol="Time"/>
+        <entry id="8388769" module="true" object="true" symbol="Rez"/>
+        <entry id="7" object="true" symbol="VFRGpsMenuDelegate"/>
+        <entry id="13" object="true" symbol="VFRStopWatchMenuDelegate"/>
+        <entry field="true" id="58" symbol="running"/>
+        <entry id="8388640" module="true" symbol="Lang"/>
+        <entry field="true" id="78" symbol="LauncherIcon"/>
+        <entry id="16" object="true" symbol="VFRSummaryView"/>
+        <entry id="8388610" symbol="statics"/>
+        <entry field="true" id="8392041" symbol="CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5"/>
+        <entry id="8389123" method="true" symbol="onShow"/>
+        <entry field="true" id="72" symbol="&lt;globals/VFRNumberPickerView/&lt;&gt;_propKey&gt;"/>
+        <entry field="true" id="66" symbol="tripStartLocal"/>
+        <entry field="true" id="22" symbol="&lt;globals/VFRSettingsMenuDelegate/&lt;&gt;_view&gt;"/>
+        <entry field="true" id="48" symbol="lastPositionMillis"/>
+        <entry field="true" id="38" symbol="hrAlertActive"/>
+        <entry field="true" id="35" symbol="fuelFlashUntil"/>
+        <entry id="8389350" module="true" symbol="globals"/>
+        <entry field="true" id="40" symbol="hrNextVibrate"/>
+        <entry id="8388770" module="true" object="true" symbol="Strings"/>
+        <entry field="true" id="63" symbol="subTimerState"/>
+        <entry field="true" id="65" symbol="totalDistanceM"/>
+        <entry field="true" id="21" symbol="_view"/>
+        <entry field="true" id="62" symbol="subTimerStart"/>
+        <entry id="8388702" method="true" symbol="initialize"/>
+        <entry id="60" method="true" symbol="subTimer"/>
+        <entry field="true" id="69" symbol="&lt;globals/VFRNumberPickerView/&lt;&gt;_mainView&gt;"/>
+        <entry id="8389279" method="true" symbol="onStart"/>
+        <entry field="true" id="8388891" symbol="subSport"/>
+        <entry id="8389303" method="true" symbol="enableLocationEvents"/>
+        <entry id="11" object="true" symbol="VFRStopWatchApp"/>
+        <entry field="true" id="68" symbol="&lt;globals/VFRNumberPickerDelegate/&lt;&gt;_picker&gt;"/>
+        <entry field="true" id="8388892" symbol="name"/>
+        <entry field="true" id="85" symbol="SettingGpsModeGpsGlonass"/>
+        <entry id="8389280" method="true" symbol="getInitialView"/>
+        <entry id="8389281" method="true" symbol="onStop"/>
+        <entry field="true" id="74" symbol="&lt;globals/VFRNumberPickerView/&lt;&gt;_title&gt;"/>
+        <entry id="8389109" method="true" symbol="onMenuItem"/>
+        <entry id="18" method="true" symbol="fmtTimeMs"/>
+        <entry id="9" object="true" symbol="VFRNumberPickerView"/>
+        <entry field="true" id="49" symbol="lastUpdateTimer"/>
+        <entry id="8" object="true" symbol="VFRNumberPickerDelegate"/>
+        <entry field="true" id="26" symbol="HR_THRESHOLD"/>
+        <entry id="19" module="true" symbol="Layouts"/>
+        <entry field="true" id="82" symbol="SettingGpsModeAllSat"/>
+        <entry id="8388636" module="true" symbol="Attention"/>
+        <entry id="50" method="true" symbol="loadSettings"/>
+        <entry field="true" id="30" symbol="checkpointHit"/>
+        <entry id="8388642" module="true" symbol="Position"/>
+        <entry id="8389125" method="true" symbol="onHide"/>
+        <entry field="true" id="8391709" symbol="POSITIONING_MODE_AVIATION"/>
+        <entry id="8389078" method="true" symbol="onNextPage"/>
+        <entry id="8388635" module="true" symbol="Application"/>
+        <entry field="true" id="8389642" symbol="title"/>
+        <entry field="true" id="39" symbol="hrFlashOn"/>
+        <entry field="true" id="91" symbol="menu_label_3"/>
+        <entry field="true" id="90" symbol="menu_label_2"/>
+        <entry field="true" id="89" symbol="menu_label_1"/>
+    </symbolTable>
+    <localVars>
+        <entry arg="true" endPc="268435910" name="ms" stackId="1" startPc="268435703"/>
+        <entry endPc="268435910" name="totalSec" stackId="2" startPc="268435707"/>
+        <entry endPc="268435910" name="hours" stackId="3" startPc="268435707"/>
+        <entry endPc="268435910" name="mins" stackId="4" startPc="268435707"/>
+        <entry endPc="268435910" name="secs" stackId="5" startPc="268435707"/>
+        <entry endPc="268435910" name="hStr" stackId="6" startPc="268435707"/>
+        <entry endPc="268435910" name="mStr" stackId="7" startPc="268435707"/>
+        <entry endPc="268435910" name="sStr" stackId="8" startPc="268435707"/>
+        <entry arg="true" endPc="268435941" name="mainView" stackId="1" startPc="268435911"/>
+        <entry arg="true" endPc="268437011" name="dc" stackId="1" startPc="268435942"/>
+        <entry endPc="268437010" name="w" stackId="2" startPc="268435946"/>
+        <entry endPc="268437010" name="h" stackId="3" startPc="268435946"/>
+        <entry endPc="268437010" name="cx" stackId="4" startPc="268435946"/>
+        <entry endPc="268437010" name="ltStr" stackId="5" startPc="268435946"/>
+        <entry endPc="268436184" name="ct" stackId="6" startPc="268436042"/>
+        <entry endPc="268436184" name="lh" stackId="7" startPc="268436042"/>
+        <entry endPc="268436184" name="lm" stackId="8" startPc="268436042"/>
+        <entry endPc="268436184" name="lhStr" stackId="9" startPc="268436042"/>
+        <entry endPc="268436184" name="lmStr" stackId="10" startPc="268436042"/>
+        <entry endPc="268437010" name="utcStr" stackId="11" startPc="268435946"/>
+        <entry endPc="268436376" name="info" stackId="12" startPc="268436214"/>
+        <entry endPc="268436376" name="uh" stackId="13" startPc="268436214"/>
+        <entry endPc="268436376" name="um" stackId="14" startPc="268436214"/>
+        <entry endPc="268436376" name="uhStr" stackId="15" startPc="268436214"/>
+        <entry endPc="268436376" name="umStr" stackId="16" startPc="268436214"/>
+        <entry endPc="268437010" name="totalMs" stackId="17" startPc="268435946"/>
+        <entry endPc="268437010" name="totalStr" stackId="18" startPc="268435946"/>
+        <entry endPc="268437010" name="km" stackId="19" startPc="268435946"/>
+        <entry endPc="268437010" name="nm" stackId="20" startPc="268435946"/>
+        <entry endPc="268437010" name="kmInt" stackId="21" startPc="268435946"/>
+        <entry endPc="268437010" name="kmDecFloat" stackId="22" startPc="268435946"/>
+        <entry endPc="268437010" name="kmDec" stackId="23" startPc="268435946"/>
+        <entry endPc="268437010" name="kmStr" stackId="24" startPc="268435946"/>
+        <entry endPc="268437010" name="nmInt" stackId="25" startPc="268435946"/>
+        <entry endPc="268437010" name="nmDecFloat" stackId="26" startPc="268435946"/>
+        <entry endPc="268437010" name="nmDec" stackId="27" startPc="268435946"/>
+        <entry endPc="268437010" name="nmStr" stackId="28" startPc="268435946"/>
+        <entry arg="true" endPc="268437250" name="item" stackId="1" startPc="268437085"/>
+        <entry endPc="268437138" name="view" stackId="2" startPc="268437100"/>
+        <entry endPc="268437191" name="view" stackId="3" startPc="268437153"/>
+        <entry endPc="268437246" name="mainView" stackId="4" startPc="268437206"/>
+        <entry arg="true" endPc="268437552" name="view" stackId="1" startPc="268437522"/>
+        <entry arg="true" endPc="268437629" name="view" stackId="1" startPc="268437599"/>
+        <entry arg="true" endPc="268438437" name="item" stackId="1" startPc="268437630"/>
+        <entry endPc="268438436" name="id" stackId="2" startPc="268437634"/>
+        <entry endPc="268438114" name="rawGps" stackId="3" startPc="268437666"/>
+        <entry endPc="268438114" name="cur" stackId="4" startPc="268437666"/>
+        <entry endPc="268438114" name="gpsMenu" stackId="5" startPc="268437666"/>
+        <entry endPc="268438264" name="curMin" stackId="6" startPc="268438137"/>
+        <entry endPc="268438264" name="picker" stackId="7" startPc="268438137"/>
+        <entry endPc="268438433" name="rawSpd" stackId="8" startPc="268438287"/>
+        <entry endPc="268438433" name="curKts" stackId="9" startPc="268438287"/>
+        <entry endPc="268438433" name="picker" stackId="10" startPc="268438287"/>
+        <entry arg="true" endPc="268438468" name="view" stackId="1" startPc="268438438"/>
+        <entry arg="true" endPc="268438585" name="item" stackId="1" startPc="268438469"/>
+        <entry endPc="268438584" name="mode" stackId="2" startPc="268438473"/>
+        <entry arg="true" endPc="268438777" name="info" stackId="1" startPc="268438586"/>
+        <entry endPc="268438729" name="ex" stackId="2" startPc="268438668"/>
+        <entry endPc="268438935" name="now" stackId="1" startPc="268438782"/>
+        <entry endPc="268439206" name="pattern" stackId="1" startPc="268438961"/>
+        <entry endPc="268439274" name="ex" stackId="2" startPc="268439213"/>
+        <entry endPc="268439760" name="now" stackId="1" startPc="268439637"/>
+        <entry endPc="268439760" name="curElapsed" stackId="2" startPc="268439637"/>
+        <entry endPc="268440550" name="rawGps" stackId="1" startPc="268440080"/>
+        <entry endPc="268440550" name="curGps" stackId="2" startPc="268440080"/>
+        <entry endPc="268440550" name="gpsLabel" stackId="3" startPc="268440080"/>
+        <entry endPc="268440550" name="curTimerMin" stackId="4" startPc="268440080"/>
+        <entry endPc="268440550" name="rawSpd" stackId="5" startPc="268440080"/>
+        <entry endPc="268440550" name="curKts" stackId="6" startPc="268440080"/>
+        <entry endPc="268440550" name="menu" stackId="7" startPc="268440080"/>
+        <entry endPc="268441623" name="rawMode" stackId="1" startPc="268441250"/>
+        <entry endPc="268441623" name="rawInterval" stackId="2" startPc="268441250"/>
+        <entry endPc="268441623" name="intervalMin" stackId="3" startPc="268441250"/>
+        <entry endPc="268441623" name="rawSpeed" stackId="4" startPc="268441250"/>
+        <entry endPc="268441623" name="speedKts" stackId="5" startPc="268441250"/>
+        <entry endPc="268442305" name="pattern" stackId="1" startPc="268442236"/>
+        <entry endPc="268442373" name="ex" stackId="2" startPc="268442312"/>
+        <entry endPc="268442758" name="pattern" stackId="1" startPc="268442513"/>
+        <entry endPc="268442826" name="ex" stackId="2" startPc="268442765"/>
+        <entry arg="true" endPc="268445678" name="dc" stackId="1" startPc="268442854"/>
+        <entry endPc="268445677" name="now" stackId="2" startPc="268442858"/>
+        <entry endPc="268445677" name="actInfo" stackId="3" startPc="268442858"/>
+        <entry endPc="268443333" name="deltaMs" stackId="4" startPc="268442903"/>
+        <entry endPc="268443021" name="spd" stackId="5" startPc="268442964"/>
+        <entry endPc="268443018" name="addM" stackId="6" startPc="268442981"/>
+        <entry endPc="268443437" name="hrVal" stackId="7" startPc="268443344"/>
+        <entry endPc="268443437" name="locAcc" stackId="8" startPc="268443344"/>
+        <entry endPc="268443628" name="spd" stackId="9" startPc="268443544"/>
+        <entry endPc="268445677" name="subMs" stackId="10" startPc="268442858"/>
+        <entry endPc="268445677" name="displayMs" stackId="11" startPc="268442858"/>
+        <entry endPc="268445677" name="timerColor" stackId="12" startPc="268442858"/>
+        <entry endPc="268444088" name="blinkPhase" stackId="13" startPc="268444029"/>
+        <entry endPc="268445677" name="displayKm" stackId="14" startPc="268442858"/>
+        <entry endPc="268445677" name="displayNm" stackId="15" startPc="268442858"/>
+        <entry endPc="268445677" name="showDist" stackId="16" startPc="268442858"/>
+        <entry endPc="268445677" name="fuelFlashActive" stackId="17" startPc="268442858"/>
+        <entry endPc="268444266" name="phase" stackId="18" startPc="268444205"/>
+        <entry endPc="268445677" name="totalSec" stackId="19" startPc="268442858"/>
+        <entry endPc="268445677" name="minutes" stackId="20" startPc="268442858"/>
+        <entry endPc="268445677" name="seconds" stackId="21" startPc="268442858"/>
+        <entry endPc="268445677" name="mStr" stackId="22" startPc="268442858"/>
+        <entry endPc="268445677" name="sStr" stackId="23" startPc="268442858"/>
+        <entry endPc="268445677" name="w" stackId="24" startPc="268442858"/>
+        <entry endPc="268445677" name="h" stackId="25" startPc="268442858"/>
+        <entry endPc="268445677" name="cx" stackId="26" startPc="268442858"/>
+        <entry endPc="268445677" name="localTime" stackId="27" startPc="268442858"/>
+        <entry endPc="268445677" name="lh" stackId="28" startPc="268442858"/>
+        <entry endPc="268445677" name="lm" stackId="29" startPc="268442858"/>
+        <entry endPc="268445677" name="lhStr" stackId="30" startPc="268442858"/>
+        <entry endPc="268445677" name="lmStr" stackId="31" startPc="268442858"/>
+        <entry endPc="268445677" name="ltStr" stackId="32" startPc="268442858"/>
+        <entry endPc="268445677" name="utcMoment" stackId="33" startPc="268442858"/>
+        <entry endPc="268445677" name="utcInfo" stackId="34" startPc="268442858"/>
+        <entry endPc="268445677" name="uh" stackId="35" startPc="268442858"/>
+        <entry endPc="268445677" name="um" stackId="36" startPc="268442858"/>
+        <entry endPc="268445677" name="uhStr" stackId="37" startPc="268442858"/>
+        <entry endPc="268445677" name="umStr" stackId="38" startPc="268442858"/>
+        <entry endPc="268445677" name="utcStr" stackId="39" startPc="268442858"/>
+        <entry endPc="268445677" name="hrColor" stackId="40" startPc="268442858"/>
+        <entry endPc="268445677" name="hrStr" stackId="41" startPc="268442858"/>
+        <entry endPc="268445124" name="nmInt" stackId="42" startPc="268444957"/>
+        <entry endPc="268445124" name="nmDecFloat" stackId="43" startPc="268444957"/>
+        <entry endPc="268445124" name="nmDec" stackId="44" startPc="268444957"/>
+        <entry endPc="268445124" name="nmStr" stackId="45" startPc="268444957"/>
+        <entry endPc="268445486" name="kmInt" stackId="46" startPc="268445319"/>
+        <entry endPc="268445486" name="kmDecFloat" stackId="47" startPc="268445319"/>
+        <entry endPc="268445486" name="kmDec" stackId="48" startPc="268445319"/>
+        <entry endPc="268445486" name="kmStr" stackId="49" startPc="268445319"/>
+        <entry arg="true" endPc="268445758" name="picker" stackId="1" startPc="268445728"/>
+        <entry endPc="268446067" name="ms" stackId="1" startPc="268445988"/>
+        <entry arg="true" endPc="268446400" name="title" stackId="1" startPc="268446310"/>
+        <entry arg="true" endPc="268446400" name="value" stackId="2" startPc="268446310"/>
+        <entry arg="true" endPc="268446400" name="min" stackId="3" startPc="268446310"/>
+        <entry arg="true" endPc="268446400" name="max" stackId="4" startPc="268446310"/>
+        <entry arg="true" endPc="268446400" name="step" stackId="5" startPc="268446310"/>
+        <entry arg="true" endPc="268446400" name="propKey" stackId="6" startPc="268446310"/>
+        <entry arg="true" endPc="268446400" name="mainView" stackId="7" startPc="268446310"/>
+        <entry arg="true" endPc="268446629" name="dc" stackId="1" startPc="268446401"/>
+        <entry endPc="268446628" name="w" stackId="2" startPc="268446405"/>
+        <entry endPc="268446628" name="h" stackId="3" startPc="268446405"/>
+        <entry endPc="268446628" name="cx" stackId="4" startPc="268446405"/>
+        <entry arg="true" endPc="268446837" name="dc" stackId="1" startPc="268446821"/>
+    </localVars>
+    <deviceInfo deviceVersion="bb3887dffaa22ce965b5fe681a1cee6986d833ca" partNumber="006-B3869-00"/>
+    <annotations>
+        <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="LauncherIcon"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="SettingGpsModeGpsGlonass"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="SettingTakeoffTitle"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="SettingGpsModeGps"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="SettingTimerTitle"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="SettingGpsModeAllSat"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="SettingGpsModeAviation"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="AppName"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="menu_label_3"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="menu_label_2"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="menu_label_1"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="prompt"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="SettingGpsModeTitle"/>
+    </annotations>
+    <dataEntryOffsetMappings>
+        <dataEntry label="globals" offset="71" parentId="" symbolId="globals" type="module"/>
+        <dataEntry label="globals/VFRSummaryView" offset="206" parentId="globals" symbolId="VFRSummaryView" type="class"/>
+        <dataEntry label="globals/Rez" offset="285" parentId="globals" symbolId="Rez" type="module"/>
+        <dataEntry label="globals/VFRSummaryDelegate" offset="348" parentId="globals" symbolId="VFRSummaryDelegate" type="class"/>
+        <dataEntry label="globals/VFRStopWatchMenuDelegate" offset="411" parentId="globals" symbolId="VFRStopWatchMenuDelegate" type="class"/>
+        <dataEntry label="globals/VFRStopWatchDelegate" offset="466" parentId="globals" symbolId="VFRStopWatchDelegate" type="class"/>
+        <dataEntry label="globals/VFRSettingsMenuDelegate" offset="561" parentId="globals" symbolId="VFRSettingsMenuDelegate" type="class"/>
+        <dataEntry label="globals/VFRGpsMenuDelegate" offset="624" parentId="globals" symbolId="VFRGpsMenuDelegate" type="class"/>
+        <dataEntry label="globals/VFRStopWatchView" offset="687" parentId="globals" symbolId="VFRStopWatchView" type="class"/>
+        <dataEntry label="globals/VFRNumberPickerDelegate" offset="1134" parentId="globals" symbolId="VFRNumberPickerDelegate" type="class"/>
+        <dataEntry label="globals/VFRNumberPickerView" offset="1221" parentId="globals" symbolId="VFRNumberPickerView" type="class"/>
+        <dataEntry label="globals/VFRStopWatchApp" offset="1356" parentId="globals" symbolId="VFRStopWatchApp" type="class"/>
+        <dataEntry label="globals/Rez/Drawables" offset="1443" parentId="Rez" symbolId="Drawables" type="module"/>
+        <dataEntry label="globals/Rez/Layouts" offset="1482" parentId="Rez" symbolId="Layouts" type="module"/>
+        <dataEntry label="globals/Rez/Menus" offset="1521" parentId="Rez" symbolId="Menus" type="module"/>
+        <dataEntry label="globals/Rez/Strings" offset="1560" parentId="Rez" symbolId="Strings" type="module"/>
+        <dataEntry label="globals/Rez/Menus/MainMenu" offset="1687" parentId="Menus" symbolId="MainMenu" type="class"/>
+    </dataEntryOffsetMappings>
+    <functions>
+        <functionEntry accessMode="public" endPc="268435485" name="getApp" startPc="268435460">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435504" name="&lt;init&gt;" parent="VFRSummaryView" startPc="268435486">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435528" name="&lt;init&gt;" parent="Rez" startPc="268435505">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435547" name="&lt;init&gt;" parent="VFRSummaryDelegate" startPc="268435529">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435566" name="&lt;init&gt;" parent="VFRStopWatchMenuDelegate" startPc="268435548">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435585" name="&lt;init&gt;" parent="VFRStopWatchDelegate" startPc="268435567">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435604" name="&lt;init&gt;" parent="VFRSettingsMenuDelegate" startPc="268435586">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435623" name="&lt;init&gt;" parent="VFRGpsMenuDelegate" startPc="268435605">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435642" name="&lt;init&gt;" parent="VFRStopWatchView" startPc="268435624">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435661" name="&lt;init&gt;" parent="VFRNumberPickerDelegate" startPc="268435643">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435680" name="&lt;init&gt;" parent="VFRNumberPickerView" startPc="268435662">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435699" name="&lt;init&gt;" parent="VFRStopWatchApp" startPc="268435681">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435702" name="onLayout" parent="VFRSummaryView" startPc="268435700">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435910" name="fmtTimeMs" parent="VFRSummaryView" startPc="268435703">
+            <param id="ms"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435941" name="initialize" parent="VFRSummaryView" startPc="268435911">
+            <param id="mainView"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437011" name="onUpdate" parent="VFRSummaryView" startPc="268435942">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Drawables">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Layouts">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Menus">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Strings">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437037" name="onBack" parent="VFRSummaryDelegate" startPc="268437012">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437058" name="initialize" parent="VFRSummaryDelegate" startPc="268437038">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437084" name="onSelect" parent="VFRSummaryDelegate" startPc="268437059">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437250" name="onMenuItem" parent="VFRStopWatchMenuDelegate" startPc="268437085">
+            <param id="item"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437271" name="initialize" parent="VFRStopWatchMenuDelegate" startPc="268437251">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437292" name="onBack" parent="VFRStopWatchDelegate" startPc="268437272">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437435" name="onPreviousPage" parent="VFRStopWatchDelegate" startPc="268437293">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437521" name="onMenu" parent="VFRStopWatchDelegate" startPc="268437436">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437552" name="initialize" parent="VFRStopWatchDelegate" startPc="268437522">
+            <param id="view"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437575" name="onSelect" parent="VFRStopWatchDelegate" startPc="268437553">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437598" name="onNextPage" parent="VFRStopWatchDelegate" startPc="268437576">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437629" name="initialize" parent="VFRSettingsMenuDelegate" startPc="268437599">
+            <param id="view"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438437" name="onSelect" parent="VFRSettingsMenuDelegate" startPc="268437630">
+            <param id="item"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438468" name="initialize" parent="VFRGpsMenuDelegate" startPc="268438438">
+            <param id="view"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438585" name="onSelect" parent="VFRGpsMenuDelegate" startPc="268438469">
+            <param id="item"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438777" name="onPosition" parent="VFRStopWatchView" startPc="268438586">
+            <param id="info"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438936" name="subTimer" parent="VFRStopWatchView" startPc="268438778">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439280" name="doHrAlert" parent="VFRStopWatchView" startPc="268438937">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439937" name="startStop" parent="VFRStopWatchView" startPc="268439281">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440075" name="lap" parent="VFRStopWatchView" startPc="268439938">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440551" name="openSettingsMenu" parent="VFRStopWatchView" startPc="268440076">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440554" name="onLayout" parent="VFRStopWatchView" startPc="268440552">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441245" name="restartGps" parent="VFRStopWatchView" startPc="268440555">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268441624" name="loadSettings" parent="VFRStopWatchView" startPc="268441246">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442062" name="reset" parent="VFRStopWatchView" startPc="268441625">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442211" name="onDownPressed" parent="VFRStopWatchView" startPc="268442063">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442379" name="doFuelAlert" parent="VFRStopWatchView" startPc="268442212">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442422" name="onHide" parent="VFRStopWatchView" startPc="268442380">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442488" name="onShow" parent="VFRStopWatchView" startPc="268442423">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442832" name="doFiveMinAlert" parent="VFRStopWatchView" startPc="268442489">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268442853" name="initialize" parent="VFRStopWatchView" startPc="268442833">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268445678" name="onUpdate" parent="VFRStopWatchView" startPc="268442854">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268445704" name="onBack" parent="VFRNumberPickerDelegate" startPc="268445679">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268445727" name="onPreviousPage" parent="VFRNumberPickerDelegate" startPc="268445705">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268445758" name="initialize" parent="VFRNumberPickerDelegate" startPc="268445728">
+            <param id="picker"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268445781" name="onNextPage" parent="VFRNumberPickerDelegate" startPc="268445759">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268445846" name="onSelect" parent="VFRNumberPickerDelegate" startPc="268445782">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268445926" name="decrement" parent="VFRNumberPickerView" startPc="268445847">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446229" name="save" parent="VFRNumberPickerView" startPc="268445927">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446309" name="increment" parent="VFRNumberPickerView" startPc="268446230">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446400" name="initialize" parent="VFRNumberPickerView" startPc="268446310">
+            <param id="title"/>
+            <param id="value"/>
+            <param id="min"/>
+            <param id="max"/>
+            <param id="step"/>
+            <param id="propKey"/>
+            <param id="mainView"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446629" name="onUpdate" parent="VFRNumberPickerView" startPc="268446401">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446632" name="onStart" parent="VFRStopWatchApp" startPc="268446630">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446703" name="onSettingsChanged" parent="VFRStopWatchApp" startPc="268446633">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446796" name="getInitialView" parent="VFRStopWatchApp" startPc="268446704">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446817" name="initialize" parent="VFRStopWatchApp" startPc="268446797">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446820" name="onStop" parent="VFRStopWatchApp" startPc="268446818">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446837" name="MainLayout" parent="Layouts" startPc="268446821">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268446856" name="&lt;init&gt;" parent="MainMenu" startPc="268446838">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268447045" name="initialize" parent="MainMenu" startPc="268446857">
+            <documentation/>
+        </functionEntry>
+    </functions>
+</debugInfo>
