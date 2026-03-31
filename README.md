@@ -73,7 +73,8 @@ Runtime configuration: the app includes an on-device Settings menu (GPS Mode, Ti
 Contributions are welcome. For small fixes, open a pull request. For new features, please open an issue to discuss before implementing.
 
 ## License
+This project is released under the MIT License — a permissive, minimal-restrictions license.
 
-Specify your license here (e.g. MIT). If you want, I can add a `LICENSE` file.
+See the full license text in the `LICENSE` file.
 
 
