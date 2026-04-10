@@ -15,99 +15,102 @@ class VFRSummaryView extends WatchUi.View {
 
     function onLayout(dc as Dc) as Void {}
 
-    function fmtTimeMs(ms as Number) as String {
-        var totalSec = (ms / 1000).toNumber();
-        var hours = (totalSec / 3600).toNumber();
-        var mins = ((totalSec % 3600) / 60).toNumber();
-        var secs = (totalSec % 60).toNumber();
-        var hStr = hours.toString();
-        var mStr = mins < 10 ? "0" + mins.toString() : mins.toString();
-        var sStr = secs < 10 ? "0" + secs.toString() : secs.toString();
-        return hStr + ":" + mStr + ":" + sStr;
+    // Format a UTC Moment as "HH:MM UTC"
+    private function fmtUtc(moment as Time.Moment) as String {
+        var info = Gregorian.utcInfo(moment, Time.FORMAT_SHORT);
+        var h = info.hour;
+        var m = info.min;
+        var hStr = h < 10 ? "0" + h.toString() : h.toString();
+        var mStr = m < 10 ? "0" + m.toString() : m.toString();
+        return hStr + ":" + mStr + "Z";
+    }
+
+    // Format a distance in metres as "XX.X NM" or "XX.X km"
+    private function fmtDist(metres as Float, divisor as Float, unit as String) as String {
+        var val = metres / divisor;
+        var intPart = val.toNumber();
+        var decPart = ((val - intPart.toFloat()) * 10.0).toNumber();
+        if (decPart < 0) { decPart = 0; }
+        return intPart.toString() + "." + decPart.toString() + " " + unit;
     }
 
     function onUpdate(dc as Dc) as Void {
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
         dc.clear();
 
-        var w = dc.getWidth();
-        var h = dc.getHeight();
+        var w  = dc.getWidth();
+        var h  = dc.getHeight();
         var cx = w / 2;
 
-        // Start Local Time
-        var ltStr = "--:--";
-        if (_main.tripStartLocal != null) {
-            var ct = _main.tripStartLocal as System.ClockTime;
-            var lh = ct.hour;
-            var lm = ct.min;
-            var lhStr = lh < 10 ? "0" + lh.toString() : lh.toString();
-            var lmStr = lm < 10 ? "0" + lm.toString() : lm.toString();
-            ltStr = "LT " + lhStr + ":" + lmStr;
-        }
+        // Title
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(cx, h * 10 / 100, Graphics.FONT_TINY, "FLIGHT SUMMARY",
+            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         // Start UTC
-        var utcStr = "UTC --:--";
+        var startStr = "--:--Z";
         if (_main.tripStartUtcMoment != null) {
-            var info = Gregorian.utcInfo((_main.tripStartUtcMoment as Time.Moment), Time.FORMAT_SHORT);
-            var uh = info.hour;
-            var um = info.min;
-            var uhStr = uh < 10 ? "0" + uh.toString() : uh.toString();
-            var umStr = um < 10 ? "0" + um.toString() : um.toString();
-            utcStr = "UTC " + uhStr + ":" + umStr;
+            startStr = fmtUtc(_main.tripStartUtcMoment as Time.Moment);
+        } else if ((_main as VFRStopWatchView).tripStartUtcHour >= 0) {
+            var sh = (_main as VFRStopWatchView).tripStartUtcHour;
+            var sm = (_main as VFRStopWatchView).tripStartUtcMin;
+            var shStr = sh < 10 ? "0" + sh.toString() : sh.toString();
+            var smStr = sm < 10 ? "0" + sm.toString() : sm.toString();
+            startStr = shStr + ":" + smStr + "Z";
         }
-
-        // Total time
-        var totalMs = _main.elapsed;
-        var totalStr = fmtTimeMs(totalMs);
-
-        // Distances
-        var km = (_main.totalDistanceM / 1000.0).toNumber();
-        var nm = (_main.totalDistanceM / 1852.0).toNumber();
-        var kmInt = km.toNumber();
-        var kmDecFloat = km - kmInt.toFloat();
-        var kmDec = (kmDecFloat * 10.0).toNumber();
-        if (kmDec < 0) { kmDec = 0; }
-        var kmStr = kmInt.toString() + "." + kmDec.toString() + " km";
-        var nmInt = nm.toNumber();
-        var nmDecFloat = nm - nmInt.toFloat();
-        var nmDec = (nmDecFloat * 10.0).toNumber();
-        if (nmDec < 0) { nmDec = 0; }
-        var nmStr = nmInt.toString() + "." + nmDec.toString() + " NM";
-
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, h * 12 / 100, Graphics.FONT_SMALL, ltStr,
+        dc.drawText(cx, h * 25 / 100, Graphics.FONT_TINY, "START",
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-
-        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, h * 28 / 100, Graphics.FONT_SMALL, utcStr,
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, h * 46 / 100, Graphics.FONT_MEDIUM, totalStr,
+        dc.drawText(cx, h * 36 / 100, Graphics.FONT_SMALL, startStr,
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
+        // End UTC
+        var endStr = "--:--Z";
+        if (_main.tripEndUtcMoment != null) {
+            endStr = fmtUtc(_main.tripEndUtcMoment as Time.Moment);
+        } else if ((_main as VFRStopWatchView).tripEndUtcHour >= 0) {
+            var eh = (_main as VFRStopWatchView).tripEndUtcHour;
+            var em = (_main as VFRStopWatchView).tripEndUtcMin;
+            var ehStr = eh < 10 ? "0" + eh.toString() : eh.toString();
+            var emStr = em < 10 ? "0" + em.toString() : em.toString();
+            endStr = ehStr + ":" + emStr + "Z";
+        }
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(cx, h * 52 / 100, Graphics.FONT_TINY, "END",
+            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(cx, h * 63 / 100, Graphics.FONT_SMALL, endStr,
+            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+
+        // Distances — NM and km on the bottom two rows
+        var nmStr = fmtDist(_main.totalDistanceM, 1852.0, "NM");
+        var kmStr = fmtDist(_main.totalDistanceM, 1000.0, "km");
         dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, h * 64 / 100, Graphics.FONT_SMALL, nmStr,
+        dc.drawText(cx, h * 78 / 100, Graphics.FONT_TINY, nmStr,
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-
-        dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, h * 80 / 100, Graphics.FONT_SMALL, kmStr,
+        dc.drawText(cx, h * 90 / 100, Graphics.FONT_TINY, kmStr,
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-
-        WatchUi.requestUpdate();
     }
 }
 
 class VFRSummaryDelegate extends WatchUi.BehaviorDelegate {
-    function initialize() { BehaviorDelegate.initialize(); }
+    private var _main as VFRStopWatchView;
 
+    function initialize(mainView as VFRStopWatchView) {
+        BehaviorDelegate.initialize();
+        _main = mainView;
+    }
+
+    // Both Back and Select clear the backup and return to main view
     function onBack() as Boolean {
+        _main.clearBackupProperties();
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         return true;
     }
 
     function onSelect() as Boolean {
-        // also close on select
+        _main.clearBackupProperties();
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         return true;
     }

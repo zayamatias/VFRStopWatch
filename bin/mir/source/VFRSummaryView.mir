@@ -41,953 +41,954 @@ _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryVie
     [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 16; @symbol_functiondef = [onLayout,16,13,21]; @symbol_param<0> = [dc,16,22,24]; @symbol_param<0>_type<0> = [Dc,16,28,30]; ]
     function onLayout(dc as Dc) as Void {
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 18; @symbol_functiondef = [fmtTimeMs,18,13,22]; @symbol_param<0> = [ms,18,23,25]; @symbol_param<0>_type<0> = [Number,18,29,35]; @symbol_return<0> = [String,18,40,46]; ]
-    function fmtTimeMs(ms as Number) as String {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_18_47_27_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 19 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_18_47_27_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_18_47_27_4_stop" ]
-        %totalSec.1 = local;
-        symbol [ totalSec %totalSec.1 19 12 20 ];
-        %tmp.1 = lgetv %ms;
-        symbol [ ms %tmp.1 19 24 26 ];
-        %tmp.2 = 1000;
-        %tmp.3 = div %tmp.1 %tmp.2;
-        symbol [ toNumber %tmp.4 19 35 43 ];
-        %tmp.4 = getv function %tmp.3 :toNumber;
-        %tmp.5 = invoke %tmp.3 %tmp.4();
-        lputv %totalSec.1 %tmp.5;
-        symbol [ totalSec %totalSec.1 19 12 20 ];
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 19; @symbol_functiondef = [fmtUtc,19,21,27]; @symbol_param<0> = [moment,19,28,34]; @symbol_param<0>_type<0> = [Time,19,38,42]; @symbol_param<0>_type<1> = [Moment,19,43,49]; @symbol_return<0> = [String,19,54,60]; ]
+    private
+    function fmtUtc(moment as Time.Moment) as String {
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_start:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 20 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_18_47_27_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_18_47_27_4_stop" ]
-        %hours.2 = local;
-        symbol [ hours %hours.2 20 12 17 ];
-        %tmp.6 = lgetv %totalSec.1;
-        symbol [ totalSec %tmp.6 20 21 29 ];
-        %tmp.7 = 3600;
-        %tmp.8 = div %tmp.6 %tmp.7;
-        symbol [ toNumber %tmp.9 20 38 46 ];
-        %tmp.9 = getv function %tmp.8 :toNumber;
-        %tmp.10 = invoke %tmp.8 %tmp.9();
-        lputv %hours.2 %tmp.10;
-        symbol [ hours %hours.2 20 12 17 ];
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_stop" ]
+        %info.1 = local;
+        symbol [ info %info.1 20 12 16 ];
+        symbol [ Gregorian %tmp.1 20 19 28 ];
+        %tmp.1 = getm $.Toybox.Time.Gregorian;
+        symbol [ utcInfo %tmp.2 20 29 36 ];
+        %tmp.2 = getv function %tmp.1 :utcInfo;
+        %tmp.3 = lgetv %moment;
+        symbol [ moment %tmp.3 20 37 43 ];
+        symbol [ Time %tmp.4 20 45 49 ];
+        %tmp.4 = getm $.Toybox.Time;
+        symbol [ FORMAT_SHORT %tmp.5 20 50 62 ];
+        %tmp.5 = getv %tmp.4 :FORMAT_SHORT;
+        %tmp.6 = invoke %tmp.1 %tmp.2(%tmp.3, %tmp.5);
+        lputv %info.1 %tmp.6;
+        symbol [ info %info.1 20 12 16 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 21 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_18_47_27_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_18_47_27_4_stop" ]
-        %mins.3 = local;
-        symbol [ mins %mins.3 21 12 16 ];
-        %tmp.11 = lgetv %totalSec.1;
-        symbol [ totalSec %tmp.11 21 21 29 ];
-        %tmp.12 = 3600;
-        %tmp.13 = mod %tmp.11 %tmp.12;
-        %tmp.14 = 60;
-        %tmp.15 = div %tmp.13 %tmp.14;
-        symbol [ toNumber %tmp.16 21 44 52 ];
-        %tmp.16 = getv function %tmp.15 :toNumber;
-        %tmp.17 = invoke %tmp.15 %tmp.16();
-        lputv %mins.3 %tmp.17;
-        symbol [ mins %mins.3 21 12 16 ];
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_stop" ]
+        %h.2 = local;
+        symbol [ h %h.2 21 12 13 ];
+        %tmp.7 = lgetv %info.1;
+        symbol [ info %tmp.7 21 16 20 ];
+        symbol [ hour %tmp.8 21 21 25 ];
+        %tmp.8 = getv %tmp.7 :hour;
+        lputv %h.2 %tmp.8;
+        symbol [ h %h.2 21 12 13 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 22 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_18_47_27_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_18_47_27_4_stop" ]
-        %secs.4 = local;
-        symbol [ secs %secs.4 22 12 16 ];
-        %tmp.18 = lgetv %totalSec.1;
-        symbol [ totalSec %tmp.18 22 20 28 ];
-        %tmp.19 = 60;
-        %tmp.20 = mod %tmp.18 %tmp.19;
-        symbol [ toNumber %tmp.21 22 35 43 ];
-        %tmp.21 = getv function %tmp.20 :toNumber;
-        %tmp.22 = invoke %tmp.20 %tmp.21();
-        lputv %secs.4 %tmp.22;
-        symbol [ secs %secs.4 22 12 16 ];
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_stop" ]
+        %m.3 = local;
+        symbol [ m %m.3 22 12 13 ];
+        %tmp.9 = lgetv %info.1;
+        symbol [ info %tmp.9 22 16 20 ];
+        symbol [ min %tmp.10 22 21 24 ];
+        %tmp.10 = getv %tmp.9 :min;
+        lputv %m.3 %tmp.10;
+        symbol [ m %m.3 22 12 13 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 23 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_18_47_27_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_18_47_27_4_stop" ]
-        %hStr.5 = local;
-        symbol [ hStr %hStr.5 23 12 16 ];
-        %tmp.23 = lgetv %hours.2;
-        symbol [ hours %tmp.23 23 19 24 ];
-        symbol [ toString %tmp.24 23 25 33 ];
-        %tmp.24 = getv function %tmp.23 :toString;
-        %tmp.25 = invoke %tmp.23 %tmp.24();
-        lputv %hStr.5 %tmp.25;
-        symbol [ hStr %hStr.5 23 12 16 ];
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_stop" ]
+        %hStr.4 = local;
+        symbol [ hStr %hStr.4 23 12 16 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_begin:
+        %tmp.11 = lgetv %h.2;
+        symbol [ h %tmp.11 23 19 20 ];
+        %tmp.12 = 10;
+        %tmp.13 = lt %tmp.11 %tmp.12;
+        bf %tmp.13 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_true:
+        %tmp.14 = "0";
+        %tmp.15 = lgetv %h.2;
+        symbol [ h %tmp.15 23 34 35 ];
+        symbol [ toString %tmp.16 23 36 44 ];
+        %tmp.16 = getv function %tmp.15 :toString;
+        %tmp.17 = invoke %tmp.15 %tmp.16();
+        %tmp.18 = add %tmp.14 %tmp.17;
+        push %tmp.18;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_else_false:
+        %tmp.19 = lgetv %h.2;
+        symbol [ h %tmp.19 23 49 50 ];
+        symbol [ toString %tmp.20 23 51 59 ];
+        %tmp.20 = getv function %tmp.19 :toString;
+        %tmp.21 = invoke %tmp.19 %tmp.20();
+        push %tmp.21;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_end:
+        %tmp.22 = phi [%tmp.13 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_begin] [%tmp.18 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_true] [%tmp.21 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_else_false] [%tmp.22 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_end];
+        lputv %hStr.4 %tmp.22;
+        symbol [ hStr %hStr.4 23 12 16 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 24 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_18_47_27_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_18_47_27_4_stop" ]
-        %mStr.6 = local;
-        symbol [ mStr %mStr.6 24 12 16 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_69_begin:
-        %tmp.26 = lgetv %mins.3;
-        symbol [ mins %tmp.26 24 19 23 ];
-        %tmp.27 = 10;
-        %tmp.28 = lt %tmp.26 %tmp.27;
-        bf %tmp.28 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_69_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_69_true:
-        %tmp.29 = "0";
-        %tmp.30 = lgetv %mins.3;
-        symbol [ mins %tmp.30 24 37 41 ];
-        symbol [ toString %tmp.31 24 42 50 ];
-        %tmp.31 = getv function %tmp.30 :toString;
-        %tmp.32 = invoke %tmp.30 %tmp.31();
-        %tmp.33 = add %tmp.29 %tmp.32;
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_stop" ]
+        %mStr.5 = local;
+        symbol [ mStr %mStr.5 24 12 16 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_begin:
+        %tmp.23 = lgetv %m.3;
+        symbol [ m %tmp.23 24 19 20 ];
+        %tmp.24 = 10;
+        %tmp.25 = lt %tmp.23 %tmp.24;
+        bf %tmp.25 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_true:
+        %tmp.26 = "0";
+        %tmp.27 = lgetv %m.3;
+        symbol [ m %tmp.27 24 34 35 ];
+        symbol [ toString %tmp.28 24 36 44 ];
+        %tmp.28 = getv function %tmp.27 :toString;
+        %tmp.29 = invoke %tmp.27 %tmp.28();
+        %tmp.30 = add %tmp.26 %tmp.29;
+        push %tmp.30;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_else_false:
+        %tmp.31 = lgetv %m.3;
+        symbol [ m %tmp.31 24 49 50 ];
+        symbol [ toString %tmp.32 24 51 59 ];
+        %tmp.32 = getv function %tmp.31 :toString;
+        %tmp.33 = invoke %tmp.31 %tmp.32();
         push %tmp.33;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_69_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_69_else_false:
-        %tmp.34 = lgetv %mins.3;
-        symbol [ mins %tmp.34 24 55 59 ];
-        symbol [ toString %tmp.35 24 60 68 ];
-        %tmp.35 = getv function %tmp.34 :toString;
-        %tmp.36 = invoke %tmp.34 %tmp.35();
-        push %tmp.36;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_69_end:
-        %tmp.37 = phi [%tmp.28 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_69_begin] [%tmp.33 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_69_true] [%tmp.36 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_69_else_false] [%tmp.37 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_69_end];
-        lputv %mStr.6 %tmp.37;
-        symbol [ mStr %mStr.6 24 12 16 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_end:
+        %tmp.34 = phi [%tmp.25 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_begin] [%tmp.30 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_true] [%tmp.33 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_else_false] [%tmp.34 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_end];
+        lputv %mStr.5 %tmp.34;
+        symbol [ mStr %mStr.5 24 12 16 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 25 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_18_47_27_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_18_47_27_4_stop" ]
-        %sStr.7 = local;
-        symbol [ sStr %sStr.7 25 12 16 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_69_begin:
-        %tmp.38 = lgetv %secs.4;
-        symbol [ secs %tmp.38 25 19 23 ];
-        %tmp.39 = 10;
-        %tmp.40 = lt %tmp.38 %tmp.39;
-        bf %tmp.40 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_69_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_69_true:
-        %tmp.41 = "0";
-        %tmp.42 = lgetv %secs.4;
-        symbol [ secs %tmp.42 25 37 41 ];
-        symbol [ toString %tmp.43 25 42 50 ];
-        %tmp.43 = getv function %tmp.42 :toString;
-        %tmp.44 = invoke %tmp.42 %tmp.43();
-        %tmp.45 = add %tmp.41 %tmp.44;
-        push %tmp.45;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_69_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_69_else_false:
-        %tmp.46 = lgetv %secs.4;
-        symbol [ secs %tmp.46 25 55 59 ];
-        symbol [ toString %tmp.47 25 60 68 ];
-        %tmp.47 = getv function %tmp.46 :toString;
-        %tmp.48 = invoke %tmp.46 %tmp.47();
-        push %tmp.48;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_69_end:
-        %tmp.49 = phi [%tmp.40 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_69_begin] [%tmp.45 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_69_true] [%tmp.48 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_69_else_false] [%tmp.49 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_69_end];
-        lputv %sStr.7 %tmp.49;
-        symbol [ sStr %sStr.7 25 12 16 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 26 8 ]
-        %tmp.50 = lgetv %hStr.5;
-        symbol [ hStr %tmp.50 26 15 19 ];
-        %tmp.51 = ":";
-        %tmp.52 = add %tmp.50 %tmp.51;
-        %tmp.53 = lgetv %mStr.6;
-        symbol [ mStr %tmp.53 26 28 32 ];
-        %tmp.54 = add %tmp.52 %tmp.53;
-        %tmp.55 = ":";
-        %tmp.56 = add %tmp.54 %tmp.55;
-        %tmp.57 = lgetv %sStr.7;
-        symbol [ sStr %tmp.57 26 41 45 ];
-        %tmp.58 = add %tmp.56 %tmp.57;
-        ret %tmp.58;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_18_47_27_4_stop:
+        %tmp.35 = lgetv %hStr.4;
+        symbol [ hStr %tmp.35 25 15 19 ];
+        %tmp.36 = ":";
+        %tmp.37 = add %tmp.35 %tmp.36;
+        %tmp.38 = lgetv %mStr.5;
+        symbol [ mStr %tmp.38 25 28 32 ];
+        %tmp.39 = add %tmp.37 %tmp.38;
+        %tmp.40 = "Z";
+        %tmp.41 = add %tmp.39 %tmp.40;
+        ret %tmp.41;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 29; @symbol_functiondef = [onUpdate,29,13,21]; @symbol_param<0> = [dc,29,22,24]; @symbol_param<0>_type<0> = [Dc,29,28,30]; ]
-    function onUpdate(dc as Dc) as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_start:
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 29; @symbol_functiondef = [fmtDist,29,21,28]; @symbol_param<0> = [metres,29,29,35]; @symbol_param<0>_type<0> = [Float,29,39,44]; @symbol_param<1> = [divisor,29,46,53]; @symbol_param<1>_type<0> = [Float,29,57,62]; @symbol_param<2> = [unit,29,64,68]; @symbol_param<2>_type<0> = [String,29,72,78]; @symbol_return<0> = [String,29,83,89]; ]
+    private
+    function fmtDist(metres as Float, divisor as Float, unit as String) as String {
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_90_35_4_start:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 30 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_90_35_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_90_35_4_stop" ]
+        %val.1 = local;
+        symbol [ val %val.1 30 12 15 ];
+        %tmp.1 = lgetv %metres;
+        symbol [ metres %tmp.1 30 18 24 ];
+        %tmp.2 = lgetv %divisor;
+        symbol [ divisor %tmp.2 30 27 34 ];
+        %tmp.3 = div %tmp.1 %tmp.2;
+        lputv %val.1 %tmp.3;
+        symbol [ val %val.1 30 12 15 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 31 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_90_35_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_90_35_4_stop" ]
+        %intPart.2 = local;
+        symbol [ intPart %intPart.2 31 12 19 ];
+        %tmp.4 = lgetv %val.1;
+        symbol [ val %tmp.4 31 22 25 ];
+        symbol [ toNumber %tmp.5 31 26 34 ];
+        %tmp.5 = getv function %tmp.4 :toNumber;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        lputv %intPart.2 %tmp.6;
+        symbol [ intPart %intPart.2 31 12 19 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 32 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_90_35_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_90_35_4_stop" ]
+        %decPart.3 = local;
+        symbol [ decPart %decPart.3 32 12 19 ];
+        %tmp.7 = lgetv %val.1;
+        symbol [ val %tmp.7 32 24 27 ];
+        %tmp.8 = lgetv %intPart.2;
+        symbol [ intPart %tmp.8 32 30 37 ];
+        symbol [ toFloat %tmp.9 32 38 45 ];
+        %tmp.9 = getv function %tmp.8 :toFloat;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        %tmp.11 = sub %tmp.7 %tmp.10;
+        %tmp.12 = 10.0;
+        %tmp.13 = mul %tmp.11 %tmp.12;
+        symbol [ toNumber %tmp.14 32 57 65 ];
+        %tmp.14 = getv function %tmp.13 :toNumber;
+        %tmp.15 = invoke %tmp.13 %tmp.14();
+        lputv %decPart.3 %tmp.15;
+        symbol [ decPart %decPart.3 32 12 19 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 33 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_33_8_33_40_if_stmt:
+        %tmp.16 = lgetv %decPart.3;
+        symbol [ decPart %tmp.16 33 12 19 ];
+        %tmp.17 = 0;
+        %tmp.18 = lt %tmp.16 %tmp.17;
+        bf %tmp.18 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_33_8_33_40_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_33_8_33_40_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_33_25_33_40_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 33 27 ]
+        %tmp.19 = 0;
+        lputv %decPart.3 %tmp.19;
+        symbol [ decPart %decPart.3 33 27 34 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_33_25_33_40_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_33_8_33_40_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_33_8_33_40_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 34 8 ]
+        %tmp.20 = lgetv %intPart.2;
+        symbol [ intPart %tmp.20 34 15 22 ];
+        symbol [ toString %tmp.21 34 23 31 ];
+        %tmp.21 = getv function %tmp.20 :toString;
+        %tmp.22 = invoke %tmp.20 %tmp.21();
+        %tmp.23 = ".";
+        %tmp.24 = add %tmp.22 %tmp.23;
+        %tmp.25 = lgetv %decPart.3;
+        symbol [ decPart %tmp.25 34 42 49 ];
+        symbol [ toString %tmp.26 34 50 58 ];
+        %tmp.26 = getv function %tmp.25 :toString;
+        %tmp.27 = invoke %tmp.25 %tmp.26();
+        %tmp.28 = add %tmp.24 %tmp.27;
+        %tmp.29 = " ";
+        %tmp.30 = add %tmp.28 %tmp.29;
+        %tmp.31 = lgetv %unit;
+        symbol [ unit %tmp.31 34 69 73 ];
+        %tmp.32 = add %tmp.30 %tmp.31;
+        ret %tmp.32;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_90_35_4_stop:
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 37; @symbol_functiondef = [onUpdate,37,13,21]; @symbol_param<0> = [dc,37,22,24]; @symbol_param<0>_type<0> = [Dc,37,28,30]; ]
+    function onUpdate(dc as Dc) as Void {
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_37_40_94_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 38 8 ]
         %tmp.1 = lgetv %dc;
-        symbol [ dc %tmp.1 30 8 10 ];
-        symbol [ setColor %tmp.2 30 11 19 ];
+        symbol [ dc %tmp.1 38 8 10 ];
+        symbol [ setColor %tmp.2 38 11 19 ];
         %tmp.2 = getv function %tmp.1 :setColor;
-        symbol [ Graphics %tmp.3 30 20 28 ];
+        symbol [ Graphics %tmp.3 38 20 28 ];
         %tmp.3 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.4 30 29 40 ];
+        symbol [ COLOR_WHITE %tmp.4 38 29 40 ];
         %tmp.4 = getv %tmp.3 :COLOR_WHITE;
-        symbol [ Graphics %tmp.5 30 42 50 ];
+        symbol [ Graphics %tmp.5 38 42 50 ];
         %tmp.5 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.6 30 51 62 ];
+        symbol [ COLOR_BLACK %tmp.6 38 51 62 ];
         %tmp.6 = getv %tmp.5 :COLOR_BLACK;
         invoke %tmp.1 %tmp.2(%tmp.4, %tmp.6);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 31 8 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 39 8 ]
         %tmp.7 = lgetv %dc;
-        symbol [ dc %tmp.7 31 8 10 ];
-        symbol [ clear %tmp.8 31 11 16 ];
+        symbol [ dc %tmp.7 39 8 10 ];
+        symbol [ clear %tmp.8 39 11 16 ];
         %tmp.8 = getv function %tmp.7 :clear;
         invoke %tmp.7 %tmp.8();
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 33 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_stop" ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 41 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_37_40_94_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_37_40_94_4_stop" ]
         %w.1 = local;
-        symbol [ w %w.1 33 12 13 ];
+        symbol [ w %w.1 41 12 13 ];
         %tmp.9 = lgetv %dc;
-        symbol [ dc %tmp.9 33 16 18 ];
-        symbol [ getWidth %tmp.10 33 19 27 ];
+        symbol [ dc %tmp.9 41 17 19 ];
+        symbol [ getWidth %tmp.10 41 20 28 ];
         %tmp.10 = getv function %tmp.9 :getWidth;
         %tmp.11 = invoke %tmp.9 %tmp.10();
         lputv %w.1 %tmp.11;
-        symbol [ w %w.1 33 12 13 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 34 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_stop" ]
+        symbol [ w %w.1 41 12 13 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 42 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_37_40_94_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_37_40_94_4_stop" ]
         %h.2 = local;
-        symbol [ h %h.2 34 12 13 ];
+        symbol [ h %h.2 42 12 13 ];
         %tmp.12 = lgetv %dc;
-        symbol [ dc %tmp.12 34 16 18 ];
-        symbol [ getHeight %tmp.13 34 19 28 ];
+        symbol [ dc %tmp.12 42 17 19 ];
+        symbol [ getHeight %tmp.13 42 20 29 ];
         %tmp.13 = getv function %tmp.12 :getHeight;
         %tmp.14 = invoke %tmp.12 %tmp.13();
         lputv %h.2 %tmp.14;
-        symbol [ h %h.2 34 12 13 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 35 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_stop" ]
+        symbol [ h %h.2 42 12 13 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 43 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_37_40_94_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_37_40_94_4_stop" ]
         %cx.3 = local;
-        symbol [ cx %cx.3 35 12 14 ];
+        symbol [ cx %cx.3 43 12 14 ];
         %tmp.15 = lgetv %w.1;
-        symbol [ w %tmp.15 35 17 18 ];
+        symbol [ w %tmp.15 43 17 18 ];
         %tmp.16 = 2;
         %tmp.17 = div %tmp.15 %tmp.16;
         lputv %cx.3 %tmp.17;
-        symbol [ cx %cx.3 35 12 14 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 38 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_stop" ]
-        %ltStr.4 = local;
-        symbol [ ltStr %ltStr.4 38 12 17 ];
-        %tmp.18 = "--:--";
-        lputv %ltStr.4 %tmp.18;
-        symbol [ ltStr %ltStr.4 38 12 17 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 39 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_39_8_46_8_if_stmt:
-        symbol [ _main %tmp.20 39 12 17 ];
-        %tmp.20 = getv ? :_main;
-        symbol [ tripStartLocal %tmp.21 39 18 32 ];
-        %tmp.21 = getv %tmp.20 :tripStartLocal;
-        %tmp.22 = null;
-        %tmp.23 = ne %tmp.21 %tmp.22;
-        bf %tmp.23 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_39_8_46_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_39_8_46_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_39_42_46_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 40 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_39_42_46_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_39_42_46_8_stop" ]
-        %ct.5 = local;
-        symbol [ ct %ct.5 40 16 18 ];
-        symbol [ _main %tmp.25 40 21 26 ];
-        %tmp.25 = getv ? :_main;
-        symbol [ tripStartLocal %tmp.26 40 27 41 ];
-        %tmp.26 = getv %tmp.25 :tripStartLocal;
-        %tmp.27 = as %tmp.26 System.ClockTime;
-        symbol [ System %tmp.27 40 45 51 ];
-        symbol [ ClockTime %tmp.27 40 52 61 ];
-        lputv %ct.5 %tmp.27;
-        symbol [ ct %ct.5 40 16 18 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 41 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_39_42_46_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_39_42_46_8_stop" ]
-        %lh.6 = local;
-        symbol [ lh %lh.6 41 16 18 ];
-        %tmp.28 = lgetv %ct.5;
-        symbol [ ct %tmp.28 41 21 23 ];
-        symbol [ hour %tmp.29 41 24 28 ];
-        %tmp.29 = getv %tmp.28 :hour;
-        lputv %lh.6 %tmp.29;
-        symbol [ lh %lh.6 41 16 18 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 42 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_39_42_46_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_39_42_46_8_stop" ]
-        %lm.7 = local;
-        symbol [ lm %lm.7 42 16 18 ];
-        %tmp.30 = lgetv %ct.5;
-        symbol [ ct %tmp.30 42 21 23 ];
-        symbol [ min %tmp.31 42 24 27 ];
-        %tmp.31 = getv %tmp.30 :min;
-        lputv %lm.7 %tmp.31;
-        symbol [ lm %lm.7 42 16 18 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 43 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_39_42_46_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_39_42_46_8_stop" ]
-        %lhStr.8 = local;
-        symbol [ lhStr %lhStr.8 43 16 21 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_43_24_43_68_begin:
-        %tmp.32 = lgetv %lh.6;
-        symbol [ lh %tmp.32 43 24 26 ];
-        %tmp.33 = 10;
-        %tmp.34 = lt %tmp.32 %tmp.33;
-        bf %tmp.34 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_43_24_43_68_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_43_24_43_68_true:
-        %tmp.35 = "0";
-        %tmp.36 = lgetv %lh.6;
-        symbol [ lh %tmp.36 43 40 42 ];
-        symbol [ toString %tmp.37 43 43 51 ];
-        %tmp.37 = getv function %tmp.36 :toString;
-        %tmp.38 = invoke %tmp.36 %tmp.37();
-        %tmp.39 = add %tmp.35 %tmp.38;
-        push %tmp.39;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_43_24_43_68_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_43_24_43_68_else_false:
-        %tmp.40 = lgetv %lh.6;
-        symbol [ lh %tmp.40 43 56 58 ];
-        symbol [ toString %tmp.41 43 59 67 ];
-        %tmp.41 = getv function %tmp.40 :toString;
-        %tmp.42 = invoke %tmp.40 %tmp.41();
-        push %tmp.42;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_43_24_43_68_end:
-        %tmp.43 = phi [%tmp.34 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_43_24_43_68_begin] [%tmp.39 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_43_24_43_68_true] [%tmp.42 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_43_24_43_68_else_false] [%tmp.43 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_43_24_43_68_end];
-        lputv %lhStr.8 %tmp.43;
-        symbol [ lhStr %lhStr.8 43 16 21 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 44 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_39_42_46_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_39_42_46_8_stop" ]
-        %lmStr.9 = local;
-        symbol [ lmStr %lmStr.9 44 16 21 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_44_24_44_68_begin:
-        %tmp.44 = lgetv %lm.7;
-        symbol [ lm %tmp.44 44 24 26 ];
-        %tmp.45 = 10;
-        %tmp.46 = lt %tmp.44 %tmp.45;
-        bf %tmp.46 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_44_24_44_68_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_44_24_44_68_true:
-        %tmp.47 = "0";
-        %tmp.48 = lgetv %lm.7;
-        symbol [ lm %tmp.48 44 40 42 ];
-        symbol [ toString %tmp.49 44 43 51 ];
-        %tmp.49 = getv function %tmp.48 :toString;
-        %tmp.50 = invoke %tmp.48 %tmp.49();
-        %tmp.51 = add %tmp.47 %tmp.50;
-        push %tmp.51;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_44_24_44_68_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_44_24_44_68_else_false:
-        %tmp.52 = lgetv %lm.7;
-        symbol [ lm %tmp.52 44 56 58 ];
-        symbol [ toString %tmp.53 44 59 67 ];
-        %tmp.53 = getv function %tmp.52 :toString;
-        %tmp.54 = invoke %tmp.52 %tmp.53();
-        push %tmp.54;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_44_24_44_68_end:
-        %tmp.55 = phi [%tmp.46 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_44_24_44_68_begin] [%tmp.51 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_44_24_44_68_true] [%tmp.54 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_44_24_44_68_else_false] [%tmp.55 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_44_24_44_68_end];
-        lputv %lmStr.9 %tmp.55;
-        symbol [ lmStr %lmStr.9 44 16 21 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 45 12 ]
-        %tmp.56 = "LT ";
-        %tmp.57 = lgetv %lhStr.8;
-        symbol [ lhStr %tmp.57 45 28 33 ];
-        %tmp.58 = add %tmp.56 %tmp.57;
-        %tmp.59 = ":";
-        %tmp.60 = add %tmp.58 %tmp.59;
-        %tmp.61 = lgetv %lmStr.9;
-        symbol [ lmStr %tmp.61 45 42 47 ];
-        %tmp.62 = add %tmp.60 %tmp.61;
-        lputv %ltStr.4 %tmp.62;
-        symbol [ ltStr %ltStr.4 45 12 17 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_39_42_46_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_39_8_46_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_39_8_46_8_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 49 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_stop" ]
-        %utcStr.10 = local;
-        symbol [ utcStr %utcStr.10 49 12 18 ];
-        %tmp.63 = "UTC --:--";
-        lputv %utcStr.10 %tmp.63;
-        symbol [ utcStr %utcStr.10 49 12 18 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 50 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_50_8_57_8_if_stmt:
-        symbol [ _main %tmp.65 50 12 17 ];
-        %tmp.65 = getv ? :_main;
-        symbol [ tripStartUtcMoment %tmp.66 50 18 36 ];
-        %tmp.66 = getv %tmp.65 :tripStartUtcMoment;
-        %tmp.67 = null;
-        %tmp.68 = ne %tmp.66 %tmp.67;
-        bf %tmp.68 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_50_8_57_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_50_8_57_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_50_46_57_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 51 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_50_46_57_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_50_46_57_8_stop" ]
-        %info.11 = local;
-        symbol [ info %info.11 51 16 20 ];
-        symbol [ Gregorian %tmp.69 51 23 32 ];
-        %tmp.69 = getm $.Toybox.Time.Gregorian;
-        symbol [ utcInfo %tmp.70 51 33 40 ];
-        %tmp.70 = getv function %tmp.69 :utcInfo;
-        symbol [ _main %tmp.72 51 42 47 ];
-        %tmp.72 = getv ? :_main;
-        symbol [ tripStartUtcMoment %tmp.73 51 48 66 ];
-        %tmp.73 = getv %tmp.72 :tripStartUtcMoment;
-        %tmp.74 = as %tmp.73 Time.Moment;
-        symbol [ Time %tmp.74 51 70 74 ];
-        symbol [ Moment %tmp.74 51 75 81 ];
-        symbol [ Time %tmp.75 51 84 88 ];
-        %tmp.75 = getm $.Toybox.Time;
-        symbol [ FORMAT_SHORT %tmp.76 51 89 101 ];
-        %tmp.76 = getv %tmp.75 :FORMAT_SHORT;
-        %tmp.77 = invoke %tmp.69 %tmp.70(%tmp.74, %tmp.76);
-        lputv %info.11 %tmp.77;
-        symbol [ info %info.11 51 16 20 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 52 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_50_46_57_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_50_46_57_8_stop" ]
-        %uh.12 = local;
-        symbol [ uh %uh.12 52 16 18 ];
-        %tmp.78 = lgetv %info.11;
-        symbol [ info %tmp.78 52 21 25 ];
-        symbol [ hour %tmp.79 52 26 30 ];
-        %tmp.79 = getv %tmp.78 :hour;
-        lputv %uh.12 %tmp.79;
-        symbol [ uh %uh.12 52 16 18 ];
+        symbol [ cx %cx.3 43 12 14 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 46 8 ]
+        %tmp.18 = lgetv %dc;
+        symbol [ dc %tmp.18 46 8 10 ];
+        symbol [ setColor %tmp.19 46 11 19 ];
+        %tmp.19 = getv function %tmp.18 :setColor;
+        symbol [ Graphics %tmp.20 46 20 28 ];
+        %tmp.20 = getm $.Toybox.Graphics;
+        symbol [ COLOR_LT_GRAY %tmp.21 46 29 42 ];
+        %tmp.21 = getv %tmp.20 :COLOR_LT_GRAY;
+        symbol [ Graphics %tmp.22 46 44 52 ];
+        %tmp.22 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.23 46 53 70 ];
+        %tmp.23 = getv %tmp.22 :COLOR_TRANSPARENT;
+        invoke %tmp.18 %tmp.19(%tmp.21, %tmp.23);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 47 8 ]
+        %tmp.24 = lgetv %dc;
+        symbol [ dc %tmp.24 47 8 10 ];
+        symbol [ drawText %tmp.25 47 11 19 ];
+        %tmp.25 = getv function %tmp.24 :drawText;
+        %tmp.26 = lgetv %cx.3;
+        symbol [ cx %tmp.26 47 20 22 ];
+        %tmp.27 = lgetv %h.2;
+        symbol [ h %tmp.27 47 24 25 ];
+        %tmp.28 = 10;
+        %tmp.29 = mul %tmp.27 %tmp.28;
+        %tmp.30 = 100;
+        %tmp.31 = div %tmp.29 %tmp.30;
+        symbol [ Graphics %tmp.32 47 38 46 ];
+        %tmp.32 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.33 47 47 56 ];
+        %tmp.33 = getv %tmp.32 :FONT_TINY;
+        %tmp.34 = "FLIGHT SUMMARY";
+        symbol [ Graphics %tmp.35 48 12 20 ];
+        %tmp.35 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.36 48 21 40 ];
+        %tmp.36 = getv %tmp.35 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.37 48 43 51 ];
+        %tmp.37 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.38 48 52 72 ];
+        %tmp.38 = getv %tmp.37 :TEXT_JUSTIFY_VCENTER;
+        %tmp.39 = bitor %tmp.36 %tmp.38;
+        invoke %tmp.24 %tmp.25(%tmp.26, %tmp.31, %tmp.33, %tmp.34, %tmp.39);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 51 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_37_40_94_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_37_40_94_4_stop" ]
+        %startStr.4 = local;
+        symbol [ startStr %startStr.4 51 12 20 ];
+        %tmp.40 = "--:--Z";
+        lputv %startStr.4 %tmp.40;
+        symbol [ startStr %startStr.4 51 12 20 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 52 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_52_8_60_8_if_stmt:
+        symbol [ _main %tmp.42 52 12 17 ];
+        %tmp.42 = getv ? :_main;
+        symbol [ tripStartUtcMoment %tmp.43 52 18 36 ];
+        %tmp.43 = getv %tmp.42 :tripStartUtcMoment;
+        %tmp.44 = null;
+        %tmp.45 = ne %tmp.43 %tmp.44;
+        bf %tmp.45 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_52_8_60_8_if_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_52_8_60_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_52_46_54_8_start:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 53 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_50_46_57_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_50_46_57_8_stop" ]
-        %um.13 = local;
-        symbol [ um %um.13 53 16 18 ];
-        %tmp.80 = lgetv %info.11;
-        symbol [ info %tmp.80 53 21 25 ];
-        symbol [ min %tmp.81 53 26 29 ];
-        %tmp.81 = getv %tmp.80 :min;
-        lputv %um.13 %tmp.81;
-        symbol [ um %um.13 53 16 18 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 54 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_50_46_57_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_50_46_57_8_stop" ]
-        %uhStr.14 = local;
-        symbol [ uhStr %uhStr.14 54 16 21 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_24_54_68_begin:
-        %tmp.82 = lgetv %uh.12;
-        symbol [ uh %tmp.82 54 24 26 ];
-        %tmp.83 = 10;
-        %tmp.84 = lt %tmp.82 %tmp.83;
-        bf %tmp.84 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_24_54_68_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_24_54_68_true:
-        %tmp.85 = "0";
-        %tmp.86 = lgetv %uh.12;
-        symbol [ uh %tmp.86 54 40 42 ];
-        symbol [ toString %tmp.87 54 43 51 ];
-        %tmp.87 = getv function %tmp.86 :toString;
-        %tmp.88 = invoke %tmp.86 %tmp.87();
-        %tmp.89 = add %tmp.85 %tmp.88;
-        push %tmp.89;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_24_54_68_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_24_54_68_else_false:
-        %tmp.90 = lgetv %uh.12;
-        symbol [ uh %tmp.90 54 56 58 ];
-        symbol [ toString %tmp.91 54 59 67 ];
-        %tmp.91 = getv function %tmp.90 :toString;
-        %tmp.92 = invoke %tmp.90 %tmp.91();
-        push %tmp.92;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_24_54_68_end:
-        %tmp.93 = phi [%tmp.84 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_24_54_68_begin] [%tmp.89 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_24_54_68_true] [%tmp.92 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_24_54_68_else_false] [%tmp.93 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_24_54_68_end];
-        lputv %uhStr.14 %tmp.93;
-        symbol [ uhStr %uhStr.14 54 16 21 ];
+        %tmp.46 = self;
+        symbol [ fmtUtc %tmp.47 53 23 29 ];
+        %tmp.47 = getv function %tmp.46 :fmtUtc;
+        symbol [ _main %tmp.49 53 30 35 ];
+        %tmp.49 = getv ? :_main;
+        symbol [ tripStartUtcMoment %tmp.50 53 36 54 ];
+        %tmp.50 = getv %tmp.49 :tripStartUtcMoment;
+        %tmp.51 = as %tmp.50 Time.Moment;
+        symbol [ Time %tmp.51 53 58 62 ];
+        symbol [ Moment %tmp.51 53 63 69 ];
+        %tmp.52 = invoke %tmp.46 %tmp.47(%tmp.51);
+        lputv %startStr.4 %tmp.52;
+        symbol [ startStr %startStr.4 53 12 20 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_52_46_54_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_52_8_60_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_52_8_60_8_if_false:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 54 15 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_15_60_8_if_stmt:
+        symbol [ _main %tmp.54 54 20 25 ];
+        %tmp.54 = getv ? :_main;
+        %tmp.55 = as %tmp.54 VFRStopWatchView;
+        symbol [ VFRStopWatchView %tmp.55 54 29 45 ];
+        symbol [ tripStartUtcHour %tmp.56 54 47 63 ];
+        %tmp.56 = getv %tmp.55 :tripStartUtcHour;
+        %tmp.57 = 0;
+        %tmp.58 = gte %tmp.56 %tmp.57;
+        bf %tmp.58 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_15_60_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_15_60_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_70_60_8_start:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 55 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_50_46_57_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_50_46_57_8_stop" ]
-        %umStr.15 = local;
-        symbol [ umStr %umStr.15 55 16 21 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_55_24_55_68_begin:
-        %tmp.94 = lgetv %um.13;
-        symbol [ um %tmp.94 55 24 26 ];
-        %tmp.95 = 10;
-        %tmp.96 = lt %tmp.94 %tmp.95;
-        bf %tmp.96 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_55_24_55_68_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_55_24_55_68_true:
-        %tmp.97 = "0";
-        %tmp.98 = lgetv %um.13;
-        symbol [ um %tmp.98 55 40 42 ];
-        symbol [ toString %tmp.99 55 43 51 ];
-        %tmp.99 = getv function %tmp.98 :toString;
-        %tmp.100 = invoke %tmp.98 %tmp.99();
-        %tmp.101 = add %tmp.97 %tmp.100;
-        push %tmp.101;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_55_24_55_68_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_55_24_55_68_else_false:
-        %tmp.102 = lgetv %um.13;
-        symbol [ um %tmp.102 55 56 58 ];
-        symbol [ toString %tmp.103 55 59 67 ];
-        %tmp.103 = getv function %tmp.102 :toString;
-        %tmp.104 = invoke %tmp.102 %tmp.103();
-        push %tmp.104;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_55_24_55_68_end:
-        %tmp.105 = phi [%tmp.96 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_55_24_55_68_begin] [%tmp.101 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_55_24_55_68_true] [%tmp.104 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_55_24_55_68_else_false] [%tmp.105 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_55_24_55_68_end];
-        lputv %umStr.15 %tmp.105;
-        symbol [ umStr %umStr.15 55 16 21 ];
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_70_60_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_70_60_8_stop" ]
+        %sh.5 = local;
+        symbol [ sh %sh.5 55 16 18 ];
+        symbol [ _main %tmp.60 55 22 27 ];
+        %tmp.60 = getv ? :_main;
+        %tmp.61 = as %tmp.60 VFRStopWatchView;
+        symbol [ VFRStopWatchView %tmp.61 55 31 47 ];
+        symbol [ tripStartUtcHour %tmp.62 55 49 65 ];
+        %tmp.62 = getv %tmp.61 :tripStartUtcHour;
+        lputv %sh.5 %tmp.62;
+        symbol [ sh %sh.5 55 16 18 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 56 12 ]
-        %tmp.106 = "UTC ";
-        %tmp.107 = lgetv %uhStr.14;
-        symbol [ uhStr %tmp.107 56 30 35 ];
-        %tmp.108 = add %tmp.106 %tmp.107;
-        %tmp.109 = ":";
-        %tmp.110 = add %tmp.108 %tmp.109;
-        %tmp.111 = lgetv %umStr.15;
-        symbol [ umStr %tmp.111 56 44 49 ];
-        %tmp.112 = add %tmp.110 %tmp.111;
-        lputv %utcStr.10 %tmp.112;
-        symbol [ utcStr %utcStr.10 56 12 18 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_50_46_57_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_50_8_57_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_50_8_57_8_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 60 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_stop" ]
-        %totalMs.16 = local;
-        symbol [ totalMs %totalMs.16 60 12 19 ];
-        symbol [ _main %tmp.114 60 22 27 ];
-        %tmp.114 = getv ? :_main;
-        symbol [ elapsed %tmp.115 60 28 35 ];
-        %tmp.115 = getv %tmp.114 :elapsed;
-        lputv %totalMs.16 %tmp.115;
-        symbol [ totalMs %totalMs.16 60 12 19 ];
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_70_60_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_70_60_8_stop" ]
+        %sm.6 = local;
+        symbol [ sm %sm.6 56 16 18 ];
+        symbol [ _main %tmp.64 56 22 27 ];
+        %tmp.64 = getv ? :_main;
+        %tmp.65 = as %tmp.64 VFRStopWatchView;
+        symbol [ VFRStopWatchView %tmp.65 56 31 47 ];
+        symbol [ tripStartUtcMin %tmp.66 56 49 64 ];
+        %tmp.66 = getv %tmp.65 :tripStartUtcMin;
+        lputv %sm.6 %tmp.66;
+        symbol [ sm %sm.6 56 16 18 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 57 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_70_60_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_70_60_8_stop" ]
+        %shStr.7 = local;
+        symbol [ shStr %shStr.7 57 16 21 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_57_24_57_68_begin:
+        %tmp.67 = lgetv %sh.5;
+        symbol [ sh %tmp.67 57 24 26 ];
+        %tmp.68 = 10;
+        %tmp.69 = lt %tmp.67 %tmp.68;
+        bf %tmp.69 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_57_24_57_68_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_57_24_57_68_true:
+        %tmp.70 = "0";
+        %tmp.71 = lgetv %sh.5;
+        symbol [ sh %tmp.71 57 40 42 ];
+        symbol [ toString %tmp.72 57 43 51 ];
+        %tmp.72 = getv function %tmp.71 :toString;
+        %tmp.73 = invoke %tmp.71 %tmp.72();
+        %tmp.74 = add %tmp.70 %tmp.73;
+        push %tmp.74;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_57_24_57_68_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_57_24_57_68_else_false:
+        %tmp.75 = lgetv %sh.5;
+        symbol [ sh %tmp.75 57 56 58 ];
+        symbol [ toString %tmp.76 57 59 67 ];
+        %tmp.76 = getv function %tmp.75 :toString;
+        %tmp.77 = invoke %tmp.75 %tmp.76();
+        push %tmp.77;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_57_24_57_68_end:
+        %tmp.78 = phi [%tmp.69 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_57_24_57_68_begin] [%tmp.74 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_57_24_57_68_true] [%tmp.77 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_57_24_57_68_else_false] [%tmp.78 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_57_24_57_68_end];
+        lputv %shStr.7 %tmp.78;
+        symbol [ shStr %shStr.7 57 16 21 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 58 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_70_60_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_70_60_8_stop" ]
+        %smStr.8 = local;
+        symbol [ smStr %smStr.8 58 16 21 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_24_58_68_begin:
+        %tmp.79 = lgetv %sm.6;
+        symbol [ sm %tmp.79 58 24 26 ];
+        %tmp.80 = 10;
+        %tmp.81 = lt %tmp.79 %tmp.80;
+        bf %tmp.81 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_24_58_68_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_24_58_68_true:
+        %tmp.82 = "0";
+        %tmp.83 = lgetv %sm.6;
+        symbol [ sm %tmp.83 58 40 42 ];
+        symbol [ toString %tmp.84 58 43 51 ];
+        %tmp.84 = getv function %tmp.83 :toString;
+        %tmp.85 = invoke %tmp.83 %tmp.84();
+        %tmp.86 = add %tmp.82 %tmp.85;
+        push %tmp.86;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_24_58_68_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_24_58_68_else_false:
+        %tmp.87 = lgetv %sm.6;
+        symbol [ sm %tmp.87 58 56 58 ];
+        symbol [ toString %tmp.88 58 59 67 ];
+        %tmp.88 = getv function %tmp.87 :toString;
+        %tmp.89 = invoke %tmp.87 %tmp.88();
+        push %tmp.89;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_24_58_68_end:
+        %tmp.90 = phi [%tmp.81 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_24_58_68_begin] [%tmp.86 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_24_58_68_true] [%tmp.89 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_24_58_68_else_false] [%tmp.90 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_24_58_68_end];
+        lputv %smStr.8 %tmp.90;
+        symbol [ smStr %smStr.8 58 16 21 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 59 12 ]
+        %tmp.91 = lgetv %shStr.7;
+        symbol [ shStr %tmp.91 59 23 28 ];
+        %tmp.92 = ":";
+        %tmp.93 = add %tmp.91 %tmp.92;
+        %tmp.94 = lgetv %smStr.8;
+        symbol [ smStr %tmp.94 59 37 42 ];
+        %tmp.95 = add %tmp.93 %tmp.94;
+        %tmp.96 = "Z";
+        %tmp.97 = add %tmp.95 %tmp.96;
+        lputv %startStr.4 %tmp.97;
+        symbol [ startStr %startStr.4 59 12 20 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_70_60_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_15_60_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_54_15_60_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_52_8_60_8_if_end:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 61 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_stop" ]
-        %totalStr.17 = local;
-        symbol [ totalStr %totalStr.17 61 12 20 ];
-        %tmp.116 = self;
-        symbol [ fmtTimeMs %tmp.117 61 23 32 ];
-        %tmp.117 = getv function %tmp.116 :fmtTimeMs;
-        %tmp.118 = lgetv %totalMs.16;
-        symbol [ totalMs %tmp.118 61 33 40 ];
-        %tmp.119 = invoke %tmp.116 %tmp.117(%tmp.118);
-        lputv %totalStr.17 %tmp.119;
-        symbol [ totalStr %totalStr.17 61 12 20 ];
+        %tmp.98 = lgetv %dc;
+        symbol [ dc %tmp.98 61 8 10 ];
+        symbol [ setColor %tmp.99 61 11 19 ];
+        %tmp.99 = getv function %tmp.98 :setColor;
+        symbol [ Graphics %tmp.100 61 20 28 ];
+        %tmp.100 = getm $.Toybox.Graphics;
+        symbol [ COLOR_LT_GRAY %tmp.101 61 29 42 ];
+        %tmp.101 = getv %tmp.100 :COLOR_LT_GRAY;
+        symbol [ Graphics %tmp.102 61 44 52 ];
+        %tmp.102 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.103 61 53 70 ];
+        %tmp.103 = getv %tmp.102 :COLOR_TRANSPARENT;
+        invoke %tmp.98 %tmp.99(%tmp.101, %tmp.103);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 62 8 ]
+        %tmp.104 = lgetv %dc;
+        symbol [ dc %tmp.104 62 8 10 ];
+        symbol [ drawText %tmp.105 62 11 19 ];
+        %tmp.105 = getv function %tmp.104 :drawText;
+        %tmp.106 = lgetv %cx.3;
+        symbol [ cx %tmp.106 62 20 22 ];
+        %tmp.107 = lgetv %h.2;
+        symbol [ h %tmp.107 62 24 25 ];
+        %tmp.108 = 25;
+        %tmp.109 = mul %tmp.107 %tmp.108;
+        %tmp.110 = 100;
+        %tmp.111 = div %tmp.109 %tmp.110;
+        symbol [ Graphics %tmp.112 62 38 46 ];
+        %tmp.112 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.113 62 47 56 ];
+        %tmp.113 = getv %tmp.112 :FONT_TINY;
+        %tmp.114 = "START";
+        symbol [ Graphics %tmp.115 63 12 20 ];
+        %tmp.115 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.116 63 21 40 ];
+        %tmp.116 = getv %tmp.115 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.117 63 43 51 ];
+        %tmp.117 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.118 63 52 72 ];
+        %tmp.118 = getv %tmp.117 :TEXT_JUSTIFY_VCENTER;
+        %tmp.119 = bitor %tmp.116 %tmp.118;
+        invoke %tmp.104 %tmp.105(%tmp.106, %tmp.111, %tmp.113, %tmp.114, %tmp.119);
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 64 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_stop" ]
-        %km.18 = local;
-        symbol [ km %km.18 64 12 14 ];
-        symbol [ _main %tmp.121 64 18 23 ];
-        %tmp.121 = getv ? :_main;
-        symbol [ totalDistanceM %tmp.122 64 24 38 ];
-        %tmp.122 = getv %tmp.121 :totalDistanceM;
-        %tmp.123 = 1000.0;
-        %tmp.124 = div %tmp.122 %tmp.123;
-        symbol [ toNumber %tmp.125 64 49 57 ];
-        %tmp.125 = getv function %tmp.124 :toNumber;
-        %tmp.126 = invoke %tmp.124 %tmp.125();
-        lputv %km.18 %tmp.126;
-        symbol [ km %km.18 64 12 14 ];
+        %tmp.120 = lgetv %dc;
+        symbol [ dc %tmp.120 64 8 10 ];
+        symbol [ setColor %tmp.121 64 11 19 ];
+        %tmp.121 = getv function %tmp.120 :setColor;
+        symbol [ Graphics %tmp.122 64 20 28 ];
+        %tmp.122 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.123 64 29 40 ];
+        %tmp.123 = getv %tmp.122 :COLOR_WHITE;
+        symbol [ Graphics %tmp.124 64 42 50 ];
+        %tmp.124 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.125 64 51 68 ];
+        %tmp.125 = getv %tmp.124 :COLOR_TRANSPARENT;
+        invoke %tmp.120 %tmp.121(%tmp.123, %tmp.125);
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 65 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_stop" ]
-        %nm.19 = local;
-        symbol [ nm %nm.19 65 12 14 ];
-        symbol [ _main %tmp.128 65 18 23 ];
-        %tmp.128 = getv ? :_main;
-        symbol [ totalDistanceM %tmp.129 65 24 38 ];
-        %tmp.129 = getv %tmp.128 :totalDistanceM;
-        %tmp.130 = 1852.0;
-        %tmp.131 = div %tmp.129 %tmp.130;
-        symbol [ toNumber %tmp.132 65 49 57 ];
-        %tmp.132 = getv function %tmp.131 :toNumber;
-        %tmp.133 = invoke %tmp.131 %tmp.132();
-        lputv %nm.19 %tmp.133;
-        symbol [ nm %nm.19 65 12 14 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 66 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_stop" ]
-        %kmInt.20 = local;
-        symbol [ kmInt %kmInt.20 66 12 17 ];
-        %tmp.134 = lgetv %km.18;
-        symbol [ km %tmp.134 66 20 22 ];
-        symbol [ toNumber %tmp.135 66 23 31 ];
-        %tmp.135 = getv function %tmp.134 :toNumber;
-        %tmp.136 = invoke %tmp.134 %tmp.135();
-        lputv %kmInt.20 %tmp.136;
-        symbol [ kmInt %kmInt.20 66 12 17 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 67 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_stop" ]
-        %kmDecFloat.21 = local;
-        symbol [ kmDecFloat %kmDecFloat.21 67 12 22 ];
-        %tmp.137 = lgetv %km.18;
-        symbol [ km %tmp.137 67 25 27 ];
-        %tmp.138 = lgetv %kmInt.20;
-        symbol [ kmInt %tmp.138 67 30 35 ];
-        symbol [ toFloat %tmp.139 67 36 43 ];
-        %tmp.139 = getv function %tmp.138 :toFloat;
-        %tmp.140 = invoke %tmp.138 %tmp.139();
-        %tmp.141 = sub %tmp.137 %tmp.140;
-        lputv %kmDecFloat.21 %tmp.141;
-        symbol [ kmDecFloat %kmDecFloat.21 67 12 22 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 68 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_stop" ]
-        %kmDec.22 = local;
-        symbol [ kmDec %kmDec.22 68 12 17 ];
-        %tmp.142 = lgetv %kmDecFloat.21;
-        symbol [ kmDecFloat %tmp.142 68 21 31 ];
-        %tmp.143 = 10.0;
-        %tmp.144 = mul %tmp.142 %tmp.143;
-        symbol [ toNumber %tmp.145 68 40 48 ];
-        %tmp.145 = getv function %tmp.144 :toNumber;
-        %tmp.146 = invoke %tmp.144 %tmp.145();
-        lputv %kmDec.22 %tmp.146;
-        symbol [ kmDec %kmDec.22 68 12 17 ];
+        %tmp.126 = lgetv %dc;
+        symbol [ dc %tmp.126 65 8 10 ];
+        symbol [ drawText %tmp.127 65 11 19 ];
+        %tmp.127 = getv function %tmp.126 :drawText;
+        %tmp.128 = lgetv %cx.3;
+        symbol [ cx %tmp.128 65 20 22 ];
+        %tmp.129 = lgetv %h.2;
+        symbol [ h %tmp.129 65 24 25 ];
+        %tmp.130 = 36;
+        %tmp.131 = mul %tmp.129 %tmp.130;
+        %tmp.132 = 100;
+        %tmp.133 = div %tmp.131 %tmp.132;
+        symbol [ Graphics %tmp.134 65 38 46 ];
+        %tmp.134 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.135 65 47 57 ];
+        %tmp.135 = getv %tmp.134 :FONT_SMALL;
+        %tmp.136 = lgetv %startStr.4;
+        symbol [ startStr %tmp.136 65 59 67 ];
+        symbol [ Graphics %tmp.137 66 12 20 ];
+        %tmp.137 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.138 66 21 40 ];
+        %tmp.138 = getv %tmp.137 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.139 66 43 51 ];
+        %tmp.139 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.140 66 52 72 ];
+        %tmp.140 = getv %tmp.139 :TEXT_JUSTIFY_VCENTER;
+        %tmp.141 = bitor %tmp.138 %tmp.140;
+        invoke %tmp.126 %tmp.127(%tmp.128, %tmp.133, %tmp.135, %tmp.136, %tmp.141);
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 69 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_8_69_36_if_stmt:
-        %tmp.147 = lgetv %kmDec.22;
-        symbol [ kmDec %tmp.147 69 12 17 ];
-        %tmp.148 = 0;
-        %tmp.149 = lt %tmp.147 %tmp.148;
-        bf %tmp.149 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_8_69_36_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_8_69_36_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_23_69_36_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 69 25 ]
-        %tmp.150 = 0;
-        lputv %kmDec.22 %tmp.150;
-        symbol [ kmDec %kmDec.22 69 25 30 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_23_69_36_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_8_69_36_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_8_69_36_if_end:
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_37_40_94_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_37_40_94_4_stop" ]
+        %endStr.9 = local;
+        symbol [ endStr %endStr.9 69 12 18 ];
+        %tmp.142 = "--:--Z";
+        lputv %endStr.9 %tmp.142;
+        symbol [ endStr %endStr.9 69 12 18 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 70 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_stop" ]
-        %kmStr.23 = local;
-        symbol [ kmStr %kmStr.23 70 12 17 ];
-        %tmp.151 = lgetv %kmInt.20;
-        symbol [ kmInt %tmp.151 70 20 25 ];
-        symbol [ toString %tmp.152 70 26 34 ];
-        %tmp.152 = getv function %tmp.151 :toString;
-        %tmp.153 = invoke %tmp.151 %tmp.152();
-        %tmp.154 = ".";
-        %tmp.155 = add %tmp.153 %tmp.154;
-        %tmp.156 = lgetv %kmDec.22;
-        symbol [ kmDec %tmp.156 70 45 50 ];
-        symbol [ toString %tmp.157 70 51 59 ];
-        %tmp.157 = getv function %tmp.156 :toString;
-        %tmp.158 = invoke %tmp.156 %tmp.157();
-        %tmp.159 = add %tmp.155 %tmp.158;
-        %tmp.160 = " km";
-        %tmp.161 = add %tmp.159 %tmp.160;
-        lputv %kmStr.23 %tmp.161;
-        symbol [ kmStr %kmStr.23 70 12 17 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 71 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_stop" ]
-        %nmInt.24 = local;
-        symbol [ nmInt %nmInt.24 71 12 17 ];
-        %tmp.162 = lgetv %nm.19;
-        symbol [ nm %tmp.162 71 20 22 ];
-        symbol [ toNumber %tmp.163 71 23 31 ];
-        %tmp.163 = getv function %tmp.162 :toNumber;
-        %tmp.164 = invoke %tmp.162 %tmp.163();
-        lputv %nmInt.24 %tmp.164;
-        symbol [ nmInt %nmInt.24 71 12 17 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 72 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_stop" ]
-        %nmDecFloat.25 = local;
-        symbol [ nmDecFloat %nmDecFloat.25 72 12 22 ];
-        %tmp.165 = lgetv %nm.19;
-        symbol [ nm %tmp.165 72 25 27 ];
-        %tmp.166 = lgetv %nmInt.24;
-        symbol [ nmInt %tmp.166 72 30 35 ];
-        symbol [ toFloat %tmp.167 72 36 43 ];
-        %tmp.167 = getv function %tmp.166 :toFloat;
-        %tmp.168 = invoke %tmp.166 %tmp.167();
-        %tmp.169 = sub %tmp.165 %tmp.168;
-        lputv %nmDecFloat.25 %tmp.169;
-        symbol [ nmDecFloat %nmDecFloat.25 72 12 22 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 73 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_stop" ]
-        %nmDec.26 = local;
-        symbol [ nmDec %nmDec.26 73 12 17 ];
-        %tmp.170 = lgetv %nmDecFloat.25;
-        symbol [ nmDecFloat %tmp.170 73 21 31 ];
-        %tmp.171 = 10.0;
-        %tmp.172 = mul %tmp.170 %tmp.171;
-        symbol [ toNumber %tmp.173 73 40 48 ];
-        %tmp.173 = getv function %tmp.172 :toNumber;
-        %tmp.174 = invoke %tmp.172 %tmp.173();
-        lputv %nmDec.26 %tmp.174;
-        symbol [ nmDec %nmDec.26 73 12 17 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 74 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_74_8_74_36_if_stmt:
-        %tmp.175 = lgetv %nmDec.26;
-        symbol [ nmDec %tmp.175 74 12 17 ];
-        %tmp.176 = 0;
-        %tmp.177 = lt %tmp.175 %tmp.176;
-        bf %tmp.177 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_74_8_74_36_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_74_8_74_36_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_74_23_74_36_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 74 25 ]
-        %tmp.178 = 0;
-        lputv %nmDec.26 %tmp.178;
-        symbol [ nmDec %nmDec.26 74 25 30 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_74_23_74_36_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_74_8_74_36_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_74_8_74_36_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 75 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_stop" ]
-        %nmStr.27 = local;
-        symbol [ nmStr %nmStr.27 75 12 17 ];
-        %tmp.179 = lgetv %nmInt.24;
-        symbol [ nmInt %tmp.179 75 20 25 ];
-        symbol [ toString %tmp.180 75 26 34 ];
-        %tmp.180 = getv function %tmp.179 :toString;
-        %tmp.181 = invoke %tmp.179 %tmp.180();
-        %tmp.182 = ".";
-        %tmp.183 = add %tmp.181 %tmp.182;
-        %tmp.184 = lgetv %nmDec.26;
-        symbol [ nmDec %tmp.184 75 45 50 ];
-        symbol [ toString %tmp.185 75 51 59 ];
-        %tmp.185 = getv function %tmp.184 :toString;
-        %tmp.186 = invoke %tmp.184 %tmp.185();
-        %tmp.187 = add %tmp.183 %tmp.186;
-        %tmp.188 = " NM";
-        %tmp.189 = add %tmp.187 %tmp.188;
-        lputv %nmStr.27 %tmp.189;
-        symbol [ nmStr %nmStr.27 75 12 17 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 77 8 ]
-        %tmp.190 = lgetv %dc;
-        symbol [ dc %tmp.190 77 8 10 ];
-        symbol [ setColor %tmp.191 77 11 19 ];
-        %tmp.191 = getv function %tmp.190 :setColor;
-        symbol [ Graphics %tmp.192 77 20 28 ];
-        %tmp.192 = getm $.Toybox.Graphics;
-        symbol [ COLOR_LT_GRAY %tmp.193 77 29 42 ];
-        %tmp.193 = getv %tmp.192 :COLOR_LT_GRAY;
-        symbol [ Graphics %tmp.194 77 44 52 ];
-        %tmp.194 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.195 77 53 70 ];
-        %tmp.195 = getv %tmp.194 :COLOR_TRANSPARENT;
-        invoke %tmp.190 %tmp.191(%tmp.193, %tmp.195);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 78 8 ]
-        %tmp.196 = lgetv %dc;
-        symbol [ dc %tmp.196 78 8 10 ];
-        symbol [ drawText %tmp.197 78 11 19 ];
-        %tmp.197 = getv function %tmp.196 :drawText;
-        %tmp.198 = lgetv %cx.3;
-        symbol [ cx %tmp.198 78 20 22 ];
-        %tmp.199 = lgetv %h.2;
-        symbol [ h %tmp.199 78 24 25 ];
-        %tmp.200 = 12;
-        %tmp.201 = mul %tmp.199 %tmp.200;
-        %tmp.202 = 100;
-        %tmp.203 = div %tmp.201 %tmp.202;
-        symbol [ Graphics %tmp.204 78 38 46 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_70_8_78_8_if_stmt:
+        symbol [ _main %tmp.144 70 12 17 ];
+        %tmp.144 = getv ? :_main;
+        symbol [ tripEndUtcMoment %tmp.145 70 18 34 ];
+        %tmp.145 = getv %tmp.144 :tripEndUtcMoment;
+        %tmp.146 = null;
+        %tmp.147 = ne %tmp.145 %tmp.146;
+        bf %tmp.147 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_70_8_78_8_if_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_70_8_78_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_70_44_72_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 71 12 ]
+        %tmp.148 = self;
+        symbol [ fmtUtc %tmp.149 71 21 27 ];
+        %tmp.149 = getv function %tmp.148 :fmtUtc;
+        symbol [ _main %tmp.151 71 28 33 ];
+        %tmp.151 = getv ? :_main;
+        symbol [ tripEndUtcMoment %tmp.152 71 34 50 ];
+        %tmp.152 = getv %tmp.151 :tripEndUtcMoment;
+        %tmp.153 = as %tmp.152 Time.Moment;
+        symbol [ Time %tmp.153 71 54 58 ];
+        symbol [ Moment %tmp.153 71 59 65 ];
+        %tmp.154 = invoke %tmp.148 %tmp.149(%tmp.153);
+        lputv %endStr.9 %tmp.154;
+        symbol [ endStr %endStr.9 71 12 18 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_70_44_72_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_70_8_78_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_70_8_78_8_if_false:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 72 15 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_72_15_78_8_if_stmt:
+        symbol [ _main %tmp.156 72 20 25 ];
+        %tmp.156 = getv ? :_main;
+        %tmp.157 = as %tmp.156 VFRStopWatchView;
+        symbol [ VFRStopWatchView %tmp.157 72 29 45 ];
+        symbol [ tripEndUtcHour %tmp.158 72 47 61 ];
+        %tmp.158 = getv %tmp.157 :tripEndUtcHour;
+        %tmp.159 = 0;
+        %tmp.160 = gte %tmp.158 %tmp.159;
+        bf %tmp.160 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_72_15_78_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_72_15_78_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_72_68_78_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 73 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_72_68_78_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_72_68_78_8_stop" ]
+        %eh.10 = local;
+        symbol [ eh %eh.10 73 16 18 ];
+        symbol [ _main %tmp.162 73 22 27 ];
+        %tmp.162 = getv ? :_main;
+        %tmp.163 = as %tmp.162 VFRStopWatchView;
+        symbol [ VFRStopWatchView %tmp.163 73 31 47 ];
+        symbol [ tripEndUtcHour %tmp.164 73 49 63 ];
+        %tmp.164 = getv %tmp.163 :tripEndUtcHour;
+        lputv %eh.10 %tmp.164;
+        symbol [ eh %eh.10 73 16 18 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 74 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_72_68_78_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_72_68_78_8_stop" ]
+        %em.11 = local;
+        symbol [ em %em.11 74 16 18 ];
+        symbol [ _main %tmp.166 74 22 27 ];
+        %tmp.166 = getv ? :_main;
+        %tmp.167 = as %tmp.166 VFRStopWatchView;
+        symbol [ VFRStopWatchView %tmp.167 74 31 47 ];
+        symbol [ tripEndUtcMin %tmp.168 74 49 62 ];
+        %tmp.168 = getv %tmp.167 :tripEndUtcMin;
+        lputv %em.11 %tmp.168;
+        symbol [ em %em.11 74 16 18 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 75 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_72_68_78_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_72_68_78_8_stop" ]
+        %ehStr.12 = local;
+        symbol [ ehStr %ehStr.12 75 16 21 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_75_24_75_68_begin:
+        %tmp.169 = lgetv %eh.10;
+        symbol [ eh %tmp.169 75 24 26 ];
+        %tmp.170 = 10;
+        %tmp.171 = lt %tmp.169 %tmp.170;
+        bf %tmp.171 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_75_24_75_68_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_75_24_75_68_true:
+        %tmp.172 = "0";
+        %tmp.173 = lgetv %eh.10;
+        symbol [ eh %tmp.173 75 40 42 ];
+        symbol [ toString %tmp.174 75 43 51 ];
+        %tmp.174 = getv function %tmp.173 :toString;
+        %tmp.175 = invoke %tmp.173 %tmp.174();
+        %tmp.176 = add %tmp.172 %tmp.175;
+        push %tmp.176;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_75_24_75_68_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_75_24_75_68_else_false:
+        %tmp.177 = lgetv %eh.10;
+        symbol [ eh %tmp.177 75 56 58 ];
+        symbol [ toString %tmp.178 75 59 67 ];
+        %tmp.178 = getv function %tmp.177 :toString;
+        %tmp.179 = invoke %tmp.177 %tmp.178();
+        push %tmp.179;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_75_24_75_68_end:
+        %tmp.180 = phi [%tmp.171 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_75_24_75_68_begin] [%tmp.176 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_75_24_75_68_true] [%tmp.179 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_75_24_75_68_else_false] [%tmp.180 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_75_24_75_68_end];
+        lputv %ehStr.12 %tmp.180;
+        symbol [ ehStr %ehStr.12 75 16 21 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 76 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_72_68_78_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_72_68_78_8_stop" ]
+        %emStr.13 = local;
+        symbol [ emStr %emStr.13 76 16 21 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_24_76_68_begin:
+        %tmp.181 = lgetv %em.11;
+        symbol [ em %tmp.181 76 24 26 ];
+        %tmp.182 = 10;
+        %tmp.183 = lt %tmp.181 %tmp.182;
+        bf %tmp.183 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_24_76_68_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_24_76_68_true:
+        %tmp.184 = "0";
+        %tmp.185 = lgetv %em.11;
+        symbol [ em %tmp.185 76 40 42 ];
+        symbol [ toString %tmp.186 76 43 51 ];
+        %tmp.186 = getv function %tmp.185 :toString;
+        %tmp.187 = invoke %tmp.185 %tmp.186();
+        %tmp.188 = add %tmp.184 %tmp.187;
+        push %tmp.188;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_24_76_68_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_24_76_68_else_false:
+        %tmp.189 = lgetv %em.11;
+        symbol [ em %tmp.189 76 56 58 ];
+        symbol [ toString %tmp.190 76 59 67 ];
+        %tmp.190 = getv function %tmp.189 :toString;
+        %tmp.191 = invoke %tmp.189 %tmp.190();
+        push %tmp.191;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_24_76_68_end:
+        %tmp.192 = phi [%tmp.183 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_24_76_68_begin] [%tmp.188 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_24_76_68_true] [%tmp.191 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_24_76_68_else_false] [%tmp.192 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_24_76_68_end];
+        lputv %emStr.13 %tmp.192;
+        symbol [ emStr %emStr.13 76 16 21 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 77 12 ]
+        %tmp.193 = lgetv %ehStr.12;
+        symbol [ ehStr %tmp.193 77 21 26 ];
+        %tmp.194 = ":";
+        %tmp.195 = add %tmp.193 %tmp.194;
+        %tmp.196 = lgetv %emStr.13;
+        symbol [ emStr %tmp.196 77 35 40 ];
+        %tmp.197 = add %tmp.195 %tmp.196;
+        %tmp.198 = "Z";
+        %tmp.199 = add %tmp.197 %tmp.198;
+        lputv %endStr.9 %tmp.199;
+        symbol [ endStr %endStr.9 77 12 18 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_72_68_78_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_72_15_78_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_72_15_78_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_70_8_78_8_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 79 8 ]
+        %tmp.200 = lgetv %dc;
+        symbol [ dc %tmp.200 79 8 10 ];
+        symbol [ setColor %tmp.201 79 11 19 ];
+        %tmp.201 = getv function %tmp.200 :setColor;
+        symbol [ Graphics %tmp.202 79 20 28 ];
+        %tmp.202 = getm $.Toybox.Graphics;
+        symbol [ COLOR_LT_GRAY %tmp.203 79 29 42 ];
+        %tmp.203 = getv %tmp.202 :COLOR_LT_GRAY;
+        symbol [ Graphics %tmp.204 79 44 52 ];
         %tmp.204 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.205 78 47 57 ];
-        %tmp.205 = getv %tmp.204 :FONT_SMALL;
-        %tmp.206 = lgetv %ltStr.4;
-        symbol [ ltStr %tmp.206 78 59 64 ];
-        symbol [ Graphics %tmp.207 79 12 20 ];
-        %tmp.207 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.208 79 21 40 ];
-        %tmp.208 = getv %tmp.207 :TEXT_JUSTIFY_CENTER;
-        symbol [ Graphics %tmp.209 79 43 51 ];
-        %tmp.209 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_VCENTER %tmp.210 79 52 72 ];
-        %tmp.210 = getv %tmp.209 :TEXT_JUSTIFY_VCENTER;
-        %tmp.211 = bitor %tmp.208 %tmp.210;
-        invoke %tmp.196 %tmp.197(%tmp.198, %tmp.203, %tmp.205, %tmp.206, %tmp.211);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 81 8 ]
-        %tmp.212 = lgetv %dc;
-        symbol [ dc %tmp.212 81 8 10 ];
-        symbol [ setColor %tmp.213 81 11 19 ];
-        %tmp.213 = getv function %tmp.212 :setColor;
-        symbol [ Graphics %tmp.214 81 20 28 ];
+        symbol [ COLOR_TRANSPARENT %tmp.205 79 53 70 ];
+        %tmp.205 = getv %tmp.204 :COLOR_TRANSPARENT;
+        invoke %tmp.200 %tmp.201(%tmp.203, %tmp.205);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 80 8 ]
+        %tmp.206 = lgetv %dc;
+        symbol [ dc %tmp.206 80 8 10 ];
+        symbol [ drawText %tmp.207 80 11 19 ];
+        %tmp.207 = getv function %tmp.206 :drawText;
+        %tmp.208 = lgetv %cx.3;
+        symbol [ cx %tmp.208 80 20 22 ];
+        %tmp.209 = lgetv %h.2;
+        symbol [ h %tmp.209 80 24 25 ];
+        %tmp.210 = 52;
+        %tmp.211 = mul %tmp.209 %tmp.210;
+        %tmp.212 = 100;
+        %tmp.213 = div %tmp.211 %tmp.212;
+        symbol [ Graphics %tmp.214 80 38 46 ];
         %tmp.214 = getm $.Toybox.Graphics;
-        symbol [ COLOR_LT_GRAY %tmp.215 81 29 42 ];
-        %tmp.215 = getv %tmp.214 :COLOR_LT_GRAY;
-        symbol [ Graphics %tmp.216 81 44 52 ];
-        %tmp.216 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.217 81 53 70 ];
-        %tmp.217 = getv %tmp.216 :COLOR_TRANSPARENT;
-        invoke %tmp.212 %tmp.213(%tmp.215, %tmp.217);
+        symbol [ FONT_TINY %tmp.215 80 47 56 ];
+        %tmp.215 = getv %tmp.214 :FONT_TINY;
+        %tmp.216 = "END";
+        symbol [ Graphics %tmp.217 81 12 20 ];
+        %tmp.217 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.218 81 21 40 ];
+        %tmp.218 = getv %tmp.217 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.219 81 43 51 ];
+        %tmp.219 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.220 81 52 72 ];
+        %tmp.220 = getv %tmp.219 :TEXT_JUSTIFY_VCENTER;
+        %tmp.221 = bitor %tmp.218 %tmp.220;
+        invoke %tmp.206 %tmp.207(%tmp.208, %tmp.213, %tmp.215, %tmp.216, %tmp.221);
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 82 8 ]
-        %tmp.218 = lgetv %dc;
-        symbol [ dc %tmp.218 82 8 10 ];
-        symbol [ drawText %tmp.219 82 11 19 ];
-        %tmp.219 = getv function %tmp.218 :drawText;
-        %tmp.220 = lgetv %cx.3;
-        symbol [ cx %tmp.220 82 20 22 ];
-        %tmp.221 = lgetv %h.2;
-        symbol [ h %tmp.221 82 24 25 ];
-        %tmp.222 = 28;
-        %tmp.223 = mul %tmp.221 %tmp.222;
-        %tmp.224 = 100;
-        %tmp.225 = div %tmp.223 %tmp.224;
-        symbol [ Graphics %tmp.226 82 38 46 ];
+        %tmp.222 = lgetv %dc;
+        symbol [ dc %tmp.222 82 8 10 ];
+        symbol [ setColor %tmp.223 82 11 19 ];
+        %tmp.223 = getv function %tmp.222 :setColor;
+        symbol [ Graphics %tmp.224 82 20 28 ];
+        %tmp.224 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.225 82 29 40 ];
+        %tmp.225 = getv %tmp.224 :COLOR_WHITE;
+        symbol [ Graphics %tmp.226 82 42 50 ];
         %tmp.226 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.227 82 47 57 ];
-        %tmp.227 = getv %tmp.226 :FONT_SMALL;
-        %tmp.228 = lgetv %utcStr.10;
-        symbol [ utcStr %tmp.228 82 59 65 ];
-        symbol [ Graphics %tmp.229 83 12 20 ];
-        %tmp.229 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.230 83 21 40 ];
-        %tmp.230 = getv %tmp.229 :TEXT_JUSTIFY_CENTER;
-        symbol [ Graphics %tmp.231 83 43 51 ];
-        %tmp.231 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_VCENTER %tmp.232 83 52 72 ];
-        %tmp.232 = getv %tmp.231 :TEXT_JUSTIFY_VCENTER;
-        %tmp.233 = bitor %tmp.230 %tmp.232;
-        invoke %tmp.218 %tmp.219(%tmp.220, %tmp.225, %tmp.227, %tmp.228, %tmp.233);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 85 8 ]
-        %tmp.234 = lgetv %dc;
-        symbol [ dc %tmp.234 85 8 10 ];
-        symbol [ setColor %tmp.235 85 11 19 ];
-        %tmp.235 = getv function %tmp.234 :setColor;
-        symbol [ Graphics %tmp.236 85 20 28 ];
+        symbol [ COLOR_TRANSPARENT %tmp.227 82 51 68 ];
+        %tmp.227 = getv %tmp.226 :COLOR_TRANSPARENT;
+        invoke %tmp.222 %tmp.223(%tmp.225, %tmp.227);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 83 8 ]
+        %tmp.228 = lgetv %dc;
+        symbol [ dc %tmp.228 83 8 10 ];
+        symbol [ drawText %tmp.229 83 11 19 ];
+        %tmp.229 = getv function %tmp.228 :drawText;
+        %tmp.230 = lgetv %cx.3;
+        symbol [ cx %tmp.230 83 20 22 ];
+        %tmp.231 = lgetv %h.2;
+        symbol [ h %tmp.231 83 24 25 ];
+        %tmp.232 = 63;
+        %tmp.233 = mul %tmp.231 %tmp.232;
+        %tmp.234 = 100;
+        %tmp.235 = div %tmp.233 %tmp.234;
+        symbol [ Graphics %tmp.236 83 38 46 ];
         %tmp.236 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.237 85 29 40 ];
-        %tmp.237 = getv %tmp.236 :COLOR_WHITE;
-        symbol [ Graphics %tmp.238 85 42 50 ];
-        %tmp.238 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.239 85 51 68 ];
-        %tmp.239 = getv %tmp.238 :COLOR_TRANSPARENT;
-        invoke %tmp.234 %tmp.235(%tmp.237, %tmp.239);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 86 8 ]
-        %tmp.240 = lgetv %dc;
-        symbol [ dc %tmp.240 86 8 10 ];
-        symbol [ drawText %tmp.241 86 11 19 ];
-        %tmp.241 = getv function %tmp.240 :drawText;
-        %tmp.242 = lgetv %cx.3;
-        symbol [ cx %tmp.242 86 20 22 ];
-        %tmp.243 = lgetv %h.2;
-        symbol [ h %tmp.243 86 24 25 ];
-        %tmp.244 = 46;
-        %tmp.245 = mul %tmp.243 %tmp.244;
-        %tmp.246 = 100;
-        %tmp.247 = div %tmp.245 %tmp.246;
-        symbol [ Graphics %tmp.248 86 38 46 ];
-        %tmp.248 = getm $.Toybox.Graphics;
-        symbol [ FONT_MEDIUM %tmp.249 86 47 58 ];
-        %tmp.249 = getv %tmp.248 :FONT_MEDIUM;
-        %tmp.250 = lgetv %totalStr.17;
-        symbol [ totalStr %tmp.250 86 60 68 ];
-        symbol [ Graphics %tmp.251 87 12 20 ];
-        %tmp.251 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.252 87 21 40 ];
-        %tmp.252 = getv %tmp.251 :TEXT_JUSTIFY_CENTER;
-        symbol [ Graphics %tmp.253 87 43 51 ];
-        %tmp.253 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_VCENTER %tmp.254 87 52 72 ];
-        %tmp.254 = getv %tmp.253 :TEXT_JUSTIFY_VCENTER;
-        %tmp.255 = bitor %tmp.252 %tmp.254;
-        invoke %tmp.240 %tmp.241(%tmp.242, %tmp.247, %tmp.249, %tmp.250, %tmp.255);
+        symbol [ FONT_SMALL %tmp.237 83 47 57 ];
+        %tmp.237 = getv %tmp.236 :FONT_SMALL;
+        %tmp.238 = lgetv %endStr.9;
+        symbol [ endStr %tmp.238 83 59 65 ];
+        symbol [ Graphics %tmp.239 84 12 20 ];
+        %tmp.239 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.240 84 21 40 ];
+        %tmp.240 = getv %tmp.239 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.241 84 43 51 ];
+        %tmp.241 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.242 84 52 72 ];
+        %tmp.242 = getv %tmp.241 :TEXT_JUSTIFY_VCENTER;
+        %tmp.243 = bitor %tmp.240 %tmp.242;
+        invoke %tmp.228 %tmp.229(%tmp.230, %tmp.235, %tmp.237, %tmp.238, %tmp.243);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 87 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_37_40_94_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_37_40_94_4_stop" ]
+        %nmStr.14 = local;
+        symbol [ nmStr %nmStr.14 87 12 17 ];
+        %tmp.244 = self;
+        symbol [ fmtDist %tmp.245 87 20 27 ];
+        %tmp.245 = getv function %tmp.244 :fmtDist;
+        symbol [ _main %tmp.247 87 28 33 ];
+        %tmp.247 = getv ? :_main;
+        symbol [ totalDistanceM %tmp.248 87 34 48 ];
+        %tmp.248 = getv %tmp.247 :totalDistanceM;
+        %tmp.249 = 1852.0;
+        %tmp.250 = "NM";
+        %tmp.251 = invoke %tmp.244 %tmp.245(%tmp.248, %tmp.249, %tmp.250);
+        lputv %nmStr.14 %tmp.251;
+        symbol [ nmStr %nmStr.14 87 12 17 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 88 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_37_40_94_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_37_40_94_4_stop" ]
+        %kmStr.15 = local;
+        symbol [ kmStr %kmStr.15 88 12 17 ];
+        %tmp.252 = self;
+        symbol [ fmtDist %tmp.253 88 20 27 ];
+        %tmp.253 = getv function %tmp.252 :fmtDist;
+        symbol [ _main %tmp.255 88 28 33 ];
+        %tmp.255 = getv ? :_main;
+        symbol [ totalDistanceM %tmp.256 88 34 48 ];
+        %tmp.256 = getv %tmp.255 :totalDistanceM;
+        %tmp.257 = 1000.0;
+        %tmp.258 = "km";
+        %tmp.259 = invoke %tmp.252 %tmp.253(%tmp.256, %tmp.257, %tmp.258);
+        lputv %kmStr.15 %tmp.259;
+        symbol [ kmStr %kmStr.15 88 12 17 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 89 8 ]
-        %tmp.256 = lgetv %dc;
-        symbol [ dc %tmp.256 89 8 10 ];
-        symbol [ setColor %tmp.257 89 11 19 ];
-        %tmp.257 = getv function %tmp.256 :setColor;
-        symbol [ Graphics %tmp.258 89 20 28 ];
-        %tmp.258 = getm $.Toybox.Graphics;
-        symbol [ COLOR_YELLOW %tmp.259 89 29 41 ];
-        %tmp.259 = getv %tmp.258 :COLOR_YELLOW;
-        symbol [ Graphics %tmp.260 89 43 51 ];
-        %tmp.260 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.261 89 52 69 ];
-        %tmp.261 = getv %tmp.260 :COLOR_TRANSPARENT;
-        invoke %tmp.256 %tmp.257(%tmp.259, %tmp.261);
+        %tmp.260 = lgetv %dc;
+        symbol [ dc %tmp.260 89 8 10 ];
+        symbol [ setColor %tmp.261 89 11 19 ];
+        %tmp.261 = getv function %tmp.260 :setColor;
+        symbol [ Graphics %tmp.262 89 20 28 ];
+        %tmp.262 = getm $.Toybox.Graphics;
+        symbol [ COLOR_YELLOW %tmp.263 89 29 41 ];
+        %tmp.263 = getv %tmp.262 :COLOR_YELLOW;
+        symbol [ Graphics %tmp.264 89 43 51 ];
+        %tmp.264 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.265 89 52 69 ];
+        %tmp.265 = getv %tmp.264 :COLOR_TRANSPARENT;
+        invoke %tmp.260 %tmp.261(%tmp.263, %tmp.265);
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 90 8 ]
-        %tmp.262 = lgetv %dc;
-        symbol [ dc %tmp.262 90 8 10 ];
-        symbol [ drawText %tmp.263 90 11 19 ];
-        %tmp.263 = getv function %tmp.262 :drawText;
-        %tmp.264 = lgetv %cx.3;
-        symbol [ cx %tmp.264 90 20 22 ];
-        %tmp.265 = lgetv %h.2;
-        symbol [ h %tmp.265 90 24 25 ];
-        %tmp.266 = 64;
-        %tmp.267 = mul %tmp.265 %tmp.266;
-        %tmp.268 = 100;
-        %tmp.269 = div %tmp.267 %tmp.268;
-        symbol [ Graphics %tmp.270 90 38 46 ];
-        %tmp.270 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.271 90 47 57 ];
-        %tmp.271 = getv %tmp.270 :FONT_SMALL;
-        %tmp.272 = lgetv %nmStr.27;
-        symbol [ nmStr %tmp.272 90 59 64 ];
-        symbol [ Graphics %tmp.273 91 12 20 ];
-        %tmp.273 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.274 91 21 40 ];
-        %tmp.274 = getv %tmp.273 :TEXT_JUSTIFY_CENTER;
-        symbol [ Graphics %tmp.275 91 43 51 ];
-        %tmp.275 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_VCENTER %tmp.276 91 52 72 ];
-        %tmp.276 = getv %tmp.275 :TEXT_JUSTIFY_VCENTER;
-        %tmp.277 = bitor %tmp.274 %tmp.276;
-        invoke %tmp.262 %tmp.263(%tmp.264, %tmp.269, %tmp.271, %tmp.272, %tmp.277);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 93 8 ]
-        %tmp.278 = lgetv %dc;
-        symbol [ dc %tmp.278 93 8 10 ];
-        symbol [ setColor %tmp.279 93 11 19 ];
-        %tmp.279 = getv function %tmp.278 :setColor;
-        symbol [ Graphics %tmp.280 93 20 28 ];
-        %tmp.280 = getm $.Toybox.Graphics;
-        symbol [ COLOR_YELLOW %tmp.281 93 29 41 ];
-        %tmp.281 = getv %tmp.280 :COLOR_YELLOW;
-        symbol [ Graphics %tmp.282 93 43 51 ];
-        %tmp.282 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.283 93 52 69 ];
-        %tmp.283 = getv %tmp.282 :COLOR_TRANSPARENT;
-        invoke %tmp.278 %tmp.279(%tmp.281, %tmp.283);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 94 8 ]
-        %tmp.284 = lgetv %dc;
-        symbol [ dc %tmp.284 94 8 10 ];
-        symbol [ drawText %tmp.285 94 11 19 ];
-        %tmp.285 = getv function %tmp.284 :drawText;
-        %tmp.286 = lgetv %cx.3;
-        symbol [ cx %tmp.286 94 20 22 ];
-        %tmp.287 = lgetv %h.2;
-        symbol [ h %tmp.287 94 24 25 ];
-        %tmp.288 = 80;
-        %tmp.289 = mul %tmp.287 %tmp.288;
-        %tmp.290 = 100;
-        %tmp.291 = div %tmp.289 %tmp.290;
-        symbol [ Graphics %tmp.292 94 38 46 ];
-        %tmp.292 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.293 94 47 57 ];
-        %tmp.293 = getv %tmp.292 :FONT_SMALL;
-        %tmp.294 = lgetv %kmStr.23;
-        symbol [ kmStr %tmp.294 94 59 64 ];
-        symbol [ Graphics %tmp.295 95 12 20 ];
+        %tmp.266 = lgetv %dc;
+        symbol [ dc %tmp.266 90 8 10 ];
+        symbol [ drawText %tmp.267 90 11 19 ];
+        %tmp.267 = getv function %tmp.266 :drawText;
+        %tmp.268 = lgetv %cx.3;
+        symbol [ cx %tmp.268 90 20 22 ];
+        %tmp.269 = lgetv %h.2;
+        symbol [ h %tmp.269 90 24 25 ];
+        %tmp.270 = 78;
+        %tmp.271 = mul %tmp.269 %tmp.270;
+        %tmp.272 = 100;
+        %tmp.273 = div %tmp.271 %tmp.272;
+        symbol [ Graphics %tmp.274 90 38 46 ];
+        %tmp.274 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.275 90 47 56 ];
+        %tmp.275 = getv %tmp.274 :FONT_TINY;
+        %tmp.276 = lgetv %nmStr.14;
+        symbol [ nmStr %tmp.276 90 58 63 ];
+        symbol [ Graphics %tmp.277 91 12 20 ];
+        %tmp.277 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.278 91 21 40 ];
+        %tmp.278 = getv %tmp.277 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.279 91 43 51 ];
+        %tmp.279 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.280 91 52 72 ];
+        %tmp.280 = getv %tmp.279 :TEXT_JUSTIFY_VCENTER;
+        %tmp.281 = bitor %tmp.278 %tmp.280;
+        invoke %tmp.266 %tmp.267(%tmp.268, %tmp.273, %tmp.275, %tmp.276, %tmp.281);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 92 8 ]
+        %tmp.282 = lgetv %dc;
+        symbol [ dc %tmp.282 92 8 10 ];
+        symbol [ drawText %tmp.283 92 11 19 ];
+        %tmp.283 = getv function %tmp.282 :drawText;
+        %tmp.284 = lgetv %cx.3;
+        symbol [ cx %tmp.284 92 20 22 ];
+        %tmp.285 = lgetv %h.2;
+        symbol [ h %tmp.285 92 24 25 ];
+        %tmp.286 = 90;
+        %tmp.287 = mul %tmp.285 %tmp.286;
+        %tmp.288 = 100;
+        %tmp.289 = div %tmp.287 %tmp.288;
+        symbol [ Graphics %tmp.290 92 38 46 ];
+        %tmp.290 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.291 92 47 56 ];
+        %tmp.291 = getv %tmp.290 :FONT_TINY;
+        %tmp.292 = lgetv %kmStr.15;
+        symbol [ kmStr %tmp.292 92 58 63 ];
+        symbol [ Graphics %tmp.293 93 12 20 ];
+        %tmp.293 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.294 93 21 40 ];
+        %tmp.294 = getv %tmp.293 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.295 93 43 51 ];
         %tmp.295 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.296 95 21 40 ];
-        %tmp.296 = getv %tmp.295 :TEXT_JUSTIFY_CENTER;
-        symbol [ Graphics %tmp.297 95 43 51 ];
-        %tmp.297 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_VCENTER %tmp.298 95 52 72 ];
-        %tmp.298 = getv %tmp.297 :TEXT_JUSTIFY_VCENTER;
-        %tmp.299 = bitor %tmp.296 %tmp.298;
-        invoke %tmp.284 %tmp.285(%tmp.286, %tmp.291, %tmp.293, %tmp.294, %tmp.299);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 97 8 ]
-        symbol [ WatchUi %tmp.300 97 8 15 ];
-        %tmp.300 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.301 97 16 29 ];
-        %tmp.301 = getv function %tmp.300 :requestUpdate;
-        invoke %tmp.300 %tmp.301();
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_40_98_4_stop:
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.296 93 52 72 ];
+        %tmp.296 = getv %tmp.295 :TEXT_JUSTIFY_VCENTER;
+        %tmp.297 = bitor %tmp.294 %tmp.296;
+        invoke %tmp.282 %tmp.283(%tmp.284, %tmp.289, %tmp.291, %tmp.292, %tmp.297);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_37_40_94_4_stop:
     }
 }
-[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 101; @symbol_classdef = [VFRSummaryDelegate,101,6,24]; @symbol_extends<0> = [WatchUi,101,33,40]; @symbol_extends<1> = [BehaviorDelegate,101,41,57]; ]
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 97; @symbol_classdef = [VFRSummaryDelegate,97,6,24]; @symbol_extends<0> = [WatchUi,97,33,40]; @symbol_extends<1> = [BehaviorDelegate,97,41,57]; ]
 class VFRSummaryDelegate extends WatchUi.BehaviorDelegate {
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 101; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 97; ]
     <init> {
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 101; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 97; ]
     static
     <init> {
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 102; @symbol_functiondef = [initialize,102,13,23]; ]
-    function initialize() as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_102_26_102_59_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 102 28 ]
-        symbol [ BehaviorDelegate %tmp.2 102 28 44 ];
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 98; @position = 16; @symbol_vardef = [_main,98,16,21]; @symbol_type<0> = [VFRStopWatchView,98,25,41]; ]
+    private
+    var _main as VFRStopWatchView;
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 100; @symbol_functiondef = [initialize,100,13,23]; @symbol_param<0> = [mainView,100,24,32]; @symbol_param<0>_type<0> = [VFRStopWatchView,100,36,52]; ]
+    function initialize(mainView as VFRStopWatchView) as Void {
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_100_54_103_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 101 8 ]
+        symbol [ BehaviorDelegate %tmp.2 101 8 24 ];
         %tmp.2 = getv ? :BehaviorDelegate;
-        symbol [ initialize %tmp.3 102 45 55 ];
+        symbol [ initialize %tmp.3 101 25 35 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_102_26_102_59_stop:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 102 8 ]
+        %tmp.4 = lgetv %mainView;
+        symbol [ mainView %tmp.4 102 16 24 ];
+        symbol [ _main ? 102 8 13 ];
+        putv self :_main %tmp.4;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_100_54_103_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 104; @symbol_functiondef = [onBack,104,13,19]; @symbol_return<0> = [Boolean,104,25,32]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 106; @symbol_functiondef = [onBack,106,13,19]; @symbol_return<0> = [Boolean,106,25,32]; ]
     function onBack() as Boolean {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_104_33_107_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 105 8 ]
-        symbol [ WatchUi %tmp.1 105 8 15 ];
-        %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.2 105 16 23 ];
-        %tmp.2 = getv function %tmp.1 :popView;
-        symbol [ WatchUi %tmp.3 105 24 31 ];
-        %tmp.3 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.4 105 32 43 ];
-        %tmp.4 = getv %tmp.3 :SLIDE_RIGHT;
-        invoke %tmp.1 %tmp.2(%tmp.4);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 106 8 ]
-        %tmp.5 = true;
-        ret %tmp.5;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_104_33_107_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_106_33_110_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 107 8 ]
+        symbol [ _main %tmp.2 107 8 13 ];
+        %tmp.2 = getv ? :_main;
+        symbol [ clearBackupProperties %tmp.3 107 14 35 ];
+        %tmp.3 = getv function %tmp.2 :clearBackupProperties;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 108 8 ]
+        symbol [ WatchUi %tmp.4 108 8 15 ];
+        %tmp.4 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.5 108 16 23 ];
+        %tmp.5 = getv function %tmp.4 :popView;
+        symbol [ WatchUi %tmp.6 108 24 31 ];
+        %tmp.6 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.7 108 32 43 ];
+        %tmp.7 = getv %tmp.6 :SLIDE_RIGHT;
+        invoke %tmp.4 %tmp.5(%tmp.7);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 109 8 ]
+        %tmp.8 = true;
+        ret %tmp.8;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_106_33_110_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 109; @symbol_functiondef = [onSelect,109,13,21]; @symbol_return<0> = [Boolean,109,27,34]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 112; @symbol_functiondef = [onSelect,112,13,21]; @symbol_return<0> = [Boolean,112,27,34]; ]
     function onSelect() as Boolean {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_109_35_113_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 111 8 ]
-        symbol [ WatchUi %tmp.1 111 8 15 ];
-        %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.2 111 16 23 ];
-        %tmp.2 = getv function %tmp.1 :popView;
-        symbol [ WatchUi %tmp.3 111 24 31 ];
-        %tmp.3 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.4 111 32 43 ];
-        %tmp.4 = getv %tmp.3 :SLIDE_RIGHT;
-        invoke %tmp.1 %tmp.2(%tmp.4);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 112 8 ]
-        %tmp.5 = true;
-        ret %tmp.5;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_109_35_113_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_35_116_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 113 8 ]
+        symbol [ _main %tmp.2 113 8 13 ];
+        %tmp.2 = getv ? :_main;
+        symbol [ clearBackupProperties %tmp.3 113 14 35 ];
+        %tmp.3 = getv function %tmp.2 :clearBackupProperties;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 114 8 ]
+        symbol [ WatchUi %tmp.4 114 8 15 ];
+        %tmp.4 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.5 114 16 23 ];
+        %tmp.5 = getv function %tmp.4 :popView;
+        symbol [ WatchUi %tmp.6 114 24 31 ];
+        %tmp.6 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.7 114 32 43 ];
+        %tmp.7 = getv %tmp.6 :SLIDE_RIGHT;
+        invoke %tmp.4 %tmp.5(%tmp.7);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 115 8 ]
+        %tmp.8 = true;
+        ret %tmp.8;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_35_116_4_stop:
     }
 }
 [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 1; ]

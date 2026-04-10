@@ -12,15 +12,15 @@ class VFRStopWatchMenuDelegate extends WatchUi.MenuInputDelegate {
     function onMenuItem(item as Symbol) as Void {
         if (item == :item_1) {
             // Start/Stop
-            var view = WatchUi.getCurrentView() as VFRStopWatchView;
+            var view = getApp()._view;
             if (view != null) {
-                view.startStop();
+                (view as VFRStopWatchView).startStop();
             }
         } else if (item == :item_2) {
             // Reset
-            var view = WatchUi.getCurrentView() as VFRStopWatchView;
+            var view = getApp()._view;
             if (view != null) {
-                view.reset();
+                (view as VFRStopWatchView).reset();
             }
         } else if (item == :item_3) {
             // Delegate to the view's helper to avoid code duplication

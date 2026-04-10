@@ -21,9 +21,15 @@ class VFRStopWatchView extends WatchUi.View {
     var lastUpdateTimer  as Number = 0;   // System.getTimer() at last onUpdate
     var totalDistanceM   as Float  = 0.0; // meters accumulated since reset
 
-    // Trip start timestamps (set when the stopwatch is started)
-    var tripStartLocal    as Object? = null; // result of System.getClockTime()
-    var tripStartUtcMoment as Time.Moment? = null;    // result of Time.now()
+    // Trip start/end timestamps
+    var tripStartLocal     as Object?       = null; // result of System.getClockTime()
+    var tripStartUtcMoment as Time.Moment?  = null; // result of Time.now()
+    var tripEndUtcMoment   as Time.Moment?  = null; // captured when activity is stopped
+    // Also store simple hour/min snapshots for persistence/display without Moment
+    var tripStartUtcHour   as Number = -1;
+    var tripStartUtcMin    as Number = -1;
+    var tripEndUtcHour     as Number = -1;
+    var tripEndUtcMin      as Number = -1;
 
     // --- 5-minute checkpoint state ---
     var nextVibrateAt    as Number = 300000; // elapsed ms when next alert fires
@@ -72,6 +78,14 @@ class VFRStopWatchView extends WatchUi.View {
     var gpsQuality as Number = 0;
     // Last time (System.getTimer()) we received a Position.onPosition callback
     var lastPositionMillis as Number = 0;
+    // Periodic backup gate (ms)
+    var lastBackupMillis as Number = 0;
+    var BACKUP_INTERVAL_MS as Number = 30000; // 30s
+
+    // --- Resume prompt + auto-stop on zero speed ---
+    var needsResumePrompt  as Boolean = false;
+    var zeroSpeedStartMs   as Number  = 0;
+    var AUTO_STOP_DELAY_MS as Number  = 3000; // auto-stop after 3s at speed=0
 
     // --- GPS activity recording ---
     // One session per start/stop cycle; saved as a FIT activity on stop.
@@ -174,6 +188,10 @@ class VFRStopWatchView extends WatchUi.View {
         lastUpdateTimer = System.getTimer();
         loadSettings();
         restartGps();
+        if (needsResumePrompt) {
+            needsResumePrompt = false;
+            WatchUi.pushView(new VFRResumeView(self), new VFRResumeDelegate(self), WatchUi.SLIDE_UP);
+        }
         WatchUi.requestUpdate();
     }
 
@@ -182,12 +200,6 @@ class VFRStopWatchView extends WatchUi.View {
         // Update cached quality and timestamp so we can detect stale fixes
         if (info != null) {
             if (info.accuracy != null) { gpsQuality = info.accuracy; }
-            // Log full position for debugging altitude recording
-            try {
-                System.println("POSITION INFO: " + info.toString());
-            } catch (ex instanceof Lang.Exception) {
-                System.println("POSITION logging failed: " + ex.getErrorMessage());
-            }
         }
         lastPositionMillis = System.getTimer();
         WatchUi.requestUpdate();
@@ -203,6 +215,11 @@ class VFRStopWatchView extends WatchUi.View {
             // record trip start wall-clock times
             tripStartLocal = System.getClockTime();
             tripStartUtcMoment = Time.now();
+            try {
+                var info = Gregorian.utcInfo((tripStartUtcMoment as Time.Moment), Time.FORMAT_SHORT);
+                tripStartUtcHour = info.hour;
+                tripStartUtcMin = info.min;
+            } catch (ex) { }
             // Start the fuel check counter relative to current elapsed
             nextFuelCheckAt = elapsed + FUEL_CHECK_INTERVAL_MS;
             lastUpdateTimer = System.getTimer();
@@ -215,6 +232,11 @@ class VFRStopWatchView extends WatchUi.View {
                 });
                 _session.start();
                 System.println("ActivityRecording session started");
+            }
+            // Notify phone of flight start
+            var commsStart = getApp().getComms();
+            if (commsStart != null && tripStartUtcMoment != null) {
+                try { commsStart.sendFlightStart((tripStartUtcMoment as Time.Moment).value().toNumber()); } catch (ex) {}
             }
             WatchUi.requestUpdate();
         } else if (running && !checkpointActive && timerIntervalMs > 0) {
@@ -229,19 +251,7 @@ class VFRStopWatchView extends WatchUi.View {
             WatchUi.requestUpdate();
         } else {
             // Third press (running and checkpointActive): stop the stopwatch
-            running = false;
-            elapsed = System.getTimer() - startTime;
-            checkpointActive = false;
-            // Stop and save the GPS recording session as a FIT activity
-            if (_session != null) {
-                if (_session.isRecording()) {
-                    _session.stop();
-                }
-                _session.save();
-                _session = null;
-                System.println("ActivityRecording session saved");
-            }
-            WatchUi.requestUpdate();
+            autoStop();
         }
     }
 
@@ -276,7 +286,14 @@ class VFRStopWatchView extends WatchUi.View {
         startTime = System.getTimer();
         tripStartLocal = null;
         tripStartUtcMoment = null;
+        tripEndUtcMoment = null;
+        tripStartUtcHour = -1;
+        tripStartUtcMin  = -1;
+        tripEndUtcHour   = -1;
+        tripEndUtcMin    = -1;
+        zeroSpeedStartMs = 0;
         lastUpdateTimer = System.getTimer();
+        clearBackupProperties();
         WatchUi.requestUpdate();
     }
 
@@ -300,6 +317,9 @@ class VFRStopWatchView extends WatchUi.View {
 
     function onUpdate(dc as Dc) as Void {
         var now = System.getTimer();
+        // Drive phone comms retry logic
+        var comms = getApp().getComms();
+        if (comms != null) { comms.tick(now); }
         // Single Activity.Info fetch — shared by GPS accumulation, HR and auto-start
         var actInfo = Activity.getActivityInfo();
 
@@ -334,6 +354,37 @@ class VFRStopWatchView extends WatchUi.View {
                 fuelFlashUntil = now + 5000; // flash for 5 seconds
                 doFuelAlert();
                 nextFuelCheckAt += FUEL_CHECK_INTERVAL_MS;
+            }
+
+            // Auto-stop if speed is truly zero for AUTO_STOP_DELAY_MS.
+            // Only count while GPS fix is good (quality >= 3) and speed is
+            // explicitly non-null — a null speed means GPS is lost, not grounded.
+            if (actInfo != null && gpsQuality >= 3) {
+                var aspd = actInfo.currentSpeed;
+                if (aspd != null && (aspd as Float) < 0.5) {
+                    // Confirmed zero speed with a good GPS fix
+                    if (zeroSpeedStartMs == 0) { zeroSpeedStartMs = now; }
+                    else if ((now - zeroSpeedStartMs) >= AUTO_STOP_DELAY_MS) {
+                        zeroSpeedStartMs = 0;
+                        autoStop();
+                    }
+                } else {
+                    // Speed > 0, null (no fix), or GPS quality dropped — reset counter
+                    zeroSpeedStartMs = 0;
+                }
+            } else {
+                // GPS not good enough to make a call — reset counter to avoid false trigger
+                zeroSpeedStartMs = 0;
+            }
+        }
+
+        // Periodic on-disk backup: save a compact state to Application settings
+        if ((now - lastBackupMillis) >= BACKUP_INTERVAL_MS) {
+            try {
+                saveBackupProperties();
+                lastBackupMillis = now;
+            } catch (ex) {
+                System.println("backup failed: " + ex.getErrorMessage());
             }
         }
 
@@ -514,6 +565,21 @@ class VFRStopWatchView extends WatchUi.View {
                 Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         }
 
+        // --- Phone connection indicator (top-right corner) ---
+        // Green "PHN" = fully connected; Yellow "CONN" = handshaking
+        var commsIndicator = getApp().getComms();
+        if (commsIndicator != null) {
+            if (commsIndicator.connected) {
+                dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_TRANSPARENT);
+                dc.drawText(w - 8, h * 9 / 100, Graphics.FONT_TINY, "PHN",
+                    Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER);
+            } else if (commsIndicator.connecting) {
+                dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
+                dc.drawText(w - 8, h * 9 / 100, Graphics.FONT_TINY, "CONN",
+                    Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER);
+            }
+        }
+
         if (running || subTimerState == 1 || hrAlertActive || fuelFlashActive || autoStartEnabled || gpsQuality < 3) {
             WatchUi.requestUpdate();
         }
@@ -530,6 +596,161 @@ class VFRStopWatchView extends WatchUi.View {
             lapKm = totalDistanceM / 1000.0;
             lapNm = totalDistanceM / 1852.0;
         }
+        WatchUi.requestUpdate();
+    }
+
+    // Persistable state helpers ------------------------------------------------
+    function saveState() as Dictionary {
+        var d = new Dictionary();
+        d["running"] = running;
+        d["startTime"] = startTime;
+        // When running, 'elapsed' field is 0; compute live elapsed for persistence
+        d["elapsed"] = running ? (System.getTimer() - startTime) : elapsed;
+        d["totalDistanceM"] = totalDistanceM;
+        d["checkpointActive"] = checkpointActive;
+        d["nextVibrateAt"] = nextVibrateAt;
+        d["kmAtCheckpoint"] = kmAtCheckpoint;
+        d["nmAtCheckpoint"] = nmAtCheckpoint;
+        d["lapMode"] = lapMode;
+        d["lapElapsed"] = lapElapsed;
+        d["lapKm"] = lapKm;
+        d["lapNm"] = lapNm;
+        d["subTimerState"] = subTimerState;
+        d["subTimerStart"] = subTimerStart;
+        d["subTimerElapsed"] = subTimerElapsed;
+        // Save trip start/end times as epoch numbers if available
+        // Save simple hour/min snapshots for display on restore
+        if (tripStartUtcHour >= 0) { d["tripStartUtcHour"] = tripStartUtcHour; }
+        if (tripStartUtcMin  >= 0) { d["tripStartUtcMin"]  = tripStartUtcMin; }
+        if (tripEndUtcHour   >= 0) { d["tripEndUtcHour"]   = tripEndUtcHour; }
+        if (tripEndUtcMin    >= 0) { d["tripEndUtcMin"]    = tripEndUtcMin; }
+        return d;
+    }
+
+    function loadState(d as Dictionary) as Void {
+        if (d == null) { return; }
+        if (d["running"] != null) { running = d["running"] as Boolean; }
+        if (d["startTime"] != null) { startTime = d["startTime"] as Number; }
+        if (d["elapsed"] != null) { elapsed = d["elapsed"] as Number; }
+        if (d["totalDistanceM"] != null) { totalDistanceM = d["totalDistanceM"] as Float; }
+        if (d["checkpointActive"] != null) { checkpointActive = d["checkpointActive"] as Boolean; }
+        if (d["nextVibrateAt"] != null) { nextVibrateAt = d["nextVibrateAt"] as Number; }
+        if (d["kmAtCheckpoint"] != null) { kmAtCheckpoint = d["kmAtCheckpoint"] as Float; }
+        if (d["nmAtCheckpoint"] != null) { nmAtCheckpoint = d["nmAtCheckpoint"] as Float; }
+        if (d["lapMode"] != null) { lapMode = d["lapMode"] as Boolean; }
+        if (d["lapElapsed"] != null) { lapElapsed = d["lapElapsed"] as Number; }
+        if (d["lapKm"] != null) { lapKm = d["lapKm"] as Float; }
+        if (d["lapNm"] != null) { lapNm = d["lapNm"] as Float; }
+        if (d["subTimerState"] != null) { subTimerState = d["subTimerState"] as Number; }
+        if (d["subTimerStart"] != null) { subTimerStart = d["subTimerStart"] as Number; }
+        if (d["subTimerElapsed"] != null) { subTimerElapsed = d["subTimerElapsed"] as Number; }
+        if (d["tripStartUtcHour"] != null) { tripStartUtcHour = d["tripStartUtcHour"] as Number; }
+        if (d["tripStartUtcMin"]  != null) { tripStartUtcMin  = d["tripStartUtcMin"]  as Number; }
+        if (d["tripEndUtcHour"]   != null) { tripEndUtcHour   = d["tripEndUtcHour"]   as Number; }
+        if (d["tripEndUtcMin"]    != null) { tripEndUtcMin    = d["tripEndUtcMin"]    as Number; }
+        // Ensure UI updates to reflect restored state
+        WatchUi.requestUpdate();
+    }
+
+    // Stop the activity from any running state; push summary screen
+    function autoStop() as Void {
+        if (!running) { return; }
+        running = false;
+        elapsed = System.getTimer() - startTime;
+        tripEndUtcMoment = Time.now();
+        try {
+            var einfo = Gregorian.utcInfo((tripEndUtcMoment as Time.Moment), Time.FORMAT_SHORT);
+            tripEndUtcHour = einfo.hour;
+            tripEndUtcMin = einfo.min;
+        } catch (ex) { }
+        checkpointActive = false;
+        zeroSpeedStartMs = 0;
+        if (_session != null) {
+            if (_session.isRecording()) { _session.stop(); }
+            _session.save();
+            _session = null;
+            System.println("ActivityRecording session saved (autoStop)");
+        }
+        saveBackupProperties(); // persist so summary survives a kill
+        // Notify phone of flight stop
+        var commsStop = getApp().getComms();
+        if (commsStop != null && tripEndUtcMoment != null) {
+            try { commsStop.sendFlightStop((tripEndUtcMoment as Time.Moment).value().toNumber()); } catch (ex) {}
+        }
+        WatchUi.pushView(new VFRSummaryView(self), new VFRSummaryDelegate(self), WatchUi.SLIDE_UP);
+    }
+
+    // Clear the on-disk backup (call on reset so no stale resume prompt appears)
+    function clearBackupProperties() as Void {
+        try {
+            Application.Properties.setValue("vfr_backup_hasBackup", false);
+        } catch (ex) {
+            System.println("clearBackupProperties failed: " + ex.getErrorMessage());
+        }
+    }
+
+    // Save/Load backup to Application.Properties as individual keys
+    function saveBackupProperties() as Void {
+        try {
+            // When running, the 'elapsed' field is 0; compute live elapsed instead
+            var liveElapsed = running ? (System.getTimer() - startTime) : elapsed;
+            Application.Properties.setValue("vfr_backup_hasBackup", true);
+            Application.Properties.setValue("vfr_backup_running", running);
+            Application.Properties.setValue("vfr_backup_startTime", startTime);
+            Application.Properties.setValue("vfr_backup_elapsed", liveElapsed);
+            Application.Properties.setValue("vfr_backup_totalDistanceM", totalDistanceM);
+            Application.Properties.setValue("vfr_backup_checkpointActive", checkpointActive);
+            Application.Properties.setValue("vfr_backup_nextVibrateAt", nextVibrateAt);
+            Application.Properties.setValue("vfr_backup_kmAtCheckpoint", kmAtCheckpoint);
+            Application.Properties.setValue("vfr_backup_nmAtCheckpoint", nmAtCheckpoint);
+            Application.Properties.setValue("vfr_backup_lapMode", lapMode);
+            Application.Properties.setValue("vfr_backup_lapElapsed", lapElapsed);
+            Application.Properties.setValue("vfr_backup_lapKm", lapKm);
+            Application.Properties.setValue("vfr_backup_lapNm", lapNm);
+            Application.Properties.setValue("vfr_backup_subTimerState", subTimerState);
+            Application.Properties.setValue("vfr_backup_subTimerStart", subTimerStart);
+            Application.Properties.setValue("vfr_backup_subTimerElapsed", subTimerElapsed);
+            Application.Properties.setValue("vfr_backup_tripStartUtcHour", tripStartUtcHour);
+            Application.Properties.setValue("vfr_backup_tripStartUtcMin", tripStartUtcMin);
+            Application.Properties.setValue("vfr_backup_tripEndUtcHour", tripEndUtcHour);
+            Application.Properties.setValue("vfr_backup_tripEndUtcMin", tripEndUtcMin);
+        } catch (ex) {
+            System.println("saveBackupProperties failed: " + ex.getErrorMessage());
+        }
+    }
+
+    function loadBackupProperties() as Void {
+        // Only restore if a valid backup was previously saved
+        try {
+            var hasBackup = Application.Properties.getValue("vfr_backup_hasBackup");
+            if (hasBackup == null || !(hasBackup as Boolean)) { return; }
+        } catch (ex) { return; }
+        try {
+            var v = Application.Properties.getValue("vfr_backup_running"); if (v != null) { running = v as Boolean; }
+            v = Application.Properties.getValue("vfr_backup_startTime"); if (v != null) { startTime = v as Number; }
+            v = Application.Properties.getValue("vfr_backup_elapsed"); if (v != null) { elapsed = v as Number; }
+            v = Application.Properties.getValue("vfr_backup_totalDistanceM"); if (v != null) { totalDistanceM = v as Float; }
+            v = Application.Properties.getValue("vfr_backup_checkpointActive"); if (v != null) { checkpointActive = v as Boolean; }
+            v = Application.Properties.getValue("vfr_backup_nextVibrateAt"); if (v != null) { nextVibrateAt = v as Number; }
+            v = Application.Properties.getValue("vfr_backup_kmAtCheckpoint"); if (v != null) { kmAtCheckpoint = v as Float; }
+            v = Application.Properties.getValue("vfr_backup_nmAtCheckpoint"); if (v != null) { nmAtCheckpoint = v as Float; }
+            v = Application.Properties.getValue("vfr_backup_lapMode"); if (v != null) { lapMode = v as Boolean; }
+            v = Application.Properties.getValue("vfr_backup_lapElapsed"); if (v != null) { lapElapsed = v as Number; }
+            v = Application.Properties.getValue("vfr_backup_lapKm"); if (v != null) { lapKm = v as Float; }
+            v = Application.Properties.getValue("vfr_backup_lapNm"); if (v != null) { lapNm = v as Float; }
+            v = Application.Properties.getValue("vfr_backup_subTimerState"); if (v != null) { subTimerState = v as Number; }
+            v = Application.Properties.getValue("vfr_backup_subTimerStart"); if (v != null) { subTimerStart = v as Number; }
+            v = Application.Properties.getValue("vfr_backup_subTimerElapsed"); if (v != null) { subTimerElapsed = v as Number; }
+            v = Application.Properties.getValue("vfr_backup_tripStartUtcHour"); if (v != null) { tripStartUtcHour = v as Number; }
+            v = Application.Properties.getValue("vfr_backup_tripStartUtcMin"); if (v != null) { tripStartUtcMin = v as Number; }
+            v = Application.Properties.getValue("vfr_backup_tripEndUtcHour"); if (v != null) { tripEndUtcHour = v as Number; }
+            v = Application.Properties.getValue("vfr_backup_tripEndUtcMin"); if (v != null) { tripEndUtcMin = v as Number; }
+        } catch (ex) {
+            System.println("loadBackupProperties failed: " + ex.getErrorMessage());
+        }
+        // Timer cannot continue across a kill; pause and let user resume manually
+        running = false;
+        if (elapsed > 0) { needsResumePrompt = true; }
         WatchUi.requestUpdate();
     }
 
@@ -575,9 +796,13 @@ class VFRStopWatchView extends WatchUi.View {
         try {
             var pattern = [
                 new Attention.VibeProfile(100, 200),
+                new Attention.VibeProfile(1,   100),
                 new Attention.VibeProfile(100, 200),
+                new Attention.VibeProfile(1,   100),
                 new Attention.VibeProfile(100, 200),
+                new Attention.VibeProfile(1,   100),
                 new Attention.VibeProfile(100, 200),
+                new Attention.VibeProfile(1,   100),
                 new Attention.VibeProfile(100, 200)
             ];
             Attention.vibrate(pattern);

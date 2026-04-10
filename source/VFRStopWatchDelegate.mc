@@ -19,17 +19,12 @@ class VFRStopWatchDelegate extends WatchUi.BehaviorDelegate {
 
     // BACK button → exit app (return to watch face)
     function onBack() as Boolean {
-        System.exit();
+        WatchUi.popView(WatchUi.SLIDE_RIGHT);
         return true;
     }
 
     // UP button → sub-timer (start → stop → back to main)
     function onPreviousPage() as Boolean {
-        // If the main stopwatch is stopped (we have an elapsed trip), show summary
-        if (!_view.running && _view.elapsed > 0) {
-            WatchUi.pushView(new VFRSummaryView(_view), new VFRSummaryDelegate(), WatchUi.SLIDE_UP);
-            return true;
-        }
         _view.subTimer();
         return true;
     }
