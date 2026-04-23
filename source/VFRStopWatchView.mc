@@ -10,6 +10,7 @@ import Toybox.Position;
 import Toybox.Sensor;
 import Toybox.Time;
 import Toybox.Time.Gregorian;
+import Toybox.Weather;
 
 class VFRStopWatchView extends WatchUi.View {
 
@@ -21,6 +22,12 @@ class VFRStopWatchView extends WatchUi.View {
     // --- GPS distance accumulation ---
     var lastUpdateTimer  as Number = 0;   // System.getTimer() at last onUpdate
     var totalDistanceM   as Float  = 0.0; // meters accumulated since reset
+    // --- Trip statistics ---
+    var maxAltitudeM     as Float  = 0.0; // maximum altitude seen during trip (meters)
+    var maxGsKt          as Float  = 0.0; // maximum ground speed (knots)
+    // For average GS calculation: cumulative sum (kt) and sample count
+    var gsSumKt          as Float  = 0.0;
+    var gsSamples        as Number = 0;
 
     // Trip start/end timestamps
     var tripStartLocal     as Object?       = null; // result of System.getClockTime()
@@ -121,6 +128,7 @@ class VFRStopWatchView extends WatchUi.View {
     var DOWN_HOLD_MS as Number = 800; // ms to consider a long press
     var lastDownEventAt as Number = 0; // debounce last physical press
     var quickInfoShown as Boolean = false;
+    var quickInfoLastNavAt as Number = 0; // ms timestamp of last quick-info navigation action
 
     function initialize() {
         View.initialize();
@@ -267,6 +275,10 @@ class VFRStopWatchView extends WatchUi.View {
                         System.println("onPosition: using Position.altitude (GPS) = " + alt.toString());
                     }
                     if (alt != null) {
+                        // Track max altitude during an active trip
+                        if (running && (alt as Float) > maxAltitudeM) {
+                            maxAltitudeM = (alt as Float);
+                        }
                         if (lastAltitudeMillis != 0) {
                             var dtMs = now - lastAltitudeMillis;
                             if (dtMs > 0) {
@@ -384,6 +396,10 @@ class VFRStopWatchView extends WatchUi.View {
         elapsed = 0;
         autoStartEnabled = true; // re-arm auto-start after reset
         totalDistanceM = 0.0;
+        maxAltitudeM = 0.0;
+        maxGsKt = 0.0;
+        gsSumKt = 0.0;
+        gsSamples = 0;
         kmAtCheckpoint = 0.0;
         nmAtCheckpoint = 0.0;
         checkpointHit = false;
@@ -451,6 +467,16 @@ class VFRStopWatchView extends WatchUi.View {
                     // currentSpeed is m/s; deltaMs is ms
                     var addM = (spd as Float) * (deltaMs.toFloat() / 1000.0);
                     totalDistanceM += addM;
+                    // Track max ground speed (knots)
+                    try {
+                        var gsKt = ((spd as Float) * 1.94384).toFloat();
+                            if (running && gsKt > maxGsKt) { maxGsKt = gsKt; }
+                            // accumulate for average GS
+                            if (running) {
+                                gsSumKt = (gsSumKt as Float) + (gsKt as Float);
+                                gsSamples = (gsSamples as Number) + 1;
+                            }
+                    } catch (ex) { }
                 }
             }
             lastUpdateTimer = now;
@@ -754,7 +780,8 @@ class VFRStopWatchView extends WatchUi.View {
             var sInfoDraw = Sensor.getInfo();
             if (sInfoDraw != null) {
                 if (sInfoDraw.pressure != null) {
-                    qnhValStr = Math.round((sInfoDraw.pressure as Float)).toNumber().toString();
+                    // Truncate fractional part — only show digits before decimal
+                    qnhValStr = Math.floor((sInfoDraw.pressure as Float)).toNumber().toString();
                 }
                 if (sInfoDraw.altitude != null) {
                     var altFt = ((sInfoDraw.altitude as Float) * 3.28084).toNumber();
@@ -1195,6 +1222,10 @@ class VFRStopWatchView extends WatchUi.View {
             Application.Properties.setValue("vfr_backup_nextVibrateAt", nextVibrateAt);
             Application.Properties.setValue("vfr_backup_kmAtCheckpoint", kmAtCheckpoint);
             Application.Properties.setValue("vfr_backup_nmAtCheckpoint", nmAtCheckpoint);
+            Application.Properties.setValue("vfr_backup_maxAltitudeM", maxAltitudeM);
+            Application.Properties.setValue("vfr_backup_maxGsKt", maxGsKt);
+            Application.Properties.setValue("vfr_backup_gsSumKt", gsSumKt);
+            Application.Properties.setValue("vfr_backup_gsSamples", gsSamples);
             Application.Properties.setValue("vfr_backup_lapMode", lapMode);
             Application.Properties.setValue("vfr_backup_lapElapsed", lapElapsed);
             Application.Properties.setValue("vfr_backup_lapKm", lapKm);
@@ -1226,6 +1257,10 @@ class VFRStopWatchView extends WatchUi.View {
             v = Application.Properties.getValue("vfr_backup_nextVibrateAt"); if (v != null) { nextVibrateAt = v as Number; }
             v = Application.Properties.getValue("vfr_backup_kmAtCheckpoint"); if (v != null) { kmAtCheckpoint = v as Float; }
             v = Application.Properties.getValue("vfr_backup_nmAtCheckpoint"); if (v != null) { nmAtCheckpoint = v as Float; }
+            v = Application.Properties.getValue("vfr_backup_maxAltitudeM"); if (v != null) { maxAltitudeM = v as Float; }
+            v = Application.Properties.getValue("vfr_backup_maxGsKt"); if (v != null) { maxGsKt = v as Float; }
+            v = Application.Properties.getValue("vfr_backup_gsSumKt"); if (v != null) { gsSumKt = v as Float; }
+            v = Application.Properties.getValue("vfr_backup_gsSamples"); if (v != null) { gsSamples = v as Number; }
             v = Application.Properties.getValue("vfr_backup_lapMode"); if (v != null) { lapMode = v as Boolean; }
             v = Application.Properties.getValue("vfr_backup_lapElapsed"); if (v != null) { lapElapsed = v as Number; }
             v = Application.Properties.getValue("vfr_backup_lapKm"); if (v != null) { lapKm = v as Float; }
@@ -1310,7 +1345,9 @@ class VFRStopWatchView extends WatchUi.View {
     function shortDownAction() as Void {
         if (quickInfoShown) { return; }
         quickInfoShown = true;
-        WatchUi.pushView(new VFRQuickInfoView(self), new VFRQuickInfoDelegate(self), WatchUi.SLIDE_UP);
+        // Show heading/GS summary first, then allow navigating to wind/temp
+        quickInfoLastNavAt = System.getTimer();
+        WatchUi.pushView(new VFRQuickInfoHdgGsView(self), new VFRQuickInfoHdgGsDelegate(self), WatchUi.SLIDE_UP);
     }
 
     // 5 short vibration pulses (100% duty, 200 ms each)
@@ -1413,6 +1450,27 @@ class VFRQuickInfoView extends WatchUi.View {
 
     function onShow() as Void {
         WatchUi.requestUpdate();
+        // Debug: log comms and Weather provider when quick-info shown
+        try {
+            var commsDbg = getApp().getComms();
+            if (commsDbg == null) {
+                System.println("QuickInfo.onShow: comms = null");
+            } else {
+                try { System.println("QuickInfo.onShow: comms wind=" + (commsDbg.windDirDeg as Number).toString() + "/" + (commsDbg.windSpeedKt as Number).toString() + " tmp=" + (commsDbg.tempC as Number).toString()); } catch (e) { System.println("QuickInfo.onShow: comms present but fields missing"); }
+            }
+            try {
+                var cur = Weather.getCurrentConditions();
+                if (cur == null) {
+                    System.println("QuickInfo.onShow: Weather.getCurrentConditions() = null");
+                } else {
+                    try { System.println("Weather.temperature=" + (cur["temperature"] as Number).toString()); } catch (e) {}
+                    try { System.println("Weather.windSpeed=" + (cur["windSpeed"] as Number).toString()); } catch (e) {}
+                    try { System.println("Weather.windDirection=" + (cur["windDirection"] as Number).toString()); } catch (e) {}
+                    try { System.println("Weather.dewPoint=" + (cur["dewPoint"] as Number).toString()); } catch (e) {}
+                    try { System.println("Weather.dewPointC=" + (cur["dewPointC"] as Number).toString()); } catch (e) {}
+                }
+            } catch (we) { System.println("QuickInfo.onShow: Weather API error: " + we.getErrorMessage()); }
+        } catch (ex) { System.println("QuickInfo.onShow debug failed: " + ex.getErrorMessage()); }
     }
 
     function onLayout(dc as Dc) as Void { }
@@ -1444,10 +1502,10 @@ class VFRQuickInfoView extends WatchUi.View {
         }
         var bigFont = (_bigFont != null) ? _bigFont : Graphics.FONT_NUMBER_HOT;
 
-        // --- Pull weather data from comms ---
+        // --- Pull weather data from comms, fallback to Toybox.Weather ---
         var comms = getApp().getComms();
         var wDir  = -1;
-        var wSpd  = -1;
+        var wSpd  = -1; // knots
         var tmp   = -999;
         var dew   = -999;
         if (comms != null) {
@@ -1457,19 +1515,43 @@ class VFRQuickInfoView extends WatchUi.View {
             try { dew  = comms.dewpointC   as Number; } catch (e) {}
         }
 
+        // If comms didn't provide weather, try system Weather provider
+        if ((wDir < 0 || wSpd < 0 || tmp == -999) ) {
+            try {
+                var current = Weather.getCurrentConditions();
+                if (current != null) {
+                    try { tmp = (current["temperature"] as Number); } catch (e) {}
+                    // Weather returns wind speed in m/s — convert to knots
+                    try { wSpd = Math.round((current["windSpeed"] as Float) * 1.943844).toNumber(); } catch (e) {}
+                    try { wDir = (current["windDirection"] as Number); } catch (e) {}
+                    // dew point may be available under "dewPoint" or "dewPointC"
+                    try { dew = (current["dewPoint"]  as Number); } catch (e2) { try { dew = (current["dewPointC"] as Number); } catch (e3) {} }
+                }
+            } catch (wex) { System.println("Weather API read failed: " + wex.getErrorMessage()); }
+        }
+
         // Format: "DDD/SS" (direction zero-padded to 3 digits)
         var windStr = "--/--";
-        if (wDir >= 0 && wSpd >= 0) {
-            var dStr = (wDir < 10)  ? "00" + wDir.toString()
+        // Show partial wind info when available: DDD/SS, --/SS, or DDD/--
+        if (wDir >= 0 || wSpd >= 0) {
+            var dStr = "--";
+            if (wDir >= 0) {
+                dStr = (wDir < 10)  ? "00" + wDir.toString()
                      : (wDir < 100) ? "0"  + wDir.toString()
                      :                      wDir.toString();
-            windStr = dStr + "/" + wSpd.toString();
+            }
+            var sStr = "--";
+            if (wSpd >= 0) { sStr = wSpd.toString(); }
+            windStr = dStr + "/" + sStr;
         }
 
         // Format: "T/D" (temperature/dewpoint, sign included in number)
         var tempStr = "--/--";
-        if (tmp != -999 && dew != -999) {
-            tempStr = tmp.toString() + "/" + dew.toString();
+        // Show partial temperature/dew when available. Use -- for missing values.
+        if (tmp != -999 || dew != -999) {
+            var tStr = (tmp != -999) ? (tmp.toString()) : "--";
+            var dStr = (dew != -999) ? (dew.toString()) : "--";
+            tempStr = tStr + "/" + dStr;
         }
 
         // --- Blue horizontal divider line across inner circle ---
@@ -1497,6 +1579,106 @@ class VFRQuickInfoView extends WatchUi.View {
     }
 }
 
+// Heading / GS quick-info (shown before wind/temp)
+class VFRQuickInfoHdgGsView extends WatchUi.View {
+    private var _main as VFRStopWatchView;
+    private var _bigFont as Graphics.VectorFont? = null;
+    function initialize(main as VFRStopWatchView) {
+        View.initialize();
+        _main = main;
+    }
+    function onShow() as Void { WatchUi.requestUpdate(); }
+    function onLayout(dc as Dc) as Void { }
+    function onUpdate(dc as Dc) as Void {
+        var w = dc.getWidth();
+        var h = dc.getHeight();
+        var cx = w / 2;
+        var cy = h / 2;
+        var jc = Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER;
+
+        // Draw bezel background so it matches other quick-info screens
+        _main.drawBezelBackground(dc);
+
+        // Black inner circle
+        var minWh = (w < h) ? w : h;
+        var sepR  = ((minWh.toFloat() / 2.0) - 17.0).toNumber();
+        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
+        dc.fillCircle(cx, cy, sepR);
+
+        // --- Blue horizontal divider line across inner circle ---
+        dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
+        dc.setPenWidth(2);
+        dc.drawLine(cx - sepR, cy, cx + sepR, cy);
+        dc.setPenWidth(1);
+
+        // Big font
+        if (_bigFont == null) {
+            var sz = (minWh * 0.20).toNumber();
+            var faces = ["RobotoCondensed", "Roboto", "RobotoBlack", "Swiss721Bold", "TomorrowBold"];
+            for (var fi = 0; fi < faces.size() && _bigFont == null; fi++) {
+                try { _bigFont = Graphics.getVectorFont({:face => faces[fi], :size => sz}); } catch (e) {}
+            }
+        }
+        var bigFont = (_bigFont != null) ? _bigFont : Graphics.FONT_NUMBER_HOT;
+
+        // Get heading and GS from system APIs (same sources used by main view)
+        var hdgStr = "--";
+        try {
+            var pInfo = Position.getInfo();
+            if (pInfo != null && pInfo.heading != null) {
+                var deg = (pInfo.heading.toFloat() * (180.0 / Math.PI)).toNumber();
+                var hdgInt = Math.round(deg).toNumber();
+                if (hdgInt < 10)       { hdgStr = "00" + hdgInt.toString(); }
+                else if (hdgInt < 100) { hdgStr = "0"  + hdgInt.toString(); }
+                else                   { hdgStr = hdgInt.toString(); }
+            }
+        } catch (ex) {}
+
+        var gsStr = "--";
+        try {
+            var actInfoLocal = Activity.getActivityInfo();
+            if (actInfoLocal != null && actInfoLocal.currentSpeed != null) {
+                gsStr = ((actInfoLocal.currentSpeed as Float) * 1.94384).toNumber().toString();
+            }
+        } catch (ex) {}
+
+        // Draw labels and values
+        dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(cx, cy - 60, Graphics.FONT_SMALL, "HDG", jc);
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(cx, cy - 20, bigFont, hdgStr, jc);
+
+        // Draw GS value above its label (label below digits), nudged down 5px
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(cx, cy + 25, bigFont, gsStr + " kt", jc);
+        dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(cx, cy + 65, Graphics.FONT_SMALL, "GS", jc);
+
+        WatchUi.requestUpdate();
+    }
+}
+
+class VFRQuickInfoHdgGsDelegate extends WatchUi.BehaviorDelegate {
+    private var _main as VFRStopWatchView;
+    function initialize(main as VFRStopWatchView) {
+        BehaviorDelegate.initialize();
+        _main = main;
+    }
+    function onBack() as Boolean {
+        try { _main.quickInfoShown = false; } catch (ex) {}
+        WatchUi.popView(WatchUi.SLIDE_DOWN);
+        return true;
+    }
+    // DOWN (next page) → push wind/temp quick-info
+    function onNextPage() as Boolean {
+        try {
+            _main.quickInfoLastNavAt = System.getTimer();
+            WatchUi.pushView(new VFRQuickInfoView(_main), new VFRQuickInfoDelegate(_main), WatchUi.SLIDE_UP);
+        } catch (ex) { System.println("Failed to push wind/temp view: " + ex.getErrorMessage()); }
+        return true;
+    }
+}
+
 class VFRQuickInfoDelegate extends WatchUi.BehaviorDelegate {
     private var _main as VFRStopWatchView;
     function initialize(main as VFRStopWatchView) {
@@ -1521,6 +1703,12 @@ class VFRQuickInfoDelegate extends WatchUi.BehaviorDelegate {
     }
     function onKeyReleased(keyEvent as WatchUi.KeyEvent) as Boolean {
         if (keyEvent.getKey() == WatchUi.KEY_DOWN) {
+            // Avoid reacting to the same DOWN press/release used to navigate
+            // between quick-info pages: require a small delay after navigation.
+            var now = System.getTimer();
+            if ((now - _main.quickInfoLastNavAt) < 300) {
+                return true;
+            }
             if (WatchUi has :MapView) {
                 try {
                     var mapView = new VFRMapView(_main);

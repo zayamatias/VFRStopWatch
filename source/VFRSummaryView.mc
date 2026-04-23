@@ -7,6 +7,7 @@ import Toybox.WatchUi;
 
 class VFRSummaryView extends WatchUi.View {
     private var _main as VFRStopWatchView;
+    private var _bigFont as Graphics.VectorFont? = null;
 
     function initialize(mainView as VFRStopWatchView) {
         View.initialize();
@@ -35,62 +36,109 @@ class VFRSummaryView extends WatchUi.View {
     }
 
     function onUpdate(dc as Dc) as Void {
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.clear();
-
         var w  = dc.getWidth();
         var h  = dc.getHeight();
         var cx = w / 2;
+        var cy = h / 2;
+        var minWh = (w < h) ? w : h;
 
-        // Title
-        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, h * 10 / 100, Graphics.FONT_TINY, "FLIGHT SUMMARY",
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        _main.drawBezelBackground(dc);
 
-        // Start UTC
+        // Black inner circle
+        var sepR = ((minWh.toFloat() / 2.0) - 17.0).toNumber();
+        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
+        dc.fillCircle(cx, cy, sepR);
+
+        // --- Build time strings ---
         var startStr = "--:--Z";
         if (_main.tripStartUtcMoment != null) {
             startStr = fmtUtc(_main.tripStartUtcMoment as Time.Moment);
-        } else if ((_main as VFRStopWatchView).tripStartUtcHour >= 0) {
-            var sh = (_main as VFRStopWatchView).tripStartUtcHour;
-            var sm = (_main as VFRStopWatchView).tripStartUtcMin;
-            var shStr = sh < 10 ? "0" + sh.toString() : sh.toString();
-            var smStr = sm < 10 ? "0" + sm.toString() : sm.toString();
-            startStr = shStr + ":" + smStr + "Z";
+        } else if (_main.tripStartUtcHour >= 0) {
+            var sh = _main.tripStartUtcHour;
+            var sm = _main.tripStartUtcMin;
+            startStr = (sh < 10 ? "0" : "") + sh.toString() + ":" + (sm < 10 ? "0" : "") + sm.toString() + "Z";
         }
-        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, h * 25 / 100, Graphics.FONT_TINY, "START",
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, h * 36 / 100, Graphics.FONT_SMALL, startStr,
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-
-        // End UTC
         var endStr = "--:--Z";
         if (_main.tripEndUtcMoment != null) {
             endStr = fmtUtc(_main.tripEndUtcMoment as Time.Moment);
-        } else if ((_main as VFRStopWatchView).tripEndUtcHour >= 0) {
-            var eh = (_main as VFRStopWatchView).tripEndUtcHour;
-            var em = (_main as VFRStopWatchView).tripEndUtcMin;
-            var ehStr = eh < 10 ? "0" + eh.toString() : eh.toString();
-            var emStr = em < 10 ? "0" + em.toString() : em.toString();
-            endStr = ehStr + ":" + emStr + "Z";
+        } else if (_main.tripEndUtcHour >= 0) {
+            var eh = _main.tripEndUtcHour;
+            var em = _main.tripEndUtcMin;
+            endStr = (eh < 10 ? "0" : "") + eh.toString() + ":" + (em < 10 ? "0" : "") + em.toString() + "Z";
         }
-        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, h * 52 / 100, Graphics.FONT_TINY, "END",
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, h * 63 / 100, Graphics.FONT_SMALL, endStr,
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // Distances — NM and km on the bottom two rows
-        var nmStr = fmtDist(_main.totalDistanceM, 1852.0, "NM");
-        var kmStr = fmtDist(_main.totalDistanceM, 1000.0, "km");
-        dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, h * 78 / 100, Graphics.FONT_TINY, nmStr,
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.drawText(cx, h * 90 / 100, Graphics.FONT_TINY, kmStr,
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        // --- Build stat strings ---
+        var nmVal = (_main.totalDistanceM as Float) / 1852.0;
+        var nmInt = nmVal.toNumber();
+        var nmDec = ((nmVal - nmInt.toFloat()) * 10.0).toNumber();
+        if (nmDec < 0) { nmDec = 0; }
+        var distStr = nmInt.toString() + "." + nmDec.toString() + "NM";
+
+        var altStr = "---FT";
+        if (_main.maxAltitudeM != null && (_main.maxAltitudeM as Float) > 0.0) {
+            var altFt = ((_main.maxAltitudeM as Float) * 3.28084).toNumber();
+            altStr = altFt.toString() + "FT";
+        }
+
+        var gsStr = "--KT";
+        try {
+            if ((_main as VFRStopWatchView).gsSamples > 0) {
+                var avg = (_main as VFRStopWatchView).gsSumKt / (_main as VFRStopWatchView).gsSamples.toFloat();
+                gsStr = Math.round(avg).toNumber().toString() + "KT";
+            }
+        } catch (ex) { }
+
+        // --- Layout constants ---
+        // Each row: label right-justified at cx-6 (blue), value left-justified at cx+6 (white)
+        // This pair is symmetric about cx → visually centered on screen
+        var lblX  = cx - 6;
+        var valX  = cx + 6;
+        var jrvc  = Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER;
+        var jlvc  = Graphics.TEXT_JUSTIFY_LEFT  | Graphics.TEXT_JUSTIFY_VCENTER;
+        var lFont = Graphics.FONT_SMALL;   // blue labels
+        var vFont = Graphics.FONT_MEDIUM;  // white values
+
+        // 3 rows above divider (OBT / IBT / DIST.), pitch = 28px
+        var pitch = 28;
+        var divY  = cy + 12;
+        var row3Y = divY - 14;           // DIST.
+        var row2Y = row3Y - pitch;       // IBT
+        var row1Y = row2Y - pitch;       // OBT
+
+        // 2 rows below divider (M.ALT / A.GS), pitch = 30px
+        var row4Y = divY + 22;           // M.ALT
+        var row5Y = row4Y + 30;          // A.GS
+
+        dc.setColor(Graphics.COLOR_BLUE,  Graphics.COLOR_TRANSPARENT);
+        dc.drawText(lblX, row1Y, lFont, "OBT", jrvc);
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(valX, row1Y, vFont, startStr, jlvc);
+
+        dc.setColor(Graphics.COLOR_BLUE,  Graphics.COLOR_TRANSPARENT);
+        dc.drawText(lblX, row2Y, lFont, "IBT", jrvc);
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(valX, row2Y, vFont, endStr, jlvc);
+
+        dc.setColor(Graphics.COLOR_BLUE,  Graphics.COLOR_TRANSPARENT);
+        dc.drawText(lblX, row3Y, lFont, "DIST.", jrvc);
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(valX, row3Y, vFont, distStr, jlvc);
+
+        // Divider
+        dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
+        dc.setPenWidth(2);
+        dc.drawLine(cx - sepR + 8, divY, cx + sepR - 8, divY);
+        dc.setPenWidth(1);
+
+        dc.setColor(Graphics.COLOR_BLUE,  Graphics.COLOR_TRANSPARENT);
+        dc.drawText(lblX, row4Y, lFont, "M.ALT", jrvc);
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(valX, row4Y, vFont, altStr, jlvc);
+
+        dc.setColor(Graphics.COLOR_BLUE,  Graphics.COLOR_TRANSPARENT);
+        dc.drawText(lblX, row5Y, lFont, "A.GS", jrvc);
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(valX, row5Y, vFont, gsStr, jlvc);
     }
 }
 

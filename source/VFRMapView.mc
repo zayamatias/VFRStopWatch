@@ -18,6 +18,7 @@ import Toybox.WatchUi;
 // confirmed in the official docs; there is no setHeading() or rotation method.
 class VFRMapView extends WatchUi.MapView {
     private var _timer as Timer.Timer?;
+    private var _main  as VFRStopWatchView;
 
     // Five zoom levels: dLat in degrees (half bounding-box height).
     // Smaller = more zoomed in.  Level 2 (0.009 ≈ 1 km) is the default.
@@ -26,11 +27,19 @@ class VFRMapView extends WatchUi.MapView {
 
     function initialize(main as VFRStopWatchView) {
         MapView.initialize();
+        _main  = main;
         _timer = null;
         _zoomIdx = 2;
         // MUST call both setMapVisibleArea AND setScreenVisibleArea before pushView.
+        // Restrict the map to the inner circle so the bezel can be drawn over the annulus.
         var settings = System.getDeviceSettings();
-        setScreenVisibleArea(0, 0, settings.screenWidth, settings.screenHeight);
+        var sw = settings.screenWidth;
+        var sh = settings.screenHeight;
+        var minWh = sw < sh ? sw : sh;
+        var radiusInner = (minWh / 2) - 26; // matches drawBezelBackground: R-2-24
+        var ix = sw / 2 - radiusInner;
+        var iy = sh / 2 - radiusInner;
+        setScreenVisibleArea(ix, iy, radiusInner * 2, radiusInner * 2);
         _updateArea();
         setMapMode(WatchUi.MAP_MODE_BROWSE);
     }
@@ -63,6 +72,10 @@ class VFRMapView extends WatchUi.MapView {
     }
 
     function onUpdate(dc as Graphics.Dc) as Void {
+        // 1. Draw bezel background (clears screen to black, draws annulus labels + ring).
+        // 2. MapView renders the map only within the inner-circle visible area set in initialize().
+        // 3. Heading arrow drawn on top.
+        _main.drawBezelBackground(dc);
         MapView.onUpdate(dc);
         _drawHeadingArrow(dc);
     }
