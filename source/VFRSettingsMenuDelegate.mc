@@ -2,6 +2,7 @@ import Toybox.Application;
 import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.WatchUi;
+import Toybox.Position;
 
 //---------------------------------------------------------------------------
 // GPS sub-menu: choose one of 4 GPS modes.
@@ -86,6 +87,8 @@ class VFRNumberPickerView extends WatchUi.View {
             } else {
                 _mainView.AUTO_START_SPEED_MS = _value.toFloat() * 0.514444f;
             }
+        } else if (_propKey.equals("TransitionAltitudeFt")) {
+            _mainView.transitionAltitudeFt = _value;
         }
         System.println("save: " + _propKey + "=" + _value.toString());
     }
@@ -167,16 +170,35 @@ class VFRSettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
         var id = item.getId() as String;
 
         if (id.equals("setting_gps")) {
-            // Build GPS sub-menu; mark current selection with "*"
+            // Build GPS sub-menu based on device capabilities; mark current selection
             var rawGps = Application.Properties.getValue("GpsMode");
             var cur = (rawGps != null) ? (rawGps as Number) : 3;
             if (cur < 0 || cur > 3) { cur = 3; }
 
             var gpsMenu = new WatchUi.Menu2({:title => "GPS Mode"});
-            gpsMenu.addItem(new WatchUi.MenuItem("GPS",          cur == 0 ? "*" : null, 0, null));
-            gpsMenu.addItem(new WatchUi.MenuItem("GPS+GLONASS",  cur == 1 ? "*" : null, 1, null));
-            gpsMenu.addItem(new WatchUi.MenuItem("All Systems",  cur == 2 ? "*" : null, 2, null));
-            gpsMenu.addItem(new WatchUi.MenuItem("Aviation",     cur == 3 ? "*" : null, 3, null));
+
+            // Always offer basic GPS (id=0)
+            gpsMenu.addItem(new WatchUi.MenuItem("GPS", cur == 0 ? "*" : null, 0, null));
+
+            // GPS+GLONASS (id=1) if device exposes GLONASS
+            if (Position has :CONSTELLATION_GLONASS) {
+                gpsMenu.addItem(new WatchUi.MenuItem("GPS+GLONASS", cur == 1 ? "*" : null, 1, null));
+            }
+
+            // All-systems configuration (id=2) when configuration constants are supported
+            if ((Position has :hasConfigurationSupport) &&
+                ((Position has :CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5 &&
+                  Position.hasConfigurationSupport(Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5)) ||
+                 (Position has :CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1 &&
+                  Position.hasConfigurationSupport(Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1)))) {
+                gpsMenu.addItem(new WatchUi.MenuItem("All Systems", cur == 2 ? "*" : null, 2, null));
+            }
+
+            // Aviation mode (id=3) if device supports it
+            if (Position has :POSITIONING_MODE_AVIATION) {
+                gpsMenu.addItem(new WatchUi.MenuItem("Aviation", cur == 3 ? "*" : null, 3, null));
+            }
+
             WatchUi.pushView(gpsMenu, new VFRGpsMenuDelegate(_view), WatchUi.SLIDE_LEFT);
 
         } else if (id.equals("setting_timer")) {
@@ -188,6 +210,11 @@ class VFRSettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
             var rawSpd = Application.Properties.getValue("TakeoffSpeed");
             var curKts = (rawSpd != null) ? (rawSpd as Number) : 30;
             var picker = new VFRNumberPickerView("Takeoff (kts)", curKts, 0, 100, 5, "TakeoffSpeed", _view);
+            WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
+        } else if (id.equals("setting_transition")) {
+            var rawTrans = Application.Properties.getValue("TransitionAltitudeFt");
+            var curTrans = (rawTrans != null) ? (rawTrans as Number) : 6000;
+            var picker = new VFRNumberPickerView("Transition Alt (ft)", curTrans, 0, 20000, 100, "TransitionAltitudeFt", _view);
             WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
         }
     }

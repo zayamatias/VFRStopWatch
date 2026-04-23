@@ -5,31 +5,28 @@
         Use "Monkey C: Edit Application" from the Visual Studio Code command palette
         to update the application attributes.
     -->
-    <iq:application id="55d20cab-1384-4df8-8dc0-f8451671ce3d" type="watch-app" name="@Strings.AppName" entry="VFRStopWatchApp" launcherIcon="@Drawables.LauncherIcon" minApiLevel="3.4.0">
-        <!--
-            Use the following from the Visual Studio Code comand palette to edit
-            the build targets:
-            "Monkey C: Set Products by Product Category" - Lets you add all products
-                                       that belong to the same product category
-            "Monkey C: Edit Products" - Lets you add or remove any product
-        -->
+    <iq:application id="55d20cab-1384-4df8-8dc0-f8451671ce3d" type="watch-app" name="@Strings.AppName" entry="VFRStopWatchApp" launcherIcon="@Drawables.LauncherIcon" minApiLevel="4.2.1">
         <iq:products>
-            <iq:product id="fr55"/>
+            <iq:product id="fenix7xpronowifi"/>
+            <iq:product id="fenix7pro"/>
         </iq:products>
         <!--
             Use "Monkey C: Edit Permissions" from the Visual Studio Code command
             palette to update permissions.
         -->
         <iq:permissions>
-            <iq:uses-permission id="Fit"/>
-            <iq:uses-permission id="Positioning"/>
             <iq:uses-permission id="Communications"/>
+            <iq:uses-permission id="Fit"/>
+            <iq:uses-permission id="Sensor"/>
+            <iq:uses-permission id="Positioning"/>
         </iq:permissions>
         <!--
             Use "Monkey C: Edit Languages" from the Visual Studio Code command
             palette to edit your compatible language list.
         -->
-        <iq:languages/>
+        <iq:languages>
+            <iq:language>eng</iq:language>
+        </iq:languages>
         <!--
             Use "Monkey C: Configure Monkey Barrel" from the Visual Studio Code
             command palette to edit the included barrels.

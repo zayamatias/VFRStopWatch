@@ -39,6 +39,15 @@ class VFRPhoneComms {
     var connected  as Boolean = false; // true only when handshake_ack received
     var connecting as Boolean = false; // true while handshaking (yellow dot)
     var flightId   as String  = "";
+    // Weather data pushed from phone companion app
+    // Sentinels: windDirDeg/windSpeedKt = -1 (unknown), tempC/dewpointC = -999 (unknown)
+    var windDirDeg  as Number = -1;
+    var windSpeedKt as Number = -1;
+    var tempC       as Number = -999;
+    var dewpointC   as Number = -999;
+    // Timestamp (System.getTimer()) of the last handshake transmit attempt
+    // UI reads this to detect extended retry/failure (>30s)
+    var lastHandshakeAt as Number = 0;
 
     // State values (treated as constants)
     private var STATE_DISC      as Number = 0;
@@ -56,14 +65,21 @@ class VFRPhoneComms {
 
     private var _nextHandshakeAt as Number = 0; // 0 → fire on first tick
     private var _nextKeepaliveAt as Number = 0;
+    // Count consecutive connection/transmit errors to apply backoff
+    private var _connErrorCount  as Number = 0;
 
     // Pending flight events
     private var _startPayload    as Dictionary? = null;
     private var _stopPayload     as Dictionary? = null;
     private var _startRetryCount as Number      = 0;
     private var _stopRetryCount  as Number      = 0;
-    private var _startRetryAt    as Number      = 0;
-    private var _stopRetryAt     as Number      = 0;
+    // -1 = not yet scheduled; set to future timestamp on sendFlight*() call
+    private var _startRetryAt    as Number      = -1;
+    private var _stopRetryAt     as Number      = -1;
+
+    // Guard: only one Communications.transmit() call per tick to prevent
+    // write bursts that cause remote BLE disconnects (reason code 8).
+    private var _txThisTick      as Boolean     = false;
 
     function initialize() {
         if (Communications has :registerForPhoneAppMessages) {
@@ -86,7 +102,9 @@ class VFRPhoneComms {
                              "flight_id" => flightId,
                              "ts"        => utcEpochSec };
         _startRetryCount = 0;
-        _startRetryAt    = 0;
+        // Schedule first attempt 1 s out so it doesn't collide with any
+        // in-flight handshake on the same tick.
+        _startRetryAt    = System.getTimer() + 1000;
         System.println("VFRComms: queued start id=" + flightId);
     }
 
@@ -96,12 +114,13 @@ class VFRPhoneComms {
                             "flight_id" => flightId,
                             "ts"        => utcEpochSec };
         _stopRetryCount = 0;
-        _stopRetryAt    = 0;
+        _stopRetryAt    = System.getTimer() + 1000;
         System.println("VFRComms: queued stop id=" + flightId);
     }
 
     // Drive the whole state machine — call once per onUpdate frame.
     function tick(now as Number) as Void {
+        _txThisTick = false; // reset per-tick transmit guard
         var reach = _isPhoneReachable();
 
         // Phone disappeared → fall back to DISC
@@ -131,34 +150,48 @@ class VFRPhoneComms {
             }
 
         } else if (_state == STATE_CONNECTED) {
-            // Periodic keepalive so phone knows watch is still alive
+            // Periodic keepalive so phone knows watch is still alive.
+            // NOTE: some companion apps vibrate on every incoming message.
+            // Avoid sending keepalive unless we have pending flight payloads
+            // (start/stop) which require the phone to stay responsive.
             if (now >= _nextKeepaliveAt) {
                 _nextKeepaliveAt = now + KEEPALIVE_MS;
-                _tx({ "type" => "keepalive" }, "ka");
+                if (_startPayload != null || _stopPayload != null) {
+                    _tx({ "type" => "keepalive" }, "ka");
+                } else {
+                    // Skip keepalive to avoid spurious phone-side vibrations.
+                    System.println("VFRComms: skipping keepalive (no pending payloads)");
+                }
+                // _txThisTick may remain false if we skipped transmit;
+                // flight event retries will run on the next tick as usual.
             }
         }
 
-        // ── Flight event retries (run regardless of connection state) ────────
-        if (_startPayload != null && now >= _startRetryAt) {
-            if (_startRetryCount < MAX_RETRIES) {
-                _tx(_startPayload as Dictionary, "start");
-                _startRetryAt = now + _backoff(_startRetryCount);
-                _startRetryCount++;
-                System.println("VFRComms: start attempt " + _startRetryCount.toString());
-            } else {
-                System.println("VFRComms: start gave up after " + MAX_RETRIES.toString());
-                _startPayload = null;
-            }
-        }
-        if (_stopPayload != null && now >= _stopRetryAt) {
-            if (_stopRetryCount < MAX_RETRIES) {
-                _tx(_stopPayload as Dictionary, "stop");
-                _stopRetryAt = now + _backoff(_stopRetryCount);
-                _stopRetryCount++;
-                System.println("VFRComms: stop attempt " + _stopRetryCount.toString());
-            } else {
-                System.println("VFRComms: stop gave up after " + MAX_RETRIES.toString());
-                _stopPayload = null;
+        // ── Flight event retries — only when fully connected ────────────────
+        // Sending before handshake_ack creates TX errors that loop back and
+        // cause tight reconnect storms (reason code 8 on the Android side).
+        if (_state == STATE_CONNECTED && !_txThisTick) {
+            if (_startPayload != null && _startRetryAt >= 0 && now >= _startRetryAt) {
+                if (_startRetryCount < MAX_RETRIES) {
+                    _tx(_startPayload as Dictionary, "start");
+                    _startRetryAt = now + _backoff(_startRetryCount);
+                    _startRetryCount++;
+                    System.println("VFRComms: start attempt " + _startRetryCount.toString());
+                } else {
+                    System.println("VFRComms: start gave up after " + MAX_RETRIES.toString());
+                    _startPayload = null;
+                }
+            } else if (_stopPayload != null && _stopRetryAt >= 0 && now >= _stopRetryAt) {
+                // Use else-if: only one flight event per tick
+                if (_stopRetryCount < MAX_RETRIES) {
+                    _tx(_stopPayload as Dictionary, "stop");
+                    _stopRetryAt = now + _backoff(_stopRetryCount);
+                    _stopRetryCount++;
+                    System.println("VFRComms: stop attempt " + _stopRetryCount.toString());
+                } else {
+                    System.println("VFRComms: stop gave up after " + MAX_RETRIES.toString());
+                    _stopPayload = null;
+                }
             }
         }
     }
@@ -166,14 +199,19 @@ class VFRPhoneComms {
     // Called by VFRConnListener when a transmit fails at the BT layer.
     function onTransmitError(msgType as String) as Void {
         System.println("VFRComms TX err: " + msgType);
+        // Apply incremental backoff instead of immediate retries to avoid
+        // tight connect/disconnect flapping seen on some phones/devices.
+        _connErrorCount = (_connErrorCount + 1) as Number;
+        var delay = _backoff((_connErrorCount - 1) as Number);
         if (_state == STATE_CONNECTED) {
-            // Assume link dropped; restart handshake immediately
+            // Assume link dropped; go to SHAKING and schedule a backoffed retry
             _state           = STATE_SHAKING;
             connected        = false;
             connecting       = true;
-            _nextHandshakeAt = 0;
+            _nextHandshakeAt = System.getTimer() + delay;
         } else if (_state == STATE_SHAKING) {
-            _nextHandshakeAt = 0; // retry immediately on next tick
+            // Schedule next handshake attempt with backoff
+            _nextHandshakeAt = System.getTimer() + delay;
         }
     }
 
@@ -195,6 +233,8 @@ class VFRPhoneComms {
             connected        = true;
             connecting       = false;
             _nextKeepaliveAt = System.getTimer() + KEEPALIVE_MS;
+            // Reset transient error counter on successful handshake
+            _connErrorCount = 0;
             System.println("VFRComms: CONNECTED (handshake_ack)");
 
         } else if (typ.equals("flight_ack")) {
@@ -212,12 +252,22 @@ class VFRPhoneComms {
         } else if (typ.equals("keepalive_ack")) {
             // Phone is alive; reset keepalive countdown
             _nextKeepaliveAt = System.getTimer() + KEEPALIVE_MS;
+
+        } else if (typ.equals("weather")) {
+            // Phone pushed weather: {type:"weather",wind_dir:30,wind_spd:12,temp_c:24,dew_c:-4}
+            var wd  = d["wind_dir"]; if (wd  != null) { windDirDeg  = wd  as Number; }
+            var ws  = d["wind_spd"]; if (ws  != null) { windSpeedKt = ws  as Number; }
+            var tc  = d["temp_c"];  if (tc  != null) { tempC       = tc  as Number; }
+            var dc2 = d["dew_c"];   if (dc2 != null) { dewpointC   = dc2 as Number; }
+            System.println("VFRComms: weather updated wind=" + windDirDeg.toString() + "/" + windSpeedKt.toString() + " temp=" + tempC.toString() + "/" + dewpointC.toString());
         }
     }
 
     // ── Private helpers ──────────────────────────────────────────────────────
 
     private function _txHandshake() as Void {
+        // record when we actually attempted the handshake so UI can detect retries
+        try { lastHandshakeAt = System.getTimer(); } catch (ex) { lastHandshakeAt = 0; }
         _tx({ "type" => "handshake", "app" => "VFRStopWatch", "version" => "1.0" }, "hs");
     }
 
@@ -236,6 +286,7 @@ class VFRPhoneComms {
 
     private function _tx(data as Dictionary, msgType as String) as Void {
         if (!(Communications has :transmit)) { return; }
+        _txThisTick = true; // mark that we've transmitted this tick
         try {
             Communications.transmit(data, null, new VFRConnListener(self, msgType));
         } catch (ex) {

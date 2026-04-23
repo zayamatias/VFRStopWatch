@@ -29,10 +29,32 @@ class VFRStopWatchDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
-    // DOWN button → lap or reset when stopped
-    function onNextPage() as Boolean {
-        _view.onDownPressed();
-        return true;
+    // DOWN button: raw key events for long-press detection.
+    // Returning true from onKeyPressed prevents BehaviorDelegate from also
+    // firing onNextPage, giving us full control over short vs long press.
+    function onKeyPressed(keyEvent as WatchUi.KeyEvent) as Boolean {
+        if (keyEvent.getKey() == WatchUi.KEY_DOWN) {
+            _view.onDownPressed();
+            return true; // consume — prevents system music-control fallback
+        }
+        return false;
+    }
+
+    function onKeyReleased(keyEvent as WatchUi.KeyEvent) as Boolean {
+        if (keyEvent.getKey() == WatchUi.KEY_DOWN) {
+            var now = System.getTimer();
+            var dur = (_view.downPressAt == 0) ? 0 : (now - _view.downPressAt);
+            System.println("DOWN released: dur=" + dur.toString());
+            _view.downPressAt = 0;
+            _view.lastDownEventAt = 0;
+            if (dur >= _view.DOWN_HOLD_MS) {
+                _view.openSettingsMenu();
+            } else {
+                _view.shortDownAction();
+            }
+            return true;
+        }
+        return false;
     }
 
     function onMenu() as Boolean {

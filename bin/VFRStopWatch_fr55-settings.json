@@ -1,0 +1,77 @@
+{
+  "settings" : [ {
+    "key" : "GpsMode",
+    "valueType" : "number",
+    "defaultValue" : 3,
+    "configTitle" : "SettingGpsModeTitle",
+    "configPrompt" : null,
+    "configType" : "list",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : [ {
+      "display" : "SettingGpsModeGps",
+      "value" : 0
+    }, {
+      "display" : "SettingGpsModeGpsGlonass",
+      "value" : 1
+    }, {
+      "display" : "SettingGpsModeAllSat",
+      "value" : 2
+    }, {
+      "display" : "SettingGpsModeAviation",
+      "value" : 3
+    } ],
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
+    "key" : "TimerInterval",
+    "valueType" : "number",
+    "defaultValue" : 5,
+    "configTitle" : "SettingTimerTitle",
+    "configPrompt" : null,
+    "configType" : "numeric",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : null,
+    "configMin" : 0,
+    "configMax" : 30,
+    "configMaxLength" : null
+  }, {
+    "key" : "TakeoffSpeed",
+    "valueType" : "number",
+    "defaultValue" : 30,
+    "configTitle" : "SettingTakeoffTitle",
+    "configPrompt" : null,
+    "configType" : "numeric",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : null,
+    "configMin" : 0,
+    "configMax" : 100,
+    "configMaxLength" : null
+  } ],
+  "supportsLiveValidation" : false,
+  "languages" : {
+    "valyrian" : {
+      "SettingTakeoffTitle" : "Takeoff (kts)",
+      "SettingGpsModeGpsGlonass" : "GPS+GLONASS",
+      "SettingGpsModeAllSat" : "All Systems",
+      "AppName" : "VFRStopWatch",
+      "SettingGpsModeAviation" : "Aviation",
+      "menu_label_3" : "Settings",
+      "menu_label_1" : "Start/Stop",
+      "SettingTimerTitle" : "Timer (min)",
+      "menu_label_2" : "Reset",
+      "SettingGpsModeTitle" : "GPS Mode",
+      "SettingGpsModeGps" : "GPS",
+      "prompt" : ""
+    }
+  }
+}

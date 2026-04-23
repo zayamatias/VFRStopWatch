@@ -85,7 +85,7 @@ _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms
 class VFRPhoneComms {
     [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 36; ]
     <init> {
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 54 16 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 63 16 ]
         %tmp.12 = newa 10;
         %tmp.13 = 1000;
         %tmp.14 = dup %tmp.12;
@@ -129,136 +129,152 @@ class VFRPhoneComms {
     var connecting as Boolean = false;
     [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 41; @position = 8; @symbol_vardef = [flightId,41,8,16]; @symbol_type<0> = [String,41,22,28]; ]
     var flightId as String = "";
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 44; @position = 16; @symbol_vardef = [STATE_DISC,44,16,26]; @symbol_type<0> = [Number,44,35,41]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 44; @position = 8; @symbol_vardef = [windDirDeg,44,8,18]; @symbol_type<0> = [Number,44,23,29]; ]
+    var windDirDeg as Number = -1;
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 45; @position = 8; @symbol_vardef = [windSpeedKt,45,8,19]; @symbol_type<0> = [Number,45,23,29]; ]
+    var windSpeedKt as Number = -1;
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 46; @position = 8; @symbol_vardef = [tempC,46,8,13]; @symbol_type<0> = [Number,46,23,29]; ]
+    var tempC as Number = -999;
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 47; @position = 8; @symbol_vardef = [dewpointC,47,8,17]; @symbol_type<0> = [Number,47,23,29]; ]
+    var dewpointC as Number = -999;
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 50; @position = 8; @symbol_vardef = [lastHandshakeAt,50,8,23]; @symbol_type<0> = [Number,50,27,33]; ]
+    var lastHandshakeAt as Number = 0;
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 53; @position = 16; @symbol_vardef = [STATE_DISC,53,16,26]; @symbol_type<0> = [Number,53,35,41]; ]
     private
     var STATE_DISC as Number = 0;
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 45; @position = 16; @symbol_vardef = [STATE_SHAKING,45,16,29]; @symbol_type<0> = [Number,45,35,41]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 54; @position = 16; @symbol_vardef = [STATE_SHAKING,54,16,29]; @symbol_type<0> = [Number,54,35,41]; ]
     private
     var STATE_SHAKING as Number = 1;
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 46; @position = 16; @symbol_vardef = [STATE_CONNECTED,46,16,31]; @symbol_type<0> = [Number,46,35,41]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 55; @position = 16; @symbol_vardef = [STATE_CONNECTED,55,16,31]; @symbol_type<0> = [Number,55,35,41]; ]
     private
     var STATE_CONNECTED as Number = 2;
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 47; @position = 16; @symbol_vardef = [_state,47,16,22]; @symbol_type<0> = [Number,47,35,41]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 56; @position = 16; @symbol_vardef = [_state,56,16,22]; @symbol_type<0> = [Number,56,35,41]; ]
     private
     var _state as Number = 0;
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 50; @position = 16; @symbol_vardef = [HANDSHAKE_RETRY_MS,50,16,34]; @symbol_type<0> = [Number,50,38,44]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 59; @position = 16; @symbol_vardef = [HANDSHAKE_RETRY_MS,59,16,34]; @symbol_type<0> = [Number,59,38,44]; ]
     private
     var HANDSHAKE_RETRY_MS as Number = 5000;
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 51; @position = 16; @symbol_vardef = [KEEPALIVE_MS,51,16,28]; @symbol_type<0> = [Number,51,38,44]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 60; @position = 16; @symbol_vardef = [KEEPALIVE_MS,60,16,28]; @symbol_type<0> = [Number,60,38,44]; ]
     private
     var KEEPALIVE_MS as Number = 30000;
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 52; @position = 16; @symbol_vardef = [MAX_RETRIES,52,16,27]; @symbol_type<0> = [Number,52,38,44]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 61; @position = 16; @symbol_vardef = [MAX_RETRIES,61,16,27]; @symbol_type<0> = [Number,61,38,44]; ]
     private
     var MAX_RETRIES as Number = 10;
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 54; @position = 16; @symbol_vardef = [_backoffMs,54,16,26]; @symbol_type<0> = [Array,54,30,35]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 63; @position = 16; @symbol_vardef = [_backoffMs,63,16,26]; @symbol_type<0> = [Array,63,30,35]; ]
     private
     var _backoffMs as Array;
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 57; @position = 16; @symbol_vardef = [_nextHandshakeAt,57,16,32]; @symbol_type<0> = [Number,57,36,42]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 66; @position = 16; @symbol_vardef = [_nextHandshakeAt,66,16,32]; @symbol_type<0> = [Number,66,36,42]; ]
     private
     var _nextHandshakeAt as Number = 0;
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 58; @position = 16; @symbol_vardef = [_nextKeepaliveAt,58,16,32]; @symbol_type<0> = [Number,58,36,42]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 67; @position = 16; @symbol_vardef = [_nextKeepaliveAt,67,16,32]; @symbol_type<0> = [Number,67,36,42]; ]
     private
     var _nextKeepaliveAt as Number = 0;
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 61; @position = 16; @symbol_vardef = [_startPayload,61,16,29]; @symbol_type<0> = [Dictionary,61,36,46]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 69; @position = 16; @symbol_vardef = [_connErrorCount,69,16,31]; @symbol_type<0> = [Number,69,36,42]; ]
+    private
+    var _connErrorCount as Number = 0;
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 72; @position = 16; @symbol_vardef = [_startPayload,72,16,29]; @symbol_type<0> = [Dictionary,72,36,46]; ]
     private
     var _startPayload as Dictionary or Null = null;
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 62; @position = 16; @symbol_vardef = [_stopPayload,62,16,28]; @symbol_type<0> = [Dictionary,62,36,46]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 73; @position = 16; @symbol_vardef = [_stopPayload,73,16,28]; @symbol_type<0> = [Dictionary,73,36,46]; ]
     private
     var _stopPayload as Dictionary or Null = null;
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 63; @position = 16; @symbol_vardef = [_startRetryCount,63,16,32]; @symbol_type<0> = [Number,63,36,42]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 74; @position = 16; @symbol_vardef = [_startRetryCount,74,16,32]; @symbol_type<0> = [Number,74,36,42]; ]
     private
     var _startRetryCount as Number = 0;
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 64; @position = 16; @symbol_vardef = [_stopRetryCount,64,16,31]; @symbol_type<0> = [Number,64,36,42]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 75; @position = 16; @symbol_vardef = [_stopRetryCount,75,16,31]; @symbol_type<0> = [Number,75,36,42]; ]
     private
     var _stopRetryCount as Number = 0;
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 65; @position = 16; @symbol_vardef = [_startRetryAt,65,16,29]; @symbol_type<0> = [Number,65,36,42]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 77; @position = 16; @symbol_vardef = [_startRetryAt,77,16,29]; @symbol_type<0> = [Number,77,36,42]; ]
     private
-    var _startRetryAt as Number = 0;
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 66; @position = 16; @symbol_vardef = [_stopRetryAt,66,16,28]; @symbol_type<0> = [Number,66,36,42]; ]
+    var _startRetryAt as Number = -1;
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 78; @position = 16; @symbol_vardef = [_stopRetryAt,78,16,28]; @symbol_type<0> = [Number,78,36,42]; ]
     private
-    var _stopRetryAt as Number = 0;
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 68; @symbol_functiondef = [initialize,68,13,23]; ]
+    var _stopRetryAt as Number = -1;
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 82; @position = 16; @symbol_vardef = [_txThisTick,82,16,27]; @symbol_type<0> = [Boolean,82,36,43]; ]
+    private
+    var _txThisTick as Boolean = false;
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 84; @symbol_functiondef = [initialize,84,13,23]; ]
     function initialize() as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_68_26_77_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 69 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_69_8_71_8_if_stmt:
-        symbol [ Communications %tmp.1 69 12 26 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_84_26_93_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 85 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_85_8_87_8_if_stmt:
+        symbol [ Communications %tmp.1 85 12 26 ];
         %tmp.1 = getm $.Toybox.Communications;
         %tmp.3 = const :registerForPhoneAppMessages;
-        symbol [ registerForPhoneAppMessages %tmp.3 69 32 59 const ];
+        symbol [ registerForPhoneAppMessages %tmp.3 85 32 59 const ];
         %tmp.4 = canhazplz %tmp.1 %tmp.3;
-        bf %tmp.4 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_69_8_71_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_69_8_71_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_69_61_71_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 70 12 ]
-        symbol [ Communications %tmp.5 70 12 26 ];
+        bf %tmp.4 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_85_8_87_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_85_8_87_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_85_61_87_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 86 12 ]
+        symbol [ Communications %tmp.5 86 12 26 ];
         %tmp.5 = getm $.Toybox.Communications;
-        symbol [ registerForPhoneAppMessages %tmp.6 70 27 54 ];
+        symbol [ registerForPhoneAppMessages %tmp.6 86 27 54 ];
         %tmp.6 = getv function %tmp.5 :registerForPhoneAppMessages;
         %tmp.7 = self;
-        symbol [ method %tmp.8 70 55 61 ];
+        symbol [ method %tmp.8 86 55 61 ];
         %tmp.8 = getv function %tmp.7 :method;
         %tmp.10 = const :onPhoneMessage;
-        symbol [ onPhoneMessage %tmp.10 70 63 77 const ];
+        symbol [ onPhoneMessage %tmp.10 86 63 77 const ];
         %tmp.11 = invoke %tmp.7 %tmp.8(%tmp.10);
         invoke %tmp.5 %tmp.6(%tmp.11);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_69_61_71_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_69_8_71_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_69_8_71_8_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 73 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_73_8_75_8_if_stmt:
-        symbol [ Communications %tmp.12 73 12 26 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_85_61_87_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_85_8_87_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_85_8_87_8_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 89 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_89_8_91_8_if_stmt:
+        symbol [ Communications %tmp.12 89 12 26 ];
         %tmp.12 = getm $.Toybox.Communications;
         %tmp.14 = const :registerForPhoneAppMessageErrors;
-        symbol [ registerForPhoneAppMessageErrors %tmp.14 73 32 64 const ];
+        symbol [ registerForPhoneAppMessageErrors %tmp.14 89 32 64 const ];
         %tmp.15 = canhazplz %tmp.12 %tmp.14;
-        bf %tmp.15 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_73_8_75_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_73_8_75_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_73_66_75_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 74 12 ]
-        symbol [ Communications %tmp.16 74 12 26 ];
+        bf %tmp.15 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_89_8_91_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_89_8_91_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_89_66_91_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 90 12 ]
+        symbol [ Communications %tmp.16 90 12 26 ];
         %tmp.16 = getm $.Toybox.Communications;
-        symbol [ registerForPhoneAppMessageErrors %tmp.17 74 27 59 ];
+        symbol [ registerForPhoneAppMessageErrors %tmp.17 90 27 59 ];
         %tmp.17 = getv function %tmp.16 :registerForPhoneAppMessageErrors;
         %tmp.18 = self;
-        symbol [ method %tmp.19 74 60 66 ];
+        symbol [ method %tmp.19 90 60 66 ];
         %tmp.19 = getv function %tmp.18 :method;
         %tmp.21 = const :onPhoneMessageError;
-        symbol [ onPhoneMessageError %tmp.21 74 68 87 const ];
+        symbol [ onPhoneMessageError %tmp.21 90 68 87 const ];
         %tmp.22 = invoke %tmp.18 %tmp.19(%tmp.21);
         invoke %tmp.16 %tmp.17(%tmp.22);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_73_66_75_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_73_8_75_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_73_8_75_8_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_68_26_77_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_89_66_91_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_89_8_91_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_89_8_91_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_84_26_93_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 81; @symbol_functiondef = [sendFlightStart,81,13,28]; @symbol_param<0> = [utcEpochSec,81,29,40]; @symbol_param<0>_type<0> = [Number,81,44,50]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 97; @symbol_functiondef = [sendFlightStart,97,13,28]; @symbol_param<0> = [utcEpochSec,97,29,40]; @symbol_param<0>_type<0> = [Number,97,44,50]; ]
     function sendFlightStart(utcEpochSec as Number) as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_81_60_91_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 82 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_97_60_109_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 98 8 ]
         %tmp.1 = "vfr-";
         %tmp.2 = lgetv %utcEpochSec;
-        symbol [ utcEpochSec %tmp.2 82 28 39 ];
-        symbol [ toString %tmp.3 82 40 48 ];
+        symbol [ utcEpochSec %tmp.2 98 28 39 ];
+        symbol [ toString %tmp.3 98 40 48 ];
         %tmp.3 = getv function %tmp.2 :toString;
         %tmp.4 = invoke %tmp.2 %tmp.3();
         %tmp.5 = add %tmp.1 %tmp.4;
         %tmp.6 = "-";
         %tmp.7 = add %tmp.5 %tmp.6;
-        symbol [ System %tmp.8 83 20 26 ];
+        symbol [ System %tmp.8 99 20 26 ];
         %tmp.8 = getm $.Toybox.System;
-        symbol [ getTimer %tmp.9 83 27 35 ];
+        symbol [ getTimer %tmp.9 99 27 35 ];
         %tmp.9 = getv function %tmp.8 :getTimer;
         %tmp.10 = invoke %tmp.8 %tmp.9();
         %tmp.11 = 99991;
         %tmp.12 = mod %tmp.10 %tmp.11;
-        symbol [ toString %tmp.13 83 47 55 ];
+        symbol [ toString %tmp.13 99 47 55 ];
         %tmp.13 = getv function %tmp.12 :toString;
         %tmp.14 = invoke %tmp.12 %tmp.13();
         %tmp.15 = add %tmp.7 %tmp.14;
-        symbol [ flightId ? 82 8 16 ];
+        symbol [ flightId ? 98 8 16 ];
         putv self :flightId %tmp.15;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 84 8 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 100 8 ]
         %tmp.16 = newd 4;
         %tmp.17 = "type";
         %tmp.18 = "flight_event";
@@ -269,41 +285,47 @@ _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms
         %tmp.23 = dup %tmp.20;
         %tmp.24 = aputv %tmp.23 %tmp.21 %tmp.22;
         %tmp.25 = "flight_id";
-        symbol [ flightId %tmp.27 86 44 52 ];
+        symbol [ flightId %tmp.27 102 44 52 ];
         %tmp.27 = getv ? :flightId;
         %tmp.28 = dup %tmp.24;
         %tmp.29 = aputv %tmp.28 %tmp.25 %tmp.27;
         %tmp.30 = "ts";
         %tmp.31 = lgetv %utcEpochSec;
-        symbol [ utcEpochSec %tmp.31 87 44 55 ];
+        symbol [ utcEpochSec %tmp.31 103 44 55 ];
         %tmp.32 = dup %tmp.29;
         %tmp.33 = aputv %tmp.32 %tmp.30 %tmp.31;
-        symbol [ _startPayload ? 84 8 21 ];
+        symbol [ _startPayload ? 100 8 21 ];
         putv self :_startPayload %tmp.33;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 88 8 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 104 8 ]
         %tmp.34 = 0;
-        symbol [ _startRetryCount ? 88 8 24 ];
+        symbol [ _startRetryCount ? 104 8 24 ];
         putv self :_startRetryCount %tmp.34;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 89 8 ]
-        %tmp.35 = 0;
-        symbol [ _startRetryAt ? 89 8 21 ];
-        putv self :_startRetryAt %tmp.35;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 90 8 ]
-        symbol [ System %tmp.36 90 8 14 ];
-        %tmp.36 = getm $.Toybox.System;
-        symbol [ println %tmp.37 90 15 22 ];
-        %tmp.37 = getv function %tmp.36 :println;
-        %tmp.38 = "VFRComms: queued start id=";
-        symbol [ flightId %tmp.40 90 54 62 ];
-        %tmp.40 = getv ? :flightId;
-        %tmp.41 = add %tmp.38 %tmp.40;
-        invoke %tmp.36 %tmp.37(%tmp.41);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_81_60_91_4_stop:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 107 8 ]
+        symbol [ System %tmp.35 107 27 33 ];
+        %tmp.35 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.36 107 34 42 ];
+        %tmp.36 = getv function %tmp.35 :getTimer;
+        %tmp.37 = invoke %tmp.35 %tmp.36();
+        %tmp.38 = 1000;
+        %tmp.39 = add %tmp.37 %tmp.38;
+        symbol [ _startRetryAt ? 107 8 21 ];
+        putv self :_startRetryAt %tmp.39;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 108 8 ]
+        symbol [ System %tmp.40 108 8 14 ];
+        %tmp.40 = getm $.Toybox.System;
+        symbol [ println %tmp.41 108 15 22 ];
+        %tmp.41 = getv function %tmp.40 :println;
+        %tmp.42 = "VFRComms: queued start id=";
+        symbol [ flightId %tmp.44 108 54 62 ];
+        %tmp.44 = getv ? :flightId;
+        %tmp.45 = add %tmp.42 %tmp.44;
+        invoke %tmp.40 %tmp.41(%tmp.45);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_97_60_109_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 93; @symbol_functiondef = [sendFlightStop,93,13,27]; @symbol_param<0> = [utcEpochSec,93,28,39]; @symbol_param<0>_type<0> = [Number,93,43,49]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 111; @symbol_functiondef = [sendFlightStop,111,13,27]; @symbol_param<0> = [utcEpochSec,111,28,39]; @symbol_param<0>_type<0> = [Number,111,43,49]; ]
     function sendFlightStop(utcEpochSec as Number) as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_93_59_101_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 94 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_111_59_119_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 112 8 ]
         %tmp.1 = newd 4;
         %tmp.2 = "type";
         %tmp.3 = "flight_event";
@@ -314,975 +336,1321 @@ _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms
         %tmp.8 = dup %tmp.5;
         %tmp.9 = aputv %tmp.8 %tmp.6 %tmp.7;
         %tmp.10 = "flight_id";
-        symbol [ flightId %tmp.12 96 43 51 ];
+        symbol [ flightId %tmp.12 114 43 51 ];
         %tmp.12 = getv ? :flightId;
         %tmp.13 = dup %tmp.9;
         %tmp.14 = aputv %tmp.13 %tmp.10 %tmp.12;
         %tmp.15 = "ts";
         %tmp.16 = lgetv %utcEpochSec;
-        symbol [ utcEpochSec %tmp.16 97 43 54 ];
+        symbol [ utcEpochSec %tmp.16 115 43 54 ];
         %tmp.17 = dup %tmp.14;
         %tmp.18 = aputv %tmp.17 %tmp.15 %tmp.16;
-        symbol [ _stopPayload ? 94 8 20 ];
+        symbol [ _stopPayload ? 112 8 20 ];
         putv self :_stopPayload %tmp.18;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 98 8 ]
-        %tmp.19 = 0;
-        symbol [ _stopRetryCount ? 98 8 23 ];
-        putv self :_stopRetryCount %tmp.19;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 99 8 ]
-        %tmp.20 = 0;
-        symbol [ _stopRetryAt ? 99 8 20 ];
-        putv self :_stopRetryAt %tmp.20;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 100 8 ]
-        symbol [ System %tmp.21 100 8 14 ];
-        %tmp.21 = getm $.Toybox.System;
-        symbol [ println %tmp.22 100 15 22 ];
-        %tmp.22 = getv function %tmp.21 :println;
-        %tmp.23 = "VFRComms: queued stop id=";
-        symbol [ flightId %tmp.25 100 53 61 ];
-        %tmp.25 = getv ? :flightId;
-        %tmp.26 = add %tmp.23 %tmp.25;
-        invoke %tmp.21 %tmp.22(%tmp.26);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_93_59_101_4_stop:
-    }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 104; @symbol_functiondef = [tick,104,13,17]; @symbol_param<0> = [now,104,18,21]; @symbol_param<0>_type<0> = [Number,104,25,31]; ]
-    function tick(now as Number) as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_104_41_164_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 105 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_104_41_164_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_104_41_164_4_stop" ]
-        %reach.1 = local;
-        symbol [ reach %reach.1 105 12 17 ];
-        %tmp.1 = self;
-        symbol [ _isPhoneReachable %tmp.2 105 20 37 ];
-        %tmp.2 = getv function %tmp.1 :_isPhoneReachable;
-        %tmp.3 = invoke %tmp.1 %tmp.2();
-        lputv %reach.1 %tmp.3;
-        symbol [ reach %reach.1 105 12 17 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 108 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_108_8_114_8_if_stmt:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_108_12_108_32_begin:
-        %tmp.4 = lgetv %reach.1;
-        symbol [ reach %tmp.4 108 13 18 ];
-        %tmp.5 = not %tmp.4;
-        bf %tmp.5 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_108_8_114_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_108_22_108_32_true:
-        symbol [ _state %tmp.7 108 22 28 ];
-        %tmp.7 = getv ? :_state;
-        symbol [ STATE_DISC %tmp.9 108 32 42 ];
-        %tmp.9 = getv ? :STATE_DISC;
-        %tmp.10 = ne %tmp.7 %tmp.9;
-        push %tmp.10;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_108_22_108_32_end:
-        %tmp.11 = phi [%tmp.5 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_108_12_108_32_begin] [%tmp.10 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_108_22_108_32_true] [%tmp.11 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_108_22_108_32_end];
-        bf %tmp.11 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_108_8_114_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_108_8_114_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_108_44_114_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 109 12 ]
-        symbol [ STATE_DISC %tmp.13 109 31 41 ];
-        %tmp.13 = getv ? :STATE_DISC;
-        symbol [ _state ? 109 12 18 ];
-        putv self :_state %tmp.13;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 110 12 ]
-        %tmp.14 = false;
-        symbol [ connected ? 110 12 21 ];
-        putv self :connected %tmp.14;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 111 12 ]
-        %tmp.15 = false;
-        symbol [ connecting ? 111 12 22 ];
-        putv self :connecting %tmp.15;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 112 12 ]
-        %tmp.16 = 0;
-        symbol [ _nextHandshakeAt ? 112 12 28 ];
-        putv self :_nextHandshakeAt %tmp.16;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 113 12 ]
-        symbol [ System %tmp.17 113 12 18 ];
-        %tmp.17 = getm $.Toybox.System;
-        symbol [ println %tmp.18 113 19 26 ];
-        %tmp.18 = getv function %tmp.17 :println;
-        %tmp.19 = "VFRComms: phone unreachable → DISC";
-        invoke %tmp.17 %tmp.18(%tmp.19);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_108_44_114_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_108_8_114_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_108_8_114_8_if_end:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 116 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_116_8_139_8_if_stmt:
-        symbol [ _state %tmp.21 116 12 18 ];
-        %tmp.21 = getv ? :_state;
-        symbol [ STATE_DISC %tmp.23 116 22 32 ];
-        %tmp.23 = getv ? :STATE_DISC;
-        %tmp.24 = eq %tmp.21 %tmp.23;
-        bf %tmp.24 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_116_8_139_8_if_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_116_8_139_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_116_34_125_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 117 12 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_117_12_123_12_if_stmt:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_117_16_117_32_begin:
-        %tmp.25 = lgetv %reach.1;
-        symbol [ reach %tmp.25 117 16 21 ];
-        bf %tmp.25 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_117_12_123_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_117_25_117_32_true:
-        %tmp.26 = lgetv %now;
-        symbol [ now %tmp.26 117 25 28 ];
-        symbol [ _nextHandshakeAt %tmp.28 117 32 48 ];
-        %tmp.28 = getv ? :_nextHandshakeAt;
-        %tmp.29 = gte %tmp.26 %tmp.28;
-        push %tmp.29;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_117_25_117_32_end:
-        %tmp.30 = phi [%tmp.25 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_117_16_117_32_begin] [%tmp.29 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_117_25_117_32_true] [%tmp.30 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_117_25_117_32_end];
-        bf %tmp.30 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_117_12_123_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_117_12_123_12_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_117_50_123_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 118 16 ]
-        symbol [ STATE_SHAKING %tmp.32 118 35 48 ];
-        %tmp.32 = getv ? :STATE_SHAKING;
-        symbol [ _state ? 118 16 22 ];
-        putv self :_state %tmp.32;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 119 16 ]
-        %tmp.33 = true;
-        symbol [ connecting ? 119 16 26 ];
-        putv self :connecting %tmp.33;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 120 16 ]
-        %tmp.34 = lgetv %now;
-        symbol [ now %tmp.34 120 35 38 ];
-        symbol [ HANDSHAKE_RETRY_MS %tmp.36 120 41 59 ];
-        %tmp.36 = getv ? :HANDSHAKE_RETRY_MS;
-        %tmp.37 = add %tmp.34 %tmp.36;
-        symbol [ _nextHandshakeAt ? 120 16 32 ];
-        putv self :_nextHandshakeAt %tmp.37;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 121 16 ]
-        %tmp.38 = self;
-        symbol [ _txHandshake %tmp.39 121 16 28 ];
-        %tmp.39 = getv function %tmp.38 :_txHandshake;
-        invoke %tmp.38 %tmp.39();
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 122 16 ]
-        symbol [ System %tmp.40 122 16 22 ];
-        %tmp.40 = getm $.Toybox.System;
-        symbol [ println %tmp.41 122 23 30 ];
-        %tmp.41 = getv function %tmp.40 :println;
-        %tmp.42 = "VFRComms: handshake sent → SHAKING";
-        invoke %tmp.40 %tmp.41(%tmp.42);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_117_50_123_12_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_117_12_123_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_117_12_123_12_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_116_34_125_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_116_8_139_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_116_8_139_8_if_false:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 125 15 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_125_15_139_8_if_stmt:
-        symbol [ _state %tmp.44 125 19 25 ];
-        %tmp.44 = getv ? :_state;
-        symbol [ STATE_SHAKING %tmp.46 125 29 42 ];
-        %tmp.46 = getv ? :STATE_SHAKING;
-        %tmp.47 = eq %tmp.44 %tmp.46;
-        bf %tmp.47 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_125_15_139_8_if_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_125_15_139_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_125_44_133_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 127 12 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_12_131_12_if_stmt:
-        %tmp.48 = lgetv %now;
-        symbol [ now %tmp.48 127 16 19 ];
-        symbol [ _nextHandshakeAt %tmp.50 127 23 39 ];
-        %tmp.50 = getv ? :_nextHandshakeAt;
-        %tmp.51 = gte %tmp.48 %tmp.50;
-        bf %tmp.51 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_12_131_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_12_131_12_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_41_131_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 128 16 ]
-        %tmp.52 = lgetv %now;
-        symbol [ now %tmp.52 128 35 38 ];
-        symbol [ HANDSHAKE_RETRY_MS %tmp.54 128 41 59 ];
-        %tmp.54 = getv ? :HANDSHAKE_RETRY_MS;
-        %tmp.55 = add %tmp.52 %tmp.54;
-        symbol [ _nextHandshakeAt ? 128 16 32 ];
-        putv self :_nextHandshakeAt %tmp.55;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 129 16 ]
-        %tmp.56 = self;
-        symbol [ _txHandshake %tmp.57 129 16 28 ];
-        %tmp.57 = getv function %tmp.56 :_txHandshake;
-        invoke %tmp.56 %tmp.57();
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 130 16 ]
-        symbol [ System %tmp.58 130 16 22 ];
-        %tmp.58 = getm $.Toybox.System;
-        symbol [ println %tmp.59 130 23 30 ];
-        %tmp.59 = getv function %tmp.58 :println;
-        %tmp.60 = "VFRComms: handshake retry";
-        invoke %tmp.58 %tmp.59(%tmp.60);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_41_131_12_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_12_131_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_12_131_12_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_125_44_133_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_125_15_139_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_125_15_139_8_if_false:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 133 15 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_133_15_139_8_if_stmt:
-        symbol [ _state %tmp.62 133 19 25 ];
-        %tmp.62 = getv ? :_state;
-        symbol [ STATE_CONNECTED %tmp.64 133 29 44 ];
-        %tmp.64 = getv ? :STATE_CONNECTED;
-        %tmp.65 = eq %tmp.62 %tmp.64;
-        bf %tmp.65 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_133_15_139_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_133_15_139_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_133_46_139_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 135 12 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_135_12_138_12_if_stmt:
-        %tmp.66 = lgetv %now;
-        symbol [ now %tmp.66 135 16 19 ];
-        symbol [ _nextKeepaliveAt %tmp.68 135 23 39 ];
-        %tmp.68 = getv ? :_nextKeepaliveAt;
-        %tmp.69 = gte %tmp.66 %tmp.68;
-        bf %tmp.69 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_135_12_138_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_135_12_138_12_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_135_41_138_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 136 16 ]
-        %tmp.70 = lgetv %now;
-        symbol [ now %tmp.70 136 35 38 ];
-        symbol [ KEEPALIVE_MS %tmp.72 136 41 53 ];
-        %tmp.72 = getv ? :KEEPALIVE_MS;
-        %tmp.73 = add %tmp.70 %tmp.72;
-        symbol [ _nextKeepaliveAt ? 136 16 32 ];
-        putv self :_nextKeepaliveAt %tmp.73;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 137 16 ]
-        %tmp.74 = self;
-        symbol [ _tx %tmp.75 137 16 19 ];
-        %tmp.75 = getv function %tmp.74 :_tx;
-        %tmp.76 = newd 1;
-        %tmp.77 = "type";
-        %tmp.78 = "keepalive";
-        %tmp.79 = dup %tmp.76;
-        %tmp.80 = aputv %tmp.79 %tmp.77 %tmp.78;
-        %tmp.81 = "ka";
-        invoke %tmp.74 %tmp.75(%tmp.80, %tmp.81);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_135_41_138_12_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_135_12_138_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_135_12_138_12_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_133_46_139_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_133_15_139_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_133_15_139_8_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_125_15_139_8_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_116_8_139_8_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 142 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_142_8_152_8_if_stmt:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_142_12_142_44_begin:
-        symbol [ _startPayload %tmp.83 142 12 25 ];
-        %tmp.83 = getv ? :_startPayload;
-        %tmp.84 = null;
-        %tmp.85 = ne %tmp.83 %tmp.84;
-        bf %tmp.85 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_142_8_152_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_142_37_142_44_true:
-        %tmp.86 = lgetv %now;
-        symbol [ now %tmp.86 142 37 40 ];
-        symbol [ _startRetryAt %tmp.88 142 44 57 ];
-        %tmp.88 = getv ? :_startRetryAt;
-        %tmp.89 = gte %tmp.86 %tmp.88;
-        push %tmp.89;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_142_37_142_44_end:
-        %tmp.90 = phi [%tmp.85 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_142_12_142_44_begin] [%tmp.89 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_142_37_142_44_true] [%tmp.90 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_142_37_142_44_end];
-        bf %tmp.90 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_142_8_152_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_142_8_152_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_142_59_152_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 143 12 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_143_12_151_12_if_stmt:
-        symbol [ _startRetryCount %tmp.92 143 16 32 ];
-        %tmp.92 = getv ? :_startRetryCount;
-        symbol [ MAX_RETRIES %tmp.94 143 35 46 ];
-        %tmp.94 = getv ? :MAX_RETRIES;
-        %tmp.95 = lt %tmp.92 %tmp.94;
-        bf %tmp.95 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_143_12_151_12_if_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_143_12_151_12_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_143_48_148_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 144 16 ]
-        %tmp.96 = self;
-        symbol [ _tx %tmp.97 144 16 19 ];
-        %tmp.97 = getv function %tmp.96 :_tx;
-        symbol [ _startPayload %tmp.99 144 20 33 ];
-        %tmp.99 = getv ? :_startPayload;
-        %tmp.100 = as %tmp.99 { (!Null) };
-        %tmp.101 = as %tmp.100 Dictionary;
-        symbol [ Dictionary %tmp.101 144 37 47 ];
-        %tmp.102 = "start";
-        invoke %tmp.96 %tmp.97(%tmp.101, %tmp.102);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 145 16 ]
-        %tmp.103 = lgetv %now;
-        symbol [ now %tmp.103 145 32 35 ];
-        %tmp.104 = self;
-        symbol [ _backoff %tmp.105 145 38 46 ];
-        %tmp.105 = getv function %tmp.104 :_backoff;
-        symbol [ _startRetryCount %tmp.107 145 47 63 ];
-        %tmp.107 = getv ? :_startRetryCount;
-        %tmp.108 = invoke %tmp.104 %tmp.105(%tmp.107);
-        %tmp.109 = add %tmp.103 %tmp.108;
-        symbol [ _startRetryAt ? 145 16 29 ];
-        putv self :_startRetryAt %tmp.109;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 146 16 ]
-        symbol [ _startRetryCount %tmp.112 146 16 32 ];
-        %tmp.112 = getv ? :_startRetryCount;
-        %tmp.113 = add %tmp.112 1;
-        symbol [ _startRetryCount ? 146 16 32 ];
-        putv self :_startRetryCount dup %tmp.113;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 147 16 ]
-        symbol [ System %tmp.114 147 16 22 ];
-        %tmp.114 = getm $.Toybox.System;
-        symbol [ println %tmp.115 147 23 30 ];
-        %tmp.115 = getv function %tmp.114 :println;
-        %tmp.116 = "VFRComms: start attempt ";
-        symbol [ _startRetryCount %tmp.118 147 60 76 ];
-        %tmp.118 = getv ? :_startRetryCount;
-        symbol [ toString %tmp.119 147 77 85 ];
-        %tmp.119 = getv function %tmp.118 :toString;
-        %tmp.120 = invoke %tmp.118 %tmp.119();
-        %tmp.121 = add %tmp.116 %tmp.120;
-        invoke %tmp.114 %tmp.115(%tmp.121);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_143_48_148_12_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_143_12_151_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_143_12_151_12_if_else_false:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_148_19_151_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 149 16 ]
-        symbol [ System %tmp.122 149 16 22 ];
-        %tmp.122 = getm $.Toybox.System;
-        symbol [ println %tmp.123 149 23 30 ];
-        %tmp.123 = getv function %tmp.122 :println;
-        %tmp.124 = "VFRComms: start gave up after ";
-        symbol [ MAX_RETRIES %tmp.126 149 66 77 ];
-        %tmp.126 = getv ? :MAX_RETRIES;
-        symbol [ toString %tmp.127 149 78 86 ];
-        %tmp.127 = getv function %tmp.126 :toString;
-        %tmp.128 = invoke %tmp.126 %tmp.127();
-        %tmp.129 = add %tmp.124 %tmp.128;
-        invoke %tmp.122 %tmp.123(%tmp.129);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 150 16 ]
-        %tmp.130 = null;
-        symbol [ _startPayload ? 150 16 29 ];
-        putv self :_startPayload %tmp.130;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_148_19_151_12_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_143_12_151_12_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_142_59_152_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_142_8_152_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_142_8_152_8_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 153 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_153_8_163_8_if_stmt:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_153_12_153_43_begin:
-        symbol [ _stopPayload %tmp.132 153 12 24 ];
-        %tmp.132 = getv ? :_stopPayload;
-        %tmp.133 = null;
-        %tmp.134 = ne %tmp.132 %tmp.133;
-        bf %tmp.134 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_153_8_163_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_153_36_153_43_true:
-        %tmp.135 = lgetv %now;
-        symbol [ now %tmp.135 153 36 39 ];
-        symbol [ _stopRetryAt %tmp.137 153 43 55 ];
-        %tmp.137 = getv ? :_stopRetryAt;
-        %tmp.138 = gte %tmp.135 %tmp.137;
-        push %tmp.138;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_153_36_153_43_end:
-        %tmp.139 = phi [%tmp.134 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_153_12_153_43_begin] [%tmp.138 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_153_36_153_43_true] [%tmp.139 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_153_36_153_43_end];
-        bf %tmp.139 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_153_8_163_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_153_8_163_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_153_57_163_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 154 12 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_154_12_162_12_if_stmt:
-        symbol [ _stopRetryCount %tmp.141 154 16 31 ];
-        %tmp.141 = getv ? :_stopRetryCount;
-        symbol [ MAX_RETRIES %tmp.143 154 34 45 ];
-        %tmp.143 = getv ? :MAX_RETRIES;
-        %tmp.144 = lt %tmp.141 %tmp.143;
-        bf %tmp.144 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_154_12_162_12_if_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_154_12_162_12_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_154_47_159_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 155 16 ]
-        %tmp.145 = self;
-        symbol [ _tx %tmp.146 155 16 19 ];
-        %tmp.146 = getv function %tmp.145 :_tx;
-        symbol [ _stopPayload %tmp.148 155 20 32 ];
-        %tmp.148 = getv ? :_stopPayload;
-        %tmp.149 = as %tmp.148 { (!Null) };
-        %tmp.150 = as %tmp.149 Dictionary;
-        symbol [ Dictionary %tmp.150 155 36 46 ];
-        %tmp.151 = "stop";
-        invoke %tmp.145 %tmp.146(%tmp.150, %tmp.151);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 156 16 ]
-        %tmp.152 = lgetv %now;
-        symbol [ now %tmp.152 156 31 34 ];
-        %tmp.153 = self;
-        symbol [ _backoff %tmp.154 156 37 45 ];
-        %tmp.154 = getv function %tmp.153 :_backoff;
-        symbol [ _stopRetryCount %tmp.156 156 46 61 ];
-        %tmp.156 = getv ? :_stopRetryCount;
-        %tmp.157 = invoke %tmp.153 %tmp.154(%tmp.156);
-        %tmp.158 = add %tmp.152 %tmp.157;
-        symbol [ _stopRetryAt ? 156 16 28 ];
-        putv self :_stopRetryAt %tmp.158;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 157 16 ]
-        symbol [ _stopRetryCount %tmp.161 157 16 31 ];
-        %tmp.161 = getv ? :_stopRetryCount;
-        %tmp.162 = add %tmp.161 1;
-        symbol [ _stopRetryCount ? 157 16 31 ];
-        putv self :_stopRetryCount dup %tmp.162;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 158 16 ]
-        symbol [ System %tmp.163 158 16 22 ];
-        %tmp.163 = getm $.Toybox.System;
-        symbol [ println %tmp.164 158 23 30 ];
-        %tmp.164 = getv function %tmp.163 :println;
-        %tmp.165 = "VFRComms: stop attempt ";
-        symbol [ _stopRetryCount %tmp.167 158 59 74 ];
-        %tmp.167 = getv ? :_stopRetryCount;
-        symbol [ toString %tmp.168 158 75 83 ];
-        %tmp.168 = getv function %tmp.167 :toString;
-        %tmp.169 = invoke %tmp.167 %tmp.168();
-        %tmp.170 = add %tmp.165 %tmp.169;
-        invoke %tmp.163 %tmp.164(%tmp.170);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_154_47_159_12_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_154_12_162_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_154_12_162_12_if_else_false:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_159_19_162_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 160 16 ]
-        symbol [ System %tmp.171 160 16 22 ];
-        %tmp.171 = getm $.Toybox.System;
-        symbol [ println %tmp.172 160 23 30 ];
-        %tmp.172 = getv function %tmp.171 :println;
-        %tmp.173 = "VFRComms: stop gave up after ";
-        symbol [ MAX_RETRIES %tmp.175 160 65 76 ];
-        %tmp.175 = getv ? :MAX_RETRIES;
-        symbol [ toString %tmp.176 160 77 85 ];
-        %tmp.176 = getv function %tmp.175 :toString;
-        %tmp.177 = invoke %tmp.175 %tmp.176();
-        %tmp.178 = add %tmp.173 %tmp.177;
-        invoke %tmp.171 %tmp.172(%tmp.178);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 161 16 ]
-        %tmp.179 = null;
-        symbol [ _stopPayload ? 161 16 28 ];
-        putv self :_stopPayload %tmp.179;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_159_19_162_12_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_154_12_162_12_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_153_57_163_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_153_8_163_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_153_8_163_8_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_104_41_164_4_stop:
+        %tmp.19 = 0;
+        symbol [ _stopRetryCount ? 116 8 23 ];
+        putv self :_stopRetryCount %tmp.19;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 117 8 ]
+        symbol [ System %tmp.20 117 26 32 ];
+        %tmp.20 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.21 117 33 41 ];
+        %tmp.21 = getv function %tmp.20 :getTimer;
+        %tmp.22 = invoke %tmp.20 %tmp.21();
+        %tmp.23 = 1000;
+        %tmp.24 = add %tmp.22 %tmp.23;
+        symbol [ _stopRetryAt ? 117 8 20 ];
+        putv self :_stopRetryAt %tmp.24;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 118 8 ]
+        symbol [ System %tmp.25 118 8 14 ];
+        %tmp.25 = getm $.Toybox.System;
+        symbol [ println %tmp.26 118 15 22 ];
+        %tmp.26 = getv function %tmp.25 :println;
+        %tmp.27 = "VFRComms: queued stop id=";
+        symbol [ flightId %tmp.29 118 53 61 ];
+        %tmp.29 = getv ? :flightId;
+        %tmp.30 = add %tmp.27 %tmp.29;
+        invoke %tmp.25 %tmp.26(%tmp.30);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_111_59_119_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 167; @symbol_functiondef = [onTransmitError,167,13,28]; @symbol_param<0> = [msgType,167,29,36]; @symbol_param<0>_type<0> = [String,167,40,46]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 122; @symbol_functiondef = [tick,122,13,17]; @symbol_param<0> = [now,122,18,21]; @symbol_param<0>_type<0> = [Number,122,25,31]; ]
+    function tick(now as Number) as Void {
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_122_41_197_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 123 8 ]
+        %tmp.1 = false;
+        symbol [ _txThisTick ? 123 8 19 ];
+        putv self :_txThisTick %tmp.1;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 124 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_122_41_197_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_122_41_197_4_stop" ]
+        %reach.1 = local;
+        symbol [ reach %reach.1 124 12 17 ];
+        %tmp.2 = self;
+        symbol [ _isPhoneReachable %tmp.3 124 20 37 ];
+        %tmp.3 = getv function %tmp.2 :_isPhoneReachable;
+        %tmp.4 = invoke %tmp.2 %tmp.3();
+        lputv %reach.1 %tmp.4;
+        symbol [ reach %reach.1 124 12 17 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 127 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_8_133_8_if_stmt:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_12_127_32_begin:
+        %tmp.5 = lgetv %reach.1;
+        symbol [ reach %tmp.5 127 13 18 ];
+        %tmp.6 = not %tmp.5;
+        bf %tmp.6 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_8_133_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_22_127_32_true:
+        symbol [ _state %tmp.8 127 22 28 ];
+        %tmp.8 = getv ? :_state;
+        symbol [ STATE_DISC %tmp.10 127 32 42 ];
+        %tmp.10 = getv ? :STATE_DISC;
+        %tmp.11 = ne %tmp.8 %tmp.10;
+        push %tmp.11;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_22_127_32_end:
+        %tmp.12 = phi [%tmp.6 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_12_127_32_begin] [%tmp.11 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_22_127_32_true] [%tmp.12 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_22_127_32_end];
+        bf %tmp.12 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_8_133_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_8_133_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_44_133_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 128 12 ]
+        symbol [ STATE_DISC %tmp.14 128 31 41 ];
+        %tmp.14 = getv ? :STATE_DISC;
+        symbol [ _state ? 128 12 18 ];
+        putv self :_state %tmp.14;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 129 12 ]
+        %tmp.15 = false;
+        symbol [ connected ? 129 12 21 ];
+        putv self :connected %tmp.15;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 130 12 ]
+        %tmp.16 = false;
+        symbol [ connecting ? 130 12 22 ];
+        putv self :connecting %tmp.16;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 131 12 ]
+        %tmp.17 = 0;
+        symbol [ _nextHandshakeAt ? 131 12 28 ];
+        putv self :_nextHandshakeAt %tmp.17;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 132 12 ]
+        symbol [ System %tmp.18 132 12 18 ];
+        %tmp.18 = getm $.Toybox.System;
+        symbol [ println %tmp.19 132 19 26 ];
+        %tmp.19 = getv function %tmp.18 :println;
+        %tmp.20 = "VFRComms: phone unreachable → DISC";
+        invoke %tmp.18 %tmp.19(%tmp.20);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_44_133_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_8_133_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_127_8_133_8_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 135 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_135_8_168_8_if_stmt:
+        symbol [ _state %tmp.22 135 12 18 ];
+        %tmp.22 = getv ? :_state;
+        symbol [ STATE_DISC %tmp.24 135 22 32 ];
+        %tmp.24 = getv ? :STATE_DISC;
+        %tmp.25 = eq %tmp.22 %tmp.24;
+        bf %tmp.25 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_135_8_168_8_if_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_135_8_168_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_135_34_144_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 136 12 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_136_12_142_12_if_stmt:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_136_16_136_32_begin:
+        %tmp.26 = lgetv %reach.1;
+        symbol [ reach %tmp.26 136 16 21 ];
+        bf %tmp.26 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_136_12_142_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_136_25_136_32_true:
+        %tmp.27 = lgetv %now;
+        symbol [ now %tmp.27 136 25 28 ];
+        symbol [ _nextHandshakeAt %tmp.29 136 32 48 ];
+        %tmp.29 = getv ? :_nextHandshakeAt;
+        %tmp.30 = gte %tmp.27 %tmp.29;
+        push %tmp.30;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_136_25_136_32_end:
+        %tmp.31 = phi [%tmp.26 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_136_16_136_32_begin] [%tmp.30 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_136_25_136_32_true] [%tmp.31 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_136_25_136_32_end];
+        bf %tmp.31 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_136_12_142_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_136_12_142_12_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_136_50_142_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 137 16 ]
+        symbol [ STATE_SHAKING %tmp.33 137 35 48 ];
+        %tmp.33 = getv ? :STATE_SHAKING;
+        symbol [ _state ? 137 16 22 ];
+        putv self :_state %tmp.33;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 138 16 ]
+        %tmp.34 = true;
+        symbol [ connecting ? 138 16 26 ];
+        putv self :connecting %tmp.34;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 139 16 ]
+        %tmp.35 = lgetv %now;
+        symbol [ now %tmp.35 139 35 38 ];
+        symbol [ HANDSHAKE_RETRY_MS %tmp.37 139 41 59 ];
+        %tmp.37 = getv ? :HANDSHAKE_RETRY_MS;
+        %tmp.38 = add %tmp.35 %tmp.37;
+        symbol [ _nextHandshakeAt ? 139 16 32 ];
+        putv self :_nextHandshakeAt %tmp.38;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 140 16 ]
+        %tmp.39 = self;
+        symbol [ _txHandshake %tmp.40 140 16 28 ];
+        %tmp.40 = getv function %tmp.39 :_txHandshake;
+        invoke %tmp.39 %tmp.40();
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 141 16 ]
+        symbol [ System %tmp.41 141 16 22 ];
+        %tmp.41 = getm $.Toybox.System;
+        symbol [ println %tmp.42 141 23 30 ];
+        %tmp.42 = getv function %tmp.41 :println;
+        %tmp.43 = "VFRComms: handshake sent → SHAKING";
+        invoke %tmp.41 %tmp.42(%tmp.43);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_136_50_142_12_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_136_12_142_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_136_12_142_12_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_135_34_144_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_135_8_168_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_135_8_168_8_if_false:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 144 15 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_144_15_168_8_if_stmt:
+        symbol [ _state %tmp.45 144 19 25 ];
+        %tmp.45 = getv ? :_state;
+        symbol [ STATE_SHAKING %tmp.47 144 29 42 ];
+        %tmp.47 = getv ? :STATE_SHAKING;
+        %tmp.48 = eq %tmp.45 %tmp.47;
+        bf %tmp.48 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_144_15_168_8_if_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_144_15_168_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_144_44_152_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 146 12 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_146_12_150_12_if_stmt:
+        %tmp.49 = lgetv %now;
+        symbol [ now %tmp.49 146 16 19 ];
+        symbol [ _nextHandshakeAt %tmp.51 146 23 39 ];
+        %tmp.51 = getv ? :_nextHandshakeAt;
+        %tmp.52 = gte %tmp.49 %tmp.51;
+        bf %tmp.52 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_146_12_150_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_146_12_150_12_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_146_41_150_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 147 16 ]
+        %tmp.53 = lgetv %now;
+        symbol [ now %tmp.53 147 35 38 ];
+        symbol [ HANDSHAKE_RETRY_MS %tmp.55 147 41 59 ];
+        %tmp.55 = getv ? :HANDSHAKE_RETRY_MS;
+        %tmp.56 = add %tmp.53 %tmp.55;
+        symbol [ _nextHandshakeAt ? 147 16 32 ];
+        putv self :_nextHandshakeAt %tmp.56;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 148 16 ]
+        %tmp.57 = self;
+        symbol [ _txHandshake %tmp.58 148 16 28 ];
+        %tmp.58 = getv function %tmp.57 :_txHandshake;
+        invoke %tmp.57 %tmp.58();
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 149 16 ]
+        symbol [ System %tmp.59 149 16 22 ];
+        %tmp.59 = getm $.Toybox.System;
+        symbol [ println %tmp.60 149 23 30 ];
+        %tmp.60 = getv function %tmp.59 :println;
+        %tmp.61 = "VFRComms: handshake retry";
+        invoke %tmp.59 %tmp.60(%tmp.61);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_146_41_150_12_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_146_12_150_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_146_12_150_12_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_144_44_152_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_144_15_168_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_144_15_168_8_if_false:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 152 15 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_152_15_168_8_if_stmt:
+        symbol [ _state %tmp.63 152 19 25 ];
+        %tmp.63 = getv ? :_state;
+        symbol [ STATE_CONNECTED %tmp.65 152 29 44 ];
+        %tmp.65 = getv ? :STATE_CONNECTED;
+        %tmp.66 = eq %tmp.63 %tmp.65;
+        bf %tmp.66 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_152_15_168_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_152_15_168_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_152_46_168_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 157 12 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_157_12_167_12_if_stmt:
+        %tmp.67 = lgetv %now;
+        symbol [ now %tmp.67 157 16 19 ];
+        symbol [ _nextKeepaliveAt %tmp.69 157 23 39 ];
+        %tmp.69 = getv ? :_nextKeepaliveAt;
+        %tmp.70 = gte %tmp.67 %tmp.69;
+        bf %tmp.70 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_157_12_167_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_157_12_167_12_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_157_41_167_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 158 16 ]
+        %tmp.71 = lgetv %now;
+        symbol [ now %tmp.71 158 35 38 ];
+        symbol [ KEEPALIVE_MS %tmp.73 158 41 53 ];
+        %tmp.73 = getv ? :KEEPALIVE_MS;
+        %tmp.74 = add %tmp.71 %tmp.73;
+        symbol [ _nextKeepaliveAt ? 158 16 32 ];
+        putv self :_nextKeepaliveAt %tmp.74;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 159 16 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_159_16_164_16_if_stmt:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_159_20_159_61_begin:
+        symbol [ _startPayload %tmp.76 159 20 33 ];
+        %tmp.76 = getv ? :_startPayload;
+        %tmp.77 = null;
+        %tmp.78 = ne %tmp.76 %tmp.77;
+        bt %tmp.78 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_159_16_164_16_if_true;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_159_45_159_61_false:
+        symbol [ _stopPayload %tmp.80 159 45 57 ];
+        %tmp.80 = getv ? :_stopPayload;
+        %tmp.81 = null;
+        %tmp.82 = ne %tmp.80 %tmp.81;
+        push %tmp.82;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_159_45_159_61_end:
+        %tmp.83 = phi [%tmp.78 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_159_20_159_61_begin] [%tmp.82 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_159_45_159_61_false] [%tmp.83 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_159_45_159_61_end];
+        bf %tmp.83 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_159_16_164_16_if_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_159_16_164_16_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_159_67_161_16_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 160 20 ]
+        %tmp.84 = self;
+        symbol [ _tx %tmp.85 160 20 23 ];
+        %tmp.85 = getv function %tmp.84 :_tx;
+        %tmp.86 = newd 1;
+        %tmp.87 = "type";
+        %tmp.88 = "keepalive";
+        %tmp.89 = dup %tmp.86;
+        %tmp.90 = aputv %tmp.89 %tmp.87 %tmp.88;
+        %tmp.91 = "ka";
+        invoke %tmp.84 %tmp.85(%tmp.90, %tmp.91);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_159_67_161_16_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_159_16_164_16_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_159_16_164_16_if_else_false:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_161_23_164_16_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 163 20 ]
+        symbol [ System %tmp.92 163 20 26 ];
+        %tmp.92 = getm $.Toybox.System;
+        symbol [ println %tmp.93 163 27 34 ];
+        %tmp.93 = getv function %tmp.92 :println;
+        %tmp.94 = "VFRComms: skipping keepalive (no pending payloads)";
+        invoke %tmp.92 %tmp.93(%tmp.94);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_161_23_164_16_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_159_16_164_16_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_157_41_167_12_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_157_12_167_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_157_12_167_12_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_152_46_168_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_152_15_168_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_152_15_168_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_144_15_168_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_135_8_168_8_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 173 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_173_8_196_8_if_stmt:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_173_12_173_42_begin:
+        symbol [ _state %tmp.96 173 12 18 ];
+        %tmp.96 = getv ? :_state;
+        symbol [ STATE_CONNECTED %tmp.98 173 22 37 ];
+        %tmp.98 = getv ? :STATE_CONNECTED;
+        %tmp.99 = eq %tmp.96 %tmp.98;
+        bf %tmp.99 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_173_8_196_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_173_41_173_42_true:
+        symbol [ _txThisTick %tmp.101 173 42 53 ];
+        %tmp.101 = getv ? :_txThisTick;
+        %tmp.102 = not %tmp.101;
+        push %tmp.102;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_173_41_173_42_end:
+        %tmp.103 = phi [%tmp.99 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_173_12_173_42_begin] [%tmp.102 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_173_41_173_42_true] [%tmp.103 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_173_41_173_42_end];
+        bf %tmp.103 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_173_8_196_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_173_8_196_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_173_55_196_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 174 12 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_12_195_12_if_stmt:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_16_174_70_begin:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_16_174_58_begin:
+        symbol [ _startPayload %tmp.105 174 16 29 ];
+        %tmp.105 = getv ? :_startPayload;
+        %tmp.106 = null;
+        %tmp.107 = ne %tmp.105 %tmp.106;
+        bf %tmp.107 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_12_195_12_if_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_41_174_58_true:
+        symbol [ _startRetryAt %tmp.109 174 41 54 ];
+        %tmp.109 = getv ? :_startRetryAt;
+        %tmp.110 = 0;
+        %tmp.111 = gte %tmp.109 %tmp.110;
+        push %tmp.111;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_41_174_58_end:
+        %tmp.112 = phi [%tmp.107 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_16_174_58_begin] [%tmp.111 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_41_174_58_true] [%tmp.112 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_41_174_58_end];
+        bf %tmp.112 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_12_195_12_if_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_63_174_70_true:
+        %tmp.113 = lgetv %now;
+        symbol [ now %tmp.113 174 63 66 ];
+        symbol [ _startRetryAt %tmp.115 174 70 83 ];
+        %tmp.115 = getv ? :_startRetryAt;
+        %tmp.116 = gte %tmp.113 %tmp.115;
+        push %tmp.116;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_63_174_70_end:
+        %tmp.117 = phi [%tmp.112 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_16_174_70_begin] [%tmp.116 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_63_174_70_true] [%tmp.117 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_63_174_70_end];
+        bf %tmp.117 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_12_195_12_if_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_12_195_12_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_85_184_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 175 16 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_175_16_183_16_if_stmt:
+        symbol [ _startRetryCount %tmp.119 175 20 36 ];
+        %tmp.119 = getv ? :_startRetryCount;
+        symbol [ MAX_RETRIES %tmp.121 175 39 50 ];
+        %tmp.121 = getv ? :MAX_RETRIES;
+        %tmp.122 = lt %tmp.119 %tmp.121;
+        bf %tmp.122 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_175_16_183_16_if_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_175_16_183_16_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_175_52_180_16_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 176 20 ]
+        %tmp.123 = self;
+        symbol [ _tx %tmp.124 176 20 23 ];
+        %tmp.124 = getv function %tmp.123 :_tx;
+        symbol [ _startPayload %tmp.126 176 24 37 ];
+        %tmp.126 = getv ? :_startPayload;
+        %tmp.127 = as %tmp.126 { (!Null) };
+        %tmp.128 = as %tmp.127 Dictionary;
+        symbol [ Dictionary %tmp.128 176 41 51 ];
+        %tmp.129 = "start";
+        invoke %tmp.123 %tmp.124(%tmp.128, %tmp.129);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 177 20 ]
+        %tmp.130 = lgetv %now;
+        symbol [ now %tmp.130 177 36 39 ];
+        %tmp.131 = self;
+        symbol [ _backoff %tmp.132 177 42 50 ];
+        %tmp.132 = getv function %tmp.131 :_backoff;
+        symbol [ _startRetryCount %tmp.134 177 51 67 ];
+        %tmp.134 = getv ? :_startRetryCount;
+        %tmp.135 = invoke %tmp.131 %tmp.132(%tmp.134);
+        %tmp.136 = add %tmp.130 %tmp.135;
+        symbol [ _startRetryAt ? 177 20 33 ];
+        putv self :_startRetryAt %tmp.136;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 178 20 ]
+        symbol [ _startRetryCount %tmp.139 178 20 36 ];
+        %tmp.139 = getv ? :_startRetryCount;
+        %tmp.140 = add %tmp.139 1;
+        symbol [ _startRetryCount ? 178 20 36 ];
+        putv self :_startRetryCount dup %tmp.140;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 179 20 ]
+        symbol [ System %tmp.141 179 20 26 ];
+        %tmp.141 = getm $.Toybox.System;
+        symbol [ println %tmp.142 179 27 34 ];
+        %tmp.142 = getv function %tmp.141 :println;
+        %tmp.143 = "VFRComms: start attempt ";
+        symbol [ _startRetryCount %tmp.145 179 64 80 ];
+        %tmp.145 = getv ? :_startRetryCount;
+        symbol [ toString %tmp.146 179 81 89 ];
+        %tmp.146 = getv function %tmp.145 :toString;
+        %tmp.147 = invoke %tmp.145 %tmp.146();
+        %tmp.148 = add %tmp.143 %tmp.147;
+        invoke %tmp.141 %tmp.142(%tmp.148);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_175_52_180_16_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_175_16_183_16_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_175_16_183_16_if_else_false:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_180_23_183_16_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 181 20 ]
+        symbol [ System %tmp.149 181 20 26 ];
+        %tmp.149 = getm $.Toybox.System;
+        symbol [ println %tmp.150 181 27 34 ];
+        %tmp.150 = getv function %tmp.149 :println;
+        %tmp.151 = "VFRComms: start gave up after ";
+        symbol [ MAX_RETRIES %tmp.153 181 70 81 ];
+        %tmp.153 = getv ? :MAX_RETRIES;
+        symbol [ toString %tmp.154 181 82 90 ];
+        %tmp.154 = getv function %tmp.153 :toString;
+        %tmp.155 = invoke %tmp.153 %tmp.154();
+        %tmp.156 = add %tmp.151 %tmp.155;
+        invoke %tmp.149 %tmp.150(%tmp.156);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 182 20 ]
+        %tmp.157 = null;
+        symbol [ _startPayload ? 182 20 33 ];
+        putv self :_startPayload %tmp.157;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_180_23_183_16_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_175_16_183_16_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_85_184_12_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_12_195_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_12_195_12_if_false:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 184 19 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_19_195_12_if_stmt:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_23_184_75_begin:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_23_184_63_begin:
+        symbol [ _stopPayload %tmp.159 184 23 35 ];
+        %tmp.159 = getv ? :_stopPayload;
+        %tmp.160 = null;
+        %tmp.161 = ne %tmp.159 %tmp.160;
+        bf %tmp.161 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_19_195_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_47_184_63_true:
+        symbol [ _stopRetryAt %tmp.163 184 47 59 ];
+        %tmp.163 = getv ? :_stopRetryAt;
+        %tmp.164 = 0;
+        %tmp.165 = gte %tmp.163 %tmp.164;
+        push %tmp.165;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_47_184_63_end:
+        %tmp.166 = phi [%tmp.161 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_23_184_63_begin] [%tmp.165 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_47_184_63_true] [%tmp.166 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_47_184_63_end];
+        bf %tmp.166 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_19_195_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_68_184_75_true:
+        %tmp.167 = lgetv %now;
+        symbol [ now %tmp.167 184 68 71 ];
+        symbol [ _stopRetryAt %tmp.169 184 75 87 ];
+        %tmp.169 = getv ? :_stopRetryAt;
+        %tmp.170 = gte %tmp.167 %tmp.169;
+        push %tmp.170;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_68_184_75_end:
+        %tmp.171 = phi [%tmp.166 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_23_184_75_begin] [%tmp.170 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_68_184_75_true] [%tmp.171 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_68_184_75_end];
+        bf %tmp.171 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_19_195_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_19_195_12_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_89_195_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 186 16 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_186_16_194_16_if_stmt:
+        symbol [ _stopRetryCount %tmp.173 186 20 35 ];
+        %tmp.173 = getv ? :_stopRetryCount;
+        symbol [ MAX_RETRIES %tmp.175 186 38 49 ];
+        %tmp.175 = getv ? :MAX_RETRIES;
+        %tmp.176 = lt %tmp.173 %tmp.175;
+        bf %tmp.176 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_186_16_194_16_if_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_186_16_194_16_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_186_51_191_16_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 187 20 ]
+        %tmp.177 = self;
+        symbol [ _tx %tmp.178 187 20 23 ];
+        %tmp.178 = getv function %tmp.177 :_tx;
+        symbol [ _stopPayload %tmp.180 187 24 36 ];
+        %tmp.180 = getv ? :_stopPayload;
+        %tmp.181 = as %tmp.180 { (!Null) };
+        %tmp.182 = as %tmp.181 Dictionary;
+        symbol [ Dictionary %tmp.182 187 40 50 ];
+        %tmp.183 = "stop";
+        invoke %tmp.177 %tmp.178(%tmp.182, %tmp.183);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 188 20 ]
+        %tmp.184 = lgetv %now;
+        symbol [ now %tmp.184 188 35 38 ];
+        %tmp.185 = self;
+        symbol [ _backoff %tmp.186 188 41 49 ];
+        %tmp.186 = getv function %tmp.185 :_backoff;
+        symbol [ _stopRetryCount %tmp.188 188 50 65 ];
+        %tmp.188 = getv ? :_stopRetryCount;
+        %tmp.189 = invoke %tmp.185 %tmp.186(%tmp.188);
+        %tmp.190 = add %tmp.184 %tmp.189;
+        symbol [ _stopRetryAt ? 188 20 32 ];
+        putv self :_stopRetryAt %tmp.190;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 189 20 ]
+        symbol [ _stopRetryCount %tmp.193 189 20 35 ];
+        %tmp.193 = getv ? :_stopRetryCount;
+        %tmp.194 = add %tmp.193 1;
+        symbol [ _stopRetryCount ? 189 20 35 ];
+        putv self :_stopRetryCount dup %tmp.194;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 190 20 ]
+        symbol [ System %tmp.195 190 20 26 ];
+        %tmp.195 = getm $.Toybox.System;
+        symbol [ println %tmp.196 190 27 34 ];
+        %tmp.196 = getv function %tmp.195 :println;
+        %tmp.197 = "VFRComms: stop attempt ";
+        symbol [ _stopRetryCount %tmp.199 190 63 78 ];
+        %tmp.199 = getv ? :_stopRetryCount;
+        symbol [ toString %tmp.200 190 79 87 ];
+        %tmp.200 = getv function %tmp.199 :toString;
+        %tmp.201 = invoke %tmp.199 %tmp.200();
+        %tmp.202 = add %tmp.197 %tmp.201;
+        invoke %tmp.195 %tmp.196(%tmp.202);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_186_51_191_16_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_186_16_194_16_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_186_16_194_16_if_else_false:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_191_23_194_16_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 192 20 ]
+        symbol [ System %tmp.203 192 20 26 ];
+        %tmp.203 = getm $.Toybox.System;
+        symbol [ println %tmp.204 192 27 34 ];
+        %tmp.204 = getv function %tmp.203 :println;
+        %tmp.205 = "VFRComms: stop gave up after ";
+        symbol [ MAX_RETRIES %tmp.207 192 69 80 ];
+        %tmp.207 = getv ? :MAX_RETRIES;
+        symbol [ toString %tmp.208 192 81 89 ];
+        %tmp.208 = getv function %tmp.207 :toString;
+        %tmp.209 = invoke %tmp.207 %tmp.208();
+        %tmp.210 = add %tmp.205 %tmp.209;
+        invoke %tmp.203 %tmp.204(%tmp.210);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 193 20 ]
+        %tmp.211 = null;
+        symbol [ _stopPayload ? 193 20 32 ];
+        putv self :_stopPayload %tmp.211;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_191_23_194_16_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_186_16_194_16_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_89_195_12_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_19_195_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_184_19_195_12_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_174_12_195_12_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_173_55_196_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_173_8_196_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_173_8_196_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_122_41_197_4_stop:
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 200; @symbol_functiondef = [onTransmitError,200,13,28]; @symbol_param<0> = [msgType,200,29,36]; @symbol_param<0>_type<0> = [String,200,40,46]; ]
     function onTransmitError(msgType as String) as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_167_56_178_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 168 8 ]
-        symbol [ System %tmp.1 168 8 14 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_200_56_216_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 201 8 ]
+        symbol [ System %tmp.1 201 8 14 ];
         %tmp.1 = getm $.Toybox.System;
-        symbol [ println %tmp.2 168 15 22 ];
+        symbol [ println %tmp.2 201 15 22 ];
         %tmp.2 = getv function %tmp.1 :println;
         %tmp.3 = "VFRComms TX err: ";
         %tmp.4 = lgetv %msgType;
-        symbol [ msgType %tmp.4 168 45 52 ];
+        symbol [ msgType %tmp.4 201 45 52 ];
         %tmp.5 = add %tmp.3 %tmp.4;
         invoke %tmp.1 %tmp.2(%tmp.5);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 169 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_169_8_177_8_if_stmt:
-        symbol [ _state %tmp.7 169 12 18 ];
-        %tmp.7 = getv ? :_state;
-        symbol [ STATE_CONNECTED %tmp.9 169 22 37 ];
-        %tmp.9 = getv ? :STATE_CONNECTED;
-        %tmp.10 = eq %tmp.7 %tmp.9;
-        bf %tmp.10 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_169_8_177_8_if_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_169_8_177_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_169_39_175_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 171 12 ]
-        symbol [ STATE_SHAKING %tmp.12 171 31 44 ];
-        %tmp.12 = getv ? :STATE_SHAKING;
-        symbol [ _state ? 171 12 18 ];
-        putv self :_state %tmp.12;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 172 12 ]
-        %tmp.13 = false;
-        symbol [ connected ? 172 12 21 ];
-        putv self :connected %tmp.13;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 173 12 ]
-        %tmp.14 = true;
-        symbol [ connecting ? 173 12 22 ];
-        putv self :connecting %tmp.14;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 174 12 ]
-        %tmp.15 = 0;
-        symbol [ _nextHandshakeAt ? 174 12 28 ];
-        putv self :_nextHandshakeAt %tmp.15;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_169_39_175_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_169_8_177_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_169_8_177_8_if_false:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 175 15 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_175_15_177_8_if_stmt:
-        symbol [ _state %tmp.17 175 19 25 ];
-        %tmp.17 = getv ? :_state;
-        symbol [ STATE_SHAKING %tmp.19 175 29 42 ];
-        %tmp.19 = getv ? :STATE_SHAKING;
-        %tmp.20 = eq %tmp.17 %tmp.19;
-        bf %tmp.20 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_175_15_177_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_175_15_177_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_175_44_177_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 176 12 ]
-        %tmp.21 = 0;
-        symbol [ _nextHandshakeAt ? 176 12 28 ];
-        putv self :_nextHandshakeAt %tmp.21;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_175_44_177_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_175_15_177_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_175_15_177_8_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_169_8_177_8_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_167_56_178_4_stop:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 204 8 ]
+        symbol [ _connErrorCount %tmp.7 204 27 42 ];
+        %tmp.7 = getv ? :_connErrorCount;
+        %tmp.8 = 1;
+        %tmp.9 = add %tmp.7 %tmp.8;
+        %tmp.10 = as %tmp.9 Number;
+        symbol [ Number %tmp.10 204 51 57 ];
+        symbol [ _connErrorCount ? 204 8 23 ];
+        putv self :_connErrorCount %tmp.10;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 205 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_200_56_216_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_200_56_216_4_stop" ]
+        %delay.1 = local;
+        symbol [ delay %delay.1 205 12 17 ];
+        %tmp.11 = self;
+        symbol [ _backoff %tmp.12 205 20 28 ];
+        %tmp.12 = getv function %tmp.11 :_backoff;
+        symbol [ _connErrorCount %tmp.14 205 30 45 ];
+        %tmp.14 = getv ? :_connErrorCount;
+        %tmp.15 = 1;
+        %tmp.16 = sub %tmp.14 %tmp.15;
+        %tmp.17 = as %tmp.16 Number;
+        symbol [ Number %tmp.17 205 54 60 ];
+        %tmp.18 = invoke %tmp.11 %tmp.12(%tmp.17);
+        lputv %delay.1 %tmp.18;
+        symbol [ delay %delay.1 205 12 17 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 206 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_206_8_215_8_if_stmt:
+        symbol [ _state %tmp.20 206 12 18 ];
+        %tmp.20 = getv ? :_state;
+        symbol [ STATE_CONNECTED %tmp.22 206 22 37 ];
+        %tmp.22 = getv ? :STATE_CONNECTED;
+        %tmp.23 = eq %tmp.20 %tmp.22;
+        bf %tmp.23 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_206_8_215_8_if_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_206_8_215_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_206_39_212_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 208 12 ]
+        symbol [ STATE_SHAKING %tmp.25 208 31 44 ];
+        %tmp.25 = getv ? :STATE_SHAKING;
+        symbol [ _state ? 208 12 18 ];
+        putv self :_state %tmp.25;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 209 12 ]
+        %tmp.26 = false;
+        symbol [ connected ? 209 12 21 ];
+        putv self :connected %tmp.26;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 210 12 ]
+        %tmp.27 = true;
+        symbol [ connecting ? 210 12 22 ];
+        putv self :connecting %tmp.27;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 211 12 ]
+        symbol [ System %tmp.28 211 31 37 ];
+        %tmp.28 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.29 211 38 46 ];
+        %tmp.29 = getv function %tmp.28 :getTimer;
+        %tmp.30 = invoke %tmp.28 %tmp.29();
+        %tmp.31 = lgetv %delay.1;
+        symbol [ delay %tmp.31 211 51 56 ];
+        %tmp.32 = add %tmp.30 %tmp.31;
+        symbol [ _nextHandshakeAt ? 211 12 28 ];
+        putv self :_nextHandshakeAt %tmp.32;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_206_39_212_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_206_8_215_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_206_8_215_8_if_false:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 212 15 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_212_15_215_8_if_stmt:
+        symbol [ _state %tmp.34 212 19 25 ];
+        %tmp.34 = getv ? :_state;
+        symbol [ STATE_SHAKING %tmp.36 212 29 42 ];
+        %tmp.36 = getv ? :STATE_SHAKING;
+        %tmp.37 = eq %tmp.34 %tmp.36;
+        bf %tmp.37 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_212_15_215_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_212_15_215_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_212_44_215_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 214 12 ]
+        symbol [ System %tmp.38 214 31 37 ];
+        %tmp.38 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.39 214 38 46 ];
+        %tmp.39 = getv function %tmp.38 :getTimer;
+        %tmp.40 = invoke %tmp.38 %tmp.39();
+        %tmp.41 = lgetv %delay.1;
+        symbol [ delay %tmp.41 214 51 56 ];
+        %tmp.42 = add %tmp.40 %tmp.41;
+        symbol [ _nextHandshakeAt ? 214 12 28 ];
+        putv self :_nextHandshakeAt %tmp.42;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_212_44_215_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_212_15_215_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_212_15_215_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_206_8_215_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_200_56_216_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 181; @symbol_functiondef = [onPhoneMessageError,181,13,32]; @symbol_param<0> = [error,181,33,38]; @symbol_param<0>_type<0> = [Communications,181,42,56]; @symbol_param<0>_type<1> = [PhoneAppMessageError,181,57,77]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 219; @symbol_functiondef = [onPhoneMessageError,219,13,32]; @symbol_param<0> = [error,219,33,38]; @symbol_param<0>_type<0> = [Communications,219,42,56]; @symbol_param<0>_type<1> = [PhoneAppMessageError,219,57,77]; ]
     function onPhoneMessageError(error as Communications.PhoneAppMessageError) as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_181_87_183_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 182 8 ]
-        symbol [ System %tmp.1 182 8 14 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_219_87_221_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 220 8 ]
+        symbol [ System %tmp.1 220 8 14 ];
         %tmp.1 = getm $.Toybox.System;
-        symbol [ println %tmp.2 182 15 22 ];
+        symbol [ println %tmp.2 220 15 22 ];
         %tmp.2 = getv function %tmp.1 :println;
         %tmp.3 = "VFRComms RX err: ";
         %tmp.4 = lgetv %error;
-        symbol [ error %tmp.4 182 45 50 ];
-        symbol [ toString %tmp.5 182 51 59 ];
+        symbol [ error %tmp.4 220 45 50 ];
+        symbol [ toString %tmp.5 220 51 59 ];
         %tmp.5 = getv function %tmp.4 :toString;
         %tmp.6 = invoke %tmp.4 %tmp.5();
         %tmp.7 = add %tmp.3 %tmp.6;
         invoke %tmp.1 %tmp.2(%tmp.7);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_181_87_183_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_219_87_221_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 186; @symbol_functiondef = [onPhoneMessage,186,13,27]; @symbol_param<0> = [msg,186,28,31]; @symbol_param<0>_type<0> = [Communications,186,35,49]; @symbol_param<0>_type<1> = [PhoneAppMessage,186,50,65]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 224; @symbol_functiondef = [onPhoneMessage,224,13,27]; @symbol_param<0> = [msg,224,28,31]; @symbol_param<0>_type<0> = [Communications,224,35,49]; @symbol_param<0>_type<1> = [PhoneAppMessage,224,50,65]; ]
     function onPhoneMessage(msg as Communications.PhoneAppMessage) as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_186_75_216_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 187 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_186_75_216_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_186_75_216_4_stop" ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_224_75_264_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 225 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_224_75_264_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_224_75_264_4_stop" ]
         %data.1 = local;
-        symbol [ data %data.1 187 12 16 ];
+        symbol [ data %data.1 225 12 16 ];
         %tmp.1 = lgetv %msg;
-        symbol [ msg %tmp.1 187 19 22 ];
-        symbol [ data %tmp.2 187 23 27 ];
+        symbol [ msg %tmp.1 225 19 22 ];
+        symbol [ data %tmp.2 225 23 27 ];
         %tmp.2 = getv %tmp.1 :data;
         lputv %data.1 %tmp.2;
-        symbol [ data %data.1 187 12 16 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 188 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_188_8_188_58_if_stmt:
+        symbol [ data %data.1 225 12 16 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 226 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_226_8_226_58_if_stmt:
         %tmp.3 = lgetv %data.1;
-        symbol [ data %tmp.3 188 14 18 ];
-        symbol [ Lang %tmp.4 188 30 34 ];
+        symbol [ data %tmp.3 226 14 18 ];
+        symbol [ Lang %tmp.4 226 30 34 ];
         %tmp.4 = getm $.Toybox.Lang;
-        symbol [ Dictionary %tmp.5 188 35 45 ];
+        symbol [ Dictionary %tmp.5 226 35 45 ];
         %tmp.5 = getv %tmp.4 :Dictionary;
         %tmp.6 = isa %tmp.3 %tmp.5;
         %tmp.7 = not %tmp.6;
-        bf %tmp.7 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_188_8_188_58_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_188_8_188_58_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_188_48_188_58_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 188 50 ]
+        bf %tmp.7 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_226_8_226_58_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_226_8_226_58_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_226_48_226_58_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 226 50 ]
         ret ?;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_188_48_188_58_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_188_8_188_58_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_188_8_188_58_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 189 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_186_75_216_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_186_75_216_4_stop" ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_226_48_226_58_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_226_8_226_58_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_226_8_226_58_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 227 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_224_75_264_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_224_75_264_4_stop" ]
         %d.2 = local;
-        symbol [ d %d.2 189 12 13 ];
+        symbol [ d %d.2 227 12 13 ];
         %tmp.8 = lgetv %data.1;
-        symbol [ data %tmp.8 189 18 22 ];
+        symbol [ data %tmp.8 227 18 22 ];
         %tmp.9 = as %tmp.8 Dictionary;
-        symbol [ Dictionary %tmp.9 189 26 36 ];
+        symbol [ Dictionary %tmp.9 227 26 36 ];
         lputv %d.2 %tmp.9;
-        symbol [ d %d.2 189 12 13 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 190 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_186_75_216_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_186_75_216_4_stop" ]
+        symbol [ d %d.2 227 12 13 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 228 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_224_75_264_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_224_75_264_4_stop" ]
         %typ.3 = local;
-        symbol [ typ %typ.3 190 12 15 ];
+        symbol [ typ %typ.3 228 12 15 ];
         %tmp.10 = lgetv %d.2;
-        symbol [ d %tmp.10 190 18 19 ];
+        symbol [ d %tmp.10 228 18 19 ];
         %tmp.11 = "type";
         %tmp.12 = agetv %tmp.10 %tmp.11;
         lputv %typ.3 %tmp.12;
-        symbol [ typ %typ.3 190 12 15 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 191 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_191_8_191_35_if_stmt:
+        symbol [ typ %typ.3 228 12 15 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 229 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_229_8_229_35_if_stmt:
         %tmp.13 = lgetv %typ.3;
-        symbol [ typ %tmp.13 191 12 15 ];
+        symbol [ typ %tmp.13 229 12 15 ];
         %tmp.14 = null;
         %tmp.15 = eq %tmp.13 %tmp.14;
-        bf %tmp.15 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_191_8_191_35_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_191_8_191_35_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_191_25_191_35_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 191 27 ]
+        bf %tmp.15 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_229_8_229_35_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_229_8_229_35_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_229_25_229_35_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 229 27 ]
         ret ?;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_191_25_191_35_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_191_8_191_35_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_191_8_191_35_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 193 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_193_8_215_8_if_stmt:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_229_25_229_35_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_229_8_229_35_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_229_8_229_35_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 231 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_263_8_if_stmt:
         %tmp.16 = lgetv %typ.3;
-        symbol [ typ %tmp.16 193 12 15 ];
-        symbol [ equals %tmp.17 193 16 22 ];
+        symbol [ typ %tmp.16 231 12 15 ];
+        symbol [ equals %tmp.17 231 16 22 ];
         %tmp.17 = getv function %tmp.16 :equals;
         %tmp.18 = "handshake_ack";
         %tmp.19 = invoke %tmp.16 %tmp.17(%tmp.18);
-        bf %tmp.19 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_193_8_215_8_if_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_193_8_215_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_193_41_200_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 194 12 ]
-        symbol [ STATE_CONNECTED %tmp.21 194 31 46 ];
+        bf %tmp.19 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_263_8_if_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_263_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_41_240_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 232 12 ]
+        symbol [ STATE_CONNECTED %tmp.21 232 31 46 ];
         %tmp.21 = getv ? :STATE_CONNECTED;
-        symbol [ _state ? 194 12 18 ];
+        symbol [ _state ? 232 12 18 ];
         putv self :_state %tmp.21;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 195 12 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 233 12 ]
         %tmp.22 = true;
-        symbol [ connected ? 195 12 21 ];
+        symbol [ connected ? 233 12 21 ];
         putv self :connected %tmp.22;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 196 12 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 234 12 ]
         %tmp.23 = false;
-        symbol [ connecting ? 196 12 22 ];
+        symbol [ connecting ? 234 12 22 ];
         putv self :connecting %tmp.23;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 197 12 ]
-        symbol [ System %tmp.24 197 31 37 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 235 12 ]
+        symbol [ System %tmp.24 235 31 37 ];
         %tmp.24 = getm $.Toybox.System;
-        symbol [ getTimer %tmp.25 197 38 46 ];
+        symbol [ getTimer %tmp.25 235 38 46 ];
         %tmp.25 = getv function %tmp.24 :getTimer;
         %tmp.26 = invoke %tmp.24 %tmp.25();
-        symbol [ KEEPALIVE_MS %tmp.28 197 51 63 ];
+        symbol [ KEEPALIVE_MS %tmp.28 235 51 63 ];
         %tmp.28 = getv ? :KEEPALIVE_MS;
         %tmp.29 = add %tmp.26 %tmp.28;
-        symbol [ _nextKeepaliveAt ? 197 12 28 ];
+        symbol [ _nextKeepaliveAt ? 235 12 28 ];
         putv self :_nextKeepaliveAt %tmp.29;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 198 12 ]
-        symbol [ System %tmp.30 198 12 18 ];
-        %tmp.30 = getm $.Toybox.System;
-        symbol [ println %tmp.31 198 19 26 ];
-        %tmp.31 = getv function %tmp.30 :println;
-        %tmp.32 = "VFRComms: CONNECTED (handshake_ack)";
-        invoke %tmp.30 %tmp.31(%tmp.32);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_193_41_200_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_193_8_215_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_193_8_215_8_if_false:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 200 15 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_200_15_215_8_if_stmt:
-        %tmp.33 = lgetv %typ.3;
-        symbol [ typ %tmp.33 200 19 22 ];
-        symbol [ equals %tmp.34 200 23 29 ];
-        %tmp.34 = getv function %tmp.33 :equals;
-        %tmp.35 = "flight_ack";
-        %tmp.36 = invoke %tmp.33 %tmp.34(%tmp.35);
-        bf %tmp.36 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_200_15_215_8_if_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_200_15_215_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_200_45_212_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 201 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_200_45_212_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_200_45_212_8_stop" ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 237 12 ]
+        %tmp.30 = 0;
+        symbol [ _connErrorCount ? 237 12 27 ];
+        putv self :_connErrorCount %tmp.30;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 238 12 ]
+        symbol [ System %tmp.31 238 12 18 ];
+        %tmp.31 = getm $.Toybox.System;
+        symbol [ println %tmp.32 238 19 26 ];
+        %tmp.32 = getv function %tmp.31 :println;
+        %tmp.33 = "VFRComms: CONNECTED (handshake_ack)";
+        invoke %tmp.31 %tmp.32(%tmp.33);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_41_240_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_263_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_263_8_if_false:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 240 15 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_240_15_263_8_if_stmt:
+        %tmp.34 = lgetv %typ.3;
+        symbol [ typ %tmp.34 240 19 22 ];
+        symbol [ equals %tmp.35 240 23 29 ];
+        %tmp.35 = getv function %tmp.34 :equals;
+        %tmp.36 = "flight_ack";
+        %tmp.37 = invoke %tmp.34 %tmp.35(%tmp.36);
+        bf %tmp.37 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_240_15_263_8_if_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_240_15_263_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_240_45_252_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 241 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_240_45_252_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_240_45_252_8_stop" ]
         %ev.4 = local;
-        symbol [ ev %ev.4 201 16 18 ];
-        %tmp.37 = lgetv %d.2;
-        symbol [ d %tmp.37 201 21 22 ];
-        %tmp.38 = "event";
-        %tmp.39 = agetv %tmp.37 %tmp.38;
-        lputv %ev.4 %tmp.39;
-        symbol [ ev %ev.4 201 16 18 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 202 12 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_202_12_202_38_if_stmt:
-        %tmp.40 = lgetv %ev.4;
-        symbol [ ev %tmp.40 202 16 18 ];
-        %tmp.41 = null;
-        %tmp.42 = eq %tmp.40 %tmp.41;
-        bf %tmp.42 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_202_12_202_38_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_202_12_202_38_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_202_28_202_38_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 202 30 ]
+        symbol [ ev %ev.4 241 16 18 ];
+        %tmp.38 = lgetv %d.2;
+        symbol [ d %tmp.38 241 21 22 ];
+        %tmp.39 = "event";
+        %tmp.40 = agetv %tmp.38 %tmp.39;
+        lputv %ev.4 %tmp.40;
+        symbol [ ev %ev.4 241 16 18 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 242 12 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_242_12_242_38_if_stmt:
+        %tmp.41 = lgetv %ev.4;
+        symbol [ ev %tmp.41 242 16 18 ];
+        %tmp.42 = null;
+        %tmp.43 = eq %tmp.41 %tmp.42;
+        bf %tmp.43 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_242_12_242_38_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_242_12_242_38_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_242_28_242_38_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 242 30 ]
         ret ?;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_202_28_202_38_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_202_12_202_38_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_202_12_202_38_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 203 12 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_203_12_210_12_if_stmt:
-        %tmp.43 = lgetv %ev.4;
-        symbol [ ev %tmp.43 203 16 18 ];
-        symbol [ equals %tmp.44 203 19 25 ];
-        %tmp.44 = getv function %tmp.43 :equals;
-        %tmp.45 = "start";
-        %tmp.46 = invoke %tmp.43 %tmp.44(%tmp.45);
-        bf %tmp.46 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_203_12_210_12_if_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_203_12_210_12_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_203_36_206_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 204 16 ]
-        %tmp.47 = null;
-        symbol [ _startPayload ? 204 16 29 ];
-        putv self :_startPayload %tmp.47;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 205 16 ]
-        symbol [ System %tmp.48 205 16 22 ];
-        %tmp.48 = getm $.Toybox.System;
-        symbol [ println %tmp.49 205 23 30 ];
-        %tmp.49 = getv function %tmp.48 :println;
-        %tmp.50 = "VFRComms: start ACK";
-        invoke %tmp.48 %tmp.49(%tmp.50);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_203_36_206_12_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_203_12_210_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_203_12_210_12_if_false:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 206 19 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_206_19_210_12_if_stmt:
-        %tmp.51 = lgetv %ev.4;
-        symbol [ ev %tmp.51 206 23 25 ];
-        symbol [ equals %tmp.52 206 26 32 ];
-        %tmp.52 = getv function %tmp.51 :equals;
-        %tmp.53 = "stop";
-        %tmp.54 = invoke %tmp.51 %tmp.52(%tmp.53);
-        bf %tmp.54 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_206_19_210_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_206_19_210_12_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_206_42_210_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 207 16 ]
-        %tmp.55 = null;
-        symbol [ _stopPayload ? 207 16 28 ];
-        putv self :_stopPayload %tmp.55;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 208 16 ]
-        %tmp.56 = "";
-        symbol [ flightId ? 208 16 24 ];
-        putv self :flightId %tmp.56;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 209 16 ]
-        symbol [ System %tmp.57 209 16 22 ];
-        %tmp.57 = getm $.Toybox.System;
-        symbol [ println %tmp.58 209 23 30 ];
-        %tmp.58 = getv function %tmp.57 :println;
-        %tmp.59 = "VFRComms: stop ACK";
-        invoke %tmp.57 %tmp.58(%tmp.59);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_206_42_210_12_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_206_19_210_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_206_19_210_12_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_203_12_210_12_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_200_45_212_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_200_15_215_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_200_15_215_8_if_false:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 212 15 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_212_15_215_8_if_stmt:
-        %tmp.60 = lgetv %typ.3;
-        symbol [ typ %tmp.60 212 19 22 ];
-        symbol [ equals %tmp.61 212 23 29 ];
-        %tmp.61 = getv function %tmp.60 :equals;
-        %tmp.62 = "keepalive_ack";
-        %tmp.63 = invoke %tmp.60 %tmp.61(%tmp.62);
-        bf %tmp.63 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_212_15_215_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_212_15_215_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_212_48_215_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 214 12 ]
-        symbol [ System %tmp.64 214 31 37 ];
-        %tmp.64 = getm $.Toybox.System;
-        symbol [ getTimer %tmp.65 214 38 46 ];
-        %tmp.65 = getv function %tmp.64 :getTimer;
-        %tmp.66 = invoke %tmp.64 %tmp.65();
-        symbol [ KEEPALIVE_MS %tmp.68 214 51 63 ];
-        %tmp.68 = getv ? :KEEPALIVE_MS;
-        %tmp.69 = add %tmp.66 %tmp.68;
-        symbol [ _nextKeepaliveAt ? 214 12 28 ];
-        putv self :_nextKeepaliveAt %tmp.69;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_212_48_215_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_212_15_215_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_212_15_215_8_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_200_15_215_8_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_193_8_215_8_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_186_75_216_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_242_28_242_38_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_242_12_242_38_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_242_12_242_38_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 243 12 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_243_12_250_12_if_stmt:
+        %tmp.44 = lgetv %ev.4;
+        symbol [ ev %tmp.44 243 16 18 ];
+        symbol [ equals %tmp.45 243 19 25 ];
+        %tmp.45 = getv function %tmp.44 :equals;
+        %tmp.46 = "start";
+        %tmp.47 = invoke %tmp.44 %tmp.45(%tmp.46);
+        bf %tmp.47 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_243_12_250_12_if_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_243_12_250_12_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_243_36_246_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 244 16 ]
+        %tmp.48 = null;
+        symbol [ _startPayload ? 244 16 29 ];
+        putv self :_startPayload %tmp.48;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 245 16 ]
+        symbol [ System %tmp.49 245 16 22 ];
+        %tmp.49 = getm $.Toybox.System;
+        symbol [ println %tmp.50 245 23 30 ];
+        %tmp.50 = getv function %tmp.49 :println;
+        %tmp.51 = "VFRComms: start ACK";
+        invoke %tmp.49 %tmp.50(%tmp.51);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_243_36_246_12_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_243_12_250_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_243_12_250_12_if_false:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 246 19 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_246_19_250_12_if_stmt:
+        %tmp.52 = lgetv %ev.4;
+        symbol [ ev %tmp.52 246 23 25 ];
+        symbol [ equals %tmp.53 246 26 32 ];
+        %tmp.53 = getv function %tmp.52 :equals;
+        %tmp.54 = "stop";
+        %tmp.55 = invoke %tmp.52 %tmp.53(%tmp.54);
+        bf %tmp.55 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_246_19_250_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_246_19_250_12_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_246_42_250_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 247 16 ]
+        %tmp.56 = null;
+        symbol [ _stopPayload ? 247 16 28 ];
+        putv self :_stopPayload %tmp.56;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 248 16 ]
+        %tmp.57 = "";
+        symbol [ flightId ? 248 16 24 ];
+        putv self :flightId %tmp.57;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 249 16 ]
+        symbol [ System %tmp.58 249 16 22 ];
+        %tmp.58 = getm $.Toybox.System;
+        symbol [ println %tmp.59 249 23 30 ];
+        %tmp.59 = getv function %tmp.58 :println;
+        %tmp.60 = "VFRComms: stop ACK";
+        invoke %tmp.58 %tmp.59(%tmp.60);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_246_42_250_12_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_246_19_250_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_246_19_250_12_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_243_12_250_12_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_240_45_252_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_240_15_263_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_240_15_263_8_if_false:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 252 15 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_252_15_263_8_if_stmt:
+        %tmp.61 = lgetv %typ.3;
+        symbol [ typ %tmp.61 252 19 22 ];
+        symbol [ equals %tmp.62 252 23 29 ];
+        %tmp.62 = getv function %tmp.61 :equals;
+        %tmp.63 = "keepalive_ack";
+        %tmp.64 = invoke %tmp.61 %tmp.62(%tmp.63);
+        bf %tmp.64 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_252_15_263_8_if_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_252_15_263_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_252_48_256_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 254 12 ]
+        symbol [ System %tmp.65 254 31 37 ];
+        %tmp.65 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.66 254 38 46 ];
+        %tmp.66 = getv function %tmp.65 :getTimer;
+        %tmp.67 = invoke %tmp.65 %tmp.66();
+        symbol [ KEEPALIVE_MS %tmp.69 254 51 63 ];
+        %tmp.69 = getv ? :KEEPALIVE_MS;
+        %tmp.70 = add %tmp.67 %tmp.69;
+        symbol [ _nextKeepaliveAt ? 254 12 28 ];
+        putv self :_nextKeepaliveAt %tmp.70;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_252_48_256_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_252_15_263_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_252_15_263_8_if_false:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 256 15 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_256_15_263_8_if_stmt:
+        %tmp.71 = lgetv %typ.3;
+        symbol [ typ %tmp.71 256 19 22 ];
+        symbol [ equals %tmp.72 256 23 29 ];
+        %tmp.72 = getv function %tmp.71 :equals;
+        %tmp.73 = "weather";
+        %tmp.74 = invoke %tmp.71 %tmp.72(%tmp.73);
+        bf %tmp.74 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_256_15_263_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_256_15_263_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_256_42_263_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 258 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_256_42_263_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_256_42_263_8_stop" ]
+        %wd.5 = local;
+        symbol [ wd %wd.5 258 16 18 ];
+        %tmp.75 = lgetv %d.2;
+        symbol [ d %tmp.75 258 22 23 ];
+        %tmp.76 = "wind_dir";
+        %tmp.77 = agetv %tmp.75 %tmp.76;
+        lputv %wd.5 %tmp.77;
+        symbol [ wd %wd.5 258 16 18 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 258 37 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_258_37_258_85_if_stmt:
+        %tmp.78 = lgetv %wd.5;
+        symbol [ wd %tmp.78 258 41 43 ];
+        %tmp.79 = null;
+        %tmp.80 = ne %tmp.78 %tmp.79;
+        bf %tmp.80 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_258_37_258_85_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_258_37_258_85_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_258_54_258_85_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 258 56 ]
+        %tmp.81 = lgetv %wd.5;
+        symbol [ wd %tmp.81 258 70 72 ];
+        %tmp.82 = as %tmp.81 { (!Null) };
+        %tmp.83 = as %tmp.82 Number;
+        symbol [ Number %tmp.83 258 77 83 ];
+        symbol [ windDirDeg ? 258 56 66 ];
+        putv self :windDirDeg %tmp.83;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_258_54_258_85_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_258_37_258_85_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_258_37_258_85_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 259 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_256_42_263_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_256_42_263_8_stop" ]
+        %ws.6 = local;
+        symbol [ ws %ws.6 259 16 18 ];
+        %tmp.84 = lgetv %d.2;
+        symbol [ d %tmp.84 259 22 23 ];
+        %tmp.85 = "wind_spd";
+        %tmp.86 = agetv %tmp.84 %tmp.85;
+        lputv %ws.6 %tmp.86;
+        symbol [ ws %ws.6 259 16 18 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 259 37 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_259_37_259_85_if_stmt:
+        %tmp.87 = lgetv %ws.6;
+        symbol [ ws %tmp.87 259 41 43 ];
+        %tmp.88 = null;
+        %tmp.89 = ne %tmp.87 %tmp.88;
+        bf %tmp.89 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_259_37_259_85_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_259_37_259_85_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_259_54_259_85_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 259 56 ]
+        %tmp.90 = lgetv %ws.6;
+        symbol [ ws %tmp.90 259 70 72 ];
+        %tmp.91 = as %tmp.90 { (!Null) };
+        %tmp.92 = as %tmp.91 Number;
+        symbol [ Number %tmp.92 259 77 83 ];
+        symbol [ windSpeedKt ? 259 56 67 ];
+        putv self :windSpeedKt %tmp.92;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_259_54_259_85_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_259_37_259_85_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_259_37_259_85_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 260 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_256_42_263_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_256_42_263_8_stop" ]
+        %tc.7 = local;
+        symbol [ tc %tc.7 260 16 18 ];
+        %tmp.93 = lgetv %d.2;
+        symbol [ d %tmp.93 260 22 23 ];
+        %tmp.94 = "temp_c";
+        %tmp.95 = agetv %tmp.93 %tmp.94;
+        lputv %tc.7 %tmp.95;
+        symbol [ tc %tc.7 260 16 18 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 260 36 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_260_36_260_84_if_stmt:
+        %tmp.96 = lgetv %tc.7;
+        symbol [ tc %tmp.96 260 40 42 ];
+        %tmp.97 = null;
+        %tmp.98 = ne %tmp.96 %tmp.97;
+        bf %tmp.98 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_260_36_260_84_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_260_36_260_84_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_260_53_260_84_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 260 55 ]
+        %tmp.99 = lgetv %tc.7;
+        symbol [ tc %tmp.99 260 69 71 ];
+        %tmp.100 = as %tmp.99 { (!Null) };
+        %tmp.101 = as %tmp.100 Number;
+        symbol [ Number %tmp.101 260 76 82 ];
+        symbol [ tempC ? 260 55 60 ];
+        putv self :tempC %tmp.101;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_260_53_260_84_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_260_36_260_84_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_260_36_260_84_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 261 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_256_42_263_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_256_42_263_8_stop" ]
+        %dc2.8 = local;
+        symbol [ dc2 %dc2.8 261 16 19 ];
+        %tmp.102 = lgetv %d.2;
+        symbol [ d %tmp.102 261 22 23 ];
+        %tmp.103 = "dew_c";
+        %tmp.104 = agetv %tmp.102 %tmp.103;
+        lputv %dc2.8 %tmp.104;
+        symbol [ dc2 %dc2.8 261 16 19 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 261 36 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_261_36_261_84_if_stmt:
+        %tmp.105 = lgetv %dc2.8;
+        symbol [ dc2 %tmp.105 261 40 43 ];
+        %tmp.106 = null;
+        %tmp.107 = ne %tmp.105 %tmp.106;
+        bf %tmp.107 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_261_36_261_84_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_261_36_261_84_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_261_53_261_84_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 261 55 ]
+        %tmp.108 = lgetv %dc2.8;
+        symbol [ dc2 %tmp.108 261 69 72 ];
+        %tmp.109 = as %tmp.108 { (!Null) };
+        %tmp.110 = as %tmp.109 Number;
+        symbol [ Number %tmp.110 261 76 82 ];
+        symbol [ dewpointC ? 261 55 64 ];
+        putv self :dewpointC %tmp.110;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_261_53_261_84_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_261_36_261_84_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_261_36_261_84_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 262 12 ]
+        symbol [ System %tmp.111 262 12 18 ];
+        %tmp.111 = getm $.Toybox.System;
+        symbol [ println %tmp.112 262 19 26 ];
+        %tmp.112 = getv function %tmp.111 :println;
+        %tmp.113 = "VFRComms: weather updated wind=";
+        symbol [ windDirDeg %tmp.115 262 63 73 ];
+        %tmp.115 = getv ? :windDirDeg;
+        symbol [ toString %tmp.116 262 74 82 ];
+        %tmp.116 = getv function %tmp.115 :toString;
+        %tmp.117 = invoke %tmp.115 %tmp.116();
+        %tmp.118 = add %tmp.113 %tmp.117;
+        %tmp.119 = "/";
+        %tmp.120 = add %tmp.118 %tmp.119;
+        symbol [ windSpeedKt %tmp.122 262 93 104 ];
+        %tmp.122 = getv ? :windSpeedKt;
+        symbol [ toString %tmp.123 262 105 113 ];
+        %tmp.123 = getv function %tmp.122 :toString;
+        %tmp.124 = invoke %tmp.122 %tmp.123();
+        %tmp.125 = add %tmp.120 %tmp.124;
+        %tmp.126 = " temp=";
+        %tmp.127 = add %tmp.125 %tmp.126;
+        symbol [ tempC %tmp.129 262 129 134 ];
+        %tmp.129 = getv ? :tempC;
+        symbol [ toString %tmp.130 262 135 143 ];
+        %tmp.130 = getv function %tmp.129 :toString;
+        %tmp.131 = invoke %tmp.129 %tmp.130();
+        %tmp.132 = add %tmp.127 %tmp.131;
+        %tmp.133 = "/";
+        %tmp.134 = add %tmp.132 %tmp.133;
+        symbol [ dewpointC %tmp.136 262 154 163 ];
+        %tmp.136 = getv ? :dewpointC;
+        symbol [ toString %tmp.137 262 164 172 ];
+        %tmp.137 = getv function %tmp.136 :toString;
+        %tmp.138 = invoke %tmp.136 %tmp.137();
+        %tmp.139 = add %tmp.134 %tmp.138;
+        invoke %tmp.111 %tmp.112(%tmp.139);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_256_42_263_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_256_15_263_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_256_15_263_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_252_15_263_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_240_15_263_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_263_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_224_75_264_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 220; @symbol_functiondef = [_txHandshake,220,21,33]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 268; @symbol_functiondef = [_txHandshake,268,21,33]; ]
     private
     function _txHandshake() as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_220_44_222_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 221 8 ]
-        %tmp.1 = self;
-        symbol [ _tx %tmp.2 221 8 11 ];
-        %tmp.2 = getv function %tmp.1 :_tx;
-        %tmp.3 = newd 3;
-        %tmp.4 = "type";
-        %tmp.5 = "handshake";
-        %tmp.6 = dup %tmp.3;
-        %tmp.7 = aputv %tmp.6 %tmp.4 %tmp.5;
-        %tmp.8 = "app";
-        %tmp.9 = "VFRStopWatch";
-        %tmp.10 = dup %tmp.7;
-        %tmp.11 = aputv %tmp.10 %tmp.8 %tmp.9;
-        %tmp.12 = "version";
-        %tmp.13 = "1.0";
-        %tmp.14 = dup %tmp.11;
-        %tmp.15 = aputv %tmp.14 %tmp.12 %tmp.13;
-        %tmp.16 = "hs";
-        invoke %tmp.1 %tmp.2(%tmp.15, %tmp.16);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_220_44_222_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_268_44_272_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 270 8 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_8_270_87_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_8_270_87_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_8_270_87_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_8_270_87_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_8_270_87_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_12_270_51_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 270 14 ]
+        symbol [ System %tmp.1 270 32 38 ];
+        %tmp.1 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.2 270 39 47 ];
+        %tmp.2 = getv function %tmp.1 :getTimer;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        symbol [ lastHandshakeAt ? 270 14 29 ];
+        putv self :lastHandshakeAt %tmp.3;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_12_270_51_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_8_270_87_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_8_270_87_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_8_270_87_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_8_270_87_catch:
+        %tmp.4 = exception;
+        push %tmp.4;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 270 53 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_8_270_87_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_53_270_87_end" ]
+        %ex.1 = local;
+        symbol [ ex %ex.1 270 60 62 ];
+        %tmp.5 = dup %tmp.4;
+        lputv %ex.1 %tmp.5;
+        symbol [ ex %ex.1 270 60 62 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_64_270_87_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 270 66 ]
+        %tmp.6 = 0;
+        symbol [ lastHandshakeAt ? 270 66 81 ];
+        putv self :lastHandshakeAt %tmp.6;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_64_270_87_stop:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_8_270_87_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_8_270_87_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_53_270_87_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_8_270_87_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_53_270_87_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_53_270_87_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_8_270_87_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_8_270_87_finally;
+        throw %tmp.4;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_8_270_87_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_270_8_270_87_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 271 8 ]
+        %tmp.7 = self;
+        symbol [ _tx %tmp.8 271 8 11 ];
+        %tmp.8 = getv function %tmp.7 :_tx;
+        %tmp.9 = newd 3;
+        %tmp.10 = "type";
+        %tmp.11 = "handshake";
+        %tmp.12 = dup %tmp.9;
+        %tmp.13 = aputv %tmp.12 %tmp.10 %tmp.11;
+        %tmp.14 = "app";
+        %tmp.15 = "VFRStopWatch";
+        %tmp.16 = dup %tmp.13;
+        %tmp.17 = aputv %tmp.16 %tmp.14 %tmp.15;
+        %tmp.18 = "version";
+        %tmp.19 = "1.0";
+        %tmp.20 = dup %tmp.17;
+        %tmp.21 = aputv %tmp.20 %tmp.18 %tmp.19;
+        %tmp.22 = "hs";
+        invoke %tmp.7 %tmp.8(%tmp.21, %tmp.22);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_268_44_272_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 224; @symbol_functiondef = [_backoff,224,21,29]; @symbol_param<0> = [attempt,224,30,37]; @symbol_param<0>_type<0> = [Number,224,41,47]; @symbol_return<0> = [Number,224,52,58]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 274; @symbol_functiondef = [_backoff,274,21,29]; @symbol_param<0> = [attempt,274,30,37]; @symbol_param<0>_type<0> = [Number,274,41,47]; @symbol_return<0> = [Number,274,52,58]; ]
     private
     function _backoff(attempt as Number) as Number {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_224_59_228_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 225 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_225_15_227_14_begin:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_274_59_278_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 275 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_275_15_277_14_begin:
         %tmp.1 = lgetv %attempt;
-        symbol [ attempt %tmp.1 225 16 23 ];
-        symbol [ _backoffMs %tmp.3 225 26 36 ];
+        symbol [ attempt %tmp.1 275 16 23 ];
+        symbol [ _backoffMs %tmp.3 275 26 36 ];
         %tmp.3 = getv ? :_backoffMs;
-        symbol [ size %tmp.4 225 37 41 ];
+        symbol [ size %tmp.4 275 37 41 ];
         %tmp.4 = getv function %tmp.3 :size;
         %tmp.5 = invoke %tmp.3 %tmp.4();
         %tmp.6 = lt %tmp.1 %tmp.5;
-        bf %tmp.6 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_225_15_227_14_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_225_15_227_14_true:
-        symbol [ _backoffMs %tmp.8 226 15 25 ];
+        bf %tmp.6 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_275_15_277_14_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_275_15_277_14_true:
+        symbol [ _backoffMs %tmp.8 276 15 25 ];
         %tmp.8 = getv ? :_backoffMs;
         %tmp.9 = lgetv %attempt;
-        symbol [ attempt %tmp.9 226 26 33 ];
+        symbol [ attempt %tmp.9 276 26 33 ];
         %tmp.10 = agetv %tmp.8 %tmp.9;
         %tmp.11 = as %tmp.10 Number;
-        symbol [ Number %tmp.11 226 38 44 ];
+        symbol [ Number %tmp.11 276 38 44 ];
         push %tmp.11;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_225_15_227_14_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_225_15_227_14_else_false:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_275_15_277_14_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_275_15_277_14_else_false:
         %tmp.12 = 30000;
         push %tmp.12;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_225_15_227_14_end:
-        %tmp.13 = phi [%tmp.6 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_225_15_227_14_begin] [%tmp.11 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_225_15_227_14_true] [%tmp.12 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_225_15_227_14_else_false] [%tmp.13 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_225_15_227_14_end];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_275_15_277_14_end:
+        %tmp.13 = phi [%tmp.6 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_275_15_277_14_begin] [%tmp.11 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_275_15_277_14_true] [%tmp.12 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_275_15_277_14_else_false] [%tmp.13 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_275_15_277_14_end];
         ret %tmp.13;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_224_59_228_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_274_59_278_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 230; @symbol_functiondef = [_isPhoneReachable,230,21,38]; @symbol_return<0> = [Boolean,230,44,51]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 280; @symbol_functiondef = [_isPhoneReachable,280,21,38]; @symbol_return<0> = [Boolean,280,44,51]; ]
     private
     function _isPhoneReachable() as Boolean {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_230_52_235_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 231 8 ]
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_234_37_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_234_37_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_234_37_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_234_37_finally;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_234_37_beginTry:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_12_234_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 232 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_12_234_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_12_234_8_stop" ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_280_52_285_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 281 8 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_8_284_37_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_8_284_37_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_8_284_37_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_8_284_37_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_8_284_37_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_12_284_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 282 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_12_284_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_12_284_8_stop" ]
         %ds.1 = local;
-        symbol [ ds %ds.1 232 16 18 ];
-        symbol [ System %tmp.1 232 21 27 ];
+        symbol [ ds %ds.1 282 16 18 ];
+        symbol [ System %tmp.1 282 21 27 ];
         %tmp.1 = getm $.Toybox.System;
-        symbol [ getDeviceSettings %tmp.2 232 28 45 ];
+        symbol [ getDeviceSettings %tmp.2 282 28 45 ];
         %tmp.2 = getv function %tmp.1 :getDeviceSettings;
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %ds.1 %tmp.3;
-        symbol [ ds %ds.1 232 16 18 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 233 12 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_233_19_233_64_begin:
+        symbol [ ds %ds.1 282 16 18 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 283 12 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_283_19_283_64_begin:
         %tmp.4 = lgetv %ds.1;
-        symbol [ ds %tmp.4 233 20 22 ];
+        symbol [ ds %tmp.4 283 20 22 ];
         %tmp.5 = null;
         %tmp.6 = ne %tmp.4 %tmp.5;
         %tmp.7 = dup %tmp.6;
-        bf %tmp.7 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_233_35_233_64_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_233_35_233_64_true:
+        bf %tmp.7 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_283_35_283_64_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_283_35_283_64_true:
         %tmp.8 = lgetv %ds.1;
-        symbol [ ds %tmp.8 233 36 38 ];
+        symbol [ ds %tmp.8 283 36 38 ];
         %tmp.9 = as %tmp.8 { (!Null) };
-        symbol [ phoneConnected %tmp.10 233 39 53 ];
+        symbol [ phoneConnected %tmp.10 283 39 53 ];
         %tmp.10 = getv %tmp.9 :phoneConnected;
         %tmp.11 = as %tmp.10 Boolean;
-        symbol [ Boolean %tmp.11 233 57 64 ];
+        symbol [ Boolean %tmp.11 283 57 64 ];
         %tmp.12 = and %tmp.6 %tmp.11;
         push %tmp.12;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_233_35_233_64_end:
-        %tmp.13 = phi [%tmp.7 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_233_19_233_64_begin] [%tmp.12 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_233_35_233_64_true] [%tmp.13 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_233_35_233_64_end];
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_234_37_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_283_35_283_64_end:
+        %tmp.13 = phi [%tmp.7 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_283_19_283_64_begin] [%tmp.12 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_283_35_283_64_true] [%tmp.13 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_283_35_283_64_end];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_8_284_37_finally;
         ret %tmp.13;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_12_234_8_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_234_37_endTry:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_234_37_finally;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_234_37_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_234_37_catch:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_12_284_8_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_8_284_37_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_8_284_37_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_8_284_37_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_8_284_37_catch:
         %tmp.14 = exception;
         push %tmp.14;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 234 10 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_234_37_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_234_10_234_37_end" ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 284 10 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_8_284_37_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_284_10_284_37_end" ]
         %ex.2 = local;
-        symbol [ ex %ex.2 234 17 19 ];
+        symbol [ ex %ex.2 284 17 19 ];
         %tmp.15 = dup %tmp.14;
         lputv %ex.2 %tmp.15;
-        symbol [ ex %ex.2 234 17 19 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_234_21_234_37_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 234 23 ]
+        symbol [ ex %ex.2 284 17 19 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_284_21_284_37_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 284 23 ]
         pop;
         %tmp.16 = false;
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_234_37_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_8_284_37_finally;
         ret %tmp.16;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_234_21_234_37_stop:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_234_37_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_284_21_284_37_stop:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_8_284_37_finally;
         pop;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_234_37_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_234_10_234_37_end:
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_234_37_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_234_10_234_37_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_234_10_234_37_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_234_37_finally;
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_234_37_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_8_284_37_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_284_10_284_37_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_8_284_37_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_284_10_284_37_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_284_10_284_37_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_8_284_37_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_8_284_37_finally;
         throw %tmp.14;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_234_37_finally:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_8_284_37_finally:
         jsrret;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_231_8_234_37_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_230_52_235_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_281_8_284_37_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_280_52_285_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 237; @symbol_functiondef = [_tx,237,21,24]; @symbol_param<0> = [data,237,25,29]; @symbol_param<0>_type<0> = [Dictionary,237,33,43]; @symbol_param<1> = [msgType,237,45,52]; @symbol_param<1>_type<0> = [String,237,56,62]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 287; @symbol_functiondef = [_tx,287,21,24]; @symbol_param<0> = [data,287,25,29]; @symbol_param<0>_type<0> = [Dictionary,287,33,43]; @symbol_param<1> = [msgType,287,45,52]; @symbol_param<1>_type<0> = [String,287,56,62]; ]
     private
     function _tx(data as Dictionary, msgType as String) as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_237_72_244_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 238 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_238_8_238_55_if_stmt:
-        symbol [ Communications %tmp.1 238 14 28 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_287_72_295_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 288 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_288_8_288_55_if_stmt:
+        symbol [ Communications %tmp.1 288 14 28 ];
         %tmp.1 = getm $.Toybox.Communications;
         %tmp.3 = const :transmit;
-        symbol [ transmit %tmp.3 238 34 42 const ];
+        symbol [ transmit %tmp.3 288 34 42 const ];
         %tmp.4 = canhazplz %tmp.1 %tmp.3;
         %tmp.5 = not %tmp.4;
-        bf %tmp.5 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_238_8_238_55_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_238_8_238_55_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_238_45_238_55_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 238 47 ]
+        bf %tmp.5 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_288_8_288_55_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_288_8_288_55_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_288_45_288_55_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 288 47 ]
         ret ?;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_238_45_238_55_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_238_8_238_55_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_238_8_238_55_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 239 8 ]
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_239_8_243_8_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_239_8_243_8_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_239_8_243_8_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_239_8_243_8_finally;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_239_8_243_8_beginTry:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_239_12_241_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 240 12 ]
-        symbol [ Communications %tmp.6 240 12 26 ];
-        %tmp.6 = getm $.Toybox.Communications;
-        symbol [ transmit %tmp.7 240 27 35 ];
-        %tmp.7 = getv function %tmp.6 :transmit;
-        %tmp.8 = lgetv %data;
-        symbol [ data %tmp.8 240 36 40 ];
-        %tmp.9 = null;
-        symbol [ VFRConnListener %tmp.13 240 52 67 ];
-        %tmp.13 = getv ? :VFRConnListener;
-        %tmp.14 = self;
-        symbol [ self %tmp.14 240 68 72 ];
-        %tmp.15 = lgetv %msgType;
-        symbol [ msgType %tmp.15 240 74 81 ];
-        %tmp.10 = newc %tmp.13 (%tmp.14, %tmp.15);
-        invoke %tmp.6 %tmp.7(%tmp.8, %tmp.9, %tmp.10);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_239_12_241_8_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_239_8_243_8_endTry:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_239_8_243_8_finally;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_239_8_243_8_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_239_8_243_8_catch:
-        %tmp.16 = exception;
-        push %tmp.16;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 241 10 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_239_8_243_8_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_241_10_243_8_end" ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_288_45_288_55_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_288_8_288_55_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_288_8_288_55_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 289 8 ]
+        %tmp.6 = true;
+        symbol [ _txThisTick ? 289 8 19 ];
+        putv self :_txThisTick %tmp.6;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 290 8 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_290_8_294_8_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_290_8_294_8_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_290_8_294_8_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_290_8_294_8_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_290_8_294_8_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_290_12_292_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 291 12 ]
+        symbol [ Communications %tmp.7 291 12 26 ];
+        %tmp.7 = getm $.Toybox.Communications;
+        symbol [ transmit %tmp.8 291 27 35 ];
+        %tmp.8 = getv function %tmp.7 :transmit;
+        %tmp.9 = lgetv %data;
+        symbol [ data %tmp.9 291 36 40 ];
+        %tmp.10 = null;
+        symbol [ VFRConnListener %tmp.14 291 52 67 ];
+        %tmp.14 = getv ? :VFRConnListener;
+        %tmp.15 = self;
+        symbol [ self %tmp.15 291 68 72 ];
+        %tmp.16 = lgetv %msgType;
+        symbol [ msgType %tmp.16 291 74 81 ];
+        %tmp.11 = newc %tmp.14 (%tmp.15, %tmp.16);
+        invoke %tmp.7 %tmp.8(%tmp.9, %tmp.10, %tmp.11);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_290_12_292_8_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_290_8_294_8_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_290_8_294_8_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_290_8_294_8_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_290_8_294_8_catch:
+        %tmp.17 = exception;
+        push %tmp.17;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 292 10 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_290_8_294_8_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_292_10_294_8_end" ]
         %ex.1 = local;
-        symbol [ ex %ex.1 241 17 19 ];
-        %tmp.17 = dup %tmp.16;
-        lputv %ex.1 %tmp.17;
-        symbol [ ex %ex.1 241 17 19 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_241_21_243_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 242 12 ]
-        symbol [ System %tmp.18 242 12 18 ];
-        %tmp.18 = getm $.Toybox.System;
-        symbol [ println %tmp.19 242 19 26 ];
-        %tmp.19 = getv function %tmp.18 :println;
-        %tmp.20 = "VFRComms _tx ex: ";
-        %tmp.21 = lgetv %ex.1;
-        symbol [ ex %tmp.21 242 49 51 ];
-        symbol [ getErrorMessage %tmp.22 242 52 67 ];
-        %tmp.22 = getv function %tmp.21 :getErrorMessage;
-        %tmp.23 = invoke %tmp.21 %tmp.22();
-        %tmp.24 = add %tmp.20 %tmp.23;
-        invoke %tmp.18 %tmp.19(%tmp.24);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_241_21_243_8_stop:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_239_8_243_8_finally;
+        symbol [ ex %ex.1 292 17 19 ];
+        %tmp.18 = dup %tmp.17;
+        lputv %ex.1 %tmp.18;
+        symbol [ ex %ex.1 292 17 19 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_292_21_294_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc" 293 12 ]
+        symbol [ System %tmp.19 293 12 18 ];
+        %tmp.19 = getm $.Toybox.System;
+        symbol [ println %tmp.20 293 19 26 ];
+        %tmp.20 = getv function %tmp.19 :println;
+        %tmp.21 = "VFRComms _tx ex: ";
+        %tmp.22 = lgetv %ex.1;
+        symbol [ ex %tmp.22 293 49 51 ];
+        symbol [ getErrorMessage %tmp.23 293 52 67 ];
+        %tmp.23 = getv function %tmp.22 :getErrorMessage;
+        %tmp.24 = invoke %tmp.22 %tmp.23();
+        %tmp.25 = add %tmp.21 %tmp.24;
+        invoke %tmp.19 %tmp.20(%tmp.25);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_292_21_294_8_stop:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_290_8_294_8_finally;
         pop;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_239_8_243_8_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_241_10_243_8_end:
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_239_8_243_8_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_241_10_243_8_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_241_10_243_8_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_239_8_243_8_finally;
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_239_8_243_8_finally;
-        throw %tmp.16;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_239_8_243_8_finally:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_290_8_294_8_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_292_10_294_8_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_290_8_294_8_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_292_10_294_8_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_292_10_294_8_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_290_8_294_8_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_290_8_294_8_finally;
+        throw %tmp.17;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_290_8_294_8_finally:
         jsrret;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_239_8_243_8_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_237_72_244_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_290_8_294_8_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRPhoneComms_mc_287_72_295_4_stop:
     }
 }
 [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRPhoneComms.mc"; @line = 1; ]

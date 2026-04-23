@@ -7,6 +7,7 @@ import Toybox.Lang;
 import Toybox.Attention;
 import Toybox.Activity;
 import Toybox.Position;
+import Toybox.Sensor;
 import Toybox.Time;
 import Toybox.Time.Gregorian;
 
@@ -72,12 +73,25 @@ class VFRStopWatchView extends WatchUi.View {
     // (AUTO_START_SPEED_MS is also settings-driven; 0 kts => -1 to disable)
     var gpsMode         as Number = 3;
     var timerIntervalMs as Number = 300000; // default 5 min
+    // Transition altitude (feet) and flag for Flight Level display
+    var transitionAltitudeFt as Number = 6000; // default
+    var transitionActive as Boolean = false;
+    var transitionExitOffsetFt as Number = 500; // hysteresis: exit when below (transitionAltitudeFt - offset)
+    // (altitude comes from sensors — Sensor.getInfo().altitude preferred)
 
     // --- GPS fix quality (Position.QUALITY_* values 0-4) ---
     // 0=not available, 1=last known, 2=poor/acquiring, 3=usable, 4=good
     var gpsQuality as Number = 0;
     // Last time (System.getTimer()) we received a Position.onPosition callback
     var lastPositionMillis as Number = 0;
+    // --- Altitude tendency detection ---
+    var lastAltitudeMeters as Float = 0.0;      // last altitude sample in meters
+    var lastAltitudeMillis as Number = 0;       // System.getTimer() at last altitude
+    var VERT_SPEED_THRESHOLD_MPS as Float = 1.0; // 1 m/s vertical speed threshold (~200 ft/min)
+    var tendency as Number = 0;                 // -1 = down, 0 = none, 1 = up
+    var tendencyUntil as Number = 0;            // System.getTimer() until which arrow is shown
+    var tendencyVibrateCooldownMs as Number = 5000; // minimum ms between tendency vibrations
+    var lastTendencyVibrateAt as Number = 0;
     // Periodic backup gate (ms)
     var lastBackupMillis as Number = 0;
     var BACKUP_INTERVAL_MS as Number = 30000; // 30s
@@ -91,6 +105,23 @@ class VFRStopWatchView extends WatchUi.View {
     // One session per start/stop cycle; saved as a FIT activity on stop.
     var _session as ActivityRecording.Session? = null;
 
+    // --- Vector fonts (optional rounded font resource) ---
+    var roundedFontLarge as Graphics.VectorFont? = null;
+    var roundedFontSmall as Graphics.VectorFont? = null;
+    var bezelLblFont     as Graphics.VectorFont? = null; // small label font for bezel items
+    var SHOW_BEZEL_ANGLE_DEBUG as Boolean = true; // draw angle overlays for debugging
+    var FORCE_FLAT_BEZEL as Boolean = false; // when true, skip radial text and use flat placement fallback
+    var lastDrawTimes as Dictionary = new Dictionary(); // guard per-label draw timestamps
+    var bezelFrameId as Number = 0; // incremented each onUpdate to identify a frame
+    // Cache loaded phone icon resource to avoid per-frame allocations
+    var cachedPhoneIcon as Object? = null;
+
+    // --- Down-button hold detection ---
+    var downPressAt as Number = 0; // System.getTimer() when DOWN pressed
+    var DOWN_HOLD_MS as Number = 800; // ms to consider a long press
+    var lastDownEventAt as Number = 0; // debounce last physical press
+    var quickInfoShown as Boolean = false;
+
     function initialize() {
         View.initialize();
     }
@@ -99,29 +130,46 @@ class VFRStopWatchView extends WatchUi.View {
     function onLayout(dc as Dc) as Void {
     }
 
+
+
     // Read the three user-configurable properties and update runtime variables.
     // Safe to call at any time; GPS restart is handled separately by restartGps().
     function loadSettings() as Void {
+        try {
         // GPS mode
-        var rawMode = Application.Properties.getValue("GpsMode");
-        gpsMode = (rawMode != null) ? (rawMode as Number) : 3;
+        try {
+            var rawMode = Application.Properties.getValue("GpsMode");
+            gpsMode = (rawMode != null) ? (rawMode as Number) : 3;
+        } catch (ex) { gpsMode = 3; }
 
         // Timer interval (minutes → ms; 0 = disabled)
-        var rawInterval = Application.Properties.getValue("TimerInterval");
-        var intervalMin = (rawInterval != null) ? (rawInterval as Number) : 5;
+        var intervalMin = 5;
+        try {
+            var rawInterval = Application.Properties.getValue("TimerInterval");
+            intervalMin = (rawInterval != null) ? (rawInterval as Number) : 5;
+        } catch (ex) { intervalMin = 5; }
         if (intervalMin < 0) { intervalMin = 0; }
         if (intervalMin > 30) { intervalMin = 30; }
         timerIntervalMs = intervalMin * 60000;
 
         // Takeoff speed (knots → m/s; 0 = disable auto-start)
-        var rawSpeed = Application.Properties.getValue("TakeoffSpeed");
-        var speedKts = (rawSpeed != null) ? (rawSpeed as Number) : 30;
+        var speedKts = 30;
+        try {
+            var rawSpeed = Application.Properties.getValue("TakeoffSpeed");
+            speedKts = (rawSpeed != null) ? (rawSpeed as Number) : 30;
+        } catch (ex) { speedKts = 30; }
         if (speedKts <= 0) {
             AUTO_START_SPEED_MS = -1.0; // sentinel: auto-start disabled
         } else {
             AUTO_START_SPEED_MS = speedKts.toFloat() * 0.514444; // kts → m/s
         }
 
+        // nothing extra to load here for altitude — sensor-derived when available
+        // Transition altitude (feet)
+        try {
+            var rawTrans = Application.Properties.getValue("TransitionAltitudeFt");
+            transitionAltitudeFt = (rawTrans != null) ? (rawTrans as Number) : 6000;
+        } catch (ex) { transitionAltitudeFt = 6000; }
         // Sync nextVibrateAt default in case loadSettings() is called before first run
         if (!running && timerIntervalMs > 0) {
             nextVibrateAt = timerIntervalMs;
@@ -129,6 +177,9 @@ class VFRStopWatchView extends WatchUi.View {
         System.println("loadSettings: gpsMode=" + gpsMode.toString() +
             " timerIntervalMs=" + timerIntervalMs.toString() +
             " AUTO_START_SPEED_MS=" + AUTO_START_SPEED_MS.toString());
+        } catch (exAll) {
+            System.println("loadSettings exception: " + exAll.getErrorMessage());
+        }
     }
 
     // (Re)start GPS with the current gpsMode setting. Called from onShow and
@@ -200,6 +251,70 @@ class VFRStopWatchView extends WatchUi.View {
         // Update cached quality and timestamp so we can detect stale fixes
         if (info != null) {
             if (info.accuracy != null) { gpsQuality = info.accuracy; }
+            // Capture altitude when available and compute vertical speed
+            if (info != null) {
+                try {
+                    var now = System.getTimer();
+                    // Prefer sensor-derived altitude (barometric) when available;
+                    // fall back to Position.Info.altitude (GPS) if not.
+                    var sInfo = Sensor.getInfo();
+                    var alt = null;
+                    if (sInfo != null && sInfo.altitude != null) {
+                        alt = (sInfo.altitude as Float);
+                        System.println("onPosition: using Sensor.altitude (baro) = " + alt.toString());
+                    } else if (info.altitude != null) {
+                        alt = (info.altitude as Float);
+                        System.println("onPosition: using Position.altitude (GPS) = " + alt.toString());
+                    }
+                    if (alt != null) {
+                        if (lastAltitudeMillis != 0) {
+                            var dtMs = now - lastAltitudeMillis;
+                            if (dtMs > 0) {
+                                var vspd = (alt - lastAltitudeMeters) / (dtMs.toFloat() / 1000.0); // m/s
+                                var newTendency = 0;
+                                if (vspd >= VERT_SPEED_THRESHOLD_MPS) { newTendency = 1; }
+                                else if (vspd <= -VERT_SPEED_THRESHOLD_MPS) { newTendency = -1; }
+                                if (newTendency != 0) {
+                                    tendency = newTendency;
+                                    tendencyUntil = now + 5000; // show arrow for 5s
+                                    // Vibrate on new detection but throttle repeats
+                                    if ((now - lastTendencyVibrateAt) >= tendencyVibrateCooldownMs) {
+                                        if (tendency > 0) { doTendencyVibrateUp(); }
+                                        else { doTendencyVibrateDown(); }
+                                        lastTendencyVibrateAt = now;
+                                    }
+                                }
+                            }
+                        }
+                        lastAltitudeMeters = alt;
+                        lastAltitudeMillis = now;
+                    }
+                    // Update transition flag using pressure if available
+                    try {
+                        var sPressure = null;
+                        if (sInfo != null) {
+                            if (sInfo.pressure != null) { sPressure = sInfo.pressure as Float; }
+                        }
+                        if (sPressure != null) {
+                            var p = (sPressure as Float).toFloat();
+                            var paFt = 145366.45 * (1.0 - Math.pow((p / 1013.25), 0.190284));
+                            if (!transitionActive && paFt >= transitionAltitudeFt) {
+                                transitionActive = true;
+                                System.println("Transition ACTIVE at paFt=" + paFt.toString());
+                            } else if (transitionActive && paFt <= (transitionAltitudeFt - transitionExitOffsetFt)) {
+                                transitionActive = false;
+                                System.println("Transition CLEARED at paFt=" + paFt.toString());
+                            }
+                        } else {
+                            if (lastAltitudeMeters != 0) {
+                                var altFtF = lastAltitudeMeters * 3.28084;
+                                if (!transitionActive && altFtF >= transitionAltitudeFt) { transitionActive = true; }
+                                else if (transitionActive && altFtF <= (transitionAltitudeFt - transitionExitOffsetFt)) { transitionActive = false; }
+                            }
+                        }
+                    } catch (ex) { }
+                } catch (ex) { }
+            }
         }
         lastPositionMillis = System.getTimer();
         WatchUi.requestUpdate();
@@ -317,6 +432,8 @@ class VFRStopWatchView extends WatchUi.View {
 
     function onUpdate(dc as Dc) as Void {
         var now = System.getTimer();
+        // bump frame id so per-label guards can skip duplicates within the same frame
+        bezelFrameId = (bezelFrameId as Number) + 1;
         // Drive phone comms retry logic
         var comms = getApp().getComms();
         if (comms != null) { comms.tick(now); }
@@ -413,7 +530,10 @@ class VFRStopWatchView extends WatchUi.View {
         }
 
         // --- Auto-start: begin stopwatch when ground speed exceeds configured threshold ---
-        if (autoStartEnabled && !running && AUTO_START_SPEED_MS > 0.0 && actInfo != null) {
+        // Require a recent, good GPS fix to avoid false triggers on devices
+        // that may report a non-zero speed without a valid location fix.
+        if (autoStartEnabled && !running && AUTO_START_SPEED_MS > 0.0 && actInfo != null
+            && gpsQuality >= 3 && ((System.getTimer() - lastPositionMillis) <= 5000)) {
             var spd = actInfo.currentSpeed;
             if (spd != null && (spd as Float) >= AUTO_START_SPEED_MS) {
                 System.println("Auto-start triggered: speed=" + (spd as Float).toString() + " m/s");
@@ -465,7 +585,6 @@ class VFRStopWatchView extends WatchUi.View {
             }
         }
         var displayKm  = lapMode ? lapKm  : kmAtCheckpoint;
-        var displayNm  = lapMode ? lapNm  : nmAtCheckpoint;
         var showDist   = lapMode || checkpointHit;
 
         // Fuel flash active while within the flash window
@@ -485,71 +604,24 @@ class VFRStopWatchView extends WatchUi.View {
         var mStr = minutes < 10 ? "0" + minutes.toString() : minutes.toString();
         var sStr = seconds < 10 ? "0" + seconds.toString() : seconds.toString();
 
-        // --- Draw ---
+        // --- Draw (circular/bezel layout) ---
         var w  = dc.getWidth();
         var h  = dc.getHeight();
         var cx = w / 2;
+        var cy = h / 2;
+        var minWh = (w < h) ? w : h;
+        var margin = (minWh * 8) / 100;
+        var radius = (minWh / 2) - margin;
 
-        // Background: flash red when HR alert active, otherwise black
-        if (hrAlertActive && hrFlashOn) {
-            dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_RED);
-        } else {
-            dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
-        }
-        dc.clear();
+        drawBezelBackground(dc);
 
-        // --- Build clock strings (UTC and local) ---
-        var localTime = System.getClockTime();
-        var lh = localTime.hour;
-        var lm = localTime.min;
-        var lhStr = lh < 10 ? "0" + lh.toString() : lh.toString();
-        var lmStr = lm < 10 ? "0" + lm.toString() : lm.toString();
-        var ltStr = "LT  " + lhStr + ":" + lmStr;
-
-        var utcMoment = Time.now();
-        var utcInfo = Gregorian.utcInfo(utcMoment, Time.FORMAT_SHORT);
-        var uh = utcInfo.hour;
-        var um = utcInfo.min;
-        var uhStr = uh < 10 ? "0" + uh.toString() : uh.toString();
-        var umStr = um < 10 ? "0" + um.toString() : um.toString();
-        var utcStr = "UTC " + uhStr + ":" + umStr;
-
-        // --- ROW 1 (top): HR — always; red when alert, white when normal ---
-        var hrColor = hrAlertActive ? Graphics.COLOR_RED : Graphics.COLOR_WHITE;
-        var hrStr = lastHr > 0 ? (lastHr.toString() + " bpm") : "-- bpm";
-        dc.setColor(hrColor, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, h * 9 / 100, Graphics.FONT_SMALL, hrStr,
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-
-        // --- ROW 2: NM — blue after checkpoint ---
-        if (showDist) {
-            var nmInt = displayNm.toNumber();
-            var nmDecFloat = displayNm - nmInt.toFloat();
-            var nmDec = (nmDecFloat * 10.0).toNumber();
-            if (nmDec < 0) { nmDec = 0; }
-            var nmStr = nmInt.toString() + "." + nmDec.toString() + " NM";
-            dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(cx, h * 20 / 100, Graphics.FONT_SMALL, nmStr,
-                Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        }
-
-        // --- ROW 3: LT — light gray, always ---
-        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, h * 31 / 100, Graphics.FONT_SMALL, ltStr,
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-
-        // --- ROW 4 (centre): MM:SS stopwatch ---
+        // --- Centre: large chrono ---
         dc.setColor(timerColor, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, h / 2, Graphics.FONT_NUMBER_HOT, mStr + ":" + sStr,
+        var chronoFont = (roundedFontLarge != null) ? roundedFontLarge : Graphics.FONT_NUMBER_HOT;
+        dc.drawText(cx, cy, chronoFont, mStr + ":" + sStr,
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // --- ROW 5: UTC — light gray, always ---
-        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, h * 73 / 100, Graphics.FONT_SMALL, utcStr,
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-
-        // --- ROW 6 (bottom): km — yellow after checkpoint;
-        //     or "↓ Settings" hint in initial state ---
+        // --- Distance (small) ---
         if (showDist) {
             var kmInt = displayKm.toNumber();
             var kmDecFloat = displayKm - kmInt.toFloat();
@@ -557,30 +629,11 @@ class VFRStopWatchView extends WatchUi.View {
             if (kmDec < 0) { kmDec = 0; }
             var kmStr = kmInt.toString() + "." + kmDec.toString() + " km";
             dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(cx, h * 91 / 100, Graphics.FONT_SMALL, kmStr,
-                Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        } else if (!running && elapsed == 0) {
-            dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(cx, h * 91 / 100, Graphics.FONT_TINY, "DOWN = Settings",
+            dc.drawText(cx, cy + radius * 0.9, Graphics.FONT_TINY, kmStr,
                 Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         }
 
-        // --- Phone connection indicator (top-right corner) ---
-        // Green "PHN" = fully connected; Yellow "CONN" = handshaking
-        var commsIndicator = getApp().getComms();
-        if (commsIndicator != null) {
-            if (commsIndicator.connected) {
-                dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_TRANSPARENT);
-                dc.drawText(w - 8, h * 9 / 100, Graphics.FONT_TINY, "PHN",
-                    Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER);
-            } else if (commsIndicator.connecting) {
-                dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
-                dc.drawText(w - 8, h * 9 / 100, Graphics.FONT_TINY, "CONN",
-                    Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER);
-            }
-        }
-
-        if (running || subTimerState == 1 || hrAlertActive || fuelFlashActive || autoStartEnabled || gpsQuality < 3) {
+        if (running || subTimerState == 1 || hrAlertActive || fuelFlashActive || autoStartEnabled || gpsQuality < 3 || (tendency != 0 && tendencyUntil > now)) {
             WatchUi.requestUpdate();
         }
     }
@@ -599,7 +652,446 @@ class VFRStopWatchView extends WatchUi.View {
         WatchUi.requestUpdate();
     }
 
-    // Persistable state helpers ------------------------------------------------
+    // Draw the static bezel background: clear, annulus labels, separator ring,
+    // group separators, and phone indicator arc.
+    // Pure drawing — no state mutation and no WatchUi.requestUpdate().
+    function drawBezelBackground(dc as Dc) as Void {
+        var w  = dc.getWidth();
+        var h  = dc.getHeight();
+        var cx = w / 2;
+        var cy = h / 2;
+        var now = System.getTimer();
+
+        // Background: flash red when HR alert active, otherwise black
+        if (hrAlertActive && hrFlashOn) {
+            dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_RED);
+        } else {
+            dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
+        }
+        dc.clear();
+
+        // Build clock strings
+        var localTime = System.getClockTime();
+        var lh = localTime.hour;
+        var lm = localTime.min;
+        var lhStr = lh < 10 ? "0" + lh.toString() : lh.toString();
+        var lmStr = lm < 10 ? "0" + lm.toString() : lm.toString();
+
+        var utcMoment = Time.now();
+        var utcInfo = Gregorian.utcInfo(utcMoment, Time.FORMAT_SHORT);
+        var uh = utcInfo.hour;
+        var um = utcInfo.min;
+        var uhStr = uh < 10 ? "0" + uh.toString() : uh.toString();
+        var umStr = um < 10 ? "0" + um.toString() : um.toString();
+
+        var minWh = (w < h) ? w : h;
+        var margin = (minWh * 8) / 100;
+        var radius = (minWh / 2) - margin;
+
+        // Initialize vector fonts
+        if (roundedFontLarge == null) {
+            var chronoSize   = (minWh * 0.30).toNumber();
+            var bezelSize    = (minWh * 0.050).toNumber();
+            var bezelLblSize = (minWh * 0.045).toNumber();
+            var faces = ["RobotoCondensed", "Roboto", "RobotoBlack", "RobotoRegular", "Swiss721Bold", "TomorrowBold"];
+            for (var fi = 0; fi < faces.size() && roundedFontLarge == null; fi++) {
+                try {
+                    var f = Graphics.getVectorFont({:face => faces[fi], :size => chronoSize});
+                    if (f != null) {
+                        roundedFontLarge = f;
+                        roundedFontSmall = Graphics.getVectorFont({:face => faces[fi], :size => bezelSize});
+                        bezelLblFont = Graphics.getVectorFont({:face => faces[fi], :size => bezelLblSize});
+                    }
+                } catch (ex) { }
+            }
+        }
+
+        // Prefer a lighter, condensed/regular face for small bezel labels
+        try {
+            var bezelSizeLocal = (minWh * 0.050).toNumber();
+            if (roundedFontSmall == null) {
+                var trySmall = Graphics.getVectorFont({:face => "RobotoCondensed", :size => bezelSizeLocal});
+                if (trySmall != null) { roundedFontSmall = trySmall; }
+            } else {
+                try {
+                    var altSmall = Graphics.getVectorFont({:face => "RobotoRegular", :size => bezelSizeLocal});
+                    if (altSmall != null) { roundedFontSmall = altSmall; }
+                } catch (ex2) { }
+            }
+        } catch (ex3) { }
+
+        // --- Bezel data strings ---
+        var drawNow = now;
+
+        // Heading
+        var hdgStr = "--";
+        try {
+            var pInfo = Position.getInfo();
+            if (pInfo != null && pInfo.heading != null) {
+                var deg = (pInfo.heading.toFloat() * (180.0 / Math.PI)).toNumber();
+                if (deg < 0) { deg = (deg + 360) % 360; }
+                var hdgInt = Math.round(deg).toNumber();
+                if (hdgInt < 10)       { hdgStr = "00" + hdgInt.toString(); }
+                else if (hdgInt < 100) { hdgStr = "0"  + hdgInt.toString(); }
+                else                   { hdgStr = hdgInt.toString(); }
+            }
+        } catch (ex) { }
+
+        // Ground speed (knots)
+        var gsStr = "--";
+        try {
+            var actInfoLocal = Activity.getActivityInfo();
+            if (actInfoLocal != null && actInfoLocal.currentSpeed != null) {
+                gsStr = ((actInfoLocal.currentSpeed as Float) * 1.94384).toNumber().toString();
+            }
+        } catch (ex) { }
+
+        // QNH + Altitude
+        var qnhValStr = "--";
+        var altStr    = "-----";
+        var altLbl    = "ALT";
+        try {
+            var sInfoDraw = Sensor.getInfo();
+            if (sInfoDraw != null) {
+                if (sInfoDraw.pressure != null) {
+                    qnhValStr = Math.round((sInfoDraw.pressure as Float)).toNumber().toString();
+                }
+                if (sInfoDraw.altitude != null) {
+                    var altFt = ((sInfoDraw.altitude as Float) * 3.28084).toNumber();
+                    if (transitionActive) {
+                        altStr = "FL" + (altFt / 100).toNumber().toString();
+                    } else {
+                        altStr = altFt.toString();
+                    }
+                }
+            }
+        } catch (ex) { }
+
+        // Append tendency indicator to the alt string
+        if (running && tendency != 0 && drawNow < tendencyUntil) {
+            altStr = altStr + (tendency > 0 ? "+" : "-");
+        }
+
+        // --- Radial bezel geometry ---
+        var R = (minWh / 2).toFloat();
+        var radiusOuter = (R - 2.0).toFloat();
+        var sepRadius = (radiusOuter - 15.0).toNumber();
+        var radiusInner  = (radiusOuter - 24.0).toFloat();
+        var radiusCenter = ((radiusInner + radiusOuter) / 2.0).toFloat();
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.setPenWidth(1);
+        dc.drawCircle(cx, cy, sepRadius);
+
+        var slotDeg = 360.0 / 62.0;
+        var numSlotsHDG = 9;
+        var numSlotsGS  = 11;
+        var numSlotsALT = 11;
+        var numSlotsUTC = 11;
+        var numSlotsQNH = 10;
+        var numSlotsLT  = 10;
+        var spanHDG = numSlotsHDG * slotDeg;
+        var spanGS  = numSlotsGS  * slotDeg;
+        var spanALT = numSlotsALT * slotDeg;
+        var spanUTC = numSlotsUTC * slotDeg;
+        var spanQNH = numSlotsQNH * slotDeg;
+        var spanLT  = numSlotsLT  * slotDeg;
+        var angleHDG = 90.0;
+        var angleALT = angleHDG + (numSlotsHDG + numSlotsALT).toFloat() / 2.0 * slotDeg;
+        var angleLT  = angleALT + (numSlotsALT + numSlotsLT).toFloat()  / 2.0 * slotDeg;
+        var angleQNH = angleLT  + (numSlotsLT  + numSlotsQNH).toFloat() / 2.0 * slotDeg;
+        var angleUTC = angleQNH + (numSlotsQNH + numSlotsUTC).toFloat() / 2.0 * slotDeg;
+        var angleGS  = angleUTC + (numSlotsUTC + numSlotsGS).toFloat()  / 2.0 * slotDeg - 360.0;
+        var rHDG = (radiusCenter - 2.0).toNumber();
+        var rGS  = (radiusCenter - 6.0).toNumber();
+        var rALT = (radiusCenter - 6.0).toNumber();
+        var rUTC = (radiusCenter + 7.0).toNumber();
+        var rQNH = (radiusCenter + 7.0).toNumber();
+        var rLT  = (radiusCenter + 7.0).toNumber();
+
+        drawRotatedMetric(dc, cx, cy, angleHDG, "HDG " + hdgStr,              Graphics.COLOR_WHITE, rHDG, spanHDG, false, false, false, slotDeg, radiusCenter, radiusOuter);
+        drawRotatedMetric(dc, cx, cy, angleGS,  "GS "  + gsStr + " kt",      Graphics.COLOR_WHITE, rGS,  spanGS,  false, false, false, slotDeg, radiusCenter, radiusOuter);
+        drawRotatedMetric(dc, cx, cy, angleALT, altLbl + " " + altStr,        Graphics.COLOR_WHITE, rALT, spanALT, false, false, false, slotDeg, radiusCenter, radiusOuter);
+        drawRotatedMetric(dc, cx, cy, angleUTC, "UTC " + uhStr + ":" + umStr, Graphics.COLOR_WHITE, rUTC, spanUTC, false, false, false, slotDeg, radiusCenter, radiusOuter);
+
+        var qnhDisplay = qnhValStr;
+        if (qnhDisplay == "--" or qnhDisplay == "") {
+            qnhDisplay = "----";
+        } else {
+            while (qnhDisplay.length() < 4) {
+                qnhDisplay = "-" + qnhDisplay;
+            }
+        }
+        drawRotatedMetric(dc, cx, cy, angleQNH, "QNH " + qnhDisplay, Graphics.COLOR_WHITE, rQNH, spanQNH, false, false, false, slotDeg, radiusCenter, radiusOuter);
+        drawRotatedMetric(dc, cx, cy, angleLT,  "LT "  + lhStr + ":" + lmStr, Graphics.COLOR_WHITE, rLT,  spanLT,  false, false, false, slotDeg, radiusCenter, radiusOuter);
+
+        // Group separators
+        try {
+            dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+            dc.setPenWidth(2);
+            var groupAngles = [0.0, 180.0, 115.0, 60.0, 295.0, 240.0];
+            var innerClamp = ((sepRadius as Number).toFloat() + 1.0).toFloat();
+            var outerClamp = (R - 1.0).toFloat();
+            for (var gi = 0; gi < groupAngles.size(); gi++) {
+                var a = (groupAngles[gi] as Float).toFloat();
+                var aRad = a * (Math.PI / 180.0);
+                var sx = (cx.toFloat() + innerClamp * Math.cos(aRad)).toNumber();
+                var sy = (cy.toFloat() - innerClamp * Math.sin(aRad)).toNumber();
+                var ex = (cx.toFloat() + outerClamp * Math.cos(aRad)).toNumber();
+                var ey = (cy.toFloat() - outerClamp * Math.sin(aRad)).toNumber();
+                dc.drawLine(sx, sy, ex, ey);
+            }
+            dc.setPenWidth(1);
+        } catch (sepEx) { }
+
+        // --- Phone connection indicator arc ---
+        var commsIndicator = getApp().getComms();
+        try {
+            if (cachedPhoneIcon == null) {
+                try { cachedPhoneIcon = WatchUi.loadResource(Rez.Drawables.PhoneIcon); } catch (rEx) { cachedPhoneIcon = null; }
+            }
+            if (cachedPhoneIcon != null) {
+                var iconHalf = 12.0;
+                var px = (cx.toFloat() - iconHalf).toNumber();
+                var py = (cy.toFloat() + radius * 0.52 - iconHalf).toNumber();
+                var drawColour = Graphics.COLOR_YELLOW;
+                var visible = true;
+                if (commsIndicator != null) {
+                    if (commsIndicator.connected) {
+                        drawColour = Graphics.COLOR_GREEN;
+                    } else if (commsIndicator.connecting) {
+                        var lastShake = 0;
+                        try { lastShake = (commsIndicator.lastHandshakeAt as Number); } catch (e) { lastShake = 0; }
+                        var since = (lastShake > 0) ? (now - lastShake) : 0;
+                        if (since >= 30000) {
+                            drawColour = Graphics.COLOR_RED;
+                            visible = true;
+                        } else {
+                            var blinkPhase = ((now / 500).toNumber() % 2).toNumber();
+                            visible = (blinkPhase == 0);
+                            drawColour = Graphics.COLOR_YELLOW;
+                        }
+                    } else {
+                        drawColour = Graphics.COLOR_RED;
+                    }
+                } else {
+                    drawColour = Graphics.COLOR_YELLOW;
+                }
+                if (visible) {
+                    var arcStartDeg = 10.0;
+                    var arcEndDeg   = 80.0;
+                    var arcStepDeg  = 4.0;
+                    var arcR = (sepRadius as Number).toFloat();
+                    dc.setColor(drawColour, Graphics.COLOR_TRANSPARENT);
+                    dc.setPenWidth(3);
+                    var prevX = 0.0;
+                    var prevY = 0.0;
+                    var havePrev = false;
+                    for (var a = arcStartDeg; a <= arcEndDeg; a += arcStepDeg) {
+                        var aRad = a * (Math.PI / 180.0);
+                        var px1 = (cx.toFloat() + arcR * Math.cos(aRad)).toNumber();
+                        var py1 = (cy.toFloat() - arcR * Math.sin(aRad)).toNumber();
+                        if (havePrev) {
+                            dc.drawLine(prevX, prevY, px1, py1);
+                        }
+                        prevX = px1; prevY = py1; havePrev = true;
+                    }
+                    var aRadEnd = arcEndDeg * (Math.PI / 180.0);
+                    var endX = (cx.toFloat() + arcR * Math.cos(aRadEnd)).toNumber();
+                    var endY = (cy.toFloat() - arcR * Math.sin(aRadEnd)).toNumber();
+                    if (havePrev) { dc.drawLine(prevX, prevY, endX, endY); }
+                    dc.setPenWidth(1);
+                }
+            }
+        } catch (iconEx) { }
+    }
+
+    // Helper: draw a metric using a small radial arc to approximate rotation.
+    function drawRotatedMetric(dc as Dc, cx as Number, cy as Number, angle as Float,
+                                text as String, color as Number, r as Number, arcSpan as Float, reverse as Boolean, flipTangent as Boolean, preferRadial as Boolean, slotDeg as Float, radiusCenter as Float, radiusOuter as Float) as Void {
+        // Debug logging removed to avoid per-frame overhead
+        // Skip duplicate draws within the same millisecond per-label (prevents double-rendering)
+        try {
+            var lastFrame = lastDrawTimes[text];
+            if (lastFrame != null && (lastFrame as Number) == bezelFrameId) {
+                try { System.println("drawRotatedMetric: skipping duplicate for '" + text + "' (frame guard)"); } catch (e) { }
+                return;
+            }
+            lastDrawTimes[text] = bezelFrameId;
+        } catch (exSkip) { }
+        // Try vector font radial drawing first (main text), then draw a red trailing pipe.
+        try {
+            if (roundedFontSmall != null && !FORCE_FLAT_BEZEL) {
+                // In fixed-grid mode (slotDeg > 0), arcSpan is the total allocated
+                // slot span — use it as-is.  In dynamic mode, expand it from text width.
+                var estSpan = arcSpan.toFloat();
+                // Optionally reverse the text for rendering order when APIs
+                // produce inverted glyph sequences for some directions.
+                var drawTextStr = text;
+                if (reverse) {
+                    var rb = "";
+                    for (var ri = text.length() - 1; ri >= 0; ri--) {
+                        rb += text.substring(ri, ri + 1);
+                    }
+                    drawTextStr = rb;
+                }
+                if (slotDeg <= 0.0) {
+                    // Dynamic mode: compute span from character pixel width
+                    try {
+                        if (roundedFontSmall != null) {
+                            var perCharPx = 12.0;
+                            var px = perCharPx * drawTextStr.length();
+                            var paddingFactor = 1.10;
+                            var rawDeg = (px * 180.0) / (Math.PI * r.toFloat());
+                            var minSpan = 8.0;
+                            var maxSpan = 80.0;
+                            var computed = rawDeg * paddingFactor;
+                            if (drawTextStr.length() <= 1) {
+                                estSpan = minSpan;
+                            } else {
+                                if (computed < minSpan) { estSpan = minSpan; }
+                                else if (computed > maxSpan) { estSpan = maxSpan; }
+                                else { estSpan = computed; }
+                            }
+                        } else {
+                            var nChars = drawTextStr.length();
+                            if (nChars > 1) {
+                                var perCharPx = 8.0;
+                                var perCharDeg = (perCharPx * 180.0) / (Math.PI * r.toFloat());
+                                var needed = perCharDeg * nChars * 1.05;
+                                if (needed > estSpan) { estSpan = needed; }
+                            }
+                        }
+                    } catch (exSpan) { /* fall back to provided arcSpan */ }
+                }
+                var startAngle = angle - (estSpan / 2);
+                var dir = (angle <= 180)
+                    ? Graphics.RADIAL_TEXT_DIRECTION_CLOCKWISE
+                    : Graphics.RADIAL_TEXT_DIRECTION_COUNTER_CLOCKWISE;
+                dc.setColor(color, Graphics.COLOR_TRANSPARENT);
+                // Per-character arcing: split text and draw each char at its own angle
+                        try {
+                    var n = drawTextStr.length();
+                    // Instead of relying on `drawRadialText` (which appears to
+                    // produce inconsistent orientation across devices), compute
+                    // per-character polar positions and draw each character flat
+                    // at the computed point. This keeps characters spaced along
+                    // the arc while avoiding the vector radial API quirks.
+                    var start = angle - (estSpan / 2.0);
+                        if (n <= 1) {
+                        var rad = angle.toFloat() * (Math.PI / 180.0);
+                        // Use annulus outer for bottom-half single-char, centre for top-half
+                        var baseR = (angle <= 180) ? radiusCenter : radiusOuter;
+                        var px = (cx.toFloat() + baseR * Math.cos(rad)).toNumber();
+                        var py = (cy.toFloat() - baseR * Math.sin(rad)).toNumber();
+                        dc.drawText(px, py, roundedFontSmall, drawTextStr,
+                            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+                    } else {
+                        // Per-character angled drawing so glyphs follow the bezel tangent.
+                        // angledOk=false when preferRadial — skip the angled loop entirely.
+                        // IMPORTANT: must guard the loop with angledOk, otherwise when
+                        // preferRadial=true BOTH this loop AND the radial fallback run,
+                        // drawing every character twice and producing the visible duplicate.
+                        var angledOk = !preferRadial;
+                        if (angledOk) {
+                            try {
+                                for (var ci = 0; ci < n; ci++) {
+                                    var ch = drawTextStr.substring(ci, ci + 1);
+                                    // Top-half labels (angle 0-180°): in screen coords, increasing
+                                    // angle goes RIGHT→LEFT, so character 0 at lowest angle lands
+                                    // on the right side — producing a mirrored string.  Fix: reverse
+                                    // the character index for top-half labels so char 0 appears on
+                                    // the screen-left (highest angular position).
+                                    var effectiveCi = (angle <= 180) ? (n - 1 - ci) : ci;
+                                    var chAngle;
+                                    if (slotDeg > 0.0) {
+                                        // Fixed-grid: each char in exactly one slot, group centred
+                                        var firstSlotOff = (estSpan - n.toFloat() * slotDeg) / 2.0;
+                                        chAngle = start + firstSlotOff + (effectiveCi.toFloat() + 0.5) * slotDeg;
+                                    } else {
+                                        chAngle = start + ((effectiveCi.toFloat() + 0.5) * (estSpan.toFloat() / n.toFloat()));
+                                    }
+                                    // screen position along the arc
+                                    var chRad = chAngle.toFloat() * (Math.PI / 180.0);
+                                    // drawAngledText anchors at the TOP of the glyph (in rotated local frame).
+                                    // Top half (angle<=180): after normT flip, glyph top faces OUTWARD →
+                                    //   anchor must be placed further OUT so the glyph centre lands on r.
+                                    // Bottom half: glyph top faces INWARD → anchor placed further IN.
+                                    var fontHalfH = 6;
+                                    // Use annulus centre for character anchor, offset by glyph half-height
+                                    // For top-half use annulus centre; for bottom-half use annulus outer edge
+                                    var rChBase = (angle <= 180) ? radiusCenter : radiusOuter;
+                                    var rCh = (angle <= 180)
+                                        ? (rChBase + fontHalfH)
+                                        : (rChBase - fontHalfH);
+                                    var chPx = (cx.toFloat() + rCh * Math.cos(chRad)).toNumber();
+                                    var chPy = (cy.toFloat() - rCh * Math.sin(chRad)).toNumber();
+                                    // Tangent: chAngle-90 gives the clockwise tangent in screen coords.
+                                    var normT = chAngle - 90.0;
+                                    while (normT > 180.0)  { normT -= 360.0; }
+                                    while (normT <= -180.0) { normT += 360.0; }
+                                    // Flip glyphs that would appear upside-down (|tilt|>90°)
+                                    if (normT > 90.0)       { normT -= 180.0; }
+                                    else if (normT < -90.0) { normT += 180.0; }
+                                    dc.drawAngledText(chPx, chPy, roundedFontSmall, ch,
+                                        Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER, normT);
+                                }
+                            } catch (angEx) {
+                                // angled API unavailable; fall through to radial
+                                angledOk = false;
+                            }
+                        }
+                        if (!angledOk) {
+                            var radialOk = true;
+                            try {
+                                for (var ci2 = 0; ci2 < n; ci2++) {
+                                    var ch2 = drawTextStr.substring(ci2, ci2 + 1);
+                                    var chAngle2 = start + ((ci2 + 0.5) * (estSpan / n));
+                                    dc.drawRadialText(cx, cy, roundedFontSmall, ch2,
+                                        Graphics.TEXT_JUSTIFY_CENTER, chAngle2, r, dir);
+                                }
+                            } catch (radEx) {
+                                radialOk = false;
+                            }
+                            if (!radialOk) {
+                                for (var ci3 = 0; ci3 < n; ci3++) {
+                                    var ch3 = drawTextStr.substring(ci3, ci3 + 1);
+                                    var chAngle3 = start + ((ci3 + 0.5) * (estSpan / n));
+                                    var chRad3 = chAngle3.toFloat() * (Math.PI / 180.0);
+                                    var chPx3  = (cx.toFloat() + r.toFloat() * Math.cos(chRad3)).toNumber();
+                                    var chPy3  = (cy.toFloat() - r.toFloat() * Math.sin(chRad3)).toNumber();
+                                    dc.drawText(chPx3, chPy3, roundedFontSmall, ch3,
+                                        Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+                                }
+                            }
+                        }
+                    }
+                    // trailing pipe removed here — group separators drawn centrally
+                    return;
+                } catch (exChars) {
+                    // fallback: draw whole text centered at angle
+                    dc.drawRadialText(cx, cy, roundedFontSmall, drawTextStr,
+                        Graphics.TEXT_JUSTIFY_CENTER, angle, r, dir);
+                    dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                    // radial fallback: draw short radial line instead of rotated glyph
+                    var pAngle = (angle + 6).toFloat() * (Math.PI / 180.0);
+                    var pHalf = 8.0;
+                    var prInner = r.toFloat() - pHalf;
+                    var prOuter = r.toFloat() + pHalf;
+                    return;
+                }
+            }
+        } catch (ex) { }
+        // Fallback to flat placement (no rotation): compute base position and draw pipe
+        // Standard polar -> screen: x = cx + r * cos(theta), y = cy - r * sin(theta)
+        var rad = angle.toFloat() * (Math.PI / 180.0);
+        var px  = (cx.toFloat() + r.toFloat() * Math.cos(rad)).toNumber();
+        var py  = (cy.toFloat() - r.toFloat() * Math.sin(rad)).toNumber();
+        dc.setColor(color, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(px, py, Graphics.FONT_XTINY, text,
+            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        // no trailing pipe in flat fallback — group separators drawn below
+    }
+
     function saveState() as Dictionary {
         var d = new Dictionary();
         d["running"] = running;
@@ -756,38 +1248,69 @@ class VFRStopWatchView extends WatchUi.View {
 
     // Open the on-device settings menu (called from DOWN shortcut and main menu).
     function openSettingsMenu() as Void {
-        var rawGps = Application.Properties.getValue("GpsMode");
-        var curGps = (rawGps != null) ? (rawGps as Number) : 3;
+        var curGps = 3;
+        try {
+            var rawGps = Application.Properties.getValue("GpsMode");
+            curGps = (rawGps != null) ? (rawGps as Number) : 3;
+        } catch (ex) { System.println("openSettingsMenu: GpsMode read failed: " + ex.getErrorMessage()); curGps = 3; }
         if (curGps < 0 || curGps > 3) { curGps = 3; }
         var gpsLabel = curGps == 0 ? "GPS"
                      : curGps == 1 ? "GPS+GLONASS"
                      : curGps == 2 ? "All Systems"
                      : "Aviation";
         var curTimerMin = timerIntervalMs / 60000;
-        var rawSpd = Application.Properties.getValue("TakeoffSpeed");
-        var curKts = (rawSpd != null) ? (rawSpd as Number) : 30;
+        var curKts = 30;
+        try {
+            var rawSpd = Application.Properties.getValue("TakeoffSpeed");
+            curKts = (rawSpd != null) ? (rawSpd as Number) : 30;
+        } catch (ex) { System.println("openSettingsMenu: TakeoffSpeed read failed: " + ex.getErrorMessage()); curKts = 30; }
+        var curTrans = 6000;
+        try {
+            var rawTrans = Application.Properties.getValue("TransitionAltitudeFt");
+            curTrans = (rawTrans != null) ? (rawTrans as Number) : 6000;
+        } catch (ex) { System.println("openSettingsMenu: TransitionAltitudeFt read failed: " + ex.getErrorMessage()); curTrans = 6000; }
         var menu = new WatchUi.Menu2({:title => "Settings"});
         menu.addItem(new WatchUi.MenuItem("GPS Mode",      gpsLabel,                        "setting_gps",     null));
         menu.addItem(new WatchUi.MenuItem("Timer",         curTimerMin.toString() + " min", "setting_timer",   null));
         menu.addItem(new WatchUi.MenuItem("Takeoff Speed", curKts.toString() + " kts",      "setting_takeoff", null));
+        menu.addItem(new WatchUi.MenuItem("Transition Altitude", curTrans.toString() + " ft", "setting_transition", null));
         WatchUi.pushView(menu, new VFRSettingsMenuDelegate(self), WatchUi.SLIDE_UP);
     }
 
     // DOWN button behavior:
-    //   initial state (!running, elapsed==0)  → open settings
+    //   initial state (!running, elapsed==0)  → open settings (held)
     //   stopped but has elapsed time          → reset
     //   running                               → toggle lap
     function onDownPressed() as Void {
+        var now = System.getTimer();
+        // debounce spurious repeated press events (200 ms)
+        if (lastDownEventAt != 0 && (now - lastDownEventAt) < 200) { return; }
+        lastDownEventAt = now;
         if (!running && elapsed == 0) {
-            openSettingsMenu();
-            System.println("DOWN pressed: open settings (initial state)");
+            // start timing the press; actual action happens on release
+            if (downPressAt == 0) {
+                downPressAt = now;
+                System.println("DOWN pressed: starting hold timer");
+            }
         } else if (!running) {
             reset();
             System.println("DOWN pressed: reset (main stopped)");
         } else {
-            lap();
-            System.println("DOWN pressed: lap toggled");
+            // When running, don't toggle lap on immediate press.
+            // Start the hold timer so release triggers shortDownAction (quick-info),
+            // and a long hold is still available if desired.
+            if (downPressAt == 0) {
+                downPressAt = now;
+                System.println("DOWN pressed while running: starting hold timer for quick-info");
+            }
         }
+    }
+
+    // Short-press action (first press): show quick info overlay
+    function shortDownAction() as Void {
+        if (quickInfoShown) { return; }
+        quickInfoShown = true;
+        WatchUi.pushView(new VFRQuickInfoView(self), new VFRQuickInfoDelegate(self), WatchUi.SLIDE_UP);
     }
 
     // 5 short vibration pulses (100% duty, 200 ms each)
@@ -839,10 +1362,187 @@ class VFRStopWatchView extends WatchUi.View {
         }
     }
 
+    // Tendency vibrate for climb: two short quick pulses
+    function doTendencyVibrateUp() as Void {
+        if (!(Attention has :vibrate)) { return; }
+        try {
+            var pattern = [
+                new Attention.VibeProfile(100, 150),
+                new Attention.VibeProfile(1,   80),
+                new Attention.VibeProfile(100, 150)
+            ];
+            Attention.vibrate(pattern);
+        } catch (ex instanceof Lang.Exception) {
+            System.println("Tendency up vibrate EXCEPTION: " + ex.getErrorMessage());
+        }
+    }
+
+    // Tendency vibrate for descent: three short pulses
+    function doTendencyVibrateDown() as Void {
+        if (!(Attention has :vibrate)) { return; }
+        try {
+            var pattern = [
+                new Attention.VibeProfile(100, 120),
+                new Attention.VibeProfile(1,   80),
+                new Attention.VibeProfile(100, 120),
+                new Attention.VibeProfile(1,   80),
+                new Attention.VibeProfile(100, 120)
+            ];
+            Attention.vibrate(pattern);
+        } catch (ex instanceof Lang.Exception) {
+            System.println("Tendency down vibrate EXCEPTION: " + ex.getErrorMessage());
+        }
+    }
+
     function onHide() as Void {
         if (Position has :enableLocationEvents) {
             Position.enableLocationEvents(Position.LOCATION_DISABLE, null);
         }
     }
 
+}
+
+// Quick info view: four evenly spaced large lines showing key flight info.
+class VFRQuickInfoView extends WatchUi.View {
+    private var _main    as VFRStopWatchView;
+    private var _bigFont as Graphics.VectorFont? = null;
+    function initialize(main as VFRStopWatchView) {
+        View.initialize();
+        _main = main;
+    }
+
+    function onShow() as Void {
+        WatchUi.requestUpdate();
+    }
+
+    function onLayout(dc as Dc) as Void { }
+
+    function onUpdate(dc as Dc) as Void {
+        var w  = dc.getWidth();
+        var h  = dc.getHeight();
+        var cx = w / 2;
+        var cy = h / 2;
+        var jc = Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER;
+
+        // --- Draw the full main view as background (annulus, separators, phone arc) ---
+        _main.drawBezelBackground(dc);
+
+        // --- Black-fill the inner circle (covers the main chrono) ---
+        // Mirrors main view geometry: sepRadius = R - 17  (R = 130 for 260px screen)
+        var minWh = (w < h) ? w : h;
+        var sepR  = ((minWh.toFloat() / 2.0) - 17.0).toNumber();
+        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
+        dc.fillCircle(cx, cy, sepR);
+
+        // --- Lazy-init medium vector font for large display values ---
+        if (_bigFont == null) {
+            var sz    = (minWh * 0.24).toNumber(); // 62px on 260px screen
+            var faces = ["RobotoCondensed", "Roboto", "RobotoBlack", "Swiss721Bold", "TomorrowBold"];
+            for (var fi = 0; fi < faces.size() && _bigFont == null; fi++) {
+                try { _bigFont = Graphics.getVectorFont({:face => faces[fi], :size => sz}); } catch (e) {}
+            }
+        }
+        var bigFont = (_bigFont != null) ? _bigFont : Graphics.FONT_NUMBER_HOT;
+
+        // --- Pull weather data from comms ---
+        var comms = getApp().getComms();
+        var wDir  = -1;
+        var wSpd  = -1;
+        var tmp   = -999;
+        var dew   = -999;
+        if (comms != null) {
+            try { wDir = comms.windDirDeg  as Number; } catch (e) {}
+            try { wSpd = comms.windSpeedKt as Number; } catch (e) {}
+            try { tmp  = comms.tempC       as Number; } catch (e) {}
+            try { dew  = comms.dewpointC   as Number; } catch (e) {}
+        }
+
+        // Format: "DDD/SS" (direction zero-padded to 3 digits)
+        var windStr = "--/--";
+        if (wDir >= 0 && wSpd >= 0) {
+            var dStr = (wDir < 10)  ? "00" + wDir.toString()
+                     : (wDir < 100) ? "0"  + wDir.toString()
+                     :                      wDir.toString();
+            windStr = dStr + "/" + wSpd.toString();
+        }
+
+        // Format: "T/D" (temperature/dewpoint, sign included in number)
+        var tempStr = "--/--";
+        if (tmp != -999 && dew != -999) {
+            tempStr = tmp.toString() + "/" + dew.toString();
+        }
+
+        // --- Blue horizontal divider line across inner circle ---
+        dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
+        dc.setPenWidth(2);
+        dc.drawLine(cx - sepR, cy, cx + sepR, cy);
+        dc.setPenWidth(1);
+
+        // --- Top half: WIND label + direction/speed ---
+        // "WIND" label (small, blue, near top of inner circle)
+        dc.drawText(cx, cy - 85, Graphics.FONT_SMALL, "WIND", jc);
+        // Wind value: DDD/SS  (large, white)
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(cx, cy - 44, bigFont, windStr, jc);
+
+        // --- Bottom half: TEMP/DP label + temp/dewpoint ---
+        // "TEMP/DP" label (small, blue)
+        dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(cx, cy + 22, Graphics.FONT_SMALL, "TEMP/DP", jc);
+        // Temp/dewpoint value (large, white)
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(cx, cy + 70, bigFont, tempStr, jc);
+
+        WatchUi.requestUpdate();
+    }
+}
+
+class VFRQuickInfoDelegate extends WatchUi.BehaviorDelegate {
+    private var _main as VFRStopWatchView;
+    function initialize(main as VFRStopWatchView) {
+        BehaviorDelegate.initialize();
+        _main = main;
+    }
+    function onBack() as Boolean {
+        // Mark quick-info as closed so subsequent short-presses can re-open it
+        try { _main.quickInfoShown = false; } catch (ex) { }
+        WatchUi.popView(WatchUi.SLIDE_DOWN); // pop quick info
+        return true;
+    }
+    function onSelect() as Boolean {
+        try { _main.quickInfoShown = false; } catch (ex) { }
+        WatchUi.popView(WatchUi.SLIDE_DOWN);
+        return true;
+    }
+    // Second short DOWN press → push map view (if device has map support)
+    function onKeyPressed(keyEvent as WatchUi.KeyEvent) as Boolean {
+        if (keyEvent.getKey() == WatchUi.KEY_DOWN) { return true; }
+        return false;
+    }
+    function onKeyReleased(keyEvent as WatchUi.KeyEvent) as Boolean {
+        if (keyEvent.getKey() == WatchUi.KEY_DOWN) {
+            if (WatchUi has :MapView) {
+                try {
+                    var mapView = new VFRMapView(_main);
+                    WatchUi.pushView(mapView, new VFRMapDelegate(_main, mapView), WatchUi.SLIDE_IMMEDIATE);
+                } catch (ex) {
+                    System.println("Map push failed: " + ex.getErrorMessage());
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+    // Also intercept onNextPage so BehaviorDelegate doesn't swallow the DOWN press
+    function onNextPage() as Boolean {
+        if (WatchUi has :MapView) {
+            try {
+                var mapView = new VFRMapView(_main);
+                WatchUi.pushView(mapView, new VFRMapDelegate(_main, mapView), WatchUi.SLIDE_IMMEDIATE);
+            } catch (ex) {
+                System.println("Map push failed: " + ex.getErrorMessage());
+            }
+        }
+        return true;
+    }
 }

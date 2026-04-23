@@ -1,0 +1,324 @@
+Bezel Label Testing
+
+Purpose:
+- Iteratively tune each bezel label so rotation/position looks correct.
+- You will test on device/emulator, add your comments below, and I'll update parameters and commit new values here.
+
+How to use:
+1) Build and run the app as usual.
+2) Inspect bezel labels on the watch face.
+3) Add comments under the "USER COMMENTS" section (one line per observation, include label name).
+4) Save the file and tell me when ready; I'll update parameters and rebuild.
+
+Current code behavior notes:
+- Code now estimates arc span as: estSpan = text.length() * 6° and sets startAngle = angle - estSpan/2.
+- For vector fonts the function uses startAngle + direction; for no vector font, it draws flat text at polar (px,py).
+- rMetrics used: ~119.6 px on fenix7pro (minWh=260 -> rMetrics = 46% of minWh)
+- arcSpan parameter passed in code is currently 10°, but is not used when vector font is present.
+
+Suggested initial fixed parameters (to force rotation-only, small arc):
+- Use fixedSpan = 10° for all labels (narrow arc so text baseline aligns near requested angle).
+- Compute startAngle = angle - fixedSpan/2.
+
+Table: (Angle arg = argument passed to drawRotatedMetric(angle))
+Label | Angle arg | Sample text | text len | estSpan(text) | startAngle(text) | dir | r(px) | Suggested fixedSpan | Suggested startAngle
+HDG   | 0         | HDG 090     | 7        | 42°           | -21°             | CW  | 119.6 | 10°                 | -5°
+GS    | 45        | GS 0 kt     | 7        | 42°           | 24°              | CW  | 119.6 | 10°                 | 40°
+ALT   | 90        | ALT ft -59  | 11       | 66°           | 57°              | CW  | 119.6 | 10°                 | 85°
+UTC   | 135       | UTC 13:07   | 9        | 54°           | 108°             | CW  | 119.6 | 10°                 | 130°
+QNH   | 180       | QNH 1013    | 8        | 48°           | 156°             | CW  | 119.6 | 10°                 | 175°
+LT    | 225       | LT 15:07    | 8        | 48°           | 201°             | CCW | 119.6 | 10°                 | 220°
+
+Notes on table:
+- "estSpan(text)" is current code's automatic angular span; when long this shifts startAngle far left of requested angle.
+- "Suggested fixedSpan" forces a narrow arc so labels appear rotated to their angle arg (0°,45°,90°, ...).
+- Direction: CW for angle <= 180, CCW for >180 (current code logic).
+
+USER COMMENTS (add your observations here):
+ - First run: Everything is still wrong; all labels look rotated/arched the same way, only radial distance differs (placement seems incorrect).
+
+TRIAL 12k - Extra inward radii (22 Apr 2026):
+- Change: moved HDG/GS/ALT further inward by ~2px each to reduce bezel crowding
+- HDG: rMetrics +4 -> rMetrics +2
+- GS:  rMetrics +0 -> rMetrics -2
+- ALT: rMetrics +0 -> rMetrics -2
+
+Next: run emulator and confirm positions. If still too far, give per-label +/-2px and I'll apply immediately.
+
+TRIAL 2 - Applied per-label tuning (code updated):
+Label | Angle arg (applied) | span (deg) | angle offset (deg)
+HDG   | 0 + 5   | 8  | +5
+GS    | 45 + 0  | 8  | +0
+ALT   | 90 -10  | 8  | -10
+UTC   | 135 -5  | 8  | -5
+QNH   | 180 +5  | 8  | +5
+LT    | 225 +0  | 8  | +0
+
+Please run the app and add observations for Trial 2 below. I'll iterate further based on your feedback.
+
+TRIAL 3 - Applied absolute-angle layout (code updated):
+Label | Angle arg (applied) | span (deg)
+HDG   | 90   | 8
+GS    | 30   | 8
+ALT   | 150  | 8
+UTC   | 330  | 8
+QNH   | 270  | 8
+LT    | 210  | 8
+
+Please run the app and add Trial 3 observations here.
+
+TRIAL 4 - Force flat placement (debug):
+- Change: `FORCE_FLAT_BEZEL = true` so `drawRotatedMetric` uses the flat px/py fallback for all labels.
+- Purpose: verify raw polar positions (px,py) without radial text semantics affecting orientation.
+
+After running Trial 4, add observations here and attach a screenshot. Note whether:
+ - labels appear at expected positions around bezel (top/right/left/bottom),
+ - label baselines share the same tilt (they should NOT if flat placement is used),
+ - how many labels are visible.
+
+I'll adjust per-label angles/offsets after you report Trial 4 results.
+
+TRIAL 5 - Fixed polar math and pipe placement:
+- Change: corrected flat-placement polar math to `x = cx + r*cos(theta)`, `y = cy - r*sin(theta)` so angles map as documented (0=3 o'clock, 90=12 o'clock).
+- trailing pipe now placed by computing `angle + 6°` position on the circle.
+
+Please run Trial 5 now and report: is `HDG` at top? Are other labels distributed around bezel? Attach screenshot.
+
+TRIAL 6 - Enable radial arcing (code updated):
+Label | Angle arg (applied) | span (deg)
+HDG   | 90   | 28
+GS    | 30   | 20
+ALT   | 150  | 32
+UTC   | 330  | 24
+QNH   | 270  | 28
+LT    | 210  | 24
+
+Notes: radial drawing enabled (FORCE_FLAT_BEZEL = false). These spans are intentionally larger to produce a visible arc. Run Trial 6, attach a screenshot, and add observations here.
+
+TRIAL 6 RESULT: WORSE — arches present but label alignment moved off the desired positions.
+
+TRIAL 7 - Try passing `angle` as the center to `drawRadialText`:
+Label | Angle arg (applied) | span (deg) | note
+HDG   | 90   | 28 | pass `angle` to radial API
+GS    | 30   | 20 | pass `angle`
+ALT   | 150  | 32 | pass `angle`
+UTC   | 330  | 24 | pass `angle`
+QNH   | 270  | 28 | pass `angle`
+LT    | 210  | 24 | pass `angle`
+
+Please run Trial 7 and add observations and a screenshot.
+TRIAL 7 RESULT: minimal change — arcs visible but overall alignment still not as expected.
+
+TRIAL 8 (proposal) - Per-character arcing:
+- Plan: keep flat positions (confirmed good) and render each label by placing each character individually along the circle. For each char compute an angular offset inside the desired span and draw that single character with `drawRadialText` or flat placement fallback. This gives precise control over arc shape and center alignment.
+- Risk: depends on whether `drawRadialText` behaves consistently for single characters; if not, we'll fall back to drawing characters flat at computed positions (no rotation) and approximate the curve visually.
+
+If you approve Trial 8 I'll implement it now and push a build for you to test.
+TRIAL 8 implemented: per-character arcing. Each label is split into characters and drawn along the label span so the arc is controlled precisely.
+
+Please run Trial 8 and attach a screenshot. If arcs/positions look good, I'll fine-tune spans per label. If not, note which labels look wrong and I'll adjust rendering or fall back to character-flat placement.
+
+CHANGE LOG (I'll append updates here when I modify code/values):
+- 2026-04-22: Created testing.txt with suggested fixedSpan=10° for initial test.
+- 2026-04-22: Updated code to use `arcSpan` (fixed span) in `drawRotatedMetric` so labels align to their angle argument.
+
+TRIAL 10 - Per-character flat placement (implemented)
+- Change applied: split each label into individual characters and positioned each character on the bezel by computing polar coordinates for the character's angular offset, then drawing the character flat at that point. Trailing pipe kept as a flat character.
+- Parameters used: `paddingFactor=1.10`, `minSpanDeg=8.0`, `maxSpanDeg=80.0`, fallback `perCharPx=10.0` for width estimation.
+- Observed result (USER): "Good progress — characters are placed at the correct positions around the bezel, but they are not rotated; they need to follow the bezel tangent to look natural." (see screenshot attached)
+
+Planned TRIAL 11 - Per-character rotation to match bezel tangent
+- Objective: rotate each character so its baseline follows the bezel arc (characters should be tangent to the circle instead of upright).
+- Approach (sequence):
+	1) Attempt per-character radial drawing: call `drawRadialText` for each single character using the per-character angle (this asks the vector/text API to orient glyphs along the radius). Tune the small angular offset so characters align to the tangent, not the radius.
+	2) If `drawRadialText` produces inconsistent orientation, compute the tangent angle for each character (tangent = chAngle + 90° clockwise or counter-clockwise depending on convention) and render rotated glyphs. If the Dc API lacks a direct rotated-draw call, fall back to rendering each character to an offscreen image and draw the image rotated at the tangent angle.
+	3) Keep the same span computation used in Trial 9 (measured-width or per-char fallback) but reduce `paddingFactor` to 1.05 for Trial 11 to tighten spacing after rotation.
+	4) Expose per-label span overrides (small adjustments for HDG/ALT/etc.) if needed after visual check.
+- Test values to use in Trial 11:
+	- `paddingFactor = 1.05`
+	- `minSpanDeg = 6.0`
+	- `maxSpanDeg = 80.0`
+	- `perCharPx = 9.0` (fallback)
+
+When you confirm, I'll implement Trial 11 now and build the PRG for you to run. If you'd rather tweak any of the above parameters before I implement, tell me which to change.
+
+TRIAL 9 - Measured-text-width arc span (new)
+- Change: compute actual pixel width of the full label using `dc.getTextWidth(roundedFontSmall, text)` and convert that pixel width to an angular span at radius `r`.
+- Formula: `spanDeg = (pxWidth * 180.0) / (Math.PI * r)` — then apply a padding factor and clamp.
+- Parameters used for Trial 9 (please test these):
+	- `paddingFactor` = 1.10 (10% extra so chars don't touch)
+	- `minSpanDeg` = 8.0   (degrees — avoid too-narrow arcs)
+	- `maxSpanDeg` = 80.0  (degrees — avoid excessive wrapping)
+	- Computation steps used:
+		1) `px = dc.getTextWidth(roundedFontSmall, text)`
+		2) `rawDeg = (px * 180.0) / (Math.PI * r)`
+		3) `estSpan = clamp(rawDeg * paddingFactor, minSpanDeg, maxSpanDeg)`
+		4) If `text.length() <= 1` then `estSpan = minSpanDeg` (single-char special case)
+
+Sample expected spans (approx) at `r = 119.6` px:
+	- "HDG 090" (7 chars): px≈56 → rawDeg≈ (56*180)/(π*119.6) ≈ 26.9° → estSpan ≈ 29.6°
+	- "GS 120 kt" (9 chars): px≈72 → rawDeg≈34.7° → estSpan ≈ 38.2°
+	- "ALT 12345" (10 chars): px≈80 → rawDeg≈38.6° → estSpan ≈ 42.5°
+
+Test instructions:
+ 1) I will not change code for you yet — this entry documents the values I'll use if you ask me to implement Trial 9 now.
+ 2) If you want me to implement this change and build, reply: "Apply Trial 9" and I'll update `drawRotatedMetric`, build the PRG, and ask you to run it.
+ 3) If you prefer to run a manual trial first, just run the current build and paste observations under "USER COMMENTS" — I'll adjust parameters accordingly.
+
+Please confirm whether I should apply Trial 9 code changes and build, or if you'd rather test the current build and report observations first.
+
+Next actions I'll do when you report results:
+- If labels are misaligned, I'll apply per-label fixedSpan adjustments and/or tweak startAngle offsets.
+- I will update this file with new parameters and the Change Log each iteration.
+
+When ready, add observations to "USER COMMENTS" and tell me to update the code accordingly.
+
+TRIAL 11 - Attempt per-character radial rotation (applied)
+- Change applied: for each character in a label, attempt `dc.drawRadialText(cx, cy, roundedFontSmall, ch, Graphics.TEXT_JUSTIFY_CENTER, r, chAngle, dir)` so each glyph is drawn along the arc and follows bezel curvature. If `drawRadialText` throws or behaves inconsistently, code falls back to flat per-character placement.
+- Parameters used for Trial 11:
+	- `paddingFactor = 1.05`
+	- `minSpanDeg = 6.0`
+	- `maxSpanDeg = 80.0`
+	- `perCharPx = 9.0` (fallback width estimate)
+- Expected: characters should now follow bezel arc orientation; if orientation still looks wrong, we'll render each glyph to an offscreen image and manually rotate the bitmap to match the tangent.
+
+Please run Trial 11 and add observations below (which labels look correct, which need more rotation or spacing). Attach a screenshot if possible.
+
+TRIAL 12 - Per-character angled text using `Dc.drawAngledText` (applied)
+- Change applied: For each character in a label compute its polar position on the bezel and render the glyph rotated to the bezel tangent using `Dc.drawAngledText(x,y,font,char,justification,angle)`.
+- Trial values used: `paddingFactor = 1.05`, `minSpanDeg = 6.0`, `maxSpanDeg = 80.0`, `perCharPx = 9.0` (fallback width estimate).
+- Fallback order: `drawAngledText` → `drawRadialText` → flat per-character `drawText`.
+- Objective: glyphs should be tangent to the bezel arc (rotated) while preserving per-character spacing from Trial 10.
+
+Please run Trial 12 now and add observations below. Note which labels look correct, which need a clockwise/counter-clockwise sign change, and whether glyph sizes or spacing require adjustment.
+
+Comments: Getting better, still some missalignemt
+
+TRIAL 12a - Adjust per-label radius and reverse flags (applied)
+- Change applied: per-label radius offsets and reversal flags to fix inverted text and radial distance.
+- Values applied in source/VFRStopWatchView.mc (Trial 12a):
+	- HDG: radius = rMetrics - 8px, reverse = true
+	- GS:  radius = rMetrics - 8px, reverse = true
+	- ALT: radius = rMetrics - 6px, reverse = true
+	- UTC: radius = rMetrics + 8px, reverse = false
+	- QNH: radius = rMetrics + 8px, reverse = false
+	- LT:  radius = rMetrics + 8px, reverse = false
+- Purpose: push HDG/GS/ALT slightly inward (they were too far out) and push UTC/QNH/LT outward; reverse string order for labels that were rendered inverted.
+
+Please run Trial 12a and report: are HDG/GS/ALT now oriented correctly (no reversed text), and do UTC/QNH/LT sit farther outward as requested? If parts still look off, tell me which label(s) and whether you'd like larger/smaller radius adjustments (I can change by ±4px increments).
+
+TRIAL 12b - Stronger radius adjustments + flip reverse flags (applied)
+- Change applied: increased inward offset for HDG/GS/ALT and increased outward offset for UTC/QNH/LT; reversed the reverse flag for HDG/GS/ALT (set to false) after Trial 12 produced inverted sequences.
+- Values applied in source/VFRStopWatchView.mc (Trial 12b):
+	- HDG: radius = rMetrics - 16px, reverse = false
+	- GS:  radius = rMetrics - 16px, reverse = false
+	- ALT: radius = rMetrics - 12px, reverse = false
+	- UTC: radius = rMetrics + 16px, reverse = false
+	- QNH: radius = rMetrics + 16px, reverse = false
+	- LT:  radius = rMetrics + 16px, reverse = false
+- Purpose: address your note that HDG/GS/ALT were still too far out and inverted, and that UTC/QNH/LT needed more radius; this iteration moves them more aggressively.
+
+Please run Trial 12b and report which labels still look mispositioned or inverted. If inversion persists, I'll try toggling the tangent sign instead of reversing string order.
+
+TRIAL 12c - Per-user tweak (applied)
+- Change applied per user image feedback (2026-04-22):
+		- HDG: radius -> rMetrics - 14 (was -16), flip tangent to fix inverted glyphs
+		- GS:  radius -> rMetrics - 18, flip tangent to fix inverted glyphs
+		- ALT: keep radius rMetrics - 12, flip tangent only (was inverted)
+		- UTC: radius -> rMetrics + 8 (reduced from +16) to reduce overlap
+		- QNH: radius -> rMetrics + 8 (reduced from +16) to reduce overlap
+		- LT:  radius -> rMetrics + 8 (reduced from +16)
+	Purpose: follow user's screenshot notes — HDG/GS/ALT inverted, adjust radii to reduce overlap and bring labels closer to desired ring.
+
+Please run Trial 12c and add observations below (one-line per label). Attach a screenshot if available.
+
+TRIAL 12d - User feedback adjustments (applied)
+- Change applied per latest user screenshot (2026-04-22):
+	- Increased per-label angular spans to reduce character crowding:
+		* HDG: 34° (was 28°)
+		* GS:  28° (was 20°)
+		* ALT: 38° (was 32°)
+		* UTC: 30° (was 24°)
+		* QNH: 34° (was 28°)
+		* LT:  24° (unchanged)
+	- Adjusted radii to move HDG/GS/ALT slightly outward and reduce squeeze:
+		* HDG: rMetrics - 8 px
+		* GS:  rMetrics - 8 px
+		* ALT: rMetrics - 6 px
+		* UTC/QNH/LT: rMetrics + 8 px (reduced from +16)
+	- Set `reverse=true` for HDG/GS/ALT and kept `flipTangent=true` to correct both horizontal and vertical inversion reported by the user.
+
+Please run Trial 12d and add one-line observations per label (HDG, GS, ALT, UTC, QNH, LT). If something still looks wrong, indicate for each label whether you want:
+  - radius +/- 2px, or
+  - span +/- 4° (space letters), or
+  - toggle tangent sign (flipTangent) instead of reverse.
+
+TRIAL 12e - User-requested spacing & radius (applied)
+- Change applied per latest user feedback (2026-04-22):
+		- Increased spans to space letters further around bezel: HDG=40°, GS=34°, ALT=44°, UTC=34°, QNH=38°.
+		- Move HDG/GS outward to `rMetrics` (was slightly inward) and nudge ALT outward slightly.
+		- Disable `reverse` and `flipTangent` for HDG/GS/ALT to test natural orientation after spacing/radius changes.
+
+Please run Trial 12e and report one-line per label whether orientation and spacing are now correct, or request per-label adjustments:
+	- `radius +/- 2px`, `span +/- 4°`, or `toggle flipTangent`.
+
+TRIAL 12f - Fix inversion + more spacing (applied)
+- Change applied per latest user feedback (2026-04-22):
+		- Further increased per-label spans and moved HDG/GS/ALT outward to reduce character crowding and fix visual squeeze:
+				* HDG: span=48°, radius=rMetrics + 8 px, `reverse=true`, `flipTangent=true`
+				* GS:  span=44°, radius=rMetrics + 4 px, `reverse=true`, `flipTangent=true`
+				* ALT: span=52°, radius=rMetrics + 4 px, `reverse=true`, `flipTangent=true`
+				* UTC: span=40°, radius=rMetrics + 8 px (letters spaced more)
+				* QNH: span=48°, radius=rMetrics + 8 px (letters spaced more)
+				* LT:  unchanged (user reported perfect)
+
+Please run Trial 12f and provide one-line feedback per label indicating:
+	- `OK` if orientation/spacing/radius look good, or
+	- a tweak like `HDG: radius -2px` or `UTC: span +4°` or `GS: toggle flipTangent`
+
+TRIAL 12g - Tangent normalization + stronger spacing/radius (applied)
+- Change applied (2026-04-22):
+		- Added automatic tangent normalization in `drawRotatedMetric` so rotated glyphs stay upright (avoids vertical inversion).
+		- Further increased spans and pushed HDG/GS/ALT outward to reduce crowding:
+				* HDG: span=56°, radius=rMetrics +12 px
+				* GS:  span=52°, radius=rMetrics +8 px
+				* ALT: span=60°, radius=rMetrics +8 px
+				* UTC: span=46°, radius=rMetrics +8 px
+				* QNH: span=54°, radius=rMetrics +8 px
+				* LT:  unchanged
+
+Please run Trial 12g and report one-line per label with either `OK` or a specific tweak (`radius +/- 2px`, `span +/- 4°`, or `toggle flipTangent`).
+
+TRIAL 12h - Prefer radial for inverted labels (applied)
+- Change applied (2026-04-22):
+	- Added a `preferRadial` flag to `drawRotatedMetric` and enabled it for HDG/GS/ALT so those labels use `drawRadialText` per-character instead of `drawAngledText`. This attempts to fix the persistent horizontal+vertical inversion by switching rendering mode for the problematic labels.
+	- Radii/spans left at Trial 12g values for testing.
+
+Please run Trial 12h and report per-label results: `OK` or `HDG: radius -2px`, `GS: toggle flipTangent`, `UTC: span +4°`, etc.
+
+TRIAL 12j - Micro inward radii adjustment (22 Apr 2026)
+- Change: move HDG/GS/ALT slightly inward to reduce bezel crowding
+- HDG: rMetrics +4 -> rMetrics +2
+- GS:  rMetrics +0 -> rMetrics -2
+- ALT: rMetrics +0 -> rMetrics -2
+- QNH: unchanged (4-char placeholder implemented)
+
+Testing notes: Run emulator and confirm HDG/GS/ALT positions. If still off, specify per-label +/-2px and I'll apply immediately.
+
+TRIAL 12l - Extra inward radii + font tweak (22 Apr 2026):
+- Change: moved HDG/GS/ALT further inward by another ~2px each and prefer condensed/regular small font to avoid bold appearance
+- HDG: rMetrics +2 -> rMetrics -2
+- GS:  rMetrics -2 -> rMetrics -4
+- ALT: rMetrics -2 -> rMetrics -4
+
+Next: run emulator and confirm positions and whether HDG/GS/ALT glyphs still appear bold. If bold, report which label(s) and I'll force a specific face or fall back to `Graphics.FONT_TINY` for those labels.
+
+TRIAL 12m - Remove duplicate quick-info center labels (22 Apr 2026):
+- Change: removed the large `HDG`, `ALT`, and `GS` four-row text from the quick-info overlay so bezel labels are the only source of those metrics.
+- File changed: source/VFRStopWatchView.mc (removed duplicated `dc.drawText` calls in `VFRQuickInfoView.onUpdate`).
+- Action: rebuilt PRG and attempted deploy; simulator connection may be intermittent — run the app and confirm the duplicates are gone.
+
+Testing: Run the app and verify the quick-info overlay no longer shows large `HDG/ALT/GS` lines. Add an observation below.
+
+USER COMMENTS (post-change):
+ - 
