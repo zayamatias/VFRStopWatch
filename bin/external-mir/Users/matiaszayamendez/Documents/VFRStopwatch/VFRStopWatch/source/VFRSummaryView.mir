@@ -331,7 +331,7 @@ _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSummaryVie
         %tmp.25 = invoke %tmp.23 %tmp.24();
         %tmp.26 = 2.0;
         %tmp.27 = div %tmp.25 %tmp.26;
-        %tmp.28 = 17.0;
+        %tmp.28 = 27.0;
         %tmp.29 = sub %tmp.27 %tmp.28;
         symbol [ toNumber %tmp.30 48 52 60 ];
         %tmp.30 = getv function %tmp.29 :toNumber;

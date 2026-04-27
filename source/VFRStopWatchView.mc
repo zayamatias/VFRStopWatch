@@ -116,7 +116,10 @@ class VFRStopWatchView extends WatchUi.View {
     var roundedFontLarge as Graphics.VectorFont? = null;
     var roundedFontSmall as Graphics.VectorFont? = null;
     var bezelLblFont     as Graphics.VectorFont? = null; // small label font for bezel items
-    var SHOW_BEZEL_ANGLE_DEBUG as Boolean = true; // draw angle overlays for debugging
+    var bezelLblFace     as String? = null;
+    var bezelLblFaceSize as Number = 0;
+    var bezelSlotFont    as Graphics.VectorFont? = null;  // slot-sized font (auto-fit)
+    var SHOW_BEZEL_ANGLE_DEBUG as Boolean = false; // debug overlay disabled
     var FORCE_FLAT_BEZEL as Boolean = false; // when true, skip radial text and use flat placement fallback
     var lastDrawTimes as Dictionary = new Dictionary(); // guard per-label draw timestamps
     var bezelFrameId as Number = 0; // incremented each onUpdate to identify a frame
@@ -166,35 +169,7 @@ class VFRStopWatchView extends WatchUi.View {
             var rawSpeed = Application.Properties.getValue("TakeoffSpeed");
             speedKts = (rawSpeed != null) ? (rawSpeed as Number) : 30;
         } catch (ex) { speedKts = 30; }
-        if (speedKts <= 0) {
-            AUTO_START_SPEED_MS = -1.0; // sentinel: auto-start disabled
-        } else {
-            AUTO_START_SPEED_MS = speedKts.toFloat() * 0.514444; // kts → m/s
-        }
-
-        // nothing extra to load here for altitude — sensor-derived when available
-        // Transition altitude (feet)
-        try {
-            var rawTrans = Application.Properties.getValue("TransitionAltitudeFt");
-            transitionAltitudeFt = (rawTrans != null) ? (rawTrans as Number) : 6000;
-        } catch (ex) { transitionAltitudeFt = 6000; }
-        // Sync nextVibrateAt default in case loadSettings() is called before first run
-        if (!running && timerIntervalMs > 0) {
-            nextVibrateAt = timerIntervalMs;
-        }
-        System.println("loadSettings: gpsMode=" + gpsMode.toString() +
-            " timerIntervalMs=" + timerIntervalMs.toString() +
-            " AUTO_START_SPEED_MS=" + AUTO_START_SPEED_MS.toString());
-        } catch (exAll) {
-            System.println("loadSettings exception: " + exAll.getErrorMessage());
-        }
-    }
-
-    // (Re)start GPS with the current gpsMode setting. Called from onShow and
-    // after settings change.
-    function restartGps() as Void {
-        if (!(Position has :enableLocationEvents)) { return; }
-        if (gpsMode == 3 && (Position has :POSITIONING_MODE_AVIATION)) {
+        if (gpsMode == 3) {
             // Mode 3: Aviation
             Position.enableLocationEvents(
                 { :acquisitionType => Position.LOCATION_CONTINUOUS,
@@ -241,6 +216,7 @@ class VFRStopWatchView extends WatchUi.View {
             // Mode 0 (GPS only) or fallback when requested mode unsupported
             Position.enableLocationEvents(Position.LOCATION_CONTINUOUS, method(:onPosition));
         }
+        } catch (ex) { /* ignore settings parse errors */ }
     }
 
     function onShow() as Void {
@@ -252,6 +228,12 @@ class VFRStopWatchView extends WatchUi.View {
             WatchUi.pushView(new VFRResumeView(self), new VFRResumeDelegate(self), WatchUi.SLIDE_UP);
         }
         WatchUi.requestUpdate();
+    }
+
+    // Restart GPS subscriptions according to current settings.
+    // Minimal stub: loadSettings already enables events; callers expect this method to exist.
+    function restartGps() as Void {
+        try { /* noop for now - loadSettings handles subscription */ } catch (ex) { }
     }
 
     // GPS position callback — updates fix quality used for timer colour
@@ -470,7 +452,9 @@ class VFRStopWatchView extends WatchUi.View {
                     // Track max ground speed (knots)
                     try {
                         var gsKt = ((spd as Float) * 1.94384).toFloat();
-                            if (running && gsKt > maxGsKt) { maxGsKt = gsKt; }
+                            if (running && gsKt > maxGsKt) { 
+                                maxGsKt = gsKt; 
+                            }
                             // accumulate for average GS
                             if (running) {
                                 gsSumKt = (gsSumKt as Float) + (gsKt as Float);
@@ -717,24 +701,31 @@ class VFRStopWatchView extends WatchUi.View {
         // Initialize vector fonts
         if (roundedFontLarge == null) {
             var chronoSize   = (minWh * 0.30).toNumber();
-            var bezelSize    = (minWh * 0.050).toNumber();
-            var bezelLblSize = (minWh * 0.045).toNumber();
+            var bezelSize    = (minWh * 0.110).toNumber();
+            var bezelLblSize = (minWh * 0.095).toNumber();
             var faces = ["RobotoCondensed", "Roboto", "RobotoBlack", "RobotoRegular", "Swiss721Bold", "TomorrowBold"];
             for (var fi = 0; fi < faces.size() && roundedFontLarge == null; fi++) {
                 try {
                     var f = Graphics.getVectorFont({:face => faces[fi], :size => chronoSize});
-                    if (f != null) {
-                        roundedFontLarge = f;
-                        roundedFontSmall = Graphics.getVectorFont({:face => faces[fi], :size => bezelSize});
-                        bezelLblFont = Graphics.getVectorFont({:face => faces[fi], :size => bezelLblSize});
-                    }
+                            if (f != null) {
+                                roundedFontLarge = f;
+                                roundedFontSmall = Graphics.getVectorFont({:face => faces[fi], :size => bezelSize});
+                                try {
+                                    var tmp = Graphics.getVectorFont({:face => faces[fi], :size => bezelLblSize});
+                                    if (tmp != null) {
+                                        bezelLblFont = tmp;
+                                        bezelLblFace = faces[fi];
+                                        bezelLblFaceSize = bezelLblSize;
+                                    }
+                                } catch (exf) { }
+                            }
                 } catch (ex) { }
             }
         }
 
         // Prefer a lighter, condensed/regular face for small bezel labels
         try {
-            var bezelSizeLocal = (minWh * 0.050).toNumber();
+            var bezelSizeLocal = (minWh * 0.110).toNumber();
             if (roundedFontSmall == null) {
                 var trySmall = Graphics.getVectorFont({:face => "RobotoCondensed", :size => bezelSizeLocal});
                 if (trySmall != null) { roundedFontSmall = trySmall; }
@@ -749,14 +740,12 @@ class VFRStopWatchView extends WatchUi.View {
         // --- Bezel data strings ---
         var drawNow = now;
 
-        // Heading
+        // Heading: use GPS-derived `course` (degrees) when available
         var hdgStr = "--";
         try {
-            var pInfo = Position.getInfo();
-            if (pInfo != null && pInfo.heading != null) {
-                var deg = (pInfo.heading.toFloat() * (180.0 / Math.PI)).toNumber();
-                if (deg < 0) { deg = (deg + 360) % 360; }
-                var hdgInt = Math.round(deg).toNumber();
+            var hdg = VFRHeading.getHeadingDeg();
+            if (hdg >= 0) {
+                var hdgInt = Math.round(hdg).toNumber();
                 if (hdgInt < 10)       { hdgStr = "00" + hdgInt.toString(); }
                 else if (hdgInt < 100) { hdgStr = "0"  + hdgInt.toString(); }
                 else                   { hdgStr = hdgInt.toString(); }
@@ -802,8 +791,8 @@ class VFRStopWatchView extends WatchUi.View {
         // --- Radial bezel geometry ---
         var R = (minWh / 2).toFloat();
         var radiusOuter = (R - 2.0).toFloat();
-        var sepRadius = (radiusOuter - 15.0).toNumber();
-        var radiusInner  = (radiusOuter - 24.0).toFloat();
+        var sepRadius = (radiusOuter - 25.0).toNumber();
+        var radiusInner  = (radiusOuter - 34.0).toFloat();
         var radiusCenter = ((radiusInner + radiusOuter) / 2.0).toFloat();
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         dc.setPenWidth(1);
@@ -822,12 +811,18 @@ class VFRStopWatchView extends WatchUi.View {
         var spanUTC = numSlotsUTC * slotDeg;
         var spanQNH = numSlotsQNH * slotDeg;
         var spanLT  = numSlotsLT  * slotDeg;
-        var angleHDG = 90.0;
-        var angleALT = angleHDG + (numSlotsHDG + numSlotsALT).toFloat() / 2.0 * slotDeg;
-        var angleLT  = angleALT + (numSlotsALT + numSlotsLT).toFloat()  / 2.0 * slotDeg;
-        var angleQNH = angleLT  + (numSlotsLT  + numSlotsQNH).toFloat() / 2.0 * slotDeg;
-        var angleUTC = angleQNH + (numSlotsQNH + numSlotsUTC).toFloat() / 2.0 * slotDeg;
-        var angleGS  = angleUTC + (numSlotsUTC + numSlotsGS).toFloat()  / 2.0 * slotDeg - 360.0;
+        // User-requested bezel angles (degrees):
+        //  - HDG centered at 270 + 45 = 315°
+        //  - GS centered at 45°
+        //  - QNH centered at 135°
+        //  - ALT centered at 225°
+        var angleHDG = 135.0;
+        var angleGS  = 45.0;
+        var angleQNH = 315.0;
+        var angleALT = 225.0;
+        // Keep legacy angle vars for completeness
+        var angleLT  = 225.0;
+        var angleUTC = 330.0;
         var rHDG = (radiusCenter - 2.0).toNumber();
         var rGS  = (radiusCenter - 6.0).toNumber();
         var rALT = (radiusCenter - 6.0).toNumber();
@@ -835,12 +830,24 @@ class VFRStopWatchView extends WatchUi.View {
         var rQNH = (radiusCenter + 7.0).toNumber();
         var rLT  = (radiusCenter + 7.0).toNumber();
 
-        drawRotatedMetric(dc, cx, cy, angleHDG, "HDG " + hdgStr,              Graphics.COLOR_WHITE, rHDG, spanHDG, false, false, false, slotDeg, radiusCenter, radiusOuter);
-        drawRotatedMetric(dc, cx, cy, angleGS,  "GS "  + gsStr + " kt",      Graphics.COLOR_WHITE, rGS,  spanGS,  false, false, false, slotDeg, radiusCenter, radiusOuter);
-        drawRotatedMetric(dc, cx, cy, angleALT, altLbl + " " + altStr,        Graphics.COLOR_WHITE, rALT, spanALT, false, false, false, slotDeg, radiusCenter, radiusOuter);
-        drawRotatedMetric(dc, cx, cy, angleUTC, "UTC " + uhStr + ":" + umStr, Graphics.COLOR_WHITE, rUTC, spanUTC, false, false, false, slotDeg, radiusCenter, radiusOuter);
-
         var qnhDisplay = qnhValStr;
+        // Ensure we never show decimals: operate on the string form only
+        // to avoid casting arbitrary Objects to Float (which can crash).
+        if (qnhDisplay != null && qnhDisplay != "--" && qnhDisplay != "") {
+            var cut = -1;
+            for (var i = 0; i < qnhDisplay.length(); i++) {
+                var ch = qnhDisplay.substring(i, i + 1);
+                // Stop at standard decimal separators or any non-digit
+                if (ch == "." || ch == ",") { cut = i; break; }
+                // If we encounter a non-digit character, cut there too
+                var isDigit = false;
+                for (var di = 0; di < 10; di++) {
+                    if (ch == di.toString()) { isDigit = true; break; }
+                }
+                if (!isDigit) { cut = i; break; }
+            }
+            if (cut >= 0) { qnhDisplay = qnhDisplay.substring(0, cut); }
+        }
         if (qnhDisplay == "--" or qnhDisplay == "") {
             qnhDisplay = "----";
         } else {
@@ -848,14 +855,66 @@ class VFRStopWatchView extends WatchUi.View {
                 qnhDisplay = "-" + qnhDisplay;
             }
         }
-        drawRotatedMetric(dc, cx, cy, angleQNH, "QNH " + qnhDisplay, Graphics.COLOR_WHITE, rQNH, spanQNH, false, false, false, slotDeg, radiusCenter, radiusOuter);
-        drawRotatedMetric(dc, cx, cy, angleLT,  "LT "  + lhStr + ":" + lmStr, Graphics.COLOR_WHITE, rLT,  spanLT,  false, false, false, slotDeg, radiusCenter, radiusOuter);
+
+        // Compute a dedicated text radius (visual centroid of the annulus).
+        // Start with the mathematical midpoint but allow small per-quadrant
+        // nudges; this lets us calibrate to the bezel art without changing
+        // slot math or rotation.
+        var radiusText = radiusCenter;
+        var rTextHDG = radiusText; // NW
+        var rTextGS  = radiusText; // NE
+        // Nudge bottom quadrants slightly inward to visually centre text
+        // within the bezel artwork (non-invasive cosmetic tweak).
+        var rTextALT = radiusText + 10.0; // SW (-2px from +12)
+        var rTextQNH = radiusText + 10.0; // SE (-2px from +12)
+
+        // Debug overlay: when enabled, draw slot centres and quadrant guide lines
+        // to help measure the correct angles/radii in the screenshot tool.
+        if (SHOW_BEZEL_ANGLE_DEBUG) {
+            try {
+                dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
+                // small markers at each of the 48 slot CENTRES
+                for (var kk = 0; kk < 48; kk++) {
+                    var slotTheta = (90.0 - (kk.toFloat() + 0.5) * 7.5) * (Math.PI / 180.0);
+                    var mx = (cx.toFloat() + radiusText * Math.cos(slotTheta)).toNumber();
+                    var my = (cy.toFloat() - radiusText * Math.sin(slotTheta)).toNumber();
+                    dc.fillCircle(mx, my, 2);
+                }
+                // Crosshair at exact centre
+                dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(1);
+                dc.drawLine(cx - 2, cy, cx + 2, cy);
+                dc.drawLine(cx, cy - 2, cx, cy + 2);
+
+                // Draw radial guide for each configured quadrant anchor
+                dc.setColor(Graphics.COLOR_ORANGE, Graphics.COLOR_TRANSPARENT);
+                var quads = [ [angleHDG, "HDG"], [angleGS, "GS"], [angleALT, "ALT"], [angleQNH, "QNH"] ];
+                for (var qi = 0; qi < quads.size(); qi++) {
+                    var a = (quads[qi][0] as Number).toFloat();
+                    var aRad = a * (Math.PI / 180.0);
+                    var ex = (cx.toFloat() + radiusText * Math.cos(aRad)).toNumber();
+                    var ey = (cy.toFloat() - radiusText * Math.sin(aRad)).toNumber();
+                    dc.drawLine(cx, cy, ex, ey);
+                    // label the guide at its tip so you can read the angle visually
+                    try { dc.drawText(ex, ey, bezelLblFont, (quads[qi][1] as String), Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER); } catch (e) { }
+                }
+                dc.setPenWidth(1);
+            } catch (dbgEx) { }
+        }
+
+        // Call drawLabelInQuadrant with per-quadrant radii so the visual
+        // text radius can be calibrated independently of the slot math.
+        drawLabelInQuadrant(dc, cx, cy, angleHDG, "HDG", hdgStr,     Graphics.COLOR_WHITE, rTextHDG, false);
+        drawLabelInQuadrant(dc, cx, cy, angleGS,  "GS",  gsStr + " kt", Graphics.COLOR_WHITE, rTextGS,  false);
+        drawLabelInQuadrant(dc, cx, cy, angleALT, altLbl, altStr,    Graphics.COLOR_WHITE, rTextALT, true);
+        drawLabelInQuadrant(dc, cx, cy, angleQNH, "QNH", qnhDisplay, Graphics.COLOR_WHITE, rTextQNH, true);
 
         // Group separators
         try {
             dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
             dc.setPenWidth(2);
-            var groupAngles = [0.0, 180.0, 115.0, 60.0, 295.0, 240.0];
+            // Four primary separators at 12, 3, 6, 9 o'clock
+            var groupAngles = [90.0, 0.0, 270.0, 180.0];
             var innerClamp = ((sepRadius as Number).toFloat() + 1.0).toFloat();
             var outerClamp = (R - 1.0).toFloat();
             for (var gi = 0; gi < groupAngles.size(); gi++) {
@@ -962,15 +1021,14 @@ class VFRStopWatchView extends WatchUi.View {
                     drawTextStr = rb;
                 }
                 if (slotDeg <= 0.0) {
-                    // Dynamic mode: compute span from character pixel width
+                    // Dynamic mode: compute span from character pixel width (fallback)
                     try {
                         if (roundedFontSmall != null) {
-                            var perCharPx = 12.0;
-                            var px = perCharPx * drawTextStr.length();
-                            var paddingFactor = 1.10;
+                            var px = 18.0 * drawTextStr.length();
+                            var paddingFactor = 1.25;
                             var rawDeg = (px * 180.0) / (Math.PI * r.toFloat());
                             var minSpan = 8.0;
-                            var maxSpan = 80.0;
+                            var maxSpan = 120.0;
                             var computed = rawDeg * paddingFactor;
                             if (drawTextStr.length() <= 1) {
                                 estSpan = minSpan;
@@ -982,9 +1040,9 @@ class VFRStopWatchView extends WatchUi.View {
                         } else {
                             var nChars = drawTextStr.length();
                             if (nChars > 1) {
-                                var perCharPx = 8.0;
+                                var perCharPx = 13.0;
                                 var perCharDeg = (perCharPx * 180.0) / (Math.PI * r.toFloat());
-                                var needed = perCharDeg * nChars * 1.05;
+                                var needed = perCharDeg * nChars * 1.20;
                                 if (needed > estSpan) { estSpan = needed; }
                             }
                         }
@@ -1144,6 +1202,108 @@ class VFRStopWatchView extends WatchUi.View {
         if (tripEndUtcHour   >= 0) { d["tripEndUtcHour"]   = tripEndUtcHour; }
         if (tripEndUtcMin    >= 0) { d["tripEndUtcMin"]    = tripEndUtcMin; }
         return d;
+    }
+
+    // ── drawLabelInQuadrant ────────────────────────────────────────────────
+    // Mathematical model (see LESSONS_LEARNT.md):
+    //   48 global slots uniformly spaced around the full circle.
+    //   Slot k:  θ_k = 90° − k × 7.5°  (math/CCW convention; k=0 at 12 o'clock)
+    //   Position: x = cx + R·cos(θ_k),  y = cy − R·sin(θ_k)   (screen y-down)
+    //   Rotation: normT = θ_k − 90°, folded into [−90°, +90°]  (drawAngledText degrees)
+    //   Font size: charWidth ≤ 0.80 × arc-length-per-slot
+    //
+    //   quadAngle is in standard math/CCW degrees (e.g. angleHDG = 135°).
+    //   The quadrant's start slot is derived from quadAngle so that the centre
+    //   of the 12-slot band aligns with quadAngle.
+    // reverseChars: pass true for SW (ALT) and SE (QNH) quadrants — CW slot order
+    // runs right-to-left from the viewer at bottom positions, so we reverse the
+    // character assignment.  NW (HDG) and NE (GS) pass false.  Each quadrant is
+    // explicitly independent; changing one cannot affect the others.
+    function drawLabelInQuadrant(dc as Dc, cx as Number, cy as Number,
+            quadAngle as Float, prefix as String, suffix as String,
+            color as Number, radiusCenter as Float, reverseChars as Boolean) as Void {
+        if (bezelLblFont == null) { return; }
+
+        // ── 1. Build label string, centre within 12 slots ─────────────────
+        var combined = prefix;
+        if (suffix != null && suffix.length() > 0) { combined = combined + " " + suffix; }
+        var QUAD_SLOTS = 12;
+        if (combined.length() > QUAD_SLOTS) { combined = combined.substring(0, QUAD_SLOTS); }
+        var nChars = combined.length();
+        var startOffset = Math.floor((QUAD_SLOTS - nChars) / 2).toNumber();  // integer, left-pad in slots
+        if (startOffset < 0) { startOffset = 0; }
+
+        // ── 2. Map quadAngle → global start slot ──────────────────────────
+        // Convert math-CCW angle to clock-CW degrees (0 = 12 o'clock).
+        // Float % Float is not supported in Monkey C → use while-loop normalise.
+        var clockDeg = 90.0 - quadAngle;
+        while (clockDeg <    0.0) { clockDeg += 360.0; }
+        while (clockDeg >= 360.0) { clockDeg -= 360.0; }
+        // Quadrant occupies 12 slots centred on clockDeg; start slot = centre − 6.
+        // Align quadrant centre to slot CENTER: subtract 0.5 so the
+        // rounded result maps to the slot index whose centre is nearest
+        // the requested clockDeg. (Required Fix #2)
+        var quadCentreSlot = Math.round((clockDeg / 7.5) - 0.5).toNumber() % 48;  // nearest slot center
+        var quadStartSlot  = (quadCentreSlot - 6 + 48) % 48;
+
+        // ── 3. Compute slot font (cached; sized so glyph fits in arc length) ─
+        if (bezelSlotFont == null && bezelLblFace != null && bezelLblFaceSize > 0) {
+            // Arc length per global slot = R × Δθ = R × 2π/48
+            var arcLen = (radiusCenter.toFloat() * (2.0 * Math.PI / 48.0)).toFloat();
+            // Use 75 % of arc for the glyph (slightly more spacing); glyph width ≈ 0.55 × fontSize
+            var tgtSize = (arcLen * 0.75 / 0.55).toNumber();
+            if (tgtSize < 8)               { tgtSize = 8; }
+            if (tgtSize > bezelLblFaceSize) { tgtSize = bezelLblFaceSize; }
+            try {
+                var f = Graphics.getVectorFont({:face => bezelLblFace, :size => tgtSize});
+                bezelSlotFont = (f != null) ? f : bezelLblFont;
+            } catch (fe) { bezelSlotFont = bezelLblFont; }
+        }
+        var useFont = (bezelSlotFont != null) ? bezelSlotFont : bezelLblFont;
+
+        // ── 4. Draw each character ─────────────────────────────────────────
+        // Single formula for ALL positions: normT = theta_deg - 90, folded
+        // into [−90, +90].  The fold naturally makes tops point outward in the
+        // top half and toward the centre in the bottom half, so characters are
+        // always readable.  Slot order is always CW (increasing k) — that is
+        // left-to-right from the viewer's perspective for every quadrant.
+        dc.setColor(color, Graphics.COLOR_TRANSPARENT);
+        for (var si = 0; si < nChars; si++) {
+            // reverseChars: bottom quadrants (SW/SE) must read chars in reverse order
+            // so that the label reads left-to-right from the viewer despite CW slot
+            // traversal going right-to-left at those positions.
+            var readIndex = reverseChars ? (nChars - 1 - si) : si;
+            var ch = combined.substring(readIndex, readIndex + 1);
+            if (ch.equals(" ")) { continue; }
+
+            // Global slot index (0–47) — always clockwise
+            var k = (quadStartSlot + startOffset + si) % 48;
+
+            // Slot angle in standard math/CCW degrees: compute using slot
+            // CENTER (k + 0.5) so characters are placed at the middle of
+            // each 7.5° slot. (Required Fix #1)
+            var theta_deg = 90.0 - (k.toFloat() + 0.5) * 7.5;
+            var theta_rad = theta_deg * (Math.PI / 180.0);
+
+            // Screen position (y increases downward → subtract sin)
+            var px = (cx.toFloat() + radiusCenter * Math.cos(theta_rad)).toNumber();
+            var py = (cy.toFloat() - radiusCenter * Math.sin(theta_rad)).toNumber();
+
+            // Tangent rotation: theta - 90, folded into [−90°, +90°].
+            // The fold flips the direction for the bottom half automatically,
+            // keeping all characters upright and readable from outside.
+            var normT = theta_deg - 90.0;
+            while (normT >  90.0) { normT -= 180.0; }
+            while (normT < -90.0) { normT += 180.0; }
+
+            try {
+                dc.drawAngledText(px, py, useFont, ch,
+                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER, normT);
+            } catch (e) {
+                dc.drawText(px, py, bezelLblFont, ch,
+                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+            }
+        }
     }
 
     function loadState(d as Dictionary) as Void {
@@ -1459,17 +1619,16 @@ class VFRQuickInfoView extends WatchUi.View {
                 try { System.println("QuickInfo.onShow: comms wind=" + (commsDbg.windDirDeg as Number).toString() + "/" + (commsDbg.windSpeedKt as Number).toString() + " tmp=" + (commsDbg.tempC as Number).toString()); } catch (e) { System.println("QuickInfo.onShow: comms present but fields missing"); }
             }
             try {
-                var cur = Weather.getCurrentConditions();
-                if (cur == null) {
-                    System.println("QuickInfo.onShow: Weather.getCurrentConditions() = null");
+                var wr = VFRWeather.read(getApp().getComms());
+                if (wr == null) {
+                    System.println("QuickInfo.onShow: VFRWeather.read() = null");
                 } else {
-                    try { System.println("Weather.temperature=" + (cur["temperature"] as Number).toString()); } catch (e) {}
-                    try { System.println("Weather.windSpeed=" + (cur["windSpeed"] as Number).toString()); } catch (e) {}
-                    try { System.println("Weather.windDirection=" + (cur["windDirection"] as Number).toString()); } catch (e) {}
-                    try { System.println("Weather.dewPoint=" + (cur["dewPoint"] as Number).toString()); } catch (e) {}
-                    try { System.println("Weather.dewPointC=" + (cur["dewPointC"] as Number).toString()); } catch (e) {}
+                    try { System.println("Weather.temp=" + wr.temp.toString()); } catch (e) {}
+                    try { System.println("Weather.windSpd=" + wr.windSpd.toString()); } catch (e) {}
+                    try { System.println("Weather.windDir=" + wr.windDir.toString()); } catch (e) {}
+                    try { System.println("Weather.dew=" + wr.dew.toString()); } catch (e) {}
                 }
-            } catch (we) { System.println("QuickInfo.onShow: Weather API error: " + we.getErrorMessage()); }
+            } catch (we) { System.println("QuickInfo.onShow: VFRWeather read error: " + we.getErrorMessage()); }
         } catch (ex) { System.println("QuickInfo.onShow debug failed: " + ex.getErrorMessage()); }
     }
 
@@ -1486,9 +1645,10 @@ class VFRQuickInfoView extends WatchUi.View {
         _main.drawBezelBackground(dc);
 
         // --- Black-fill the inner circle (covers the main chrono) ---
-        // Mirrors main view geometry: sepRadius = R - 17  (R = 130 for 260px screen)
+        // Mirrors main view geometry: sepRadius = R - 25  (R = 130 for 260px screen)
         var minWh = (w < h) ? w : h;
-        var sepR  = ((minWh.toFloat() / 2.0) - 17.0).toNumber();
+        var sepR  = ((minWh.toFloat() / 2.0) - 27.0).toNumber();
+        try { System.println("QuickInfoView: sepR=" + sepR.toString() + " cx=" + cx.toString() + " cy=" + cy.toString() + " w=" + w.toString() + " h=" + h.toString()); } catch (e) {}
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.fillCircle(cx, cy, sepR);
 
@@ -1502,33 +1662,19 @@ class VFRQuickInfoView extends WatchUi.View {
         }
         var bigFont = (_bigFont != null) ? _bigFont : Graphics.FONT_NUMBER_HOT;
 
-        // --- Pull weather data from comms, fallback to Toybox.Weather ---
-        var comms = getApp().getComms();
-        var wDir  = -1;
-        var wSpd  = -1; // knots
-        var tmp   = -999;
-        var dew   = -999;
-        if (comms != null) {
-            try { wDir = comms.windDirDeg  as Number; } catch (e) {}
-            try { wSpd = comms.windSpeedKt as Number; } catch (e) {}
-            try { tmp  = comms.tempC       as Number; } catch (e) {}
-            try { dew  = comms.dewpointC   as Number; } catch (e) {}
-        }
+        // --- Pull weather data via VFRWeather helper ---
+        var wDir = -1;
+        var wSpd = -1; // knots
+        var tmp  = -999;
+        var dew  = -999;
 
-        // If comms didn't provide weather, try system Weather provider
-        if ((wDir < 0 || wSpd < 0 || tmp == -999) ) {
-            try {
-                var current = Weather.getCurrentConditions();
-                if (current != null) {
-                    try { tmp = (current["temperature"] as Number); } catch (e) {}
-                    // Weather returns wind speed in m/s — convert to knots
-                    try { wSpd = Math.round((current["windSpeed"] as Float) * 1.943844).toNumber(); } catch (e) {}
-                    try { wDir = (current["windDirection"] as Number); } catch (e) {}
-                    // dew point may be available under "dewPoint" or "dewPointC"
-                    try { dew = (current["dewPoint"]  as Number); } catch (e2) { try { dew = (current["dewPointC"] as Number); } catch (e3) {} }
-                }
-            } catch (wex) { System.println("Weather API read failed: " + wex.getErrorMessage()); }
-        }
+        try {
+            var wr = VFRWeather.read(getApp().getComms());
+            try { tmp  = wr.temp; } catch (e) {}
+            try { wDir = wr.windDir; } catch (e) {}
+            try { wSpd = wr.windSpd; } catch (e) {}
+            try { dew  = wr.dew; } catch (e) {}
+        } catch (we) { System.println("Weather helper failed: " + we.getErrorMessage()); }
 
         // Format: "DDD/SS" (direction zero-padded to 3 digits)
         var windStr = "--/--";
@@ -1575,6 +1721,19 @@ class VFRQuickInfoView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(cx, cy + 70, bigFont, tempStr, jc);
 
+        var comms = getApp().getComms();
+
+        // Debug: show raw weather payload from phone (truncated)
+        try {
+            var rawMsg = "";
+            if (comms != null) { try { rawMsg = (comms.lastRawWeather as String); } catch (e) { rawMsg = ""; } }
+            if (rawMsg != null && rawMsg != "") {
+                if (rawMsg.length() > 40) { rawMsg = rawMsg.substring(0, 40) + "..."; }
+                dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.drawText(cx, cy - 100, Graphics.FONT_SMALL, rawMsg, jc);
+            }
+        } catch (e) {}
+
         WatchUi.requestUpdate();
     }
 }
@@ -1601,7 +1760,8 @@ class VFRQuickInfoHdgGsView extends WatchUi.View {
 
         // Black inner circle
         var minWh = (w < h) ? w : h;
-        var sepR  = ((minWh.toFloat() / 2.0) - 17.0).toNumber();
+        var sepR  = ((minWh.toFloat() / 2.0) - 27.0).toNumber();
+        try { System.println("QuickInfoHDG: sepR=" + sepR.toString() + " cx=" + cx.toString() + " cy=" + cy.toString() + " w=" + w.toString() + " h=" + h.toString()); } catch (e) {}
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.fillCircle(cx, cy, sepR);
 
@@ -1621,13 +1781,12 @@ class VFRQuickInfoHdgGsView extends WatchUi.View {
         }
         var bigFont = (_bigFont != null) ? _bigFont : Graphics.FONT_NUMBER_HOT;
 
-        // Get heading and GS from system APIs (same sources used by main view)
+        // Get heading and GS from system APIs (prefer GPS course)
         var hdgStr = "--";
         try {
-            var pInfo = Position.getInfo();
-            if (pInfo != null && pInfo.heading != null) {
-                var deg = (pInfo.heading.toFloat() * (180.0 / Math.PI)).toNumber();
-                var hdgInt = Math.round(deg).toNumber();
+            var hdg = VFRHeading.getHeadingDeg();
+            if (hdg >= 0) {
+                var hdgInt = Math.round(hdg).toNumber();
                 if (hdgInt < 10)       { hdgStr = "00" + hdgInt.toString(); }
                 else if (hdgInt < 100) { hdgStr = "0"  + hdgInt.toString(); }
                 else                   { hdgStr = hdgInt.toString(); }
@@ -1723,6 +1882,14 @@ class VFRQuickInfoDelegate extends WatchUi.BehaviorDelegate {
     }
     // Also intercept onNextPage so BehaviorDelegate doesn't swallow the DOWN press
     function onNextPage() as Boolean {
+        // First try to push the second weather quick-info screen
+        try {
+            _main.quickInfoLastNavAt = System.getTimer();
+            WatchUi.pushView(new VFRQuickInfoWeather2View(_main), new VFRQuickInfoWeather2Delegate(_main), WatchUi.SLIDE_UP);
+            return true;
+        } catch (ex) { System.println("Failed to push weather2 view: " + ex.getErrorMessage()); }
+
+        // Fallback: if maps are available, push the map view
         if (WatchUi has :MapView) {
             try {
                 var mapView = new VFRMapView(_main);

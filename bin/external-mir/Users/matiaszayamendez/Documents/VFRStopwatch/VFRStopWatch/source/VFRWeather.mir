@@ -1,0 +1,1032 @@
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Weather,1,14,21]; ]
+import Toybox.Weather;
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Lang,2,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [System,3,14,20]; ]
+import Toybox.System;
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 5; @symbol_classdef = [VFRWeatherResult,5,6,22]; ]
+class VFRWeatherResult {
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 5; ]
+    <init> {
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 5; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 6; @position = 8; @symbol_vardef = [temp,6,8,12]; @symbol_type<0> = [Number,6,16,22]; ]
+    var temp as Number;
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 7; @position = 8; @symbol_vardef = [windDir,7,8,15]; @symbol_type<0> = [Number,7,19,25]; ]
+    var windDir as Number;
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 8; @position = 8; @symbol_vardef = [windSpd,8,8,15]; @symbol_type<0> = [Number,8,19,25]; ]
+    var windSpd as Number;
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 9; @position = 8; @symbol_vardef = [dew,9,8,11]; @symbol_type<0> = [Number,9,15,21]; ]
+    var dew as Number;
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 10; @position = 8; @symbol_vardef = [cloudCover,10,8,18]; @symbol_type<0> = [Number,10,22,28]; ]
+    var cloudCover as Number;
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 11; @position = 8; @symbol_vardef = [cloudAlt,11,8,16]; @symbol_type<0> = [Number,11,20,26]; ]
+    var cloudAlt as Number;
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 12; @position = 8; @symbol_vardef = [precipChance,12,8,20]; @symbol_type<0> = [Number,12,24,30]; ]
+    var precipChance as Number;
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 13; @position = 8; @symbol_vardef = [condition,13,8,17]; @symbol_type<0> = [Number,13,21,27]; ]
+    var condition as Number;
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 15; @symbol_functiondef = [initialize,15,13,23]; ]
+    function initialize() as Void {
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_15_26_24_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 16 8 ]
+        %tmp.1 = -999;
+        symbol [ temp ? 16 8 12 ];
+        putv self :temp %tmp.1;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 17 8 ]
+        %tmp.2 = -1;
+        symbol [ windDir ? 17 8 15 ];
+        putv self :windDir %tmp.2;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 18 8 ]
+        %tmp.3 = -1;
+        symbol [ windSpd ? 18 8 15 ];
+        putv self :windSpd %tmp.3;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 19 8 ]
+        %tmp.4 = -999;
+        symbol [ dew ? 19 8 11 ];
+        putv self :dew %tmp.4;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 20 8 ]
+        %tmp.5 = -1;
+        symbol [ cloudCover ? 20 8 18 ];
+        putv self :cloudCover %tmp.5;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 21 8 ]
+        %tmp.6 = -1;
+        symbol [ cloudAlt ? 21 8 16 ];
+        putv self :cloudAlt %tmp.6;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 22 8 ]
+        %tmp.7 = -1;
+        symbol [ precipChance ? 22 8 20 ];
+        putv self :precipChance %tmp.7;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 23 8 ]
+        %tmp.8 = -1;
+        symbol [ condition ? 23 8 17 ];
+        putv self :condition %tmp.8;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_15_26_24_4_stop:
+    }
+}
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 27; @symbol_classdef = [VFRWeather,27,6,16]; ]
+class VFRWeather {
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 27; ]
+    <init> {
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 27; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 31; @symbol_functiondef = [read,31,20,24]; @symbol_param<0> = [comms,31,25,30]; @symbol_return<0> = [VFRWeatherResult,31,35,51]; ]
+    static
+    function read(comms) as VFRWeatherResult {
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_31_52_86_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 32 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_31_52_86_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_31_52_86_4_stop" ]
+        %r.1 = local;
+        symbol [ r %r.1 32 12 13 ];
+        symbol [ VFRWeatherResult %tmp.4 32 20 36 ];
+        %tmp.4 = getv ? :VFRWeatherResult;
+        %tmp.1 = newc %tmp.4 ();
+        lputv %r.1 %tmp.1;
+        symbol [ r %r.1 32 12 13 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 35 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_35_8_40_8_if_stmt:
+        %tmp.5 = lgetv %comms;
+        symbol [ comms %tmp.5 35 12 17 ];
+        %tmp.6 = null;
+        %tmp.7 = ne %tmp.5 %tmp.6;
+        bf %tmp.7 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_35_8_40_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_35_8_40_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_35_27_40_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 36 12 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_12_36_61_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_12_36_61_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_12_36_61_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_12_36_61_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_12_36_61_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_16_36_48_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 36 18 ]
+        %tmp.8 = lgetv %r.1;
+        symbol [ r %tmp.8 36 18 19 ];
+        %tmp.9 = lgetv %comms;
+        symbol [ comms %tmp.9 36 30 35 ];
+        %tmp.10 = as %tmp.9 { (!Null) };
+        symbol [ windDirDeg %tmp.11 36 36 46 ];
+        %tmp.11 = getv %tmp.10 :windDirDeg;
+        symbol [ windDir ? 36 20 27 ];
+        putv %tmp.8 :windDir %tmp.11;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_16_36_48_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_12_36_61_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_12_36_61_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_12_36_61_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_12_36_61_catch:
+        %tmp.12 = exception;
+        push %tmp.12;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 36 50 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_12_36_61_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_50_36_61_end" ]
+        %e.2 = local;
+        symbol [ e %e.2 36 57 58 ];
+        %tmp.13 = dup %tmp.12;
+        lputv %e.2 %tmp.13;
+        symbol [ e %e.2 36 57 58 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_12_36_61_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_12_36_61_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_50_36_61_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_12_36_61_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_50_36_61_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_50_36_61_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_12_36_61_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_12_36_61_finally;
+        throw %tmp.12;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_12_36_61_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_36_12_36_61_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 37 12 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_12_37_62_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_12_37_62_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_12_37_62_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_12_37_62_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_12_37_62_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_16_37_49_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 37 18 ]
+        %tmp.14 = lgetv %r.1;
+        symbol [ r %tmp.14 37 18 19 ];
+        %tmp.15 = lgetv %comms;
+        symbol [ comms %tmp.15 37 30 35 ];
+        %tmp.16 = as %tmp.15 { (!Null) };
+        symbol [ windSpeedKt %tmp.17 37 36 47 ];
+        %tmp.17 = getv %tmp.16 :windSpeedKt;
+        symbol [ windSpd ? 37 20 27 ];
+        putv %tmp.14 :windSpd %tmp.17;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_16_37_49_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_12_37_62_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_12_37_62_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_12_37_62_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_12_37_62_catch:
+        %tmp.18 = exception;
+        push %tmp.18;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 37 51 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_12_37_62_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_51_37_62_end" ]
+        %e.3 = local;
+        symbol [ e %e.3 37 58 59 ];
+        %tmp.19 = dup %tmp.18;
+        lputv %e.3 %tmp.19;
+        symbol [ e %e.3 37 58 59 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_12_37_62_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_12_37_62_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_51_37_62_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_12_37_62_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_51_37_62_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_51_37_62_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_12_37_62_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_12_37_62_finally;
+        throw %tmp.18;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_12_37_62_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_37_12_37_62_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 38 12 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_12_38_56_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_12_38_56_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_12_38_56_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_12_38_56_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_12_38_56_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_16_38_43_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 38 18 ]
+        %tmp.20 = lgetv %r.1;
+        symbol [ r %tmp.20 38 18 19 ];
+        %tmp.21 = lgetv %comms;
+        symbol [ comms %tmp.21 38 30 35 ];
+        %tmp.22 = as %tmp.21 { (!Null) };
+        symbol [ tempC %tmp.23 38 36 41 ];
+        %tmp.23 = getv %tmp.22 :tempC;
+        symbol [ temp ? 38 20 24 ];
+        putv %tmp.20 :temp %tmp.23;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_16_38_43_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_12_38_56_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_12_38_56_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_12_38_56_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_12_38_56_catch:
+        %tmp.24 = exception;
+        push %tmp.24;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 38 45 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_12_38_56_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_45_38_56_end" ]
+        %e.4 = local;
+        symbol [ e %e.4 38 52 53 ];
+        %tmp.25 = dup %tmp.24;
+        lputv %e.4 %tmp.25;
+        symbol [ e %e.4 38 52 53 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_12_38_56_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_12_38_56_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_45_38_56_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_12_38_56_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_45_38_56_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_45_38_56_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_12_38_56_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_12_38_56_finally;
+        throw %tmp.24;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_12_38_56_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_38_12_38_56_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 39 12 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_12_39_60_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_12_39_60_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_12_39_60_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_12_39_60_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_12_39_60_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_16_39_47_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 39 18 ]
+        %tmp.26 = lgetv %r.1;
+        symbol [ r %tmp.26 39 18 19 ];
+        %tmp.27 = lgetv %comms;
+        symbol [ comms %tmp.27 39 30 35 ];
+        %tmp.28 = as %tmp.27 { (!Null) };
+        symbol [ dewpointC %tmp.29 39 36 45 ];
+        %tmp.29 = getv %tmp.28 :dewpointC;
+        symbol [ dew ? 39 20 23 ];
+        putv %tmp.26 :dew %tmp.29;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_16_39_47_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_12_39_60_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_12_39_60_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_12_39_60_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_12_39_60_catch:
+        %tmp.30 = exception;
+        push %tmp.30;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 39 49 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_12_39_60_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_49_39_60_end" ]
+        %e.5 = local;
+        symbol [ e %e.5 39 56 57 ];
+        %tmp.31 = dup %tmp.30;
+        lputv %e.5 %tmp.31;
+        symbol [ e %e.5 39 56 57 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_12_39_60_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_12_39_60_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_49_39_60_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_12_39_60_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_49_39_60_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_49_39_60_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_12_39_60_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_12_39_60_finally;
+        throw %tmp.30;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_12_39_60_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_39_12_39_60_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_35_27_40_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_35_8_40_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_35_8_40_8_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 43 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_8_68_8_if_stmt:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_13_43_58_begin:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_13_43_42_begin:
+        %tmp.32 = lgetv %r.1;
+        symbol [ r %tmp.32 43 13 14 ];
+        symbol [ windDir %tmp.33 43 15 22 ];
+        %tmp.33 = getv %tmp.32 :windDir;
+        %tmp.34 = 0;
+        %tmp.35 = lt %tmp.33 %tmp.34;
+        bt %tmp.35 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_8_68_8_if_true;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_30_43_42_false:
+        %tmp.36 = lgetv %r.1;
+        symbol [ r %tmp.36 43 30 31 ];
+        symbol [ windSpd %tmp.37 43 32 39 ];
+        %tmp.37 = getv %tmp.36 :windSpd;
+        %tmp.38 = 0;
+        %tmp.39 = lt %tmp.37 %tmp.38;
+        push %tmp.39;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_30_43_42_end:
+        %tmp.40 = phi [%tmp.35 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_13_43_42_begin] [%tmp.39 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_30_43_42_false] [%tmp.40 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_30_43_42_end];
+        bt %tmp.40 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_8_68_8_if_true;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_47_43_58_false:
+        %tmp.41 = lgetv %r.1;
+        symbol [ r %tmp.41 43 47 48 ];
+        symbol [ temp %tmp.42 43 49 53 ];
+        %tmp.42 = getv %tmp.41 :temp;
+        %tmp.43 = -999;
+        %tmp.44 = eq %tmp.42 %tmp.43;
+        push %tmp.44;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_47_43_58_end:
+        %tmp.45 = phi [%tmp.40 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_13_43_58_begin] [%tmp.44 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_47_43_58_false] [%tmp.45 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_47_43_58_end];
+        bf %tmp.45 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_8_68_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_8_68_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_64_68_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 44 12 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_12_67_114_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_12_67_114_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_12_67_114_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_12_67_114_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_12_67_114_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_16_67_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 45 16 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_16_67_12_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_16_67_12_stop" ]
+        %cur.6 = local;
+        symbol [ cur %cur.6 45 20 23 ];
+        symbol [ Weather %tmp.46 45 26 33 ];
+        %tmp.46 = getm $.Toybox.Weather;
+        symbol [ getCurrentConditions %tmp.47 45 34 54 ];
+        %tmp.47 = getv function %tmp.46 :getCurrentConditions;
+        %tmp.48 = invoke %tmp.46 %tmp.47();
+        lputv %cur.6 %tmp.48;
+        symbol [ cur %cur.6 45 20 23 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 46 16 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_46_16_66_16_if_stmt:
+        %tmp.49 = lgetv %cur.6;
+        symbol [ cur %tmp.49 46 20 23 ];
+        %tmp.50 = null;
+        %tmp.51 = ne %tmp.49 %tmp.50;
+        bf %tmp.51 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_46_16_66_16_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_46_16_66_16_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_46_33_66_16_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 47 20 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_20_47_80_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_20_47_80_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_20_47_80_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_20_47_80_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_20_47_80_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_24_47_67_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 47 26 ]
+        %tmp.52 = lgetv %r.1;
+        symbol [ r %tmp.52 47 26 27 ];
+        %tmp.53 = lgetv %cur.6;
+        symbol [ cur %tmp.53 47 36 39 ];
+        %tmp.54 = as %tmp.53 { (!Null) };
+        %tmp.55 = "temperature";
+        %tmp.56 = agetv %tmp.54 %tmp.55;
+        %tmp.57 = as %tmp.56 Number;
+        symbol [ Number %tmp.57 47 58 64 ];
+        symbol [ temp ? 47 28 32 ];
+        putv %tmp.52 :temp %tmp.57;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_24_47_67_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_20_47_80_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_20_47_80_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_20_47_80_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_20_47_80_catch:
+        %tmp.58 = exception;
+        push %tmp.58;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 47 69 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_20_47_80_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_69_47_80_end" ]
+        %e.7 = local;
+        symbol [ e %e.7 47 76 77 ];
+        %tmp.59 = dup %tmp.58;
+        lputv %e.7 %tmp.59;
+        symbol [ e %e.7 47 76 77 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_20_47_80_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_20_47_80_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_69_47_80_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_20_47_80_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_69_47_80_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_69_47_80_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_20_47_80_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_20_47_80_finally;
+        throw %tmp.58;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_20_47_80_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_47_20_47_80_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 50 20 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_20_57_34_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_20_57_34_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_20_57_34_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_20_57_34_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_20_57_34_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_24_57_20_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 51 24 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_24_57_20_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_24_57_20_stop" ]
+        %ws.8 = local;
+        symbol [ ws %ws.8 51 28 30 ];
+        %tmp.60 = null;
+        lputv %ws.8 %tmp.60;
+        symbol [ ws %ws.8 51 28 30 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 52 24 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_24_52_79_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_24_52_79_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_24_52_79_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_24_52_79_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_24_52_79_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_28_52_53_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 52 30 ]
+        %tmp.61 = lgetv %cur.6;
+        symbol [ cur %tmp.61 52 35 38 ];
+        %tmp.62 = as %tmp.61 { (!Null) };
+        %tmp.63 = "windSpeed";
+        %tmp.64 = agetv %tmp.62 %tmp.63;
+        lputv %ws.8 %tmp.64;
+        symbol [ ws %ws.8 52 30 32 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_28_52_53_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_24_52_79_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_24_52_79_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_24_52_79_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_24_52_79_catch:
+        %tmp.65 = exception;
+        push %tmp.65;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 52 55 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_24_52_79_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_55_52_79_end" ]
+        %e2.9 = local;
+        symbol [ e2 %e2.9 52 62 64 ];
+        %tmp.66 = dup %tmp.65;
+        lputv %e2.9 %tmp.66;
+        symbol [ e2 %e2.9 52 62 64 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_66_52_79_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 52 68 ]
+        %tmp.67 = null;
+        lputv %ws.8 %tmp.67;
+        symbol [ ws %ws.8 52 68 70 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_66_52_79_stop:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_24_52_79_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_24_52_79_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_55_52_79_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_24_52_79_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_55_52_79_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_55_52_79_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_24_52_79_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_24_52_79_finally;
+        throw %tmp.65;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_24_52_79_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_52_24_52_79_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 53 24 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_53_24_56_24_if_stmt:
+        %tmp.68 = lgetv %ws.8;
+        symbol [ ws %tmp.68 53 28 30 ];
+        %tmp.69 = null;
+        %tmp.70 = ne %tmp.68 %tmp.69;
+        bf %tmp.70 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_53_24_56_24_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_53_24_56_24_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_53_40_56_24_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 54 28 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_54_28_55_127_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_54_28_55_127_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_54_28_55_127_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_54_28_55_127_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_54_28_55_127_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_54_32_54_85_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 54 34 ]
+        %tmp.71 = lgetv %r.1;
+        symbol [ r %tmp.71 54 34 35 ];
+        %tmp.72 = lgetv %ws.8;
+        symbol [ ws %tmp.72 54 48 50 ];
+        %tmp.73 = as %tmp.72 { (!Null) };
+        %tmp.74 = as %tmp.73 Float;
+        symbol [ Float %tmp.74 54 54 59 ];
+        %tmp.75 = 1.943844;
+        %tmp.76 = mul %tmp.74 %tmp.75;
+        symbol [ toNumber %tmp.77 54 73 81 ];
+        %tmp.77 = getv function %tmp.76 :toNumber;
+        %tmp.78 = invoke %tmp.76 %tmp.77();
+        symbol [ windSpd ? 54 36 43 ];
+        putv %tmp.71 :windSpd %tmp.78;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_54_32_54_85_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_54_28_55_127_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_54_28_55_127_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_54_28_55_127_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_54_28_55_127_catch:
+        %tmp.79 = exception;
+        push %tmp.79;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 55 28 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_54_28_55_127_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_28_55_127_end" ]
+        %e3.10 = local;
+        symbol [ e3 %e3.10 55 35 37 ];
+        %tmp.80 = dup %tmp.79;
+        lputv %e3.10 %tmp.80;
+        symbol [ e3 %e3.10 55 35 37 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_39_55_127_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 55 41 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_41_55_125_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_41_55_125_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_41_55_125_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_41_55_125_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_41_55_125_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_45_55_111_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 55 47 ]
+        %tmp.81 = lgetv %r.1;
+        symbol [ r %tmp.81 55 47 48 ];
+        %tmp.82 = lgetv %ws.8;
+        symbol [ ws %tmp.82 55 62 64 ];
+        %tmp.83 = as %tmp.82 { (!Null) };
+        %tmp.84 = as %tmp.83 Number;
+        symbol [ Number %tmp.84 55 68 74 ];
+        symbol [ toFloat %tmp.85 55 76 83 ];
+        %tmp.85 = getv function %tmp.84 :toFloat;
+        %tmp.86 = invoke %tmp.84 %tmp.85();
+        %tmp.87 = 1.943844;
+        %tmp.88 = mul %tmp.86 %tmp.87;
+        symbol [ toNumber %tmp.89 55 99 107 ];
+        %tmp.89 = getv function %tmp.88 :toNumber;
+        %tmp.90 = invoke %tmp.88 %tmp.89();
+        symbol [ windSpd ? 55 49 56 ];
+        putv %tmp.81 :windSpd %tmp.90;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_45_55_111_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_41_55_125_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_41_55_125_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_41_55_125_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_41_55_125_catch:
+        %tmp.91 = exception;
+        push %tmp.91;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 55 113 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_41_55_125_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_113_55_125_end" ]
+        %e4.11 = local;
+        symbol [ e4 %e4.11 55 120 122 ];
+        %tmp.92 = dup %tmp.91;
+        lputv %e4.11 %tmp.92;
+        symbol [ e4 %e4.11 55 120 122 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_41_55_125_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_41_55_125_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_113_55_125_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_41_55_125_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_113_55_125_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_113_55_125_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_41_55_125_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_41_55_125_finally;
+        throw %tmp.91;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_41_55_125_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_41_55_125_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_39_55_127_stop:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_54_28_55_127_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_54_28_55_127_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_28_55_127_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_54_28_55_127_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_28_55_127_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_55_28_55_127_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_54_28_55_127_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_54_28_55_127_finally;
+        throw %tmp.79;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_54_28_55_127_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_54_28_55_127_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_53_40_56_24_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_53_24_56_24_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_53_24_56_24_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_24_57_20_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_20_57_34_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_20_57_34_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_20_57_34_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_20_57_34_catch:
+        %tmp.93 = exception;
+        push %tmp.93;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 57 22 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_20_57_34_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_57_22_57_34_end" ]
+        %we.12 = local;
+        symbol [ we %we.12 57 29 31 ];
+        %tmp.94 = dup %tmp.93;
+        lputv %we.12 %tmp.94;
+        symbol [ we %we.12 57 29 31 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_20_57_34_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_20_57_34_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_57_22_57_34_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_20_57_34_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_57_22_57_34_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_57_22_57_34_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_20_57_34_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_20_57_34_finally;
+        throw %tmp.93;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_20_57_34_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_50_20_57_34_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 59 20 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_20_59_83_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_20_59_83_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_20_59_83_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_20_59_83_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_20_59_83_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_24_59_70_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 59 26 ]
+        %tmp.95 = lgetv %r.1;
+        symbol [ r %tmp.95 59 26 27 ];
+        %tmp.96 = lgetv %cur.6;
+        symbol [ cur %tmp.96 59 39 42 ];
+        %tmp.97 = as %tmp.96 { (!Null) };
+        %tmp.98 = "windBearing";
+        %tmp.99 = agetv %tmp.97 %tmp.98;
+        %tmp.100 = as %tmp.99 Number;
+        symbol [ Number %tmp.100 59 61 67 ];
+        symbol [ windDir ? 59 28 35 ];
+        putv %tmp.95 :windDir %tmp.100;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_24_59_70_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_20_59_83_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_20_59_83_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_20_59_83_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_20_59_83_catch:
+        %tmp.101 = exception;
+        push %tmp.101;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 59 72 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_20_59_83_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_72_59_83_end" ]
+        %e.13 = local;
+        symbol [ e %e.13 59 79 80 ];
+        %tmp.102 = dup %tmp.101;
+        lputv %e.13 %tmp.102;
+        symbol [ e %e.13 59 79 80 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_20_59_83_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_20_59_83_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_72_59_83_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_20_59_83_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_72_59_83_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_72_59_83_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_20_59_83_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_20_59_83_finally;
+        throw %tmp.101;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_20_59_83_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_59_20_59_83_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 60 20 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_20_60_76_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_20_60_76_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_20_60_76_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_20_60_76_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_20_60_76_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_24_60_63_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 60 26 ]
+        %tmp.103 = lgetv %r.1;
+        symbol [ r %tmp.103 60 26 27 ];
+        %tmp.104 = lgetv %cur.6;
+        symbol [ cur %tmp.104 60 35 38 ];
+        %tmp.105 = as %tmp.104 { (!Null) };
+        %tmp.106 = "dewPoint";
+        %tmp.107 = agetv %tmp.105 %tmp.106;
+        %tmp.108 = as %tmp.107 Number;
+        symbol [ Number %tmp.108 60 54 60 ];
+        symbol [ dew ? 60 28 31 ];
+        putv %tmp.103 :dew %tmp.108;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_24_60_63_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_20_60_76_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_20_60_76_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_20_60_76_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_20_60_76_catch:
+        %tmp.109 = exception;
+        push %tmp.109;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 60 65 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_20_60_76_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_65_60_76_end" ]
+        %e.14 = local;
+        symbol [ e %e.14 60 72 73 ];
+        %tmp.110 = dup %tmp.109;
+        lputv %e.14 %tmp.110;
+        symbol [ e %e.14 60 72 73 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_20_60_76_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_20_60_76_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_65_60_76_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_20_60_76_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_65_60_76_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_65_60_76_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_20_60_76_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_20_60_76_finally;
+        throw %tmp.109;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_20_60_76_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_60_20_60_76_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 62 20 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_20_62_85_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_20_62_85_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_20_62_85_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_20_62_85_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_20_62_85_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_24_62_72_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 62 26 ]
+        %tmp.111 = lgetv %r.1;
+        symbol [ r %tmp.111 62 26 27 ];
+        %tmp.112 = lgetv %cur.6;
+        symbol [ cur %tmp.112 62 42 45 ];
+        %tmp.113 = as %tmp.112 { (!Null) };
+        %tmp.114 = "cloudCover";
+        %tmp.115 = agetv %tmp.113 %tmp.114;
+        %tmp.116 = as %tmp.115 Number;
+        symbol [ Number %tmp.116 62 63 69 ];
+        symbol [ cloudCover ? 62 28 38 ];
+        putv %tmp.111 :cloudCover %tmp.116;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_24_62_72_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_20_62_85_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_20_62_85_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_20_62_85_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_20_62_85_catch:
+        %tmp.117 = exception;
+        push %tmp.117;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 62 74 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_20_62_85_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_74_62_85_end" ]
+        %e.15 = local;
+        symbol [ e %e.15 62 81 82 ];
+        %tmp.118 = dup %tmp.117;
+        lputv %e.15 %tmp.118;
+        symbol [ e %e.15 62 81 82 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_20_62_85_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_20_62_85_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_74_62_85_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_20_62_85_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_74_62_85_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_74_62_85_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_20_62_85_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_20_62_85_finally;
+        throw %tmp.117;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_20_62_85_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_62_20_62_85_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 63 20 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_20_63_152_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_20_63_152_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_20_63_152_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_20_63_152_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_20_63_152_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_24_63_69_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 63 26 ]
+        %tmp.119 = lgetv %r.1;
+        symbol [ r %tmp.119 63 26 27 ];
+        %tmp.120 = lgetv %cur.6;
+        symbol [ cur %tmp.120 63 40 43 ];
+        %tmp.121 = as %tmp.120 { (!Null) };
+        %tmp.122 = "cloudBase";
+        %tmp.123 = agetv %tmp.121 %tmp.122;
+        %tmp.124 = as %tmp.123 Number;
+        symbol [ Number %tmp.124 63 60 66 ];
+        symbol [ cloudAlt ? 63 28 36 ];
+        putv %tmp.119 :cloudAlt %tmp.124;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_24_63_69_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_20_63_152_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_20_63_152_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_20_63_152_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_20_63_152_catch:
+        %tmp.125 = exception;
+        push %tmp.125;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 63 71 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_20_63_152_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_71_63_152_end" ]
+        %e.16 = local;
+        symbol [ e %e.16 63 78 79 ];
+        %tmp.126 = dup %tmp.125;
+        lputv %e.16 %tmp.126;
+        symbol [ e %e.16 63 78 79 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_81_63_152_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 63 83 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_83_63_150_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_83_63_150_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_83_63_150_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_83_63_150_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_83_63_150_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_87_63_136_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 63 89 ]
+        %tmp.127 = lgetv %r.1;
+        symbol [ r %tmp.127 63 89 90 ];
+        %tmp.128 = lgetv %cur.6;
+        symbol [ cur %tmp.128 63 103 106 ];
+        %tmp.129 = as %tmp.128 { (!Null) };
+        %tmp.130 = "cloudAltitude";
+        %tmp.131 = agetv %tmp.129 %tmp.130;
+        %tmp.132 = as %tmp.131 Number;
+        symbol [ Number %tmp.132 63 127 133 ];
+        symbol [ cloudAlt ? 63 91 99 ];
+        putv %tmp.127 :cloudAlt %tmp.132;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_87_63_136_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_83_63_150_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_83_63_150_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_83_63_150_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_83_63_150_catch:
+        %tmp.133 = exception;
+        push %tmp.133;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 63 138 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_83_63_150_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_138_63_150_end" ]
+        %e2.17 = local;
+        symbol [ e2 %e2.17 63 145 147 ];
+        %tmp.134 = dup %tmp.133;
+        lputv %e2.17 %tmp.134;
+        symbol [ e2 %e2.17 63 145 147 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_83_63_150_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_83_63_150_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_138_63_150_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_83_63_150_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_138_63_150_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_138_63_150_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_83_63_150_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_83_63_150_finally;
+        throw %tmp.133;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_83_63_150_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_83_63_150_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_81_63_152_stop:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_20_63_152_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_20_63_152_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_71_63_152_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_20_63_152_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_71_63_152_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_71_63_152_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_20_63_152_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_20_63_152_finally;
+        throw %tmp.125;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_20_63_152_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_63_20_63_152_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 64 20 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_20_64_96_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_20_64_96_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_20_64_96_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_20_64_96_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_20_64_96_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_24_64_83_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 64 26 ]
+        %tmp.135 = lgetv %r.1;
+        symbol [ r %tmp.135 64 26 27 ];
+        %tmp.136 = lgetv %cur.6;
+        symbol [ cur %tmp.136 64 44 47 ];
+        %tmp.137 = as %tmp.136 { (!Null) };
+        %tmp.138 = "precipitationChance";
+        %tmp.139 = agetv %tmp.137 %tmp.138;
+        %tmp.140 = as %tmp.139 Number;
+        symbol [ Number %tmp.140 64 74 80 ];
+        symbol [ precipChance ? 64 28 40 ];
+        putv %tmp.135 :precipChance %tmp.140;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_24_64_83_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_20_64_96_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_20_64_96_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_20_64_96_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_20_64_96_catch:
+        %tmp.141 = exception;
+        push %tmp.141;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 64 85 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_20_64_96_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_85_64_96_end" ]
+        %e.18 = local;
+        symbol [ e %e.18 64 92 93 ];
+        %tmp.142 = dup %tmp.141;
+        lputv %e.18 %tmp.142;
+        symbol [ e %e.18 64 92 93 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_20_64_96_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_20_64_96_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_85_64_96_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_20_64_96_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_85_64_96_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_85_64_96_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_20_64_96_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_20_64_96_finally;
+        throw %tmp.141;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_20_64_96_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_64_20_64_96_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 65 20 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_20_65_83_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_20_65_83_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_20_65_83_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_20_65_83_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_20_65_83_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_24_65_70_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 65 26 ]
+        %tmp.143 = lgetv %r.1;
+        symbol [ r %tmp.143 65 26 27 ];
+        %tmp.144 = lgetv %cur.6;
+        symbol [ cur %tmp.144 65 41 44 ];
+        %tmp.145 = as %tmp.144 { (!Null) };
+        %tmp.146 = "condition";
+        %tmp.147 = agetv %tmp.145 %tmp.146;
+        %tmp.148 = as %tmp.147 Number;
+        symbol [ Number %tmp.148 65 61 67 ];
+        symbol [ condition ? 65 28 37 ];
+        putv %tmp.143 :condition %tmp.148;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_24_65_70_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_20_65_83_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_20_65_83_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_20_65_83_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_20_65_83_catch:
+        %tmp.149 = exception;
+        push %tmp.149;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 65 72 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_20_65_83_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_72_65_83_end" ]
+        %e.19 = local;
+        symbol [ e %e.19 65 79 80 ];
+        %tmp.150 = dup %tmp.149;
+        lputv %e.19 %tmp.150;
+        symbol [ e %e.19 65 79 80 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_20_65_83_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_20_65_83_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_72_65_83_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_20_65_83_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_72_65_83_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_72_65_83_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_20_65_83_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_20_65_83_finally;
+        throw %tmp.149;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_20_65_83_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_65_20_65_83_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_46_33_66_16_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_46_16_66_16_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_46_16_66_16_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_16_67_12_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_12_67_114_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_12_67_114_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_12_67_114_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_12_67_114_catch:
+        %tmp.151 = exception;
+        push %tmp.151;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 67 14 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_12_67_114_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_67_14_67_114_end" ]
+        %wex.20 = local;
+        symbol [ wex %wex.20 67 21 24 ];
+        %tmp.152 = dup %tmp.151;
+        lputv %wex.20 %tmp.152;
+        symbol [ wex %wex.20 67 21 24 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_67_26_67_114_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 67 28 ]
+        symbol [ System %tmp.153 67 28 34 ];
+        %tmp.153 = getm $.Toybox.System;
+        symbol [ println %tmp.154 67 35 42 ];
+        %tmp.154 = getv function %tmp.153 :println;
+        %tmp.155 = "VFRWeather.read: Weather API read failed: ";
+        %tmp.156 = lgetv %wex.20;
+        symbol [ wex %tmp.156 67 90 93 ];
+        symbol [ getErrorMessage %tmp.157 67 94 109 ];
+        %tmp.157 = getv function %tmp.156 :getErrorMessage;
+        %tmp.158 = invoke %tmp.156 %tmp.157();
+        %tmp.159 = add %tmp.155 %tmp.158;
+        invoke %tmp.153 %tmp.154(%tmp.159);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_67_26_67_114_stop:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_12_67_114_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_12_67_114_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_67_14_67_114_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_12_67_114_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_67_14_67_114_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_67_14_67_114_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_12_67_114_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_12_67_114_finally;
+        throw %tmp.151;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_12_67_114_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_44_12_67_114_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_64_68_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_8_68_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_43_8_68_8_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 74 8 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_74_8_83_23_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_74_8_83_23_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_74_8_83_23_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_74_8_83_23_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_74_8_83_23_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_74_12_83_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 75 12 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_12_82_12_if_stmt:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_16_75_86_begin:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_16_75_69_begin:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_17_75_52_begin:
+        %tmp.160 = lgetv %r.1;
+        symbol [ r %tmp.160 75 17 18 ];
+        symbol [ cloudAlt %tmp.161 75 19 27 ];
+        %tmp.161 = getv %tmp.160 :cloudAlt;
+        %tmp.162 = null;
+        %tmp.163 = eq %tmp.161 %tmp.162;
+        bt %tmp.163 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_58_75_69_true;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_39_75_52_false:
+        %tmp.164 = lgetv %r.1;
+        symbol [ r %tmp.164 75 39 40 ];
+        symbol [ cloudAlt %tmp.165 75 41 49 ];
+        %tmp.165 = getv %tmp.164 :cloudAlt;
+        %tmp.166 = 0;
+        %tmp.167 = lt %tmp.165 %tmp.166;
+        push %tmp.167;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_39_75_52_end:
+        %tmp.168 = phi [%tmp.163 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_17_75_52_begin] [%tmp.167 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_39_75_52_false] [%tmp.168 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_39_75_52_end];
+        bf %tmp.168 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_12_82_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_58_75_69_true:
+        %tmp.169 = lgetv %r.1;
+        symbol [ r %tmp.169 75 58 59 ];
+        symbol [ temp %tmp.170 75 60 64 ];
+        %tmp.170 = getv %tmp.169 :temp;
+        %tmp.171 = -999;
+        %tmp.172 = ne %tmp.170 %tmp.171;
+        push %tmp.172;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_58_75_69_end:
+        %tmp.173 = phi [%tmp.168 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_16_75_69_begin] [%tmp.172 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_58_75_69_true] [%tmp.173 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_58_75_69_end];
+        bf %tmp.173 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_12_82_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_76_75_86_true:
+        %tmp.174 = lgetv %r.1;
+        symbol [ r %tmp.174 75 76 77 ];
+        symbol [ dew %tmp.175 75 78 81 ];
+        %tmp.175 = getv %tmp.174 :dew;
+        %tmp.176 = -999;
+        %tmp.177 = ne %tmp.175 %tmp.176;
+        push %tmp.177;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_76_75_86_end:
+        %tmp.178 = phi [%tmp.173 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_16_75_86_begin] [%tmp.177 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_76_75_86_true] [%tmp.178 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_76_75_86_end];
+        bf %tmp.178 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_12_82_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_12_82_12_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_91_82_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 76 16 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_91_82_12_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_91_82_12_stop" ]
+        %delta.21 = local;
+        symbol [ delta %delta.21 76 20 25 ];
+        %tmp.179 = lgetv %r.1;
+        symbol [ r %tmp.179 76 29 30 ];
+        symbol [ temp %tmp.180 76 31 35 ];
+        %tmp.180 = getv %tmp.179 :temp;
+        %tmp.181 = lgetv %r.1;
+        symbol [ r %tmp.181 76 38 39 ];
+        symbol [ dew %tmp.182 76 40 43 ];
+        %tmp.182 = getv %tmp.181 :dew;
+        %tmp.183 = sub %tmp.180 %tmp.182;
+        symbol [ toFloat %tmp.184 76 45 52 ];
+        %tmp.184 = getv function %tmp.183 :toFloat;
+        %tmp.185 = invoke %tmp.183 %tmp.184();
+        lputv %delta.21 %tmp.185;
+        symbol [ delta %delta.21 76 20 25 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 77 16 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_77_16_81_16_if_stmt:
+        %tmp.186 = lgetv %delta.21;
+        symbol [ delta %tmp.186 77 20 25 ];
+        %tmp.187 = 0.0;
+        %tmp.188 = gt %tmp.186 %tmp.187;
+        bf %tmp.188 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_77_16_81_16_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_77_16_81_16_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_77_33_81_16_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 78 20 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_77_33_81_16_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_77_33_81_16_stop" ]
+        %cloudBaseFt.22 = local;
+        symbol [ cloudBaseFt %cloudBaseFt.22 78 24 35 ];
+        %tmp.189 = lgetv %delta.21;
+        symbol [ delta %tmp.189 78 39 44 ];
+        %tmp.190 = 400.0;
+        %tmp.191 = mul %tmp.189 %tmp.190;
+        symbol [ toFloat %tmp.192 78 54 61 ];
+        %tmp.192 = getv function %tmp.191 :toFloat;
+        %tmp.193 = invoke %tmp.191 %tmp.192();
+        lputv %cloudBaseFt.22 %tmp.193;
+        symbol [ cloudBaseFt %cloudBaseFt.22 78 24 35 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 79 20 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_77_33_81_16_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_77_33_81_16_stop" ]
+        %cloudBaseM.23 = local;
+        symbol [ cloudBaseM %cloudBaseM.23 79 24 34 ];
+        %tmp.194 = lgetv %cloudBaseFt.22;
+        symbol [ cloudBaseFt %tmp.194 79 38 49 ];
+        %tmp.195 = 3.28084;
+        %tmp.196 = div %tmp.194 %tmp.195;
+        symbol [ toNumber %tmp.197 79 61 69 ];
+        %tmp.197 = getv function %tmp.196 :toNumber;
+        %tmp.198 = invoke %tmp.196 %tmp.197();
+        lputv %cloudBaseM.23 %tmp.198;
+        symbol [ cloudBaseM %cloudBaseM.23 79 24 34 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 80 20 ]
+        %tmp.199 = lgetv %r.1;
+        symbol [ r %tmp.199 80 20 21 ];
+        %tmp.200 = lgetv %cloudBaseM.23;
+        symbol [ cloudBaseM %tmp.200 80 33 43 ];
+        symbol [ cloudAlt ? 80 22 30 ];
+        putv %tmp.199 :cloudAlt %tmp.200;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_77_33_81_16_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_77_16_81_16_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_77_16_81_16_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_91_82_12_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_12_82_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_75_12_82_12_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_74_12_83_8_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_74_8_83_23_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_74_8_83_23_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_74_8_83_23_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_74_8_83_23_catch:
+        %tmp.201 = exception;
+        push %tmp.201;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 83 10 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_74_8_83_23_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_83_10_83_23_end" ]
+        %ce.24 = local;
+        symbol [ ce %ce.24 83 17 19 ];
+        %tmp.202 = dup %tmp.201;
+        lputv %ce.24 %tmp.202;
+        symbol [ ce %ce.24 83 17 19 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_74_8_83_23_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_74_8_83_23_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_83_10_83_23_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_74_8_83_23_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_83_10_83_23_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_83_10_83_23_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_74_8_83_23_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_74_8_83_23_finally;
+        throw %tmp.201;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_74_8_83_23_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_74_8_83_23_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 85 8 ]
+        %tmp.203 = lgetv %r.1;
+        symbol [ r %tmp.203 85 15 16 ];
+        ret %tmp.203;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_31_52_86_4_stop:
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 89; @symbol_functiondef = [readDefault,89,20,31]; @symbol_return<0> = [VFRWeatherResult,89,37,53]; ]
+    static
+    function readDefault() as VFRWeatherResult {
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_89_54_91_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc" 90 8 ]
+        symbol [ VFRWeather %tmp.2 90 15 25 ];
+        %tmp.2 = getv ? :VFRWeather;
+        symbol [ read %tmp.3 90 26 30 ];
+        %tmp.3 = getv function %tmp.2 :read;
+        %tmp.4 = self;
+        symbol [ getApp %tmp.5 90 31 37 ];
+        %tmp.5 = getv function %tmp.4 :getApp;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        symbol [ getComms %tmp.7 90 40 48 ];
+        %tmp.7 = getv function %tmp.6 :getComms;
+        %tmp.8 = invoke %tmp.6 %tmp.7();
+        %tmp.9 = invoke %tmp.2 %tmp.3(%tmp.8);
+        ret %tmp.9;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRWeather_mc_89_54_91_4_stop:
+    }
+}
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRWeather.mc"; @line = 1; ]
+<init> {
+}

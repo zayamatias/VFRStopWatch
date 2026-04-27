@@ -1,0 +1,241 @@
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Position,1,14,22]; ]
+import Toybox.Position;
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Lang,2,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Math,3,14,18]; ]
+import Toybox.Math;
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc"; @line = 5; @symbol_classdef = [VFRHeading,5,6,16]; ]
+class VFRHeading {
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc"; @line = 5; ]
+    <init> {
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc"; @line = 5; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc"; @line = 7; @symbol_functiondef = [getHeadingDeg,7,20,33]; @symbol_return<0> = [Number,7,39,45]; ]
+    static
+    function getHeadingDeg() as Number {
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_7_46_23_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 8 8 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_12_20_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 9 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_12_20_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_12_20_8_stop" ]
+        %pInfo.1 = local;
+        symbol [ pInfo %pInfo.1 9 16 21 ];
+        symbol [ Position %tmp.1 9 24 32 ];
+        %tmp.1 = getm $.Toybox.Position;
+        symbol [ getInfo %tmp.2 9 33 40 ];
+        %tmp.2 = getv function %tmp.1 :getInfo;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %pInfo.1 %tmp.3;
+        symbol [ pInfo %pInfo.1 9 16 21 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 10 12 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_10_12_10_44_if_stmt:
+        %tmp.4 = lgetv %pInfo.1;
+        symbol [ pInfo %tmp.4 10 16 21 ];
+        %tmp.5 = null;
+        %tmp.6 = eq %tmp.4 %tmp.5;
+        bf %tmp.6 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_10_12_10_44_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_10_12_10_44_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_10_31_10_44_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 10 33 ]
+        %tmp.7 = -1;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_finally;
+        ret %tmp.7;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_10_31_10_44_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_10_12_10_44_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_10_12_10_44_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 13 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_12_20_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_12_20_8_stop" ]
+        %cval.2 = local;
+        symbol [ cval %cval.2 13 16 20 ];
+        %tmp.8 = null;
+        lputv %cval.2 %tmp.8;
+        symbol [ cval %cval.2 13 16 20 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 14 12 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_12_14_69_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_12_14_69_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_12_14_69_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_12_14_69_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_12_14_69_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_16_14_42_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 14 18 ]
+        %tmp.9 = lgetv %pInfo.1;
+        symbol [ pInfo %tmp.9 14 25 30 ];
+        %tmp.10 = "course";
+        %tmp.11 = agetv %tmp.9 %tmp.10;
+        lputv %cval.2 %tmp.11;
+        symbol [ cval %cval.2 14 18 22 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_16_14_42_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_12_14_69_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_12_14_69_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_12_14_69_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_12_14_69_catch:
+        %tmp.12 = exception;
+        push %tmp.12;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 14 44 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_12_14_69_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_44_14_69_end" ]
+        %e.3 = local;
+        symbol [ e %e.3 14 51 52 ];
+        %tmp.13 = dup %tmp.12;
+        lputv %e.3 %tmp.13;
+        symbol [ e %e.3 14 51 52 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_54_14_69_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 14 56 ]
+        %tmp.14 = null;
+        lputv %cval.2 %tmp.14;
+        symbol [ cval %cval.2 14 56 60 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_54_14_69_stop:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_12_14_69_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_12_14_69_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_44_14_69_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_12_14_69_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_44_14_69_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_44_14_69_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_12_14_69_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_12_14_69_finally;
+        throw %tmp.12;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_12_14_69_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_14_12_14_69_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 15 12 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_12_15_92_if_stmt:
+        %tmp.15 = lgetv %cval.2;
+        symbol [ cval %tmp.15 15 16 20 ];
+        %tmp.16 = null;
+        %tmp.17 = eq %tmp.15 %tmp.16;
+        bf %tmp.17 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_12_15_92_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_12_15_92_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_30_15_92_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 15 32 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_32_15_90_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_32_15_90_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_32_15_90_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_32_15_90_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_32_15_90_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_36_15_63_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 15 38 ]
+        %tmp.18 = lgetv %pInfo.1;
+        symbol [ pInfo %tmp.18 15 45 50 ];
+        %tmp.19 = "heading";
+        %tmp.20 = agetv %tmp.18 %tmp.19;
+        lputv %cval.2 %tmp.20;
+        symbol [ cval %cval.2 15 38 42 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_36_15_63_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_32_15_90_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_32_15_90_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_32_15_90_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_32_15_90_catch:
+        %tmp.21 = exception;
+        push %tmp.21;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 15 65 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_32_15_90_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_65_15_90_end" ]
+        %e.4 = local;
+        symbol [ e %e.4 15 72 73 ];
+        %tmp.22 = dup %tmp.21;
+        lputv %e.4 %tmp.22;
+        symbol [ e %e.4 15 72 73 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_75_15_90_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 15 77 ]
+        %tmp.23 = null;
+        lputv %cval.2 %tmp.23;
+        symbol [ cval %cval.2 15 77 81 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_75_15_90_stop:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_32_15_90_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_32_15_90_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_65_15_90_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_32_15_90_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_65_15_90_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_65_15_90_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_32_15_90_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_32_15_90_finally;
+        throw %tmp.21;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_32_15_90_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_32_15_90_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_30_15_92_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_12_15_92_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_15_12_15_92_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 16 12 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_16_12_16_43_if_stmt:
+        %tmp.24 = lgetv %cval.2;
+        symbol [ cval %tmp.24 16 16 20 ];
+        %tmp.25 = null;
+        %tmp.26 = eq %tmp.24 %tmp.25;
+        bf %tmp.26 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_16_12_16_43_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_16_12_16_43_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_16_30_16_43_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 16 32 ]
+        %tmp.27 = -1;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_finally;
+        ret %tmp.27;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_16_30_16_43_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_16_12_16_43_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_16_12_16_43_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 17 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_12_20_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_12_20_8_stop" ]
+        %deg.5 = local;
+        symbol [ deg %deg.5 17 16 19 ];
+        %tmp.28 = lgetv %cval.2;
+        symbol [ cval %tmp.28 17 22 26 ];
+        symbol [ toFloat %tmp.29 17 27 34 ];
+        %tmp.29 = getv function %tmp.28 :toFloat;
+        %tmp.30 = invoke %tmp.28 %tmp.29();
+        %tmp.31 = 180.0;
+        symbol [ Math %tmp.32 17 48 52 ];
+        %tmp.32 = getm $.Toybox.Math;
+        symbol [ PI %tmp.33 17 53 55 ];
+        %tmp.33 = getv %tmp.32 :PI;
+        %tmp.34 = div %tmp.31 %tmp.33;
+        %tmp.35 = mul %tmp.30 %tmp.34;
+        lputv %deg.5 %tmp.35;
+        symbol [ deg %deg.5 17 16 19 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 18 12 ]
+        %tmp.36 = lgetv %deg.5;
+        symbol [ deg %tmp.36 18 20 23 ];
+        %tmp.37 = 360.0;
+        %tmp.38 = mod %tmp.36 %tmp.37;
+        %tmp.39 = 360.0;
+        %tmp.40 = add %tmp.38 %tmp.39;
+        %tmp.41 = 360.0;
+        %tmp.42 = mod %tmp.40 %tmp.41;
+        lputv %deg.5 %tmp.42;
+        symbol [ deg %deg.5 18 12 15 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 19 12 ]
+        %tmp.43 = lgetv %deg.5;
+        symbol [ deg %tmp.43 19 19 22 ];
+        symbol [ toNumber %tmp.44 19 23 31 ];
+        %tmp.44 = getv function %tmp.43 :toNumber;
+        %tmp.45 = invoke %tmp.43 %tmp.44();
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_finally;
+        ret %tmp.45;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_12_20_8_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_catch:
+        %tmp.46 = exception;
+        push %tmp.46;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 20 10 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_20_10_22_8_end" ]
+        %ex.6 = local;
+        symbol [ ex %ex.6 20 17 19 ];
+        %tmp.47 = dup %tmp.46;
+        lputv %ex.6 %tmp.47;
+        symbol [ ex %ex.6 20 17 19 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_20_21_22_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc" 21 12 ]
+        pop;
+        %tmp.48 = -1;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_finally;
+        ret %tmp.48;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_20_21_22_8_stop:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_20_10_22_8_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_20_10_22_8_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_20_10_22_8_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_finally;
+        throw %tmp.46;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_8_8_22_8_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRHeading_mc_7_46_23_4_stop:
+    }
+}
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRHeading.mc"; @line = 1; ]
+<init> {
+}

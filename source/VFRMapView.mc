@@ -86,11 +86,12 @@ class VFRMapView extends WatchUi.MapView {
         var cx = dc.getWidth()  / 2;
         var cy = dc.getHeight() / 2;
 
-        var pInfo  = Position.getInfo();
         var hdgRad = 0.0;
-        var hasHdg = (pInfo != null && pInfo.heading != null);
-        if (hasHdg) {
-            hdgRad = pInfo.heading.toFloat();
+        var hasHdg = false;
+        var hdgDeg = VFRHeading.getHeadingDeg();
+        if (hdgDeg >= 0) {
+            hdgRad = (hdgDeg * (Math.PI / 180.0)).toFloat();
+            hasHdg = true;
         }
 
         dc.setPenWidth(2);
@@ -103,7 +104,7 @@ class VFRMapView extends WatchUi.MapView {
             return;
         }
 
-        // Heading is in radians, 0 = north, clockwise positive (standard GPS convention).
+        // Heading (GPS course converted to radians): 0 = north, clockwise positive.
         // Screen convention: north = up, so:
         //   nose direction  = (sin(hdg), -cos(hdg))
         //   wing direction  = (cos(hdg),  sin(hdg))
@@ -187,10 +188,12 @@ class VFRMapView extends WatchUi.MapView {
 // Delegate: BACK/SELECT pops the map; UP (onPreviousPage) cycles zoom.
 class VFRMapDelegate extends WatchUi.BehaviorDelegate {
     private var _view as VFRMapView;
+    private var _main as VFRStopWatchView;
 
     function initialize(main as VFRStopWatchView, view as VFRMapView) {
         BehaviorDelegate.initialize();
         _view = view;
+        _main = main;
     }
 
     function onBack() as Boolean {
@@ -206,6 +209,22 @@ class VFRMapDelegate extends WatchUi.BehaviorDelegate {
     // UP button — cycle through 5 zoom levels
     function onPreviousPage() as Boolean {
         _view.cycleZoom();
+        return true;
+    }
+
+    // DOWN (next page) — close map and the quick-info stack, returning to stopwatch
+    function onNextPage() as Boolean {
+        try {
+            // Pop the map view itself
+            WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+            // Pop any remaining quick-info views (hdg, weather1, weather2)
+            WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+            WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+            // Mark quick-info as closed
+            try { _main.quickInfoShown = false; } catch (e) {}
+        } catch (ex) {
+            System.println("Error popping quick-info stack: " + ex.getErrorMessage());
+        }
         return true;
     }
 }

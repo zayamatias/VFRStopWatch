@@ -1,6 +1,7 @@
 import Toybox.Communications;
 import Toybox.Lang;
 import Toybox.System;
+import Toybox.Application;
 using Toybox.System as Sys;
 
 // Transmit result callback — forwards errors back to VFRPhoneComms so the
@@ -45,6 +46,8 @@ class VFRPhoneComms {
     var windSpeedKt as Number = -1;
     var tempC       as Number = -999;
     var dewpointC   as Number = -999;
+    // Last raw weather payload (stringified) for on-device debugging
+    var lastRawWeather as String = "";
     // Timestamp (System.getTimer()) of the last handshake transmit attempt
     // UI reads this to detect extended retry/failure (>30s)
     var lastHandshakeAt as Number = 0;
@@ -255,6 +258,16 @@ class VFRPhoneComms {
 
         } else if (typ.equals("weather")) {
             // Phone pushed weather: {type:"weather",wind_dir:30,wind_spd:12,temp_c:24,dew_c:-4}
+            try { lastRawWeather = d.toString(); } catch (e) { lastRawWeather = ""; }
+            System.println("RAW WEATHER MSG: " + lastRawWeather);
+            // Persist raw payload to storage (when available) and always
+            // mirror into Application.Properties via VFRLogger.
+            try {
+                var ok = VFRLogger.appendRaw("phone", lastRawWeather);
+                System.println("VFRComms: VFRLogger.appendRaw returned " + ok.toString());
+            } catch (exLog) {
+                System.println("VFRComms LOG err: " + exLog.getErrorMessage());
+            }
             var wd  = d["wind_dir"]; if (wd  != null) { windDirDeg  = wd  as Number; }
             var ws  = d["wind_spd"]; if (ws  != null) { windSpeedKt = ws  as Number; }
             var tc  = d["temp_c"];  if (tc  != null) { tempC       = tc  as Number; }
@@ -293,4 +306,58 @@ class VFRPhoneComms {
             System.println("VFRComms _tx ex: " + ex.getErrorMessage());
         }
     }
+
+    // Console-export helper: prints the last N entries stored in
+    // Application.Properties to System.println so they can be captured
+    // via `monkeydo` logs or device logging tools.
+    function exportLogsToConsole(limit as Number) as Void {
+        try {
+            var maxEntries = 200;
+            if (limit == null || limit <= 0 || limit > maxEntries) { limit = maxEntries; }
+            var idxVal = -1;
+            try { idxVal = (Application.Properties.getValue("VFR_log_index") as Number); } catch (e) { idxVal = -1; }
+            if (idxVal == null || idxVal < 0) { idxVal = -1; }
+            System.println("VFRComms: exporting up to " + limit.toString() + " log entries (current index=" + idxVal.toString() + ")");
+            var printed = 0;
+            var start = (idxVal + 1) % maxEntries; // oldest entry
+            for (var i = 0; i < maxEntries && printed < limit; i++) {
+                var pos = (start + i) % maxEntries;
+                try {
+                    var entry = Application.Properties.getValue("VFR_log_" + pos.toString());
+                    if (entry != null) {
+                        System.println("LOG[" + pos.toString() + "] " + (entry as String));
+                        printed++;
+                    }
+                } catch (eget) { }
+            }
+            if (printed == 0) { System.println("VFRComms: no log entries found"); }
+        } catch (ex) { System.println("VFRComms exportLogsToConsole failed: " + ex.getErrorMessage()); }
+    }
+
+    /*
+    // OPTIONAL: Real file write helper using Toybox.Storage.
+    // NOTE: This requires the target device/SDK to expose Toybox.Storage.
+    // The Connect IQ SDK on this machine does NOT include Toybox.Storage, so
+    // importing and enabling this code will fail compilation locally. To
+    // enable real on-watch file logging, do the following on your development
+    // machine that targets the actual device runtime or a SDK with Storage:
+    // 1. Uncomment the `import Toybox.Storage;` at the top of this file.
+    // 2. Uncomment this function and call it instead of the Properties fallback.
+    // 3. Build & install on-device — the watch will then write a real file
+    //    named "VFR_lastRawWeather.log" in the app sandbox (visible to device tools).
+    function _appendLogToFileStorage(entry as String) as Boolean {
+        try {
+            var fname = "VFR_lastRawWeather.log";
+            var fh = Storage.open(fname, Storage.MODE_APPEND);
+            if (fh == null) { return false; }
+            fh.write(entry);
+            fh.write("\n");
+            fh.close();
+            return true;
+        } catch (ex) {
+            System.println("VFRComms STORAGE write failed: " + ex.getErrorMessage());
+            return false;
+        }
+    }
+    */
 }

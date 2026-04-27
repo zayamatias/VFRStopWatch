@@ -45,7 +45,7 @@ class VFRSummaryView extends WatchUi.View {
         _main.drawBezelBackground(dc);
 
         // Black inner circle
-        var sepR = ((minWh.toFloat() / 2.0) - 17.0).toNumber();
+        var sepR = ((minWh.toFloat() / 2.0) - 27.0).toNumber();
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.fillCircle(cx, cy, sepR);
 
