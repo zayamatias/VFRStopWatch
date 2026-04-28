@@ -16,7 +16,9 @@
 - 2026-04-27: CRASH DEBUGGING — to capture a full crash log run: `open ConnectIQ.app && sleep 6 && monkeydo bin/VFRStopWatch.prg fenix7pro 2>&1 | tee /tmp/vfr_crash.log` then `cat /tmp/vfr_crash.log`; a clean run exits 0 with only VFRComms/backup messages; a crash prints a stack trace with "UnhandledExceptionError" or "UnexpectedTypeException" before exit.
 - 2026-04-27: "Unable to connect to simulator" from `monkeydo` means the ConnectIQ.app is not yet running; always open it and wait at least 5–6 seconds before invoking `monkeydo` — a reported "crash on launch" may actually be this connection failure, not a real runtime crash.
 - 2026-04-27: SHOW_BEZEL_ANGLE_DEBUG must be set to `false` in production; leaving it `true` draws yellow slot dots, a red crosshair, and orange quadrant radial guides over the watch face — disable after calibration is complete.
-- 2026-04-27: BEZEL ANCHORS (current implementation) — angles and per-quadrant text radii as coded in `drawBezelBackground`:
+- 2026-04-28: Stack Overflow in drawBezelBackground fixed by removing ~35 dead local variables (legacy numSlots*, span*, rHDG/rGS/rALT/rUTC/rQNH/rLT, angleLT/UTC, clock strings, drawNow, debug block) left over from the old drawRotatedMetric API — Connect IQ VM overflows when a function frame exceeds its local-variable limit and then calls a sub-function.
+- 2026-04-28: Sensor.Info.pressure is in Pascals; divide by 100 for hPa (QNH display). Weather provider pressure >5000 is also in Pa; use the same /100 heuristic.
+- 2026-04-28: BEZEL ANCHORS (current implementation) — angles and per-quadrant text radii as coded in `drawBezelBackground`:
 	- angleHDG = 135.0°, angleGS = 45.0°, angleALT = 225.0°, angleQNH = 315.0°.
 	- rTextHDG = radiusText, rTextGS = radiusText, rTextALT = radiusText + 10.0, rTextQNH = radiusText + 10.0.
 	- `reverseChars` flags: HDG=false, GS=false, ALT=true, QNH=true.

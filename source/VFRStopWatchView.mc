@@ -445,7 +445,7 @@ class VFRStopWatchView extends WatchUi.View {
                     // Track max ground speed (knots)
                     try {
                         var gsKt = ((spd as Float) * 1.94384).toFloat();
-                                if (running && gsKt > maxGsKt) { maxGsKt = gsKt; }
+                                    if (running && gsKt > maxGsKt) { maxGsKt = gsKt; }
                             // accumulate for average GS
                             if (running) {
                                 gsSumKt = (gsSumKt as Float) + (gsKt as Float);
@@ -667,20 +667,6 @@ class VFRStopWatchView extends WatchUi.View {
         }
         dc.clear();
 
-        // Build clock strings
-        var localTime = System.getClockTime();
-        var lh = localTime.hour;
-        var lm = localTime.min;
-        var lhStr = lh < 10 ? "0" + lh.toString() : lh.toString();
-        var lmStr = lm < 10 ? "0" + lm.toString() : lm.toString();
-
-        var utcMoment = Time.now();
-        var utcInfo = Gregorian.utcInfo(utcMoment, Time.FORMAT_SHORT);
-        var uh = utcInfo.hour;
-        var um = utcInfo.min;
-        var uhStr = uh < 10 ? "0" + uh.toString() : uh.toString();
-        var umStr = um < 10 ? "0" + um.toString() : um.toString();
-
         var minWh = (w < h) ? w : h;
         var margin = (minWh * 8) / 100;
         var radius = (minWh / 2) - margin;
@@ -725,7 +711,6 @@ class VFRStopWatchView extends WatchUi.View {
         } catch (ex3) { }
 
         // --- Bezel data strings ---
-        var drawNow = now;
 
         // Heading: use GPS-derived `course` (degrees) when available
         var hdgStr = "--";
@@ -758,13 +743,10 @@ class VFRStopWatchView extends WatchUi.View {
         var altLbl    = "ALT";
         try {
             var sInfoDraw = Sensor.getInfo();
-            // Debug: print sensor object and raw fields to help diagnose missing pressure
-            try { } catch (e) { }
-
             if (sInfoDraw != null) {
                 if (sInfoDraw.pressure != null) {
-                    // Truncate fractional part — only show digits before decimal
-                    qnhValStr = Math.floor((sInfoDraw.pressure as Float)).toNumber().toString();
+                    // Sensor returns Pascals; divide by 100 for hPa (QNH)
+                    qnhValStr = (Math.floor((sInfoDraw.pressure as Float) / 100.0)).toNumber().toString();
                 }
                 if (sInfoDraw.altitude != null) {
                     var altFt = ((sInfoDraw.altitude as Float) * 3.28084).toNumber();
@@ -786,7 +768,13 @@ class VFRStopWatchView extends WatchUi.View {
                         if (p == null) { try { p = wcur["seaLevelPressure"]; } catch (e2) { p = null; } }
                         if (p == null) { try { p = wcur["pressureSeaLevel"]; } catch (e3) { p = null; } }
                         if (p != null) {
-                            try { qnhValStr = Math.floor((p as Float)).toNumber().toString(); } catch (pe) { try { qnhValStr = Math.floor((p as Number).toFloat()).toNumber().toString(); } catch (pe2) { } }
+                            try {
+                                var pf = (p as Float);
+                                if (pf > 5000.0) { pf = pf / 100.0; }
+                                qnhValStr = Math.floor(pf).toNumber().toString();
+                            } catch (pe) {
+                                try { qnhValStr = p.toString(); } catch (pe2) { }
+                            }
                         }
                     }
                 } catch (we2) { }
@@ -794,77 +782,23 @@ class VFRStopWatchView extends WatchUi.View {
         } catch (ex) { }
 
         // Append tendency indicator to the alt string
-        if (running && tendency != 0 && drawNow < tendencyUntil) {
+        if (running && tendency != 0 && now < tendencyUntil) {
             altStr = altStr + (tendency > 0 ? "+" : "-");
         }
-
-        // Debug: report what we actually saw for sensor pressure and provider
-        try {
-            var sensorP = "null";
-            try { var si2 = Sensor.getInfo(); if (si2 != null && si2.pressure != null) { sensorP = si2.pressure.toString(); } } catch (e) { }
-            var prov = null;
-            try { prov = Weather.getCurrentConditions(); } catch (e) { prov = null; }
-            try { System.println("DBG QNH: qnhValStr=" + qnhValStr + " sensorP=" + sensorP); } catch (e) {}
-            if (prov == null) {
-                try { System.println("DBG QNH provider: null"); } catch (e) {}
-            } else {
-                try {
-                    if (prov instanceof Lang.Dictionary) {
-                        var pkeys = prov.keys();
-                        try { System.println("DBG QNH provider keys: " + pkeys.toString()); } catch (e) {}
-                        for (var pi = 0; pi < pkeys.size(); pi++) {
-                            var pk = pkeys[pi];
-                            try { System.println("DBG provider[" + pk.toString() + "] = " + (prov[pk] != null ? prov[pk].toString() : "null")); } catch (e) {}
-                        }
-                    } else {
-                        try { System.println("DBG QNH provider non-dict: " + prov.toString()); } catch (e) {}
-                        try { System.println("DBG provider.pressure: " + (prov.pressure != null ? prov.pressure.toString() : "null")); } catch (e) {}
-                    }
-                } catch (e) {}
-            }
-        } catch (e) { }
 
         // --- Radial bezel geometry ---
         var R = (minWh / 2).toFloat();
         var radiusOuter = (R - 2.0).toFloat();
         var sepRadius = (radiusOuter - 25.0).toNumber();
-        var radiusInner  = (radiusOuter - 34.0).toFloat();
-        var radiusCenter = ((radiusInner + radiusOuter) / 2.0).toFloat();
+        var radiusCenter = (radiusOuter - 17.0).toFloat();
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         dc.setPenWidth(1);
         dc.drawCircle(cx, cy, sepRadius);
 
-        var slotDeg = 360.0 / 62.0;
-        var numSlotsHDG = 9;
-        var numSlotsGS  = 11;
-        var numSlotsALT = 11;
-        var numSlotsUTC = 11;
-        var numSlotsQNH = 10;
-        var numSlotsLT  = 10;
-        var spanHDG = numSlotsHDG * slotDeg;
-        var spanGS  = numSlotsGS  * slotDeg;
-        var spanALT = numSlotsALT * slotDeg;
-        var spanUTC = numSlotsUTC * slotDeg;
-        var spanQNH = numSlotsQNH * slotDeg;
-        var spanLT  = numSlotsLT  * slotDeg;
-        // User-requested bezel angles (degrees):
-        //  - HDG centered at 270 + 45 = 315°
-        //  - GS centered at 45°
-        //  - QNH centered at 135°
-        //  - ALT centered at 225°
         var angleHDG = 135.0;
         var angleGS  = 45.0;
         var angleQNH = 315.0;
         var angleALT = 225.0;
-        // Keep legacy angle vars for completeness
-        var angleLT  = 225.0;
-        var angleUTC = 330.0;
-        var rHDG = (radiusCenter - 2.0).toNumber();
-        var rGS  = (radiusCenter - 6.0).toNumber();
-        var rALT = (radiusCenter - 6.0).toNumber();
-        var rUTC = (radiusCenter + 7.0).toNumber();
-        var rQNH = (radiusCenter + 7.0).toNumber();
-        var rLT  = (radiusCenter + 7.0).toNumber();
 
         var qnhDisplay = qnhValStr;
         // Ensure we never show decimals: operate on the string form only
@@ -887,6 +821,7 @@ class VFRStopWatchView extends WatchUi.View {
         if (qnhDisplay == "--" or qnhDisplay == "") {
             qnhDisplay = "----";
         } else {
+            if (qnhDisplay.length() > 4) { qnhDisplay = qnhDisplay.substring(0, 4); }
             while (qnhDisplay.length() < 4) {
                 qnhDisplay = "-" + qnhDisplay;
             }
