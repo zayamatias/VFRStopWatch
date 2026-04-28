@@ -180,7 +180,7 @@ class VFRMapView extends WatchUi.MapView {
                 })
             );
         } catch (ex) {
-            System.println("VFRMapView _updateArea: " + ex.getErrorMessage());
+                // Debug print removed
         }
     }
 }
@@ -223,7 +223,7 @@ class VFRMapDelegate extends WatchUi.BehaviorDelegate {
             // Mark quick-info as closed
             try { _main.quickInfoShown = false; } catch (e) {}
         } catch (ex) {
-            System.println("Error popping quick-info stack: " + ex.getErrorMessage());
+              // Debug print removed
         }
         return true;
     }

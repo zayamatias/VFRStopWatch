@@ -122,7 +122,6 @@ class VFRQuickInfoWeather2Delegate extends WatchUi.BehaviorDelegate {
                     var mapView = new VFRMapView(_main);
                     WatchUi.pushView(mapView, new VFRMapDelegate(_main, mapView), WatchUi.SLIDE_IMMEDIATE);
                 } catch (ex) {
-                    System.println("Map push failed: " + ex.getErrorMessage());
                 }
             }
             return true;
@@ -134,7 +133,7 @@ class VFRQuickInfoWeather2Delegate extends WatchUi.BehaviorDelegate {
             try {
                 var mapView = new VFRMapView(_main);
                 WatchUi.pushView(mapView, new VFRMapDelegate(_main, mapView), WatchUi.SLIDE_IMMEDIATE);
-            } catch (ex) { System.println("Map push failed: " + ex.getErrorMessage()); }
+            } catch (ex) { }
         }
         return true;
     }

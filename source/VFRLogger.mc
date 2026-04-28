@@ -35,38 +35,16 @@ class VFRLogger {
                 Application.Properties.setValue("VFR_lastRawPayload", line);
                 Application.Properties.setValue("VFR_lastRawPayload_ts", ts);
             } catch (pex) {
-                try { System.println("VFRLogger: APPPROP write failed: " + pex.getErrorMessage()); } catch (e) { }
             }
 
         } catch (ex) {
-            try { System.println("VFRLogger.appendRaw top-level error: " + ex.getErrorMessage()); } catch (e) { }
             return false;
         }
         return wroteToStorage;
     }
 
     static function exportToConsole(limit as Number) as Void {
-        try {
-            var maxEntries = MAX_PROP_ENTRIES;
-            if (limit == null || limit <= 0 || limit > maxEntries) { limit = maxEntries; }
-            var idxVal = -1;
-            try { idxVal = (Application.Properties.getValue("VFR_log_index") as Number); } catch (e) { idxVal = -1; }
-            if (idxVal == null || idxVal < 0) { idxVal = -1; }
-            System.println("VFRLogger: exporting up to " + limit.toString() + " entries (current index=" + idxVal.toString() + ")");
-            var printed = 0;
-            var start = (idxVal + 1) % maxEntries;
-            for (var i = 0; i < maxEntries && printed < limit; i++) {
-                var pos = (start + i) % maxEntries;
-                try {
-                    var entry = Application.Properties.getValue("VFR_log_" + pos.toString());
-                    if (entry != null) {
-                        System.println("LOG[" + pos.toString() + "] " + (entry as String));
-                        printed++;
-                    }
-                } catch (eget) { }
-            }
-            if (printed == 0) { System.println("VFRLogger: no entries"); }
-        } catch (ex) { try { System.println("VFRLogger export failed: " + ex.getErrorMessage()); } catch (e2) { } }
+        return;
     }
     // Helper: write to app sandbox file via Toybox.Storage. Returns true
     // on success. The Storage API is available on-device; on SDKs that

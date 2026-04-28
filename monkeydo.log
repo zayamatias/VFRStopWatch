@@ -1,0 +1,15 @@
+VFRComms: messagesRegistered=true
+VFRComms: Communications.transmit? yes
+VFRComms: phoneConnected? yes
+VFRComms: TX handshake
+DBG QNH: qnhValStr=-- sensorP=null
+DBG QNH provider non-dict: Obj: 202
+DBG provider.pressure: 109346.382812
+
+Error: Stack Overflow Error
+Details: Failed invoking <symbol>
+Stack: 
+  - drawLabelInQuadrant() at /Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc:1345 0x100077df 
+  - drawBezelBackground() at /Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc:952 0x10004fcb 
+  - onUpdate() at /Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchView.mc:613 0x10006942 
+Encountered an app crash.

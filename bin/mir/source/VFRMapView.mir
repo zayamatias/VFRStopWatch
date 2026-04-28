@@ -1101,21 +1101,6 @@ _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRMapView_mc
         %tmp.106 = dup %tmp.105;
         lputv %ex.8 %tmp.106;
         symbol [ ex %ex.8 182 17 19 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRMapView_mc_182_21_184_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRMapView.mc" 183 12 ]
-        symbol [ System %tmp.107 183 12 18 ];
-        %tmp.107 = getm $.Toybox.System;
-        symbol [ println %tmp.108 183 19 26 ];
-        %tmp.108 = getv function %tmp.107 :println;
-        %tmp.109 = "VFRMapView _updateArea: ";
-        %tmp.110 = lgetv %ex.8;
-        symbol [ ex %tmp.110 183 56 58 ];
-        symbol [ getErrorMessage %tmp.111 183 59 74 ];
-        %tmp.111 = getv function %tmp.110 :getErrorMessage;
-        %tmp.112 = invoke %tmp.110 %tmp.111();
-        %tmp.113 = add %tmp.109 %tmp.112;
-        invoke %tmp.107 %tmp.108(%tmp.113);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRMapView_mc_182_21_184_8_stop:
         jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRMapView_mc_159_8_184_8_finally;
         pop;
         goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRMapView_mc_159_8_184_8_end;
@@ -1300,21 +1285,6 @@ _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRMapView_mc
         %tmp.18 = dup %tmp.17;
         lputv %ex.2 %tmp.18;
         symbol [ ex %ex.2 225 17 19 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRMapView_mc_225_21_227_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRMapView.mc" 226 12 ]
-        symbol [ System %tmp.19 226 12 18 ];
-        %tmp.19 = getm $.Toybox.System;
-        symbol [ println %tmp.20 226 19 26 ];
-        %tmp.20 = getv function %tmp.19 :println;
-        %tmp.21 = "Error popping quick-info stack: ";
-        %tmp.22 = lgetv %ex.2;
-        symbol [ ex %tmp.22 226 64 66 ];
-        symbol [ getErrorMessage %tmp.23 226 67 82 ];
-        %tmp.23 = getv function %tmp.22 :getErrorMessage;
-        %tmp.24 = invoke %tmp.22 %tmp.23();
-        %tmp.25 = add %tmp.21 %tmp.24;
-        invoke %tmp.19 %tmp.20(%tmp.25);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRMapView_mc_225_21_227_8_stop:
         jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRMapView_mc_217_8_227_8_finally;
         pop;
         goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRMapView_mc_217_8_227_8_end;
@@ -1326,8 +1296,8 @@ _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRMapView_mc
         jsrret;
 _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRMapView_mc_217_8_227_8_end:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRMapView.mc" 228 8 ]
-        %tmp.26 = true;
-        ret %tmp.26;
+        %tmp.19 = true;
+        ret %tmp.19;
 _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRMapView_mc_216_37_229_4_stop:
     }
 }

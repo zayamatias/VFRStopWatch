@@ -41,6 +41,21 @@ Example entry:
 
 - 2026-04-27: `monkeyc -f monkey.jungle` must be used instead of `manifest.xml` to avoid jungle parser StackOverflowError.
 
+**Typed object access (important):**
+
+- 2026-04-27: Connect IQ does NOT support reflection or dynamic symbol lookup on typed objects. `Position.Info` and other typed objects must be accessed with dot syntax (for example `pInfo.course`, `pInfo.heading`, `pInfo.latitude`). Attempts to use `pInfo["course"]` or `pInfo[:course]` will either return `null`, cause an "Undefined symbol" compile error, or crash at runtime depending on SDK version. The crash we observed was caused by `pInfo[:course]` triggering a runtime lookup for symbol `:course` that doesn't exist. The correct, portable pattern is:
+
+```monkeyc
+var pInfo = Position.getInfo();
+if (pInfo != null && pInfo.course != null) {
+  var deg = pInfo.course.toFloat();
+  deg = ((deg % 360) + 360) % 360;
+  // use Math.round/degs as needed for display
+}
+```
+
+Replace all dynamic access with dot access to restore heading and avoid portability issues.
+
 ## BEZEL RENDERING SNAPSHOT (HISTORIC, DO NOT EDIT)
 
 The bezel layout in this project is intentionally stable. The watchface must only show four bezel metrics in fixed quadrants: HDG (top), GS (right), ALT (bottom), QNH (left).

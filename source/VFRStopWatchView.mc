@@ -251,10 +251,8 @@ class VFRStopWatchView extends WatchUi.View {
                     var alt = null;
                     if (sInfo != null && sInfo.altitude != null) {
                         alt = (sInfo.altitude as Float);
-                        System.println("onPosition: using Sensor.altitude (baro) = " + alt.toString());
                     } else if (info.altitude != null) {
                         alt = (info.altitude as Float);
-                        System.println("onPosition: using Position.altitude (GPS) = " + alt.toString());
                     }
                     if (alt != null) {
                         // Track max altitude during an active trip
@@ -294,10 +292,8 @@ class VFRStopWatchView extends WatchUi.View {
                             var paFt = 145366.45 * (1.0 - Math.pow((p / 1013.25), 0.190284));
                             if (!transitionActive && paFt >= transitionAltitudeFt) {
                                 transitionActive = true;
-                                System.println("Transition ACTIVE at paFt=" + paFt.toString());
                             } else if (transitionActive && paFt <= (transitionAltitudeFt - transitionExitOffsetFt)) {
                                 transitionActive = false;
-                                System.println("Transition CLEARED at paFt=" + paFt.toString());
                             }
                         } else {
                             if (lastAltitudeMeters != 0) {
@@ -340,7 +336,6 @@ class VFRStopWatchView extends WatchUi.View {
                     :subSport => ActivityRecording.SUB_SPORT_GENERIC
                 });
                 _session.start();
-                System.println("ActivityRecording session started");
             }
             // Notify phone of flight start
             var commsStart = getApp().getComms();
@@ -356,7 +351,6 @@ class VFRStopWatchView extends WatchUi.View {
             var curElapsed = now - startTime;
             nextVibrateAt = curElapsed + timerIntervalMs;
             checkpointHit = false;
-            System.println("Interval started; nextVibrateAt=" + nextVibrateAt.toString());
             WatchUi.requestUpdate();
         } else {
             // Third press (running and checkpointActive): stop the stopwatch
@@ -372,7 +366,6 @@ class VFRStopWatchView extends WatchUi.View {
             }
             _session.discard();
             _session = null;
-            System.println("ActivityRecording session discarded on reset");
         }
         running = false;
         elapsed = 0;
@@ -452,9 +445,7 @@ class VFRStopWatchView extends WatchUi.View {
                     // Track max ground speed (knots)
                     try {
                         var gsKt = ((spd as Float) * 1.94384).toFloat();
-                            if (running && gsKt > maxGsKt) { 
-                                maxGsKt = gsKt; 
-                            }
+                                if (running && gsKt > maxGsKt) { maxGsKt = gsKt; }
                             // accumulate for average GS
                             if (running) {
                                 gsSumKt = (gsSumKt as Float) + (gsKt as Float);
@@ -467,14 +458,11 @@ class VFRStopWatchView extends WatchUi.View {
 
             // Timer checkpoint: vibrate + snapshot km (only when activated)
             if (checkpointActive && timerIntervalMs > 0 && elapsed >= nextVibrateAt) {
-                System.println("CHECKPOINT HIT: elapsed=" + elapsed + " nextVibrateAt=" + nextVibrateAt);
                 kmAtCheckpoint = totalDistanceM / 1000.0;
                 nmAtCheckpoint = totalDistanceM / 1852.0;
                 checkpointHit = true;
                 nextVibrateAt += timerIntervalMs;
-                System.println("Calling doFiveMinAlert...");
                 doFiveMinAlert();
-                System.println("doFiveMinAlert returned OK");
             }
             // 30-minute fuel check: flash stopwatch colours and vibrate
             if (elapsed >= nextFuelCheckAt) {
@@ -511,7 +499,6 @@ class VFRStopWatchView extends WatchUi.View {
                 saveBackupProperties();
                 lastBackupMillis = now;
             } catch (ex) {
-                System.println("backup failed: " + ex.getErrorMessage());
             }
         }
 
@@ -546,7 +533,7 @@ class VFRStopWatchView extends WatchUi.View {
             && gpsQuality >= 3 && ((System.getTimer() - lastPositionMillis) <= 5000)) {
             var spd = actInfo.currentSpeed;
             if (spd != null && (spd as Float) >= AUTO_START_SPEED_MS) {
-                System.println("Auto-start triggered: speed=" + (spd as Float).toString() + " m/s");
+                
                 startStop();
             }
         }
@@ -742,6 +729,7 @@ class VFRStopWatchView extends WatchUi.View {
 
         // Heading: use GPS-derived `course` (degrees) when available
         var hdgStr = "--";
+        var gsStr = "--";
         try {
             var hdg = VFRHeading.getHeadingDeg();
             if (hdg >= 0) {
@@ -752,8 +740,11 @@ class VFRStopWatchView extends WatchUi.View {
             }
         } catch (ex) { }
 
+        
+
+        
+
         // Ground speed (knots)
-        var gsStr = "--";
         try {
             var actInfoLocal = Activity.getActivityInfo();
             if (actInfoLocal != null && actInfoLocal.currentSpeed != null) {
@@ -767,6 +758,9 @@ class VFRStopWatchView extends WatchUi.View {
         var altLbl    = "ALT";
         try {
             var sInfoDraw = Sensor.getInfo();
+            // Debug: print sensor object and raw fields to help diagnose missing pressure
+            try { } catch (e) { }
+
             if (sInfoDraw != null) {
                 if (sInfoDraw.pressure != null) {
                     // Truncate fractional part — only show digits before decimal
@@ -781,12 +775,54 @@ class VFRStopWatchView extends WatchUi.View {
                     }
                 }
             }
+            // If device sensor didn't provide pressure, try system Weather provider
+            if ((qnhValStr == "--")) {
+                try {
+                    var wcur = null;
+                    try { wcur = Weather.getCurrentConditions(); } catch (we) { wcur = null; }
+                    if (wcur != null) {
+                        var p = null;
+                        try { p = wcur["pressure"]; } catch (e) { p = null; }
+                        if (p == null) { try { p = wcur["seaLevelPressure"]; } catch (e2) { p = null; } }
+                        if (p == null) { try { p = wcur["pressureSeaLevel"]; } catch (e3) { p = null; } }
+                        if (p != null) {
+                            try { qnhValStr = Math.floor((p as Float)).toNumber().toString(); } catch (pe) { try { qnhValStr = Math.floor((p as Number).toFloat()).toNumber().toString(); } catch (pe2) { } }
+                        }
+                    }
+                } catch (we2) { }
+            }
         } catch (ex) { }
 
         // Append tendency indicator to the alt string
         if (running && tendency != 0 && drawNow < tendencyUntil) {
             altStr = altStr + (tendency > 0 ? "+" : "-");
         }
+
+        // Debug: report what we actually saw for sensor pressure and provider
+        try {
+            var sensorP = "null";
+            try { var si2 = Sensor.getInfo(); if (si2 != null && si2.pressure != null) { sensorP = si2.pressure.toString(); } } catch (e) { }
+            var prov = null;
+            try { prov = Weather.getCurrentConditions(); } catch (e) { prov = null; }
+            try { System.println("DBG QNH: qnhValStr=" + qnhValStr + " sensorP=" + sensorP); } catch (e) {}
+            if (prov == null) {
+                try { System.println("DBG QNH provider: null"); } catch (e) {}
+            } else {
+                try {
+                    if (prov instanceof Lang.Dictionary) {
+                        var pkeys = prov.keys();
+                        try { System.println("DBG QNH provider keys: " + pkeys.toString()); } catch (e) {}
+                        for (var pi = 0; pi < pkeys.size(); pi++) {
+                            var pk = pkeys[pi];
+                            try { System.println("DBG provider[" + pk.toString() + "] = " + (prov[pk] != null ? prov[pk].toString() : "null")); } catch (e) {}
+                        }
+                    } else {
+                        try { System.println("DBG QNH provider non-dict: " + prov.toString()); } catch (e) {}
+                        try { System.println("DBG provider.pressure: " + (prov.pressure != null ? prov.pressure.toString() : "null")); } catch (e) {}
+                    }
+                } catch (e) {}
+            }
+        } catch (e) { }
 
         // --- Radial bezel geometry ---
         var R = (minWh / 2).toFloat();
@@ -999,7 +1035,7 @@ class VFRStopWatchView extends WatchUi.View {
         try {
             var lastFrame = lastDrawTimes[text];
             if (lastFrame != null && (lastFrame as Number) == bezelFrameId) {
-                try { System.println("drawRotatedMetric: skipping duplicate for '" + text + "' (frame guard)"); } catch (e) { }
+                try { } catch (e) { }
                 return;
             }
             lastDrawTimes[text] = bezelFrameId;
@@ -1299,9 +1335,7 @@ class VFRStopWatchView extends WatchUi.View {
             try {
                 dc.drawAngledText(px, py, useFont, ch,
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER, normT);
-            } catch (e) {
-                dc.drawText(px, py, bezelLblFont, ch,
-                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+            } catch (ex) {
             }
         }
     }
@@ -1348,7 +1382,7 @@ class VFRStopWatchView extends WatchUi.View {
             if (_session.isRecording()) { _session.stop(); }
             _session.save();
             _session = null;
-            System.println("ActivityRecording session saved (autoStop)");
+            
         }
         saveBackupProperties(); // persist so summary survives a kill
         // Notify phone of flight stop
@@ -1364,7 +1398,7 @@ class VFRStopWatchView extends WatchUi.View {
         try {
             Application.Properties.setValue("vfr_backup_hasBackup", false);
         } catch (ex) {
-            System.println("clearBackupProperties failed: " + ex.getErrorMessage());
+            
         }
     }
 
@@ -1398,7 +1432,7 @@ class VFRStopWatchView extends WatchUi.View {
             Application.Properties.setValue("vfr_backup_tripEndUtcHour", tripEndUtcHour);
             Application.Properties.setValue("vfr_backup_tripEndUtcMin", tripEndUtcMin);
         } catch (ex) {
-            System.println("saveBackupProperties failed: " + ex.getErrorMessage());
+            
         }
     }
 
@@ -1433,7 +1467,7 @@ class VFRStopWatchView extends WatchUi.View {
             v = Application.Properties.getValue("vfr_backup_tripEndUtcHour"); if (v != null) { tripEndUtcHour = v as Number; }
             v = Application.Properties.getValue("vfr_backup_tripEndUtcMin"); if (v != null) { tripEndUtcMin = v as Number; }
         } catch (ex) {
-            System.println("loadBackupProperties failed: " + ex.getErrorMessage());
+            
         }
         // Timer cannot continue across a kill; pause and let user resume manually
         running = false;
@@ -1447,7 +1481,7 @@ class VFRStopWatchView extends WatchUi.View {
         try {
             var rawGps = Application.Properties.getValue("GpsMode");
             curGps = (rawGps != null) ? (rawGps as Number) : 3;
-        } catch (ex) { System.println("openSettingsMenu: GpsMode read failed: " + ex.getErrorMessage()); curGps = 3; }
+        } catch (ex) { curGps = 3; }
         if (curGps < 0 || curGps > 3) { curGps = 3; }
         var gpsLabel = curGps == 0 ? "GPS"
                      : curGps == 1 ? "GPS+GLONASS"
@@ -1458,12 +1492,12 @@ class VFRStopWatchView extends WatchUi.View {
         try {
             var rawSpd = Application.Properties.getValue("TakeoffSpeed");
             curKts = (rawSpd != null) ? (rawSpd as Number) : 30;
-        } catch (ex) { System.println("openSettingsMenu: TakeoffSpeed read failed: " + ex.getErrorMessage()); curKts = 30; }
+        } catch (ex) { curKts = 30; }
         var curTrans = 6000;
         try {
             var rawTrans = Application.Properties.getValue("TransitionAltitudeFt");
             curTrans = (rawTrans != null) ? (rawTrans as Number) : 6000;
-        } catch (ex) { System.println("openSettingsMenu: TransitionAltitudeFt read failed: " + ex.getErrorMessage()); curTrans = 6000; }
+        } catch (ex) { curTrans = 6000; }
         var menu = new WatchUi.Menu2({:title => "Settings"});
         menu.addItem(new WatchUi.MenuItem("GPS Mode",      gpsLabel,                        "setting_gps",     null));
         menu.addItem(new WatchUi.MenuItem("Timer",         curTimerMin.toString() + " min", "setting_timer",   null));
@@ -1478,6 +1512,7 @@ class VFRStopWatchView extends WatchUi.View {
     //   running                               → toggle lap
     function onDownPressed() as Void {
         var now = System.getTimer();
+        try { System.println("DEBUG: onDownPressed fired, now=" + now.toString()); } catch (e) {}
         // debounce spurious repeated press events (200 ms)
         if (lastDownEventAt != 0 && (now - lastDownEventAt) < 200) { return; }
         lastDownEventAt = now;
@@ -1485,24 +1520,25 @@ class VFRStopWatchView extends WatchUi.View {
             // start timing the press; actual action happens on release
             if (downPressAt == 0) {
                 downPressAt = now;
-                System.println("DOWN pressed: starting hold timer");
+                
             }
         } else if (!running) {
             reset();
-            System.println("DOWN pressed: reset (main stopped)");
+            
         } else {
             // When running, don't toggle lap on immediate press.
             // Start the hold timer so release triggers shortDownAction (quick-info),
             // and a long hold is still available if desired.
             if (downPressAt == 0) {
                 downPressAt = now;
-                System.println("DOWN pressed while running: starting hold timer for quick-info");
+                
             }
         }
     }
 
     // Short-press action (first press): show quick info overlay
     function shortDownAction() as Void {
+        try { System.println("DEBUG: shortDownAction called quickInfoShown=" + quickInfoShown.toString()); } catch (e) {}
         if (quickInfoShown) { return; }
         quickInfoShown = true;
         // Show heading/GS summary first, then allow navigating to wind/temp
@@ -1527,7 +1563,6 @@ class VFRStopWatchView extends WatchUi.View {
             ];
             Attention.vibrate(pattern);
         } catch (ex instanceof Lang.Exception) {
-            System.println("Vibrate EXCEPTION: " + ex.getErrorMessage());
         }
     }
 
@@ -1544,7 +1579,6 @@ class VFRStopWatchView extends WatchUi.View {
             ];
             Attention.vibrate(pattern);
         } catch (ex instanceof Lang.Exception) {
-            System.println("HR vibrate EXCEPTION: " + ex.getErrorMessage());
         }
     }
 
@@ -1555,7 +1589,6 @@ class VFRStopWatchView extends WatchUi.View {
             var pattern = [ new Attention.VibeProfile(100, 400) ];
             Attention.vibrate(pattern);
         } catch (ex instanceof Lang.Exception) {
-            System.println("Fuel vibrate EXCEPTION: " + ex.getErrorMessage());
         }
     }
 
@@ -1570,7 +1603,6 @@ class VFRStopWatchView extends WatchUi.View {
             ];
             Attention.vibrate(pattern);
         } catch (ex instanceof Lang.Exception) {
-            System.println("Tendency up vibrate EXCEPTION: " + ex.getErrorMessage());
         }
     }
 
@@ -1587,7 +1619,6 @@ class VFRStopWatchView extends WatchUi.View {
             ];
             Attention.vibrate(pattern);
         } catch (ex instanceof Lang.Exception) {
-            System.println("Tendency down vibrate EXCEPTION: " + ex.getErrorMessage());
         }
     }
 
@@ -1613,23 +1644,32 @@ class VFRQuickInfoView extends WatchUi.View {
         // Debug: log comms and Weather provider when quick-info shown
         try {
             var commsDbg = getApp().getComms();
-            if (commsDbg == null) {
-                System.println("QuickInfo.onShow: comms = null");
-            } else {
-                try { System.println("QuickInfo.onShow: comms wind=" + (commsDbg.windDirDeg as Number).toString() + "/" + (commsDbg.windSpeedKt as Number).toString() + " tmp=" + (commsDbg.tempC as Number).toString()); } catch (e) { System.println("QuickInfo.onShow: comms present but fields missing"); }
-            }
             try {
                 var wr = VFRWeather.read(getApp().getComms());
-                if (wr == null) {
-                    System.println("QuickInfo.onShow: VFRWeather.read() = null");
-                } else {
-                    try { System.println("Weather.temp=" + wr.temp.toString()); } catch (e) {}
-                    try { System.println("Weather.windSpd=" + wr.windSpd.toString()); } catch (e) {}
-                    try { System.println("Weather.windDir=" + wr.windDir.toString()); } catch (e) {}
-                    try { System.println("Weather.dew=" + wr.dew.toString()); } catch (e) {}
-                }
-            } catch (we) { System.println("QuickInfo.onShow: VFRWeather read error: " + we.getErrorMessage()); }
-        } catch (ex) { System.println("QuickInfo.onShow debug failed: " + ex.getErrorMessage()); }
+                try {
+                    var cur = null;
+                    try { cur = Weather.getCurrentConditions(); } catch (we2) { cur = null; }
+                    System.println("DBG WEATHER read: temp=" + wr.temp.toString() + " dew=" + wr.dew.toString() + " wind=" + wr.windDir.toString() + "/" + wr.windSpd.toString());
+                    if (cur == null) {
+                        System.println("DBG Weather.getCurrentConditions: null");
+                    } else {
+                        try {
+                            if (cur instanceof Lang.Dictionary) {
+                                var keys = cur.keys();
+                                System.println("DBG Weather dict keys: " + keys.toString());
+                                for (var i = 0; i < keys.size(); i++) {
+                                    var k = keys[i];
+                                    try { System.println("DBG cur[" + k.toString() + "] = " + cur[k].toString()); } catch (e3) { }
+                                }
+                            } else {
+                                System.println("DBG Weather.getCurrentConditions (non-dict): " + cur.toString());
+                                try { System.println("DBG cur.temperature: " + (cur["temperature"] != null ? cur["temperature"].toString() : "<none>")); } catch (e4) {}
+                            }
+                        } catch (e5) { System.println("DBG Weather inspection failed: " + e5.toString()); }
+                    }
+                } catch (dbge) { }
+            } catch (we) { }
+        } catch (ex) { }
     }
 
     function onLayout(dc as Dc) as Void { }
@@ -1648,7 +1688,7 @@ class VFRQuickInfoView extends WatchUi.View {
         // Mirrors main view geometry: sepRadius = R - 25  (R = 130 for 260px screen)
         var minWh = (w < h) ? w : h;
         var sepR  = ((minWh.toFloat() / 2.0) - 27.0).toNumber();
-        try { System.println("QuickInfoView: sepR=" + sepR.toString() + " cx=" + cx.toString() + " cy=" + cy.toString() + " w=" + w.toString() + " h=" + h.toString()); } catch (e) {}
+        try { } catch (e) {}
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.fillCircle(cx, cy, sepR);
 
@@ -1674,7 +1714,7 @@ class VFRQuickInfoView extends WatchUi.View {
             try { wDir = wr.windDir; } catch (e) {}
             try { wSpd = wr.windSpd; } catch (e) {}
             try { dew  = wr.dew; } catch (e) {}
-        } catch (we) { System.println("Weather helper failed: " + we.getErrorMessage()); }
+        } catch (we) { }
 
         // Format: "DDD/SS" (direction zero-padded to 3 digits)
         var windStr = "--/--";
@@ -1695,8 +1735,8 @@ class VFRQuickInfoView extends WatchUi.View {
         var tempStr = "--/--";
         // Show partial temperature/dew when available. Use -- for missing values.
         if (tmp != -999 || dew != -999) {
-            var tStr = (tmp != -999) ? (tmp.toString()) : "--";
-            var dStr = (dew != -999) ? (dew.toString()) : "--";
+            var tStr = (tmp != -999) ? (Math.round(tmp).toNumber().toString()) : "--";
+            var dStr = (dew != -999) ? (Math.round(dew).toNumber().toString()) : "--";
             tempStr = tStr + "/" + dStr;
         }
 
@@ -1761,7 +1801,7 @@ class VFRQuickInfoHdgGsView extends WatchUi.View {
         // Black inner circle
         var minWh = (w < h) ? w : h;
         var sepR  = ((minWh.toFloat() / 2.0) - 27.0).toNumber();
-        try { System.println("QuickInfoHDG: sepR=" + sepR.toString() + " cx=" + cx.toString() + " cy=" + cy.toString() + " w=" + w.toString() + " h=" + h.toString()); } catch (e) {}
+        try { } catch (e) {}
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.fillCircle(cx, cy, sepR);
 
@@ -1783,6 +1823,7 @@ class VFRQuickInfoHdgGsView extends WatchUi.View {
 
         // Get heading and GS from system APIs (prefer GPS course)
         var hdgStr = "--";
+        var gsStr = "--";
         try {
             var hdg = VFRHeading.getHeadingDeg();
             if (hdg >= 0) {
@@ -1791,17 +1832,15 @@ class VFRQuickInfoHdgGsView extends WatchUi.View {
                 else if (hdgInt < 100) { hdgStr = "0"  + hdgInt.toString(); }
                 else                   { hdgStr = hdgInt.toString(); }
             }
-        } catch (ex) {}
-
-        var gsStr = "--";
+            } catch (ex) {
+            }
         try {
             var actInfoLocal = Activity.getActivityInfo();
             if (actInfoLocal != null && actInfoLocal.currentSpeed != null) {
                 gsStr = ((actInfoLocal.currentSpeed as Float) * 1.94384).toNumber().toString();
             }
-        } catch (ex) {}
-
-        // Draw labels and values
+            } catch (ex) {
+            }
         dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(cx, cy - 60, Graphics.FONT_SMALL, "HDG", jc);
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
@@ -1833,7 +1872,7 @@ class VFRQuickInfoHdgGsDelegate extends WatchUi.BehaviorDelegate {
         try {
             _main.quickInfoLastNavAt = System.getTimer();
             WatchUi.pushView(new VFRQuickInfoView(_main), new VFRQuickInfoDelegate(_main), WatchUi.SLIDE_UP);
-        } catch (ex) { System.println("Failed to push wind/temp view: " + ex.getErrorMessage()); }
+        } catch (ex) { }
         return true;
     }
 }
@@ -1873,7 +1912,6 @@ class VFRQuickInfoDelegate extends WatchUi.BehaviorDelegate {
                     var mapView = new VFRMapView(_main);
                     WatchUi.pushView(mapView, new VFRMapDelegate(_main, mapView), WatchUi.SLIDE_IMMEDIATE);
                 } catch (ex) {
-                    System.println("Map push failed: " + ex.getErrorMessage());
                 }
             }
             return true;
@@ -1887,7 +1925,7 @@ class VFRQuickInfoDelegate extends WatchUi.BehaviorDelegate {
             _main.quickInfoLastNavAt = System.getTimer();
             WatchUi.pushView(new VFRQuickInfoWeather2View(_main), new VFRQuickInfoWeather2Delegate(_main), WatchUi.SLIDE_UP);
             return true;
-        } catch (ex) { System.println("Failed to push weather2 view: " + ex.getErrorMessage()); }
+        } catch (ex) { }
 
         // Fallback: if maps are available, push the map view
         if (WatchUi has :MapView) {
@@ -1895,7 +1933,6 @@ class VFRQuickInfoDelegate extends WatchUi.BehaviorDelegate {
                 var mapView = new VFRMapView(_main);
                 WatchUi.pushView(mapView, new VFRMapDelegate(_main, mapView), WatchUi.SLIDE_IMMEDIATE);
             } catch (ex) {
-                System.println("Map push failed: " + ex.getErrorMessage());
             }
         }
         return true;

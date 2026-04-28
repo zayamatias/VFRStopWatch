@@ -25,7 +25,6 @@ class VFRStopWatchApp extends Application.AppBase {
             try {
                 (_view as VFRStopWatchView).loadState(state["viewState"] as Dictionary);
             } catch (ex) {
-                System.println("loadState failed: " + ex.getErrorMessage());
             }
         }
         // If we have an on-disk backup, load it as a fallback
@@ -36,9 +35,8 @@ class VFRStopWatchApp extends Application.AppBase {
             }
             // Load per-key Properties backup if present
             try { (_view as VFRStopWatchView).loadBackupProperties(); }
-            catch (ex4) { System.println("loadBackupProperties failed: " + ex4.getErrorMessage()); }
+            catch (ex4) { }
         } catch (ex3) {
-            System.println("backup load check failed: " + ex3.getErrorMessage());
         }
     }
 
@@ -50,23 +48,23 @@ class VFRStopWatchApp extends Application.AppBase {
             try {
                 state["viewState"] = (_view as VFRStopWatchView).saveState();
             } catch (ex) {
-                System.println("saveState failed: " + ex.getErrorMessage());
             }
         }
         // Also persist an on-disk backup for extra resilience
         try {
             if (_view != null) {
-                try { (_view as VFRStopWatchView).saveBackupProperties(); } catch (ex5) { System.println("saveBackupProperties failed: " + ex5.getErrorMessage()); }
+                try { (_view as VFRStopWatchView).saveBackupProperties(); } catch (ex5) { }
             }
         } catch (ex4) {
-            System.println("backup save failed: " + ex4.getErrorMessage());
         }
     }
 
     // Return the initial view of your application here
     function getInitialView() as [Views] or [Views, InputDelegates] {
-        if (_view == null) { _view = new VFRStopWatchView(); }
-        return [ _view, new VFRStopWatchDelegate(_view) ];
+        // Start on the main stopwatch view by default. Remove the debug
+        // startup screen to avoid confusing users when no payload is present.
+        var main = new VFRStopWatchView();
+        return [ main, new VFRStopWatchDelegate(main) ];
     }
 
     function getComms() as VFRPhoneComms? {

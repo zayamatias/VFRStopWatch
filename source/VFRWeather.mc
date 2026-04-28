@@ -39,32 +39,44 @@ class VFRWeather {
             try { r.dew     = comms.dewpointC; } catch (e) {}
         }
 
+        // Log what source we used (comms may be present but have sentinel values)
+        
+
         // If any critical fields missing, fallback to system Weather provider
         if ((r.windDir < 0 || r.windSpd < 0 || r.temp == -999)) {
             try {
                 var cur = Weather.getCurrentConditions();
                 if (cur != null) {
-                    try { r.temp = (cur["temperature"] as Number); } catch (e) {}
+                    // Try dictionary-style access first (common for simulator/provider)
+                    try { r.temp = (cur["temperature"] as Number); } catch (e) { }
 
-                    // windSpeed can be Float or Number; value is in m/s — convert to knots
                     try {
                         var ws = null;
-                        try { ws = cur["windSpeed"]; } catch (e2) { ws = null; }
+                        try { ws = cur["windSpeed"]; } catch (e2) { try { ws = cur["wind_speed"]; } catch (e3) { ws = null; } }
+                        if (ws == null) { try { ws = cur["windspd"]; } catch (e4) { ws = null; } }
                         if (ws != null) {
                             try { r.windSpd = ((ws as Float) * 1.943844).toNumber(); }
-                            catch (e3) { try { r.windSpd = (((ws as Number).toFloat()) * 1.943844).toNumber(); } catch (e4) {} }
+                            catch (e5) { try { r.windSpd = (((ws as Number).toFloat()) * 1.943844).toNumber(); } catch (e6) {} }
                         }
-                    } catch (we) {}
+                    } catch (we) { }
 
-                    try { r.windDir = (cur["windBearing"] as Number); } catch (e) {}
-                    try { r.dew = (cur["dewPoint"] as Number); } catch (e) {}
-                    // optional fields: cloud cover, cloud altitude, precipitation chance, condition
-                    try { r.cloudCover = (cur["cloudCover"] as Number); } catch (e) {}
-                    try { r.cloudAlt = (cur["cloudBase"] as Number); } catch (e) { try { r.cloudAlt = (cur["cloudAltitude"] as Number); } catch (e2) {} }
-                    try { r.precipChance = (cur["precipitationChance"] as Number); } catch (e) {}
-                    try { r.condition = (cur["condition"] as Number); } catch (e) {}
+                    try { r.windDir = (cur["windBearing"] as Number); } catch (e) { try { r.windDir = (cur["wind_bearing"] as Number); } catch (e7) { } }
+                    try { r.dew = (cur["dewPoint"] as Number); } catch (e) { try { r.dew = (cur["dew_point"] as Number); } catch (e8) { } }
+                    try { r.cloudCover = (cur["cloudCover"] as Number); } catch (e) { }
+                    try { r.cloudAlt = (cur["cloudBase"] as Number); } catch (e) { try { r.cloudAlt = (cur["cloudAltitude"] as Number); } catch (e9) { } }
+                    try { r.precipChance = (cur["precipitationChance"] as Number); } catch (e) { }
+                    try { r.condition = (cur["condition"] as Number); } catch (e) { }
+
+                    // If dictionary access yielded no results, try dot-property access
+                    try { if (r.temp == -999) { r.temp = (cur.temperature as Number); } } catch (e10) { }
+                    try { if (r.windSpd < 0) { var wsd = cur.windSpeed; if (wsd != null) { r.windSpd = ((wsd as Float) * 1.943844).toNumber(); } } } catch (e11) { }
+                    try { if (r.windDir < 0) { r.windDir = (cur.windBearing as Number); } } catch (e12) { }
+                    try { if (r.dew == -999) { r.dew = (cur.dewPoint as Number); } } catch (e13) { }
+                    try { if (r.cloudCover < 0) { r.cloudCover = (cur.cloudCover as Number); } } catch (e14) { }
+                    try { if (r.precipChance < 0) { r.precipChance = (cur.precipitationChance as Number); } } catch (e16) { }
+                    try { if (r.condition < 0) { r.condition = (cur.condition as Number); } } catch (e17) { }
                 }
-            } catch (wex) { System.println("VFRWeather.read: Weather API read failed: " + wex.getErrorMessage()); }
+            } catch (wex) { }
         }
 
         // If cloud base is not provided by the provider, estimate it using
@@ -87,6 +99,8 @@ class VFRWeather {
 
     // Convenience: read using getApp().getComms()
     static function readDefault() as VFRWeatherResult {
+        // Do not trigger companion requests; read only from comms (if it
+        // contains cached values) or fall back to the system provider.
         return VFRWeather.read(getApp().getComms());
     }
 }

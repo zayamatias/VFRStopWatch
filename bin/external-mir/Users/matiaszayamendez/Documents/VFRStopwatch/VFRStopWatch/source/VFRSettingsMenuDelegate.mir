@@ -395,24 +395,6 @@ _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMe
 _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_90_15_92_8_if_end:
 _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_84_15_92_8_if_end:
 _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_77_8_92_8_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 93 8 ]
-        symbol [ System %tmp.56 93 8 14 ];
-        %tmp.56 = getv ? :System;
-        symbol [ println %tmp.57 93 15 22 ];
-        %tmp.57 = getv function %tmp.56 :println;
-        %tmp.58 = "save: ";
-        symbol [ _propKey %tmp.60 93 34 42 ];
-        %tmp.60 = getv ? :_propKey;
-        %tmp.61 = add %tmp.58 %tmp.60;
-        %tmp.62 = "=";
-        %tmp.63 = add %tmp.61 %tmp.62;
-        symbol [ _value %tmp.65 93 51 57 ];
-        %tmp.65 = getv ? :_value;
-        symbol [ toString %tmp.66 93 58 66 ];
-        %tmp.66 = getv function %tmp.65 :toString;
-        %tmp.67 = invoke %tmp.65 %tmp.66();
-        %tmp.68 = add %tmp.63 %tmp.67;
-        invoke %tmp.56 %tmp.57(%tmp.68);
 _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_75_28_94_4_stop:
     }
     [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 96; @symbol_functiondef = [onUpdate,96,13,21]; @symbol_param<0> = [dc,96,22,24]; @symbol_param<0>_type<0> = [Dc,96,28,30]; ]

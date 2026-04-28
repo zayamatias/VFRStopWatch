@@ -1,6 +1,7 @@
 # Lessons Learnt
 
 - 2026-04-27: `monkeyc -f monkey.jungle` must be used instead of `manifest.xml` to avoid jungle parser StackOverflowError.
+- 2026-04-27: Connect IQ does NOT support reflection or dynamic symbol lookup on typed objects. Typed objects such as `Position.Info` must be accessed with dot syntax (for example `pInfo.course`, `pInfo.heading`). Using `pInfo["course"]` or `pInfo[:course]` will return `null`, cause an "Undefined symbol" compile error, or crash at runtime depending on SDK version. The correct portable pattern is to read `pInfo.course` and check for `null` before using.
 - 2026-04-27: Monkey C arrays created with `[]` are zero-size; index-assigning (e.g., `slots[0] = x`) crashes with Array Out Of Bounds — use `new [N]` for fixed-size or `.add()` for dynamic growth.
 - 2026-04-27: `new Array()` in Monkey C returns an Object, not an Array, so `.add()` fails with UnexpectedTypeException; always use `[]` + `.add()` or `new [N]` literals.
 - 2026-04-27: `dc.getTextWidth()` / `Graphics.getTextWidth()` are not available in SDK 9.1; use per-character pixel estimation instead.

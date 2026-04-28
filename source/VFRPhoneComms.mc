@@ -17,11 +17,9 @@ class VFRConnListener extends Communications.ConnectionListener {
     }
 
     function onComplete() as Void {
-        System.println("VFRComms TX ok: " + _msgType);
     }
 
     function onError() as Void {
-        System.println("VFRComms TX err: " + _msgType);
         _comms.onTransmitError(_msgType);
     }
 }
@@ -40,6 +38,10 @@ class VFRPhoneComms {
     var connected  as Boolean = false; // true only when handshake_ack received
     var connecting as Boolean = false; // true while handshaking (yellow dot)
     var flightId   as String  = "";
+    // Was phone message callback registered successfully?
+    var messagesRegistered as Boolean = false;
+    // Whether we've requested weather from the companion since last connect
+    var _requestedWeather as Boolean = false;
     // Weather data pushed from phone companion app
     // Sentinels: windDirDeg/windSpeedKt = -1 (unknown), tempC/dewpointC = -999 (unknown)
     var windDirDeg  as Number = -1;
@@ -87,11 +89,20 @@ class VFRPhoneComms {
     function initialize() {
         if (Communications has :registerForPhoneAppMessages) {
             Communications.registerForPhoneAppMessages(method(:onPhoneMessage));
+            messagesRegistered = true;
         }
         // Also register the error callback so we can log receive-side failures
         if (Communications has :registerForPhoneAppMessageErrors) {
             Communications.registerForPhoneAppMessageErrors(method(:onPhoneMessageError));
         }
+        try {
+            var ds = null;
+            try { ds = System.getDeviceSettings(); } catch (e) { ds = null; }
+            try { System.println("VFRComms: messagesRegistered=" + messagesRegistered.toString()); } catch (e) { }
+            try { System.println("VFRComms: Communications.transmit? " + ((Communications has :transmit) ? "yes" : "no")); } catch (e) { }
+            try { System.println("VFRComms: phoneConnected? " + ((ds != null && ds.phoneConnected) ? "yes" : "no")); } catch (e) { }
+        } catch (dbgEx) { }
+        
         // _nextHandshakeAt = 0 → first tick immediately attempts handshake
     }
 
@@ -108,7 +119,7 @@ class VFRPhoneComms {
         // Schedule first attempt 1 s out so it doesn't collide with any
         // in-flight handshake on the same tick.
         _startRetryAt    = System.getTimer() + 1000;
-        System.println("VFRComms: queued start id=" + flightId);
+        
     }
 
     function sendFlightStop(utcEpochSec as Number) as Void {
@@ -118,7 +129,7 @@ class VFRPhoneComms {
                             "ts"        => utcEpochSec };
         _stopRetryCount = 0;
         _stopRetryAt    = System.getTimer() + 1000;
-        System.println("VFRComms: queued stop id=" + flightId);
+        
     }
 
     // Drive the whole state machine — call once per onUpdate frame.
@@ -132,7 +143,9 @@ class VFRPhoneComms {
             connected        = false;
             connecting       = false;
             _nextHandshakeAt = 0;
-            System.println("VFRComms: phone unreachable → DISC");
+            // Reset one-shot request so a future reconnect will request weather
+            _requestedWeather = false;
+            
         }
 
         if (_state == STATE_DISC) {
@@ -141,7 +154,7 @@ class VFRPhoneComms {
                 connecting       = true;
                 _nextHandshakeAt = now + HANDSHAKE_RETRY_MS;
                 _txHandshake();
-                System.println("VFRComms: handshake sent → SHAKING");
+                
             }
 
         } else if (_state == STATE_SHAKING) {
@@ -149,7 +162,7 @@ class VFRPhoneComms {
             if (now >= _nextHandshakeAt) {
                 _nextHandshakeAt = now + HANDSHAKE_RETRY_MS;
                 _txHandshake();
-                System.println("VFRComms: handshake retry");
+                
             }
 
         } else if (_state == STATE_CONNECTED) {
@@ -163,7 +176,7 @@ class VFRPhoneComms {
                     _tx({ "type" => "keepalive" }, "ka");
                 } else {
                     // Skip keepalive to avoid spurious phone-side vibrations.
-                    System.println("VFRComms: skipping keepalive (no pending payloads)");
+                    
                 }
                 // _txThisTick may remain false if we skipped transmit;
                 // flight event retries will run on the next tick as usual.
@@ -179,9 +192,9 @@ class VFRPhoneComms {
                     _tx(_startPayload as Dictionary, "start");
                     _startRetryAt = now + _backoff(_startRetryCount);
                     _startRetryCount++;
-                    System.println("VFRComms: start attempt " + _startRetryCount.toString());
+                    
                 } else {
-                    System.println("VFRComms: start gave up after " + MAX_RETRIES.toString());
+                    
                     _startPayload = null;
                 }
             } else if (_stopPayload != null && _stopRetryAt >= 0 && now >= _stopRetryAt) {
@@ -190,9 +203,9 @@ class VFRPhoneComms {
                     _tx(_stopPayload as Dictionary, "stop");
                     _stopRetryAt = now + _backoff(_stopRetryCount);
                     _stopRetryCount++;
-                    System.println("VFRComms: stop attempt " + _stopRetryCount.toString());
+                    
                 } else {
-                    System.println("VFRComms: stop gave up after " + MAX_RETRIES.toString());
+                    
                     _stopPayload = null;
                 }
             }
@@ -201,7 +214,6 @@ class VFRPhoneComms {
 
     // Called by VFRConnListener when a transmit fails at the BT layer.
     function onTransmitError(msgType as String) as Void {
-        System.println("VFRComms TX err: " + msgType);
         // Apply incremental backoff instead of immediate retries to avoid
         // tight connect/disconnect flapping seen on some phones/devices.
         _connErrorCount = (_connErrorCount + 1) as Number;
@@ -220,7 +232,6 @@ class VFRPhoneComms {
 
     // Incoming message receive error from phone side.
     function onPhoneMessageError(error as Communications.PhoneAppMessageError) as Void {
-        System.println("VFRComms RX err: " + error.toString());
     }
 
     // Incoming message from phone companion app.
@@ -228,28 +239,39 @@ class VFRPhoneComms {
         var data = msg.data;
         if (!(data instanceof Lang.Dictionary)) { return; }
         var d   = data as Dictionary;
+        
+        // Persist/print raw incoming message for debugging (one-line)
+        try {
+            var rawAll = d.toString();
+            System.println("RAW PHONE MSG: " + rawAll);
+            try { VFRLogger.appendRaw("phone", rawAll); } catch (eappend) { }
+        } catch (eraw) { }
         var typ = d["type"];
         if (typ == null) { return; }
 
         if (typ.equals("handshake_ack")) {
+            try { System.println("VFRComms: RX handshake_ack"); } catch (e) { }
             _state           = STATE_CONNECTED;
             connected        = true;
             connecting       = false;
             _nextKeepaliveAt = System.getTimer() + KEEPALIVE_MS;
             // Reset transient error counter on successful handshake
             _connErrorCount = 0;
-            System.println("VFRComms: CONNECTED (handshake_ack)");
+            
+            // Companion weather requests disabled: do not ask phone for weather.
+            // Mark as requested so we don't attempt to in other code paths.
+            try { _requestedWeather = true; } catch (ereq) {}
 
         } else if (typ.equals("flight_ack")) {
             var ev = d["event"];
             if (ev == null) { return; }
             if (ev.equals("start")) {
                 _startPayload = null;
-                System.println("VFRComms: start ACK");
+                
             } else if (ev.equals("stop")) {
                 _stopPayload = null;
                 flightId     = "";
-                System.println("VFRComms: stop ACK");
+                
             }
 
         } else if (typ.equals("keepalive_ack")) {
@@ -257,30 +279,27 @@ class VFRPhoneComms {
             _nextKeepaliveAt = System.getTimer() + KEEPALIVE_MS;
 
         } else if (typ.equals("weather")) {
-            // Phone pushed weather: {type:"weather",wind_dir:30,wind_spd:12,temp_c:24,dew_c:-4}
-            try { lastRawWeather = d.toString(); } catch (e) { lastRawWeather = ""; }
-            System.println("RAW WEATHER MSG: " + lastRawWeather);
-            // Persist raw payload to storage (when available) and always
-            // mirror into Application.Properties via VFRLogger.
-            try {
-                var ok = VFRLogger.appendRaw("phone", lastRawWeather);
-                System.println("VFRComms: VFRLogger.appendRaw returned " + ok.toString());
-            } catch (exLog) {
-                System.println("VFRComms LOG err: " + exLog.getErrorMessage());
-            }
-            var wd  = d["wind_dir"]; if (wd  != null) { windDirDeg  = wd  as Number; }
-            var ws  = d["wind_spd"]; if (ws  != null) { windSpeedKt = ws  as Number; }
-            var tc  = d["temp_c"];  if (tc  != null) { tempC       = tc  as Number; }
-            var dc2 = d["dew_c"];   if (dc2 != null) { dewpointC   = dc2 as Number; }
-            System.println("VFRComms: weather updated wind=" + windDirDeg.toString() + "/" + windSpeedKt.toString() + " temp=" + tempC.toString() + "/" + dewpointC.toString());
+            // Fully ignore companion-sent weather. Clear any cached raw payload
+            // so the app will fall back to the system provider via VFRWeather.
+            try { lastRawWeather = ""; } catch (e) { }
+            return;
         }
     }
 
     // ── Private helpers ──────────────────────────────────────────────────────
 
+    // Public API: request weather now if connected, otherwise ensure a
+    // request is sent on the next successful handshake.
+    function requestWeatherOnNextConnect() as Void {
+        // NOOP: phone-based weather requests disabled — use system provider only.
+        try { _requestedWeather = false; } catch (e) { }
+    }
+
+
     private function _txHandshake() as Void {
         // record when we actually attempted the handshake so UI can detect retries
         try { lastHandshakeAt = System.getTimer(); } catch (ex) { lastHandshakeAt = 0; }
+        try { System.println("VFRComms: TX handshake"); } catch (e) { }
         _tx({ "type" => "handshake", "app" => "VFRStopWatch", "version" => "1.0" }, "hs");
     }
 
@@ -303,7 +322,6 @@ class VFRPhoneComms {
         try {
             Communications.transmit(data, null, new VFRConnListener(self, msgType));
         } catch (ex) {
-            System.println("VFRComms _tx ex: " + ex.getErrorMessage());
         }
     }
 
@@ -311,27 +329,7 @@ class VFRPhoneComms {
     // Application.Properties to System.println so they can be captured
     // via `monkeydo` logs or device logging tools.
     function exportLogsToConsole(limit as Number) as Void {
-        try {
-            var maxEntries = 200;
-            if (limit == null || limit <= 0 || limit > maxEntries) { limit = maxEntries; }
-            var idxVal = -1;
-            try { idxVal = (Application.Properties.getValue("VFR_log_index") as Number); } catch (e) { idxVal = -1; }
-            if (idxVal == null || idxVal < 0) { idxVal = -1; }
-            System.println("VFRComms: exporting up to " + limit.toString() + " log entries (current index=" + idxVal.toString() + ")");
-            var printed = 0;
-            var start = (idxVal + 1) % maxEntries; // oldest entry
-            for (var i = 0; i < maxEntries && printed < limit; i++) {
-                var pos = (start + i) % maxEntries;
-                try {
-                    var entry = Application.Properties.getValue("VFR_log_" + pos.toString());
-                    if (entry != null) {
-                        System.println("LOG[" + pos.toString() + "] " + (entry as String));
-                        printed++;
-                    }
-                } catch (eget) { }
-            }
-            if (printed == 0) { System.println("VFRComms: no log entries found"); }
-        } catch (ex) { System.println("VFRComms exportLogsToConsole failed: " + ex.getErrorMessage()); }
+        return;
     }
 
     /*

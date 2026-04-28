@@ -44,7 +44,6 @@ class VFRStopWatchDelegate extends WatchUi.BehaviorDelegate {
         if (keyEvent.getKey() == WatchUi.KEY_DOWN) {
             var now = System.getTimer();
             var dur = (_view.downPressAt == 0) ? 0 : (now - _view.downPressAt);
-            System.println("DOWN released: dur=" + dur.toString());
             _view.downPressAt = 0;
             _view.lastDownEventAt = 0;
             if (dur >= _view.DOWN_HOLD_MS) {

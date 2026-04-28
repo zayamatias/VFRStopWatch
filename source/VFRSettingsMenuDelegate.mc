@@ -90,7 +90,7 @@ class VFRNumberPickerView extends WatchUi.View {
         } else if (_propKey.equals("TransitionAltitudeFt")) {
             _mainView.transitionAltitudeFt = _value;
         }
-        System.println("save: " + _propKey + "=" + _value.toString());
+        
     }
 
     function onUpdate(dc as Dc) as Void {
