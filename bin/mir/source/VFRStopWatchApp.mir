@@ -30,7 +30,7 @@ _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchA
     }
     [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc"; @line = 17; @symbol_functiondef = [onStart,17,13,20]; @symbol_param<0> = [state,17,21,26]; @symbol_param<0>_type<0> = [Dictionary,17,30,40]; ]
     function onStart(state as Dictionary or Null) as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_17_51_41_4_start:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_17_51_38_4_start:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 18 8 ]
         symbol [ AppBase %tmp.2 18 8 15 ];
         %tmp.2 = getv ? :AppBase;
@@ -58,421 +58,571 @@ _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchA
         goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_19_8_21_8_if_end;
 _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_19_8_21_8_if_end:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 23 8 ]
-        symbol [ VFRPhoneComms %tmp.16 23 21 34 ];
-        %tmp.16 = getv ? :VFRPhoneComms;
-        %tmp.13 = newc %tmp.16 ();
-        symbol [ _comms ? 23 8 14 ];
-        putv self :_comms %tmp.13;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 24 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_24_8_29_8_if_stmt:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_24_12_24_51_begin:
-        %tmp.17 = lgetv %state;
-        symbol [ state %tmp.17 24 12 17 ];
-        %tmp.18 = null;
-        %tmp.19 = ne %tmp.17 %tmp.18;
-        bf %tmp.19 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_24_8_29_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_24_29_24_51_true:
-        %tmp.20 = lgetv %state;
-        symbol [ state %tmp.20 24 29 34 ];
-        %tmp.21 = as %tmp.20 { (!Null) };
-        %tmp.22 = "viewState";
-        %tmp.23 = agetv %tmp.21 %tmp.22;
-        %tmp.24 = null;
-        %tmp.25 = ne %tmp.23 %tmp.24;
-        push %tmp.25;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_24_29_24_51_end:
-        %tmp.26 = phi [%tmp.19 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_24_12_24_51_begin] [%tmp.25 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_24_29_24_51_true] [%tmp.26 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_24_29_24_51_end];
-        bf %tmp.26 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_24_8_29_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_24_8_29_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_24_57_29_8_start:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_8_28_37_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_8_28_37_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_8_28_37_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_8_28_37_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_8_28_37_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_12_28_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 24 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_12_28_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_12_28_8_stop" ]
+        %rawComp.1 = local;
+        symbol [ rawComp %rawComp.1 24 16 23 ];
+        symbol [ Application %tmp.13 24 26 37 ];
+        %tmp.13 = getm $.Toybox.Application;
+        symbol [ Properties %tmp.14 24 38 48 ];
+        %tmp.14 = getv %tmp.13 :Properties;
+        symbol [ getValue %tmp.15 24 49 57 ];
+        %tmp.15 = getv function %tmp.14 :getValue;
+        %tmp.16 = "UseCompanionApp";
+        %tmp.17 = invoke %tmp.14 %tmp.15(%tmp.16);
+        lputv %rawComp.1 %tmp.17;
+        symbol [ rawComp %rawComp.1 24 16 23 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 25 12 ]
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_12_28_12_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_12_28_12_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_12_28_12_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_12_28_12_finally;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_12_28_12_beginTry:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_16_27_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 26 16 ]
-        symbol [ _view %tmp.28 26 17 22 ];
-        %tmp.28 = getv ? :_view;
-        %tmp.29 = as %tmp.28 VFRStopWatchView;
-        symbol [ VFRStopWatchView %tmp.29 26 26 42 ];
-        symbol [ loadState %tmp.30 26 44 53 ];
-        %tmp.30 = getv function %tmp.29 :loadState;
-        %tmp.31 = lgetv %state;
-        symbol [ state %tmp.31 26 54 59 ];
-        %tmp.32 = as %tmp.31 { (!Null) };
-        %tmp.33 = "viewState";
-        %tmp.34 = agetv %tmp.32 %tmp.33;
-        %tmp.35 = as %tmp.34 Dictionary;
-        symbol [ Dictionary %tmp.35 26 76 86 ];
-        invoke %tmp.29 %tmp.30(%tmp.35);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_16_27_12_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_12_28_12_endTry:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_12_28_12_finally;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_12_28_12_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_12_28_12_catch:
-        %tmp.36 = exception;
-        push %tmp.36;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 27 14 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_12_28_12_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_27_14_28_12_end" ]
-        %ex.1 = local;
-        symbol [ ex %ex.1 27 21 23 ];
-        %tmp.37 = dup %tmp.36;
-        lputv %ex.1 %tmp.37;
-        symbol [ ex %ex.1 27 21 23 ];
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_12_28_12_finally;
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_12_28_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_12_28_8_stop" ]
+        %want.2 = local;
+        symbol [ want %want.2 25 16 20 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_23_25_65_begin:
+        %tmp.18 = lgetv %rawComp.1;
+        symbol [ rawComp %tmp.18 25 24 31 ];
+        %tmp.19 = null;
+        %tmp.20 = ne %tmp.18 %tmp.19;
+        bf %tmp.20 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_23_25_65_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_23_25_65_true:
+        %tmp.21 = lgetv %rawComp.1;
+        symbol [ rawComp %tmp.21 25 44 51 ];
+        %tmp.22 = as %tmp.21 { (!Null) };
+        %tmp.23 = as %tmp.22 Number;
+        symbol [ Number %tmp.23 25 55 61 ];
+        push %tmp.23;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_23_25_65_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_23_25_65_else_false:
+        %tmp.24 = 0;
+        push %tmp.24;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_23_25_65_end:
+        %tmp.25 = phi [%tmp.20 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_23_25_65_begin] [%tmp.23 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_23_25_65_true] [%tmp.24 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_23_25_65_else_false] [%tmp.25 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_23_25_65_end];
+        lputv %want.2 %tmp.25;
+        symbol [ want %want.2 25 16 20 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 26 12 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_26_12_27_34_if_stmt:
+        %tmp.26 = lgetv %want.2;
+        symbol [ want %tmp.26 26 16 20 ];
+        %tmp.27 = 1;
+        %tmp.28 = eq %tmp.26 %tmp.27;
+        bf %tmp.28 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_26_12_27_34_if_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_26_12_27_34_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_26_27_26_59_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 26 29 ]
+        symbol [ VFRPhoneComms %tmp.32 26 42 55 ];
+        %tmp.32 = getv ? :VFRPhoneComms;
+        %tmp.29 = newc %tmp.32 ();
+        symbol [ _comms ? 26 29 35 ];
+        putv self :_comms %tmp.29;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_26_27_26_59_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_26_12_27_34_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_26_12_27_34_if_else_false:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_27_17_27_34_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 27 19 ]
+        %tmp.33 = null;
+        symbol [ _comms ? 27 19 25 ];
+        putv self :_comms %tmp.33;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_27_17_27_34_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_26_12_27_34_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_12_28_8_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_8_28_37_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_8_28_37_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_8_28_37_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_8_28_37_catch:
+        %tmp.34 = exception;
+        push %tmp.34;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 28 10 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_8_28_37_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_28_10_28_37_end" ]
+        %e.3 = local;
+        symbol [ e %e.3 28 17 18 ];
+        %tmp.35 = dup %tmp.34;
+        lputv %e.3 %tmp.35;
+        symbol [ e %e.3 28 17 18 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_28_20_28_37_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 28 22 ]
+        %tmp.36 = null;
+        symbol [ _comms ? 28 22 28 ];
+        putv self :_comms %tmp.36;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_28_20_28_37_stop:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_8_28_37_finally;
         pop;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_12_28_12_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_27_14_28_12_end:
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_12_28_12_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_27_14_28_12_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_27_14_28_12_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_12_28_12_finally;
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_12_28_12_finally;
-        throw %tmp.36;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_12_28_12_finally:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_8_28_37_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_28_10_28_37_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_8_28_37_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_28_10_28_37_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_28_10_28_37_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_8_28_37_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_8_28_37_finally;
+        throw %tmp.34;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_8_28_37_finally:
         jsrret;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_25_12_28_12_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_24_57_29_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_24_8_29_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_24_8_29_8_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 31 8 ]
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_8_40_8_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_8_40_8_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_8_40_8_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_8_40_8_finally;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_8_40_8_beginTry:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_12_39_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 32 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_12_39_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_12_39_8_stop" ]
-        %b.2 = local;
-        symbol [ b %b.2 32 16 17 ];
-        symbol [ Application %tmp.38 32 20 31 ];
-        %tmp.38 = getm $.Toybox.Application;
-        symbol [ Properties %tmp.39 32 32 42 ];
-        %tmp.39 = getv %tmp.38 :Properties;
-        symbol [ getValue %tmp.40 32 43 51 ];
-        %tmp.40 = getv function %tmp.39 :getValue;
-        %tmp.41 = "vfr_backup";
-        %tmp.42 = invoke %tmp.39 %tmp.40(%tmp.41);
-        lputv %b.2 %tmp.42;
-        symbol [ b %b.2 32 16 17 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 33 12 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_33_12_35_12_if_stmt:
-        %tmp.43 = lgetv %b.2;
-        symbol [ b %tmp.43 33 16 17 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_23_8_28_37_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 29 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_29_8_34_8_if_stmt:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_29_12_29_51_begin:
+        %tmp.37 = lgetv %state;
+        symbol [ state %tmp.37 29 12 17 ];
+        %tmp.38 = null;
+        %tmp.39 = ne %tmp.37 %tmp.38;
+        bf %tmp.39 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_29_8_34_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_29_29_29_51_true:
+        %tmp.40 = lgetv %state;
+        symbol [ state %tmp.40 29 29 34 ];
+        %tmp.41 = as %tmp.40 { (!Null) };
+        %tmp.42 = "viewState";
+        %tmp.43 = agetv %tmp.41 %tmp.42;
         %tmp.44 = null;
         %tmp.45 = ne %tmp.43 %tmp.44;
-        bf %tmp.45 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_33_12_35_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_33_12_35_12_if_true:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_33_12_35_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_33_12_35_12_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 37 12 ]
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_12_38_26_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_12_38_26_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_12_38_26_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_12_38_26_finally;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_12_38_26_beginTry:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_16_37_70_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 37 18 ]
-        symbol [ _view %tmp.47 37 19 24 ];
-        %tmp.47 = getv ? :_view;
-        %tmp.48 = as %tmp.47 VFRStopWatchView;
-        symbol [ VFRStopWatchView %tmp.48 37 28 44 ];
-        symbol [ loadBackupProperties %tmp.49 37 46 66 ];
-        %tmp.49 = getv function %tmp.48 :loadBackupProperties;
-        invoke %tmp.48 %tmp.49();
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_16_37_70_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_12_38_26_endTry:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_12_38_26_finally;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_12_38_26_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_12_38_26_catch:
-        %tmp.50 = exception;
-        push %tmp.50;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 38 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_12_38_26_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_38_12_38_26_end" ]
-        %ex4.3 = local;
-        symbol [ ex4 %ex4.3 38 19 22 ];
-        %tmp.51 = dup %tmp.50;
-        lputv %ex4.3 %tmp.51;
-        symbol [ ex4 %ex4.3 38 19 22 ];
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_12_38_26_finally;
+        push %tmp.45;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_29_29_29_51_end:
+        %tmp.46 = phi [%tmp.39 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_29_12_29_51_begin] [%tmp.45 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_29_29_29_51_true] [%tmp.46 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_29_29_29_51_end];
+        bf %tmp.46 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_29_8_34_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_29_8_34_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_29_57_34_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 30 12 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_30_12_33_12_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_30_12_33_12_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_30_12_33_12_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_30_12_33_12_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_30_12_33_12_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_30_16_32_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 31 16 ]
+        symbol [ _view %tmp.48 31 17 22 ];
+        %tmp.48 = getv ? :_view;
+        %tmp.49 = as %tmp.48 VFRStopWatchView;
+        symbol [ VFRStopWatchView %tmp.49 31 26 42 ];
+        symbol [ loadState %tmp.50 31 44 53 ];
+        %tmp.50 = getv function %tmp.49 :loadState;
+        %tmp.51 = lgetv %state;
+        symbol [ state %tmp.51 31 54 59 ];
+        %tmp.52 = as %tmp.51 { (!Null) };
+        %tmp.53 = "viewState";
+        %tmp.54 = agetv %tmp.52 %tmp.53;
+        %tmp.55 = as %tmp.54 Dictionary;
+        symbol [ Dictionary %tmp.55 31 76 86 ];
+        invoke %tmp.49 %tmp.50(%tmp.55);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_30_16_32_12_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_30_12_33_12_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_30_12_33_12_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_30_12_33_12_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_30_12_33_12_catch:
+        %tmp.56 = exception;
+        push %tmp.56;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 32 14 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_30_12_33_12_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_32_14_33_12_end" ]
+        %ex.4 = local;
+        symbol [ ex %ex.4 32 21 23 ];
+        %tmp.57 = dup %tmp.56;
+        lputv %ex.4 %tmp.57;
+        symbol [ ex %ex.4 32 21 23 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_30_12_33_12_finally;
         pop;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_12_38_26_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_38_12_38_26_end:
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_12_38_26_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_38_12_38_26_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_38_12_38_26_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_12_38_26_finally;
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_12_38_26_finally;
-        throw %tmp.50;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_12_38_26_finally:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_30_12_33_12_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_32_14_33_12_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_30_12_33_12_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_32_14_33_12_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_32_14_33_12_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_30_12_33_12_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_30_12_33_12_finally;
+        throw %tmp.56;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_30_12_33_12_finally:
         jsrret;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_12_38_26_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_12_39_8_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_8_40_8_endTry:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_8_40_8_finally;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_8_40_8_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_8_40_8_catch:
-        %tmp.52 = exception;
-        push %tmp.52;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 39 10 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_8_40_8_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_39_10_40_8_end" ]
-        %ex3.4 = local;
-        symbol [ ex3 %ex3.4 39 17 20 ];
-        %tmp.53 = dup %tmp.52;
-        lputv %ex3.4 %tmp.53;
-        symbol [ ex3 %ex3.4 39 17 20 ];
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_8_40_8_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_30_12_33_12_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_29_57_34_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_29_8_34_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_29_8_34_8_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 37 8 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_8_37_82_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_8_37_82_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_8_37_82_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_8_37_82_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_8_37_82_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_12_37_66_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 37 14 ]
+        symbol [ _view %tmp.59 37 15 20 ];
+        %tmp.59 = getv ? :_view;
+        %tmp.60 = as %tmp.59 VFRStopWatchView;
+        symbol [ VFRStopWatchView %tmp.60 37 24 40 ];
+        symbol [ loadBackupProperties %tmp.61 37 42 62 ];
+        %tmp.61 = getv function %tmp.60 :loadBackupProperties;
+        invoke %tmp.60 %tmp.61();
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_12_37_66_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_8_37_82_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_8_37_82_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_8_37_82_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_8_37_82_catch:
+        %tmp.62 = exception;
+        push %tmp.62;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 37 68 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_8_37_82_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_68_37_82_end" ]
+        %ex4.5 = local;
+        symbol [ ex4 %ex4.5 37 75 78 ];
+        %tmp.63 = dup %tmp.62;
+        lputv %ex4.5 %tmp.63;
+        symbol [ ex4 %ex4.5 37 75 78 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_8_37_82_finally;
         pop;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_8_40_8_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_39_10_40_8_end:
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_8_40_8_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_39_10_40_8_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_39_10_40_8_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_8_40_8_finally;
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_8_40_8_finally;
-        throw %tmp.52;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_8_40_8_finally:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_8_37_82_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_68_37_82_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_8_37_82_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_68_37_82_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_68_37_82_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_8_37_82_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_8_37_82_finally;
+        throw %tmp.62;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_8_37_82_finally:
         jsrret;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_31_8_40_8_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_17_51_41_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_37_8_37_82_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_17_51_38_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc"; @line = 44; @symbol_functiondef = [onStop,44,13,19]; @symbol_param<0> = [state,44,20,25]; @symbol_param<0>_type<0> = [Dictionary,44,29,39]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc"; @line = 41; @symbol_functiondef = [onStop,41,13,19]; @symbol_param<0> = [state,41,20,25]; @symbol_param<0>_type<0> = [Dictionary,41,29,39]; ]
     function onStop(state as Dictionary or Null) as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_44_50_60_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 45 8 ]
-        symbol [ AppBase %tmp.2 45 8 15 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_41_50_57_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 42 8 ]
+        symbol [ AppBase %tmp.2 42 8 15 ];
         %tmp.2 = getv ? :AppBase;
-        symbol [ onStop %tmp.3 45 16 22 ];
+        symbol [ onStop %tmp.3 42 16 22 ];
         %tmp.3 = getv function %tmp.2 :onStop;
         %tmp.4 = lgetv %state;
-        symbol [ state %tmp.4 45 23 28 ];
+        symbol [ state %tmp.4 42 23 28 ];
         invoke %tmp.2 %tmp.3(%tmp.4);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 46 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_46_8_46_55_if_stmt:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 43 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_43_8_43_55_if_stmt:
         %tmp.5 = lgetv %state;
-        symbol [ state %tmp.5 46 12 17 ];
+        symbol [ state %tmp.5 43 12 17 ];
         %tmp.6 = null;
         %tmp.7 = eq %tmp.5 %tmp.6;
-        bf %tmp.7 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_46_8_46_55_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_46_8_46_55_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_46_27_46_55_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 46 29 ]
-        symbol [ Dictionary %tmp.11 46 41 51 ];
+        bf %tmp.7 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_43_8_43_55_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_43_8_43_55_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_43_27_43_55_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 43 29 ]
+        symbol [ Dictionary %tmp.11 43 41 51 ];
         %tmp.11 = getv ? :Dictionary;
         %tmp.8 = newc %tmp.11 ();
         lputv %state %tmp.8;
-        symbol [ state %state 46 29 34 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_46_27_46_55_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_46_8_46_55_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_46_8_46_55_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 47 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_47_8_52_8_if_stmt:
-        symbol [ _view %tmp.13 47 12 17 ];
+        symbol [ state %state 43 29 34 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_43_27_43_55_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_43_8_43_55_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_43_8_43_55_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 44 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_44_8_49_8_if_stmt:
+        symbol [ _view %tmp.13 44 12 17 ];
         %tmp.13 = getv ? :_view;
         %tmp.14 = null;
         %tmp.15 = ne %tmp.13 %tmp.14;
-        bf %tmp.15 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_47_8_52_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_47_8_52_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_47_27_52_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 48 12 ]
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_48_12_51_12_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_48_12_51_12_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_48_12_51_12_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_48_12_51_12_finally;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_48_12_51_12_beginTry:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_48_16_50_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 49 16 ]
+        bf %tmp.15 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_44_8_49_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_44_8_49_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_44_27_49_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 45 12 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_45_12_48_12_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_45_12_48_12_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_45_12_48_12_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_45_12_48_12_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_45_12_48_12_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_45_16_47_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 46 16 ]
         %tmp.16 = lgetv %state;
-        symbol [ state %tmp.16 49 16 21 ];
-        symbol [ _view %tmp.18 49 38 43 ];
+        symbol [ state %tmp.16 46 16 21 ];
+        symbol [ _view %tmp.18 46 38 43 ];
         %tmp.18 = getv ? :_view;
         %tmp.19 = as %tmp.18 { (!Null) };
         %tmp.20 = as %tmp.19 VFRStopWatchView;
-        symbol [ VFRStopWatchView %tmp.20 49 47 63 ];
-        symbol [ saveState %tmp.21 49 65 74 ];
+        symbol [ VFRStopWatchView %tmp.20 46 47 63 ];
+        symbol [ saveState %tmp.21 46 65 74 ];
         %tmp.21 = getv function %tmp.20 :saveState;
         %tmp.22 = invoke %tmp.20 %tmp.21();
         %tmp.23 = "viewState";
         aputv %tmp.16 %tmp.23 %tmp.22;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_48_16_50_12_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_48_12_51_12_endTry:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_48_12_51_12_finally;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_48_12_51_12_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_48_12_51_12_catch:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_45_16_47_12_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_45_12_48_12_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_45_12_48_12_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_45_12_48_12_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_45_12_48_12_catch:
         %tmp.24 = exception;
         push %tmp.24;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 50 14 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_48_12_51_12_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_50_14_51_12_end" ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 47 14 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_45_12_48_12_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_47_14_48_12_end" ]
         %ex.1 = local;
-        symbol [ ex %ex.1 50 21 23 ];
+        symbol [ ex %ex.1 47 21 23 ];
         %tmp.25 = dup %tmp.24;
         lputv %ex.1 %tmp.25;
-        symbol [ ex %ex.1 50 21 23 ];
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_48_12_51_12_finally;
+        symbol [ ex %ex.1 47 21 23 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_45_12_48_12_finally;
         pop;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_48_12_51_12_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_50_14_51_12_end:
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_48_12_51_12_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_50_14_51_12_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_50_14_51_12_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_48_12_51_12_finally;
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_48_12_51_12_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_45_12_48_12_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_47_14_48_12_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_45_12_48_12_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_47_14_48_12_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_47_14_48_12_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_45_12_48_12_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_45_12_48_12_finally;
         throw %tmp.24;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_48_12_51_12_finally:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_45_12_48_12_finally:
         jsrret;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_48_12_51_12_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_47_27_52_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_47_8_52_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_47_8_52_8_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 54 8 ]
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_54_8_59_8_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_54_8_59_8_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_54_8_59_8_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_54_8_59_8_finally;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_54_8_59_8_beginTry:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_54_12_58_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 55 12 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_55_12_57_12_if_stmt:
-        symbol [ _view %tmp.27 55 16 21 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_45_12_48_12_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_44_27_49_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_44_8_49_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_44_8_49_8_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 51 8 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_51_8_56_8_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_51_8_56_8_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_51_8_56_8_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_51_8_56_8_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_51_8_56_8_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_51_12_55_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 52 12 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_52_12_54_12_if_stmt:
+        symbol [ _view %tmp.27 52 16 21 ];
         %tmp.27 = getv ? :_view;
         %tmp.28 = null;
         %tmp.29 = ne %tmp.27 %tmp.28;
-        bf %tmp.29 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_55_12_57_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_55_12_57_12_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_55_31_57_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 56 16 ]
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_16_56_90_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_16_56_90_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_16_56_90_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_16_56_90_finally;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_16_56_90_beginTry:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_20_56_74_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 56 22 ]
-        symbol [ _view %tmp.31 56 23 28 ];
+        bf %tmp.29 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_52_12_54_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_52_12_54_12_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_52_31_54_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 53 16 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_16_53_90_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_16_53_90_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_16_53_90_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_16_53_90_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_16_53_90_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_20_53_74_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 53 22 ]
+        symbol [ _view %tmp.31 53 23 28 ];
         %tmp.31 = getv ? :_view;
         %tmp.32 = as %tmp.31 { (!Null) };
         %tmp.33 = as %tmp.32 VFRStopWatchView;
-        symbol [ VFRStopWatchView %tmp.33 56 32 48 ];
-        symbol [ saveBackupProperties %tmp.34 56 50 70 ];
+        symbol [ VFRStopWatchView %tmp.33 53 32 48 ];
+        symbol [ saveBackupProperties %tmp.34 53 50 70 ];
         %tmp.34 = getv function %tmp.33 :saveBackupProperties;
         invoke %tmp.33 %tmp.34();
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_20_56_74_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_16_56_90_endTry:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_16_56_90_finally;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_16_56_90_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_16_56_90_catch:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_20_53_74_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_16_53_90_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_16_53_90_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_16_53_90_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_16_53_90_catch:
         %tmp.35 = exception;
         push %tmp.35;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 56 76 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_16_56_90_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_76_56_90_end" ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 53 76 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_16_53_90_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_76_53_90_end" ]
         %ex5.2 = local;
-        symbol [ ex5 %ex5.2 56 83 86 ];
+        symbol [ ex5 %ex5.2 53 83 86 ];
         %tmp.36 = dup %tmp.35;
         lputv %ex5.2 %tmp.36;
-        symbol [ ex5 %ex5.2 56 83 86 ];
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_16_56_90_finally;
+        symbol [ ex5 %ex5.2 53 83 86 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_16_53_90_finally;
         pop;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_16_56_90_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_76_56_90_end:
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_16_56_90_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_76_56_90_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_76_56_90_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_16_56_90_finally;
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_16_56_90_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_16_53_90_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_76_53_90_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_16_53_90_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_76_53_90_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_76_53_90_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_16_53_90_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_16_53_90_finally;
         throw %tmp.35;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_16_56_90_finally:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_16_53_90_finally:
         jsrret;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_56_16_56_90_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_55_31_57_12_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_55_12_57_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_55_12_57_12_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_54_12_58_8_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_54_8_59_8_endTry:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_54_8_59_8_finally;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_54_8_59_8_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_54_8_59_8_catch:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_53_16_53_90_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_52_31_54_12_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_52_12_54_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_52_12_54_12_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_51_12_55_8_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_51_8_56_8_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_51_8_56_8_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_51_8_56_8_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_51_8_56_8_catch:
         %tmp.37 = exception;
         push %tmp.37;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 58 10 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_54_8_59_8_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_58_10_59_8_end" ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 55 10 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_51_8_56_8_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_55_10_56_8_end" ]
         %ex4.3 = local;
-        symbol [ ex4 %ex4.3 58 17 20 ];
+        symbol [ ex4 %ex4.3 55 17 20 ];
         %tmp.38 = dup %tmp.37;
         lputv %ex4.3 %tmp.38;
-        symbol [ ex4 %ex4.3 58 17 20 ];
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_54_8_59_8_finally;
+        symbol [ ex4 %ex4.3 55 17 20 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_51_8_56_8_finally;
         pop;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_54_8_59_8_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_58_10_59_8_end:
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_54_8_59_8_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_58_10_59_8_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_58_10_59_8_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_54_8_59_8_finally;
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_54_8_59_8_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_51_8_56_8_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_55_10_56_8_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_51_8_56_8_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_55_10_56_8_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_55_10_56_8_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_51_8_56_8_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_51_8_56_8_finally;
         throw %tmp.37;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_54_8_59_8_finally:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_51_8_56_8_finally:
         jsrret;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_54_8_59_8_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_44_50_60_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_51_8_56_8_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_41_50_57_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc"; @line = 63; @symbol_functiondef = [getInitialView,63,13,27]; @symbol_return<0> = [Views,63,34,39]; @symbol_return<1> = [Views,63,45,50]; @symbol_return<2> = [InputDelegates,63,52,66]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc"; @line = 60; @symbol_functiondef = [getInitialView,60,13,27]; @symbol_return<0> = [Views,60,34,39]; @symbol_return<1> = [Views,60,45,50]; @symbol_return<2> = [InputDelegates,60,52,66]; ]
     function getInitialView() as [Views] or [Views, InputDelegates] {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_63_68_68_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 66 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_63_68_68_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_63_68_68_4_stop" ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_60_68_65_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 63 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_60_68_65_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_60_68_65_4_stop" ]
         %main.1 = local;
-        symbol [ main %main.1 66 12 16 ];
-        symbol [ VFRStopWatchView %tmp.4 66 23 39 ];
+        symbol [ main %main.1 63 12 16 ];
+        symbol [ VFRStopWatchView %tmp.4 63 23 39 ];
         %tmp.4 = getv ? :VFRStopWatchView;
         %tmp.1 = newc %tmp.4 ();
         lputv %main.1 %tmp.1;
-        symbol [ main %main.1 66 12 16 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 67 8 ]
+        symbol [ main %main.1 63 12 16 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 64 8 ]
         %tmp.5 = newa 2;
         %tmp.6 = lgetv %main.1;
-        symbol [ main %tmp.6 67 17 21 ];
+        symbol [ main %tmp.6 64 17 21 ];
         %tmp.7 = dup %tmp.5;
         %tmp.8 = aputv %tmp.7 0 %tmp.6;
-        symbol [ VFRStopWatchDelegate %tmp.12 67 27 47 ];
+        symbol [ VFRStopWatchDelegate %tmp.12 64 27 47 ];
         %tmp.12 = getv ? :VFRStopWatchDelegate;
         %tmp.13 = lgetv %main.1;
-        symbol [ main %tmp.13 67 48 52 ];
+        symbol [ main %tmp.13 64 48 52 ];
         %tmp.9 = newc %tmp.12 (%tmp.13);
         %tmp.14 = dup %tmp.8;
         %tmp.15 = aputv %tmp.14 1 %tmp.9;
         ret %tmp.15;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_63_68_68_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_60_68_65_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc"; @line = 70; @symbol_functiondef = [getComms,70,13,21]; @symbol_return<0> = [VFRPhoneComms,70,27,40]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc"; @line = 67; @symbol_functiondef = [getComms,67,13,21]; @symbol_return<0> = [VFRPhoneComms,67,27,40]; ]
     function getComms() as VFRPhoneComms or Null {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_70_42_72_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 71 8 ]
-        symbol [ _comms %tmp.2 71 15 21 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_67_42_69_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 68 8 ]
+        symbol [ _comms %tmp.2 68 15 21 ];
         %tmp.2 = getv ? :_comms;
         ret %tmp.2;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_70_42_72_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_67_42_69_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc"; @line = 75; @symbol_functiondef = [onSettingsChanged,75,13,30]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc"; @line = 72; @symbol_functiondef = [onSettingsChanged,72,13,30]; ]
     function onSettingsChanged() as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_75_41_81_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 76 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_76_8_80_8_if_stmt:
-        symbol [ _view %tmp.2 76 12 17 ];
-        %tmp.2 = getv ? :_view;
-        %tmp.3 = null;
-        %tmp.4 = ne %tmp.2 %tmp.3;
-        bf %tmp.4 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_76_8_80_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_76_8_80_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_76_27_80_8_start:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_72_41_90_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 74 8 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_8_83_37_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_8_83_37_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_8_83_37_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_8_83_37_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_8_83_37_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_12_83_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 75 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_12_83_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_12_83_8_stop" ]
+        %rawComp.1 = local;
+        symbol [ rawComp %rawComp.1 75 16 23 ];
+        symbol [ Application %tmp.1 75 26 37 ];
+        %tmp.1 = getm $.Toybox.Application;
+        symbol [ Properties %tmp.2 75 38 48 ];
+        %tmp.2 = getv %tmp.1 :Properties;
+        symbol [ getValue %tmp.3 75 49 57 ];
+        %tmp.3 = getv function %tmp.2 :getValue;
+        %tmp.4 = "UseCompanionApp";
+        %tmp.5 = invoke %tmp.2 %tmp.3(%tmp.4);
+        lputv %rawComp.1 %tmp.5;
+        symbol [ rawComp %rawComp.1 75 16 23 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 76 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_12_83_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_12_83_8_stop" ]
+        %want.2 = local;
+        symbol [ want %want.2 76 16 20 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_76_23_76_65_begin:
+        %tmp.6 = lgetv %rawComp.1;
+        symbol [ rawComp %tmp.6 76 24 31 ];
+        %tmp.7 = null;
+        %tmp.8 = ne %tmp.6 %tmp.7;
+        bf %tmp.8 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_76_23_76_65_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_76_23_76_65_true:
+        %tmp.9 = lgetv %rawComp.1;
+        symbol [ rawComp %tmp.9 76 44 51 ];
+        %tmp.10 = as %tmp.9 { (!Null) };
+        %tmp.11 = as %tmp.10 Number;
+        symbol [ Number %tmp.11 76 55 61 ];
+        push %tmp.11;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_76_23_76_65_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_76_23_76_65_else_false:
+        %tmp.12 = 0;
+        push %tmp.12;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_76_23_76_65_end:
+        %tmp.13 = phi [%tmp.8 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_76_23_76_65_begin] [%tmp.11 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_76_23_76_65_true] [%tmp.12 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_76_23_76_65_else_false] [%tmp.13 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_76_23_76_65_end];
+        lputv %want.2 %tmp.13;
+        symbol [ want %want.2 76 16 20 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 77 12 ]
-        symbol [ _view %tmp.6 77 13 18 ];
-        %tmp.6 = getv ? :_view;
-        %tmp.7 = as %tmp.6 { (!Null) };
-        %tmp.8 = as %tmp.7 VFRStopWatchView;
-        symbol [ VFRStopWatchView %tmp.8 77 22 38 ];
-        symbol [ loadSettings %tmp.9 77 40 52 ];
-        %tmp.9 = getv function %tmp.8 :loadSettings;
-        invoke %tmp.8 %tmp.9();
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 78 12 ]
-        symbol [ _view %tmp.11 78 13 18 ];
-        %tmp.11 = getv ? :_view;
-        %tmp.12 = as %tmp.11 VFRStopWatchView;
-        symbol [ VFRStopWatchView %tmp.12 78 22 38 ];
-        symbol [ restartGps %tmp.13 78 40 50 ];
-        %tmp.13 = getv function %tmp.12 :restartGps;
-        invoke %tmp.12 %tmp.13();
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 79 12 ]
-        symbol [ WatchUi %tmp.14 79 12 19 ];
-        %tmp.14 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.15 79 20 33 ];
-        %tmp.15 = getv function %tmp.14 :requestUpdate;
-        invoke %tmp.14 %tmp.15();
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_76_27_80_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_76_8_80_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_76_8_80_8_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_75_41_81_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_77_12_82_12_if_stmt:
+        %tmp.14 = lgetv %want.2;
+        symbol [ want %tmp.14 77 16 20 ];
+        %tmp.15 = 1;
+        %tmp.16 = eq %tmp.14 %tmp.15;
+        bf %tmp.16 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_77_12_82_12_if_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_77_12_82_12_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_77_27_79_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 78 16 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_78_16_78_68_if_stmt:
+        symbol [ _comms %tmp.18 78 20 26 ];
+        %tmp.18 = getv ? :_comms;
+        %tmp.19 = null;
+        %tmp.20 = eq %tmp.18 %tmp.19;
+        bf %tmp.20 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_78_16_78_68_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_78_16_78_68_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_78_36_78_68_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 78 38 ]
+        symbol [ VFRPhoneComms %tmp.24 78 51 64 ];
+        %tmp.24 = getv ? :VFRPhoneComms;
+        %tmp.21 = newc %tmp.24 ();
+        symbol [ _comms ? 78 38 44 ];
+        putv self :_comms %tmp.21;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_78_36_78_68_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_78_16_78_68_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_78_16_78_68_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_77_27_79_12_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_77_12_82_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_77_12_82_12_if_else_false:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_79_19_82_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 81 16 ]
+        %tmp.25 = null;
+        symbol [ _comms ? 81 16 22 ];
+        putv self :_comms %tmp.25;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_79_19_82_12_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_77_12_82_12_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_12_83_8_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_8_83_37_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_8_83_37_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_8_83_37_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_8_83_37_catch:
+        %tmp.26 = exception;
+        push %tmp.26;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 83 10 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_8_83_37_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_83_10_83_37_end" ]
+        %e.3 = local;
+        symbol [ e %e.3 83 17 18 ];
+        %tmp.27 = dup %tmp.26;
+        lputv %e.3 %tmp.27;
+        symbol [ e %e.3 83 17 18 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_83_20_83_37_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 83 22 ]
+        %tmp.28 = null;
+        symbol [ _comms ? 83 22 28 ];
+        putv self :_comms %tmp.28;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_83_20_83_37_stop:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_8_83_37_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_8_83_37_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_83_10_83_37_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_8_83_37_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_83_10_83_37_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_83_10_83_37_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_8_83_37_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_8_83_37_finally;
+        throw %tmp.26;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_8_83_37_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_74_8_83_37_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 85 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_85_8_89_8_if_stmt:
+        symbol [ _view %tmp.30 85 12 17 ];
+        %tmp.30 = getv ? :_view;
+        %tmp.31 = null;
+        %tmp.32 = ne %tmp.30 %tmp.31;
+        bf %tmp.32 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_85_8_89_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_85_8_89_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_85_27_89_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 86 12 ]
+        symbol [ _view %tmp.34 86 13 18 ];
+        %tmp.34 = getv ? :_view;
+        %tmp.35 = as %tmp.34 { (!Null) };
+        %tmp.36 = as %tmp.35 VFRStopWatchView;
+        symbol [ VFRStopWatchView %tmp.36 86 22 38 ];
+        symbol [ loadSettings %tmp.37 86 40 52 ];
+        %tmp.37 = getv function %tmp.36 :loadSettings;
+        invoke %tmp.36 %tmp.37();
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 87 12 ]
+        symbol [ _view %tmp.39 87 13 18 ];
+        %tmp.39 = getv ? :_view;
+        %tmp.40 = as %tmp.39 VFRStopWatchView;
+        symbol [ VFRStopWatchView %tmp.40 87 22 38 ];
+        symbol [ restartGps %tmp.41 87 40 50 ];
+        %tmp.41 = getv function %tmp.40 :restartGps;
+        invoke %tmp.40 %tmp.41();
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 88 12 ]
+        symbol [ WatchUi %tmp.42 88 12 19 ];
+        %tmp.42 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.43 88 20 33 ];
+        %tmp.43 = getv function %tmp.42 :requestUpdate;
+        invoke %tmp.42 %tmp.43();
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_85_27_89_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_85_8_89_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_85_8_89_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_72_41_90_4_stop:
     }
 }
-[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc"; @line = 85; @symbol_functiondef = [getApp,85,9,15]; @symbol_return<0> = [VFRStopWatchApp,85,21,36]; ]
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc"; @line = 94; @symbol_functiondef = [getApp,94,9,15]; @symbol_return<0> = [VFRStopWatchApp,94,21,36]; ]
 function getApp() as VFRStopWatchApp {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_85_37_87_0_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 86 4 ]
-    symbol [ Application %tmp.1 86 11 22 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_94_37_96_0_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc" 95 4 ]
+    symbol [ Application %tmp.1 95 11 22 ];
     %tmp.1 = getm $.Toybox.Application;
-    symbol [ getApp %tmp.2 86 23 29 ];
+    symbol [ getApp %tmp.2 95 23 29 ];
     %tmp.2 = getv function %tmp.1 :getApp;
     %tmp.3 = invoke %tmp.1 %tmp.2();
     %tmp.4 = as %tmp.3 VFRStopWatchApp;
-    symbol [ VFRStopWatchApp %tmp.4 86 35 50 ];
+    symbol [ VFRStopWatchApp %tmp.4 95 35 50 ];
     ret %tmp.4;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_85_37_87_0_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRStopWatchApp_mc_94_37_96_0_stop:
 }
 [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRStopWatchApp.mc"; @line = 1; ]
 <init> {

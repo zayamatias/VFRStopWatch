@@ -129,6 +129,12 @@ class VFRQuickInfoWeather2Delegate extends WatchUi.BehaviorDelegate {
         return false;
     }
     function onNextPage() as Boolean {
+        try {
+            _main.quickInfoLastNavAt = System.getTimer();
+            WatchUi.pushView(new VFRQuickInfoDensityAltView(_main), new VFRQuickInfoDensityAltDelegate(_main), WatchUi.SLIDE_UP);
+            return true;
+        } catch (ex) { }
+
         if (WatchUi has :MapView) {
             try {
                 var mapView = new VFRMapView(_main);

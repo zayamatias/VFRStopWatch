@@ -43,9 +43,7 @@ class VFRLogger {
         return wroteToStorage;
     }
 
-    static function exportToConsole(limit as Number) as Void {
-        return;
-    }
+
     // Helper: write to app sandbox file via Toybox.Storage. Returns true
     // on success. The Storage API is available on-device; on SDKs that
     // don't support Storage this call will raise — caller should handle.

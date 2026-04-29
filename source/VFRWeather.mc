@@ -39,9 +39,6 @@ class VFRWeather {
             try { r.dew     = comms.dewpointC; } catch (e) {}
         }
 
-        // Log what source we used (comms may be present but have sentinel values)
-        
-
         // If any critical fields missing, fallback to system Weather provider
         if ((r.windDir < 0 || r.windSpd < 0 || r.temp == -999)) {
             try {

@@ -335,14 +335,6 @@ _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRLogger_mc_
         ret %tmp.89;
 _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRLogger_mc_16_79_44_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRLogger.mc"; @line = 46; @symbol_functiondef = [exportToConsole,46,20,35]; @symbol_param<0> = [limit,46,36,41]; @symbol_param<0>_type<0> = [Number,46,45,51]; ]
-    static
-    function exportToConsole(limit as Number) as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRLogger_mc_46_61_48_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRLogger.mc" 47 8 ]
-        ret ?;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRLogger_mc_46_61_48_4_stop:
-    }
 }
 [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRLogger.mc"; @line = 1; ]
 <init> {

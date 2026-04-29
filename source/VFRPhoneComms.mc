@@ -48,6 +48,7 @@ class VFRPhoneComms {
     var windSpeedKt as Number = -1;
     var tempC       as Number = -999;
     var dewpointC   as Number = -999;
+
     // Last raw weather payload (stringified) for on-device debugging
     var lastRawWeather as String = "";
     // Timestamp (System.getTimer()) of the last handshake transmit attempt
@@ -95,13 +96,12 @@ class VFRPhoneComms {
         if (Communications has :registerForPhoneAppMessageErrors) {
             Communications.registerForPhoneAppMessageErrors(method(:onPhoneMessageError));
         }
+        try { System.println("VFRComms: messagesRegistered=" + messagesRegistered.toString()); } catch (e) { }
+        try { System.println("VFRComms: Communications.transmit? " + ((Communications has :transmit) ? "yes" : "no")); } catch (e) { }
         try {
-            var ds = null;
-            try { ds = System.getDeviceSettings(); } catch (e) { ds = null; }
-            try { System.println("VFRComms: messagesRegistered=" + messagesRegistered.toString()); } catch (e) { }
-            try { System.println("VFRComms: Communications.transmit? " + ((Communications has :transmit) ? "yes" : "no")); } catch (e) { }
-            try { System.println("VFRComms: phoneConnected? " + ((ds != null && ds.phoneConnected) ? "yes" : "no")); } catch (e) { }
-        } catch (dbgEx) { }
+            var ds = System.getDeviceSettings();
+            System.println("VFRComms: phoneConnected? " + ((ds != null && ds.phoneConnected) ? "yes" : "no"));
+        } catch (e) { }
         
         // _nextHandshakeAt = 0 → first tick immediately attempts handshake
     }
@@ -279,21 +279,13 @@ class VFRPhoneComms {
             _nextKeepaliveAt = System.getTimer() + KEEPALIVE_MS;
 
         } else if (typ.equals("weather")) {
-            // Fully ignore companion-sent weather. Clear any cached raw payload
-            // so the app will fall back to the system provider via VFRWeather.
-            try { lastRawWeather = ""; } catch (e) { }
+            // Ignore companion-sent weather; use system provider via VFRWeather.
             return;
         }
     }
 
     // ── Private helpers ──────────────────────────────────────────────────────
 
-    // Public API: request weather now if connected, otherwise ensure a
-    // request is sent on the next successful handshake.
-    function requestWeatherOnNextConnect() as Void {
-        // NOOP: phone-based weather requests disabled — use system provider only.
-        try { _requestedWeather = false; } catch (e) { }
-    }
 
 
     private function _txHandshake() as Void {

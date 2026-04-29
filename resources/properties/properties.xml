@@ -7,4 +7,7 @@
 
     <!-- Auto-start speed threshold in knots (0 = disabled).  Default 30 kts. -->
     <property id="TakeoffSpeed" type="number">30</property>
+    
+    <!-- Use companion app (0 = disabled, 1 = enabled). Default: disabled -->
+    <property id="UseCompanionApp" type="number">0</property>
 </properties>

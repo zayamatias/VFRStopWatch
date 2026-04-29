@@ -19,8 +19,13 @@ class VFRStopWatchApp extends Application.AppBase {
         if (_view == null) {
             _view = new VFRStopWatchView();
         }
-        // Initialise phone comms (sends handshake to phone)
-        _comms = new VFRPhoneComms();
+        // Initialise phone comms only if enabled in properties
+        try {
+            var rawComp = Application.Properties.getValue("UseCompanionApp");
+            var want = (rawComp != null) ? (rawComp as Number) : 0;
+            if (want == 1) { _comms = new VFRPhoneComms(); }
+            else { _comms = null; }
+        } catch (e) { _comms = null; }
         if (state != null && state["viewState"] != null) {
             try {
                 (_view as VFRStopWatchView).loadState(state["viewState"] as Dictionary);
@@ -28,16 +33,8 @@ class VFRStopWatchApp extends Application.AppBase {
             }
         }
         // If we have an on-disk backup, load it as a fallback
-        try {
-            var b = Application.Properties.getValue("vfr_backup");
-            if (b != null) {
-                // older string-backed backups still possible; ignore here
-            }
-            // Load per-key Properties backup if present
-            try { (_view as VFRStopWatchView).loadBackupProperties(); }
-            catch (ex4) { }
-        } catch (ex3) {
-        }
+        // Load per-key Properties backup if present
+        try { (_view as VFRStopWatchView).loadBackupProperties(); } catch (ex4) { }
     }
 
     // onStop() is called when your application is exiting
@@ -73,6 +70,18 @@ class VFRStopWatchApp extends Application.AppBase {
 
     // Called by the system when the user changes a setting in the watch settings menu
     function onSettingsChanged() as Void {
+        // Start/stop comms based on the UseCompanionApp property value
+        try {
+            var rawComp = Application.Properties.getValue("UseCompanionApp");
+            var want = (rawComp != null) ? (rawComp as Number) : 0;
+            if (want == 1) {
+                if (_comms == null) { _comms = new VFRPhoneComms(); }
+            } else {
+                // disable companion features
+                _comms = null;
+            }
+        } catch (e) { _comms = null; }
+
         if (_view != null) {
             (_view as VFRStopWatchView).loadSettings();
             (_view as VFRStopWatchView).restartGps();

@@ -20,4 +20,12 @@
         <settingConfig type="numeric" min="0" max="100"/>
     </setting>
 
+    <!-- ── Companion App Toggle ───────────────────────────────────── -->
+    <setting propertyKey="@Properties.UseCompanionApp" title="Use Companion App">
+        <settingConfig type="list">
+            <listEntry value="0">No</listEntry>
+            <listEntry value="1">Yes</listEntry>
+        </settingConfig>
+    </setting>
+
 </settings>

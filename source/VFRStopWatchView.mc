@@ -120,11 +120,12 @@ class VFRStopWatchView extends WatchUi.View {
     var bezelLblFaceSize as Number = 0;
     var bezelSlotFont    as Graphics.VectorFont? = null;  // slot-sized font (auto-fit)
     var SHOW_BEZEL_ANGLE_DEBUG as Boolean = false; // debug overlay disabled
-    var FORCE_FLAT_BEZEL as Boolean = false; // when true, skip radial text and use flat placement fallback
     var lastDrawTimes as Dictionary = new Dictionary(); // guard per-label draw timestamps
     var bezelFrameId as Number = 0; // incremented each onUpdate to identify a frame
     // Cache loaded phone icon resource to avoid per-frame allocations
     var cachedPhoneIcon as Object? = null;
+    // Whether companion app features are enabled (settings-driven)
+    var useCompanionApp as Boolean = false;
 
     // --- Down-button hold detection ---
     var downPressAt as Number = 0; // System.getTimer() when DOWN pressed
@@ -216,6 +217,11 @@ class VFRStopWatchView extends WatchUi.View {
             // Mode 0 (GPS only) or fallback when requested mode unsupported
             Position.enableLocationEvents(Position.LOCATION_CONTINUOUS, method(:onPosition));
         }
+        // Companion app toggle (0 = disabled, 1 = enabled)
+        try {
+            var rawComp = Application.Properties.getValue("UseCompanionApp");
+            useCompanionApp = (rawComp != null) ? (((rawComp as Number) == 1) ? true : false) : false;
+        } catch (e) { useCompanionApp = false; }
         } catch (ex) { /* ignore settings parse errors */ }
     }
 
@@ -242,7 +248,7 @@ class VFRStopWatchView extends WatchUi.View {
         if (info != null) {
             if (info.accuracy != null) { gpsQuality = info.accuracy; }
             // Capture altitude when available and compute vertical speed
-            if (info != null) {
+            {
                 try {
                     var now = System.getTimer();
                     // Prefer sensor-derived altitude (barometric) when available;
@@ -725,10 +731,6 @@ class VFRStopWatchView extends WatchUi.View {
             }
         } catch (ex) { }
 
-        
-
-        
-
         // Ground speed (knots)
         try {
             var actInfoLocal = Activity.getActivityInfo();
@@ -738,48 +740,59 @@ class VFRStopWatchView extends WatchUi.View {
         } catch (ex) { }
 
         // QNH + Altitude
+        // isQnh=true  → source is Weather (true sea-level QNH)
+        // isQnh=false → source is Sensor (station pressure, NOT QNH)
         var qnhValStr = "--";
+        var isQnh     = false;
         var altStr    = "-----";
         var altLbl    = "ALT";
+
+        // Priority 1: Weather.getCurrentConditions() → true QNH (sea-level pressure, Pa→hPa).
+        // Optional freshness guard: skip if observationTime is stale (>30 min).
         try {
-            var sInfoDraw = Sensor.getInfo();
-            if (sInfoDraw != null) {
-                if (sInfoDraw.pressure != null) {
-                    // Sensor returns Pascals; divide by 100 for hPa (QNH)
-                    qnhValStr = (Math.floor((sInfoDraw.pressure as Float) / 100.0)).toNumber().toString();
-                }
-                if (sInfoDraw.altitude != null) {
-                    var altFt = ((sInfoDraw.altitude as Float) * 3.28084).toNumber();
-                    if (transitionActive) {
-                        altStr = "FL" + (altFt / 100).toNumber().toString();
-                    } else {
-                        altStr = altFt.toString();
-                    }
-                }
-            }
-            // If device sensor didn't provide pressure, try system Weather provider
-            if ((qnhValStr == "--")) {
+            var wcur = Weather.getCurrentConditions();
+            if (wcur != null && wcur.pressure != null) {
+                var fresh = true;
                 try {
-                    var wcur = null;
-                    try { wcur = Weather.getCurrentConditions(); } catch (we) { wcur = null; }
-                    if (wcur != null) {
-                        var p = null;
-                        try { p = wcur["pressure"]; } catch (e) { p = null; }
-                        if (p == null) { try { p = wcur["seaLevelPressure"]; } catch (e2) { p = null; } }
-                        if (p == null) { try { p = wcur["pressureSeaLevel"]; } catch (e3) { p = null; } }
-                        if (p != null) {
-                            try {
-                                var pf = (p as Float);
-                                if (pf > 5000.0) { pf = pf / 100.0; }
-                                qnhValStr = Math.floor(pf).toNumber().toString();
-                            } catch (pe) {
-                                try { qnhValStr = p.toString(); } catch (pe2) { }
-                            }
-                        }
+                    if ((wcur has :observationTime) && wcur.observationTime != null) {
+                        var ageSec = (Time.now().value() - wcur.observationTime.value());
+                        if (ageSec > 1800) { fresh = false; }
                     }
-                } catch (we2) { }
+                } catch (te) { System.println("QNH staleness check error: " + te.getErrorMessage()); }
+                if (fresh) {
+                    var hPa = (wcur.pressure as Float) / 100.0;
+                    qnhValStr = Math.round(hPa).toNumber().toString();
+                    isQnh = true;
+                }
             }
-        } catch (ex) { }
+        } catch (we) { System.println("QNH weather error: " + we.getErrorMessage()); }
+
+        // Priority 2: Sensor.getInfo() — station pressure (NOT QNH; can differ by 10-30 hPa).
+        // Sensor.getData() is unavailable in this SDK build (compile error confirmed).
+        if (!isQnh) {
+            try {
+                var sInfo = Sensor.getInfo();
+                if (sInfo != null && (sInfo has :pressure) && sInfo.pressure != null) {
+                    var hPa = (sInfo.pressure as Float) / 100.0;
+                    qnhValStr = Math.round(hPa).toNumber().toString();
+                    isQnh = false; // station pressure — explicitly not QNH
+                }
+            } catch (pe) { System.println("QNH sensor error: " + pe.getErrorMessage()); }
+        }
+
+        // Altitude from sensor
+        try {
+            var sInfo2 = Sensor.getInfo();
+            if (sInfo2 != null && sInfo2.altitude != null) {
+                var altFt = ((sInfo2.altitude as Float) * 3.28084).toNumber();
+                if (transitionActive) {
+                    var fl = Math.round(altFt / 100.0).toNumber();
+                    altStr = "FL" + fl.toString();
+                } else {
+                    altStr = altFt.toString();
+                }
+            }
+        } catch (ae) { System.println("Altitude error: " + ae.getErrorMessage()); }
 
         // Append tendency indicator to the alt string
         if (running && tendency != 0 && now < tendencyUntil) {
@@ -800,31 +813,15 @@ class VFRStopWatchView extends WatchUi.View {
         var angleQNH = 315.0;
         var angleALT = 225.0;
 
+        // Build display string: values are already integers (Math.round().toNumber().toString()).
+        // Append " S" suffix when showing station pressure so the pilot knows it is not QNH.
         var qnhDisplay = qnhValStr;
-        // Ensure we never show decimals: operate on the string form only
-        // to avoid casting arbitrary Objects to Float (which can crash).
-        if (qnhDisplay != null && qnhDisplay != "--" && qnhDisplay != "") {
-            var cut = -1;
-            for (var i = 0; i < qnhDisplay.length(); i++) {
-                var ch = qnhDisplay.substring(i, i + 1);
-                // Stop at standard decimal separators or any non-digit
-                if (ch == "." || ch == ",") { cut = i; break; }
-                // If we encounter a non-digit character, cut there too
-                var isDigit = false;
-                for (var di = 0; di < 10; di++) {
-                    if (ch == di.toString()) { isDigit = true; break; }
-                }
-                if (!isDigit) { cut = i; break; }
-            }
-            if (cut >= 0) { qnhDisplay = qnhDisplay.substring(0, cut); }
-        }
-        if (qnhDisplay == "--" or qnhDisplay == "") {
+        if (qnhDisplay == null || qnhDisplay == "--" || qnhDisplay == "") {
             qnhDisplay = "----";
         } else {
-            if (qnhDisplay.length() > 4) { qnhDisplay = qnhDisplay.substring(0, 4); }
-            while (qnhDisplay.length() < 4) {
-                qnhDisplay = "-" + qnhDisplay;
-            }
+            if (!isQnh) { qnhDisplay = qnhDisplay + "S"; }
+            if (qnhDisplay.length() > 5) { qnhDisplay = qnhDisplay.substring(0, 5); }
+            while (qnhDisplay.length() < 4) { qnhDisplay = "-" + qnhDisplay; }
         }
 
         // Compute a dedicated text radius (visual centroid of the annulus).
@@ -901,6 +898,7 @@ class VFRStopWatchView extends WatchUi.View {
         } catch (sepEx) { }
 
         // --- Phone connection indicator arc ---
+        if (useCompanionApp) {
         var commsIndicator = getApp().getComms();
         try {
             if (cachedPhoneIcon == null) {
@@ -960,6 +958,7 @@ class VFRStopWatchView extends WatchUi.View {
                 }
             }
         } catch (iconEx) { }
+        }
     }
 
     // Helper: draw a metric using a small radial arc to approximate rotation.
@@ -977,7 +976,7 @@ class VFRStopWatchView extends WatchUi.View {
         } catch (exSkip) { }
         // Try vector font radial drawing first (main text), then draw a red trailing pipe.
         try {
-            if (roundedFontSmall != null && !FORCE_FLAT_BEZEL) {
+            if (roundedFontSmall != null) {
                 // In fixed-grid mode (slotDeg > 0), arcSpan is the total allocated
                 // slot span — use it as-is.  In dynamic mode, expand it from text width.
                 var estSpan = arcSpan.toFloat();
@@ -1433,11 +1432,17 @@ class VFRStopWatchView extends WatchUi.View {
             var rawTrans = Application.Properties.getValue("TransitionAltitudeFt");
             curTrans = (rawTrans != null) ? (rawTrans as Number) : 6000;
         } catch (ex) { curTrans = 6000; }
+        var curComp = 0;
+        try {
+            var rawComp = Application.Properties.getValue("UseCompanionApp");
+            curComp = (rawComp != null) ? (rawComp as Number) : 0;
+        } catch (ex) { curComp = 0; }
         var menu = new WatchUi.Menu2({:title => "Settings"});
         menu.addItem(new WatchUi.MenuItem("GPS Mode",      gpsLabel,                        "setting_gps",     null));
         menu.addItem(new WatchUi.MenuItem("Timer",         curTimerMin.toString() + " min", "setting_timer",   null));
         menu.addItem(new WatchUi.MenuItem("Takeoff Speed", curKts.toString() + " kts",      "setting_takeoff", null));
         menu.addItem(new WatchUi.MenuItem("Transition Altitude", curTrans.toString() + " ft", "setting_transition", null));
+        menu.addItem(new WatchUi.MenuItem("Use Companion App", curComp == 1 ? "On" : "Off", "setting_companion", null));
         WatchUi.pushView(menu, new VFRSettingsMenuDelegate(self), WatchUi.SLIDE_UP);
     }
 
@@ -1576,35 +1581,6 @@ class VFRQuickInfoView extends WatchUi.View {
 
     function onShow() as Void {
         WatchUi.requestUpdate();
-        // Debug: log comms and Weather provider when quick-info shown
-        try {
-            var commsDbg = getApp().getComms();
-            try {
-                var wr = VFRWeather.read(getApp().getComms());
-                try {
-                    var cur = null;
-                    try { cur = Weather.getCurrentConditions(); } catch (we2) { cur = null; }
-                    System.println("DBG WEATHER read: temp=" + wr.temp.toString() + " dew=" + wr.dew.toString() + " wind=" + wr.windDir.toString() + "/" + wr.windSpd.toString());
-                    if (cur == null) {
-                        System.println("DBG Weather.getCurrentConditions: null");
-                    } else {
-                        try {
-                            if (cur instanceof Lang.Dictionary) {
-                                var keys = cur.keys();
-                                System.println("DBG Weather dict keys: " + keys.toString());
-                                for (var i = 0; i < keys.size(); i++) {
-                                    var k = keys[i];
-                                    try { System.println("DBG cur[" + k.toString() + "] = " + cur[k].toString()); } catch (e3) { }
-                                }
-                            } else {
-                                System.println("DBG Weather.getCurrentConditions (non-dict): " + cur.toString());
-                                try { System.println("DBG cur.temperature: " + (cur["temperature"] != null ? cur["temperature"].toString() : "<none>")); } catch (e4) {}
-                            }
-                        } catch (e5) { System.println("DBG Weather inspection failed: " + e5.toString()); }
-                    }
-                } catch (dbge) { }
-            } catch (we) { }
-        } catch (ex) { }
     }
 
     function onLayout(dc as Dc) as Void { }
@@ -1629,7 +1605,7 @@ class VFRQuickInfoView extends WatchUi.View {
 
         // --- Lazy-init medium vector font for large display values ---
         if (_bigFont == null) {
-            var sz    = (minWh * 0.24).toNumber(); // 62px on 260px screen
+            var sz    = (minWh * 0.18).toNumber(); // reduced size for wind/temp
             var faces = ["RobotoCondensed", "Roboto", "RobotoBlack", "Swiss721Bold", "TomorrowBold"];
             for (var fi = 0; fi < faces.size() && _bigFont == null; fi++) {
                 try { _bigFont = Graphics.getVectorFont({:face => faces[fi], :size => sz}); } catch (e) {}

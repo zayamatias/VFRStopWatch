@@ -216,6 +216,17 @@ class VFRSettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
             var curTrans = (rawTrans != null) ? (rawTrans as Number) : 6000;
             var picker = new VFRNumberPickerView("Transition Alt (ft)", curTrans, 0, 20000, 100, "TransitionAltitudeFt", _view);
             WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
+        } else if (id.equals("setting_companion")) {
+            // Toggle companion app usage immediately
+            var rawComp = Application.Properties.getValue("UseCompanionApp");
+            var cur = (rawComp != null) ? (rawComp as Number) : 0;
+            var newv = (cur == 1) ? 0 : 1;
+            Application.Properties.setValue("UseCompanionApp", newv);
+            // Update runtime view flag directly
+            try { _view.useCompanionApp = (newv == 1); } catch (e) { }
+            // Notify app so it can start/stop comms
+            try { getApp().onSettingsChanged(); } catch (e2) { }
+            WatchUi.popView(WatchUi.SLIDE_RIGHT);
         }
     }
 }

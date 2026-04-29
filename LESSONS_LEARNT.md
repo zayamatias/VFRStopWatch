@@ -18,6 +18,9 @@
 - 2026-04-27: SHOW_BEZEL_ANGLE_DEBUG must be set to `false` in production; leaving it `true` draws yellow slot dots, a red crosshair, and orange quadrant radial guides over the watch face — disable after calibration is complete.
 - 2026-04-28: Stack Overflow in drawBezelBackground fixed by removing ~35 dead local variables (legacy numSlots*, span*, rHDG/rGS/rALT/rUTC/rQNH/rLT, angleLT/UTC, clock strings, drawNow, debug block) left over from the old drawRotatedMetric API — Connect IQ VM overflows when a function frame exceeds its local-variable limit and then calls a sub-function.
 - 2026-04-28: Sensor.Info.pressure is in Pascals; divide by 100 for hPa (QNH display). Weather provider pressure >5000 is also in Pa; use the same /100 heuristic.
+- 2026-04-28: QNH provider: always assign Weather.getCurrentConditions() directly (no `var wcur = null` init) so the compiler infers the correct type and dot-property access (e.g. wcur.pressure) resolves; initialising to null makes the type Null and all property reads silently fail.
+- 2026-04-28: QNH source priority — `Weather.getCurrentConditions().pressure` is true QNH (sea-level); `Sensor.getInfo().pressure` is station pressure (not the same — up to 30 hPa difference). Prefer Weather first and use Sensor as a fallback only. Always convert Pa→hPa with simple `/ 100.0` then `Math.round().toNumber()` — not string-stripping. `Sensor.getData()` is absent in SDK 9.1 (compile error); use `Sensor.getInfo()` with `has :pressure` capability check.
+- 2026-04-28: Flight Level string: use `Math.round(altFt / 100.0).toNumber()` to avoid fractional FL values.
 - 2026-04-28: BEZEL ANCHORS (current implementation) — angles and per-quadrant text radii as coded in `drawBezelBackground`:
 	- angleHDG = 135.0°, angleGS = 45.0°, angleALT = 225.0°, angleQNH = 315.0°.
 	- rTextHDG = radiusText, rTextGS = radiusText, rTextALT = radiusText + 10.0, rTextQNH = radiusText + 10.0.
