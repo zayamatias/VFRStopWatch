@@ -204,6 +204,37 @@ class VFRSettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
             var curFuel = VFRSettings.readClampedNumber("FuelCheckInterval", 30, 0, 120);
             var picker = new VFRNumberPickerView("Fuel Check (min)", curFuel, 0, 120, 5, "FuelCheckInterval", _view);
             WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
+        } else if (id.equals("setting_bezel_atlas")) {
+            var rawAtlas = Application.Properties.getValue("BezelUseAtlas");
+            var curAtlas = (rawAtlas != null) ? (rawAtlas as Number) : 0;
+            var newAtlas = (curAtlas == 1) ? 0 : 1;
+            Application.Properties.setValue("BezelUseAtlas", newAtlas);
+            VFRSettings.applySavedNumber(_view, "BezelUseAtlas", newAtlas);
+            WatchUi.popView(WatchUi.SLIDE_RIGHT);
+        } else if (id.equals("setting_bezel_font")) {
+            var curFont = VFRSettings.readClampedNumber("BezelFontScale", 100, 70, 130);
+            var picker = new VFRNumberPickerView("Bezel Font (%)", curFont, 70, 130, 5, "BezelFontScale", _view);
+            WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
+        } else if (id.equals("setting_bezel_contrast")) {
+            var curContrast = VFRSettings.readClampedNumber("BezelContrast", 100, 50, 100);
+            var picker = new VFRNumberPickerView("Bezel Contrast (%)", curContrast, 50, 100, 5, "BezelContrast", _view);
+            WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
+        } else if (id.equals("setting_bezel_hdg")) {
+            var curHdg = VFRSettings.readClampedNumber("BezelOffsetHDG", 0, -20, 20);
+            var picker = new VFRNumberPickerView("HDG Offset (px)", curHdg, -20, 20, 1, "BezelOffsetHDG", _view);
+            WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
+        } else if (id.equals("setting_bezel_gs")) {
+            var curGs = VFRSettings.readClampedNumber("BezelOffsetGS", 0, -20, 20);
+            var picker = new VFRNumberPickerView("GS Offset (px)", curGs, -20, 20, 1, "BezelOffsetGS", _view);
+            WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
+        } else if (id.equals("setting_bezel_alt")) {
+            var curAlt = VFRSettings.readClampedNumber("BezelOffsetALT", 10, -20, 20);
+            var picker = new VFRNumberPickerView("ALT Offset (px)", curAlt, -20, 20, 1, "BezelOffsetALT", _view);
+            WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
+        } else if (id.equals("setting_bezel_qnh")) {
+            var curQnh = VFRSettings.readClampedNumber("BezelOffsetQNH", 10, -20, 20);
+            var picker = new VFRNumberPickerView("QNH Offset (px)", curQnh, -20, 20, 1, "BezelOffsetQNH", _view);
+            WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
         } else if (id.equals("setting_companion")) {
             // Toggle companion app usage immediately
             var rawComp = Application.Properties.getValue("UseCompanionApp");

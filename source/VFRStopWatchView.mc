@@ -120,6 +120,19 @@ class VFRStopWatchView extends WatchUi.View {
     var bezelLblFaceSize as Number = 0;
     var bezelSlotFont    as Graphics.VectorFont? = null;  // slot-sized font (auto-fit)
     var bezelFontsInitialized as Boolean = false;
+    var bezelUseAtlas as Boolean = false;
+    var bezelFontScale as Number = 100;
+    var bezelContrast as Number = 100;
+    var bezelOffsetHDG as Number = 0;
+    var bezelOffsetGS as Number = 0;
+    var bezelOffsetALT as Number = 10;
+    var bezelOffsetQNH as Number = 10;
+    var cachedBezelAtlas as Object? = null;
+    var bezelAtlasUnavailable as Boolean = false;
+    var bezelSlotCacheRadius as Float = -1.0;
+    var bezelSlotX as Array? = null;
+    var bezelSlotY as Array? = null;
+    var bezelSlotAngle as Array? = null;
     var SHOW_BEZEL_ANGLE_DEBUG as Boolean = false; // debug overlay disabled
     var lastDrawTimes as Dictionary = new Dictionary(); // guard per-label draw timestamps
     var bezelFrameId as Number = 0; // incremented each onUpdate to identify a frame
@@ -684,9 +697,10 @@ class VFRStopWatchView extends WatchUi.View {
         // instead of inheriting whichever face happened to fit the chrono.
         if (!bezelFontsInitialized) {
             var chronoSize   = (minWh * 0.30).toNumber();
-            var bezelSize    = (minWh * 0.110).toNumber();
-            var bezelLblSize = (minWh * 0.095).toNumber();
-            var faces = ["RobotoCondensed", "Roboto", "RobotoBlack", "RobotoRegular", "Swiss721Bold", "TomorrowBold"];
+            var fontScale = bezelFontScale.toFloat() / 100.0;
+            var bezelSize    = (minWh.toFloat() * 0.110 * fontScale).toNumber();
+            var bezelLblSize = (minWh.toFloat() * 0.095 * fontScale).toNumber();
+            var faces = ["OpenSans", "OpenSansRegular", "Nunito", "NunitoRegular", "RobotoCondensed", "Roboto", "RobotoBlack", "RobotoRegular", "Swiss721Bold", "TomorrowBold"];
             for (var fi = 0; fi < faces.size() && roundedFontLarge == null; fi++) {
                 try {
                     var f = Graphics.getVectorFont({:face => faces[fi], :size => chronoSize});
@@ -697,7 +711,7 @@ class VFRStopWatchView extends WatchUi.View {
                 } catch (ex) { }
             }
 
-            var bezelFaces = ["RobotoCondensed", "RobotoRegular", "Roboto", "Swiss721Bold", "TomorrowBold", "RobotoBlack"];
+            var bezelFaces = ["OpenSans", "OpenSansRegular", "Nunito", "NunitoRegular", "RobotoCondensed", "RobotoRegular", "Roboto", "Swiss721Bold", "TomorrowBold", "RobotoBlack"];
             for (var bfi = 0; bfi < bezelFaces.size() && bezelLblFont == null; bfi++) {
                 try {
                     var bf = Graphics.getVectorFont({:face => bezelFaces[bfi], :size => bezelLblSize});
@@ -775,7 +789,7 @@ class VFRStopWatchView extends WatchUi.View {
                 dc.drawCircle(cx, cy, innerR);
             }
         } catch (e) { }
-        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.setColor(bezelGuideColor(), Graphics.COLOR_TRANSPARENT);
         dc.setPenWidth(1);
         dc.drawCircle(cx, cy, sepRadius);
 
@@ -791,12 +805,10 @@ class VFRStopWatchView extends WatchUi.View {
         // nudges; this lets us calibrate to the bezel art without changing
         // slot math or rotation.
         var radiusText = radiusCenter;
-        var rTextHDG = radiusText; // NW
-        var rTextGS  = radiusText; // NE
-        // Nudge bottom quadrants slightly inward to visually centre text
-        // within the bezel artwork (non-invasive cosmetic tweak).
-        var rTextALT = radiusText + 10.0; // SW (-2px from +12)
-        var rTextQNH = radiusText + 10.0; // SE (-2px from +12)
+        var rTextHDG = radiusText + bezelOffsetHDG.toFloat(); // NW
+        var rTextGS  = radiusText + bezelOffsetGS.toFloat(); // NE
+        var rTextALT = radiusText + bezelOffsetALT.toFloat(); // SW
+        var rTextQNH = radiusText + bezelOffsetQNH.toFloat(); // SE
 
         // Debug overlay: when enabled, draw slot centres and quadrant guide lines
         // to help measure the correct angles/radii in the screenshot tool.
@@ -834,10 +846,11 @@ class VFRStopWatchView extends WatchUi.View {
 
         // Call drawLabelInQuadrant with per-quadrant radii so the visual
         // text radius can be calibrated independently of the slot math.
-        drawLabelInQuadrant(dc, cx, cy, angleHDG, "HDG", hdgStr,     Graphics.COLOR_WHITE, rTextHDG, false);
-        drawLabelInQuadrant(dc, cx, cy, angleGS,  "GS",  gsStr + " kt", Graphics.COLOR_WHITE, rTextGS,  false);
-        drawLabelInQuadrant(dc, cx, cy, angleALT, altLbl, altStr,    Graphics.COLOR_WHITE, rTextALT, true);
-        drawLabelInQuadrant(dc, cx, cy, angleQNH, "QNH", qnhDisplay, Graphics.COLOR_WHITE, rTextQNH, true);
+        var bezelTextColor = bezelLabelColor();
+        drawLabelInQuadrant(dc, cx, cy, angleHDG, "HDG", hdgStr,     bezelTextColor, rTextHDG, false);
+        drawLabelInQuadrant(dc, cx, cy, angleGS,  "GS",  gsStr + " kt", bezelTextColor, rTextGS,  false);
+        drawLabelInQuadrant(dc, cx, cy, angleALT, altLbl, altStr,    bezelTextColor, rTextALT, true);
+        drawLabelInQuadrant(dc, cx, cy, angleQNH, "QNH", qnhDisplay, bezelTextColor, rTextQNH, true);
 
         // Group separators
         try {
@@ -1151,10 +1164,134 @@ class VFRStopWatchView extends WatchUi.View {
     // runs right-to-left from the viewer at bottom positions, so we reverse the
     // character assignment.  NW (HDG) and NE (GS) pass false.  Each quadrant is
     // explicitly independent; changing one cannot affect the others.
+    function invalidateBezelRendering() as Void {
+        roundedFontLarge = null;
+        roundedFontSmall = null;
+        bezelLblFont = null;
+        bezelLblFace = null;
+        bezelLblFaceSize = 0;
+        bezelSlotFont = null;
+        bezelFontsInitialized = false;
+        bezelSlotCacheRadius = -1.0;
+        bezelSlotX = null;
+        bezelSlotY = null;
+        bezelSlotAngle = null;
+    }
+
+    function bezelLabelColor() as Number {
+        if (bezelContrast >= 85) { return Graphics.COLOR_WHITE; }
+        if (bezelContrast >= 65) { return Graphics.COLOR_LT_GRAY; }
+        return Graphics.COLOR_DK_GRAY;
+    }
+
+    function bezelGuideColor() as Number {
+        if (bezelContrast >= 75) { return Graphics.COLOR_LT_GRAY; }
+        return Graphics.COLOR_DK_GRAY;
+    }
+
+    function ensureBezelSlotGeometry(cx as Number, cy as Number, radiusCenter as Float) as Void {
+        if (bezelSlotX != null && bezelSlotY != null && bezelSlotAngle != null && bezelSlotCacheRadius == radiusCenter) { return; }
+        bezelSlotX = new [48];
+        bezelSlotY = new [48];
+        bezelSlotAngle = new [48];
+        bezelSlotCacheRadius = radiusCenter;
+        for (var k = 0; k < 48; k++) {
+            var thetaDeg = 90.0 - (k.toFloat() + 0.5) * 7.5;
+            var thetaRad = thetaDeg * (Math.PI / 180.0);
+            (bezelSlotX as Array)[k] = (cx.toFloat() + radiusCenter * Math.cos(thetaRad)).toNumber();
+            (bezelSlotY as Array)[k] = (cy.toFloat() - radiusCenter * Math.sin(thetaRad)).toNumber();
+            (bezelSlotAngle as Array)[k] = thetaDeg;
+        }
+    }
+
+    function bezelAtlasCharIndex(ch as String) as Number {
+        if (ch.equals("0")) { return 0; }
+        if (ch.equals("1")) { return 1; }
+        if (ch.equals("2")) { return 2; }
+        if (ch.equals("3")) { return 3; }
+        if (ch.equals("4")) { return 4; }
+        if (ch.equals("5")) { return 5; }
+        if (ch.equals("6")) { return 6; }
+        if (ch.equals("7")) { return 7; }
+        if (ch.equals("8")) { return 8; }
+        if (ch.equals("9")) { return 9; }
+        if (ch.equals("A") || ch.equals("a")) { return 10; }
+        if (ch.equals("B") || ch.equals("b")) { return 11; }
+        if (ch.equals("C") || ch.equals("c")) { return 12; }
+        if (ch.equals("D") || ch.equals("d")) { return 13; }
+        if (ch.equals("E") || ch.equals("e")) { return 14; }
+        if (ch.equals("F") || ch.equals("f")) { return 15; }
+        if (ch.equals("G") || ch.equals("g")) { return 16; }
+        if (ch.equals("H") || ch.equals("h")) { return 17; }
+        if (ch.equals("I") || ch.equals("i")) { return 18; }
+        if (ch.equals("J") || ch.equals("j")) { return 19; }
+        if (ch.equals("K") || ch.equals("k")) { return 20; }
+        if (ch.equals("L") || ch.equals("l")) { return 21; }
+        if (ch.equals("M") || ch.equals("m")) { return 22; }
+        if (ch.equals("N") || ch.equals("n")) { return 23; }
+        if (ch.equals("O") || ch.equals("o")) { return 24; }
+        if (ch.equals("P") || ch.equals("p")) { return 25; }
+        if (ch.equals("Q") || ch.equals("q")) { return 26; }
+        if (ch.equals("R") || ch.equals("r")) { return 27; }
+        if (ch.equals("S") || ch.equals("s")) { return 28; }
+        if (ch.equals("T") || ch.equals("t")) { return 29; }
+        if (ch.equals("U") || ch.equals("u")) { return 30; }
+        if (ch.equals("V") || ch.equals("v")) { return 31; }
+        if (ch.equals("W") || ch.equals("w")) { return 32; }
+        if (ch.equals("X") || ch.equals("x")) { return 33; }
+        if (ch.equals("Y") || ch.equals("y")) { return 34; }
+        if (ch.equals("Z") || ch.equals("z")) { return 35; }
+        if (ch.equals(":")) { return 36; }
+        if (ch.equals("-")) { return 37; }
+        if (ch.equals("/")) { return 38; }
+        if (ch.equals(" ")) { return 39; }
+        return -1;
+    }
+
+    function drawAtlasGlyph(dc as Dc, ch as String, px as Number, py as Number, angleDeg as Float, color as Number) as Boolean {
+        if (!bezelUseAtlas || bezelAtlasUnavailable) { return false; }
+        if (cachedBezelAtlas == null) {
+            try { cachedBezelAtlas = WatchUi.loadResource(Rez.Drawables.BezelFontAtlas); } catch (rx) { bezelAtlasUnavailable = true; return false; }
+        }
+        var charIndex = bezelAtlasCharIndex(ch);
+        if (charIndex < 0 || cachedBezelAtlas == null) { return false; }
+
+        var normalizedAngle = angleDeg;
+        while (normalizedAngle < 0.0) { normalizedAngle += 360.0; }
+        while (normalizedAngle >= 360.0) { normalizedAngle -= 360.0; }
+        var angleIndex = Math.round(normalizedAngle / 5.0).toNumber();
+        if (angleIndex >= 72) { angleIndex = 0; }
+
+        var atlasIndex = charIndex * 72 + angleIndex;
+        var cellSize = 75;
+        var sourceX = (atlasIndex % 16) * cellSize;
+        var sourceY = (atlasIndex / 16) * cellSize;
+        var scale = (bezelFontScale.toFloat() / 100.0) * 0.58;
+        var targetX = (px.toFloat() - (cellSize.toFloat() * scale / 2.0)).toNumber();
+        var targetY = (py.toFloat() - (cellSize.toFloat() * scale / 2.0)).toNumber();
+        var xform = new Graphics.AffineTransform();
+        xform.setToScale(scale, scale);
+        try {
+            dc.drawBitmap2(targetX, targetY, (cachedBezelAtlas as WatchUi.BitmapResource), {
+                :bitmapX => sourceX,
+                :bitmapY => sourceY,
+                :bitmapWidth => cellSize,
+                :bitmapHeight => cellSize,
+                :tintColor => color,
+                :transform => xform
+            });
+            return true;
+        } catch (dx) {
+            bezelAtlasUnavailable = true;
+            return false;
+        }
+    }
+
     function drawLabelInQuadrant(dc as Dc, cx as Number, cy as Number,
             quadAngle as Float, prefix as String, suffix as String,
             color as Number, radiusCenter as Float, reverseChars as Boolean) as Void {
         if (bezelLblFont == null) { return; }
+        ensureBezelSlotGeometry(cx, cy, radiusCenter);
 
         // ── 1. Build label string, centre within 12 slots ─────────────────
         var combined = prefix;
@@ -1214,15 +1351,23 @@ class VFRStopWatchView extends WatchUi.View {
             // preserved for optical centering between physical slots.
             var slotPos = quadStartSlot.toFloat() + startOffset + si.toFloat();
 
-            // Slot angle in standard math/CCW degrees: compute using slot
-            // CENTER (k + 0.5) so characters are placed at the middle of
-            // each 7.5° slot. (Required Fix #1)
-            var theta_deg = 90.0 - (slotPos + 0.5) * 7.5;
-            var theta_rad = theta_deg * (Math.PI / 180.0);
-
-            // Screen position (y increases downward → subtract sin)
-            var px = (cx.toFloat() + radiusCenter * Math.cos(theta_rad)).toNumber();
-            var py = (cy.toFloat() - radiusCenter * Math.sin(theta_rad)).toNumber();
+            var baseSlot = Math.floor(slotPos).toNumber();
+            var slotFrac = slotPos - baseSlot.toFloat();
+            var theta_deg;
+            var px;
+            var py;
+            if (slotFrac == 0.0 && bezelSlotX != null && bezelSlotY != null && bezelSlotAngle != null) {
+                var slotIndex = baseSlot % 48;
+                theta_deg = ((bezelSlotAngle as Array)[slotIndex] as Float);
+                px = ((bezelSlotX as Array)[slotIndex] as Number);
+                py = ((bezelSlotY as Array)[slotIndex] as Number);
+            } else {
+                // Fractional slot positions support optical half-slot centering.
+                theta_deg = 90.0 - (slotPos + 0.5) * 7.5;
+                var theta_rad = theta_deg * (Math.PI / 180.0);
+                px = (cx.toFloat() + radiusCenter * Math.cos(theta_rad)).toNumber();
+                py = (cy.toFloat() - radiusCenter * Math.sin(theta_rad)).toNumber();
+            }
 
             // Tangent rotation: theta - 90, folded into [−90°, +90°].
             // The fold flips the direction for the bottom half automatically,
@@ -1231,10 +1376,12 @@ class VFRStopWatchView extends WatchUi.View {
             while (normT >  90.0) { normT -= 180.0; }
             while (normT < -90.0) { normT += 180.0; }
 
-            try {
-                dc.drawAngledText(px, py, useFont, ch,
-                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER, normT);
-            } catch (ex) {
+            if (!drawAtlasGlyph(dc, ch, px, py, normT, color)) {
+                try {
+                    dc.drawAngledText(px, py, useFont, ch,
+                        Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER, normT);
+                } catch (ex) {
+                }
             }
         }
     }
@@ -1386,6 +1533,13 @@ class VFRStopWatchView extends WatchUi.View {
         menu.addItem(new WatchUi.MenuItem("HR Alert", settings.hrThreshold.toString() + " bpm", "setting_hr", null));
         menu.addItem(new WatchUi.MenuItem("Fuel Check", settings.fuelCheckIntervalMin.toString() + " min", "setting_fuel", null));
         menu.addItem(new WatchUi.MenuItem("Use Companion App", settings.useCompanionApp ? "On" : "Off", "setting_companion", null));
+        menu.addItem(new WatchUi.MenuItem("Bezel Renderer", settings.bezelUseAtlas ? "Atlas" : "Vector", "setting_bezel_atlas", null));
+        menu.addItem(new WatchUi.MenuItem("Bezel Font", settings.bezelFontScale.toString() + "%", "setting_bezel_font", null));
+        menu.addItem(new WatchUi.MenuItem("Bezel Contrast", settings.bezelContrast.toString() + "%", "setting_bezel_contrast", null));
+        menu.addItem(new WatchUi.MenuItem("HDG Offset", settings.bezelOffsetHDG.toString() + " px", "setting_bezel_hdg", null));
+        menu.addItem(new WatchUi.MenuItem("GS Offset", settings.bezelOffsetGS.toString() + " px", "setting_bezel_gs", null));
+        menu.addItem(new WatchUi.MenuItem("ALT Offset", settings.bezelOffsetALT.toString() + " px", "setting_bezel_alt", null));
+        menu.addItem(new WatchUi.MenuItem("QNH Offset", settings.bezelOffsetQNH.toString() + " px", "setting_bezel_qnh", null));
         WatchUi.pushView(menu, new VFRSettingsMenuDelegate(self), WatchUi.SLIDE_UP);
     }
 

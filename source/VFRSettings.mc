@@ -9,6 +9,13 @@ class VFRSettingsSnapshot {
     var hrThreshold as Number;
     var fuelCheckIntervalMin as Number;
     var useCompanionApp as Boolean;
+    var bezelUseAtlas as Boolean;
+    var bezelFontScale as Number;
+    var bezelContrast as Number;
+    var bezelOffsetHDG as Number;
+    var bezelOffsetGS as Number;
+    var bezelOffsetALT as Number;
+    var bezelOffsetQNH as Number;
 
     function initialize() {
         gpsMode = 3;
@@ -18,6 +25,13 @@ class VFRSettingsSnapshot {
         hrThreshold = 130;
         fuelCheckIntervalMin = 30;
         useCompanionApp = false;
+        bezelUseAtlas = false;
+        bezelFontScale = 100;
+        bezelContrast = 100;
+        bezelOffsetHDG = 0;
+        bezelOffsetGS = 0;
+        bezelOffsetALT = 10;
+        bezelOffsetQNH = 10;
     }
 }
 
@@ -31,6 +45,13 @@ class VFRSettings {
         s.hrThreshold = VFRSettings.readClampedNumber("HrThreshold", 130, 0, 220);
         s.fuelCheckIntervalMin = VFRSettings.readClampedNumber("FuelCheckInterval", 30, 0, 120);
         s.useCompanionApp = VFRSettings.readClampedNumber("UseCompanionApp", 0, 0, 1) == 1;
+        s.bezelUseAtlas = VFRSettings.readClampedNumber("BezelUseAtlas", 0, 0, 1) == 1;
+        s.bezelFontScale = VFRSettings.readClampedNumber("BezelFontScale", 100, 70, 130);
+        s.bezelContrast = VFRSettings.readClampedNumber("BezelContrast", 100, 50, 100);
+        s.bezelOffsetHDG = VFRSettings.readClampedNumber("BezelOffsetHDG", 0, -20, 20);
+        s.bezelOffsetGS = VFRSettings.readClampedNumber("BezelOffsetGS", 0, -20, 20);
+        s.bezelOffsetALT = VFRSettings.readClampedNumber("BezelOffsetALT", 10, -20, 20);
+        s.bezelOffsetQNH = VFRSettings.readClampedNumber("BezelOffsetQNH", 10, -20, 20);
         return s;
     }
 
@@ -62,6 +83,13 @@ class VFRSettings {
         view.HR_THRESHOLD = settings.hrThreshold;
         view.FUEL_CHECK_INTERVAL_MS = settings.fuelCheckIntervalMin * 60000;
         view.useCompanionApp = settings.useCompanionApp;
+        view.bezelUseAtlas = settings.bezelUseAtlas;
+        view.bezelFontScale = settings.bezelFontScale;
+        view.bezelContrast = settings.bezelContrast;
+        view.bezelOffsetHDG = settings.bezelOffsetHDG;
+        view.bezelOffsetGS = settings.bezelOffsetGS;
+        view.bezelOffsetALT = settings.bezelOffsetALT;
+        view.bezelOffsetQNH = settings.bezelOffsetQNH;
     }
 
     static function applySavedNumber(view as VFRStopWatchView, propKey as String, value as Number) as Void {
@@ -79,6 +107,22 @@ class VFRSettings {
             var fuelMin = VFRSettings.clampNumber(value, 0, 120);
             view.FUEL_CHECK_INTERVAL_MS = fuelMin * 60000;
             if (!view.running) { view.nextFuelCheckAt = view.FUEL_CHECK_INTERVAL_MS; }
+        } else if (propKey.equals("BezelUseAtlas")) {
+            view.bezelUseAtlas = VFRSettings.clampNumber(value, 0, 1) == 1;
+            view.invalidateBezelRendering();
+        } else if (propKey.equals("BezelFontScale")) {
+            view.bezelFontScale = VFRSettings.clampNumber(value, 70, 130);
+            view.invalidateBezelRendering();
+        } else if (propKey.equals("BezelContrast")) {
+            view.bezelContrast = VFRSettings.clampNumber(value, 50, 100);
+        } else if (propKey.equals("BezelOffsetHDG")) {
+            view.bezelOffsetHDG = VFRSettings.clampNumber(value, -20, 20);
+        } else if (propKey.equals("BezelOffsetGS")) {
+            view.bezelOffsetGS = VFRSettings.clampNumber(value, -20, 20);
+        } else if (propKey.equals("BezelOffsetALT")) {
+            view.bezelOffsetALT = VFRSettings.clampNumber(value, -20, 20);
+        } else if (propKey.equals("BezelOffsetQNH")) {
+            view.bezelOffsetQNH = VFRSettings.clampNumber(value, -20, 20);
         }
     }
 

@@ -43,4 +43,35 @@
         </settingConfig>
     </setting>
 
+    <setting propertyKey="@Properties.BezelUseAtlas" title="@Strings.SettingBezelAtlasTitle">
+        <settingConfig type="list">
+            <listEntry value="0">Vector</listEntry>
+            <listEntry value="1">Atlas</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.BezelFontScale" title="@Strings.SettingBezelFontScaleTitle">
+        <settingConfig type="numeric" min="70" max="130"/>
+    </setting>
+
+    <setting propertyKey="@Properties.BezelContrast" title="@Strings.SettingBezelContrastTitle">
+        <settingConfig type="numeric" min="50" max="100"/>
+    </setting>
+
+    <setting propertyKey="@Properties.BezelOffsetHDG" title="@Strings.SettingBezelOffsetHDGTitle">
+        <settingConfig type="numeric" min="-20" max="20"/>
+    </setting>
+
+    <setting propertyKey="@Properties.BezelOffsetGS" title="@Strings.SettingBezelOffsetGSTitle">
+        <settingConfig type="numeric" min="-20" max="20"/>
+    </setting>
+
+    <setting propertyKey="@Properties.BezelOffsetALT" title="@Strings.SettingBezelOffsetALTTitle">
+        <settingConfig type="numeric" min="-20" max="20"/>
+    </setting>
+
+    <setting propertyKey="@Properties.BezelOffsetQNH" title="@Strings.SettingBezelOffsetQNHTitle">
+        <settingConfig type="numeric" min="-20" max="20"/>
+    </setting>
+
 </settings>

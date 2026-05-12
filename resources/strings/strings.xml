@@ -18,4 +18,11 @@
     <string id="SettingTransitionTitle">Transition Alt (ft)</string>
     <string id="SettingHrTitle">HR Alert (bpm)</string>
     <string id="SettingFuelTitle">Fuel Check (min)</string>
+    <string id="SettingBezelAtlasTitle">Bezel Renderer</string>
+    <string id="SettingBezelFontScaleTitle">Bezel Font (%)</string>
+    <string id="SettingBezelContrastTitle">Bezel Contrast (%)</string>
+    <string id="SettingBezelOffsetHDGTitle">HDG Offset (px)</string>
+    <string id="SettingBezelOffsetGSTitle">GS Offset (px)</string>
+    <string id="SettingBezelOffsetALTTitle">ALT Offset (px)</string>
+    <string id="SettingBezelOffsetQNHTitle">QNH Offset (px)</string>
 </strings>

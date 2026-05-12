@@ -1,5 +1,7 @@
 Place a rounded TTF font here for the full rounded look.
 
+Bundled fallback: OpenSans-Regular.ttf is included from the Connect IQ SDK samples and is preferred before built-in faces when available.
+
 Suggested: Nunito (SIL Open Font License). Filename expected by the code: Nunito-Regular.ttf
 
 To add the font:

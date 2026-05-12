@@ -19,4 +19,13 @@
     
     <!-- Use companion app (0 = disabled, 1 = enabled). Default: disabled -->
     <property id="UseCompanionApp" type="number">0</property>
+
+    <!-- Bezel rendering controls. Offsets are pixels relative to the text radius. -->
+    <property id="BezelUseAtlas" type="number">0</property>
+    <property id="BezelFontScale" type="number">100</property>
+    <property id="BezelContrast" type="number">100</property>
+    <property id="BezelOffsetHDG" type="number">0</property>
+    <property id="BezelOffsetGS" type="number">0</property>
+    <property id="BezelOffsetALT" type="number">10</property>
+    <property id="BezelOffsetQNH" type="number">10</property>
 </properties>
