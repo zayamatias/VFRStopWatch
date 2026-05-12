@@ -7,6 +7,15 @@
 
     <!-- Auto-start speed threshold in knots (0 = disabled).  Default 30 kts. -->
     <property id="TakeoffSpeed" type="number">30</property>
+
+    <!-- Transition altitude for FL display in feet. Default 6000 ft. -->
+    <property id="TransitionAltitudeFt" type="number">6000</property>
+
+    <!-- Heart-rate alert threshold in bpm (0 = disabled). Default 130 bpm. -->
+    <property id="HrThreshold" type="number">130</property>
+
+    <!-- Fuel reminder interval in minutes (0 = disabled). Default 30 min. -->
+    <property id="FuelCheckInterval" type="number">30</property>
     
     <!-- Use companion app (0 = disabled, 1 = enabled). Default: disabled -->
     <property id="UseCompanionApp" type="number">0</property>

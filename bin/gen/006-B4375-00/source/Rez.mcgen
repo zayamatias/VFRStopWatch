@@ -30,16 +30,19 @@ module Rez {
     module Strings {
         (:initialized) var SettingTakeoffTitle as ResourceId;
         (:initialized) var SettingGpsModeGpsGlonass as ResourceId;
+        (:initialized) var SettingTransitionTitle as ResourceId;
+        (:initialized) var SettingGpsModeAllSat as ResourceId;
+        (:initialized) var SettingFuelTitle as ResourceId;
+        (:initialized) var SettingHrTitle as ResourceId;
+        (:initialized) var AppName as ResourceId;
         (:initialized) var SettingGpsModeAviation as ResourceId;
         (:initialized) var menu_label_3 as ResourceId;
-        (:initialized) var SettingGpsModeAllSat as ResourceId;
         (:initialized) var menu_label_1 as ResourceId;
         (:initialized) var SettingTimerTitle as ResourceId;
         (:initialized) var menu_label_2 as ResourceId;
         (:initialized) var SettingGpsModeTitle as ResourceId;
         (:initialized) var SettingGpsModeGps as ResourceId;
         (:initialized) var prompt as ResourceId;
-        (:initialized) var AppName as ResourceId;
     } // Strings
 
     module Styles {

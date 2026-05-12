@@ -60,7 +60,10 @@ class VFRStopWatchApp extends Application.AppBase {
     function getInitialView() as [Views] or [Views, InputDelegates] {
         // Start on the main stopwatch view by default. Remove the debug
         // startup screen to avoid confusing users when no payload is present.
-        var main = new VFRStopWatchView();
+        if (_view == null) {
+            _view = new VFRStopWatchView();
+        }
+        var main = _view as VFRStopWatchView;
         return [ main, new VFRStopWatchDelegate(main) ];
     }
 

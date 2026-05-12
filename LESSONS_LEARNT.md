@@ -26,3 +26,4 @@
 	- rTextHDG = radiusText, rTextGS = radiusText, rTextALT = radiusText + 10.0, rTextQNH = radiusText + 10.0.
 	- `reverseChars` flags: HDG=false, GS=false, ALT=true, QNH=true.
 	Note: These values were chosen by visual nudging and MUST be verified on a real device with live sensor values; keep this entry as a reference for future recalibration.
+- 2026-05-12: Garmin resource XML comments cannot contain `--`; the resource validator rejects comments that use long dash separators.

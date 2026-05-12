@@ -251,7 +251,7 @@ _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMe
     }
     [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 75; @symbol_functiondef = [save,75,13,17]; ]
     function save() as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_75_28_94_4_start:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_75_28_78_4_start:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 76 8 ]
         symbol [ Application %tmp.1 76 8 19 ];
         %tmp.1 = getm $.Toybox.Application;
@@ -265,1178 +265,1094 @@ _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMe
         %tmp.7 = getv ? :_value;
         invoke %tmp.2 %tmp.3(%tmp.5, %tmp.7);
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 77 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_77_8_92_8_if_stmt:
-        symbol [ _propKey %tmp.9 77 12 20 ];
-        %tmp.9 = getv ? :_propKey;
-        symbol [ equals %tmp.10 77 21 27 ];
-        %tmp.10 = getv function %tmp.9 :equals;
-        %tmp.11 = "TimerInterval";
-        %tmp.12 = invoke %tmp.9 %tmp.10(%tmp.11);
-        bf %tmp.12 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_77_8_92_8_if_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_77_8_92_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_77_46_84_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 78 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_77_46_84_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_77_46_84_8_stop" ]
-        %ms.1 = local;
-        symbol [ ms %ms.1 78 16 18 ];
-        symbol [ _value %tmp.14 78 21 27 ];
-        %tmp.14 = getv ? :_value;
-        %tmp.15 = 60000;
-        %tmp.16 = mul %tmp.14 %tmp.15;
-        lputv %ms.1 %tmp.16;
-        symbol [ ms %ms.1 78 16 18 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 79 12 ]
-        symbol [ _mainView %tmp.17 79 12 21 ];
-        %tmp.17 = getv self :_mainView;
-        %tmp.18 = lgetv %ms.1;
-        symbol [ ms %tmp.18 79 40 42 ];
-        symbol [ timerIntervalMs ? 79 22 37 ];
-        putv %tmp.17 :timerIntervalMs %tmp.18;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 81 12 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_81_12_83_12_if_stmt:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_81_16_81_43_begin:
-        symbol [ _mainView %tmp.20 81 17 26 ];
-        %tmp.20 = getv ? :_mainView;
-        symbol [ running %tmp.21 81 27 34 ];
-        %tmp.21 = getv %tmp.20 :running;
-        %tmp.22 = not %tmp.21;
-        bf %tmp.22 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_81_12_83_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_81_38_81_43_true:
-        %tmp.23 = lgetv %ms.1;
-        symbol [ ms %tmp.23 81 38 40 ];
-        %tmp.24 = 0;
-        %tmp.25 = gt %tmp.23 %tmp.24;
-        push %tmp.25;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_81_38_81_43_end:
-        %tmp.26 = phi [%tmp.22 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_81_16_81_43_begin] [%tmp.25 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_81_38_81_43_true] [%tmp.26 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_81_38_81_43_end];
-        bf %tmp.26 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_81_12_83_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_81_12_83_12_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_81_46_83_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 82 16 ]
-        symbol [ _mainView %tmp.27 82 16 25 ];
-        %tmp.27 = getv self :_mainView;
-        %tmp.28 = lgetv %ms.1;
-        symbol [ ms %tmp.28 82 42 44 ];
-        symbol [ nextVibrateAt ? 82 26 39 ];
-        putv %tmp.27 :nextVibrateAt %tmp.28;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_81_46_83_12_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_81_12_83_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_81_12_83_12_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_77_46_84_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_77_8_92_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_77_8_92_8_if_false:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 84 15 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_84_15_92_8_if_stmt:
-        symbol [ _propKey %tmp.30 84 19 27 ];
-        %tmp.30 = getv ? :_propKey;
-        symbol [ equals %tmp.31 84 28 34 ];
-        %tmp.31 = getv function %tmp.30 :equals;
-        %tmp.32 = "TakeoffSpeed";
-        %tmp.33 = invoke %tmp.30 %tmp.31(%tmp.32);
-        bf %tmp.33 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_84_15_92_8_if_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_84_15_92_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_84_52_90_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 85 12 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_85_12_89_12_if_stmt:
-        symbol [ _value %tmp.35 85 16 22 ];
-        %tmp.35 = getv ? :_value;
-        %tmp.36 = 0;
-        %tmp.37 = lte %tmp.35 %tmp.36;
-        bf %tmp.37 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_85_12_89_12_if_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_85_12_89_12_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_85_29_87_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 86 16 ]
-        symbol [ _mainView %tmp.38 86 16 25 ];
-        %tmp.38 = getv self :_mainView;
-        %tmp.39 = -1.0;
-        symbol [ AUTO_START_SPEED_MS ? 86 26 45 ];
-        putv %tmp.38 :AUTO_START_SPEED_MS %tmp.39;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_85_29_87_12_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_85_12_89_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_85_12_89_12_if_else_false:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_87_19_89_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 88 16 ]
-        symbol [ _mainView %tmp.40 88 16 25 ];
-        %tmp.40 = getv self :_mainView;
-        symbol [ _value %tmp.42 88 48 54 ];
-        %tmp.42 = getv ? :_value;
-        symbol [ toFloat %tmp.43 88 55 62 ];
-        %tmp.43 = getv function %tmp.42 :toFloat;
-        %tmp.44 = invoke %tmp.42 %tmp.43();
-        %tmp.45 = 0.514444f;
-        %tmp.46 = mul %tmp.44 %tmp.45;
-        symbol [ AUTO_START_SPEED_MS ? 88 26 45 ];
-        putv %tmp.40 :AUTO_START_SPEED_MS %tmp.46;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_87_19_89_12_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_85_12_89_12_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_84_52_90_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_84_15_92_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_84_15_92_8_if_false:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 90 15 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_90_15_92_8_if_stmt:
-        symbol [ _propKey %tmp.48 90 19 27 ];
-        %tmp.48 = getv ? :_propKey;
-        symbol [ equals %tmp.49 90 28 34 ];
-        %tmp.49 = getv function %tmp.48 :equals;
-        %tmp.50 = "TransitionAltitudeFt";
-        %tmp.51 = invoke %tmp.48 %tmp.49(%tmp.50);
-        bf %tmp.51 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_90_15_92_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_90_15_92_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_90_60_92_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 91 12 ]
-        symbol [ _mainView %tmp.52 91 12 21 ];
-        %tmp.52 = getv self :_mainView;
-        symbol [ _value %tmp.54 91 45 51 ];
-        %tmp.54 = getv ? :_value;
-        symbol [ transitionAltitudeFt ? 91 22 42 ];
-        putv %tmp.52 :transitionAltitudeFt %tmp.54;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_90_60_92_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_90_15_92_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_90_15_92_8_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_84_15_92_8_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_77_8_92_8_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_75_28_94_4_stop:
+        symbol [ VFRSettings %tmp.9 77 8 19 ];
+        %tmp.9 = getv ? :VFRSettings;
+        symbol [ applySavedNumber %tmp.10 77 20 36 ];
+        %tmp.10 = getv function %tmp.9 :applySavedNumber;
+        symbol [ _mainView %tmp.12 77 37 46 ];
+        %tmp.12 = getv ? :_mainView;
+        symbol [ _propKey %tmp.14 77 48 56 ];
+        %tmp.14 = getv ? :_propKey;
+        symbol [ _value %tmp.16 77 58 64 ];
+        %tmp.16 = getv ? :_value;
+        invoke %tmp.9 %tmp.10(%tmp.12, %tmp.14, %tmp.16);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_75_28_78_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 96; @symbol_functiondef = [onUpdate,96,13,21]; @symbol_param<0> = [dc,96,22,24]; @symbol_param<0>_type<0> = [Dc,96,28,30]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 80; @symbol_functiondef = [onUpdate,80,13,21]; @symbol_param<0> = [dc,80,22,24]; @symbol_param<0>_type<0> = [Dc,80,28,30]; ]
     function onUpdate(dc as Dc) as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_96_40_119_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 97 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_96_40_119_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_96_40_119_4_stop" ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_80_40_103_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 81 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_80_40_103_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_80_40_103_4_stop" ]
         %w.1 = local;
-        symbol [ w %w.1 97 12 13 ];
+        symbol [ w %w.1 81 12 13 ];
         %tmp.1 = lgetv %dc;
-        symbol [ dc %tmp.1 97 17 19 ];
-        symbol [ getWidth %tmp.2 97 20 28 ];
+        symbol [ dc %tmp.1 81 17 19 ];
+        symbol [ getWidth %tmp.2 81 20 28 ];
         %tmp.2 = getv function %tmp.1 :getWidth;
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %w.1 %tmp.3;
-        symbol [ w %w.1 97 12 13 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 98 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_96_40_119_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_96_40_119_4_stop" ]
+        symbol [ w %w.1 81 12 13 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 82 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_80_40_103_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_80_40_103_4_stop" ]
         %h.2 = local;
-        symbol [ h %h.2 98 12 13 ];
+        symbol [ h %h.2 82 12 13 ];
         %tmp.4 = lgetv %dc;
-        symbol [ dc %tmp.4 98 17 19 ];
-        symbol [ getHeight %tmp.5 98 20 29 ];
+        symbol [ dc %tmp.4 82 17 19 ];
+        symbol [ getHeight %tmp.5 82 20 29 ];
         %tmp.5 = getv function %tmp.4 :getHeight;
         %tmp.6 = invoke %tmp.4 %tmp.5();
         lputv %h.2 %tmp.6;
-        symbol [ h %h.2 98 12 13 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 99 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_96_40_119_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_96_40_119_4_stop" ]
+        symbol [ h %h.2 82 12 13 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 83 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_80_40_103_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_80_40_103_4_stop" ]
         %cx.3 = local;
-        symbol [ cx %cx.3 99 12 14 ];
+        symbol [ cx %cx.3 83 12 14 ];
         %tmp.7 = lgetv %w.1;
-        symbol [ w %tmp.7 99 17 18 ];
+        symbol [ w %tmp.7 83 17 18 ];
         %tmp.8 = 2;
         %tmp.9 = div %tmp.7 %tmp.8;
         lputv %cx.3 %tmp.9;
-        symbol [ cx %cx.3 99 12 14 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 101 8 ]
+        symbol [ cx %cx.3 83 12 14 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 85 8 ]
         %tmp.10 = lgetv %dc;
-        symbol [ dc %tmp.10 101 8 10 ];
-        symbol [ setColor %tmp.11 101 11 19 ];
+        symbol [ dc %tmp.10 85 8 10 ];
+        symbol [ setColor %tmp.11 85 11 19 ];
         %tmp.11 = getv function %tmp.10 :setColor;
-        symbol [ Graphics %tmp.12 101 20 28 ];
+        symbol [ Graphics %tmp.12 85 20 28 ];
         %tmp.12 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.13 101 29 40 ];
+        symbol [ COLOR_WHITE %tmp.13 85 29 40 ];
         %tmp.13 = getv %tmp.12 :COLOR_WHITE;
-        symbol [ Graphics %tmp.14 101 42 50 ];
+        symbol [ Graphics %tmp.14 85 42 50 ];
         %tmp.14 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.15 101 51 62 ];
+        symbol [ COLOR_BLACK %tmp.15 85 51 62 ];
         %tmp.15 = getv %tmp.14 :COLOR_BLACK;
         invoke %tmp.10 %tmp.11(%tmp.13, %tmp.15);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 102 8 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 86 8 ]
         %tmp.16 = lgetv %dc;
-        symbol [ dc %tmp.16 102 8 10 ];
-        symbol [ clear %tmp.17 102 11 16 ];
+        symbol [ dc %tmp.16 86 8 10 ];
+        symbol [ clear %tmp.17 86 11 16 ];
         %tmp.17 = getv function %tmp.16 :clear;
         invoke %tmp.16 %tmp.17();
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 105 8 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 89 8 ]
         %tmp.18 = lgetv %dc;
-        symbol [ dc %tmp.18 105 8 10 ];
-        symbol [ drawText %tmp.19 105 11 19 ];
+        symbol [ dc %tmp.18 89 8 10 ];
+        symbol [ drawText %tmp.19 89 11 19 ];
         %tmp.19 = getv function %tmp.18 :drawText;
         %tmp.20 = lgetv %cx.3;
-        symbol [ cx %tmp.20 105 20 22 ];
+        symbol [ cx %tmp.20 89 20 22 ];
         %tmp.21 = lgetv %h.2;
-        symbol [ h %tmp.21 105 24 25 ];
+        symbol [ h %tmp.21 89 24 25 ];
         %tmp.22 = 5;
         %tmp.23 = div %tmp.21 %tmp.22;
-        symbol [ Graphics %tmp.24 106 20 28 ];
+        symbol [ Graphics %tmp.24 90 20 28 ];
         %tmp.24 = getm $.Toybox.Graphics;
-        symbol [ FONT_MEDIUM %tmp.25 106 29 40 ];
+        symbol [ FONT_MEDIUM %tmp.25 90 29 40 ];
         %tmp.25 = getv %tmp.24 :FONT_MEDIUM;
-        symbol [ _title %tmp.27 106 42 48 ];
+        symbol [ _title %tmp.27 90 42 48 ];
         %tmp.27 = getv ? :_title;
-        symbol [ Graphics %tmp.28 107 20 28 ];
+        symbol [ Graphics %tmp.28 91 20 28 ];
         %tmp.28 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.29 107 29 48 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.29 91 29 48 ];
         %tmp.29 = getv %tmp.28 :TEXT_JUSTIFY_CENTER;
-        symbol [ Graphics %tmp.30 107 51 59 ];
+        symbol [ Graphics %tmp.30 91 51 59 ];
         %tmp.30 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_VCENTER %tmp.31 107 60 80 ];
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.31 91 60 80 ];
         %tmp.31 = getv %tmp.30 :TEXT_JUSTIFY_VCENTER;
         %tmp.32 = bitor %tmp.29 %tmp.31;
         invoke %tmp.18 %tmp.19(%tmp.20, %tmp.23, %tmp.25, %tmp.27, %tmp.32);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 110 8 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 94 8 ]
         %tmp.33 = lgetv %dc;
-        symbol [ dc %tmp.33 110 8 10 ];
-        symbol [ drawText %tmp.34 110 11 19 ];
+        symbol [ dc %tmp.33 94 8 10 ];
+        symbol [ drawText %tmp.34 94 11 19 ];
         %tmp.34 = getv function %tmp.33 :drawText;
         %tmp.35 = lgetv %cx.3;
-        symbol [ cx %tmp.35 110 20 22 ];
+        symbol [ cx %tmp.35 94 20 22 ];
         %tmp.36 = lgetv %h.2;
-        symbol [ h %tmp.36 110 24 25 ];
+        symbol [ h %tmp.36 94 24 25 ];
         %tmp.37 = 2;
         %tmp.38 = div %tmp.36 %tmp.37;
-        symbol [ Graphics %tmp.39 111 20 28 ];
+        symbol [ Graphics %tmp.39 95 20 28 ];
         %tmp.39 = getm $.Toybox.Graphics;
-        symbol [ FONT_NUMBER_HOT %tmp.40 111 29 44 ];
+        symbol [ FONT_NUMBER_HOT %tmp.40 95 29 44 ];
         %tmp.40 = getv %tmp.39 :FONT_NUMBER_HOT;
-        symbol [ _value %tmp.42 111 46 52 ];
+        symbol [ _value %tmp.42 95 46 52 ];
         %tmp.42 = getv ? :_value;
-        symbol [ toString %tmp.43 111 53 61 ];
+        symbol [ toString %tmp.43 95 53 61 ];
         %tmp.43 = getv function %tmp.42 :toString;
         %tmp.44 = invoke %tmp.42 %tmp.43();
-        symbol [ Graphics %tmp.45 112 20 28 ];
+        symbol [ Graphics %tmp.45 96 20 28 ];
         %tmp.45 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.46 112 29 48 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.46 96 29 48 ];
         %tmp.46 = getv %tmp.45 :TEXT_JUSTIFY_CENTER;
-        symbol [ Graphics %tmp.47 112 51 59 ];
+        symbol [ Graphics %tmp.47 96 51 59 ];
         %tmp.47 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_VCENTER %tmp.48 112 60 80 ];
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.48 96 60 80 ];
         %tmp.48 = getv %tmp.47 :TEXT_JUSTIFY_VCENTER;
         %tmp.49 = bitor %tmp.46 %tmp.48;
         invoke %tmp.33 %tmp.34(%tmp.35, %tmp.38, %tmp.40, %tmp.44, %tmp.49);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 115 8 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 99 8 ]
         %tmp.50 = lgetv %dc;
-        symbol [ dc %tmp.50 115 8 10 ];
-        symbol [ setColor %tmp.51 115 11 19 ];
+        symbol [ dc %tmp.50 99 8 10 ];
+        symbol [ setColor %tmp.51 99 11 19 ];
         %tmp.51 = getv function %tmp.50 :setColor;
-        symbol [ Graphics %tmp.52 115 20 28 ];
+        symbol [ Graphics %tmp.52 99 20 28 ];
         %tmp.52 = getm $.Toybox.Graphics;
-        symbol [ COLOR_LT_GRAY %tmp.53 115 29 42 ];
+        symbol [ COLOR_LT_GRAY %tmp.53 99 29 42 ];
         %tmp.53 = getv %tmp.52 :COLOR_LT_GRAY;
-        symbol [ Graphics %tmp.54 115 44 52 ];
+        symbol [ Graphics %tmp.54 99 44 52 ];
         %tmp.54 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.55 115 53 64 ];
+        symbol [ COLOR_BLACK %tmp.55 99 53 64 ];
         %tmp.55 = getv %tmp.54 :COLOR_BLACK;
         invoke %tmp.50 %tmp.51(%tmp.53, %tmp.55);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 116 8 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 100 8 ]
         %tmp.56 = lgetv %dc;
-        symbol [ dc %tmp.56 116 8 10 ];
-        symbol [ drawText %tmp.57 116 11 19 ];
+        symbol [ dc %tmp.56 100 8 10 ];
+        symbol [ drawText %tmp.57 100 11 19 ];
         %tmp.57 = getv function %tmp.56 :drawText;
         %tmp.58 = lgetv %cx.3;
-        symbol [ cx %tmp.58 116 20 22 ];
+        symbol [ cx %tmp.58 100 20 22 ];
         %tmp.59 = lgetv %h.2;
-        symbol [ h %tmp.59 116 24 25 ];
+        symbol [ h %tmp.59 100 24 25 ];
         %tmp.60 = 4;
         %tmp.61 = mul %tmp.59 %tmp.60;
         %tmp.62 = 5;
         %tmp.63 = div %tmp.61 %tmp.62;
-        symbol [ Graphics %tmp.64 117 20 28 ];
+        symbol [ Graphics %tmp.64 101 20 28 ];
         %tmp.64 = getm $.Toybox.Graphics;
-        symbol [ FONT_TINY %tmp.65 117 29 38 ];
+        symbol [ FONT_TINY %tmp.65 101 29 38 ];
         %tmp.65 = getv %tmp.64 :FONT_TINY;
         %tmp.66 = "UP/DN  SELECT=save";
-        symbol [ Graphics %tmp.67 118 20 28 ];
+        symbol [ Graphics %tmp.67 102 20 28 ];
         %tmp.67 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.68 118 29 48 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.68 102 29 48 ];
         %tmp.68 = getv %tmp.67 :TEXT_JUSTIFY_CENTER;
-        symbol [ Graphics %tmp.69 118 51 59 ];
+        symbol [ Graphics %tmp.69 102 51 59 ];
         %tmp.69 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_VCENTER %tmp.70 118 60 80 ];
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.70 102 60 80 ];
         %tmp.70 = getv %tmp.69 :TEXT_JUSTIFY_VCENTER;
         %tmp.71 = bitor %tmp.68 %tmp.70;
         invoke %tmp.56 %tmp.57(%tmp.58, %tmp.63, %tmp.65, %tmp.66, %tmp.71);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_96_40_119_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_80_40_103_4_stop:
     }
 }
-[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 125; @symbol_classdef = [VFRNumberPickerDelegate,125,6,29]; @symbol_extends<0> = [WatchUi,125,38,45]; @symbol_extends<1> = [BehaviorDelegate,125,46,62]; ]
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 109; @symbol_classdef = [VFRNumberPickerDelegate,109,6,29]; @symbol_extends<0> = [WatchUi,109,38,45]; @symbol_extends<1> = [BehaviorDelegate,109,46,62]; ]
 class VFRNumberPickerDelegate extends WatchUi.BehaviorDelegate {
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 125; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 109; ]
     <init> {
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 125; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 109; ]
     static
     <init> {
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 126; @position = 16; @symbol_vardef = [_picker,126,16,23]; @symbol_type<0> = [VFRNumberPickerView,126,27,46]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 110; @position = 16; @symbol_vardef = [_picker,110,16,23]; @symbol_type<0> = [VFRNumberPickerView,110,27,46]; ]
     private
     var _picker as VFRNumberPickerView;
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 128; @symbol_functiondef = [initialize,128,13,23]; @symbol_param<0> = [picker,128,24,30]; @symbol_param<0>_type<0> = [VFRNumberPickerView,128,34,53]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 112; @symbol_functiondef = [initialize,112,13,23]; @symbol_param<0> = [picker,112,24,30]; @symbol_param<0>_type<0> = [VFRNumberPickerView,112,34,53]; ]
     function initialize(picker as VFRNumberPickerView) as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_128_55_131_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 129 8 ]
-        symbol [ BehaviorDelegate %tmp.2 129 8 24 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_112_55_115_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 113 8 ]
+        symbol [ BehaviorDelegate %tmp.2 113 8 24 ];
         %tmp.2 = getv ? :BehaviorDelegate;
-        symbol [ initialize %tmp.3 129 25 35 ];
+        symbol [ initialize %tmp.3 113 25 35 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 130 8 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 114 8 ]
         %tmp.4 = lgetv %picker;
-        symbol [ picker %tmp.4 130 18 24 ];
-        symbol [ _picker ? 130 8 15 ];
+        symbol [ picker %tmp.4 114 18 24 ];
+        symbol [ _picker ? 114 8 15 ];
         putv self :_picker %tmp.4;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_128_55_131_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_112_55_115_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 133; @symbol_functiondef = [onPreviousPage,133,13,27]; @symbol_return<0> = [Boolean,133,33,40]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 117; @symbol_functiondef = [onPreviousPage,117,13,27]; @symbol_return<0> = [Boolean,117,33,40]; ]
     function onPreviousPage() as Boolean {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_133_41_136_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 134 8 ]
-        symbol [ _picker %tmp.2 134 8 15 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_117_41_120_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 118 8 ]
+        symbol [ _picker %tmp.2 118 8 15 ];
         %tmp.2 = getv ? :_picker;
-        symbol [ increment %tmp.3 134 16 25 ];
+        symbol [ increment %tmp.3 118 16 25 ];
         %tmp.3 = getv function %tmp.2 :increment;
         invoke %tmp.2 %tmp.3();
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 135 8 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 119 8 ]
         %tmp.4 = true;
         ret %tmp.4;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_133_41_136_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_117_41_120_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 138; @symbol_functiondef = [onNextPage,138,13,23]; @symbol_return<0> = [Boolean,138,29,36]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 122; @symbol_functiondef = [onNextPage,122,13,23]; @symbol_return<0> = [Boolean,122,29,36]; ]
     function onNextPage() as Boolean {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_138_37_141_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 139 8 ]
-        symbol [ _picker %tmp.2 139 8 15 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_122_37_125_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 123 8 ]
+        symbol [ _picker %tmp.2 123 8 15 ];
         %tmp.2 = getv ? :_picker;
-        symbol [ decrement %tmp.3 139 16 25 ];
+        symbol [ decrement %tmp.3 123 16 25 ];
         %tmp.3 = getv function %tmp.2 :decrement;
         invoke %tmp.2 %tmp.3();
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 140 8 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 124 8 ]
         %tmp.4 = true;
         ret %tmp.4;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_138_37_141_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_122_37_125_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 143; @symbol_functiondef = [onSelect,143,13,21]; @symbol_return<0> = [Boolean,143,27,34]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 127; @symbol_functiondef = [onSelect,127,13,21]; @symbol_return<0> = [Boolean,127,27,34]; ]
     function onSelect() as Boolean {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_143_35_148_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 144 8 ]
-        symbol [ _picker %tmp.2 144 8 15 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_127_35_132_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 128 8 ]
+        symbol [ _picker %tmp.2 128 8 15 ];
         %tmp.2 = getv ? :_picker;
-        symbol [ save %tmp.3 144 16 20 ];
+        symbol [ save %tmp.3 128 16 20 ];
         %tmp.3 = getv function %tmp.2 :save;
         invoke %tmp.2 %tmp.3();
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 145 8 ]
-        symbol [ WatchUi %tmp.4 145 8 15 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 129 8 ]
+        symbol [ WatchUi %tmp.4 129 8 15 ];
         %tmp.4 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.5 145 16 23 ];
+        symbol [ popView %tmp.5 129 16 23 ];
         %tmp.5 = getv function %tmp.4 :popView;
-        symbol [ WatchUi %tmp.6 145 24 31 ];
+        symbol [ WatchUi %tmp.6 129 24 31 ];
         %tmp.6 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.7 145 32 43 ];
+        symbol [ SLIDE_RIGHT %tmp.7 129 32 43 ];
         %tmp.7 = getv %tmp.6 :SLIDE_RIGHT;
         invoke %tmp.4 %tmp.5(%tmp.7);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 146 8 ]
-        symbol [ WatchUi %tmp.8 146 8 15 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 130 8 ]
+        symbol [ WatchUi %tmp.8 130 8 15 ];
         %tmp.8 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.9 146 16 23 ];
+        symbol [ popView %tmp.9 130 16 23 ];
         %tmp.9 = getv function %tmp.8 :popView;
-        symbol [ WatchUi %tmp.10 146 24 31 ];
+        symbol [ WatchUi %tmp.10 130 24 31 ];
         %tmp.10 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.11 146 32 43 ];
+        symbol [ SLIDE_RIGHT %tmp.11 130 32 43 ];
         %tmp.11 = getv %tmp.10 :SLIDE_RIGHT;
         invoke %tmp.8 %tmp.9(%tmp.11);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 147 8 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 131 8 ]
         %tmp.12 = true;
         ret %tmp.12;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_143_35_148_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_127_35_132_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 150; @symbol_functiondef = [onBack,150,13,19]; @symbol_return<0> = [Boolean,150,25,32]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 134; @symbol_functiondef = [onBack,134,13,19]; @symbol_return<0> = [Boolean,134,25,32]; ]
     function onBack() as Boolean {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_150_33_153_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 151 8 ]
-        symbol [ WatchUi %tmp.1 151 8 15 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_134_33_137_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 135 8 ]
+        symbol [ WatchUi %tmp.1 135 8 15 ];
         %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.2 151 16 23 ];
+        symbol [ popView %tmp.2 135 16 23 ];
         %tmp.2 = getv function %tmp.1 :popView;
-        symbol [ WatchUi %tmp.3 151 24 31 ];
+        symbol [ WatchUi %tmp.3 135 24 31 ];
         %tmp.3 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.4 151 32 43 ];
+        symbol [ SLIDE_RIGHT %tmp.4 135 32 43 ];
         %tmp.4 = getv %tmp.3 :SLIDE_RIGHT;
         invoke %tmp.1 %tmp.2(%tmp.4);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 152 8 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 136 8 ]
         %tmp.5 = true;
         ret %tmp.5;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_150_33_153_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_134_33_137_4_stop:
     }
 }
-[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 161; @symbol_classdef = [VFRSettingsMenuDelegate,161,6,29]; @symbol_extends<0> = [WatchUi,161,38,45]; @symbol_extends<1> = [Menu2InputDelegate,161,46,64]; ]
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 145; @symbol_classdef = [VFRSettingsMenuDelegate,145,6,29]; @symbol_extends<0> = [WatchUi,145,38,45]; @symbol_extends<1> = [Menu2InputDelegate,145,46,64]; ]
 class VFRSettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 161; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 145; ]
     <init> {
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 161; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 145; ]
     static
     <init> {
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 162; @position = 16; @symbol_vardef = [_view,162,16,21]; @symbol_type<0> = [VFRStopWatchView,162,25,41]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 146; @position = 16; @symbol_vardef = [_view,146,16,21]; @symbol_type<0> = [VFRStopWatchView,146,25,41]; ]
     private
     var _view as VFRStopWatchView;
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 164; @symbol_functiondef = [initialize,164,13,23]; @symbol_param<0> = [view,164,24,28]; @symbol_param<0>_type<0> = [VFRStopWatchView,164,32,48]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 148; @symbol_functiondef = [initialize,148,13,23]; @symbol_param<0> = [view,148,24,28]; @symbol_param<0>_type<0> = [VFRStopWatchView,148,32,48]; ]
     function initialize(view as VFRStopWatchView) as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_164_50_167_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 165 8 ]
-        symbol [ Menu2InputDelegate %tmp.2 165 8 26 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_148_50_151_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 149 8 ]
+        symbol [ Menu2InputDelegate %tmp.2 149 8 26 ];
         %tmp.2 = getv ? :Menu2InputDelegate;
-        symbol [ initialize %tmp.3 165 27 37 ];
+        symbol [ initialize %tmp.3 149 27 37 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 166 8 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 150 8 ]
         %tmp.4 = lgetv %view;
-        symbol [ view %tmp.4 166 16 20 ];
-        symbol [ _view ? 166 8 13 ];
+        symbol [ view %tmp.4 150 16 20 ];
+        symbol [ _view ? 150 8 13 ];
         putv self :_view %tmp.4;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_164_50_167_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_148_50_151_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 169; @symbol_functiondef = [onSelect,169,13,21]; @symbol_param<0> = [item,169,22,26]; @symbol_param<0>_type<0> = [WatchUi,169,30,37]; @symbol_param<0>_type<1> = [MenuItem,169,38,46]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 153; @symbol_functiondef = [onSelect,153,13,21]; @symbol_param<0> = [item,153,22,26]; @symbol_param<0>_type<0> = [WatchUi,153,30,37]; @symbol_param<0>_type<1> = [MenuItem,153,38,46]; ]
     function onSelect(item as WatchUi.MenuItem) as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_169_56_231_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 170 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_169_56_231_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_169_56_231_4_stop" ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_153_56_219_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 154 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_153_56_219_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_153_56_219_4_stop" ]
         %id.1 = local;
-        symbol [ id %id.1 170 12 14 ];
+        symbol [ id %id.1 154 12 14 ];
         %tmp.1 = lgetv %item;
-        symbol [ item %tmp.1 170 17 21 ];
-        symbol [ getId %tmp.2 170 22 27 ];
+        symbol [ item %tmp.1 154 17 21 ];
+        symbol [ getId %tmp.2 154 22 27 ];
         %tmp.2 = getv function %tmp.1 :getId;
         %tmp.3 = invoke %tmp.1 %tmp.2();
         %tmp.4 = as %tmp.3 String;
-        symbol [ String %tmp.4 170 33 39 ];
+        symbol [ String %tmp.4 154 33 39 ];
         lputv %id.1 %tmp.4;
-        symbol [ id %id.1 170 12 14 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 172 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_8_230_8_if_stmt:
+        symbol [ id %id.1 154 12 14 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 156 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_156_8_218_8_if_stmt:
         %tmp.5 = lgetv %id.1;
-        symbol [ id %tmp.5 172 12 14 ];
-        symbol [ equals %tmp.6 172 15 21 ];
+        symbol [ id %tmp.5 156 12 14 ];
+        symbol [ equals %tmp.6 156 15 21 ];
         %tmp.6 = getv function %tmp.5 :equals;
         %tmp.7 = "setting_gps";
         %tmp.8 = invoke %tmp.5 %tmp.6(%tmp.7);
-        bf %tmp.8 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_8_230_8_if_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_8_230_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_38_204_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 174 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_38_204_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_38_204_8_stop" ]
-        %rawGps.2 = local;
-        symbol [ rawGps %rawGps.2 174 16 22 ];
-        symbol [ Application %tmp.9 174 25 36 ];
-        %tmp.9 = getm $.Toybox.Application;
-        symbol [ Properties %tmp.10 174 37 47 ];
-        %tmp.10 = getv %tmp.9 :Properties;
-        symbol [ getValue %tmp.11 174 48 56 ];
-        %tmp.11 = getv function %tmp.10 :getValue;
+        bf %tmp.8 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_156_8_218_8_if_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_156_8_218_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_156_38_186_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 158 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_156_38_186_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_156_38_186_8_stop" ]
+        %cur.2 = local;
+        symbol [ cur %cur.2 158 16 19 ];
+        symbol [ VFRSettings %tmp.10 158 22 33 ];
+        %tmp.10 = getv ? :VFRSettings;
+        symbol [ readClampedNumber %tmp.11 158 34 51 ];
+        %tmp.11 = getv function %tmp.10 :readClampedNumber;
         %tmp.12 = "GpsMode";
-        %tmp.13 = invoke %tmp.10 %tmp.11(%tmp.12);
-        lputv %rawGps.2 %tmp.13;
-        symbol [ rawGps %rawGps.2 174 16 22 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 175 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_38_204_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_38_204_8_stop" ]
-        %cur.3 = local;
-        symbol [ cur %cur.3 175 16 19 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_175_22_175_62_begin:
-        %tmp.14 = lgetv %rawGps.2;
-        symbol [ rawGps %tmp.14 175 23 29 ];
-        %tmp.15 = null;
-        %tmp.16 = ne %tmp.14 %tmp.15;
-        bf %tmp.16 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_175_22_175_62_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_175_22_175_62_true:
-        %tmp.17 = lgetv %rawGps.2;
-        symbol [ rawGps %tmp.17 175 42 48 ];
-        %tmp.18 = as %tmp.17 { (!Null) };
-        %tmp.19 = as %tmp.18 Number;
-        symbol [ Number %tmp.19 175 52 58 ];
-        push %tmp.19;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_175_22_175_62_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_175_22_175_62_else_false:
-        %tmp.20 = 3;
-        push %tmp.20;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_175_22_175_62_end:
-        %tmp.21 = phi [%tmp.16 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_175_22_175_62_begin] [%tmp.19 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_175_22_175_62_true] [%tmp.20 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_175_22_175_62_else_false] [%tmp.21 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_175_22_175_62_end];
-        lputv %cur.3 %tmp.21;
-        symbol [ cur %cur.3 175 16 19 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 176 12 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_12_176_47_if_stmt:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_16_176_33_begin:
-        %tmp.22 = lgetv %cur.3;
-        symbol [ cur %tmp.22 176 16 19 ];
-        %tmp.23 = 0;
-        %tmp.24 = lt %tmp.22 %tmp.23;
-        bt %tmp.24 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_12_176_47_if_true;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_27_176_33_false:
-        %tmp.25 = lgetv %cur.3;
-        symbol [ cur %tmp.25 176 27 30 ];
-        %tmp.26 = 3;
-        %tmp.27 = gt %tmp.25 %tmp.26;
-        push %tmp.27;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_27_176_33_end:
-        %tmp.28 = phi [%tmp.24 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_16_176_33_begin] [%tmp.27 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_27_176_33_false] [%tmp.28 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_27_176_33_end];
-        bf %tmp.28 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_12_176_47_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_12_176_47_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_36_176_47_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 176 38 ]
-        %tmp.29 = 3;
-        lputv %cur.3 %tmp.29;
-        symbol [ cur %cur.3 176 38 41 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_36_176_47_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_12_176_47_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_12_176_47_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 178 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_38_204_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_38_204_8_stop" ]
-        %gpsMenu.4 = local;
-        symbol [ gpsMenu %gpsMenu.4 178 16 23 ];
-        symbol [ WatchUi %tmp.32 178 30 37 ];
-        %tmp.32 = getm $.Toybox.WatchUi;
-        symbol [ Menu2 %tmp.33 178 38 43 ];
-        %tmp.33 = getv function ? %tmp.32 :Menu2;
-        %tmp.34 = newd 1;
-        %tmp.36 = const :title;
-        symbol [ title %tmp.36 178 46 51 const ];
-        %tmp.37 = "GPS Mode";
-        %tmp.38 = dup %tmp.34;
-        %tmp.39 = aputv %tmp.38 %tmp.36 %tmp.37;
-        %tmp.30 = newc %tmp.33 (%tmp.39);
-        lputv %gpsMenu.4 %tmp.30;
-        symbol [ gpsMenu %gpsMenu.4 178 16 23 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 181 12 ]
-        %tmp.40 = lgetv %gpsMenu.4;
-        symbol [ gpsMenu %tmp.40 181 12 19 ];
-        symbol [ addItem %tmp.41 181 20 27 ];
-        %tmp.41 = getv function %tmp.40 :addItem;
-        symbol [ WatchUi %tmp.44 181 32 39 ];
-        %tmp.44 = getm $.Toybox.WatchUi;
-        symbol [ MenuItem %tmp.45 181 40 48 ];
-        %tmp.45 = getv function ? %tmp.44 :MenuItem;
-        %tmp.46 = "GPS";
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_56_181_73_begin:
-        %tmp.47 = lgetv %cur.3;
-        symbol [ cur %tmp.47 181 56 59 ];
-        %tmp.48 = 0;
-        %tmp.49 = eq %tmp.47 %tmp.48;
-        bf %tmp.49 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_56_181_73_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_56_181_73_true:
-        %tmp.50 = "*";
-        push %tmp.50;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_56_181_73_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_56_181_73_else_false:
-        %tmp.51 = null;
-        push %tmp.51;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_56_181_73_end:
-        %tmp.52 = phi [%tmp.49 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_56_181_73_begin] [%tmp.50 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_56_181_73_true] [%tmp.51 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_56_181_73_else_false] [%tmp.52 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_56_181_73_end];
-        %tmp.53 = 0;
-        %tmp.54 = null;
-        %tmp.42 = newc %tmp.45 (%tmp.46, %tmp.52, %tmp.53, %tmp.54);
-        invoke %tmp.40 %tmp.41(%tmp.42);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 184 12 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_184_12_186_12_if_stmt:
-        symbol [ Position %tmp.55 184 16 24 ];
-        %tmp.55 = getm $.Toybox.Position;
-        %tmp.57 = const :CONSTELLATION_GLONASS;
-        symbol [ CONSTELLATION_GLONASS %tmp.57 184 30 51 const ];
-        %tmp.58 = canhazplz %tmp.55 %tmp.57;
-        bf %tmp.58 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_184_12_186_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_184_12_186_12_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_184_53_186_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 185 16 ]
-        %tmp.59 = lgetv %gpsMenu.4;
-        symbol [ gpsMenu %tmp.59 185 16 23 ];
-        symbol [ addItem %tmp.60 185 24 31 ];
-        %tmp.60 = getv function %tmp.59 :addItem;
-        symbol [ WatchUi %tmp.63 185 36 43 ];
-        %tmp.63 = getm $.Toybox.WatchUi;
-        symbol [ MenuItem %tmp.64 185 44 52 ];
-        %tmp.64 = getv function ? %tmp.63 :MenuItem;
-        %tmp.65 = "GPS+GLONASS";
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_185_68_185_85_begin:
-        %tmp.66 = lgetv %cur.3;
-        symbol [ cur %tmp.66 185 68 71 ];
-        %tmp.67 = 1;
-        %tmp.68 = eq %tmp.66 %tmp.67;
-        bf %tmp.68 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_185_68_185_85_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_185_68_185_85_true:
-        %tmp.69 = "*";
-        push %tmp.69;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_185_68_185_85_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_185_68_185_85_else_false:
-        %tmp.70 = null;
-        push %tmp.70;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_185_68_185_85_end:
-        %tmp.71 = phi [%tmp.68 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_185_68_185_85_begin] [%tmp.69 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_185_68_185_85_true] [%tmp.70 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_185_68_185_85_else_false] [%tmp.71 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_185_68_185_85_end];
-        %tmp.72 = 1;
-        %tmp.73 = null;
-        %tmp.61 = newc %tmp.64 (%tmp.65, %tmp.71, %tmp.72, %tmp.73);
-        invoke %tmp.59 %tmp.60(%tmp.61);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_184_53_186_12_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_184_12_186_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_184_12_186_12_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 189 12 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_189_12_195_12_if_stmt:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_189_16_193_105_begin:
-        symbol [ Position %tmp.74 189 17 25 ];
-        %tmp.74 = getm $.Toybox.Position;
-        %tmp.76 = const :hasConfigurationSupport;
-        symbol [ hasConfigurationSupport %tmp.76 189 31 54 const ];
-        %tmp.77 = canhazplz %tmp.74 %tmp.76;
-        bf %tmp.77 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_189_12_195_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_190_16_193_105_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_190_17_193_104_begin:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_190_18_191_106_begin:
-        symbol [ Position %tmp.78 190 18 26 ];
-        %tmp.78 = getm $.Toybox.Position;
-        %tmp.80 = const :CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5;
-        symbol [ CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5 %tmp.80 190 32 78 const ];
-        %tmp.81 = canhazplz %tmp.78 %tmp.80;
-        bf %tmp.81 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_192_17_193_104_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_191_18_191_106_true:
-        symbol [ Position %tmp.82 191 18 26 ];
-        %tmp.82 = getm $.Toybox.Position;
-        symbol [ hasConfigurationSupport %tmp.83 191 27 50 ];
-        %tmp.83 = getv function %tmp.82 :hasConfigurationSupport;
-        symbol [ Position %tmp.84 191 51 59 ];
-        %tmp.84 = getm $.Toybox.Position;
-        symbol [ CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5 %tmp.85 191 60 106 ];
-        %tmp.85 = getv %tmp.84 :CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5;
-        %tmp.86 = invoke %tmp.82 %tmp.83(%tmp.85);
-        push %tmp.86;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_191_18_191_106_end:
-        %tmp.87 = phi [%tmp.81 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_190_18_191_106_begin] [%tmp.86 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_191_18_191_106_true] [%tmp.87 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_191_18_191_106_end];
-        bt %tmp.87 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_189_12_195_12_if_true;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_192_17_193_104_false:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_192_18_193_103_begin:
-        symbol [ Position %tmp.88 192 18 26 ];
-        %tmp.88 = getm $.Toybox.Position;
-        %tmp.90 = const :CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1;
-        symbol [ CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1 %tmp.90 192 32 75 const ];
-        %tmp.91 = canhazplz %tmp.88 %tmp.90;
-        bf %tmp.91 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_189_12_195_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_193_18_193_103_true:
-        symbol [ Position %tmp.92 193 18 26 ];
-        %tmp.92 = getm $.Toybox.Position;
-        symbol [ hasConfigurationSupport %tmp.93 193 27 50 ];
-        %tmp.93 = getv function %tmp.92 :hasConfigurationSupport;
-        symbol [ Position %tmp.94 193 51 59 ];
-        %tmp.94 = getm $.Toybox.Position;
-        symbol [ CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1 %tmp.95 193 60 103 ];
-        %tmp.95 = getv %tmp.94 :CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1;
-        %tmp.96 = invoke %tmp.92 %tmp.93(%tmp.95);
-        push %tmp.96;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_193_18_193_103_end:
-        %tmp.97 = phi [%tmp.91 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_192_18_193_103_begin] [%tmp.96 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_193_18_193_103_true] [%tmp.97 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_193_18_193_103_end];
+        %tmp.13 = 3;
+        %tmp.14 = 0;
+        %tmp.15 = 3;
+        %tmp.16 = invoke %tmp.10 %tmp.11(%tmp.12, %tmp.13, %tmp.14, %tmp.15);
+        lputv %cur.2 %tmp.16;
+        symbol [ cur %cur.2 158 16 19 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 160 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_156_38_186_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_156_38_186_8_stop" ]
+        %gpsMenu.3 = local;
+        symbol [ gpsMenu %gpsMenu.3 160 16 23 ];
+        symbol [ WatchUi %tmp.19 160 30 37 ];
+        %tmp.19 = getm $.Toybox.WatchUi;
+        symbol [ Menu2 %tmp.20 160 38 43 ];
+        %tmp.20 = getv function ? %tmp.19 :Menu2;
+        %tmp.21 = newd 1;
+        %tmp.23 = const :title;
+        symbol [ title %tmp.23 160 46 51 const ];
+        %tmp.24 = "GPS Mode";
+        %tmp.25 = dup %tmp.21;
+        %tmp.26 = aputv %tmp.25 %tmp.23 %tmp.24;
+        %tmp.17 = newc %tmp.20 (%tmp.26);
+        lputv %gpsMenu.3 %tmp.17;
+        symbol [ gpsMenu %gpsMenu.3 160 16 23 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 163 12 ]
+        %tmp.27 = lgetv %gpsMenu.3;
+        symbol [ gpsMenu %tmp.27 163 12 19 ];
+        symbol [ addItem %tmp.28 163 20 27 ];
+        %tmp.28 = getv function %tmp.27 :addItem;
+        symbol [ WatchUi %tmp.31 163 32 39 ];
+        %tmp.31 = getm $.Toybox.WatchUi;
+        symbol [ MenuItem %tmp.32 163 40 48 ];
+        %tmp.32 = getv function ? %tmp.31 :MenuItem;
+        %tmp.33 = "GPS";
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_163_56_163_73_begin:
+        %tmp.34 = lgetv %cur.2;
+        symbol [ cur %tmp.34 163 56 59 ];
+        %tmp.35 = 0;
+        %tmp.36 = eq %tmp.34 %tmp.35;
+        bf %tmp.36 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_163_56_163_73_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_163_56_163_73_true:
+        %tmp.37 = "*";
+        push %tmp.37;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_163_56_163_73_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_163_56_163_73_else_false:
+        %tmp.38 = null;
+        push %tmp.38;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_163_56_163_73_end:
+        %tmp.39 = phi [%tmp.36 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_163_56_163_73_begin] [%tmp.37 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_163_56_163_73_true] [%tmp.38 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_163_56_163_73_else_false] [%tmp.39 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_163_56_163_73_end];
+        %tmp.40 = 0;
+        %tmp.41 = null;
+        %tmp.29 = newc %tmp.32 (%tmp.33, %tmp.39, %tmp.40, %tmp.41);
+        invoke %tmp.27 %tmp.28(%tmp.29);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 166 12 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_166_12_168_12_if_stmt:
+        symbol [ Position %tmp.42 166 16 24 ];
+        %tmp.42 = getm $.Toybox.Position;
+        %tmp.44 = const :CONSTELLATION_GLONASS;
+        symbol [ CONSTELLATION_GLONASS %tmp.44 166 30 51 const ];
+        %tmp.45 = canhazplz %tmp.42 %tmp.44;
+        bf %tmp.45 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_166_12_168_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_166_12_168_12_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_166_53_168_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 167 16 ]
+        %tmp.46 = lgetv %gpsMenu.3;
+        symbol [ gpsMenu %tmp.46 167 16 23 ];
+        symbol [ addItem %tmp.47 167 24 31 ];
+        %tmp.47 = getv function %tmp.46 :addItem;
+        symbol [ WatchUi %tmp.50 167 36 43 ];
+        %tmp.50 = getm $.Toybox.WatchUi;
+        symbol [ MenuItem %tmp.51 167 44 52 ];
+        %tmp.51 = getv function ? %tmp.50 :MenuItem;
+        %tmp.52 = "GPS+GLONASS";
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_167_68_167_85_begin:
+        %tmp.53 = lgetv %cur.2;
+        symbol [ cur %tmp.53 167 68 71 ];
+        %tmp.54 = 1;
+        %tmp.55 = eq %tmp.53 %tmp.54;
+        bf %tmp.55 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_167_68_167_85_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_167_68_167_85_true:
+        %tmp.56 = "*";
+        push %tmp.56;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_167_68_167_85_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_167_68_167_85_else_false:
+        %tmp.57 = null;
+        push %tmp.57;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_167_68_167_85_end:
+        %tmp.58 = phi [%tmp.55 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_167_68_167_85_begin] [%tmp.56 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_167_68_167_85_true] [%tmp.57 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_167_68_167_85_else_false] [%tmp.58 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_167_68_167_85_end];
+        %tmp.59 = 1;
+        %tmp.60 = null;
+        %tmp.48 = newc %tmp.51 (%tmp.52, %tmp.58, %tmp.59, %tmp.60);
+        invoke %tmp.46 %tmp.47(%tmp.48);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_166_53_168_12_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_166_12_168_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_166_12_168_12_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 171 12 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_171_12_177_12_if_stmt:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_171_16_175_105_begin:
+        symbol [ Position %tmp.61 171 17 25 ];
+        %tmp.61 = getm $.Toybox.Position;
+        %tmp.63 = const :hasConfigurationSupport;
+        symbol [ hasConfigurationSupport %tmp.63 171 31 54 const ];
+        %tmp.64 = canhazplz %tmp.61 %tmp.63;
+        bf %tmp.64 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_171_12_177_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_16_175_105_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_17_175_104_begin:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_18_173_106_begin:
+        symbol [ Position %tmp.65 172 18 26 ];
+        %tmp.65 = getm $.Toybox.Position;
+        %tmp.67 = const :CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5;
+        symbol [ CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5 %tmp.67 172 32 78 const ];
+        %tmp.68 = canhazplz %tmp.65 %tmp.67;
+        bf %tmp.68 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_174_17_175_104_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_173_18_173_106_true:
+        symbol [ Position %tmp.69 173 18 26 ];
+        %tmp.69 = getm $.Toybox.Position;
+        symbol [ hasConfigurationSupport %tmp.70 173 27 50 ];
+        %tmp.70 = getv function %tmp.69 :hasConfigurationSupport;
+        symbol [ Position %tmp.71 173 51 59 ];
+        %tmp.71 = getm $.Toybox.Position;
+        symbol [ CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5 %tmp.72 173 60 106 ];
+        %tmp.72 = getv %tmp.71 :CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5;
+        %tmp.73 = invoke %tmp.69 %tmp.70(%tmp.72);
+        push %tmp.73;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_173_18_173_106_end:
+        %tmp.74 = phi [%tmp.68 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_18_173_106_begin] [%tmp.73 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_173_18_173_106_true] [%tmp.74 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_173_18_173_106_end];
+        bt %tmp.74 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_171_12_177_12_if_true;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_174_17_175_104_false:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_174_18_175_103_begin:
+        symbol [ Position %tmp.75 174 18 26 ];
+        %tmp.75 = getm $.Toybox.Position;
+        %tmp.77 = const :CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1;
+        symbol [ CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1 %tmp.77 174 32 75 const ];
+        %tmp.78 = canhazplz %tmp.75 %tmp.77;
+        bf %tmp.78 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_171_12_177_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_175_18_175_103_true:
+        symbol [ Position %tmp.79 175 18 26 ];
+        %tmp.79 = getm $.Toybox.Position;
+        symbol [ hasConfigurationSupport %tmp.80 175 27 50 ];
+        %tmp.80 = getv function %tmp.79 :hasConfigurationSupport;
+        symbol [ Position %tmp.81 175 51 59 ];
+        %tmp.81 = getm $.Toybox.Position;
+        symbol [ CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1 %tmp.82 175 60 103 ];
+        %tmp.82 = getv %tmp.81 :CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1;
+        %tmp.83 = invoke %tmp.79 %tmp.80(%tmp.82);
+        push %tmp.83;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_175_18_175_103_end:
+        %tmp.84 = phi [%tmp.78 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_174_18_175_103_begin] [%tmp.83 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_175_18_175_103_true] [%tmp.84 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_175_18_175_103_end];
+        push %tmp.84;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_174_17_175_104_end:
+        %tmp.85 = phi [%tmp.74 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_17_175_104_begin] [%tmp.84 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_174_17_175_104_false] [%tmp.85 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_174_17_175_104_end];
+        push %tmp.85;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_16_175_105_end:
+        %tmp.86 = phi [%tmp.64 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_171_16_175_105_begin] [%tmp.85 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_16_175_105_true] [%tmp.86 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_16_175_105_end];
+        bf %tmp.86 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_171_12_177_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_171_12_177_12_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_175_108_177_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 176 16 ]
+        %tmp.87 = lgetv %gpsMenu.3;
+        symbol [ gpsMenu %tmp.87 176 16 23 ];
+        symbol [ addItem %tmp.88 176 24 31 ];
+        %tmp.88 = getv function %tmp.87 :addItem;
+        symbol [ WatchUi %tmp.91 176 36 43 ];
+        %tmp.91 = getm $.Toybox.WatchUi;
+        symbol [ MenuItem %tmp.92 176 44 52 ];
+        %tmp.92 = getv function ? %tmp.91 :MenuItem;
+        %tmp.93 = "All Systems";
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_68_176_85_begin:
+        %tmp.94 = lgetv %cur.2;
+        symbol [ cur %tmp.94 176 68 71 ];
+        %tmp.95 = 2;
+        %tmp.96 = eq %tmp.94 %tmp.95;
+        bf %tmp.96 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_68_176_85_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_68_176_85_true:
+        %tmp.97 = "*";
         push %tmp.97;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_192_17_193_104_end:
-        %tmp.98 = phi [%tmp.87 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_190_17_193_104_begin] [%tmp.97 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_192_17_193_104_false] [%tmp.98 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_192_17_193_104_end];
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_68_176_85_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_68_176_85_else_false:
+        %tmp.98 = null;
         push %tmp.98;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_190_16_193_105_end:
-        %tmp.99 = phi [%tmp.77 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_189_16_193_105_begin] [%tmp.98 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_190_16_193_105_true] [%tmp.99 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_190_16_193_105_end];
-        bf %tmp.99 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_189_12_195_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_189_12_195_12_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_193_108_195_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 194 16 ]
-        %tmp.100 = lgetv %gpsMenu.4;
-        symbol [ gpsMenu %tmp.100 194 16 23 ];
-        symbol [ addItem %tmp.101 194 24 31 ];
-        %tmp.101 = getv function %tmp.100 :addItem;
-        symbol [ WatchUi %tmp.104 194 36 43 ];
-        %tmp.104 = getm $.Toybox.WatchUi;
-        symbol [ MenuItem %tmp.105 194 44 52 ];
-        %tmp.105 = getv function ? %tmp.104 :MenuItem;
-        %tmp.106 = "All Systems";
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_194_68_194_85_begin:
-        %tmp.107 = lgetv %cur.3;
-        symbol [ cur %tmp.107 194 68 71 ];
-        %tmp.108 = 2;
-        %tmp.109 = eq %tmp.107 %tmp.108;
-        bf %tmp.109 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_194_68_194_85_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_194_68_194_85_true:
-        %tmp.110 = "*";
-        push %tmp.110;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_194_68_194_85_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_194_68_194_85_else_false:
-        %tmp.111 = null;
-        push %tmp.111;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_194_68_194_85_end:
-        %tmp.112 = phi [%tmp.109 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_194_68_194_85_begin] [%tmp.110 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_194_68_194_85_true] [%tmp.111 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_194_68_194_85_else_false] [%tmp.112 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_194_68_194_85_end];
-        %tmp.113 = 2;
-        %tmp.114 = null;
-        %tmp.102 = newc %tmp.105 (%tmp.106, %tmp.112, %tmp.113, %tmp.114);
-        invoke %tmp.100 %tmp.101(%tmp.102);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_193_108_195_12_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_189_12_195_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_189_12_195_12_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 198 12 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_198_12_200_12_if_stmt:
-        symbol [ Position %tmp.115 198 16 24 ];
-        %tmp.115 = getm $.Toybox.Position;
-        %tmp.117 = const :POSITIONING_MODE_AVIATION;
-        symbol [ POSITIONING_MODE_AVIATION %tmp.117 198 30 55 const ];
-        %tmp.118 = canhazplz %tmp.115 %tmp.117;
-        bf %tmp.118 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_198_12_200_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_198_12_200_12_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_198_57_200_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 199 16 ]
-        %tmp.119 = lgetv %gpsMenu.4;
-        symbol [ gpsMenu %tmp.119 199 16 23 ];
-        symbol [ addItem %tmp.120 199 24 31 ];
-        %tmp.120 = getv function %tmp.119 :addItem;
-        symbol [ WatchUi %tmp.123 199 36 43 ];
-        %tmp.123 = getm $.Toybox.WatchUi;
-        symbol [ MenuItem %tmp.124 199 44 52 ];
-        %tmp.124 = getv function ? %tmp.123 :MenuItem;
-        %tmp.125 = "Aviation";
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_65_199_82_begin:
-        %tmp.126 = lgetv %cur.3;
-        symbol [ cur %tmp.126 199 65 68 ];
-        %tmp.127 = 3;
-        %tmp.128 = eq %tmp.126 %tmp.127;
-        bf %tmp.128 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_65_199_82_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_65_199_82_true:
-        %tmp.129 = "*";
-        push %tmp.129;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_65_199_82_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_65_199_82_else_false:
-        %tmp.130 = null;
-        push %tmp.130;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_65_199_82_end:
-        %tmp.131 = phi [%tmp.128 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_65_199_82_begin] [%tmp.129 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_65_199_82_true] [%tmp.130 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_65_199_82_else_false] [%tmp.131 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_65_199_82_end];
-        %tmp.132 = 3;
-        %tmp.133 = null;
-        %tmp.121 = newc %tmp.124 (%tmp.125, %tmp.131, %tmp.132, %tmp.133);
-        invoke %tmp.119 %tmp.120(%tmp.121);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_198_57_200_12_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_198_12_200_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_198_12_200_12_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 202 12 ]
-        symbol [ WatchUi %tmp.134 202 12 19 ];
-        %tmp.134 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.135 202 20 28 ];
-        %tmp.135 = getv function %tmp.134 :pushView;
-        %tmp.136 = lgetv %gpsMenu.4;
-        symbol [ gpsMenu %tmp.136 202 29 36 ];
-        symbol [ VFRGpsMenuDelegate %tmp.140 202 42 60 ];
-        %tmp.140 = getv ? :VFRGpsMenuDelegate;
-        symbol [ _view %tmp.142 202 61 66 ];
-        %tmp.142 = getv ? :_view;
-        %tmp.137 = newc %tmp.140 (%tmp.142);
-        symbol [ WatchUi %tmp.143 202 69 76 ];
-        %tmp.143 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_LEFT %tmp.144 202 77 87 ];
-        %tmp.144 = getv %tmp.143 :SLIDE_LEFT;
-        invoke %tmp.134 %tmp.135(%tmp.136, %tmp.137, %tmp.144);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_38_204_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_8_230_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_8_230_8_if_false:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 204 15 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_204_15_230_8_if_stmt:
-        %tmp.145 = lgetv %id.1;
-        symbol [ id %tmp.145 204 19 21 ];
-        symbol [ equals %tmp.146 204 22 28 ];
-        %tmp.146 = getv function %tmp.145 :equals;
-        %tmp.147 = "setting_timer";
-        %tmp.148 = invoke %tmp.145 %tmp.146(%tmp.147);
-        bf %tmp.148 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_204_15_230_8_if_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_204_15_230_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_204_47_209_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 205 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_204_47_209_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_204_47_209_8_stop" ]
-        %curMin.5 = local;
-        symbol [ curMin %curMin.5 205 16 22 ];
-        symbol [ _view %tmp.150 205 25 30 ];
-        %tmp.150 = getv ? :_view;
-        symbol [ timerIntervalMs %tmp.151 205 31 46 ];
-        %tmp.151 = getv %tmp.150 :timerIntervalMs;
-        %tmp.152 = 60000;
-        %tmp.153 = div %tmp.151 %tmp.152;
-        lputv %curMin.5 %tmp.153;
-        symbol [ curMin %curMin.5 205 16 22 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 206 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_204_47_209_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_204_47_209_8_stop" ]
-        %picker.6 = local;
-        symbol [ picker %picker.6 206 16 22 ];
-        symbol [ VFRNumberPickerView %tmp.157 206 29 48 ];
-        %tmp.157 = getv ? :VFRNumberPickerView;
-        %tmp.158 = "Timer (min)";
-        %tmp.159 = lgetv %curMin.5;
-        symbol [ curMin %tmp.159 206 64 70 ];
-        %tmp.160 = 0;
-        %tmp.161 = 30;
-        %tmp.162 = 1;
-        %tmp.163 = "TimerInterval";
-        symbol [ _view %tmp.165 206 99 104 ];
-        %tmp.165 = getv ? :_view;
-        %tmp.154 = newc %tmp.157 (%tmp.158, %tmp.159, %tmp.160, %tmp.161, %tmp.162, %tmp.163, %tmp.165);
-        lputv %picker.6 %tmp.154;
-        symbol [ picker %picker.6 206 16 22 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 207 12 ]
-        symbol [ WatchUi %tmp.166 207 12 19 ];
-        %tmp.166 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.167 207 20 28 ];
-        %tmp.167 = getv function %tmp.166 :pushView;
-        %tmp.168 = lgetv %picker.6;
-        symbol [ picker %tmp.168 207 29 35 ];
-        symbol [ VFRNumberPickerDelegate %tmp.172 207 41 64 ];
-        %tmp.172 = getv ? :VFRNumberPickerDelegate;
-        %tmp.173 = lgetv %picker.6;
-        symbol [ picker %tmp.173 207 65 71 ];
-        %tmp.169 = newc %tmp.172 (%tmp.173);
-        symbol [ WatchUi %tmp.174 207 74 81 ];
-        %tmp.174 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_LEFT %tmp.175 207 82 92 ];
-        %tmp.175 = getv %tmp.174 :SLIDE_LEFT;
-        invoke %tmp.166 %tmp.167(%tmp.168, %tmp.169, %tmp.175);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_204_47_209_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_204_15_230_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_204_15_230_8_if_false:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 209 15 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_209_15_230_8_if_stmt:
-        %tmp.176 = lgetv %id.1;
-        symbol [ id %tmp.176 209 19 21 ];
-        symbol [ equals %tmp.177 209 22 28 ];
-        %tmp.177 = getv function %tmp.176 :equals;
-        %tmp.178 = "setting_takeoff";
-        %tmp.179 = invoke %tmp.176 %tmp.177(%tmp.178);
-        bf %tmp.179 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_209_15_230_8_if_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_209_15_230_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_209_49_214_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 210 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_209_49_214_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_209_49_214_8_stop" ]
-        %rawSpd.7 = local;
-        symbol [ rawSpd %rawSpd.7 210 16 22 ];
-        symbol [ Application %tmp.180 210 25 36 ];
-        %tmp.180 = getm $.Toybox.Application;
-        symbol [ Properties %tmp.181 210 37 47 ];
-        %tmp.181 = getv %tmp.180 :Properties;
-        symbol [ getValue %tmp.182 210 48 56 ];
-        %tmp.182 = getv function %tmp.181 :getValue;
-        %tmp.183 = "TakeoffSpeed";
-        %tmp.184 = invoke %tmp.181 %tmp.182(%tmp.183);
-        lputv %rawSpd.7 %tmp.184;
-        symbol [ rawSpd %rawSpd.7 210 16 22 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 211 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_209_49_214_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_209_49_214_8_stop" ]
-        %curKts.8 = local;
-        symbol [ curKts %curKts.8 211 16 22 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_25_211_65_begin:
-        %tmp.185 = lgetv %rawSpd.7;
-        symbol [ rawSpd %tmp.185 211 26 32 ];
-        %tmp.186 = null;
-        %tmp.187 = ne %tmp.185 %tmp.186;
-        bf %tmp.187 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_25_211_65_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_25_211_65_true:
-        %tmp.188 = lgetv %rawSpd.7;
-        symbol [ rawSpd %tmp.188 211 45 51 ];
-        %tmp.189 = as %tmp.188 { (!Null) };
-        %tmp.190 = as %tmp.189 Number;
-        symbol [ Number %tmp.190 211 55 61 ];
-        push %tmp.190;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_25_211_65_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_25_211_65_else_false:
-        %tmp.191 = 30;
-        push %tmp.191;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_25_211_65_end:
-        %tmp.192 = phi [%tmp.187 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_25_211_65_begin] [%tmp.190 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_25_211_65_true] [%tmp.191 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_25_211_65_else_false] [%tmp.192 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_25_211_65_end];
-        lputv %curKts.8 %tmp.192;
-        symbol [ curKts %curKts.8 211 16 22 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 212 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_209_49_214_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_209_49_214_8_stop" ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_68_176_85_end:
+        %tmp.99 = phi [%tmp.96 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_68_176_85_begin] [%tmp.97 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_68_176_85_true] [%tmp.98 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_68_176_85_else_false] [%tmp.99 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_176_68_176_85_end];
+        %tmp.100 = 2;
+        %tmp.101 = null;
+        %tmp.89 = newc %tmp.92 (%tmp.93, %tmp.99, %tmp.100, %tmp.101);
+        invoke %tmp.87 %tmp.88(%tmp.89);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_175_108_177_12_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_171_12_177_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_171_12_177_12_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 180 12 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_180_12_182_12_if_stmt:
+        symbol [ Position %tmp.102 180 16 24 ];
+        %tmp.102 = getm $.Toybox.Position;
+        %tmp.104 = const :POSITIONING_MODE_AVIATION;
+        symbol [ POSITIONING_MODE_AVIATION %tmp.104 180 30 55 const ];
+        %tmp.105 = canhazplz %tmp.102 %tmp.104;
+        bf %tmp.105 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_180_12_182_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_180_12_182_12_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_180_57_182_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 181 16 ]
+        %tmp.106 = lgetv %gpsMenu.3;
+        symbol [ gpsMenu %tmp.106 181 16 23 ];
+        symbol [ addItem %tmp.107 181 24 31 ];
+        %tmp.107 = getv function %tmp.106 :addItem;
+        symbol [ WatchUi %tmp.110 181 36 43 ];
+        %tmp.110 = getm $.Toybox.WatchUi;
+        symbol [ MenuItem %tmp.111 181 44 52 ];
+        %tmp.111 = getv function ? %tmp.110 :MenuItem;
+        %tmp.112 = "Aviation";
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_65_181_82_begin:
+        %tmp.113 = lgetv %cur.2;
+        symbol [ cur %tmp.113 181 65 68 ];
+        %tmp.114 = 3;
+        %tmp.115 = eq %tmp.113 %tmp.114;
+        bf %tmp.115 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_65_181_82_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_65_181_82_true:
+        %tmp.116 = "*";
+        push %tmp.116;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_65_181_82_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_65_181_82_else_false:
+        %tmp.117 = null;
+        push %tmp.117;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_65_181_82_end:
+        %tmp.118 = phi [%tmp.115 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_65_181_82_begin] [%tmp.116 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_65_181_82_true] [%tmp.117 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_65_181_82_else_false] [%tmp.118 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_181_65_181_82_end];
+        %tmp.119 = 3;
+        %tmp.120 = null;
+        %tmp.108 = newc %tmp.111 (%tmp.112, %tmp.118, %tmp.119, %tmp.120);
+        invoke %tmp.106 %tmp.107(%tmp.108);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_180_57_182_12_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_180_12_182_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_180_12_182_12_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 184 12 ]
+        symbol [ WatchUi %tmp.121 184 12 19 ];
+        %tmp.121 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.122 184 20 28 ];
+        %tmp.122 = getv function %tmp.121 :pushView;
+        %tmp.123 = lgetv %gpsMenu.3;
+        symbol [ gpsMenu %tmp.123 184 29 36 ];
+        symbol [ VFRGpsMenuDelegate %tmp.127 184 42 60 ];
+        %tmp.127 = getv ? :VFRGpsMenuDelegate;
+        symbol [ _view %tmp.129 184 61 66 ];
+        %tmp.129 = getv ? :_view;
+        %tmp.124 = newc %tmp.127 (%tmp.129);
+        symbol [ WatchUi %tmp.130 184 69 76 ];
+        %tmp.130 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_LEFT %tmp.131 184 77 87 ];
+        %tmp.131 = getv %tmp.130 :SLIDE_LEFT;
+        invoke %tmp.121 %tmp.122(%tmp.123, %tmp.124, %tmp.131);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_156_38_186_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_156_8_218_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_156_8_218_8_if_false:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 186 15 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_186_15_218_8_if_stmt:
+        %tmp.132 = lgetv %id.1;
+        symbol [ id %tmp.132 186 19 21 ];
+        symbol [ equals %tmp.133 186 22 28 ];
+        %tmp.133 = getv function %tmp.132 :equals;
+        %tmp.134 = "setting_timer";
+        %tmp.135 = invoke %tmp.132 %tmp.133(%tmp.134);
+        bf %tmp.135 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_186_15_218_8_if_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_186_15_218_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_186_47_191_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 187 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_186_47_191_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_186_47_191_8_stop" ]
+        %curMin.4 = local;
+        symbol [ curMin %curMin.4 187 16 22 ];
+        symbol [ VFRSettings %tmp.137 187 25 36 ];
+        %tmp.137 = getv ? :VFRSettings;
+        symbol [ readClampedNumber %tmp.138 187 37 54 ];
+        %tmp.138 = getv function %tmp.137 :readClampedNumber;
+        %tmp.139 = "TimerInterval";
+        %tmp.140 = 5;
+        %tmp.141 = 0;
+        %tmp.142 = 30;
+        %tmp.143 = invoke %tmp.137 %tmp.138(%tmp.139, %tmp.140, %tmp.141, %tmp.142);
+        lputv %curMin.4 %tmp.143;
+        symbol [ curMin %curMin.4 187 16 22 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 188 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_186_47_191_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_186_47_191_8_stop" ]
+        %picker.5 = local;
+        symbol [ picker %picker.5 188 16 22 ];
+        symbol [ VFRNumberPickerView %tmp.147 188 29 48 ];
+        %tmp.147 = getv ? :VFRNumberPickerView;
+        %tmp.148 = "Timer (min)";
+        %tmp.149 = lgetv %curMin.4;
+        symbol [ curMin %tmp.149 188 64 70 ];
+        %tmp.150 = 0;
+        %tmp.151 = 30;
+        %tmp.152 = 1;
+        %tmp.153 = "TimerInterval";
+        symbol [ _view %tmp.155 188 99 104 ];
+        %tmp.155 = getv ? :_view;
+        %tmp.144 = newc %tmp.147 (%tmp.148, %tmp.149, %tmp.150, %tmp.151, %tmp.152, %tmp.153, %tmp.155);
+        lputv %picker.5 %tmp.144;
+        symbol [ picker %picker.5 188 16 22 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 189 12 ]
+        symbol [ WatchUi %tmp.156 189 12 19 ];
+        %tmp.156 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.157 189 20 28 ];
+        %tmp.157 = getv function %tmp.156 :pushView;
+        %tmp.158 = lgetv %picker.5;
+        symbol [ picker %tmp.158 189 29 35 ];
+        symbol [ VFRNumberPickerDelegate %tmp.162 189 41 64 ];
+        %tmp.162 = getv ? :VFRNumberPickerDelegate;
+        %tmp.163 = lgetv %picker.5;
+        symbol [ picker %tmp.163 189 65 71 ];
+        %tmp.159 = newc %tmp.162 (%tmp.163);
+        symbol [ WatchUi %tmp.164 189 74 81 ];
+        %tmp.164 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_LEFT %tmp.165 189 82 92 ];
+        %tmp.165 = getv %tmp.164 :SLIDE_LEFT;
+        invoke %tmp.156 %tmp.157(%tmp.158, %tmp.159, %tmp.165);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_186_47_191_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_186_15_218_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_186_15_218_8_if_false:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 191 15 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_191_15_218_8_if_stmt:
+        %tmp.166 = lgetv %id.1;
+        symbol [ id %tmp.166 191 19 21 ];
+        symbol [ equals %tmp.167 191 22 28 ];
+        %tmp.167 = getv function %tmp.166 :equals;
+        %tmp.168 = "setting_takeoff";
+        %tmp.169 = invoke %tmp.166 %tmp.167(%tmp.168);
+        bf %tmp.169 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_191_15_218_8_if_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_191_15_218_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_191_49_195_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 192 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_191_49_195_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_191_49_195_8_stop" ]
+        %curKts.6 = local;
+        symbol [ curKts %curKts.6 192 16 22 ];
+        symbol [ VFRSettings %tmp.171 192 25 36 ];
+        %tmp.171 = getv ? :VFRSettings;
+        symbol [ readClampedNumber %tmp.172 192 37 54 ];
+        %tmp.172 = getv function %tmp.171 :readClampedNumber;
+        %tmp.173 = "TakeoffSpeed";
+        %tmp.174 = 30;
+        %tmp.175 = 0;
+        %tmp.176 = 100;
+        %tmp.177 = invoke %tmp.171 %tmp.172(%tmp.173, %tmp.174, %tmp.175, %tmp.176);
+        lputv %curKts.6 %tmp.177;
+        symbol [ curKts %curKts.6 192 16 22 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 193 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_191_49_195_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_191_49_195_8_stop" ]
+        %picker.7 = local;
+        symbol [ picker %picker.7 193 16 22 ];
+        symbol [ VFRNumberPickerView %tmp.181 193 29 48 ];
+        %tmp.181 = getv ? :VFRNumberPickerView;
+        %tmp.182 = "Takeoff (kts)";
+        %tmp.183 = lgetv %curKts.6;
+        symbol [ curKts %tmp.183 193 66 72 ];
+        %tmp.184 = 0;
+        %tmp.185 = 100;
+        %tmp.186 = 5;
+        %tmp.187 = "TakeoffSpeed";
+        symbol [ _view %tmp.189 193 101 106 ];
+        %tmp.189 = getv ? :_view;
+        %tmp.178 = newc %tmp.181 (%tmp.182, %tmp.183, %tmp.184, %tmp.185, %tmp.186, %tmp.187, %tmp.189);
+        lputv %picker.7 %tmp.178;
+        symbol [ picker %picker.7 193 16 22 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 194 12 ]
+        symbol [ WatchUi %tmp.190 194 12 19 ];
+        %tmp.190 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.191 194 20 28 ];
+        %tmp.191 = getv function %tmp.190 :pushView;
+        %tmp.192 = lgetv %picker.7;
+        symbol [ picker %tmp.192 194 29 35 ];
+        symbol [ VFRNumberPickerDelegate %tmp.196 194 41 64 ];
+        %tmp.196 = getv ? :VFRNumberPickerDelegate;
+        %tmp.197 = lgetv %picker.7;
+        symbol [ picker %tmp.197 194 65 71 ];
+        %tmp.193 = newc %tmp.196 (%tmp.197);
+        symbol [ WatchUi %tmp.198 194 74 81 ];
+        %tmp.198 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_LEFT %tmp.199 194 82 92 ];
+        %tmp.199 = getv %tmp.198 :SLIDE_LEFT;
+        invoke %tmp.190 %tmp.191(%tmp.192, %tmp.193, %tmp.199);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_191_49_195_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_191_15_218_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_191_15_218_8_if_false:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 195 15 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_195_15_218_8_if_stmt:
+        %tmp.200 = lgetv %id.1;
+        symbol [ id %tmp.200 195 19 21 ];
+        symbol [ equals %tmp.201 195 22 28 ];
+        %tmp.201 = getv function %tmp.200 :equals;
+        %tmp.202 = "setting_transition";
+        %tmp.203 = invoke %tmp.200 %tmp.201(%tmp.202);
+        bf %tmp.203 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_195_15_218_8_if_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_195_15_218_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_195_52_199_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 196 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_195_52_199_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_195_52_199_8_stop" ]
+        %curTrans.8 = local;
+        symbol [ curTrans %curTrans.8 196 16 24 ];
+        symbol [ VFRSettings %tmp.205 196 27 38 ];
+        %tmp.205 = getv ? :VFRSettings;
+        symbol [ readClampedNumber %tmp.206 196 39 56 ];
+        %tmp.206 = getv function %tmp.205 :readClampedNumber;
+        %tmp.207 = "TransitionAltitudeFt";
+        %tmp.208 = 6000;
+        %tmp.209 = 0;
+        %tmp.210 = 20000;
+        %tmp.211 = invoke %tmp.205 %tmp.206(%tmp.207, %tmp.208, %tmp.209, %tmp.210);
+        lputv %curTrans.8 %tmp.211;
+        symbol [ curTrans %curTrans.8 196 16 24 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 197 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_195_52_199_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_195_52_199_8_stop" ]
         %picker.9 = local;
-        symbol [ picker %picker.9 212 16 22 ];
-        symbol [ VFRNumberPickerView %tmp.196 212 29 48 ];
-        %tmp.196 = getv ? :VFRNumberPickerView;
-        %tmp.197 = "Takeoff (kts)";
-        %tmp.198 = lgetv %curKts.8;
-        symbol [ curKts %tmp.198 212 66 72 ];
-        %tmp.199 = 0;
-        %tmp.200 = 100;
-        %tmp.201 = 5;
-        %tmp.202 = "TakeoffSpeed";
-        symbol [ _view %tmp.204 212 101 106 ];
-        %tmp.204 = getv ? :_view;
-        %tmp.193 = newc %tmp.196 (%tmp.197, %tmp.198, %tmp.199, %tmp.200, %tmp.201, %tmp.202, %tmp.204);
-        lputv %picker.9 %tmp.193;
-        symbol [ picker %picker.9 212 16 22 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 213 12 ]
-        symbol [ WatchUi %tmp.205 213 12 19 ];
-        %tmp.205 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.206 213 20 28 ];
-        %tmp.206 = getv function %tmp.205 :pushView;
-        %tmp.207 = lgetv %picker.9;
-        symbol [ picker %tmp.207 213 29 35 ];
-        symbol [ VFRNumberPickerDelegate %tmp.211 213 41 64 ];
-        %tmp.211 = getv ? :VFRNumberPickerDelegate;
-        %tmp.212 = lgetv %picker.9;
-        symbol [ picker %tmp.212 213 65 71 ];
-        %tmp.208 = newc %tmp.211 (%tmp.212);
-        symbol [ WatchUi %tmp.213 213 74 81 ];
-        %tmp.213 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_LEFT %tmp.214 213 82 92 ];
-        %tmp.214 = getv %tmp.213 :SLIDE_LEFT;
-        invoke %tmp.205 %tmp.206(%tmp.207, %tmp.208, %tmp.214);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_209_49_214_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_209_15_230_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_209_15_230_8_if_false:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 214 15 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_15_230_8_if_stmt:
-        %tmp.215 = lgetv %id.1;
-        symbol [ id %tmp.215 214 19 21 ];
-        symbol [ equals %tmp.216 214 22 28 ];
-        %tmp.216 = getv function %tmp.215 :equals;
-        %tmp.217 = "setting_transition";
-        %tmp.218 = invoke %tmp.215 %tmp.216(%tmp.217);
-        bf %tmp.218 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_15_230_8_if_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_15_230_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_52_219_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 215 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_52_219_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_52_219_8_stop" ]
-        %rawTrans.10 = local;
-        symbol [ rawTrans %rawTrans.10 215 16 24 ];
-        symbol [ Application %tmp.219 215 27 38 ];
-        %tmp.219 = getm $.Toybox.Application;
-        symbol [ Properties %tmp.220 215 39 49 ];
-        %tmp.220 = getv %tmp.219 :Properties;
-        symbol [ getValue %tmp.221 215 50 58 ];
-        %tmp.221 = getv function %tmp.220 :getValue;
-        %tmp.222 = "TransitionAltitudeFt";
-        %tmp.223 = invoke %tmp.220 %tmp.221(%tmp.222);
-        lputv %rawTrans.10 %tmp.223;
-        symbol [ rawTrans %rawTrans.10 215 16 24 ];
+        symbol [ picker %picker.9 197 16 22 ];
+        symbol [ VFRNumberPickerView %tmp.215 197 29 48 ];
+        %tmp.215 = getv ? :VFRNumberPickerView;
+        %tmp.216 = "Transition Alt (ft)";
+        %tmp.217 = lgetv %curTrans.8;
+        symbol [ curTrans %tmp.217 197 72 80 ];
+        %tmp.218 = 0;
+        %tmp.219 = 20000;
+        %tmp.220 = 100;
+        %tmp.221 = "TransitionAltitudeFt";
+        symbol [ _view %tmp.223 197 121 126 ];
+        %tmp.223 = getv ? :_view;
+        %tmp.212 = newc %tmp.215 (%tmp.216, %tmp.217, %tmp.218, %tmp.219, %tmp.220, %tmp.221, %tmp.223);
+        lputv %picker.9 %tmp.212;
+        symbol [ picker %picker.9 197 16 22 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 198 12 ]
+        symbol [ WatchUi %tmp.224 198 12 19 ];
+        %tmp.224 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.225 198 20 28 ];
+        %tmp.225 = getv function %tmp.224 :pushView;
+        %tmp.226 = lgetv %picker.9;
+        symbol [ picker %tmp.226 198 29 35 ];
+        symbol [ VFRNumberPickerDelegate %tmp.230 198 41 64 ];
+        %tmp.230 = getv ? :VFRNumberPickerDelegate;
+        %tmp.231 = lgetv %picker.9;
+        symbol [ picker %tmp.231 198 65 71 ];
+        %tmp.227 = newc %tmp.230 (%tmp.231);
+        symbol [ WatchUi %tmp.232 198 74 81 ];
+        %tmp.232 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_LEFT %tmp.233 198 82 92 ];
+        %tmp.233 = getv %tmp.232 :SLIDE_LEFT;
+        invoke %tmp.224 %tmp.225(%tmp.226, %tmp.227, %tmp.233);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_195_52_199_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_195_15_218_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_195_15_218_8_if_false:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 199 15 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_15_218_8_if_stmt:
+        %tmp.234 = lgetv %id.1;
+        symbol [ id %tmp.234 199 19 21 ];
+        symbol [ equals %tmp.235 199 22 28 ];
+        %tmp.235 = getv function %tmp.234 :equals;
+        %tmp.236 = "setting_hr";
+        %tmp.237 = invoke %tmp.234 %tmp.235(%tmp.236);
+        bf %tmp.237 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_15_218_8_if_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_15_218_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_44_203_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 200 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_44_203_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_44_203_8_stop" ]
+        %curHr.10 = local;
+        symbol [ curHr %curHr.10 200 16 21 ];
+        symbol [ VFRSettings %tmp.239 200 24 35 ];
+        %tmp.239 = getv ? :VFRSettings;
+        symbol [ readClampedNumber %tmp.240 200 36 53 ];
+        %tmp.240 = getv function %tmp.239 :readClampedNumber;
+        %tmp.241 = "HrThreshold";
+        %tmp.242 = 130;
+        %tmp.243 = 0;
+        %tmp.244 = 220;
+        %tmp.245 = invoke %tmp.239 %tmp.240(%tmp.241, %tmp.242, %tmp.243, %tmp.244);
+        lputv %curHr.10 %tmp.245;
+        symbol [ curHr %curHr.10 200 16 21 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 201 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_44_203_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_44_203_8_stop" ]
+        %picker.11 = local;
+        symbol [ picker %picker.11 201 16 22 ];
+        symbol [ VFRNumberPickerView %tmp.249 201 29 48 ];
+        %tmp.249 = getv ? :VFRNumberPickerView;
+        %tmp.250 = "HR Alert (bpm)";
+        %tmp.251 = lgetv %curHr.10;
+        symbol [ curHr %tmp.251 201 67 72 ];
+        %tmp.252 = 0;
+        %tmp.253 = 220;
+        %tmp.254 = 5;
+        %tmp.255 = "HrThreshold";
+        symbol [ _view %tmp.257 201 100 105 ];
+        %tmp.257 = getv ? :_view;
+        %tmp.246 = newc %tmp.249 (%tmp.250, %tmp.251, %tmp.252, %tmp.253, %tmp.254, %tmp.255, %tmp.257);
+        lputv %picker.11 %tmp.246;
+        symbol [ picker %picker.11 201 16 22 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 202 12 ]
+        symbol [ WatchUi %tmp.258 202 12 19 ];
+        %tmp.258 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.259 202 20 28 ];
+        %tmp.259 = getv function %tmp.258 :pushView;
+        %tmp.260 = lgetv %picker.11;
+        symbol [ picker %tmp.260 202 29 35 ];
+        symbol [ VFRNumberPickerDelegate %tmp.264 202 41 64 ];
+        %tmp.264 = getv ? :VFRNumberPickerDelegate;
+        %tmp.265 = lgetv %picker.11;
+        symbol [ picker %tmp.265 202 65 71 ];
+        %tmp.261 = newc %tmp.264 (%tmp.265);
+        symbol [ WatchUi %tmp.266 202 74 81 ];
+        %tmp.266 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_LEFT %tmp.267 202 82 92 ];
+        %tmp.267 = getv %tmp.266 :SLIDE_LEFT;
+        invoke %tmp.258 %tmp.259(%tmp.260, %tmp.261, %tmp.267);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_44_203_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_15_218_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_15_218_8_if_false:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 203 15 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_203_15_218_8_if_stmt:
+        %tmp.268 = lgetv %id.1;
+        symbol [ id %tmp.268 203 19 21 ];
+        symbol [ equals %tmp.269 203 22 28 ];
+        %tmp.269 = getv function %tmp.268 :equals;
+        %tmp.270 = "setting_fuel";
+        %tmp.271 = invoke %tmp.268 %tmp.269(%tmp.270);
+        bf %tmp.271 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_203_15_218_8_if_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_203_15_218_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_203_46_207_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 204 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_203_46_207_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_203_46_207_8_stop" ]
+        %curFuel.12 = local;
+        symbol [ curFuel %curFuel.12 204 16 23 ];
+        symbol [ VFRSettings %tmp.273 204 26 37 ];
+        %tmp.273 = getv ? :VFRSettings;
+        symbol [ readClampedNumber %tmp.274 204 38 55 ];
+        %tmp.274 = getv function %tmp.273 :readClampedNumber;
+        %tmp.275 = "FuelCheckInterval";
+        %tmp.276 = 30;
+        %tmp.277 = 0;
+        %tmp.278 = 120;
+        %tmp.279 = invoke %tmp.273 %tmp.274(%tmp.275, %tmp.276, %tmp.277, %tmp.278);
+        lputv %curFuel.12 %tmp.279;
+        symbol [ curFuel %curFuel.12 204 16 23 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 205 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_203_46_207_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_203_46_207_8_stop" ]
+        %picker.13 = local;
+        symbol [ picker %picker.13 205 16 22 ];
+        symbol [ VFRNumberPickerView %tmp.283 205 29 48 ];
+        %tmp.283 = getv ? :VFRNumberPickerView;
+        %tmp.284 = "Fuel Check (min)";
+        %tmp.285 = lgetv %curFuel.12;
+        symbol [ curFuel %tmp.285 205 69 76 ];
+        %tmp.286 = 0;
+        %tmp.287 = 120;
+        %tmp.288 = 5;
+        %tmp.289 = "FuelCheckInterval";
+        symbol [ _view %tmp.291 205 110 115 ];
+        %tmp.291 = getv ? :_view;
+        %tmp.280 = newc %tmp.283 (%tmp.284, %tmp.285, %tmp.286, %tmp.287, %tmp.288, %tmp.289, %tmp.291);
+        lputv %picker.13 %tmp.280;
+        symbol [ picker %picker.13 205 16 22 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 206 12 ]
+        symbol [ WatchUi %tmp.292 206 12 19 ];
+        %tmp.292 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.293 206 20 28 ];
+        %tmp.293 = getv function %tmp.292 :pushView;
+        %tmp.294 = lgetv %picker.13;
+        symbol [ picker %tmp.294 206 29 35 ];
+        symbol [ VFRNumberPickerDelegate %tmp.298 206 41 64 ];
+        %tmp.298 = getv ? :VFRNumberPickerDelegate;
+        %tmp.299 = lgetv %picker.13;
+        symbol [ picker %tmp.299 206 65 71 ];
+        %tmp.295 = newc %tmp.298 (%tmp.299);
+        symbol [ WatchUi %tmp.300 206 74 81 ];
+        %tmp.300 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_LEFT %tmp.301 206 82 92 ];
+        %tmp.301 = getv %tmp.300 :SLIDE_LEFT;
+        invoke %tmp.292 %tmp.293(%tmp.294, %tmp.295, %tmp.301);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_203_46_207_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_203_15_218_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_203_15_218_8_if_false:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 207 15 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_207_15_218_8_if_stmt:
+        %tmp.302 = lgetv %id.1;
+        symbol [ id %tmp.302 207 19 21 ];
+        symbol [ equals %tmp.303 207 22 28 ];
+        %tmp.303 = getv function %tmp.302 :equals;
+        %tmp.304 = "setting_companion";
+        %tmp.305 = invoke %tmp.302 %tmp.303(%tmp.304);
+        bf %tmp.305 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_207_15_218_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_207_15_218_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_207_51_218_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 209 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_207_51_218_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_207_51_218_8_stop" ]
+        %rawComp.14 = local;
+        symbol [ rawComp %rawComp.14 209 16 23 ];
+        symbol [ Application %tmp.306 209 26 37 ];
+        %tmp.306 = getm $.Toybox.Application;
+        symbol [ Properties %tmp.307 209 38 48 ];
+        %tmp.307 = getv %tmp.306 :Properties;
+        symbol [ getValue %tmp.308 209 49 57 ];
+        %tmp.308 = getv function %tmp.307 :getValue;
+        %tmp.309 = "UseCompanionApp";
+        %tmp.310 = invoke %tmp.307 %tmp.308(%tmp.309);
+        lputv %rawComp.14 %tmp.310;
+        symbol [ rawComp %rawComp.14 209 16 23 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 210 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_207_51_218_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_207_51_218_8_stop" ]
+        %cur.15 = local;
+        symbol [ cur %cur.15 210 16 19 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_210_22_210_64_begin:
+        %tmp.311 = lgetv %rawComp.14;
+        symbol [ rawComp %tmp.311 210 23 30 ];
+        %tmp.312 = null;
+        %tmp.313 = ne %tmp.311 %tmp.312;
+        bf %tmp.313 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_210_22_210_64_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_210_22_210_64_true:
+        %tmp.314 = lgetv %rawComp.14;
+        symbol [ rawComp %tmp.314 210 43 50 ];
+        %tmp.315 = as %tmp.314 { (!Null) };
+        %tmp.316 = as %tmp.315 Number;
+        symbol [ Number %tmp.316 210 54 60 ];
+        push %tmp.316;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_210_22_210_64_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_210_22_210_64_else_false:
+        %tmp.317 = 0;
+        push %tmp.317;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_210_22_210_64_end:
+        %tmp.318 = phi [%tmp.313 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_210_22_210_64_begin] [%tmp.316 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_210_22_210_64_true] [%tmp.317 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_210_22_210_64_else_false] [%tmp.318 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_210_22_210_64_end];
+        lputv %cur.15 %tmp.318;
+        symbol [ cur %cur.15 210 16 19 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 211 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_207_51_218_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_207_51_218_8_stop" ]
+        %newv.16 = local;
+        symbol [ newv %newv.16 211 16 20 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_23_211_40_begin:
+        %tmp.319 = lgetv %cur.15;
+        symbol [ cur %tmp.319 211 24 27 ];
+        %tmp.320 = 1;
+        %tmp.321 = eq %tmp.319 %tmp.320;
+        bf %tmp.321 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_23_211_40_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_23_211_40_true:
+        %tmp.322 = 0;
+        push %tmp.322;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_23_211_40_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_23_211_40_else_false:
+        %tmp.323 = 1;
+        push %tmp.323;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_23_211_40_end:
+        %tmp.324 = phi [%tmp.321 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_23_211_40_begin] [%tmp.322 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_23_211_40_true] [%tmp.323 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_23_211_40_else_false] [%tmp.324 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_211_23_211_40_end];
+        lputv %newv.16 %tmp.324;
+        symbol [ newv %newv.16 211 16 20 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 212 12 ]
+        symbol [ Application %tmp.325 212 12 23 ];
+        %tmp.325 = getm $.Toybox.Application;
+        symbol [ Properties %tmp.326 212 24 34 ];
+        %tmp.326 = getv %tmp.325 :Properties;
+        symbol [ setValue %tmp.327 212 35 43 ];
+        %tmp.327 = getv function %tmp.326 :setValue;
+        %tmp.328 = "UseCompanionApp";
+        %tmp.329 = lgetv %newv.16;
+        symbol [ newv %tmp.329 212 63 67 ];
+        invoke %tmp.326 %tmp.327(%tmp.328, %tmp.329);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 214 12 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_12_214_69_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_12_214_69_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_12_214_69_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_12_214_69_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_12_214_69_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_16_214_55_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 214 18 ]
+        symbol [ _view %tmp.330 214 18 23 ];
+        %tmp.330 = getv self :_view;
+        %tmp.331 = lgetv %newv.16;
+        symbol [ newv %tmp.331 214 43 47 ];
+        %tmp.332 = 1;
+        %tmp.333 = eq %tmp.331 %tmp.332;
+        symbol [ useCompanionApp ? 214 24 39 ];
+        putv %tmp.330 :useCompanionApp %tmp.333;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_16_214_55_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_12_214_69_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_12_214_69_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_12_214_69_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_12_214_69_catch:
+        %tmp.334 = exception;
+        push %tmp.334;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 214 57 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_12_214_69_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_57_214_69_end" ]
+        %e.17 = local;
+        symbol [ e %e.17 214 64 65 ];
+        %tmp.335 = dup %tmp.334;
+        lputv %e.17 %tmp.335;
+        symbol [ e %e.17 214 64 65 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_12_214_69_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_12_214_69_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_57_214_69_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_12_214_69_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_57_214_69_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_57_214_69_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_12_214_69_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_12_214_69_finally;
+        throw %tmp.334;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_12_214_69_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_12_214_69_end:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 216 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_52_219_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_52_219_8_stop" ]
-        %curTrans.11 = local;
-        symbol [ curTrans %curTrans.11 216 16 24 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_27_216_71_begin:
-        %tmp.224 = lgetv %rawTrans.10;
-        symbol [ rawTrans %tmp.224 216 28 36 ];
-        %tmp.225 = null;
-        %tmp.226 = ne %tmp.224 %tmp.225;
-        bf %tmp.226 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_27_216_71_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_27_216_71_true:
-        %tmp.227 = lgetv %rawTrans.10;
-        symbol [ rawTrans %tmp.227 216 49 57 ];
-        %tmp.228 = as %tmp.227 { (!Null) };
-        %tmp.229 = as %tmp.228 Number;
-        symbol [ Number %tmp.229 216 61 67 ];
-        push %tmp.229;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_27_216_71_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_27_216_71_else_false:
-        %tmp.230 = 6000;
-        push %tmp.230;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_27_216_71_end:
-        %tmp.231 = phi [%tmp.226 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_27_216_71_begin] [%tmp.229 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_27_216_71_true] [%tmp.230 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_27_216_71_else_false] [%tmp.231 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_27_216_71_end];
-        lputv %curTrans.11 %tmp.231;
-        symbol [ curTrans %curTrans.11 216 16 24 ];
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_12_216_63_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_12_216_63_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_12_216_63_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_12_216_63_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_12_216_63_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_16_216_48_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 216 18 ]
+        %tmp.336 = self;
+        symbol [ getApp %tmp.337 216 18 24 ];
+        %tmp.337 = getv function %tmp.336 :getApp;
+        %tmp.338 = invoke %tmp.336 %tmp.337();
+        symbol [ onSettingsChanged %tmp.339 216 27 44 ];
+        %tmp.339 = getv function %tmp.338 :onSettingsChanged;
+        invoke %tmp.338 %tmp.339();
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_16_216_48_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_12_216_63_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_12_216_63_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_12_216_63_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_12_216_63_catch:
+        %tmp.340 = exception;
+        push %tmp.340;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 216 50 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_12_216_63_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_50_216_63_end" ]
+        %e2.18 = local;
+        symbol [ e2 %e2.18 216 57 59 ];
+        %tmp.341 = dup %tmp.340;
+        lputv %e2.18 %tmp.341;
+        symbol [ e2 %e2.18 216 57 59 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_12_216_63_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_12_216_63_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_50_216_63_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_12_216_63_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_50_216_63_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_50_216_63_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_12_216_63_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_12_216_63_finally;
+        throw %tmp.340;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_12_216_63_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_216_12_216_63_end:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 217 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_52_219_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_52_219_8_stop" ]
-        %picker.12 = local;
-        symbol [ picker %picker.12 217 16 22 ];
-        symbol [ VFRNumberPickerView %tmp.235 217 29 48 ];
-        %tmp.235 = getv ? :VFRNumberPickerView;
-        %tmp.236 = "Transition Alt (ft)";
-        %tmp.237 = lgetv %curTrans.11;
-        symbol [ curTrans %tmp.237 217 72 80 ];
-        %tmp.238 = 0;
-        %tmp.239 = 20000;
-        %tmp.240 = 100;
-        %tmp.241 = "TransitionAltitudeFt";
-        symbol [ _view %tmp.243 217 121 126 ];
-        %tmp.243 = getv ? :_view;
-        %tmp.232 = newc %tmp.235 (%tmp.236, %tmp.237, %tmp.238, %tmp.239, %tmp.240, %tmp.241, %tmp.243);
-        lputv %picker.12 %tmp.232;
-        symbol [ picker %picker.12 217 16 22 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 218 12 ]
-        symbol [ WatchUi %tmp.244 218 12 19 ];
-        %tmp.244 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.245 218 20 28 ];
-        %tmp.245 = getv function %tmp.244 :pushView;
-        %tmp.246 = lgetv %picker.12;
-        symbol [ picker %tmp.246 218 29 35 ];
-        symbol [ VFRNumberPickerDelegate %tmp.250 218 41 64 ];
-        %tmp.250 = getv ? :VFRNumberPickerDelegate;
-        %tmp.251 = lgetv %picker.12;
-        symbol [ picker %tmp.251 218 65 71 ];
-        %tmp.247 = newc %tmp.250 (%tmp.251);
-        symbol [ WatchUi %tmp.252 218 74 81 ];
-        %tmp.252 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_LEFT %tmp.253 218 82 92 ];
-        %tmp.253 = getv %tmp.252 :SLIDE_LEFT;
-        invoke %tmp.244 %tmp.245(%tmp.246, %tmp.247, %tmp.253);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_52_219_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_15_230_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_15_230_8_if_false:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 219 15 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_219_15_230_8_if_stmt:
-        %tmp.254 = lgetv %id.1;
-        symbol [ id %tmp.254 219 19 21 ];
-        symbol [ equals %tmp.255 219 22 28 ];
-        %tmp.255 = getv function %tmp.254 :equals;
-        %tmp.256 = "setting_companion";
-        %tmp.257 = invoke %tmp.254 %tmp.255(%tmp.256);
-        bf %tmp.257 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_219_15_230_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_219_15_230_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_219_51_230_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 221 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_219_51_230_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_219_51_230_8_stop" ]
-        %rawComp.13 = local;
-        symbol [ rawComp %rawComp.13 221 16 23 ];
-        symbol [ Application %tmp.258 221 26 37 ];
-        %tmp.258 = getm $.Toybox.Application;
-        symbol [ Properties %tmp.259 221 38 48 ];
-        %tmp.259 = getv %tmp.258 :Properties;
-        symbol [ getValue %tmp.260 221 49 57 ];
-        %tmp.260 = getv function %tmp.259 :getValue;
-        %tmp.261 = "UseCompanionApp";
-        %tmp.262 = invoke %tmp.259 %tmp.260(%tmp.261);
-        lputv %rawComp.13 %tmp.262;
-        symbol [ rawComp %rawComp.13 221 16 23 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 222 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_219_51_230_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_219_51_230_8_stop" ]
-        %cur.14 = local;
-        symbol [ cur %cur.14 222 16 19 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_222_22_222_64_begin:
-        %tmp.263 = lgetv %rawComp.13;
-        symbol [ rawComp %tmp.263 222 23 30 ];
-        %tmp.264 = null;
-        %tmp.265 = ne %tmp.263 %tmp.264;
-        bf %tmp.265 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_222_22_222_64_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_222_22_222_64_true:
-        %tmp.266 = lgetv %rawComp.13;
-        symbol [ rawComp %tmp.266 222 43 50 ];
-        %tmp.267 = as %tmp.266 { (!Null) };
-        %tmp.268 = as %tmp.267 Number;
-        symbol [ Number %tmp.268 222 54 60 ];
-        push %tmp.268;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_222_22_222_64_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_222_22_222_64_else_false:
-        %tmp.269 = 0;
-        push %tmp.269;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_222_22_222_64_end:
-        %tmp.270 = phi [%tmp.265 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_222_22_222_64_begin] [%tmp.268 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_222_22_222_64_true] [%tmp.269 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_222_22_222_64_else_false] [%tmp.270 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_222_22_222_64_end];
-        lputv %cur.14 %tmp.270;
-        symbol [ cur %cur.14 222 16 19 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 223 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_219_51_230_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_219_51_230_8_stop" ]
-        %newv.15 = local;
-        symbol [ newv %newv.15 223 16 20 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_223_23_223_40_begin:
-        %tmp.271 = lgetv %cur.14;
-        symbol [ cur %tmp.271 223 24 27 ];
-        %tmp.272 = 1;
-        %tmp.273 = eq %tmp.271 %tmp.272;
-        bf %tmp.273 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_223_23_223_40_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_223_23_223_40_true:
-        %tmp.274 = 0;
-        push %tmp.274;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_223_23_223_40_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_223_23_223_40_else_false:
-        %tmp.275 = 1;
-        push %tmp.275;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_223_23_223_40_end:
-        %tmp.276 = phi [%tmp.273 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_223_23_223_40_begin] [%tmp.274 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_223_23_223_40_true] [%tmp.275 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_223_23_223_40_else_false] [%tmp.276 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_223_23_223_40_end];
-        lputv %newv.15 %tmp.276;
-        symbol [ newv %newv.15 223 16 20 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 224 12 ]
-        symbol [ Application %tmp.277 224 12 23 ];
-        %tmp.277 = getm $.Toybox.Application;
-        symbol [ Properties %tmp.278 224 24 34 ];
-        %tmp.278 = getv %tmp.277 :Properties;
-        symbol [ setValue %tmp.279 224 35 43 ];
-        %tmp.279 = getv function %tmp.278 :setValue;
-        %tmp.280 = "UseCompanionApp";
-        %tmp.281 = lgetv %newv.15;
-        symbol [ newv %tmp.281 224 63 67 ];
-        invoke %tmp.278 %tmp.279(%tmp.280, %tmp.281);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 226 12 ]
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_12_226_69_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_12_226_69_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_12_226_69_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_12_226_69_finally;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_12_226_69_beginTry:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_16_226_55_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 226 18 ]
-        symbol [ _view %tmp.282 226 18 23 ];
-        %tmp.282 = getv self :_view;
-        %tmp.283 = lgetv %newv.15;
-        symbol [ newv %tmp.283 226 43 47 ];
-        %tmp.284 = 1;
-        %tmp.285 = eq %tmp.283 %tmp.284;
-        symbol [ useCompanionApp ? 226 24 39 ];
-        putv %tmp.282 :useCompanionApp %tmp.285;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_16_226_55_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_12_226_69_endTry:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_12_226_69_finally;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_12_226_69_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_12_226_69_catch:
-        %tmp.286 = exception;
-        push %tmp.286;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 226 57 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_12_226_69_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_57_226_69_end" ]
-        %e.16 = local;
-        symbol [ e %e.16 226 64 65 ];
-        %tmp.287 = dup %tmp.286;
-        lputv %e.16 %tmp.287;
-        symbol [ e %e.16 226 64 65 ];
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_12_226_69_finally;
-        pop;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_12_226_69_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_57_226_69_end:
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_12_226_69_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_57_226_69_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_57_226_69_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_12_226_69_finally;
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_12_226_69_finally;
-        throw %tmp.286;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_12_226_69_finally:
-        jsrret;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_226_12_226_69_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 228 12 ]
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_12_228_63_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_12_228_63_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_12_228_63_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_12_228_63_finally;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_12_228_63_beginTry:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_16_228_48_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 228 18 ]
-        %tmp.288 = self;
-        symbol [ getApp %tmp.289 228 18 24 ];
-        %tmp.289 = getv function %tmp.288 :getApp;
-        %tmp.290 = invoke %tmp.288 %tmp.289();
-        symbol [ onSettingsChanged %tmp.291 228 27 44 ];
-        %tmp.291 = getv function %tmp.290 :onSettingsChanged;
-        invoke %tmp.290 %tmp.291();
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_16_228_48_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_12_228_63_endTry:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_12_228_63_finally;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_12_228_63_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_12_228_63_catch:
-        %tmp.292 = exception;
-        push %tmp.292;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 228 50 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_12_228_63_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_50_228_63_end" ]
-        %e2.17 = local;
-        symbol [ e2 %e2.17 228 57 59 ];
-        %tmp.293 = dup %tmp.292;
-        lputv %e2.17 %tmp.293;
-        symbol [ e2 %e2.17 228 57 59 ];
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_12_228_63_finally;
-        pop;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_12_228_63_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_50_228_63_end:
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_12_228_63_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_50_228_63_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_50_228_63_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_12_228_63_finally;
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_12_228_63_finally;
-        throw %tmp.292;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_12_228_63_finally:
-        jsrret;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_228_12_228_63_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc" 229 12 ]
-        symbol [ WatchUi %tmp.294 229 12 19 ];
-        %tmp.294 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.295 229 20 27 ];
-        %tmp.295 = getv function %tmp.294 :popView;
-        symbol [ WatchUi %tmp.296 229 28 35 ];
-        %tmp.296 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.297 229 36 47 ];
-        %tmp.297 = getv %tmp.296 :SLIDE_RIGHT;
-        invoke %tmp.294 %tmp.295(%tmp.297);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_219_51_230_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_219_15_230_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_219_15_230_8_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_214_15_230_8_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_209_15_230_8_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_204_15_230_8_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_172_8_230_8_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_169_56_231_4_stop:
+        symbol [ WatchUi %tmp.342 217 12 19 ];
+        %tmp.342 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.343 217 20 27 ];
+        %tmp.343 = getv function %tmp.342 :popView;
+        symbol [ WatchUi %tmp.344 217 28 35 ];
+        %tmp.344 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.345 217 36 47 ];
+        %tmp.345 = getv %tmp.344 :SLIDE_RIGHT;
+        invoke %tmp.342 %tmp.343(%tmp.345);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_207_51_218_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_207_15_218_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_207_15_218_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_203_15_218_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_199_15_218_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_195_15_218_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_191_15_218_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_186_15_218_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_156_8_218_8_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRSettingsMenuDelegate_mc_153_56_219_4_stop:
     }
 }
 [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRSettingsMenuDelegate.mc"; @line = 1; ]

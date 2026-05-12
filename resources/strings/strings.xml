@@ -15,4 +15,7 @@
     <string id="SettingGpsModeAviation">Aviation</string>
     <string id="SettingTimerTitle">Timer (min)</string>
     <string id="SettingTakeoffTitle">Takeoff (kts)</string>
+    <string id="SettingTransitionTitle">Transition Alt (ft)</string>
+    <string id="SettingHrTitle">HR Alert (bpm)</string>
+    <string id="SettingFuelTitle">Fuel Check (min)</string>
 </strings>

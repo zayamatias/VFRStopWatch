@@ -148,28 +148,8 @@ class VFRStopWatchView extends WatchUi.View {
     // Safe to call at any time; GPS restart is handled separately by restartGps().
     function loadSettings() as Void {
         try {
-        // GPS mode
-        try {
-            var rawMode = Application.Properties.getValue("GpsMode");
-            gpsMode = (rawMode != null) ? (rawMode as Number) : 3;
-        } catch (ex) { gpsMode = 3; }
-
-        // Timer interval (minutes → ms; 0 = disabled)
-        var intervalMin = 5;
-        try {
-            var rawInterval = Application.Properties.getValue("TimerInterval");
-            intervalMin = (rawInterval != null) ? (rawInterval as Number) : 5;
-        } catch (ex) { intervalMin = 5; }
-        if (intervalMin < 0) { intervalMin = 0; }
-        if (intervalMin > 30) { intervalMin = 30; }
-        timerIntervalMs = intervalMin * 60000;
-
-        // Takeoff speed (knots → m/s; 0 = disable auto-start)
-        var speedKts = 30;
-        try {
-            var rawSpeed = Application.Properties.getValue("TakeoffSpeed");
-            speedKts = (rawSpeed != null) ? (rawSpeed as Number) : 30;
-        } catch (ex) { speedKts = 30; }
+        var settings = VFRSettings.read();
+        VFRSettings.applySnapshot(self, settings);
         if (gpsMode == 3) {
             // Mode 3: Aviation
             Position.enableLocationEvents(
@@ -217,11 +197,6 @@ class VFRStopWatchView extends WatchUi.View {
             // Mode 0 (GPS only) or fallback when requested mode unsupported
             Position.enableLocationEvents(Position.LOCATION_CONTINUOUS, method(:onPosition));
         }
-        // Companion app toggle (0 = disabled, 1 = enabled)
-        try {
-            var rawComp = Application.Properties.getValue("UseCompanionApp");
-            useCompanionApp = (rawComp != null) ? (((rawComp as Number) == 1) ? true : false) : false;
-        } catch (e) { useCompanionApp = false; }
         } catch (ex) { /* ignore settings parse errors */ }
     }
 
@@ -471,7 +446,7 @@ class VFRStopWatchView extends WatchUi.View {
                 doFiveMinAlert();
             }
             // 30-minute fuel check: flash stopwatch colours and vibrate
-            if (elapsed >= nextFuelCheckAt) {
+            if (FUEL_CHECK_INTERVAL_MS > 0 && elapsed >= nextFuelCheckAt) {
                 fuelFlashUntil = now + 5000; // flash for 5 seconds
                 doFuelAlert();
                 nextFuelCheckAt += FUEL_CHECK_INTERVAL_MS;
@@ -543,7 +518,7 @@ class VFRStopWatchView extends WatchUi.View {
                 startStop();
             }
         }
-        if (lastHr > 0 && lastHr > HR_THRESHOLD) {
+        if (HR_THRESHOLD > 0 && lastHr > 0 && lastHr > HR_THRESHOLD) {
             hrFlashOn = (((now / 500).toNumber() % 2) == 0); // time-based 1 Hz blink
             if (!hrAlertActive) {
                 hrAlertActive = true;
@@ -563,6 +538,9 @@ class VFRStopWatchView extends WatchUi.View {
         if (subTimerState == 1) {
             subMs = now - subTimerStart;
         }
+
+        // --- Decide whether to display clock or timer ---
+        var displayClock = (!running && elapsed == 0 && subTimerState == 0);
 
         // --- Pick which values to display ---
         // Sub-timer takes priority over lap mode for the number display
@@ -618,11 +596,35 @@ class VFRStopWatchView extends WatchUi.View {
 
         drawBezelBackground(dc);
 
-        // --- Centre: large chrono ---
-        dc.setColor(timerColor, Graphics.COLOR_TRANSPARENT);
+        // --- Centre: large chrono or clock ---
         var chronoFont = (roundedFontLarge != null) ? roundedFontLarge : Graphics.FONT_NUMBER_HOT;
-        dc.drawText(cx, cy, chronoFont, mStr + ":" + sStr,
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        if (displayClock) {
+            // Draw the current local clock HH:MM
+            var hour = 0; var min = 0;
+            try {
+                var clk = System.getClockTime();
+                if (clk != null) {
+                    try { hour = clk.hour; } catch (e) { hour = 0; }
+                    try { min  = clk.min;  } catch (e) { min = 0; }
+                }
+            } catch (e2) {
+                try {
+                    var nowMoment = Time.now();
+                    var info = Gregorian.utcInfo((nowMoment as Time.Moment), Time.FORMAT_SHORT);
+                    hour = info.hour;
+                    min  = info.min;
+                } catch (e3) { hour = 0; min = 0; }
+            }
+            var hh = (hour < 10) ? ("0" + hour.toString()) : hour.toString();
+            var mm = (min  < 10) ? ("0" + min.toString())  : min.toString();
+            dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(cx, cy, chronoFont, hh + ":" + mm,
+                Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        } else {
+            dc.setColor(timerColor, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(cx, cy, chronoFont, mStr + ":" + sStr,
+                Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        }
 
         // --- Distance (small) ---
         if (showDist) {
@@ -636,7 +638,7 @@ class VFRStopWatchView extends WatchUi.View {
                 Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         }
 
-        if (running || subTimerState == 1 || hrAlertActive || fuelFlashActive || autoStartEnabled || gpsQuality < 3 || (tendency != 0 && tendencyUntil > now)) {
+        if (running || subTimerState == 1 || hrAlertActive || fuelFlashActive || autoStartEnabled || gpsQuality < 3 || (tendency != 0 && tendencyUntil > now) || displayClock) {
             WatchUi.requestUpdate();
         }
     }
@@ -740,51 +742,15 @@ class VFRStopWatchView extends WatchUi.View {
         } catch (ex) { }
 
         // QNH + Altitude
-        // isQnh=true  → source is Weather (true sea-level QNH)
-        // isQnh=false → source is Sensor (station pressure, NOT QNH)
-        var qnhValStr = "--";
-        var isQnh     = false;
         var altStr    = "-----";
         var altLbl    = "ALT";
-
-        // Priority 1: Weather.getCurrentConditions() → true QNH (sea-level pressure, Pa→hPa).
-        // Optional freshness guard: skip if observationTime is stale (>30 min).
-        try {
-            var wcur = Weather.getCurrentConditions();
-            if (wcur != null && wcur.pressure != null) {
-                var fresh = true;
-                try {
-                    if ((wcur has :observationTime) && wcur.observationTime != null) {
-                        var ageSec = (Time.now().value() - wcur.observationTime.value());
-                        if (ageSec > 1800) { fresh = false; }
-                    }
-                } catch (te) { System.println("QNH staleness check error: " + te.getErrorMessage()); }
-                if (fresh) {
-                    var hPa = (wcur.pressure as Float) / 100.0;
-                    qnhValStr = Math.round(hPa).toNumber().toString();
-                    isQnh = true;
-                }
-            }
-        } catch (we) { System.println("QNH weather error: " + we.getErrorMessage()); }
-
-        // Priority 2: Sensor.getInfo() — station pressure (NOT QNH; can differ by 10-30 hPa).
-        // Sensor.getData() is unavailable in this SDK build (compile error confirmed).
-        if (!isQnh) {
-            try {
-                var sInfo = Sensor.getInfo();
-                if (sInfo != null && (sInfo has :pressure) && sInfo.pressure != null) {
-                    var hPa = (sInfo.pressure as Float) / 100.0;
-                    qnhValStr = Math.round(hPa).toNumber().toString();
-                    isQnh = false; // station pressure — explicitly not QNH
-                }
-            } catch (pe) { System.println("QNH sensor error: " + pe.getErrorMessage()); }
-        }
+        var qnhInfo = VFRAvionicsData.readQnhInfo();
 
         // Altitude from sensor
         try {
-            var sInfo2 = Sensor.getInfo();
-            if (sInfo2 != null && sInfo2.altitude != null) {
-                var altFt = ((sInfo2.altitude as Float) * 3.28084).toNumber();
+            var altFtObj = VFRAvionicsData.readAltitudeFeet();
+            if (altFtObj != null) {
+                var altFt = altFtObj as Number;
                 if (transitionActive) {
                     var fl = Math.round(altFt / 100.0).toNumber();
                     altStr = "FL" + fl.toString();
@@ -804,6 +770,15 @@ class VFRStopWatchView extends WatchUi.View {
         var radiusOuter = (R - 2.0).toFloat();
         var sepRadius = (radiusOuter - 25.0).toNumber();
         var radiusCenter = (radiusOuter - 17.0).toFloat();
+        // Inner ring when GPS lock is good: show a thicker green circle line only
+        try {
+            if (gpsQuality >= 3) {
+                var innerR = (radiusCenter - 6.0).toNumber();
+                dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(2);
+                dc.drawCircle(cx, cy, innerR);
+            }
+        } catch (e) { }
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         dc.setPenWidth(1);
         dc.drawCircle(cx, cy, sepRadius);
@@ -813,16 +788,7 @@ class VFRStopWatchView extends WatchUi.View {
         var angleQNH = 315.0;
         var angleALT = 225.0;
 
-        // Build display string: values are already integers (Math.round().toNumber().toString()).
-        // Append " S" suffix when showing station pressure so the pilot knows it is not QNH.
-        var qnhDisplay = qnhValStr;
-        if (qnhDisplay == null || qnhDisplay == "--" || qnhDisplay == "") {
-            qnhDisplay = "----";
-        } else {
-            if (!isQnh) { qnhDisplay = qnhDisplay + "S"; }
-            if (qnhDisplay.length() > 5) { qnhDisplay = qnhDisplay.substring(0, 5); }
-            while (qnhDisplay.length() < 4) { qnhDisplay = "-" + qnhDisplay; }
-        }
+        var qnhDisplay = VFRAvionicsData.formatQnh(qnhInfo);
 
         // Compute a dedicated text radius (visual centroid of the annulus).
         // Start with the mathematical midpoint but allow small per-quadrant
@@ -1411,38 +1377,16 @@ class VFRStopWatchView extends WatchUi.View {
 
     // Open the on-device settings menu (called from DOWN shortcut and main menu).
     function openSettingsMenu() as Void {
-        var curGps = 3;
-        try {
-            var rawGps = Application.Properties.getValue("GpsMode");
-            curGps = (rawGps != null) ? (rawGps as Number) : 3;
-        } catch (ex) { curGps = 3; }
-        if (curGps < 0 || curGps > 3) { curGps = 3; }
-        var gpsLabel = curGps == 0 ? "GPS"
-                     : curGps == 1 ? "GPS+GLONASS"
-                     : curGps == 2 ? "All Systems"
-                     : "Aviation";
-        var curTimerMin = timerIntervalMs / 60000;
-        var curKts = 30;
-        try {
-            var rawSpd = Application.Properties.getValue("TakeoffSpeed");
-            curKts = (rawSpd != null) ? (rawSpd as Number) : 30;
-        } catch (ex) { curKts = 30; }
-        var curTrans = 6000;
-        try {
-            var rawTrans = Application.Properties.getValue("TransitionAltitudeFt");
-            curTrans = (rawTrans != null) ? (rawTrans as Number) : 6000;
-        } catch (ex) { curTrans = 6000; }
-        var curComp = 0;
-        try {
-            var rawComp = Application.Properties.getValue("UseCompanionApp");
-            curComp = (rawComp != null) ? (rawComp as Number) : 0;
-        } catch (ex) { curComp = 0; }
+        var settings = VFRSettings.read();
+        var gpsLabel = VFRSettings.gpsModeLabel(settings.gpsMode);
         var menu = new WatchUi.Menu2({:title => "Settings"});
         menu.addItem(new WatchUi.MenuItem("GPS Mode",      gpsLabel,                        "setting_gps",     null));
-        menu.addItem(new WatchUi.MenuItem("Timer",         curTimerMin.toString() + " min", "setting_timer",   null));
-        menu.addItem(new WatchUi.MenuItem("Takeoff Speed", curKts.toString() + " kts",      "setting_takeoff", null));
-        menu.addItem(new WatchUi.MenuItem("Transition Altitude", curTrans.toString() + " ft", "setting_transition", null));
-        menu.addItem(new WatchUi.MenuItem("Use Companion App", curComp == 1 ? "On" : "Off", "setting_companion", null));
+        menu.addItem(new WatchUi.MenuItem("Timer",         settings.timerIntervalMin.toString() + " min", "setting_timer",   null));
+        menu.addItem(new WatchUi.MenuItem("Takeoff Speed", settings.takeoffSpeedKts.toString() + " kts",      "setting_takeoff", null));
+        menu.addItem(new WatchUi.MenuItem("Transition Altitude", settings.transitionAltitudeFt.toString() + " ft", "setting_transition", null));
+        menu.addItem(new WatchUi.MenuItem("HR Alert", settings.hrThreshold.toString() + " bpm", "setting_hr", null));
+        menu.addItem(new WatchUi.MenuItem("Fuel Check", settings.fuelCheckIntervalMin.toString() + " min", "setting_fuel", null));
+        menu.addItem(new WatchUi.MenuItem("Use Companion App", settings.useCompanionApp ? "On" : "Off", "setting_companion", null));
         WatchUi.pushView(menu, new VFRSettingsMenuDelegate(self), WatchUi.SLIDE_UP);
     }
 
@@ -1452,7 +1396,6 @@ class VFRStopWatchView extends WatchUi.View {
     //   running                               → toggle lap
     function onDownPressed() as Void {
         var now = System.getTimer();
-        try { System.println("DEBUG: onDownPressed fired, now=" + now.toString()); } catch (e) {}
         // debounce spurious repeated press events (200 ms)
         if (lastDownEventAt != 0 && (now - lastDownEventAt) < 200) { return; }
         lastDownEventAt = now;
@@ -1478,7 +1421,6 @@ class VFRStopWatchView extends WatchUi.View {
 
     // Short-press action (first press): show quick info overlay
     function shortDownAction() as Void {
-        try { System.println("DEBUG: shortDownAction called quickInfoShown=" + quickInfoShown.toString()); } catch (e) {}
         if (quickInfoShown) { return; }
         quickInfoShown = true;
         // Show heading/GS summary first, then allow navigating to wind/temp
@@ -1673,17 +1615,6 @@ class VFRQuickInfoView extends WatchUi.View {
         dc.drawText(cx, cy + 70, bigFont, tempStr, jc);
 
         var comms = getApp().getComms();
-
-        // Debug: show raw weather payload from phone (truncated)
-        try {
-            var rawMsg = "";
-            if (comms != null) { try { rawMsg = (comms.lastRawWeather as String); } catch (e) { rawMsg = ""; } }
-            if (rawMsg != null && rawMsg != "") {
-                if (rawMsg.length() > 40) { rawMsg = rawMsg.substring(0, 40) + "..."; }
-                dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-                dc.drawText(cx, cy - 100, Graphics.FONT_SMALL, rawMsg, jc);
-            }
-        } catch (e) {}
 
         WatchUi.requestUpdate();
     }

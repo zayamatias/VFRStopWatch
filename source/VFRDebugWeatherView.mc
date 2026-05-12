@@ -182,7 +182,11 @@ class VFRDebugWeatherDelegate extends WatchUi.BehaviorDelegate {
             // Remove debug view from the stack then push main so BACK from
             // main will exit the app (expected behaviour).
             WatchUi.popView(WatchUi.SLIDE_RIGHT);
-            var main = new VFRStopWatchView();
+            var main = getApp()._view;
+            if (main == null) {
+                main = new VFRStopWatchView();
+                getApp()._view = main;
+            }
             WatchUi.pushView(main, new VFRStopWatchDelegate(main), WatchUi.SLIDE_LEFT);
         } catch (e) {}
         return true;
@@ -192,7 +196,11 @@ class VFRDebugWeatherDelegate extends WatchUi.BehaviorDelegate {
     function onSelect() as Boolean {
         try {
             WatchUi.popView(WatchUi.SLIDE_RIGHT);
-            var main = new VFRStopWatchView();
+            var main = getApp()._view;
+            if (main == null) {
+                main = new VFRStopWatchView();
+                getApp()._view = main;
+            }
             WatchUi.pushView(main, new VFRStopWatchDelegate(main), WatchUi.SLIDE_LEFT);
         } catch (e) {}
         return true;

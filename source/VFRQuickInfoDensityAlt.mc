@@ -41,12 +41,7 @@ class VFRQuickInfoDensityAltView extends WatchUi.View {
         var label = "DENS ALT";
         try {
             var indicatedAltFt = null;
-            try {
-                var s = Sensor.getInfo();
-                if (s != null && s.altitude != null) {
-                    indicatedAltFt = ((s.altitude as Float) * 3.28084).toNumber();
-                }
-            } catch (se) { System.println("Density altitude sensor error: " + se.getErrorMessage()); }
+            try { indicatedAltFt = VFRAvionicsData.readAltitudeFeet(); } catch (se) { }
 
             var oat = null;
             try { var wr = VFRWeather.read(getApp().getComms()); if (wr != null && wr.temp != -999) { oat = wr.temp.toFloat(); } } catch (we) { System.println("Density altitude OAT read error: " + we.getErrorMessage()); }
@@ -55,21 +50,12 @@ class VFRQuickInfoDensityAltView extends WatchUi.View {
             var qnh_hPa = null;
             var haveQnh = false;
             try {
-                var wcur = Weather.getCurrentConditions();
-                if (wcur != null && wcur.pressure != null) {
-                    var fresh = true;
-                    try {
-                        if ((wcur has :observationTime) && wcur.observationTime != null) {
-                            var ageSec = (Time.now().value() - wcur.observationTime.value());
-                            if (ageSec > 1800) { fresh = false; }
-                        }
-                    } catch (te) { System.println("Density altitude QNH staleness check error: " + te.getErrorMessage()); }
-                    if (fresh) {
-                        qnh_hPa = (wcur.pressure as Float) / 100.0;
-                        haveQnh = true;
-                    }
+                var qnhInfo = VFRAvionicsData.readQnhInfo();
+                if (qnhInfo != null && (qnhInfo as VFRQnhInfo).isQnh) {
+                    qnh_hPa = (qnhInfo as VFRQnhInfo).hPa;
+                    haveQnh = true;
                 }
-            } catch (qe) { System.println("Density altitude QNH read error: " + qe.getErrorMessage()); }
+            } catch (qe) { }
 
             // Only compute if we have indicated altitude and OAT
             if (indicatedAltFt != null && oat != null) {
@@ -101,7 +87,7 @@ class VFRQuickInfoDensityAltView extends WatchUi.View {
         // Draw only label and the integer feet value centered
         var y = (h / 2) - 18;
         dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, y, Graphics.FONT_SMALL, "DENSITY ALT", jc);
+        dc.drawText(cx, y, Graphics.FONT_SMALL, label, jc);
         y += 30;
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(cx, y, bigFont, densStr, jc);

@@ -20,6 +20,21 @@
         <settingConfig type="numeric" min="0" max="100"/>
     </setting>
 
+    <!-- Transition Altitude -->
+    <setting propertyKey="@Properties.TransitionAltitudeFt" title="@Strings.SettingTransitionTitle">
+        <settingConfig type="numeric" min="0" max="20000"/>
+    </setting>
+
+    <!-- Heart-Rate Alert -->
+    <setting propertyKey="@Properties.HrThreshold" title="@Strings.SettingHrTitle">
+        <settingConfig type="numeric" min="0" max="220"/>
+    </setting>
+
+    <!-- Fuel Check Interval -->
+    <setting propertyKey="@Properties.FuelCheckInterval" title="@Strings.SettingFuelTitle">
+        <settingConfig type="numeric" min="0" max="120"/>
+    </setting>
+
     <!-- ── Companion App Toggle ───────────────────────────────────── -->
     <setting propertyKey="@Properties.UseCompanionApp" title="Use Companion App">
         <settingConfig type="list">

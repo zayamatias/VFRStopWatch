@@ -279,7 +279,7 @@ class VFRPhoneComms {
             _nextKeepaliveAt = System.getTimer() + KEEPALIVE_MS;
 
         } else if (typ.equals("weather")) {
-            // Ignore companion-sent weather; use system provider via VFRWeather.
+            _applyWeatherPayload(d);
             return;
         }
     }
@@ -293,6 +293,36 @@ class VFRPhoneComms {
         try { lastHandshakeAt = System.getTimer(); } catch (ex) { lastHandshakeAt = 0; }
         try { System.println("VFRComms: TX handshake"); } catch (e) { }
         _tx({ "type" => "handshake", "app" => "VFRStopWatch", "version" => "1.0" }, "hs");
+    }
+
+    private function _readNumber(d as Dictionary, key as String) as Number? {
+        try {
+            var value = d[key];
+            if (value != null) { return value as Number; }
+        } catch (ex) { }
+        return null;
+    }
+
+    private function _applyWeatherPayload(d as Dictionary) as Void {
+        try { lastRawWeather = d.toString(); } catch (ex) { }
+
+        var value = _readNumber(d, "windDirDeg");
+        if (value == null) { value = _readNumber(d, "wind_dir"); }
+        if (value == null) { value = _readNumber(d, "windBearing"); }
+        if (value != null) { windDirDeg = value as Number; }
+
+        value = _readNumber(d, "windSpeedKt");
+        if (value == null) { value = _readNumber(d, "wind_kt"); }
+        if (value == null) { value = _readNumber(d, "windSpeed"); }
+        if (value != null) { windSpeedKt = value as Number; }
+
+        value = _readNumber(d, "tempC");
+        if (value == null) { value = _readNumber(d, "temperature"); }
+        if (value != null) { tempC = value as Number; }
+
+        value = _readNumber(d, "dewpointC");
+        if (value == null) { value = _readNumber(d, "dewPoint"); }
+        if (value != null) { dewpointC = value as Number; }
     }
 
     private function _backoff(attempt as Number) as Number {

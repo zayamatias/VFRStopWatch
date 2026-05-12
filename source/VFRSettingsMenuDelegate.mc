@@ -74,23 +74,7 @@ class VFRNumberPickerView extends WatchUi.View {
     // may not immediately reflect a just-completed setValue on some devices.
     function save() as Void {
         Application.Properties.setValue(_propKey, _value);
-        if (_propKey.equals("TimerInterval")) {
-            var ms = _value * 60000;
-            _mainView.timerIntervalMs = ms;
-            // keep nextVibrateAt in sync if stopwatch hasn't started yet
-            if (!_mainView.running && ms > 0) {
-                _mainView.nextVibrateAt = ms;
-            }
-        } else if (_propKey.equals("TakeoffSpeed")) {
-            if (_value <= 0) {
-                _mainView.AUTO_START_SPEED_MS = -1.0;
-            } else {
-                _mainView.AUTO_START_SPEED_MS = _value.toFloat() * 0.514444f;
-            }
-        } else if (_propKey.equals("TransitionAltitudeFt")) {
-            _mainView.transitionAltitudeFt = _value;
-        }
-        
+        VFRSettings.applySavedNumber(_mainView, _propKey, _value);
     }
 
     function onUpdate(dc as Dc) as Void {
@@ -171,9 +155,7 @@ class VFRSettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
 
         if (id.equals("setting_gps")) {
             // Build GPS sub-menu based on device capabilities; mark current selection
-            var rawGps = Application.Properties.getValue("GpsMode");
-            var cur = (rawGps != null) ? (rawGps as Number) : 3;
-            if (cur < 0 || cur > 3) { cur = 3; }
+            var cur = VFRSettings.readClampedNumber("GpsMode", 3, 0, 3);
 
             var gpsMenu = new WatchUi.Menu2({:title => "GPS Mode"});
 
@@ -202,19 +184,25 @@ class VFRSettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
             WatchUi.pushView(gpsMenu, new VFRGpsMenuDelegate(_view), WatchUi.SLIDE_LEFT);
 
         } else if (id.equals("setting_timer")) {
-            var curMin = _view.timerIntervalMs / 60000;
+            var curMin = VFRSettings.readClampedNumber("TimerInterval", 5, 0, 30);
             var picker = new VFRNumberPickerView("Timer (min)", curMin, 0, 30, 1, "TimerInterval", _view);
             WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
 
         } else if (id.equals("setting_takeoff")) {
-            var rawSpd = Application.Properties.getValue("TakeoffSpeed");
-            var curKts = (rawSpd != null) ? (rawSpd as Number) : 30;
+            var curKts = VFRSettings.readClampedNumber("TakeoffSpeed", 30, 0, 100);
             var picker = new VFRNumberPickerView("Takeoff (kts)", curKts, 0, 100, 5, "TakeoffSpeed", _view);
             WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
         } else if (id.equals("setting_transition")) {
-            var rawTrans = Application.Properties.getValue("TransitionAltitudeFt");
-            var curTrans = (rawTrans != null) ? (rawTrans as Number) : 6000;
+            var curTrans = VFRSettings.readClampedNumber("TransitionAltitudeFt", 6000, 0, 20000);
             var picker = new VFRNumberPickerView("Transition Alt (ft)", curTrans, 0, 20000, 100, "TransitionAltitudeFt", _view);
+            WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
+        } else if (id.equals("setting_hr")) {
+            var curHr = VFRSettings.readClampedNumber("HrThreshold", 130, 0, 220);
+            var picker = new VFRNumberPickerView("HR Alert (bpm)", curHr, 0, 220, 5, "HrThreshold", _view);
+            WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
+        } else if (id.equals("setting_fuel")) {
+            var curFuel = VFRSettings.readClampedNumber("FuelCheckInterval", 30, 0, 120);
+            var picker = new VFRNumberPickerView("Fuel Check (min)", curFuel, 0, 120, 5, "FuelCheckInterval", _view);
             WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
         } else if (id.equals("setting_companion")) {
             // Toggle companion app usage immediately
