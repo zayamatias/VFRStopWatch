@@ -119,6 +119,7 @@ class VFRStopWatchView extends WatchUi.View {
     var bezelLblFace     as String? = null;
     var bezelLblFaceSize as Number = 0;
     var bezelSlotFont    as Graphics.VectorFont? = null;  // slot-sized font (auto-fit)
+    var bezelFontsInitialized as Boolean = false;
     var SHOW_BEZEL_ANGLE_DEBUG as Boolean = false; // debug overlay disabled
     var lastDrawTimes as Dictionary = new Dictionary(); // guard per-label draw timestamps
     var bezelFrameId as Number = 0; // incremented each onUpdate to identify a frame
@@ -679,8 +680,9 @@ class VFRStopWatchView extends WatchUi.View {
         var margin = (minWh * 8) / 100;
         var radius = (minWh / 2) - margin;
 
-        // Initialize vector fonts
-        if (roundedFontLarge == null) {
+        // Initialize vector fonts once.  Bezel text chooses its own small face
+        // instead of inheriting whichever face happened to fit the chrono.
+        if (!bezelFontsInitialized) {
             var chronoSize   = (minWh * 0.30).toNumber();
             var bezelSize    = (minWh * 0.110).toNumber();
             var bezelLblSize = (minWh * 0.095).toNumber();
@@ -691,32 +693,26 @@ class VFRStopWatchView extends WatchUi.View {
                             if (f != null) {
                                 roundedFontLarge = f;
                                 roundedFontSmall = Graphics.getVectorFont({:face => faces[fi], :size => bezelSize});
-                                try {
-                                    var tmp = Graphics.getVectorFont({:face => faces[fi], :size => bezelLblSize});
-                                    if (tmp != null) {
-                                        bezelLblFont = tmp;
-                                        bezelLblFace = faces[fi];
-                                        bezelLblFaceSize = bezelLblSize;
-                                    }
-                                } catch (exf) { }
                             }
                 } catch (ex) { }
             }
-        }
 
-        // Prefer a lighter, condensed/regular face for small bezel labels
-        try {
-            var bezelSizeLocal = (minWh * 0.110).toNumber();
-            if (roundedFontSmall == null) {
-                var trySmall = Graphics.getVectorFont({:face => "RobotoCondensed", :size => bezelSizeLocal});
-                if (trySmall != null) { roundedFontSmall = trySmall; }
-            } else {
+            var bezelFaces = ["RobotoCondensed", "RobotoRegular", "Roboto", "Swiss721Bold", "TomorrowBold", "RobotoBlack"];
+            for (var bfi = 0; bfi < bezelFaces.size() && bezelLblFont == null; bfi++) {
                 try {
-                    var altSmall = Graphics.getVectorFont({:face => "RobotoRegular", :size => bezelSizeLocal});
-                    if (altSmall != null) { roundedFontSmall = altSmall; }
-                } catch (ex2) { }
+                    var bf = Graphics.getVectorFont({:face => bezelFaces[bfi], :size => bezelLblSize});
+                    if (bf != null) {
+                        bezelLblFont = bf;
+                        bezelLblFace = bezelFaces[bfi];
+                        bezelLblFaceSize = bezelLblSize;
+                    }
+                } catch (exf) { }
             }
-        } catch (ex3) { }
+            if (roundedFontSmall == null && bezelLblFace != null) {
+                try { roundedFontSmall = Graphics.getVectorFont({:face => bezelLblFace, :size => bezelSize}); } catch (exs) { }
+            }
+            bezelFontsInitialized = true;
+        }
 
         // --- Bezel data strings ---
 
@@ -1166,8 +1162,10 @@ class VFRStopWatchView extends WatchUi.View {
         var QUAD_SLOTS = 12;
         if (combined.length() > QUAD_SLOTS) { combined = combined.substring(0, QUAD_SLOTS); }
         var nChars = combined.length();
-        var startOffset = Math.floor((QUAD_SLOTS - nChars) / 2).toNumber();  // integer, left-pad in slots
-        if (startOffset < 0) { startOffset = 0; }
+        // Use floating slot offset so odd/even label lengths can sit exactly
+        // around the quadrant centre instead of snapping half a slot off.
+        var startOffset = (QUAD_SLOTS - nChars).toFloat() / 2.0;
+        if (startOffset < 0.0) { startOffset = 0.0; }
 
         // ── 2. Map quadAngle → global start slot ──────────────────────────
         // Convert math-CCW angle to clock-CW degrees (0 = 12 o'clock).
@@ -1212,13 +1210,14 @@ class VFRStopWatchView extends WatchUi.View {
             var ch = combined.substring(readIndex, readIndex + 1);
             if (ch.equals(" ")) { continue; }
 
-            // Global slot index (0–47) — always clockwise
-            var k = (quadStartSlot + startOffset + si) % 48;
+            // Global slot position — always clockwise, with fractional offset
+            // preserved for optical centering between physical slots.
+            var slotPos = quadStartSlot.toFloat() + startOffset + si.toFloat();
 
             // Slot angle in standard math/CCW degrees: compute using slot
             // CENTER (k + 0.5) so characters are placed at the middle of
             // each 7.5° slot. (Required Fix #1)
-            var theta_deg = 90.0 - (k.toFloat() + 0.5) * 7.5;
+            var theta_deg = 90.0 - (slotPos + 0.5) * 7.5;
             var theta_rad = theta_deg * (Math.PI / 180.0);
 
             // Screen position (y increases downward → subtract sin)
