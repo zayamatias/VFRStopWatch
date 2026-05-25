@@ -1,5 +1,7 @@
+import Toybox.Application;
 import Toybox.Graphics;
 import Toybox.Lang;
+import Toybox.System;
 import Toybox.WatchUi;
 
 // Shown on launch when a previous session backup exists.
@@ -16,6 +18,8 @@ class VFRResumeView extends WatchUi.View {
     function onLayout(dc as Dc) as Void {}
 
     function onUpdate(dc as Dc) as Void {
+        var now = System.getTimer();
+        try { var c = Application.getApp().getComms(); if (c != null) { c.tick(now); } } catch (ce) {}
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
         dc.clear();
 

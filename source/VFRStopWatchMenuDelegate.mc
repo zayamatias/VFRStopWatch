@@ -28,6 +28,9 @@ class VFRStopWatchMenuDelegate extends WatchUi.MenuInputDelegate {
             if (mainView != null) {
                 (mainView as VFRStopWatchView).openSettingsMenu();
             }
+        } else if (item == :item_4) {
+            // Open the flight plan / trip navigation view
+            WatchUi.pushView(new VFRTripView(), new VFRTripDelegate(), WatchUi.SLIDE_LEFT);
         }
     }
 

@@ -55,1137 +55,1210 @@ _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoD
     }
     [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 17; @symbol_functiondef = [onUpdate,17,13,21]; @symbol_param<0> = [dc,17,22,24]; @symbol_param<0>_type<0> = [Dc,17,28,30]; ]
     function onUpdate(dc as Dc) as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_start:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_start:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 18 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_stop" ]
-        %w.1 = local;
-        symbol [ w %w.1 18 12 13 ];
-        %tmp.1 = lgetv %dc;
-        symbol [ dc %tmp.1 18 17 19 ];
-        symbol [ getWidth %tmp.2 18 20 28 ];
-        %tmp.2 = getv function %tmp.1 :getWidth;
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_stop" ]
+        %now.1 = local;
+        symbol [ now %now.1 18 12 15 ];
+        symbol [ System %tmp.1 18 18 24 ];
+        %tmp.1 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.2 18 25 33 ];
+        %tmp.2 = getv function %tmp.1 :getTimer;
         %tmp.3 = invoke %tmp.1 %tmp.2();
-        lputv %w.1 %tmp.3;
-        symbol [ w %w.1 18 12 13 ];
+        lputv %now.1 %tmp.3;
+        symbol [ now %now.1 18 12 15 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 19 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_stop" ]
-        %h.2 = local;
-        symbol [ h %h.2 19 12 13 ];
-        %tmp.4 = lgetv %dc;
-        symbol [ dc %tmp.4 19 17 19 ];
-        symbol [ getHeight %tmp.5 19 20 29 ];
-        %tmp.5 = getv function %tmp.4 :getHeight;
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_8_19_89_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_8_19_89_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_8_19_89_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_8_19_89_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_8_19_89_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_12_19_75_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 19 14 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_12_19_75_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_12_19_75_stop" ]
+        %c.2 = local;
+        symbol [ c %c.2 19 18 19 ];
+        %tmp.4 = self;
+        symbol [ getApp %tmp.5 19 22 28 ];
+        %tmp.5 = getv function %tmp.4 :getApp;
         %tmp.6 = invoke %tmp.4 %tmp.5();
-        lputv %h.2 %tmp.6;
-        symbol [ h %h.2 19 12 13 ];
+        symbol [ getComms %tmp.7 19 31 39 ];
+        %tmp.7 = getv function %tmp.6 :getComms;
+        %tmp.8 = invoke %tmp.6 %tmp.7();
+        lputv %c.2 %tmp.8;
+        symbol [ c %c.2 19 18 19 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 19 43 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_43_19_73_if_stmt:
+        %tmp.9 = lgetv %c.2;
+        symbol [ c %tmp.9 19 47 48 ];
+        %tmp.10 = null;
+        %tmp.11 = ne %tmp.9 %tmp.10;
+        bf %tmp.11 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_43_19_73_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_43_19_73_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_58_19_73_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 19 60 ]
+        %tmp.12 = lgetv %c.2;
+        symbol [ c %tmp.12 19 60 61 ];
+        %tmp.13 = as %tmp.12 { (!Null) };
+        symbol [ tick %tmp.14 19 62 66 ];
+        %tmp.14 = getv function %tmp.13 :tick;
+        %tmp.15 = lgetv %now.1;
+        symbol [ now %tmp.15 19 67 70 ];
+        invoke %tmp.13 %tmp.14(%tmp.15);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_58_19_73_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_43_19_73_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_43_19_73_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_12_19_75_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_8_19_89_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_8_19_89_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_8_19_89_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_8_19_89_catch:
+        %tmp.16 = exception;
+        push %tmp.16;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 19 77 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_8_19_89_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_77_19_89_end" ]
+        %ce.3 = local;
+        symbol [ ce %ce.3 19 84 86 ];
+        %tmp.17 = dup %tmp.16;
+        lputv %ce.3 %tmp.17;
+        symbol [ ce %ce.3 19 84 86 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_8_19_89_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_8_19_89_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_77_19_89_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_8_19_89_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_77_19_89_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_77_19_89_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_8_19_89_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_8_19_89_finally;
+        throw %tmp.16;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_8_19_89_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_19_8_19_89_end:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 20 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_stop" ]
-        %cx.3 = local;
-        symbol [ cx %cx.3 20 12 14 ];
-        %tmp.7 = lgetv %w.1;
-        symbol [ w %tmp.7 20 17 18 ];
-        %tmp.8 = 2;
-        %tmp.9 = div %tmp.7 %tmp.8;
-        lputv %cx.3 %tmp.9;
-        symbol [ cx %cx.3 20 12 14 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 21 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_stop" ]
-        %jc.4 = local;
-        symbol [ jc %jc.4 21 12 14 ];
-        symbol [ Graphics %tmp.10 21 17 25 ];
-        %tmp.10 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.11 21 26 45 ];
-        %tmp.11 = getv %tmp.10 :TEXT_JUSTIFY_CENTER;
-        symbol [ Graphics %tmp.12 21 48 56 ];
-        %tmp.12 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_VCENTER %tmp.13 21 57 77 ];
-        %tmp.13 = getv %tmp.12 :TEXT_JUSTIFY_VCENTER;
-        %tmp.14 = bitor %tmp.11 %tmp.13;
-        lputv %jc.4 %tmp.14;
-        symbol [ jc %jc.4 21 12 14 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 23 8 ]
-        symbol [ _main %tmp.16 23 8 13 ];
-        %tmp.16 = getv ? :_main;
-        symbol [ drawBezelBackground %tmp.17 23 14 33 ];
-        %tmp.17 = getv function %tmp.16 :drawBezelBackground;
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_stop" ]
+        %w.4 = local;
+        symbol [ w %w.4 20 12 13 ];
         %tmp.18 = lgetv %dc;
-        symbol [ dc %tmp.18 23 34 36 ];
-        invoke %tmp.16 %tmp.17(%tmp.18);
+        symbol [ dc %tmp.18 20 17 19 ];
+        symbol [ getWidth %tmp.19 20 20 28 ];
+        %tmp.19 = getv function %tmp.18 :getWidth;
+        %tmp.20 = invoke %tmp.18 %tmp.19();
+        lputv %w.4 %tmp.20;
+        symbol [ w %w.4 20 12 13 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 21 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_stop" ]
+        %h.5 = local;
+        symbol [ h %h.5 21 12 13 ];
+        %tmp.21 = lgetv %dc;
+        symbol [ dc %tmp.21 21 17 19 ];
+        symbol [ getHeight %tmp.22 21 20 29 ];
+        %tmp.22 = getv function %tmp.21 :getHeight;
+        %tmp.23 = invoke %tmp.21 %tmp.22();
+        lputv %h.5 %tmp.23;
+        symbol [ h %h.5 21 12 13 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 22 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_stop" ]
+        %cx.6 = local;
+        symbol [ cx %cx.6 22 12 14 ];
+        %tmp.24 = lgetv %w.4;
+        symbol [ w %tmp.24 22 17 18 ];
+        %tmp.25 = 2;
+        %tmp.26 = div %tmp.24 %tmp.25;
+        lputv %cx.6 %tmp.26;
+        symbol [ cx %cx.6 22 12 14 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 23 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_stop" ]
+        %jc.7 = local;
+        symbol [ jc %jc.7 23 12 14 ];
+        symbol [ Graphics %tmp.27 23 17 25 ];
+        %tmp.27 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.28 23 26 45 ];
+        %tmp.28 = getv %tmp.27 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.29 23 48 56 ];
+        %tmp.29 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.30 23 57 77 ];
+        %tmp.30 = getv %tmp.29 :TEXT_JUSTIFY_VCENTER;
+        %tmp.31 = bitor %tmp.28 %tmp.30;
+        lputv %jc.7 %tmp.31;
+        symbol [ jc %jc.7 23 12 14 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 25 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_stop" ]
-        %minWh.5 = local;
-        symbol [ minWh %minWh.5 25 12 17 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_25_20_25_34_begin:
-        %tmp.19 = lgetv %w.1;
-        symbol [ w %tmp.19 25 21 22 ];
-        %tmp.20 = lgetv %h.2;
-        symbol [ h %tmp.20 25 25 26 ];
-        %tmp.21 = lt %tmp.19 %tmp.20;
-        bf %tmp.21 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_25_20_25_34_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_25_20_25_34_true:
-        %tmp.22 = lgetv %w.1;
-        symbol [ w %tmp.22 25 30 31 ];
-        push %tmp.22;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_25_20_25_34_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_25_20_25_34_else_false:
-        %tmp.23 = lgetv %h.2;
-        symbol [ h %tmp.23 25 34 35 ];
-        push %tmp.23;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_25_20_25_34_end:
-        %tmp.24 = phi [%tmp.21 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_25_20_25_34_begin] [%tmp.22 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_25_20_25_34_true] [%tmp.23 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_25_20_25_34_else_false] [%tmp.24 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_25_20_25_34_end];
-        lputv %minWh.5 %tmp.24;
-        symbol [ minWh %minWh.5 25 12 17 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 26 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_stop" ]
-        %sepR.6 = local;
-        symbol [ sepR %sepR.6 26 12 16 ];
-        %tmp.25 = lgetv %minWh.5;
-        symbol [ minWh %tmp.25 26 22 27 ];
-        symbol [ toFloat %tmp.26 26 28 35 ];
-        %tmp.26 = getv function %tmp.25 :toFloat;
-        %tmp.27 = invoke %tmp.25 %tmp.26();
-        %tmp.28 = 2.0;
-        %tmp.29 = div %tmp.27 %tmp.28;
-        %tmp.30 = 27.0;
-        %tmp.31 = sub %tmp.29 %tmp.30;
-        symbol [ toNumber %tmp.32 26 53 61 ];
-        %tmp.32 = getv function %tmp.31 :toNumber;
-        %tmp.33 = invoke %tmp.31 %tmp.32();
-        lputv %sepR.6 %tmp.33;
-        symbol [ sepR %sepR.6 26 12 16 ];
+        symbol [ _main %tmp.33 25 8 13 ];
+        %tmp.33 = getv ? :_main;
+        symbol [ drawBezelBackground %tmp.34 25 14 33 ];
+        %tmp.34 = getv function %tmp.33 :drawBezelBackground;
+        %tmp.35 = lgetv %dc;
+        symbol [ dc %tmp.35 25 34 36 ];
+        invoke %tmp.33 %tmp.34(%tmp.35);
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 27 8 ]
-        %tmp.34 = lgetv %dc;
-        symbol [ dc %tmp.34 27 8 10 ];
-        symbol [ setColor %tmp.35 27 11 19 ];
-        %tmp.35 = getv function %tmp.34 :setColor;
-        symbol [ Graphics %tmp.36 27 20 28 ];
-        %tmp.36 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.37 27 29 40 ];
-        %tmp.37 = getv %tmp.36 :COLOR_BLACK;
-        symbol [ Graphics %tmp.38 27 42 50 ];
-        %tmp.38 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.39 27 51 62 ];
-        %tmp.39 = getv %tmp.38 :COLOR_BLACK;
-        invoke %tmp.34 %tmp.35(%tmp.37, %tmp.39);
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_stop" ]
+        %minWh.8 = local;
+        symbol [ minWh %minWh.8 27 12 17 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_27_20_27_34_begin:
+        %tmp.36 = lgetv %w.4;
+        symbol [ w %tmp.36 27 21 22 ];
+        %tmp.37 = lgetv %h.5;
+        symbol [ h %tmp.37 27 25 26 ];
+        %tmp.38 = lt %tmp.36 %tmp.37;
+        bf %tmp.38 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_27_20_27_34_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_27_20_27_34_true:
+        %tmp.39 = lgetv %w.4;
+        symbol [ w %tmp.39 27 30 31 ];
+        push %tmp.39;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_27_20_27_34_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_27_20_27_34_else_false:
+        %tmp.40 = lgetv %h.5;
+        symbol [ h %tmp.40 27 34 35 ];
+        push %tmp.40;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_27_20_27_34_end:
+        %tmp.41 = phi [%tmp.38 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_27_20_27_34_begin] [%tmp.39 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_27_20_27_34_true] [%tmp.40 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_27_20_27_34_else_false] [%tmp.41 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_27_20_27_34_end];
+        lputv %minWh.8 %tmp.41;
+        symbol [ minWh %minWh.8 27 12 17 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 28 8 ]
-        %tmp.40 = lgetv %dc;
-        symbol [ dc %tmp.40 28 8 10 ];
-        symbol [ fillCircle %tmp.41 28 11 21 ];
-        %tmp.41 = getv function %tmp.40 :fillCircle;
-        %tmp.42 = lgetv %cx.3;
-        symbol [ cx %tmp.42 28 22 24 ];
-        %tmp.43 = lgetv %h.2;
-        symbol [ h %tmp.43 28 26 27 ];
-        %tmp.44 = 2;
-        %tmp.45 = div %tmp.43 %tmp.44;
-        %tmp.46 = lgetv %sepR.6;
-        symbol [ sepR %tmp.46 28 33 37 ];
-        invoke %tmp.40 %tmp.41(%tmp.42, %tmp.45, %tmp.46);
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_stop" ]
+        %sepR.9 = local;
+        symbol [ sepR %sepR.9 28 12 16 ];
+        %tmp.42 = lgetv %minWh.8;
+        symbol [ minWh %tmp.42 28 22 27 ];
+        symbol [ toFloat %tmp.43 28 28 35 ];
+        %tmp.43 = getv function %tmp.42 :toFloat;
+        %tmp.44 = invoke %tmp.42 %tmp.43();
+        %tmp.45 = 2.0;
+        %tmp.46 = div %tmp.44 %tmp.45;
+        %tmp.47 = 27.0;
+        %tmp.48 = sub %tmp.46 %tmp.47;
+        symbol [ toNumber %tmp.49 28 53 61 ];
+        %tmp.49 = getv function %tmp.48 :toNumber;
+        %tmp.50 = invoke %tmp.48 %tmp.49();
+        lputv %sepR.9 %tmp.50;
+        symbol [ sepR %sepR.9 28 12 16 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 29 8 ]
+        %tmp.51 = lgetv %dc;
+        symbol [ dc %tmp.51 29 8 10 ];
+        symbol [ setColor %tmp.52 29 11 19 ];
+        %tmp.52 = getv function %tmp.51 :setColor;
+        symbol [ Graphics %tmp.53 29 20 28 ];
+        %tmp.53 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.54 29 29 40 ];
+        %tmp.54 = getv %tmp.53 :COLOR_BLACK;
+        symbol [ Graphics %tmp.55 29 42 50 ];
+        %tmp.55 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.56 29 51 62 ];
+        %tmp.56 = getv %tmp.55 :COLOR_BLACK;
+        invoke %tmp.51 %tmp.52(%tmp.54, %tmp.56);
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 30 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_30_8_36_8_if_stmt:
-        symbol [ _bigFont %tmp.48 30 12 20 ];
-        %tmp.48 = getv ? :_bigFont;
-        %tmp.49 = null;
-        %tmp.50 = eq %tmp.48 %tmp.49;
-        bf %tmp.50 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_30_8_36_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_30_8_36_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_30_30_36_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 31 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_30_30_36_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_30_30_36_8_stop" ]
-        %sz.7 = local;
-        symbol [ sz %sz.7 31 16 18 ];
-        %tmp.51 = lgetv %minWh.5;
-        symbol [ minWh %tmp.51 31 25 30 ];
-        %tmp.52 = 0.12;
-        %tmp.53 = mul %tmp.51 %tmp.52;
-        symbol [ toNumber %tmp.54 31 39 47 ];
-        %tmp.54 = getv function %tmp.53 :toNumber;
-        %tmp.55 = invoke %tmp.53 %tmp.54();
-        lputv %sz.7 %tmp.55;
-        symbol [ sz %sz.7 31 16 18 ];
+        %tmp.57 = lgetv %dc;
+        symbol [ dc %tmp.57 30 8 10 ];
+        symbol [ fillCircle %tmp.58 30 11 21 ];
+        %tmp.58 = getv function %tmp.57 :fillCircle;
+        %tmp.59 = lgetv %cx.6;
+        symbol [ cx %tmp.59 30 22 24 ];
+        %tmp.60 = lgetv %h.5;
+        symbol [ h %tmp.60 30 26 27 ];
+        %tmp.61 = 2;
+        %tmp.62 = div %tmp.60 %tmp.61;
+        %tmp.63 = lgetv %sepR.9;
+        symbol [ sepR %tmp.63 30 33 37 ];
+        invoke %tmp.57 %tmp.58(%tmp.59, %tmp.62, %tmp.63);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 31 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_31_8_37_8_if_stmt:
+        symbol [ _bigFont %tmp.65 31 12 20 ];
+        %tmp.65 = getv ? :_bigFont;
+        %tmp.66 = null;
+        %tmp.67 = eq %tmp.65 %tmp.66;
+        bf %tmp.67 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_31_8_37_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_31_8_37_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_31_30_37_8_start:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 32 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_30_30_36_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_30_30_36_8_stop" ]
-        %faces.8 = local;
-        symbol [ faces %faces.8 32 16 21 ];
-        %tmp.56 = newa 5;
-        %tmp.57 = "RobotoCondensed";
-        %tmp.58 = dup %tmp.56;
-        %tmp.59 = aputv %tmp.58 0 %tmp.57;
-        %tmp.60 = "Roboto";
-        %tmp.61 = dup %tmp.59;
-        %tmp.62 = aputv %tmp.61 1 %tmp.60;
-        %tmp.63 = "RobotoBlack";
-        %tmp.64 = dup %tmp.62;
-        %tmp.65 = aputv %tmp.64 2 %tmp.63;
-        %tmp.66 = "Swiss721Bold";
-        %tmp.67 = dup %tmp.65;
-        %tmp.68 = aputv %tmp.67 3 %tmp.66;
-        %tmp.69 = "TomorrowBold";
-        %tmp.70 = dup %tmp.68;
-        %tmp.71 = aputv %tmp.70 4 %tmp.69;
-        lputv %faces.8 %tmp.71;
-        symbol [ faces %faces.8 32 16 21 ];
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_31_30_37_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_31_30_37_8_stop" ]
+        %sz.10 = local;
+        symbol [ sz %sz.10 32 16 18 ];
+        %tmp.68 = lgetv %minWh.8;
+        symbol [ minWh %tmp.68 32 25 30 ];
+        %tmp.69 = 0.12;
+        %tmp.70 = mul %tmp.68 %tmp.69;
+        symbol [ toNumber %tmp.71 32 39 47 ];
+        %tmp.71 = getv function %tmp.70 :toNumber;
+        %tmp.72 = invoke %tmp.70 %tmp.71();
+        lputv %sz.10 %tmp.72;
+        symbol [ sz %sz.10 32 16 18 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 33 12 ]
-        for @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_12_35_12_for_test @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_12_35_12_for_incr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_12_35_12_for_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_12_35_12_for_init:
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_12_35_12_for_begin" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_12_35_12_for_end" ]
-        %fi.9 = local;
-        symbol [ fi %fi.9 33 21 23 ];
-        %tmp.72 = 0;
-        lputv %fi.9 %tmp.72;
-        symbol [ fi %fi.9 33 21 23 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_12_35_12_for_test:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_29_33_62_begin:
-        %tmp.73 = lgetv %fi.9;
-        symbol [ fi %tmp.73 33 29 31 ];
-        %tmp.74 = lgetv %faces.8;
-        symbol [ faces %tmp.74 33 34 39 ];
-        symbol [ size %tmp.75 33 40 44 ];
-        %tmp.75 = getv function %tmp.74 :size;
-        %tmp.76 = invoke %tmp.74 %tmp.75();
-        %tmp.77 = lt %tmp.73 %tmp.76;
-        %tmp.78 = dup %tmp.77;
-        bf %tmp.78 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_50_33_62_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_50_33_62_true:
-        symbol [ _bigFont %tmp.80 33 50 58 ];
-        %tmp.80 = getv ? :_bigFont;
-        %tmp.81 = null;
-        %tmp.82 = eq %tmp.80 %tmp.81;
-        %tmp.83 = and %tmp.77 %tmp.82;
-        push %tmp.83;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_50_33_62_end:
-        %tmp.84 = phi [%tmp.78 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_29_33_62_begin] [%tmp.83 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_50_33_62_true] [%tmp.84 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_50_33_62_end];
-        bf %tmp.84 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_12_35_12_for_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_12_35_12_for_begin:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_74_35_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 34 16 ]
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_16_34_105_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_16_34_105_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_16_34_105_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_16_34_105_finally;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_16_34_105_beginTry:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_20_34_92_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 34 22 ]
-        symbol [ Graphics %tmp.85 34 33 41 ];
-        %tmp.85 = getm $.Toybox.Graphics;
-        symbol [ getVectorFont %tmp.86 34 42 55 ];
-        %tmp.86 = getv function %tmp.85 :getVectorFont;
-        %tmp.87 = newd 2;
-        %tmp.89 = const :face;
-        symbol [ face %tmp.89 34 58 62 const ];
-        %tmp.90 = lgetv %faces.8;
-        symbol [ faces %tmp.90 34 66 71 ];
-        %tmp.91 = lgetv %fi.9;
-        symbol [ fi %tmp.91 34 72 74 ];
-        %tmp.92 = agetv %tmp.90 %tmp.91;
-        %tmp.93 = dup %tmp.87;
-        %tmp.94 = aputv %tmp.93 %tmp.89 %tmp.92;
-        %tmp.96 = const :size;
-        symbol [ size %tmp.96 34 78 82 const ];
-        %tmp.97 = lgetv %sz.7;
-        symbol [ sz %tmp.97 34 86 88 ];
-        %tmp.98 = dup %tmp.94;
-        %tmp.99 = aputv %tmp.98 %tmp.96 %tmp.97;
-        %tmp.100 = invoke %tmp.85 %tmp.86(%tmp.99);
-        symbol [ _bigFont ? 34 22 30 ];
-        putv self :_bigFont %tmp.100;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_20_34_92_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_16_34_105_endTry:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_16_34_105_finally;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_16_34_105_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_16_34_105_catch:
-        %tmp.101 = exception;
-        push %tmp.101;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 34 94 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_16_34_105_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_94_34_105_end" ]
-        %e.10 = local;
-        symbol [ e %e.10 34 101 102 ];
-        %tmp.102 = dup %tmp.101;
-        lputv %e.10 %tmp.102;
-        symbol [ e %e.10 34 101 102 ];
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_16_34_105_finally;
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_31_30_37_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_31_30_37_8_stop" ]
+        %faces.11 = local;
+        symbol [ faces %faces.11 33 16 21 ];
+        %tmp.73 = newa 5;
+        %tmp.74 = "RobotoCondensed";
+        %tmp.75 = dup %tmp.73;
+        %tmp.76 = aputv %tmp.75 0 %tmp.74;
+        %tmp.77 = "Roboto";
+        %tmp.78 = dup %tmp.76;
+        %tmp.79 = aputv %tmp.78 1 %tmp.77;
+        %tmp.80 = "RobotoBlack";
+        %tmp.81 = dup %tmp.79;
+        %tmp.82 = aputv %tmp.81 2 %tmp.80;
+        %tmp.83 = "Swiss721Bold";
+        %tmp.84 = dup %tmp.82;
+        %tmp.85 = aputv %tmp.84 3 %tmp.83;
+        %tmp.86 = "TomorrowBold";
+        %tmp.87 = dup %tmp.85;
+        %tmp.88 = aputv %tmp.87 4 %tmp.86;
+        lputv %faces.11 %tmp.88;
+        symbol [ faces %faces.11 33 16 21 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 34 12 ]
+        for @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_12_36_12_for_test @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_12_36_12_for_incr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_12_36_12_for_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_12_36_12_for_init:
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_12_36_12_for_begin" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_12_36_12_for_end" ]
+        %fi.12 = local;
+        symbol [ fi %fi.12 34 21 23 ];
+        %tmp.89 = 0;
+        lputv %fi.12 %tmp.89;
+        symbol [ fi %fi.12 34 21 23 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_12_36_12_for_test:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_29_34_62_begin:
+        %tmp.90 = lgetv %fi.12;
+        symbol [ fi %tmp.90 34 29 31 ];
+        %tmp.91 = lgetv %faces.11;
+        symbol [ faces %tmp.91 34 34 39 ];
+        symbol [ size %tmp.92 34 40 44 ];
+        %tmp.92 = getv function %tmp.91 :size;
+        %tmp.93 = invoke %tmp.91 %tmp.92();
+        %tmp.94 = lt %tmp.90 %tmp.93;
+        %tmp.95 = dup %tmp.94;
+        bf %tmp.95 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_50_34_62_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_50_34_62_true:
+        symbol [ _bigFont %tmp.97 34 50 58 ];
+        %tmp.97 = getv ? :_bigFont;
+        %tmp.98 = null;
+        %tmp.99 = eq %tmp.97 %tmp.98;
+        %tmp.100 = and %tmp.94 %tmp.99;
+        push %tmp.100;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_50_34_62_end:
+        %tmp.101 = phi [%tmp.95 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_29_34_62_begin] [%tmp.100 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_50_34_62_true] [%tmp.101 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_50_34_62_end];
+        bf %tmp.101 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_12_36_12_for_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_12_36_12_for_begin:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_74_36_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 35 16 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_16_35_105_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_16_35_105_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_16_35_105_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_16_35_105_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_16_35_105_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_20_35_92_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 35 22 ]
+        symbol [ Graphics %tmp.102 35 33 41 ];
+        %tmp.102 = getm $.Toybox.Graphics;
+        symbol [ getVectorFont %tmp.103 35 42 55 ];
+        %tmp.103 = getv function %tmp.102 :getVectorFont;
+        %tmp.104 = newd 2;
+        %tmp.106 = const :face;
+        symbol [ face %tmp.106 35 58 62 const ];
+        %tmp.107 = lgetv %faces.11;
+        symbol [ faces %tmp.107 35 66 71 ];
+        %tmp.108 = lgetv %fi.12;
+        symbol [ fi %tmp.108 35 72 74 ];
+        %tmp.109 = agetv %tmp.107 %tmp.108;
+        %tmp.110 = dup %tmp.104;
+        %tmp.111 = aputv %tmp.110 %tmp.106 %tmp.109;
+        %tmp.113 = const :size;
+        symbol [ size %tmp.113 35 78 82 const ];
+        %tmp.114 = lgetv %sz.10;
+        symbol [ sz %tmp.114 35 86 88 ];
+        %tmp.115 = dup %tmp.111;
+        %tmp.116 = aputv %tmp.115 %tmp.113 %tmp.114;
+        %tmp.117 = invoke %tmp.102 %tmp.103(%tmp.116);
+        symbol [ _bigFont ? 35 22 30 ];
+        putv self :_bigFont %tmp.117;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_20_35_92_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_16_35_105_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_16_35_105_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_16_35_105_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_16_35_105_catch:
+        %tmp.118 = exception;
+        push %tmp.118;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 35 94 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_16_35_105_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_94_35_105_end" ]
+        %e.13 = local;
+        symbol [ e %e.13 35 101 102 ];
+        %tmp.119 = dup %tmp.118;
+        lputv %e.13 %tmp.119;
+        symbol [ e %e.13 35 101 102 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_16_35_105_finally;
         pop;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_16_34_105_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_94_34_105_end:
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_16_34_105_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_94_34_105_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_94_34_105_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_16_34_105_finally;
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_16_34_105_finally;
-        throw %tmp.101;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_16_34_105_finally:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_16_35_105_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_94_35_105_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_16_35_105_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_94_35_105_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_94_35_105_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_16_35_105_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_16_35_105_finally;
+        throw %tmp.118;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_16_35_105_finally:
         jsrret;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_16_34_105_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_74_35_12_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_12_35_12_for_incr:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 33 ]
-        %tmp.105 = lgetv %fi.9;
-        symbol [ fi %tmp.105 33 68 70 ];
-        %tmp.106 = add %tmp.105 1;
-        lputv %fi.9 %tmp.106;
-        symbol [ fi %fi.9 33 68 70 ];
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_12_35_12_for_test;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_33_12_35_12_for_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_30_30_36_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_30_8_36_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_30_8_36_8_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 37 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_stop" ]
-        %bigFont.11 = local;
-        symbol [ bigFont %bigFont.11 37 12 19 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_37_22_37_63_begin:
-        symbol [ _bigFont %tmp.108 37 23 31 ];
-        %tmp.108 = getv ? :_bigFont;
-        %tmp.109 = null;
-        %tmp.110 = ne %tmp.108 %tmp.109;
-        bf %tmp.110 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_37_22_37_63_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_37_22_37_63_true:
-        symbol [ _bigFont %tmp.112 37 43 51 ];
-        %tmp.112 = getv ? :_bigFont;
-        %tmp.113 = as %tmp.112 { (!Null) };
-        push %tmp.113;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_37_22_37_63_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_37_22_37_63_else_false:
-        symbol [ Graphics %tmp.114 37 54 62 ];
-        %tmp.114 = getm $.Toybox.Graphics;
-        symbol [ FONT_NUMBER_HOT %tmp.115 37 63 78 ];
-        %tmp.115 = getv %tmp.114 :FONT_NUMBER_HOT;
-        push %tmp.115;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_37_22_37_63_end:
-        %tmp.116 = phi [%tmp.110 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_37_22_37_63_begin] [%tmp.113 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_37_22_37_63_true] [%tmp.115 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_37_22_37_63_else_false] [%tmp.116 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_37_22_37_63_end];
-        lputv %bigFont.11 %tmp.116;
-        symbol [ bigFont %bigFont.11 37 12 19 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 40 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_stop" ]
-        %densStr.12 = local;
-        symbol [ densStr %densStr.12 40 12 19 ];
-        %tmp.117 = "---";
-        lputv %densStr.12 %tmp.117;
-        symbol [ densStr %densStr.12 40 12 19 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 41 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_stop" ]
-        %label.13 = local;
-        symbol [ label %label.13 41 12 17 ];
-        %tmp.118 = "DENS ALT";
-        lputv %label.13 %tmp.118;
-        symbol [ label %label.13 41 12 17 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 42 8 ]
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_8_85_105_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_8_85_105_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_8_85_105_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_8_85_105_finally;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_8_85_105_beginTry:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_12_85_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 43 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_12_85_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_12_85_8_stop" ]
-        %indicatedAltFt.14 = local;
-        symbol [ indicatedAltFt %indicatedAltFt.14 43 16 30 ];
-        %tmp.119 = null;
-        lputv %indicatedAltFt.14 %tmp.119;
-        symbol [ indicatedAltFt %indicatedAltFt.14 43 16 30 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 44 12 ]
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_12_44_86_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_12_44_86_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_12_44_86_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_12_44_86_finally;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_12_44_86_beginTry:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_16_44_71_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 44 18 ]
-        symbol [ VFRAvionicsData %tmp.121 44 35 50 ];
-        %tmp.121 = getv ? :VFRAvionicsData;
-        symbol [ readAltitudeFeet %tmp.122 44 51 67 ];
-        %tmp.122 = getv function %tmp.121 :readAltitudeFeet;
-        %tmp.123 = invoke %tmp.121 %tmp.122();
-        lputv %indicatedAltFt.14 %tmp.123;
-        symbol [ indicatedAltFt %indicatedAltFt.14 44 18 32 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_16_44_71_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_12_44_86_endTry:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_12_44_86_finally;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_12_44_86_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_12_44_86_catch:
-        %tmp.124 = exception;
-        push %tmp.124;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 44 73 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_12_44_86_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_73_44_86_end" ]
-        %se.15 = local;
-        symbol [ se %se.15 44 80 82 ];
-        %tmp.125 = dup %tmp.124;
-        lputv %se.15 %tmp.125;
-        symbol [ se %se.15 44 80 82 ];
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_12_44_86_finally;
-        pop;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_12_44_86_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_73_44_86_end:
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_12_44_86_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_73_44_86_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_73_44_86_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_12_44_86_finally;
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_12_44_86_finally;
-        throw %tmp.124;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_12_44_86_finally:
-        jsrret;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_44_12_44_86_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 46 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_12_85_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_12_85_8_stop" ]
-        %oat.16 = local;
-        symbol [ oat %oat.16 46 16 19 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_35_16_35_105_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_74_36_12_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_12_36_12_for_incr:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 34 ]
+        %tmp.122 = lgetv %fi.12;
+        symbol [ fi %tmp.122 34 68 70 ];
+        %tmp.123 = add %tmp.122 1;
+        lputv %fi.12 %tmp.123;
+        symbol [ fi %fi.12 34 68 70 ];
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_12_36_12_for_test;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_34_12_36_12_for_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_31_30_37_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_31_8_37_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_31_8_37_8_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 38 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_stop" ]
+        %bigFont.14 = local;
+        symbol [ bigFont %bigFont.14 38 12 19 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_38_22_38_63_begin:
+        symbol [ _bigFont %tmp.125 38 23 31 ];
+        %tmp.125 = getv ? :_bigFont;
         %tmp.126 = null;
-        lputv %oat.16 %tmp.126;
-        symbol [ oat %oat.16 46 16 19 ];
+        %tmp.127 = ne %tmp.125 %tmp.126;
+        bf %tmp.127 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_38_22_38_63_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_38_22_38_63_true:
+        symbol [ _bigFont %tmp.129 38 43 51 ];
+        %tmp.129 = getv ? :_bigFont;
+        %tmp.130 = as %tmp.129 { (!Null) };
+        push %tmp.130;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_38_22_38_63_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_38_22_38_63_else_false:
+        symbol [ Graphics %tmp.131 38 54 62 ];
+        %tmp.131 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_HOT %tmp.132 38 63 78 ];
+        %tmp.132 = getv %tmp.131 :FONT_NUMBER_HOT;
+        push %tmp.132;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_38_22_38_63_end:
+        %tmp.133 = phi [%tmp.127 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_38_22_38_63_begin] [%tmp.130 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_38_22_38_63_true] [%tmp.132 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_38_22_38_63_else_false] [%tmp.133 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_38_22_38_63_end];
+        lputv %bigFont.14 %tmp.133;
+        symbol [ bigFont %bigFont.14 38 12 19 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 41 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_stop" ]
+        %densStr.15 = local;
+        symbol [ densStr %densStr.15 41 12 19 ];
+        %tmp.134 = "---";
+        lputv %densStr.15 %tmp.134;
+        symbol [ densStr %densStr.15 41 12 19 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 42 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_stop" ]
+        %label.16 = local;
+        symbol [ label %label.16 42 12 17 ];
+        %tmp.135 = "DENS ALT";
+        lputv %label.16 %tmp.135;
+        symbol [ label %label.16 42 12 17 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 43 8 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_8_86_105_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_8_86_105_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_8_86_105_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_8_86_105_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_8_86_105_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_12_86_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 44 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_12_86_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_12_86_8_stop" ]
+        %indicatedAltFt.17 = local;
+        symbol [ indicatedAltFt %indicatedAltFt.17 44 16 30 ];
+        %tmp.136 = null;
+        lputv %indicatedAltFt.17 %tmp.136;
+        symbol [ indicatedAltFt %indicatedAltFt.17 44 16 30 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 45 12 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_12_45_86_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_12_45_86_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_12_45_86_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_12_45_86_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_12_45_86_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_16_45_71_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 45 18 ]
+        symbol [ VFRAvionicsData %tmp.138 45 35 50 ];
+        %tmp.138 = getv ? :VFRAvionicsData;
+        symbol [ readAltitudeFeet %tmp.139 45 51 67 ];
+        %tmp.139 = getv function %tmp.138 :readAltitudeFeet;
+        %tmp.140 = invoke %tmp.138 %tmp.139();
+        lputv %indicatedAltFt.17 %tmp.140;
+        symbol [ indicatedAltFt %indicatedAltFt.17 45 18 32 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_16_45_71_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_12_45_86_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_12_45_86_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_12_45_86_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_12_45_86_catch:
+        %tmp.141 = exception;
+        push %tmp.141;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 45 73 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_12_45_86_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_73_45_86_end" ]
+        %se.18 = local;
+        symbol [ se %se.18 45 80 82 ];
+        %tmp.142 = dup %tmp.141;
+        lputv %se.18 %tmp.142;
+        symbol [ se %se.18 45 80 82 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_12_45_86_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_12_45_86_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_73_45_86_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_12_45_86_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_73_45_86_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_73_45_86_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_12_45_86_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_12_45_86_finally;
+        throw %tmp.141;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_12_45_86_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_45_12_45_86_end:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 47 12 ]
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_12_47_220_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_12_47_220_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_12_47_220_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_12_47_220_finally;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_12_47_220_beginTry:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_16_47_129_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 47 18 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_16_47_129_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_16_47_129_stop" ]
-        %wr.17 = local;
-        symbol [ wr %wr.17 47 22 24 ];
-        symbol [ VFRWeather %tmp.128 47 27 37 ];
-        %tmp.128 = getv ? :VFRWeather;
-        symbol [ read %tmp.129 47 38 42 ];
-        %tmp.129 = getv function %tmp.128 :read;
-        %tmp.130 = self;
-        symbol [ getApp %tmp.131 47 43 49 ];
-        %tmp.131 = getv function %tmp.130 :getApp;
-        %tmp.132 = invoke %tmp.130 %tmp.131();
-        symbol [ getComms %tmp.133 47 52 60 ];
-        %tmp.133 = getv function %tmp.132 :getComms;
-        %tmp.134 = invoke %tmp.132 %tmp.133();
-        %tmp.135 = invoke %tmp.128 %tmp.129(%tmp.134);
-        lputv %wr.17 %tmp.135;
-        symbol [ wr %wr.17 47 22 24 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 47 65 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_65_47_127_if_stmt:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_69_47_95_begin:
-        %tmp.136 = lgetv %wr.17;
-        symbol [ wr %tmp.136 47 69 71 ];
-        %tmp.137 = null;
-        %tmp.138 = ne %tmp.136 %tmp.137;
-        bf %tmp.138 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_65_47_127_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_83_47_95_true:
-        %tmp.139 = lgetv %wr.17;
-        symbol [ wr %tmp.139 47 83 85 ];
-        %tmp.140 = as %tmp.139 { (!Null) };
-        symbol [ temp %tmp.141 47 86 90 ];
-        %tmp.141 = getv %tmp.140 :temp;
-        %tmp.142 = -999;
-        %tmp.143 = ne %tmp.141 %tmp.142;
-        push %tmp.143;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_83_47_95_end:
-        %tmp.144 = phi [%tmp.138 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_69_47_95_begin] [%tmp.143 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_83_47_95_true] [%tmp.144 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_83_47_95_end];
-        bf %tmp.144 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_65_47_127_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_65_47_127_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_100_47_127_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 47 102 ]
-        %tmp.145 = lgetv %wr.17;
-        symbol [ wr %tmp.145 47 108 110 ];
-        %tmp.146 = as %tmp.145 { (!Null) };
-        symbol [ temp %tmp.147 47 111 115 ];
-        %tmp.147 = getv %tmp.146 :temp;
-        symbol [ toFloat %tmp.148 47 116 123 ];
-        %tmp.148 = getv function %tmp.147 :toFloat;
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_12_86_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_12_86_8_stop" ]
+        %oat.19 = local;
+        symbol [ oat %oat.19 47 16 19 ];
+        %tmp.143 = null;
+        lputv %oat.19 %tmp.143;
+        symbol [ oat %oat.19 47 16 19 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 48 12 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_12_48_220_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_12_48_220_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_12_48_220_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_12_48_220_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_12_48_220_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_16_48_129_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 48 18 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_16_48_129_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_16_48_129_stop" ]
+        %wr.20 = local;
+        symbol [ wr %wr.20 48 22 24 ];
+        symbol [ VFRWeather %tmp.145 48 27 37 ];
+        %tmp.145 = getv ? :VFRWeather;
+        symbol [ read %tmp.146 48 38 42 ];
+        %tmp.146 = getv function %tmp.145 :read;
+        %tmp.147 = self;
+        symbol [ getApp %tmp.148 48 43 49 ];
+        %tmp.148 = getv function %tmp.147 :getApp;
         %tmp.149 = invoke %tmp.147 %tmp.148();
-        lputv %oat.16 %tmp.149;
-        symbol [ oat %oat.16 47 102 105 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_100_47_127_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_65_47_127_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_65_47_127_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_16_47_129_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_12_47_220_endTry:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_12_47_220_finally;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_12_47_220_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_12_47_220_catch:
-        %tmp.150 = exception;
-        push %tmp.150;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 47 131 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_12_47_220_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_131_47_220_end" ]
-        %we.18 = local;
-        symbol [ we %we.18 47 138 140 ];
-        %tmp.151 = dup %tmp.150;
-        lputv %we.18 %tmp.151;
-        symbol [ we %we.18 47 138 140 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_142_47_220_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 47 144 ]
-        symbol [ System %tmp.152 47 144 150 ];
-        %tmp.152 = getm $.Toybox.System;
-        symbol [ println %tmp.153 47 151 158 ];
-        %tmp.153 = getv function %tmp.152 :println;
-        %tmp.154 = "Density altitude OAT read error: ";
-        %tmp.155 = lgetv %we.18;
-        symbol [ we %tmp.155 47 197 199 ];
-        symbol [ getErrorMessage %tmp.156 47 200 215 ];
-        %tmp.156 = getv function %tmp.155 :getErrorMessage;
-        %tmp.157 = invoke %tmp.155 %tmp.156();
-        %tmp.158 = add %tmp.154 %tmp.157;
-        invoke %tmp.152 %tmp.153(%tmp.158);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_142_47_220_stop:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_12_47_220_finally;
+        symbol [ getComms %tmp.150 48 52 60 ];
+        %tmp.150 = getv function %tmp.149 :getComms;
+        %tmp.151 = invoke %tmp.149 %tmp.150();
+        %tmp.152 = invoke %tmp.145 %tmp.146(%tmp.151);
+        lputv %wr.20 %tmp.152;
+        symbol [ wr %wr.20 48 22 24 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 48 65 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_65_48_127_if_stmt:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_69_48_95_begin:
+        %tmp.153 = lgetv %wr.20;
+        symbol [ wr %tmp.153 48 69 71 ];
+        %tmp.154 = null;
+        %tmp.155 = ne %tmp.153 %tmp.154;
+        bf %tmp.155 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_65_48_127_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_83_48_95_true:
+        %tmp.156 = lgetv %wr.20;
+        symbol [ wr %tmp.156 48 83 85 ];
+        %tmp.157 = as %tmp.156 { (!Null) };
+        symbol [ temp %tmp.158 48 86 90 ];
+        %tmp.158 = getv %tmp.157 :temp;
+        %tmp.159 = -999;
+        %tmp.160 = ne %tmp.158 %tmp.159;
+        push %tmp.160;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_83_48_95_end:
+        %tmp.161 = phi [%tmp.155 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_69_48_95_begin] [%tmp.160 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_83_48_95_true] [%tmp.161 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_83_48_95_end];
+        bf %tmp.161 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_65_48_127_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_65_48_127_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_100_48_127_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 48 102 ]
+        %tmp.162 = lgetv %wr.20;
+        symbol [ wr %tmp.162 48 108 110 ];
+        %tmp.163 = as %tmp.162 { (!Null) };
+        symbol [ temp %tmp.164 48 111 115 ];
+        %tmp.164 = getv %tmp.163 :temp;
+        symbol [ toFloat %tmp.165 48 116 123 ];
+        %tmp.165 = getv function %tmp.164 :toFloat;
+        %tmp.166 = invoke %tmp.164 %tmp.165();
+        lputv %oat.19 %tmp.166;
+        symbol [ oat %oat.19 48 102 105 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_100_48_127_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_65_48_127_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_65_48_127_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_16_48_129_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_12_48_220_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_12_48_220_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_12_48_220_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_12_48_220_catch:
+        %tmp.167 = exception;
+        push %tmp.167;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 48 131 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_12_48_220_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_131_48_220_end" ]
+        %we.21 = local;
+        symbol [ we %we.21 48 138 140 ];
+        %tmp.168 = dup %tmp.167;
+        lputv %we.21 %tmp.168;
+        symbol [ we %we.21 48 138 140 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_142_48_220_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 48 144 ]
+        symbol [ System %tmp.169 48 144 150 ];
+        %tmp.169 = getm $.Toybox.System;
+        symbol [ println %tmp.170 48 151 158 ];
+        %tmp.170 = getv function %tmp.169 :println;
+        %tmp.171 = "Density altitude OAT read error: ";
+        %tmp.172 = lgetv %we.21;
+        symbol [ we %tmp.172 48 197 199 ];
+        symbol [ getErrorMessage %tmp.173 48 200 215 ];
+        %tmp.173 = getv function %tmp.172 :getErrorMessage;
+        %tmp.174 = invoke %tmp.172 %tmp.173();
+        %tmp.175 = add %tmp.171 %tmp.174;
+        invoke %tmp.169 %tmp.170(%tmp.175);
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_142_48_220_stop:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_12_48_220_finally;
         pop;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_12_47_220_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_131_47_220_end:
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_12_47_220_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_131_47_220_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_131_47_220_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_12_47_220_finally;
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_12_47_220_finally;
-        throw %tmp.150;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_12_47_220_finally:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_12_48_220_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_131_48_220_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_12_48_220_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_131_48_220_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_131_48_220_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_12_48_220_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_12_48_220_finally;
+        throw %tmp.167;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_12_48_220_finally:
         jsrret;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_47_12_47_220_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 50 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_12_85_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_12_85_8_stop" ]
-        %qnh_hPa.19 = local;
-        symbol [ qnh_hPa %qnh_hPa.19 50 16 23 ];
-        %tmp.159 = null;
-        lputv %qnh_hPa.19 %tmp.159;
-        symbol [ qnh_hPa %qnh_hPa.19 50 16 23 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_48_12_48_220_end:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 51 12 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_12_85_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_12_85_8_stop" ]
-        %haveQnh.20 = local;
-        symbol [ haveQnh %haveQnh.20 51 16 23 ];
-        %tmp.160 = false;
-        lputv %haveQnh.20 %tmp.160;
-        symbol [ haveQnh %haveQnh.20 51 16 23 ];
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_12_86_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_12_86_8_stop" ]
+        %qnh_hPa.22 = local;
+        symbol [ qnh_hPa %qnh_hPa.22 51 16 23 ];
+        %tmp.176 = null;
+        lputv %qnh_hPa.22 %tmp.176;
+        symbol [ qnh_hPa %qnh_hPa.22 51 16 23 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 52 12 ]
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_12_58_27_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_12_58_27_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_12_58_27_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_12_58_27_finally;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_12_58_27_beginTry:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_16_58_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 53 16 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_16_58_12_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_16_58_12_stop" ]
-        %qnhInfo.21 = local;
-        symbol [ qnhInfo %qnhInfo.21 53 20 27 ];
-        symbol [ VFRAvionicsData %tmp.162 53 30 45 ];
-        %tmp.162 = getv ? :VFRAvionicsData;
-        symbol [ readQnhInfo %tmp.163 53 46 57 ];
-        %tmp.163 = getv function %tmp.162 :readQnhInfo;
-        %tmp.164 = invoke %tmp.162 %tmp.163();
-        lputv %qnhInfo.21 %tmp.164;
-        symbol [ qnhInfo %qnhInfo.21 53 20 27 ];
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_12_86_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_12_86_8_stop" ]
+        %haveQnh.23 = local;
+        symbol [ haveQnh %haveQnh.23 52 16 23 ];
+        %tmp.177 = false;
+        lputv %haveQnh.23 %tmp.177;
+        symbol [ haveQnh %haveQnh.23 52 16 23 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 53 12 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_12_59_27_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_12_59_27_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_12_59_27_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_12_59_27_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_12_59_27_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_16_59_12_start:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 54 16 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_54_16_57_16_if_stmt:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_54_20_54_63_begin:
-        %tmp.165 = lgetv %qnhInfo.21;
-        symbol [ qnhInfo %tmp.165 54 20 27 ];
-        %tmp.166 = null;
-        %tmp.167 = ne %tmp.165 %tmp.166;
-        bf %tmp.167 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_54_16_57_16_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_54_39_54_63_true:
-        %tmp.168 = lgetv %qnhInfo.21;
-        symbol [ qnhInfo %tmp.168 54 40 47 ];
-        %tmp.169 = as %tmp.168 { (!Null) };
-        %tmp.170 = as %tmp.169 VFRQnhInfo;
-        symbol [ VFRQnhInfo %tmp.170 54 51 61 ];
-        symbol [ isQnh %tmp.171 54 63 68 ];
-        %tmp.171 = getv %tmp.170 :isQnh;
-        push %tmp.171;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_54_39_54_63_end:
-        %tmp.172 = phi [%tmp.167 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_54_20_54_63_begin] [%tmp.171 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_54_39_54_63_true] [%tmp.172 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_54_39_54_63_end];
-        bf %tmp.172 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_54_16_57_16_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_54_16_57_16_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_54_70_57_16_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 55 20 ]
-        %tmp.173 = lgetv %qnhInfo.21;
-        symbol [ qnhInfo %tmp.173 55 31 38 ];
-        %tmp.174 = as %tmp.173 { (!Null) };
-        %tmp.175 = as %tmp.174 VFRQnhInfo;
-        symbol [ VFRQnhInfo %tmp.175 55 42 52 ];
-        symbol [ hPa %tmp.176 55 54 57 ];
-        %tmp.176 = getv %tmp.175 :hPa;
-        lputv %qnh_hPa.19 %tmp.176;
-        symbol [ qnh_hPa %qnh_hPa.19 55 20 27 ];
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_16_59_12_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_16_59_12_stop" ]
+        %qnhInfo.24 = local;
+        symbol [ qnhInfo %qnhInfo.24 54 20 27 ];
+        symbol [ VFRAvionicsData %tmp.179 54 30 45 ];
+        %tmp.179 = getv ? :VFRAvionicsData;
+        symbol [ readQnhInfo %tmp.180 54 46 57 ];
+        %tmp.180 = getv function %tmp.179 :readQnhInfo;
+        %tmp.181 = invoke %tmp.179 %tmp.180();
+        lputv %qnhInfo.24 %tmp.181;
+        symbol [ qnhInfo %qnhInfo.24 54 20 27 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 55 16 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_55_16_58_16_if_stmt:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_55_20_55_63_begin:
+        %tmp.182 = lgetv %qnhInfo.24;
+        symbol [ qnhInfo %tmp.182 55 20 27 ];
+        %tmp.183 = null;
+        %tmp.184 = ne %tmp.182 %tmp.183;
+        bf %tmp.184 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_55_16_58_16_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_55_39_55_63_true:
+        %tmp.185 = lgetv %qnhInfo.24;
+        symbol [ qnhInfo %tmp.185 55 40 47 ];
+        %tmp.186 = as %tmp.185 { (!Null) };
+        %tmp.187 = as %tmp.186 VFRQnhInfo;
+        symbol [ VFRQnhInfo %tmp.187 55 51 61 ];
+        symbol [ isQnh %tmp.188 55 63 68 ];
+        %tmp.188 = getv %tmp.187 :isQnh;
+        push %tmp.188;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_55_39_55_63_end:
+        %tmp.189 = phi [%tmp.184 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_55_20_55_63_begin] [%tmp.188 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_55_39_55_63_true] [%tmp.189 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_55_39_55_63_end];
+        bf %tmp.189 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_55_16_58_16_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_55_16_58_16_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_55_70_58_16_start:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 56 20 ]
-        %tmp.177 = true;
-        lputv %haveQnh.20 %tmp.177;
-        symbol [ haveQnh %haveQnh.20 56 20 27 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_54_70_57_16_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_54_16_57_16_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_54_16_57_16_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_16_58_12_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_12_58_27_endTry:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_12_58_27_finally;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_12_58_27_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_12_58_27_catch:
-        %tmp.178 = exception;
-        push %tmp.178;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 58 14 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_12_58_27_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_58_14_58_27_end" ]
-        %qe.22 = local;
-        symbol [ qe %qe.22 58 21 23 ];
-        %tmp.179 = dup %tmp.178;
-        lputv %qe.22 %tmp.179;
-        symbol [ qe %qe.22 58 21 23 ];
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_12_58_27_finally;
+        %tmp.190 = lgetv %qnhInfo.24;
+        symbol [ qnhInfo %tmp.190 56 31 38 ];
+        %tmp.191 = as %tmp.190 { (!Null) };
+        %tmp.192 = as %tmp.191 VFRQnhInfo;
+        symbol [ VFRQnhInfo %tmp.192 56 42 52 ];
+        symbol [ hPa %tmp.193 56 54 57 ];
+        %tmp.193 = getv %tmp.192 :hPa;
+        lputv %qnh_hPa.22 %tmp.193;
+        symbol [ qnh_hPa %qnh_hPa.22 56 20 27 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 57 20 ]
+        %tmp.194 = true;
+        lputv %haveQnh.23 %tmp.194;
+        symbol [ haveQnh %haveQnh.23 57 20 27 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_55_70_58_16_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_55_16_58_16_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_55_16_58_16_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_16_59_12_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_12_59_27_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_12_59_27_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_12_59_27_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_12_59_27_catch:
+        %tmp.195 = exception;
+        push %tmp.195;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 59 14 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_12_59_27_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_59_14_59_27_end" ]
+        %qe.25 = local;
+        symbol [ qe %qe.25 59 21 23 ];
+        %tmp.196 = dup %tmp.195;
+        lputv %qe.25 %tmp.196;
+        symbol [ qe %qe.25 59 21 23 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_12_59_27_finally;
         pop;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_12_58_27_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_58_14_58_27_end:
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_12_58_27_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_58_14_58_27_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_58_14_58_27_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_12_58_27_finally;
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_12_58_27_finally;
-        throw %tmp.178;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_12_58_27_finally:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_12_59_27_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_59_14_59_27_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_12_59_27_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_59_14_59_27_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_59_14_59_27_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_12_59_27_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_12_59_27_finally;
+        throw %tmp.195;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_12_59_27_finally:
         jsrret;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_52_12_58_27_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 61 12 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_61_12_83_12_if_stmt:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_61_16_61_49_begin:
-        %tmp.180 = lgetv %indicatedAltFt.14;
-        symbol [ indicatedAltFt %tmp.180 61 16 30 ];
-        %tmp.181 = null;
-        %tmp.182 = ne %tmp.180 %tmp.181;
-        bf %tmp.182 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_61_12_83_12_if_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_61_42_61_49_true:
-        %tmp.183 = lgetv %oat.16;
-        symbol [ oat %tmp.183 61 42 45 ];
-        %tmp.184 = null;
-        %tmp.185 = ne %tmp.183 %tmp.184;
-        push %tmp.185;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_61_42_61_49_end:
-        %tmp.186 = phi [%tmp.182 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_61_16_61_49_begin] [%tmp.185 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_61_42_61_49_true] [%tmp.186 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_61_42_61_49_end];
-        bf %tmp.186 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_61_12_83_12_if_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_61_12_83_12_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_61_55_81_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 62 16 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_61_55_81_12_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_61_55_81_12_stop" ]
-        %pressureAltFt.23 = local;
-        symbol [ pressureAltFt %pressureAltFt.23 62 20 33 ];
-        %tmp.187 = null;
-        lputv %pressureAltFt.23 %tmp.187;
-        symbol [ pressureAltFt %pressureAltFt.23 62 20 33 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_53_12_59_27_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 62 12 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_62_12_84_12_if_stmt:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_62_16_62_49_begin:
+        %tmp.197 = lgetv %indicatedAltFt.17;
+        symbol [ indicatedAltFt %tmp.197 62 16 30 ];
+        %tmp.198 = null;
+        %tmp.199 = ne %tmp.197 %tmp.198;
+        bf %tmp.199 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_62_12_84_12_if_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_62_42_62_49_true:
+        %tmp.200 = lgetv %oat.19;
+        symbol [ oat %tmp.200 62 42 45 ];
+        %tmp.201 = null;
+        %tmp.202 = ne %tmp.200 %tmp.201;
+        push %tmp.202;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_62_42_62_49_end:
+        %tmp.203 = phi [%tmp.199 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_62_16_62_49_begin] [%tmp.202 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_62_42_62_49_true] [%tmp.203 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_62_42_62_49_end];
+        bf %tmp.203 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_62_12_84_12_if_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_62_12_84_12_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_62_55_82_12_start:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 63 16 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_61_55_81_12_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_61_55_81_12_stop" ]
-        %approx.24 = local;
-        symbol [ approx %approx.24 63 20 26 ];
-        %tmp.188 = false;
-        lputv %approx.24 %tmp.188;
-        symbol [ approx %approx.24 63 20 26 ];
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_62_55_82_12_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_62_55_82_12_stop" ]
+        %pressureAltFt.26 = local;
+        symbol [ pressureAltFt %pressureAltFt.26 63 20 33 ];
+        %tmp.204 = null;
+        lputv %pressureAltFt.26 %tmp.204;
+        symbol [ pressureAltFt %pressureAltFt.26 63 20 33 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 64 16 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_64_16_70_16_if_stmt:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_64_20_64_42_begin:
-        %tmp.189 = lgetv %haveQnh.20;
-        symbol [ haveQnh %tmp.189 64 20 27 ];
-        bf %tmp.189 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_64_16_70_16_if_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_64_31_64_42_true:
-        %tmp.190 = lgetv %qnh_hPa.19;
-        symbol [ qnh_hPa %tmp.190 64 31 38 ];
-        %tmp.191 = null;
-        %tmp.192 = ne %tmp.190 %tmp.191;
-        push %tmp.192;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_64_31_64_42_end:
-        %tmp.193 = phi [%tmp.189 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_64_20_64_42_begin] [%tmp.192 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_64_31_64_42_true] [%tmp.193 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_64_31_64_42_end];
-        bf %tmp.193 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_64_16_70_16_if_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_64_16_70_16_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_64_48_66_16_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 65 20 ]
-        %tmp.194 = lgetv %indicatedAltFt.14;
-        symbol [ indicatedAltFt %tmp.194 65 37 51 ];
-        %tmp.195 = as %tmp.194 { (!Null) };
-        %tmp.196 = 1013.0;
-        %tmp.197 = lgetv %qnh_hPa.19;
-        symbol [ qnh_hPa %tmp.197 65 65 72 ];
-        %tmp.198 = as %tmp.197 { (!Null) };
-        %tmp.199 = sub %tmp.196 %tmp.198;
-        %tmp.200 = 27.0;
-        %tmp.201 = mul %tmp.199 %tmp.200;
-        %tmp.202 = add %tmp.195 %tmp.201;
-        symbol [ toFloat %tmp.203 65 83 90 ];
-        %tmp.203 = getv function %tmp.202 :toFloat;
-        %tmp.204 = invoke %tmp.202 %tmp.203();
-        lputv %pressureAltFt.23 %tmp.204;
-        symbol [ pressureAltFt %pressureAltFt.23 65 20 33 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_64_48_66_16_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_64_16_70_16_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_64_16_70_16_if_else_false:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_66_23_70_16_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 68 20 ]
-        %tmp.205 = lgetv %indicatedAltFt.14;
-        symbol [ indicatedAltFt %tmp.205 68 36 50 ];
-        %tmp.206 = as %tmp.205 { (!Null) };
-        symbol [ toFloat %tmp.207 68 51 58 ];
-        %tmp.207 = getv function %tmp.206 :toFloat;
-        %tmp.208 = invoke %tmp.206 %tmp.207();
-        lputv %pressureAltFt.23 %tmp.208;
-        symbol [ pressureAltFt %pressureAltFt.23 68 20 33 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 69 20 ]
-        %tmp.209 = true;
-        lputv %approx.24 %tmp.209;
-        symbol [ approx %approx.24 69 20 26 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_66_23_70_16_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_64_16_70_16_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 73 16 ]
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_16_80_123_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_16_80_123_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_16_80_123_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_16_80_123_finally;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_16_80_123_beginTry:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_20_80_16_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 74 20 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_20_80_16_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_20_80_16_stop" ]
-        %altThousands.25 = local;
-        symbol [ altThousands %altThousands.25 74 24 36 ];
-        %tmp.210 = lgetv %pressureAltFt.23;
-        symbol [ pressureAltFt %tmp.210 74 40 53 ];
-        %tmp.211 = 1000.0;
-        %tmp.212 = div %tmp.210 %tmp.211;
-        symbol [ toFloat %tmp.213 74 64 71 ];
-        %tmp.213 = getv function %tmp.212 :toFloat;
-        %tmp.214 = invoke %tmp.212 %tmp.213();
-        lputv %altThousands.25 %tmp.214;
-        symbol [ altThousands %altThousands.25 74 24 36 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 75 20 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_20_80_16_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_20_80_16_stop" ]
-        %isa.26 = local;
-        symbol [ isa %isa.26 75 24 27 ];
-        %tmp.215 = 15.0;
-        %tmp.216 = 2.0;
-        %tmp.217 = lgetv %altThousands.25;
-        symbol [ altThousands %tmp.217 75 45 57 ];
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_62_55_82_12_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_62_55_82_12_stop" ]
+        %approx.27 = local;
+        symbol [ approx %approx.27 64 20 26 ];
+        %tmp.205 = false;
+        lputv %approx.27 %tmp.205;
+        symbol [ approx %approx.27 64 20 26 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 65 16 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_65_16_71_16_if_stmt:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_65_20_65_42_begin:
+        %tmp.206 = lgetv %haveQnh.23;
+        symbol [ haveQnh %tmp.206 65 20 27 ];
+        bf %tmp.206 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_65_16_71_16_if_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_65_31_65_42_true:
+        %tmp.207 = lgetv %qnh_hPa.22;
+        symbol [ qnh_hPa %tmp.207 65 31 38 ];
+        %tmp.208 = null;
+        %tmp.209 = ne %tmp.207 %tmp.208;
+        push %tmp.209;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_65_31_65_42_end:
+        %tmp.210 = phi [%tmp.206 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_65_20_65_42_begin] [%tmp.209 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_65_31_65_42_true] [%tmp.210 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_65_31_65_42_end];
+        bf %tmp.210 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_65_16_71_16_if_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_65_16_71_16_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_65_48_67_16_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 66 20 ]
+        %tmp.211 = lgetv %indicatedAltFt.17;
+        symbol [ indicatedAltFt %tmp.211 66 37 51 ];
+        %tmp.212 = as %tmp.211 { (!Null) };
+        %tmp.213 = 1013.0;
+        %tmp.214 = lgetv %qnh_hPa.22;
+        symbol [ qnh_hPa %tmp.214 66 65 72 ];
+        %tmp.215 = as %tmp.214 { (!Null) };
+        %tmp.216 = sub %tmp.213 %tmp.215;
+        %tmp.217 = 27.0;
         %tmp.218 = mul %tmp.216 %tmp.217;
-        %tmp.219 = sub %tmp.215 %tmp.218;
-        symbol [ toFloat %tmp.220 75 60 67 ];
+        %tmp.219 = add %tmp.212 %tmp.218;
+        symbol [ toFloat %tmp.220 66 83 90 ];
         %tmp.220 = getv function %tmp.219 :toFloat;
         %tmp.221 = invoke %tmp.219 %tmp.220();
-        lputv %isa.26 %tmp.221;
-        symbol [ isa %isa.26 75 24 27 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 76 20 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_20_80_16_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_20_80_16_stop" ]
-        %diff.27 = local;
-        symbol [ diff %diff.27 76 24 28 ];
-        %tmp.222 = lgetv %oat.16;
-        symbol [ oat %tmp.222 76 32 35 ];
+        lputv %pressureAltFt.26 %tmp.221;
+        symbol [ pressureAltFt %pressureAltFt.26 66 20 33 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_65_48_67_16_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_65_16_71_16_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_65_16_71_16_if_else_false:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_67_23_71_16_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 69 20 ]
+        %tmp.222 = lgetv %indicatedAltFt.17;
+        symbol [ indicatedAltFt %tmp.222 69 36 50 ];
         %tmp.223 = as %tmp.222 { (!Null) };
-        %tmp.224 = lgetv %isa.26;
-        symbol [ isa %tmp.224 76 38 41 ];
-        %tmp.225 = sub %tmp.223 %tmp.224;
-        symbol [ toFloat %tmp.226 76 43 50 ];
-        %tmp.226 = getv function %tmp.225 :toFloat;
-        %tmp.227 = invoke %tmp.225 %tmp.226();
-        lputv %diff.27 %tmp.227;
-        symbol [ diff %diff.27 76 24 28 ];
+        symbol [ toFloat %tmp.224 69 51 58 ];
+        %tmp.224 = getv function %tmp.223 :toFloat;
+        %tmp.225 = invoke %tmp.223 %tmp.224();
+        lputv %pressureAltFt.26 %tmp.225;
+        symbol [ pressureAltFt %pressureAltFt.26 69 20 33 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 70 20 ]
+        %tmp.226 = true;
+        lputv %approx.27 %tmp.226;
+        symbol [ approx %approx.27 70 20 26 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_67_23_71_16_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_65_16_71_16_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 74 16 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_16_81_123_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_16_81_123_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_16_81_123_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_16_81_123_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_16_81_123_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_20_81_16_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 75 20 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_20_81_16_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_20_81_16_stop" ]
+        %altThousands.28 = local;
+        symbol [ altThousands %altThousands.28 75 24 36 ];
+        %tmp.227 = lgetv %pressureAltFt.26;
+        symbol [ pressureAltFt %tmp.227 75 40 53 ];
+        %tmp.228 = 1000.0;
+        %tmp.229 = div %tmp.227 %tmp.228;
+        symbol [ toFloat %tmp.230 75 64 71 ];
+        %tmp.230 = getv function %tmp.229 :toFloat;
+        %tmp.231 = invoke %tmp.229 %tmp.230();
+        lputv %altThousands.28 %tmp.231;
+        symbol [ altThousands %altThousands.28 75 24 36 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 76 20 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_20_81_16_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_20_81_16_stop" ]
+        %isa.29 = local;
+        symbol [ isa %isa.29 76 24 27 ];
+        %tmp.232 = 15.0;
+        %tmp.233 = 2.0;
+        %tmp.234 = lgetv %altThousands.28;
+        symbol [ altThousands %tmp.234 76 45 57 ];
+        %tmp.235 = mul %tmp.233 %tmp.234;
+        %tmp.236 = sub %tmp.232 %tmp.235;
+        symbol [ toFloat %tmp.237 76 60 67 ];
+        %tmp.237 = getv function %tmp.236 :toFloat;
+        %tmp.238 = invoke %tmp.236 %tmp.237();
+        lputv %isa.29 %tmp.238;
+        symbol [ isa %isa.29 76 24 27 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 77 20 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_20_80_16_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_20_80_16_stop" ]
-        %dens.28 = local;
-        symbol [ dens %dens.28 77 24 28 ];
-        %tmp.228 = lgetv %pressureAltFt.23;
-        symbol [ pressureAltFt %tmp.228 77 32 45 ];
-        %tmp.229 = 120.0;
-        %tmp.230 = lgetv %diff.27;
-        symbol [ diff %tmp.230 77 57 61 ];
-        %tmp.231 = mul %tmp.229 %tmp.230;
-        %tmp.232 = add %tmp.228 %tmp.231;
-        symbol [ toFloat %tmp.233 77 64 71 ];
-        %tmp.233 = getv function %tmp.232 :toFloat;
-        %tmp.234 = invoke %tmp.232 %tmp.233();
-        lputv %dens.28 %tmp.234;
-        symbol [ dens %dens.28 77 24 28 ];
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_20_81_16_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_20_81_16_stop" ]
+        %diff.30 = local;
+        symbol [ diff %diff.30 77 24 28 ];
+        %tmp.239 = lgetv %oat.19;
+        symbol [ oat %tmp.239 77 32 35 ];
+        %tmp.240 = as %tmp.239 { (!Null) };
+        %tmp.241 = lgetv %isa.29;
+        symbol [ isa %tmp.241 77 38 41 ];
+        %tmp.242 = sub %tmp.240 %tmp.241;
+        symbol [ toFloat %tmp.243 77 43 50 ];
+        %tmp.243 = getv function %tmp.242 :toFloat;
+        %tmp.244 = invoke %tmp.242 %tmp.243();
+        lputv %diff.30 %tmp.244;
+        symbol [ diff %diff.30 77 24 28 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 78 20 ]
-        symbol [ Math %tmp.236 78 30 34 ];
-        %tmp.236 = getv ? :Math;
-        symbol [ round %tmp.237 78 35 40 ];
-        %tmp.237 = getv function %tmp.236 :round;
-        %tmp.238 = lgetv %dens.28;
-        symbol [ dens %tmp.238 78 41 45 ];
-        %tmp.239 = invoke %tmp.236 %tmp.237(%tmp.238);
-        symbol [ toNumber %tmp.240 78 47 55 ];
-        %tmp.240 = getv function %tmp.239 :toNumber;
-        %tmp.241 = invoke %tmp.239 %tmp.240();
-        symbol [ toString %tmp.242 78 58 66 ];
-        %tmp.242 = getv function %tmp.241 :toString;
-        %tmp.243 = invoke %tmp.241 %tmp.242();
-        %tmp.244 = " ft";
-        %tmp.245 = add %tmp.243 %tmp.244;
-        lputv %densStr.12 %tmp.245;
-        symbol [ densStr %densStr.12 78 20 27 ];
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_20_81_16_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_20_81_16_stop" ]
+        %dens.31 = local;
+        symbol [ dens %dens.31 78 24 28 ];
+        %tmp.245 = lgetv %pressureAltFt.26;
+        symbol [ pressureAltFt %tmp.245 78 32 45 ];
+        %tmp.246 = 120.0;
+        %tmp.247 = lgetv %diff.30;
+        symbol [ diff %tmp.247 78 57 61 ];
+        %tmp.248 = mul %tmp.246 %tmp.247;
+        %tmp.249 = add %tmp.245 %tmp.248;
+        symbol [ toFloat %tmp.250 78 64 71 ];
+        %tmp.250 = getv function %tmp.249 :toFloat;
+        %tmp.251 = invoke %tmp.249 %tmp.250();
+        lputv %dens.31 %tmp.251;
+        symbol [ dens %dens.31 78 24 28 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 79 20 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_79_20_79_84_if_stmt:
-        %tmp.246 = lgetv %approx.24;
-        symbol [ approx %tmp.246 79 24 30 ];
-        bf %tmp.246 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_79_20_79_84_if_else_false;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_79_20_79_84_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_79_32_79_55_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 79 34 ]
-        %tmp.247 = "DENS ALT*";
-        lputv %label.13 %tmp.247;
-        symbol [ label %label.13 79 34 39 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_79_32_79_55_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_79_20_79_84_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_79_20_79_84_if_else_false:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_79_62_79_84_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 79 64 ]
-        %tmp.248 = "DENS ALT";
-        lputv %label.13 %tmp.248;
-        symbol [ label %label.13 79 64 69 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_79_62_79_84_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_79_20_79_84_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_20_80_16_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_16_80_123_endTry:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_16_80_123_finally;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_16_80_123_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_16_80_123_catch:
-        %tmp.249 = exception;
-        push %tmp.249;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 80 18 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_16_80_123_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_80_18_80_123_end" ]
-        %ce.29 = local;
-        symbol [ ce %ce.29 80 25 27 ];
-        %tmp.250 = dup %tmp.249;
-        lputv %ce.29 %tmp.250;
-        symbol [ ce %ce.29 80 25 27 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_80_29_80_123_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 80 31 ]
-        symbol [ System %tmp.251 80 31 37 ];
-        %tmp.251 = getm $.Toybox.System;
-        symbol [ println %tmp.252 80 38 45 ];
-        %tmp.252 = getv function %tmp.251 :println;
-        %tmp.253 = "Density altitude compute error: ";
-        %tmp.254 = lgetv %ce.29;
-        symbol [ ce %tmp.254 80 83 85 ];
-        symbol [ getErrorMessage %tmp.255 80 86 101 ];
-        %tmp.255 = getv function %tmp.254 :getErrorMessage;
-        %tmp.256 = invoke %tmp.254 %tmp.255();
-        %tmp.257 = add %tmp.253 %tmp.256;
-        invoke %tmp.251 %tmp.252(%tmp.257);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 80 106 ]
-        %tmp.258 = "---";
-        lputv %densStr.12 %tmp.258;
-        symbol [ densStr %densStr.12 80 106 113 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_80_29_80_123_stop:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_16_80_123_finally;
+        symbol [ Math %tmp.253 79 30 34 ];
+        %tmp.253 = getv ? :Math;
+        symbol [ round %tmp.254 79 35 40 ];
+        %tmp.254 = getv function %tmp.253 :round;
+        %tmp.255 = lgetv %dens.31;
+        symbol [ dens %tmp.255 79 41 45 ];
+        %tmp.256 = invoke %tmp.253 %tmp.254(%tmp.255);
+        symbol [ toNumber %tmp.257 79 47 55 ];
+        %tmp.257 = getv function %tmp.256 :toNumber;
+        %tmp.258 = invoke %tmp.256 %tmp.257();
+        symbol [ toString %tmp.259 79 58 66 ];
+        %tmp.259 = getv function %tmp.258 :toString;
+        %tmp.260 = invoke %tmp.258 %tmp.259();
+        %tmp.261 = " ft";
+        %tmp.262 = add %tmp.260 %tmp.261;
+        lputv %densStr.15 %tmp.262;
+        symbol [ densStr %densStr.15 79 20 27 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 80 20 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_80_20_80_84_if_stmt:
+        %tmp.263 = lgetv %approx.27;
+        symbol [ approx %tmp.263 80 24 30 ];
+        bf %tmp.263 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_80_20_80_84_if_else_false;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_80_20_80_84_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_80_32_80_55_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 80 34 ]
+        %tmp.264 = "DENS ALT*";
+        lputv %label.16 %tmp.264;
+        symbol [ label %label.16 80 34 39 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_80_32_80_55_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_80_20_80_84_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_80_20_80_84_if_else_false:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_80_62_80_84_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 80 64 ]
+        %tmp.265 = "DENS ALT";
+        lputv %label.16 %tmp.265;
+        symbol [ label %label.16 80 64 69 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_80_62_80_84_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_80_20_80_84_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_20_81_16_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_16_81_123_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_16_81_123_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_16_81_123_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_16_81_123_catch:
+        %tmp.266 = exception;
+        push %tmp.266;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 81 18 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_16_81_123_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_81_18_81_123_end" ]
+        %ce.32 = local;
+        symbol [ ce %ce.32 81 25 27 ];
+        %tmp.267 = dup %tmp.266;
+        lputv %ce.32 %tmp.267;
+        symbol [ ce %ce.32 81 25 27 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_81_29_81_123_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 81 31 ]
+        symbol [ System %tmp.268 81 31 37 ];
+        %tmp.268 = getm $.Toybox.System;
+        symbol [ println %tmp.269 81 38 45 ];
+        %tmp.269 = getv function %tmp.268 :println;
+        %tmp.270 = "Density altitude compute error: ";
+        %tmp.271 = lgetv %ce.32;
+        symbol [ ce %tmp.271 81 83 85 ];
+        symbol [ getErrorMessage %tmp.272 81 86 101 ];
+        %tmp.272 = getv function %tmp.271 :getErrorMessage;
+        %tmp.273 = invoke %tmp.271 %tmp.272();
+        %tmp.274 = add %tmp.270 %tmp.273;
+        invoke %tmp.268 %tmp.269(%tmp.274);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 81 106 ]
+        %tmp.275 = "---";
+        lputv %densStr.15 %tmp.275;
+        symbol [ densStr %densStr.15 81 106 113 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_81_29_81_123_stop:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_16_81_123_finally;
         pop;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_16_80_123_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_80_18_80_123_end:
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_16_80_123_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_80_18_80_123_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_80_18_80_123_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_16_80_123_finally;
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_16_80_123_finally;
-        throw %tmp.249;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_16_80_123_finally:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_16_81_123_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_81_18_81_123_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_16_81_123_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_81_18_81_123_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_81_18_81_123_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_16_81_123_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_16_81_123_finally;
+        throw %tmp.266;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_16_81_123_finally:
         jsrret;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_73_16_80_123_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_61_55_81_12_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_61_12_83_12_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_61_12_83_12_if_else_false:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_81_19_83_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 82 16 ]
-        %tmp.259 = "---";
-        lputv %densStr.12 %tmp.259;
-        symbol [ densStr %densStr.12 82 16 23 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_81_19_83_12_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_61_12_83_12_if_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_12_85_8_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_8_85_105_endTry:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_8_85_105_finally;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_8_85_105_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_8_85_105_catch:
-        %tmp.260 = exception;
-        push %tmp.260;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 85 10 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_8_85_105_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_85_10_85_105_end" ]
-        %e.30 = local;
-        symbol [ e %e.30 85 17 18 ];
-        %tmp.261 = dup %tmp.260;
-        lputv %e.30 %tmp.261;
-        symbol [ e %e.30 85 17 18 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_85_20_85_105_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 85 22 ]
-        symbol [ System %tmp.262 85 22 28 ];
-        %tmp.262 = getm $.Toybox.System;
-        symbol [ println %tmp.263 85 29 36 ];
-        %tmp.263 = getv function %tmp.262 :println;
-        %tmp.264 = "Density altitude error: ";
-        %tmp.265 = lgetv %e.30;
-        symbol [ e %tmp.265 85 66 67 ];
-        symbol [ getErrorMessage %tmp.266 85 68 83 ];
-        %tmp.266 = getv function %tmp.265 :getErrorMessage;
-        %tmp.267 = invoke %tmp.265 %tmp.266();
-        %tmp.268 = add %tmp.264 %tmp.267;
-        invoke %tmp.262 %tmp.263(%tmp.268);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 85 88 ]
-        %tmp.269 = "---";
-        lputv %densStr.12 %tmp.269;
-        symbol [ densStr %densStr.12 85 88 95 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_85_20_85_105_stop:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_8_85_105_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_74_16_81_123_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_62_55_82_12_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_62_12_84_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_62_12_84_12_if_else_false:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_82_19_84_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 83 16 ]
+        %tmp.276 = "---";
+        lputv %densStr.15 %tmp.276;
+        symbol [ densStr %densStr.15 83 16 23 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_82_19_84_12_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_62_12_84_12_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_12_86_8_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_8_86_105_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_8_86_105_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_8_86_105_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_8_86_105_catch:
+        %tmp.277 = exception;
+        push %tmp.277;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 86 10 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_8_86_105_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_86_10_86_105_end" ]
+        %e.33 = local;
+        symbol [ e %e.33 86 17 18 ];
+        %tmp.278 = dup %tmp.277;
+        lputv %e.33 %tmp.278;
+        symbol [ e %e.33 86 17 18 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_86_20_86_105_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 86 22 ]
+        symbol [ System %tmp.279 86 22 28 ];
+        %tmp.279 = getm $.Toybox.System;
+        symbol [ println %tmp.280 86 29 36 ];
+        %tmp.280 = getv function %tmp.279 :println;
+        %tmp.281 = "Density altitude error: ";
+        %tmp.282 = lgetv %e.33;
+        symbol [ e %tmp.282 86 66 67 ];
+        symbol [ getErrorMessage %tmp.283 86 68 83 ];
+        %tmp.283 = getv function %tmp.282 :getErrorMessage;
+        %tmp.284 = invoke %tmp.282 %tmp.283();
+        %tmp.285 = add %tmp.281 %tmp.284;
+        invoke %tmp.279 %tmp.280(%tmp.285);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 86 88 ]
+        %tmp.286 = "---";
+        lputv %densStr.15 %tmp.286;
+        symbol [ densStr %densStr.15 86 88 95 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_86_20_86_105_stop:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_8_86_105_finally;
         pop;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_8_85_105_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_85_10_85_105_end:
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_8_85_105_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_85_10_85_105_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_85_10_85_105_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_8_85_105_finally;
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_8_85_105_finally;
-        throw %tmp.260;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_8_85_105_finally:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_8_86_105_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_86_10_86_105_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_8_86_105_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_86_10_86_105_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_86_10_86_105_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_8_86_105_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_8_86_105_finally;
+        throw %tmp.277;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_8_86_105_finally:
         jsrret;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_42_8_85_105_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 88 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_stop" ]
-        %y.31 = local;
-        symbol [ y %y.31 88 12 13 ];
-        %tmp.270 = lgetv %h.2;
-        symbol [ h %tmp.270 88 17 18 ];
-        %tmp.271 = 2;
-        %tmp.272 = div %tmp.270 %tmp.271;
-        %tmp.273 = 18;
-        %tmp.274 = sub %tmp.272 %tmp.273;
-        lputv %y.31 %tmp.274;
-        symbol [ y %y.31 88 12 13 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_43_8_86_105_end:
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 89 8 ]
-        %tmp.275 = lgetv %dc;
-        symbol [ dc %tmp.275 89 8 10 ];
-        symbol [ setColor %tmp.276 89 11 19 ];
-        %tmp.276 = getv function %tmp.275 :setColor;
-        symbol [ Graphics %tmp.277 89 20 28 ];
-        %tmp.277 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLUE %tmp.278 89 29 39 ];
-        %tmp.278 = getv %tmp.277 :COLOR_BLUE;
-        symbol [ Graphics %tmp.279 89 41 49 ];
-        %tmp.279 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.280 89 50 67 ];
-        %tmp.280 = getv %tmp.279 :COLOR_TRANSPARENT;
-        invoke %tmp.275 %tmp.276(%tmp.278, %tmp.280);
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_stop" ]
+        %y.34 = local;
+        symbol [ y %y.34 89 12 13 ];
+        %tmp.287 = lgetv %h.5;
+        symbol [ h %tmp.287 89 17 18 ];
+        %tmp.288 = 2;
+        %tmp.289 = div %tmp.287 %tmp.288;
+        %tmp.290 = 18;
+        %tmp.291 = sub %tmp.289 %tmp.290;
+        lputv %y.34 %tmp.291;
+        symbol [ y %y.34 89 12 13 ];
 [ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 90 8 ]
-        %tmp.281 = lgetv %dc;
-        symbol [ dc %tmp.281 90 8 10 ];
-        symbol [ drawText %tmp.282 90 11 19 ];
-        %tmp.282 = getv function %tmp.281 :drawText;
-        %tmp.283 = lgetv %cx.3;
-        symbol [ cx %tmp.283 90 20 22 ];
-        %tmp.284 = lgetv %y.31;
-        symbol [ y %tmp.284 90 24 25 ];
-        symbol [ Graphics %tmp.285 90 27 35 ];
-        %tmp.285 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.286 90 36 46 ];
-        %tmp.286 = getv %tmp.285 :FONT_SMALL;
-        %tmp.287 = lgetv %label.13;
-        symbol [ label %tmp.287 90 48 53 ];
-        %tmp.288 = lgetv %jc.4;
-        symbol [ jc %tmp.288 90 55 57 ];
-        invoke %tmp.281 %tmp.282(%tmp.283, %tmp.284, %tmp.286, %tmp.287, %tmp.288);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 91 8 ]
-        %tmp.289 = lgetv %y.31;
-        symbol [ y %tmp.289 91 8 9 ];
-        %tmp.290 = 30;
-        %tmp.291 = add %tmp.289 %tmp.290;
-        lputv %y.31 %tmp.291;
-        symbol [ y %y.31 91 8 9 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 92 8 ]
         %tmp.292 = lgetv %dc;
-        symbol [ dc %tmp.292 92 8 10 ];
-        symbol [ setColor %tmp.293 92 11 19 ];
+        symbol [ dc %tmp.292 90 8 10 ];
+        symbol [ setColor %tmp.293 90 11 19 ];
         %tmp.293 = getv function %tmp.292 :setColor;
-        symbol [ Graphics %tmp.294 92 20 28 ];
+        symbol [ Graphics %tmp.294 90 20 28 ];
         %tmp.294 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.295 92 29 40 ];
-        %tmp.295 = getv %tmp.294 :COLOR_WHITE;
-        symbol [ Graphics %tmp.296 92 42 50 ];
+        symbol [ COLOR_BLUE %tmp.295 90 29 39 ];
+        %tmp.295 = getv %tmp.294 :COLOR_BLUE;
+        symbol [ Graphics %tmp.296 90 41 49 ];
         %tmp.296 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.297 92 51 68 ];
+        symbol [ COLOR_TRANSPARENT %tmp.297 90 50 67 ];
         %tmp.297 = getv %tmp.296 :COLOR_TRANSPARENT;
         invoke %tmp.292 %tmp.293(%tmp.295, %tmp.297);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 93 8 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 91 8 ]
         %tmp.298 = lgetv %dc;
-        symbol [ dc %tmp.298 93 8 10 ];
-        symbol [ drawText %tmp.299 93 11 19 ];
+        symbol [ dc %tmp.298 91 8 10 ];
+        symbol [ drawText %tmp.299 91 11 19 ];
         %tmp.299 = getv function %tmp.298 :drawText;
-        %tmp.300 = lgetv %cx.3;
-        symbol [ cx %tmp.300 93 20 22 ];
-        %tmp.301 = lgetv %y.31;
-        symbol [ y %tmp.301 93 24 25 ];
-        %tmp.302 = lgetv %bigFont.11;
-        symbol [ bigFont %tmp.302 93 27 34 ];
-        %tmp.303 = lgetv %densStr.12;
-        symbol [ densStr %tmp.303 93 36 43 ];
-        %tmp.304 = lgetv %jc.4;
-        symbol [ jc %tmp.304 93 45 47 ];
-        invoke %tmp.298 %tmp.299(%tmp.300, %tmp.301, %tmp.302, %tmp.303, %tmp.304);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 95 8 ]
-        symbol [ WatchUi %tmp.305 95 8 15 ];
-        %tmp.305 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.306 95 16 29 ];
-        %tmp.306 = getv function %tmp.305 :requestUpdate;
-        invoke %tmp.305 %tmp.306();
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_96_4_stop:
+        %tmp.300 = lgetv %cx.6;
+        symbol [ cx %tmp.300 91 20 22 ];
+        %tmp.301 = lgetv %y.34;
+        symbol [ y %tmp.301 91 24 25 ];
+        symbol [ Graphics %tmp.302 91 27 35 ];
+        %tmp.302 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.303 91 36 46 ];
+        %tmp.303 = getv %tmp.302 :FONT_SMALL;
+        %tmp.304 = lgetv %label.16;
+        symbol [ label %tmp.304 91 48 53 ];
+        %tmp.305 = lgetv %jc.7;
+        symbol [ jc %tmp.305 91 55 57 ];
+        invoke %tmp.298 %tmp.299(%tmp.300, %tmp.301, %tmp.303, %tmp.304, %tmp.305);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 92 8 ]
+        %tmp.306 = lgetv %y.34;
+        symbol [ y %tmp.306 92 8 9 ];
+        %tmp.307 = 30;
+        %tmp.308 = add %tmp.306 %tmp.307;
+        lputv %y.34 %tmp.308;
+        symbol [ y %y.34 92 8 9 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 93 8 ]
+        %tmp.309 = lgetv %dc;
+        symbol [ dc %tmp.309 93 8 10 ];
+        symbol [ setColor %tmp.310 93 11 19 ];
+        %tmp.310 = getv function %tmp.309 :setColor;
+        symbol [ Graphics %tmp.311 93 20 28 ];
+        %tmp.311 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.312 93 29 40 ];
+        %tmp.312 = getv %tmp.311 :COLOR_WHITE;
+        symbol [ Graphics %tmp.313 93 42 50 ];
+        %tmp.313 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.314 93 51 68 ];
+        %tmp.314 = getv %tmp.313 :COLOR_TRANSPARENT;
+        invoke %tmp.309 %tmp.310(%tmp.312, %tmp.314);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 94 8 ]
+        %tmp.315 = lgetv %dc;
+        symbol [ dc %tmp.315 94 8 10 ];
+        symbol [ drawText %tmp.316 94 11 19 ];
+        %tmp.316 = getv function %tmp.315 :drawText;
+        %tmp.317 = lgetv %cx.6;
+        symbol [ cx %tmp.317 94 20 22 ];
+        %tmp.318 = lgetv %y.34;
+        symbol [ y %tmp.318 94 24 25 ];
+        %tmp.319 = lgetv %bigFont.14;
+        symbol [ bigFont %tmp.319 94 27 34 ];
+        %tmp.320 = lgetv %densStr.15;
+        symbol [ densStr %tmp.320 94 36 43 ];
+        %tmp.321 = lgetv %jc.7;
+        symbol [ jc %tmp.321 94 45 47 ];
+        invoke %tmp.315 %tmp.316(%tmp.317, %tmp.318, %tmp.319, %tmp.320, %tmp.321);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 96 8 ]
+        symbol [ WatchUi %tmp.322 96 8 15 ];
+        %tmp.322 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.323 96 16 29 ];
+        %tmp.323 = getv function %tmp.322 :requestUpdate;
+        invoke %tmp.322 %tmp.323();
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_17_40_97_4_stop:
     }
 }
-[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 99; @symbol_classdef = [VFRQuickInfoDensityAltDelegate,99,6,36]; @symbol_extends<0> = [WatchUi,99,45,52]; @symbol_extends<1> = [BehaviorDelegate,99,53,69]; ]
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 100; @symbol_classdef = [VFRQuickInfoDensityAltDelegate,100,6,36]; @symbol_extends<0> = [WatchUi,100,45,52]; @symbol_extends<1> = [BehaviorDelegate,100,53,69]; ]
 class VFRQuickInfoDensityAltDelegate extends WatchUi.BehaviorDelegate {
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 99; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 100; ]
     <init> {
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 99; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 100; ]
     static
     <init> {
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 100; @position = 16; @symbol_vardef = [_main,100,16,21]; @symbol_type<0> = [VFRStopWatchView,100,25,41]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 101; @position = 16; @symbol_vardef = [_main,101,16,21]; @symbol_type<0> = [VFRStopWatchView,101,25,41]; ]
     private
     var _main as VFRStopWatchView;
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 101; @symbol_functiondef = [initialize,101,13,23]; @symbol_param<0> = [main,101,24,28]; @symbol_param<0>_type<0> = [VFRStopWatchView,101,32,48]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 102; @symbol_functiondef = [initialize,102,13,23]; @symbol_param<0> = [main,102,24,28]; @symbol_param<0>_type<0> = [VFRStopWatchView,102,32,48]; ]
     function initialize(main as VFRStopWatchView) as Void {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_101_50_104_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 102 8 ]
-        symbol [ BehaviorDelegate %tmp.2 102 8 24 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_102_50_105_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 103 8 ]
+        symbol [ BehaviorDelegate %tmp.2 103 8 24 ];
         %tmp.2 = getv ? :BehaviorDelegate;
-        symbol [ initialize %tmp.3 102 25 35 ];
+        symbol [ initialize %tmp.3 103 25 35 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 103 8 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 104 8 ]
         %tmp.4 = lgetv %main;
-        symbol [ main %tmp.4 103 16 20 ];
-        symbol [ _main ? 103 8 13 ];
+        symbol [ main %tmp.4 104 16 20 ];
+        symbol [ _main ? 104 8 13 ];
         putv self :_main %tmp.4;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_101_50_104_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_102_50_105_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 105; @symbol_functiondef = [onBack,105,13,19]; @symbol_return<0> = [Boolean,105,25,32]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 106; @symbol_functiondef = [onBack,106,13,19]; @symbol_return<0> = [Boolean,106,25,32]; ]
     function onBack() as Boolean {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_105_33_109_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 106 8 ]
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_8_106_58_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_8_106_58_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_8_106_58_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_8_106_58_finally;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_8_106_58_beginTry:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_12_106_44_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 106 14 ]
-        symbol [ _main %tmp.1 106 14 19 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_33_110_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 107 8 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_8_107_58_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_8_107_58_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_8_107_58_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_8_107_58_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_8_107_58_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_12_107_44_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 107 14 ]
+        symbol [ _main %tmp.1 107 14 19 ];
         %tmp.1 = getv self :_main;
         %tmp.2 = false;
-        symbol [ quickInfoShown ? 106 20 34 ];
+        symbol [ quickInfoShown ? 107 20 34 ];
         putv %tmp.1 :quickInfoShown %tmp.2;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_12_106_44_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_8_106_58_endTry:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_8_106_58_finally;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_8_106_58_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_8_106_58_catch:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_12_107_44_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_8_107_58_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_8_107_58_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_8_107_58_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_8_107_58_catch:
         %tmp.3 = exception;
         push %tmp.3;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 106 46 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_8_106_58_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_46_106_58_end" ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 107 46 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_8_107_58_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_46_107_58_end" ]
         %ex.1 = local;
-        symbol [ ex %ex.1 106 53 55 ];
+        symbol [ ex %ex.1 107 53 55 ];
         %tmp.4 = dup %tmp.3;
         lputv %ex.1 %tmp.4;
-        symbol [ ex %ex.1 106 53 55 ];
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_8_106_58_finally;
+        symbol [ ex %ex.1 107 53 55 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_8_107_58_finally;
         pop;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_8_106_58_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_46_106_58_end:
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_8_106_58_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_46_106_58_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_46_106_58_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_8_106_58_finally;
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_8_106_58_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_8_107_58_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_46_107_58_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_8_107_58_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_46_107_58_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_46_107_58_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_8_107_58_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_8_107_58_finally;
         throw %tmp.3;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_8_106_58_finally:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_8_107_58_finally:
         jsrret;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_8_106_58_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 107 8 ]
-        symbol [ WatchUi %tmp.5 107 8 15 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_107_8_107_58_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 108 8 ]
+        symbol [ WatchUi %tmp.5 108 8 15 ];
         %tmp.5 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.6 107 16 23 ];
+        symbol [ popView %tmp.6 108 16 23 ];
         %tmp.6 = getv function %tmp.5 :popView;
-        symbol [ WatchUi %tmp.7 107 24 31 ];
+        symbol [ WatchUi %tmp.7 108 24 31 ];
         %tmp.7 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_DOWN %tmp.8 107 32 42 ];
+        symbol [ SLIDE_DOWN %tmp.8 108 32 42 ];
         %tmp.8 = getv %tmp.7 :SLIDE_DOWN;
         invoke %tmp.5 %tmp.6(%tmp.8);
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 108 8 ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 109 8 ]
         %tmp.9 = true;
         ret %tmp.9;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_105_33_109_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_106_33_110_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 110; @symbol_functiondef = [onSelect,110,13,21]; @symbol_return<0> = [Boolean,110,27,34]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 111; @symbol_functiondef = [onSelect,111,13,21]; @symbol_return<0> = [Boolean,111,27,34]; ]
     function onSelect() as Boolean {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_110_35_110_54_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 110 37 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_111_35_111_54_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 111 37 ]
         %tmp.1 = self;
-        symbol [ onBack %tmp.2 110 44 50 ];
+        symbol [ onBack %tmp.2 111 44 50 ];
         %tmp.2 = getv function %tmp.1 :onBack;
         %tmp.3 = invoke %tmp.1 %tmp.2();
         ret %tmp.3;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_110_35_110_54_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_111_35_111_54_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 111; @symbol_functiondef = [onKeyPressed,111,13,25]; @symbol_param<0> = [keyEvent,111,26,34]; @symbol_param<0>_type<0> = [WatchUi,111,38,45]; @symbol_param<0>_type<1> = [KeyEvent,111,46,54]; @symbol_return<0> = [Boolean,111,59,66]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 112; @symbol_functiondef = [onKeyPressed,112,13,25]; @symbol_param<0> = [keyEvent,112,26,34]; @symbol_param<0>_type<0> = [WatchUi,112,38,45]; @symbol_param<0>_type<1> = [KeyEvent,112,46,54]; @symbol_return<0> = [Boolean,112,59,66]; ]
     function onKeyPressed(keyEvent as WatchUi.KeyEvent) as Boolean {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_111_67_111_83_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 111 69 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_112_67_112_83_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 112 69 ]
         %tmp.1 = false;
         ret %tmp.1;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_111_67_111_83_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_112_67_112_83_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 112; @symbol_functiondef = [onKeyReleased,112,13,26]; @symbol_param<0> = [keyEvent,112,27,35]; @symbol_param<0>_type<0> = [WatchUi,112,39,46]; @symbol_param<0>_type<1> = [KeyEvent,112,47,55]; @symbol_return<0> = [Boolean,112,60,67]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 113; @symbol_functiondef = [onKeyReleased,113,13,26]; @symbol_param<0> = [keyEvent,113,27,35]; @symbol_param<0>_type<0> = [WatchUi,113,39,46]; @symbol_param<0>_type<1> = [KeyEvent,113,47,55]; @symbol_return<0> = [Boolean,113,60,67]; ]
     function onKeyReleased(keyEvent as WatchUi.KeyEvent) as Boolean {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_112_68_115_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 113 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_113_8_113_66_if_stmt:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_113_68_116_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 114 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_114_8_114_66_if_stmt:
         %tmp.1 = lgetv %keyEvent;
-        symbol [ keyEvent %tmp.1 113 12 20 ];
-        symbol [ getKey %tmp.2 113 21 27 ];
+        symbol [ keyEvent %tmp.1 114 12 20 ];
+        symbol [ getKey %tmp.2 114 21 27 ];
         %tmp.2 = getv function %tmp.1 :getKey;
         %tmp.3 = invoke %tmp.1 %tmp.2();
-        symbol [ WatchUi %tmp.4 113 33 40 ];
+        symbol [ WatchUi %tmp.4 114 33 40 ];
         %tmp.4 = getm $.Toybox.WatchUi;
-        symbol [ KEY_DOWN %tmp.5 113 41 49 ];
+        symbol [ KEY_DOWN %tmp.5 114 41 49 ];
         %tmp.5 = getv %tmp.4 :KEY_DOWN;
         %tmp.6 = eq %tmp.3 %tmp.5;
-        bf %tmp.6 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_113_8_113_66_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_113_8_113_66_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_113_51_113_66_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 113 53 ]
+        bf %tmp.6 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_114_8_114_66_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_114_8_114_66_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_114_51_114_66_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 114 53 ]
         %tmp.7 = true;
         ret %tmp.7;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_113_51_113_66_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_113_8_113_66_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_113_8_113_66_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 114 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_114_51_114_66_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_114_8_114_66_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_114_8_114_66_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 115 8 ]
         %tmp.8 = false;
         ret %tmp.8;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_112_68_115_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_113_68_116_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 116; @symbol_functiondef = [onNextPage,116,13,23]; @symbol_return<0> = [Boolean,116,29,36]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 117; @symbol_functiondef = [onNextPage,117,13,23]; @symbol_return<0> = [Boolean,117,29,36]; ]
     function onNextPage() as Boolean {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_116_37_125_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 118 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_118_8_123_8_if_stmt:
-        symbol [ WatchUi %tmp.1 118 12 19 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_117_37_126_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 119 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_8_124_8_if_stmt:
+        symbol [ WatchUi %tmp.1 119 12 19 ];
         %tmp.1 = getm $.Toybox.WatchUi;
         %tmp.3 = const :MapView;
-        symbol [ MapView %tmp.3 118 25 32 const ];
+        symbol [ MapView %tmp.3 119 25 32 const ];
         %tmp.4 = canhazplz %tmp.1 %tmp.3;
-        bf %tmp.4 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_118_8_123_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_118_8_123_8_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_118_34_123_8_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 119 12 ]
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_12_122_27_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_12_122_27_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_12_122_27_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_12_122_27_finally;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_12_122_27_beginTry:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_16_122_12_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 120 16 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_16_122_12_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_16_122_12_stop" ]
+        bf %tmp.4 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_8_124_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_8_124_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_34_124_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 120 12 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_12_123_27_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_12_123_27_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_12_123_27_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_12_123_27_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_12_123_27_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_16_123_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 121 16 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_16_123_12_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_16_123_12_stop" ]
         %mapView.1 = local;
-        symbol [ mapView %mapView.1 120 20 27 ];
-        symbol [ VFRMapView %tmp.8 120 34 44 ];
+        symbol [ mapView %mapView.1 121 20 27 ];
+        symbol [ VFRMapView %tmp.8 121 34 44 ];
         %tmp.8 = getv ? :VFRMapView;
-        symbol [ _main %tmp.10 120 45 50 ];
+        symbol [ _main %tmp.10 121 45 50 ];
         %tmp.10 = getv ? :_main;
         %tmp.5 = newc %tmp.8 (%tmp.10);
         lputv %mapView.1 %tmp.5;
-        symbol [ mapView %mapView.1 120 20 27 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 121 16 ]
-        symbol [ WatchUi %tmp.11 121 16 23 ];
+        symbol [ mapView %mapView.1 121 20 27 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 122 16 ]
+        symbol [ WatchUi %tmp.11 122 16 23 ];
         %tmp.11 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.12 121 24 32 ];
+        symbol [ pushView %tmp.12 122 24 32 ];
         %tmp.12 = getv function %tmp.11 :pushView;
         %tmp.13 = lgetv %mapView.1;
-        symbol [ mapView %tmp.13 121 33 40 ];
-        symbol [ VFRMapDelegate %tmp.17 121 46 60 ];
+        symbol [ mapView %tmp.13 122 33 40 ];
+        symbol [ VFRMapDelegate %tmp.17 122 46 60 ];
         %tmp.17 = getv ? :VFRMapDelegate;
-        symbol [ _main %tmp.19 121 61 66 ];
+        symbol [ _main %tmp.19 122 61 66 ];
         %tmp.19 = getv ? :_main;
         %tmp.20 = lgetv %mapView.1;
-        symbol [ mapView %tmp.20 121 68 75 ];
+        symbol [ mapView %tmp.20 122 68 75 ];
         %tmp.14 = newc %tmp.17 (%tmp.19, %tmp.20);
-        symbol [ WatchUi %tmp.21 121 78 85 ];
+        symbol [ WatchUi %tmp.21 122 78 85 ];
         %tmp.21 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_IMMEDIATE %tmp.22 121 86 101 ];
+        symbol [ SLIDE_IMMEDIATE %tmp.22 122 86 101 ];
         %tmp.22 = getv %tmp.21 :SLIDE_IMMEDIATE;
         invoke %tmp.11 %tmp.12(%tmp.13, %tmp.14, %tmp.22);
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_16_122_12_stop:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_12_122_27_endTry:
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_12_122_27_finally;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_12_122_27_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_12_122_27_catch:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_16_123_12_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_12_123_27_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_12_123_27_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_12_123_27_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_12_123_27_catch:
         %tmp.23 = exception;
         push %tmp.23;
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 122 14 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_12_122_27_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_122_14_122_27_end" ]
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 123 14 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_12_123_27_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_123_14_123_27_end" ]
         %ex.2 = local;
-        symbol [ ex %ex.2 122 21 23 ];
+        symbol [ ex %ex.2 123 21 23 ];
         %tmp.24 = dup %tmp.23;
         lputv %ex.2 %tmp.24;
-        symbol [ ex %ex.2 122 21 23 ];
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_12_122_27_finally;
+        symbol [ ex %ex.2 123 21 23 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_12_123_27_finally;
         pop;
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_12_122_27_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_122_14_122_27_end:
-        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_12_122_27_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_122_14_122_27_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_122_14_122_27_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_12_122_27_finally;
-        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_12_122_27_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_12_123_27_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_123_14_123_27_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_12_123_27_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_123_14_123_27_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_123_14_123_27_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_12_123_27_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_12_123_27_finally;
         throw %tmp.23;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_12_122_27_finally:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_12_123_27_finally:
         jsrret;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_12_122_27_end:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_118_34_123_8_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_118_8_123_8_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_118_8_123_8_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 124 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_120_12_123_27_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_34_124_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_8_124_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_119_8_124_8_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc" 125 8 ]
         %tmp.25 = true;
         ret %tmp.25;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_116_37_125_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoDensityAlt_mc_117_37_126_4_stop:
     }
 }
 [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoDensityAlt.mc"; @line = 1; ]

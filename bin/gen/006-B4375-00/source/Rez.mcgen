@@ -24,6 +24,7 @@ module Rez {
                 addItem((WatchUi.loadResource($.Rez.Strings.menu_label_1) as String), :item_1);
                 addItem((WatchUi.loadResource($.Rez.Strings.menu_label_2) as String), :item_2);
                 addItem((WatchUi.loadResource($.Rez.Strings.menu_label_3) as String), :item_3);
+                addItem((WatchUi.loadResource($.Rez.Strings.menu_label_4) as String), :item_4);
             }
         }
     } // Menus
@@ -44,6 +45,7 @@ module Rez {
         (:initialized) var SettingBezelFontScaleTitle as ResourceId;
         (:initialized) var menu_label_3 as ResourceId;
         (:initialized) var SettingBezelOffsetGSTitle as ResourceId;
+        (:initialized) var menu_label_4 as ResourceId;
         (:initialized) var menu_label_1 as ResourceId;
         (:initialized) var SettingTimerTitle as ResourceId;
         (:initialized) var menu_label_2 as ResourceId;

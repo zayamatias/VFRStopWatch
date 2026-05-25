@@ -99,6 +99,7 @@ class VFRStopWatchView extends WatchUi.View {
     var tendencyUntil as Number = 0;            // System.getTimer() until which arrow is shown
     var tendencyVibrateCooldownMs as Number = 5000; // minimum ms between tendency vibrations
     var lastTendencyVibrateAt as Number = 0;
+    var vertSpeedFpm as Float = 0.0;            // current vertical speed in feet per minute
     // Periodic backup gate (ms)
     var lastBackupMillis as Number = 0;
     var BACKUP_INTERVAL_MS as Number = 30000; // 30s
@@ -258,6 +259,8 @@ class VFRStopWatchView extends WatchUi.View {
                             var dtMs = now - lastAltitudeMillis;
                             if (dtMs > 0) {
                                 var vspd = (alt - lastAltitudeMeters) / (dtMs.toFloat() / 1000.0); // m/s
+                                // Store vertical speed in FPM (1 m/s = 196.85 ft/min)
+                                vertSpeedFpm = vspd * 196.85;
                                 var newTendency = 0;
                                 if (vspd >= VERT_SPEED_THRESHOLD_MPS) { newTendency = 1; }
                                 else if (vspd <= -VERT_SPEED_THRESHOLD_MPS) { newTendency = -1; }
@@ -275,6 +278,13 @@ class VFRStopWatchView extends WatchUi.View {
                         }
                         lastAltitudeMeters = alt;
                         lastAltitudeMillis = now;
+                        // Keep app-level live state fresh for cross-view telemetry
+                        try {
+                            var la = getApp();
+                            la.liveAltFt = Math.round(alt * 3.28084).toNumber();
+                            la.liveVsFpm = (Math.round(vertSpeedFpm / 10.0).toNumber()) * 10;
+                            la.liveGpsQuality = gpsQuality;
+                        } catch (le) {}
                     }
                     // Update transition flag using pressure if available
                     try {
@@ -283,8 +293,11 @@ class VFRStopWatchView extends WatchUi.View {
                             if (sInfo.pressure != null) { sPressure = sInfo.pressure as Float; }
                         }
                         if (sPressure != null) {
-                            var p = (sPressure as Float).toFloat();
-                            var paFt = 145366.45 * (1.0 - Math.pow((p / 1013.25), 0.190284));
+                            // Convert raw sensor pressure (Pa) to hPa before applying
+                            // the pressure-altitude formula — Sensor.getInfo().pressure is
+                            // in Pascals (101325 at sea level), not hPa (1013.25).
+                            var hPa = VFRAvionicsData.pressureToHpa((sPressure as Float));
+                            var paFt = 145366.45 * (1.0 - Math.pow((hPa / 1013.25), 0.190284));
                             if (!transitionActive && paFt >= transitionAltitudeFt) {
                                 transitionActive = true;
                             } else if (transitionActive && paFt <= (transitionAltitudeFt - transitionExitOffsetFt)) {
@@ -312,6 +325,7 @@ class VFRStopWatchView extends WatchUi.View {
             autoStartEnabled = false; // disarm auto-start once running
             checkpointActive = false;
             startTime = System.getTimer() - elapsed;
+            try { var la = getApp(); la.liveRunning = true; la.liveStartTime = startTime; } catch (le) {}
             // record trip start wall-clock times
             tripStartLocal = System.getClockTime();
             tripStartUtcMoment = Time.now();
@@ -364,6 +378,7 @@ class VFRStopWatchView extends WatchUi.View {
         }
         running = false;
         elapsed = 0;
+        try { var la = getApp(); la.liveRunning = false; la.liveBaseElapsed = 0; la.liveStartTime = 0; } catch (le) {}
         autoStartEnabled = true; // re-arm auto-start after reset
         totalDistanceM = 0.0;
         maxAltitudeM = 0.0;
@@ -422,7 +437,19 @@ class VFRStopWatchView extends WatchUi.View {
         bezelFrameId = (bezelFrameId as Number) + 1;
         // Drive phone comms retry logic
         var comms = getApp().getComms();
-        if (comms != null) { comms.tick(now); }
+        if (comms != null) {
+            comms.tick(now);
+            // Consume a pending trip clear
+            if (comms.pendingTripClear) {
+                comms.pendingTripClear = false;
+                getApp().getTrip().clear();
+            }
+            // Consume a pending trip load
+            if (comms.pendingTrip != null) {
+                getApp().getTrip().loadFromMessage(comms.pendingTrip as Dictionary);
+                comms.pendingTrip = null;
+            }
+        }
         // Single Activity.Info fetch — shared by GPS accumulation, HR and auto-start
         var actInfo = Activity.getActivityInfo();
 
@@ -547,6 +574,28 @@ class VFRStopWatchView extends WatchUi.View {
             hrFlashOn = false;
         }
 
+        // --- Update flight plan navigation (bearing/distance/ETE) ---
+        var trip = getApp().getTrip();
+        if (trip.active && actInfo != null) {
+            try {
+                var pos = Position.getInfo();
+                if (pos != null && pos.accuracy != null && (pos.accuracy as Number) >= 3
+                        && pos.position != null) {
+                    var degs = pos.position.toDegrees();
+                    if (degs != null && degs.size() >= 2) {
+                        var gsKt = 0.0;
+                        if (actInfo.currentSpeed != null) {
+                            gsKt = ((actInfo.currentSpeed as Float) * 1.94384).toFloat();
+                        }
+                        trip.updateFromPosition(
+                            (degs[0] as Double).toFloat(),
+                            (degs[1] as Double).toFloat(),
+                            gsKt);
+                    }
+                }
+            } catch (ex) {}
+        }
+
         // --- Compute sub-timer elapsed if running ---
         var subMs = subTimerElapsed;
         if (subTimerState == 1) {
@@ -594,7 +643,8 @@ class VFRStopWatchView extends WatchUi.View {
         }
 
         var totalSec = displayMs / 1000;
-        var minutes  = totalSec / 60;
+        var hours    = totalSec / 3600;
+        var minutes  = (totalSec % 3600) / 60;
         var seconds  = totalSec % 60;
         var mStr = minutes < 10 ? "0" + minutes.toString() : minutes.toString();
         var sStr = seconds < 10 ? "0" + seconds.toString() : seconds.toString();
@@ -609,6 +659,15 @@ class VFRStopWatchView extends WatchUi.View {
         var radius = (minWh / 2) - margin;
 
         drawBezelBackground(dc);
+
+        // --- FPL indicator (shown when a flight plan is loaded) ---
+        var tripFpl = getApp().getTrip();
+        if (tripFpl.active) {
+            var wpLbl = "FPL " + (tripFpl.activeIdx + 1).toString() + "/" + tripFpl.count.toString();
+            dc.setColor(0x00FFFF, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(cx, cy - (radius * 0.70).toNumber(), Graphics.FONT_TINY, wpLbl,
+                Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        }
 
         // --- Centre: large chrono or clock ---
         var chronoFont = (roundedFontLarge != null) ? roundedFontLarge : Graphics.FONT_NUMBER_HOT;
@@ -637,6 +696,25 @@ class VFRStopWatchView extends WatchUi.View {
         } else {
             dc.setColor(timerColor, Graphics.COLOR_TRANSPARENT);
             dc.drawText(cx, cy, chronoFont, mStr + ":" + sStr,
+                Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+            // Hours indicator above timer (shown only when elapsed >= 1 hour)
+            if (hours >= 1) {
+                var hrsFont = (roundedFontSmall != null) ? roundedFontSmall : Graphics.FONT_SMALL;
+                dc.setColor(timerColor, Graphics.COLOR_TRANSPARENT);
+                dc.drawText(cx, cy - (radius * 0.48).toNumber(), hrsFont,
+                    hours.toString() + "H",
+                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+            }
+        }
+
+        // V/S display below timer (when recent altitude data is available)
+        if (lastAltitudeMillis != 0 && (now - lastAltitudeMillis) < 10000) {
+            var fpmRounded = (Math.round(vertSpeedFpm / 10.0) * 10.0).toNumber();
+            var vsSign = fpmRounded >= 0 ? "+" : "";
+            var vsStr = "V/S " + vsSign + fpmRounded.toString() + "fpm";
+            var vsFont = (roundedFontSmall != null) ? roundedFontSmall : Graphics.FONT_SMALL;
+            dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(cx, cy + (radius * 0.48).toNumber(), vsFont, vsStr,
                 Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         }
 
@@ -743,11 +821,12 @@ class VFRStopWatchView extends WatchUi.View {
             }
         } catch (ex) { }
 
-        // Ground speed (knots)
+        // Ground speed (knots) — use Math.round to avoid truncation error
+        // (e.g. 30 kt = 15.43 m/s → 29.99 kt rounds to 30, not truncates to 29)
         try {
             var actInfoLocal = Activity.getActivityInfo();
             if (actInfoLocal != null && actInfoLocal.currentSpeed != null) {
-                gsStr = ((actInfoLocal.currentSpeed as Float) * 1.94384).toNumber().toString();
+                gsStr = Math.round((actInfoLocal.currentSpeed as Float) * 1.94384).toNumber().toString();
             }
         } catch (ex) { }
 
@@ -758,14 +837,19 @@ class VFRStopWatchView extends WatchUi.View {
 
         // Altitude from sensor
         try {
-            var altFtObj = VFRAvionicsData.readAltitudeFeet();
-            if (altFtObj != null) {
-                var altFt = altFtObj as Number;
-                if (transitionActive) {
-                    var fl = Math.round(altFt / 100.0).toNumber();
+            if (transitionActive) {
+                // Above transition: Flight Level from pressure altitude (1013.25 hPa reference),
+                // NOT from QNH altitude — the two differ whenever local QNH ≠ 1013.
+                var paFtObj = VFRAvionicsData.readPressureAltitudeFeet();
+                if (paFtObj != null) {
+                    var fl = Math.round((paFtObj as Number).toFloat() / 100.0).toNumber();
                     altStr = "FL" + fl.toString();
-                } else {
-                    altStr = altFt.toString();
+                }
+            } else {
+                // Below transition: QNH altitude from barometric sensor
+                var altFtObj = VFRAvionicsData.readAltitudeFeet();
+                if (altFtObj != null) {
+                    altStr = (altFtObj as Number).toString();
                 }
             }
         } catch (ae) { System.println("Altitude error: " + ae.getErrorMessage()); }
@@ -798,7 +882,7 @@ class VFRStopWatchView extends WatchUi.View {
         var angleQNH = 315.0;
         var angleALT = 225.0;
 
-        var qnhDisplay = VFRAvionicsData.formatQnh(qnhInfo);
+        var qnhDisplay = transitionActive ? "1013" : VFRAvionicsData.formatQnh(qnhInfo);
 
         // Compute a dedicated text radius (visual centroid of the annulus).
         // Start with the mathematical midpoint but allow small per-quadrant
@@ -1259,26 +1343,24 @@ class VFRStopWatchView extends WatchUi.View {
         var normalizedAngle = angleDeg;
         while (normalizedAngle < 0.0) { normalizedAngle += 360.0; }
         while (normalizedAngle >= 360.0) { normalizedAngle -= 360.0; }
-        var angleIndex = Math.round(normalizedAngle / 5.0).toNumber();
-        if (angleIndex >= 72) { angleIndex = 0; }
+        // Atlas uses 15-degree steps (24 angles per character)
+        var angleIndex = Math.round(normalizedAngle / 15.0).toNumber();
+        if (angleIndex >= 24) { angleIndex = 0; }
 
-        var atlasIndex = charIndex * 72 + angleIndex;
-        var cellSize = 75;
+        var atlasIndex = charIndex * 24 + angleIndex;
+        // Cell size matches the pre-baked atlas (24×24, RGBA with alpha transparency — no transform, no tintColor)
+        var cellSize = 24;
         var sourceX = (atlasIndex % 16) * cellSize;
         var sourceY = (atlasIndex / 16) * cellSize;
-        var scale = (bezelFontScale.toFloat() / 100.0) * 0.58;
-        var targetX = (px.toFloat() - (cellSize.toFloat() * scale / 2.0)).toNumber();
-        var targetY = (py.toFloat() - (cellSize.toFloat() * scale / 2.0)).toNumber();
-        var xform = new Graphics.AffineTransform();
-        xform.setToScale(scale, scale);
+        var targetX = px - cellSize / 2;
+        var targetY = py - cellSize / 2;
         try {
             dc.drawBitmap2(targetX, targetY, (cachedBezelAtlas as WatchUi.BitmapResource), {
                 :bitmapX => sourceX,
                 :bitmapY => sourceY,
                 :bitmapWidth => cellSize,
                 :bitmapHeight => cellSize,
-                :tintColor => color,
-                :transform => xform
+                :tintColor => color
             });
             return true;
         } catch (dx) {
@@ -1290,7 +1372,9 @@ class VFRStopWatchView extends WatchUi.View {
     function drawLabelInQuadrant(dc as Dc, cx as Number, cy as Number,
             quadAngle as Float, prefix as String, suffix as String,
             color as Number, radiusCenter as Float, reverseChars as Boolean) as Void {
-        if (bezelLblFont == null) { return; }
+        // Allow rendering if atlas is available even when vector font is absent
+        var hasAtlas = bezelUseAtlas && !bezelAtlasUnavailable;
+        if (!hasAtlas && bezelLblFont == null) { return; }
         ensureBezelSlotGeometry(cx, cy, radiusCenter);
 
         // ── 1. Build label string, centre within 12 slots ─────────────────
@@ -1416,6 +1500,7 @@ class VFRStopWatchView extends WatchUi.View {
         if (!running) { return; }
         running = false;
         elapsed = System.getTimer() - startTime;
+        try { var la = getApp(); la.liveRunning = false; la.liveBaseElapsed = elapsed; } catch (le) {}
         tripEndUtcMoment = Time.now();
         try {
             var einfo = Gregorian.utcInfo((tripEndUtcMoment as Time.Moment), Time.FORMAT_SHORT);
@@ -1508,6 +1593,9 @@ class VFRStopWatchView extends WatchUi.View {
             v = Application.Properties.getValue("vfr_backup_subTimerState"); if (v != null) { subTimerState = v as Number; }
             v = Application.Properties.getValue("vfr_backup_subTimerStart"); if (v != null) { subTimerStart = v as Number; }
             v = Application.Properties.getValue("vfr_backup_subTimerElapsed"); if (v != null) { subTimerElapsed = v as Number; }
+            // If sub-timer was running when the app was killed, freeze it so we
+            // don't compute `now - staleStartTime` from a previous boot session.
+            if (subTimerState == 1) { subTimerState = 2; }
             v = Application.Properties.getValue("vfr_backup_tripStartUtcHour"); if (v != null) { tripStartUtcHour = v as Number; }
             v = Application.Properties.getValue("vfr_backup_tripStartUtcMin"); if (v != null) { tripStartUtcMin = v as Number; }
             v = Application.Properties.getValue("vfr_backup_tripEndUtcHour"); if (v != null) { tripEndUtcHour = v as Number; }
@@ -1681,6 +1769,8 @@ class VFRQuickInfoView extends WatchUi.View {
     function onLayout(dc as Dc) as Void { }
 
     function onUpdate(dc as Dc) as Void {
+        var now = System.getTimer();
+        try { var c = getApp().getComms(); if (c != null) { c.tick(now); } } catch (ce) {}
         var w  = dc.getWidth();
         var h  = dc.getHeight();
         var cx = w / 2;
@@ -1784,6 +1874,8 @@ class VFRQuickInfoHdgGsView extends WatchUi.View {
     function onShow() as Void { WatchUi.requestUpdate(); }
     function onLayout(dc as Dc) as Void { }
     function onUpdate(dc as Dc) as Void {
+        var now = System.getTimer();
+        try { var c = getApp().getComms(); if (c != null) { c.tick(now); } } catch (ce) {}
         var w = dc.getWidth();
         var h = dc.getHeight();
         var cx = w / 2;
@@ -1832,7 +1924,7 @@ class VFRQuickInfoHdgGsView extends WatchUi.View {
         try {
             var actInfoLocal = Activity.getActivityInfo();
             if (actInfoLocal != null && actInfoLocal.currentSpeed != null) {
-                gsStr = ((actInfoLocal.currentSpeed as Float) * 1.94384).toNumber().toString();
+                gsStr = Math.round((actInfoLocal.currentSpeed as Float) * 1.94384).toNumber().toString();
             }
             } catch (ex) {
             }

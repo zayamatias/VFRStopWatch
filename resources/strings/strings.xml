@@ -6,6 +6,7 @@
     <string id="menu_label_1">Start/Stop</string>
     <string id="menu_label_2">Reset</string>
     <string id="menu_label_3">Settings</string>
+    <string id="menu_label_4">Flight Plan</string>
 
     <!-- Settings labels -->
     <string id="SettingGpsModeTitle">GPS Mode</string>

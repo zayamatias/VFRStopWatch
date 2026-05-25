@@ -1,0 +1,138 @@
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc"; @line = 9; @symbol_classdef = [VFRTripDelegate,9,6,21]; @symbol_extends<0> = [WatchUi,9,30,37]; @symbol_extends<1> = [BehaviorDelegate,9,38,54]; ]
+class VFRTripDelegate extends WatchUi.BehaviorDelegate {
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc"; @line = 9; ]
+    <init> {
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc"; @line = 9; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc"; @line = 11; @symbol_functiondef = [initialize,11,13,23]; ]
+    function initialize() as Void {
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_11_26_13_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc" 12 8 ]
+        symbol [ BehaviorDelegate %tmp.2 12 8 24 ];
+        %tmp.2 = getv ? :BehaviorDelegate;
+        symbol [ initialize %tmp.3 12 25 35 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_11_26_13_4_stop:
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc"; @line = 15; @symbol_functiondef = [onBack,15,13,19]; @symbol_return<0> = [Boolean,15,25,32]; ]
+    function onBack() as Boolean {
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_15_33_18_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc" 16 8 ]
+        symbol [ WatchUi %tmp.1 16 8 15 ];
+        %tmp.1 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.2 16 16 23 ];
+        %tmp.2 = getv function %tmp.1 :popView;
+        symbol [ WatchUi %tmp.3 16 24 31 ];
+        %tmp.3 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.4 16 32 43 ];
+        %tmp.4 = getv %tmp.3 :SLIDE_RIGHT;
+        invoke %tmp.1 %tmp.2(%tmp.4);
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc" 17 8 ]
+        %tmp.5 = true;
+        ret %tmp.5;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_15_33_18_4_stop:
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc"; @line = 20; @symbol_functiondef = [onPreviousPage,20,13,27]; @symbol_return<0> = [Boolean,20,33,40]; ]
+    function onPreviousPage() as Boolean {
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_20_41_27_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc" 21 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_20_41_27_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_20_41_27_4_stop" ]
+        %trip.1 = local;
+        symbol [ trip %trip.1 21 12 16 ];
+        %tmp.1 = self;
+        symbol [ getApp %tmp.2 21 19 25 ];
+        %tmp.2 = getv function %tmp.1 :getApp;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        symbol [ getTrip %tmp.4 21 28 35 ];
+        %tmp.4 = getv function %tmp.3 :getTrip;
+        %tmp.5 = invoke %tmp.3 %tmp.4();
+        lputv %trip.1 %tmp.5;
+        symbol [ trip %trip.1 21 12 16 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc" 22 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_22_8_25_8_if_stmt:
+        %tmp.6 = lgetv %trip.1;
+        symbol [ trip %tmp.6 22 12 16 ];
+        %tmp.7 = null;
+        %tmp.8 = ne %tmp.6 %tmp.7;
+        bf %tmp.8 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_22_8_25_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_22_8_25_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_22_26_25_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc" 23 12 ]
+        %tmp.9 = lgetv %trip.1;
+        symbol [ trip %tmp.9 23 12 16 ];
+        %tmp.10 = as %tmp.9 { (!Null) };
+        symbol [ previousWaypoint %tmp.11 23 17 33 ];
+        %tmp.11 = getv function %tmp.10 :previousWaypoint;
+        invoke %tmp.10 %tmp.11();
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc" 24 12 ]
+        symbol [ WatchUi %tmp.12 24 12 19 ];
+        %tmp.12 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.13 24 20 33 ];
+        %tmp.13 = getv function %tmp.12 :requestUpdate;
+        invoke %tmp.12 %tmp.13();
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_22_26_25_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_22_8_25_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_22_8_25_8_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc" 26 8 ]
+        %tmp.14 = true;
+        ret %tmp.14;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_20_41_27_4_stop:
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc"; @line = 29; @symbol_functiondef = [onNextPage,29,13,23]; @symbol_return<0> = [Boolean,29,29,36]; ]
+    function onNextPage() as Boolean {
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_29_37_36_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc" 30 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_29_37_36_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_29_37_36_4_stop" ]
+        %trip.1 = local;
+        symbol [ trip %trip.1 30 12 16 ];
+        %tmp.1 = self;
+        symbol [ getApp %tmp.2 30 19 25 ];
+        %tmp.2 = getv function %tmp.1 :getApp;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        symbol [ getTrip %tmp.4 30 28 35 ];
+        %tmp.4 = getv function %tmp.3 :getTrip;
+        %tmp.5 = invoke %tmp.3 %tmp.4();
+        lputv %trip.1 %tmp.5;
+        symbol [ trip %trip.1 30 12 16 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc" 31 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_31_8_34_8_if_stmt:
+        %tmp.6 = lgetv %trip.1;
+        symbol [ trip %tmp.6 31 12 16 ];
+        %tmp.7 = null;
+        %tmp.8 = ne %tmp.6 %tmp.7;
+        bf %tmp.8 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_31_8_34_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_31_8_34_8_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_31_26_34_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc" 32 12 ]
+        %tmp.9 = lgetv %trip.1;
+        symbol [ trip %tmp.9 32 12 16 ];
+        %tmp.10 = as %tmp.9 { (!Null) };
+        symbol [ advanceWaypoint %tmp.11 32 17 32 ];
+        %tmp.11 = getv function %tmp.10 :advanceWaypoint;
+        invoke %tmp.10 %tmp.11();
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc" 33 12 ]
+        symbol [ WatchUi %tmp.12 33 12 19 ];
+        %tmp.12 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.13 33 20 33 ];
+        %tmp.13 = getv function %tmp.12 :requestUpdate;
+        invoke %tmp.12 %tmp.13();
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_31_26_34_8_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_31_8_34_8_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_31_8_34_8_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc" 35 8 ]
+        %tmp.14 = true;
+        ret %tmp.14;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRTripDelegate_mc_29_37_36_4_stop:
+    }
+}
+[ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRTripDelegate.mc"; @line = 1; ]
+<init> {
+}

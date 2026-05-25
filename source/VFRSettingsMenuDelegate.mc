@@ -1,6 +1,7 @@
 import Toybox.Application;
 import Toybox.Graphics;
 import Toybox.Lang;
+import Toybox.System;
 import Toybox.WatchUi;
 import Toybox.Position;
 
@@ -78,6 +79,8 @@ class VFRNumberPickerView extends WatchUi.View {
     }
 
     function onUpdate(dc as Dc) as Void {
+        var now = System.getTimer();
+        try { var c = Application.getApp().getComms(); if (c != null) { c.tick(now); } } catch (ce) {}
         var w  = dc.getWidth();
         var h  = dc.getHeight();
         var cx = w / 2;
