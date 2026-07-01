@@ -16,6 +16,7 @@ class VFRSettingsSnapshot {
     var bezelOffsetGS as Number;
     var bezelOffsetALT as Number;
     var bezelOffsetQNH as Number;
+    var altitudeSource as Number;  // 0=Baro, 1=GPS
 
     function initialize() {
         gpsMode = 3;
@@ -32,6 +33,7 @@ class VFRSettingsSnapshot {
         bezelOffsetGS = 0;
         bezelOffsetALT = 10;
         bezelOffsetQNH = 10;
+        altitudeSource = 0;
     }
 }
 
@@ -52,6 +54,7 @@ class VFRSettings {
         s.bezelOffsetGS = VFRSettings.readClampedNumber("BezelOffsetGS", 0, -20, 20);
         s.bezelOffsetALT = VFRSettings.readClampedNumber("BezelOffsetALT", 10, -20, 20);
         s.bezelOffsetQNH = VFRSettings.readClampedNumber("BezelOffsetQNH", 10, -20, 20);
+        s.altitudeSource = VFRSettings.readClampedNumber("AltitudeSource", 0, 0, 1);
         return s;
     }
 
@@ -90,6 +93,7 @@ class VFRSettings {
         view.bezelOffsetGS = settings.bezelOffsetGS;
         view.bezelOffsetALT = settings.bezelOffsetALT;
         view.bezelOffsetQNH = settings.bezelOffsetQNH;
+        view.altitudeSource = settings.altitudeSource;
     }
 
     static function applySavedNumber(view as VFRStopWatchView, propKey as String, value as Number) as Void {
@@ -123,6 +127,8 @@ class VFRSettings {
             view.bezelOffsetALT = VFRSettings.clampNumber(value, -20, 20);
         } else if (propKey.equals("BezelOffsetQNH")) {
             view.bezelOffsetQNH = VFRSettings.clampNumber(value, -20, 20);
+        } else if (propKey.equals("AltitudeSource")) {
+            view.altitudeSource = VFRSettings.clampNumber(value, 0, 1);
         }
     }
 

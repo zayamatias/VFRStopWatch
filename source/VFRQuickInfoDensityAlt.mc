@@ -15,6 +15,8 @@ class VFRQuickInfoDensityAltView extends WatchUi.View {
     function onShow() as Void { WatchUi.requestUpdate(); }
     function onLayout(dc as Dc) as Void { }
     function onUpdate(dc as Dc) as Void {
+        var now = System.getTimer();
+        try { var c = getApp().getComms(); if (c != null) { c.tick(now); } } catch (ce) {}
         var w  = dc.getWidth();
         var h  = dc.getHeight();
         var cx = w / 2;
@@ -26,7 +28,6 @@ class VFRQuickInfoDensityAltView extends WatchUi.View {
         var sepR  = ((minWh.toFloat() / 2.0) - 27.0).toNumber();
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.fillCircle(cx, h / 2, sepR);
-
         if (_bigFont == null) {
             var sz    = (minWh * 0.12).toNumber();
             var faces = ["RobotoCondensed", "Roboto", "RobotoBlack", "Swiss721Bold", "TomorrowBold"];

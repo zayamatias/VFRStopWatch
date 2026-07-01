@@ -14,6 +14,8 @@ class VFRQuickInfoWeather2View extends WatchUi.View {
     function onShow() as Void { WatchUi.requestUpdate(); }
     function onLayout(dc as Dc) as Void { }
     function onUpdate(dc as Dc) as Void {
+        var now = System.getTimer();
+        try { var c = getApp().getComms(); if (c != null) { c.tick(now); } } catch (ce) {}
         var w  = dc.getWidth();
         var h  = dc.getHeight();
         var cx = w / 2;

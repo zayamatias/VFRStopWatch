@@ -1,6 +1,7 @@
 import Toybox.Application;
 import Toybox.Graphics;
 import Toybox.Lang;
+import Toybox.System;
 import Toybox.WatchUi;
 import Toybox.Position;
 
@@ -78,6 +79,8 @@ class VFRNumberPickerView extends WatchUi.View {
     }
 
     function onUpdate(dc as Dc) as Void {
+        var now = System.getTimer();
+        try { var c = Application.getApp().getComms(); if (c != null) { c.tick(now); } } catch (ce) {}
         var w  = dc.getWidth();
         var h  = dc.getHeight();
         var cx = w / 2;
@@ -235,6 +238,14 @@ class VFRSettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
             var curQnh = VFRSettings.readClampedNumber("BezelOffsetQNH", 10, -20, 20);
             var picker = new VFRNumberPickerView("QNH Offset (px)", curQnh, -20, 20, 1, "BezelOffsetQNH", _view);
             WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
+        } else if (id.equals("setting_altitude_source")) {
+            // Toggle altitude source: 0=Baro, 1=GPS
+            var rawSrc = Application.Properties.getValue("AltitudeSource");
+            var curSrc = (rawSrc != null) ? (rawSrc as Number) : 0;
+            var newSrc = (curSrc == 1) ? 0 : 1;
+            Application.Properties.setValue("AltitudeSource", newSrc);
+            VFRSettings.applySavedNumber(_view, "AltitudeSource", newSrc);
+            WatchUi.popView(WatchUi.SLIDE_RIGHT);
         } else if (id.equals("setting_companion")) {
             // Toggle companion app usage immediately
             var rawComp = Application.Properties.getValue("UseCompanionApp");

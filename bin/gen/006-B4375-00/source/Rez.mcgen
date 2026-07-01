@@ -24,32 +24,37 @@ module Rez {
                 addItem((WatchUi.loadResource($.Rez.Strings.menu_label_1) as String), :item_1);
                 addItem((WatchUi.loadResource($.Rez.Strings.menu_label_2) as String), :item_2);
                 addItem((WatchUi.loadResource($.Rez.Strings.menu_label_3) as String), :item_3);
+                addItem((WatchUi.loadResource($.Rez.Strings.menu_label_4) as String), :item_4);
             }
         }
     } // Menus
 
     module Strings {
         (:initialized) var SettingTakeoffTitle as ResourceId;
-        (:initialized) var SettingGpsModeGpsGlonass as ResourceId;
-        (:initialized) var SettingTransitionTitle as ResourceId;
-        (:initialized) var SettingBezelContrastTitle as ResourceId;
-        (:initialized) var SettingBezelOffsetHDGTitle as ResourceId;
         (:initialized) var SettingGpsModeAllSat as ResourceId;
         (:initialized) var SettingBezelOffsetQNHTitle as ResourceId;
         (:initialized) var SettingFuelTitle as ResourceId;
-        (:initialized) var SettingHrTitle as ResourceId;
+        (:initialized) var SettingAltitudeSourceBaro as ResourceId;
         (:initialized) var AppName as ResourceId;
         (:initialized) var SettingGpsModeAviation as ResourceId;
-        (:initialized) var SettingBezelOffsetALTTitle as ResourceId;
         (:initialized) var SettingBezelFontScaleTitle as ResourceId;
-        (:initialized) var menu_label_3 as ResourceId;
         (:initialized) var SettingBezelOffsetGSTitle as ResourceId;
+        (:initialized) var SettingAltitudeSourceGps as ResourceId;
+        (:initialized) var SettingBezelAtlasTitle as ResourceId;
+        (:initialized) var SettingGpsModeGpsGlonass as ResourceId;
+        (:initialized) var SettingTransitionTitle as ResourceId;
+        (:initialized) var SettingAltitudeSourceTitle as ResourceId;
+        (:initialized) var SettingBezelContrastTitle as ResourceId;
+        (:initialized) var SettingBezelOffsetHDGTitle as ResourceId;
+        (:initialized) var SettingHrTitle as ResourceId;
+        (:initialized) var SettingBezelOffsetALTTitle as ResourceId;
+        (:initialized) var menu_label_3 as ResourceId;
+        (:initialized) var menu_label_4 as ResourceId;
         (:initialized) var menu_label_1 as ResourceId;
         (:initialized) var SettingTimerTitle as ResourceId;
         (:initialized) var menu_label_2 as ResourceId;
         (:initialized) var SettingGpsModeTitle as ResourceId;
         (:initialized) var SettingGpsModeGps as ResourceId;
-        (:initialized) var SettingBezelAtlasTitle as ResourceId;
         (:initialized) var prompt as ResourceId;
     } // Strings
 

@@ -43,6 +43,14 @@
         </settingConfig>
     </setting>
 
+    <!-- ── Altitude Source ──────────────────────────────────────── -->
+    <setting propertyKey="@Properties.AltitudeSource" title="@Strings.SettingAltitudeSourceTitle">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.SettingAltitudeSourceBaro</listEntry>
+            <listEntry value="1">@Strings.SettingAltitudeSourceGps</listEntry>
+        </settingConfig>
+    </setting>
+
     <setting propertyKey="@Properties.BezelUseAtlas" title="@Strings.SettingBezelAtlasTitle">
         <settingConfig type="list">
             <listEntry value="0">Vector</listEntry>

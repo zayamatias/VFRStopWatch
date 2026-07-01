@@ -20,6 +20,9 @@
     <!-- Use companion app (0 = disabled, 1 = enabled). Default: disabled -->
     <property id="UseCompanionApp" type="number">0</property>
 
+    <!-- Altitude source: 0=Barometric (default)  1=GPS -->
+    <property id="AltitudeSource" type="number">0</property>
+
     <!-- Bezel rendering controls. Offsets are pixels relative to the text radius. -->
     <property id="BezelUseAtlas" type="number">0</property>
     <property id="BezelFontScale" type="number">100</property>

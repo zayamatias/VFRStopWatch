@@ -1,5 +1,8 @@
 import Toybox.Communications;
+import Toybox.Activity;
 import Toybox.Lang;
+import Toybox.Math;
+import Toybox.Position;
 import Toybox.System;
 import Toybox.Application;
 using Toybox.System as Sys;
@@ -51,6 +54,9 @@ class VFRPhoneComms {
 
     // Last raw weather payload (stringified) for on-device debugging
     var lastRawWeather as String = "";
+    // Pending flight plan from companion app; consumed by VFRStopWatchView.onUpdate
+    var pendingTrip      as Dictionary? = null;
+    var pendingTripClear as Boolean     = false;
     // Timestamp (System.getTimer()) of the last handshake transmit attempt
     // UI reads this to detect extended retry/failure (>30s)
     var lastHandshakeAt as Number = 0;
@@ -86,6 +92,7 @@ class VFRPhoneComms {
     // Guard: only one Communications.transmit() call per tick to prevent
     // write bursts that cause remote BLE disconnects (reason code 8).
     private var _txThisTick      as Boolean     = false;
+    private var _nextTelemetryAt as Number      = 0;
 
     function initialize() {
         if (Communications has :registerForPhoneAppMessages) {
@@ -210,6 +217,8 @@ class VFRPhoneComms {
                 }
             }
         }
+        // ── Telemetry push — always lowest priority, runs every 1s ──────────
+        _buildAndSendTelemetry(now);
     }
 
     // Called by VFRConnListener when a transmit fails at the BT layer.
@@ -228,6 +237,95 @@ class VFRPhoneComms {
             // Schedule next handshake attempt with backoff
             _nextHandshakeAt = System.getTimer() + delay;
         }
+    }
+
+    // Send live telemetry to the companion app HUD.
+    // Builds the full telemetry dictionary internally from app-level live state,
+    // GPS, and weather data so it works regardless of which view is active.
+    private function _buildAndSendTelemetry(now as Number) as Void {
+        if (_state != STATE_CONNECTED || _txThisTick) { return; }
+        if (now < _nextTelemetryAt) { return; }
+
+        var app = Application.getApp();
+
+        // Timer — use liveStartTime for accuracy when running in any view
+        var timerMs = app.liveRunning
+            ? (now - app.liveStartTime)
+            : app.liveBaseElapsed;
+
+        // Heading
+        var hudHdg = -1;
+        try {
+            var hv = VFRHeading.getHeadingDeg();
+            if (hv >= 0.0) { hudHdg = Math.round(hv).toNumber(); }
+        } catch (he) {}
+
+        // Ground speed (kt)
+        var hudGs = -1;
+        try {
+            var ai = Activity.getActivityInfo();
+            if (ai != null && ai.currentSpeed != null) {
+                hudGs = Math.round((ai.currentSpeed as Float) * 1.94384).toNumber();
+            }
+        } catch (ae) {}
+
+        // GPS position
+        var hudLat = null;
+        var hudLon = null;
+        try {
+            var gpsPos = Position.getInfo();
+            if (gpsPos != null && gpsPos.accuracy != null
+                    && (gpsPos.accuracy as Number) >= 2
+                    && gpsPos.position != null) {
+                var degs = gpsPos.position.toDegrees();
+                if (degs != null && degs.size() >= 2) {
+                    hudLat = (degs[0] as Double).toFloat();
+                    hudLon = (degs[1] as Double).toFloat();
+                }
+            }
+        } catch (pe) {}
+
+        // QNH
+        var hudQnh = -1;
+        try {
+            var qi = VFRAvionicsData.readQnhInfo();
+            if (qi != null && (qi as VFRQnhInfo).isQnh) {
+                hudQnh = (qi as VFRQnhInfo).hPa.toNumber();
+            }
+        } catch (qe) {}
+
+        var tele = {
+            "type"          => "telemetry",
+            "timer_ms"      => timerMs,
+            "timer_running" => app.liveRunning,
+            "hdg"           => hudHdg,
+            "gs_kt"         => hudGs,
+            "alt_ft"        => app.liveAltFt,
+            "vs_fpm"        => app.liveVsFpm,
+            "gps_quality"   => app.liveGpsQuality,
+            "wind_dir"      => windDirDeg,
+            "wind_kt"       => windSpeedKt,
+            "temp_c"        => tempC,
+            "dewpoint_c"    => dewpointC,
+            "qnh"           => hudQnh
+        };
+        if (hudLat != null) { tele["lat"] = hudLat; }
+        if (hudLon != null) { tele["lon"] = hudLon; }
+
+        var tripTele = app.getTrip();
+        tele["trip_active"] = tripTele.active;
+        if (tripTele.active) {
+            tele["trip_name"]  = tripTele.tripName;
+            tele["wp_name"]    = tripTele.getActiveName();
+            tele["wp_bearing"] = tripTele.bearingDeg;
+            tele["wp_dist_nm"] = tripTele.distanceNm;
+            tele["wp_ete_sec"] = tripTele.eteSec;
+            tele["wp_idx"]     = tripTele.activeIdx;
+            tele["wp_count"]   = tripTele.count;
+        }
+
+        _nextTelemetryAt = now + 1000;
+        _tx(tele, "tele");
     }
 
     // Incoming message receive error from phone side.
@@ -281,6 +379,10 @@ class VFRPhoneComms {
         } else if (typ.equals("weather")) {
             _applyWeatherPayload(d);
             return;
+        } else if (typ.equals("trip")) {
+            pendingTrip = d;
+        } else if (typ.equals("trip_clear")) {
+            pendingTripClear = true;
         }
     }
 

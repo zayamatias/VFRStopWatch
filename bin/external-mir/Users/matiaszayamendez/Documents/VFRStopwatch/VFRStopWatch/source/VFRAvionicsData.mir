@@ -470,123 +470,252 @@ _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsDa
         ret %tmp.23;
 _Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_51_50_59_4_stop:
     }
-    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc"; @line = 61; @symbol_functiondef = [formatQnh,61,20,29]; @symbol_param<0> = [info,61,30,34]; @symbol_param<0>_type<0> = [VFRQnhInfo,61,38,48]; @symbol_return<0> = [String,61,54,60]; ]
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc"; @line = 63; @symbol_functiondef = [readPressureAltitudeFeet,63,20,44]; @symbol_return<0> = [Number,63,50,56]; ]
+    static
+    function readPressureAltitudeFeet() as Number or Null {
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_63_58_73_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 64 8 ]
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_71_23_beginTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_71_23_endTry @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_71_23_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_71_23_finally;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_71_23_beginTry:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_12_71_8_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 65 12 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_12_71_8_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_12_71_8_stop" ]
+        %sInfo.1 = local;
+        symbol [ sInfo %sInfo.1 65 16 21 ];
+        symbol [ Sensor %tmp.1 65 24 30 ];
+        %tmp.1 = getm $.Toybox.Sensor;
+        symbol [ getInfo %tmp.2 65 31 38 ];
+        %tmp.2 = getv function %tmp.1 :getInfo;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %sInfo.1 %tmp.3;
+        symbol [ sInfo %sInfo.1 65 16 21 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 66 12 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_12_70_12_if_stmt:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_16_66_76_begin:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_16_66_53_begin:
+        %tmp.4 = lgetv %sInfo.1;
+        symbol [ sInfo %tmp.4 66 16 21 ];
+        %tmp.5 = null;
+        %tmp.6 = ne %tmp.4 %tmp.5;
+        bf %tmp.6 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_12_70_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_33_66_53_true:
+        %tmp.7 = lgetv %sInfo.1;
+        symbol [ sInfo %tmp.7 66 34 39 ];
+        %tmp.8 = as %tmp.7 { (!Null) };
+        %tmp.10 = const :pressure;
+        symbol [ pressure %tmp.10 66 45 53 const ];
+        %tmp.11 = canhazplz %tmp.8 %tmp.10;
+        push %tmp.11;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_33_66_53_end:
+        %tmp.12 = phi [%tmp.6 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_16_66_53_begin] [%tmp.11 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_33_66_53_true] [%tmp.12 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_33_66_53_end];
+        bf %tmp.12 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_12_70_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_58_66_76_true:
+        %tmp.13 = lgetv %sInfo.1;
+        symbol [ sInfo %tmp.13 66 58 63 ];
+        %tmp.14 = as %tmp.13 { (interface { var pressure; }) && (!Null) };
+        symbol [ pressure %tmp.15 66 64 72 ];
+        %tmp.15 = getv %tmp.14 :pressure;
+        %tmp.16 = null;
+        %tmp.17 = ne %tmp.15 %tmp.16;
+        push %tmp.17;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_58_66_76_end:
+        %tmp.18 = phi [%tmp.12 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_16_66_76_begin] [%tmp.17 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_58_66_76_true] [%tmp.18 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_58_66_76_end];
+        bf %tmp.18 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_12_70_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_12_70_12_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_82_70_12_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 67 16 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_82_70_12_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_82_70_12_stop" ]
+        %hPa.2 = local;
+        symbol [ hPa %hPa.2 67 20 23 ];
+        symbol [ VFRAvionicsData %tmp.20 67 26 41 ];
+        %tmp.20 = getv ? :VFRAvionicsData;
+        symbol [ pressureToHpa %tmp.21 67 42 55 ];
+        %tmp.21 = getv function %tmp.20 :pressureToHpa;
+        %tmp.22 = lgetv %sInfo.1;
+        symbol [ sInfo %tmp.22 67 56 61 ];
+        %tmp.23 = as %tmp.22 { (interface { var pressure; }) && (!Null) };
+        symbol [ pressure %tmp.24 67 62 70 ];
+        %tmp.24 = getv %tmp.23 :pressure;
+        %tmp.25 = invoke %tmp.20 %tmp.21(%tmp.24);
+        lputv %hPa.2 %tmp.25;
+        symbol [ hPa %hPa.2 67 20 23 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 68 16 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_82_70_12_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_82_70_12_stop" ]
+        %paFt.3 = local;
+        symbol [ paFt %paFt.3 68 20 24 ];
+        %tmp.26 = 145366.45;
+        %tmp.27 = 1.0;
+        symbol [ Math %tmp.28 68 46 50 ];
+        %tmp.28 = getm $.Toybox.Math;
+        symbol [ pow %tmp.29 68 51 54 ];
+        %tmp.29 = getv function %tmp.28 :pow;
+        %tmp.30 = lgetv %hPa.2;
+        symbol [ hPa %tmp.30 68 56 59 ];
+        %tmp.31 = 1013.25;
+        %tmp.32 = div %tmp.30 %tmp.31;
+        %tmp.33 = 0.190284;
+        %tmp.34 = invoke %tmp.28 %tmp.29(%tmp.32, %tmp.33);
+        %tmp.35 = sub %tmp.27 %tmp.34;
+        %tmp.36 = mul %tmp.26 %tmp.35;
+        lputv %paFt.3 %tmp.36;
+        symbol [ paFt %paFt.3 68 20 24 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 69 16 ]
+        %tmp.37 = lgetv %paFt.3;
+        symbol [ paFt %tmp.37 69 23 27 ];
+        symbol [ toNumber %tmp.38 69 28 36 ];
+        %tmp.38 = getv function %tmp.37 :toNumber;
+        %tmp.39 = invoke %tmp.37 %tmp.38();
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_71_23_finally;
+        ret %tmp.39;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_82_70_12_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_12_70_12_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_12_70_12_if_end:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_12_71_8_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_71_23_endTry:
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_71_23_finally;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_71_23_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_71_23_catch:
+        %tmp.40 = exception;
+        push %tmp.40;
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 71 10 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_71_23_catch" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_71_10_71_23_end" ]
+        %se.4 = local;
+        symbol [ se %se.4 71 17 19 ];
+        %tmp.41 = dup %tmp.40;
+        lputv %se.4 %tmp.41;
+        symbol [ se %se.4 71 17 19 ];
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_71_23_finally;
+        pop;
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_71_23_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_71_10_71_23_end:
+        try @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_71_23_catch @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_71_10_71_23_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_71_10_71_23_end @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_71_23_finally;
+        jsr @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_71_23_finally;
+        throw %tmp.40;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_71_23_finally:
+        jsrret;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_71_23_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 72 8 ]
+        %tmp.42 = null;
+        ret %tmp.42;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_63_58_73_4_stop:
+    }
+    [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc"; @line = 75; @symbol_functiondef = [formatQnh,75,20,29]; @symbol_param<0> = [info,75,30,34]; @symbol_param<0>_type<0> = [VFRQnhInfo,75,38,48]; @symbol_return<0> = [String,75,54,60]; ]
     static
     function formatQnh(info as VFRQnhInfo or Null) as String {
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_61_61_68_4_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 62 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_62_8_62_43_if_stmt:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_75_61_82_4_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 76 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_76_8_76_43_if_stmt:
         %tmp.1 = lgetv %info;
-        symbol [ info %tmp.1 62 12 16 ];
+        symbol [ info %tmp.1 76 12 16 ];
         %tmp.2 = null;
         %tmp.3 = eq %tmp.1 %tmp.2;
-        bf %tmp.3 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_62_8_62_43_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_62_8_62_43_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_62_26_62_43_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 62 28 ]
+        bf %tmp.3 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_76_8_76_43_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_76_8_76_43_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_76_26_76_43_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 76 28 ]
         %tmp.4 = "----";
         ret %tmp.4;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_62_26_62_43_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_62_8_62_43_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_62_8_62_43_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 63 8 ]
-        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_61_61_68_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_61_61_68_4_stop" ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_76_26_76_43_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_76_8_76_43_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_76_8_76_43_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 77 8 ]
+        [ "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_75_61_82_4_start" "_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_75_61_82_4_stop" ]
         %value.1 = local;
-        symbol [ value %value.1 63 12 17 ];
-        symbol [ Math %tmp.5 63 20 24 ];
+        symbol [ value %value.1 77 12 17 ];
+        symbol [ Math %tmp.5 77 20 24 ];
         %tmp.5 = getm $.Toybox.Math;
-        symbol [ round %tmp.6 63 25 30 ];
+        symbol [ round %tmp.6 77 25 30 ];
         %tmp.6 = getv function %tmp.5 :round;
         %tmp.7 = lgetv %info;
-        symbol [ info %tmp.7 63 32 36 ];
+        symbol [ info %tmp.7 77 32 36 ];
         %tmp.8 = as %tmp.7 VFRQnhInfo;
-        symbol [ VFRQnhInfo %tmp.8 63 40 50 ];
-        symbol [ hPa %tmp.9 63 52 55 ];
+        symbol [ VFRQnhInfo %tmp.8 77 40 50 ];
+        symbol [ hPa %tmp.9 77 52 55 ];
         %tmp.9 = getv %tmp.8 :hPa;
         %tmp.10 = invoke %tmp.5 %tmp.6(%tmp.9);
-        symbol [ toNumber %tmp.11 63 57 65 ];
+        symbol [ toNumber %tmp.11 77 57 65 ];
         %tmp.11 = getv function %tmp.10 :toNumber;
         %tmp.12 = invoke %tmp.10 %tmp.11();
-        symbol [ toString %tmp.13 63 68 76 ];
+        symbol [ toString %tmp.13 77 68 76 ];
         %tmp.13 = getv function %tmp.12 :toString;
         %tmp.14 = invoke %tmp.12 %tmp.13();
         lputv %value.1 %tmp.14;
-        symbol [ value %value.1 63 12 17 ];
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 64 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_64_64_if_stmt:
+        symbol [ value %value.1 77 12 17 ];
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 78 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_78_8_78_64_if_stmt:
         %tmp.15 = lgetv %info;
-        symbol [ info %tmp.15 64 14 18 ];
+        symbol [ info %tmp.15 78 14 18 ];
         %tmp.16 = as %tmp.15 VFRQnhInfo;
-        symbol [ VFRQnhInfo %tmp.16 64 22 32 ];
-        symbol [ isQnh %tmp.17 64 34 39 ];
+        symbol [ VFRQnhInfo %tmp.16 78 22 32 ];
+        symbol [ isQnh %tmp.17 78 34 39 ];
         %tmp.17 = getv %tmp.16 :isQnh;
         %tmp.18 = not %tmp.17;
-        bf %tmp.18 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_64_64_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_64_64_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_41_64_64_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 64 43 ]
+        bf %tmp.18 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_78_8_78_64_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_78_8_78_64_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_78_41_78_64_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 78 43 ]
         %tmp.19 = lgetv %value.1;
-        symbol [ value %tmp.19 64 51 56 ];
+        symbol [ value %tmp.19 78 51 56 ];
         %tmp.20 = "S";
         %tmp.21 = add %tmp.19 %tmp.20;
         lputv %value.1 %tmp.21;
-        symbol [ value %value.1 64 43 48 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_41_64_64_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_64_64_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_64_8_64_64_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 65 8 ]
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_65_8_65_65_if_stmt:
+        symbol [ value %value.1 78 43 48 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_78_41_78_64_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_78_8_78_64_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_78_8_78_64_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 79 8 ]
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_79_8_79_65_if_stmt:
         %tmp.22 = lgetv %value.1;
-        symbol [ value %tmp.22 65 12 17 ];
-        symbol [ length %tmp.23 65 18 24 ];
+        symbol [ value %tmp.22 79 12 17 ];
+        symbol [ length %tmp.23 79 18 24 ];
         %tmp.23 = getv function %tmp.22 :length;
         %tmp.24 = invoke %tmp.22 %tmp.23();
         %tmp.25 = 5;
         %tmp.26 = gt %tmp.24 %tmp.25;
-        bf %tmp.26 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_65_8_65_65_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_65_8_65_65_if_true:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_65_32_65_65_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 65 34 ]
+        bf %tmp.26 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_79_8_79_65_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_79_8_79_65_if_true:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_79_32_79_65_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 79 34 ]
         %tmp.27 = lgetv %value.1;
-        symbol [ value %tmp.27 65 42 47 ];
-        symbol [ substring %tmp.28 65 48 57 ];
+        symbol [ value %tmp.27 79 42 47 ];
+        symbol [ substring %tmp.28 79 48 57 ];
         %tmp.28 = getv function %tmp.27 :substring;
         %tmp.29 = 0;
         %tmp.30 = 5;
         %tmp.31 = invoke %tmp.27 %tmp.28(%tmp.29, %tmp.30);
         lputv %value.1 %tmp.31;
-        symbol [ value %value.1 65 34 39 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_65_32_65_65_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_65_8_65_65_if_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_65_8_65_65_if_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 66 8 ]
-        while @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_8_66_58_while_test @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_8_66_58_while_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_8_66_58_while_test:
+        symbol [ value %value.1 79 34 39 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_79_32_79_65_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_79_8_79_65_if_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_79_8_79_65_if_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 80 8 ]
+        while @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_80_8_80_58_while_test @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_80_8_80_58_while_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_80_8_80_58_while_test:
         %tmp.32 = lgetv %value.1;
-        symbol [ value %tmp.32 66 15 20 ];
-        symbol [ length %tmp.33 66 21 27 ];
+        symbol [ value %tmp.32 80 15 20 ];
+        symbol [ length %tmp.33 80 21 27 ];
         %tmp.33 = getv function %tmp.32 :length;
         %tmp.34 = invoke %tmp.32 %tmp.33();
         %tmp.35 = 4;
         %tmp.36 = lt %tmp.34 %tmp.35;
-        bf %tmp.36 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_8_66_58_while_end;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_8_66_58_while_begin:
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_35_66_58_start:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 66 37 ]
+        bf %tmp.36 @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_80_8_80_58_while_end;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_80_8_80_58_while_begin:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_80_35_80_58_start:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 80 37 ]
         %tmp.37 = "-";
         %tmp.38 = lgetv %value.1;
-        symbol [ value %tmp.38 66 51 56 ];
+        symbol [ value %tmp.38 80 51 56 ];
         %tmp.39 = add %tmp.37 %tmp.38;
         lputv %value.1 %tmp.39;
-        symbol [ value %value.1 66 37 42 ];
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_35_66_58_stop:
-        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_8_66_58_while_test;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_66_8_66_58_while_end:
-[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 67 8 ]
+        symbol [ value %value.1 80 37 42 ];
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_80_35_80_58_stop:
+        goto @_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_80_8_80_58_while_test;
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_80_8_80_58_while_end:
+[ "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc" 81 8 ]
         %tmp.40 = lgetv %value.1;
-        symbol [ value %tmp.40 67 15 20 ];
+        symbol [ value %tmp.40 81 15 20 ];
         ret %tmp.40;
-_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_61_61_68_4_stop:
+_Users_matiaszayamendez_Documents_VFRStopwatch_VFRStopWatch_source_VFRAvionicsData_mc_75_61_82_4_stop:
     }
 }
 [ @file = "/Users/matiaszayamendez/Documents/VFRStopwatch/VFRStopWatch/source/VFRAvionicsData.mc"; @line = 1; ]

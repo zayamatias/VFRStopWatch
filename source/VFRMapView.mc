@@ -1,3 +1,4 @@
+import Toybox.Application;
 import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.Math;
@@ -72,6 +73,8 @@ class VFRMapView extends WatchUi.MapView {
     }
 
     function onUpdate(dc as Graphics.Dc) as Void {
+        var now = System.getTimer();
+        try { var c = Application.getApp().getComms(); if (c != null) { c.tick(now); } } catch (ce) {}
         // 1. Draw bezel background (clears screen to black, draws annulus labels + ring).
         // 2. MapView renders the map only within the inner-circle visible area set in initialize().
         // 3. Heading arrow drawn on top.

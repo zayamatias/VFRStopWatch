@@ -1,3 +1,4 @@
+import Toybox.Application;
 import Toybox.WatchUi;
 import Toybox.Graphics;
 import Toybox.System;
@@ -32,6 +33,7 @@ class VFRDebugWeatherView extends WatchUi.View {
         var cx  = w / 2;
         var jc  = Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER;
         var now = System.getTimer();
+        try { var c = Application.getApp().getComms(); if (c != null) { c.tick(now); } } catch (ce) {}
 
         // Fill background black
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);

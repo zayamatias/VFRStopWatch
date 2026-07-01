@@ -6,6 +6,7 @@
     <string id="menu_label_1">Start/Stop</string>
     <string id="menu_label_2">Reset</string>
     <string id="menu_label_3">Settings</string>
+    <string id="menu_label_4">Flight Plan</string>
 
     <!-- Settings labels -->
     <string id="SettingGpsModeTitle">GPS Mode</string>
@@ -18,6 +19,9 @@
     <string id="SettingTransitionTitle">Transition Alt (ft)</string>
     <string id="SettingHrTitle">HR Alert (bpm)</string>
     <string id="SettingFuelTitle">Fuel Check (min)</string>
+    <string id="SettingAltitudeSourceTitle">Altitude Source</string>
+    <string id="SettingAltitudeSourceBaro">Barometric</string>
+    <string id="SettingAltitudeSourceGps">GPS</string>
     <string id="SettingBezelAtlasTitle">Bezel Renderer</string>
     <string id="SettingBezelFontScaleTitle">Bezel Font (%)</string>
     <string id="SettingBezelContrastTitle">Bezel Contrast (%)</string>

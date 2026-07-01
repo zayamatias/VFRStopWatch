@@ -8,6 +8,18 @@ class VFRStopWatchApp extends Application.AppBase {
     var _view  as VFRStopWatchView? = null;
     // Phone communications manager
     var _comms as VFRPhoneComms?    = null;
+    // Active flight plan (always allocated; active flag is false when no plan loaded)
+    var _trip  as VFRTrip           = new VFRTrip();
+
+    // Live sensor/timer state — updated by VFRStopWatchView callbacks so that
+    // any active view (TripView, SummaryView, etc.) can read fresh data for
+    // the BLE telemetry push that runs inside comms.tick().
+    var liveRunning     as Boolean = false;
+    var liveStartTime   as Number  = 0;    // System.getTimer() reference; elapsed = now - liveStartTime when running
+    var liveBaseElapsed as Number  = 0;    // ms elapsed when last stopped
+    var liveAltFt       as Number  = -1;   // altitude in feet (-1 = no data)
+    var liveVsFpm       as Number  = 0;    // vertical speed FPM (rounded to 10)
+    var liveGpsQuality  as Number  = 0;    // GPS accuracy 0-4
 
     function initialize() {
         AppBase.initialize();
@@ -69,6 +81,10 @@ class VFRStopWatchApp extends Application.AppBase {
 
     function getComms() as VFRPhoneComms? {
         return _comms;
+    }
+
+    function getTrip() as VFRTrip {
+        return _trip;
     }
 
     // Called by the system when the user changes a setting in the watch settings menu

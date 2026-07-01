@@ -58,6 +58,20 @@ class VFRAvionicsData {
         return null;
     }
 
+    // Pressure altitude in feet referenced to 1013.25 hPa (standard atmosphere).
+    // Used for Flight Level display above transition altitude.
+    static function readPressureAltitudeFeet() as Number? {
+        try {
+            var sInfo = Sensor.getInfo();
+            if (sInfo != null && (sInfo has :pressure) && sInfo.pressure != null) {
+                var hPa = VFRAvionicsData.pressureToHpa(sInfo.pressure);
+                var paFt = 145366.45 * (1.0 - Math.pow((hPa / 1013.25), 0.190284));
+                return paFt.toNumber();
+            }
+        } catch (se) { }
+        return null;
+    }
+
     static function formatQnh(info as VFRQnhInfo?) as String {
         if (info == null) { return "----"; }
         var value = Math.round((info as VFRQnhInfo).hPa).toNumber().toString();

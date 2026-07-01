@@ -123,6 +123,27 @@
     "configMax" : null,
     "configMaxLength" : null
   }, {
+    "key" : "AltitudeSource",
+    "valueType" : "number",
+    "defaultValue" : 0,
+    "configTitle" : "SettingAltitudeSourceTitle",
+    "configPrompt" : null,
+    "configType" : "list",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : [ {
+      "display" : "SettingAltitudeSourceBaro",
+      "value" : 0
+    }, {
+      "display" : "SettingAltitudeSourceGps",
+      "value" : 1
+    } ],
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
     "key" : "BezelUseAtlas",
     "valueType" : "number",
     "defaultValue" : 0,
@@ -241,6 +262,7 @@
       "SettingGpsModeAllSat" : "All Systems",
       "SettingBezelOffsetQNHTitle" : "QNH Offset (px)",
       "SettingFuelTitle" : "Fuel Check (min)",
+      "SettingAltitudeSourceBaro" : "Barometric",
       "AppName" : "VFRStopWatch",
       "$literal0$" : "Use Companion App",
       "SettingGpsModeAviation" : "Aviation",
@@ -248,9 +270,11 @@
       "SettingBezelFontScaleTitle" : "Bezel Font (%)",
       "$literal4$" : "Atlas",
       "SettingBezelOffsetGSTitle" : "GS Offset (px)",
+      "SettingAltitudeSourceGps" : "GPS",
       "SettingBezelAtlasTitle" : "Bezel Renderer",
       "SettingGpsModeGpsGlonass" : "GPS+GLONASS",
       "SettingTransitionTitle" : "Transition Alt (ft)",
+      "SettingAltitudeSourceTitle" : "Altitude Source",
       "SettingBezelContrastTitle" : "Bezel Contrast (%)",
       "SettingBezelOffsetHDGTitle" : "HDG Offset (px)",
       "SettingHrTitle" : "HR Alert (bpm)",
@@ -258,6 +282,7 @@
       "$literal3$" : "Vector",
       "SettingBezelOffsetALTTitle" : "ALT Offset (px)",
       "menu_label_3" : "Settings",
+      "menu_label_4" : "Flight Plan",
       "menu_label_1" : "Start/Stop",
       "SettingTimerTitle" : "Timer (min)",
       "menu_label_2" : "Reset",
