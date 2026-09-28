@@ -53,25 +53,28 @@ class VFRStopWatchDelegate extends WatchUi.BehaviorDelegate {
         if (key == WatchUi.KEY_DOWN) {
             var now = System.getTimer();
             var dur = (_view.downPressAt == 0) ? 0 : (now - _view.downPressAt);
-            _view.downPressAt = 0;
             _view.lastDownEventAt = 0;
+            // Keep downPressAt set until AFTER the action: the view uses it to
+            // recognise (and suppress) a duplicate callback for this same press.
             if (dur >= _view.DOWN_HOLD_MS) {
                 _view.onDownLongPress();
             } else {
                 _view.shortDownAction();
             }
+            _view.downPressAt = 0;
             return true;
         }
         if (key == WatchUi.KEY_UP) {
             var nowU = System.getTimer();
             var durU = (_view.upPressAt == 0) ? 0 : (nowU - _view.upPressAt);
-            _view.upPressAt = 0;
             _view.lastUpEventAt = 0;
+            // Same as DOWN: clear the press reference only after the action.
             if (durU >= _view.UP_HOLD_MS) {
                 _view.onUpLongPress();
             } else {
                 _view.shortUpAction();
             }
+            _view.upPressAt = 0;
             return true;
         }
         return false;

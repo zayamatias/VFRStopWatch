@@ -242,6 +242,19 @@ class VFRStopWatchView extends WatchUi.View {
     var upPressAt as Number = 0;  // System.getTimer() when UP pressed
     var UP_HOLD_MS as Number = 800;
     var lastUpEventAt as Number = 0; // debounce last physical UP press
+    // --- Page-change de-duplication ---
+    // One physical press can reach the app twice: through the raw key callback
+    // AND through the BehaviorDelegate page callback (onPreviousPage), and a
+    // bounced key release can repeat it. Each press gets a sequence number at
+    // key-down and may change the page only once, so a press can no longer skip
+    // a page (e.g. going back from DENS ALT jumped straight to CLOUDS).
+    var upPressSeq as Number = 0;
+    var downPressSeq as Number = 0;
+    var lastNavUpSeq as Number = -1;
+    var lastNavDownSeq as Number = -1;
+    var lastUpNavAt as Number = 0;
+    var lastDownNavAt as Number = 0;
+    var PAGE_NAV_DEBOUNCE_MS as Number = 120;   // fallback window for a swipe
     var quickInfoShown as Boolean = false;
     var quickInfoLastNavAt as Number = 0; // ms timestamp of last quick-info navigation action
     var dimMode as Boolean = false;       // true when idle (clock showing) → dim chrome
@@ -2530,6 +2543,7 @@ class VFRStopWatchView extends WatchUi.View {
         lastDownEventAt = now;
         if (downPressAt == 0) {
             downPressAt = now;
+            downPressSeq = downPressSeq + 1;   // new physical press
         }
     }
 
@@ -2547,6 +2561,8 @@ class VFRStopWatchView extends WatchUi.View {
     //   pages mode → next page
     //   ring mode  → quick-info chain (heading/GS, wind, temp, dens alt, map)
     function shortDownAction() as Void {
+        // Ignore a duplicate callback for the same physical press.
+        if (!navAllowed(false)) { return; }
         // In "pages" mode a short DOWN press cycles to the next value, so the
         // quick-info screens would be redundant — every one of their values is
         // a page now (the map is in the MENU instead).
@@ -2601,6 +2617,7 @@ class VFRStopWatchView extends WatchUi.View {
         lastUpEventAt = now;
         if (upPressAt == 0) {
             upPressAt = now;
+            upPressSeq = upPressSeq + 1;   // new physical press
         }
     }
 
@@ -2611,11 +2628,38 @@ class VFRStopWatchView extends WatchUi.View {
     }
 
     function shortUpAction() as Void {
+        // Ignore a duplicate callback for the same physical press (the raw key
+        // handler and the BehaviorDelegate page handler can both fire).
+        if (!navAllowed(true)) { return; }
         if (displayMode == 1) {
             pagePrev();
             return;
         }
         subTimer();
+    }
+
+    // True when this short-press action should be allowed to proceed. A press is
+    // identified by the sequence number set at key-down and may act only once;
+    // duplicates for the same press are ignored no matter how they arrive. A
+    // callback with no active press (a swipe, or a release delivered just after
+    // the press reference was cleared) falls back to a short time window.
+    function navAllowed(isUp as Boolean) as Boolean {
+        var now = System.getTimer();
+        var seq     = isUp ? upPressSeq : downPressSeq;
+        var lastSeq = isUp ? lastNavUpSeq : lastNavDownSeq;
+        var pressed = isUp ? (upPressAt != 0) : (downPressAt != 0);
+        var at      = isUp ? lastUpNavAt : lastDownNavAt;
+
+        if (seq != lastSeq) {
+            // First navigation of a new press.
+            if (isUp) { lastNavUpSeq = seq; lastUpNavAt = now; }
+            else      { lastNavDownSeq = seq; lastDownNavAt = now; }
+            return true;
+        }
+        if (pressed) { return false; }   // this press already changed the page
+        if (at != 0 && elapsedSince(now, at) < PAGE_NAV_DEBOUNCE_MS) { return false; }
+        if (isUp) { lastUpNavAt = now; } else { lastDownNavAt = now; }
+        return true;
     }
 
     // 5 short vibration pulses (100% duty, 200 ms each)
