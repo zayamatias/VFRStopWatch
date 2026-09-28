@@ -51,11 +51,23 @@
         </settingConfig>
     </setting>
 
-    <setting propertyKey="@Properties.BezelUseAtlas" title="@Strings.SettingBezelAtlasTitle">
+    <setting propertyKey="@Properties.CircuitPractice" title="@Strings.SettingCircuitTitle">
         <settingConfig type="list">
-            <listEntry value="0">Vector</listEntry>
-            <listEntry value="1">Atlas</listEntry>
+            <listEntry value="0">Off</listEntry>
+            <listEntry value="1">On</listEntry>
         </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.FieldElevationFt" title="@Strings.SettingFieldElevTitle">
+        <settingConfig type="numeric" min="0" max="20000"/>
+    </setting>
+
+    <setting propertyKey="@Properties.RunwayLengthM" title="@Strings.SettingRunwayTitle">
+        <settingConfig type="numeric" min="0" max="10000"/>
+    </setting>
+
+    <setting propertyKey="@Properties.AltitudeAlertFt" title="@Strings.SettingAltAlertTitle">
+        <settingConfig type="numeric" min="0" max="30000"/>
     </setting>
 
     <setting propertyKey="@Properties.BezelFontScale" title="@Strings.SettingBezelFontScaleTitle">
@@ -66,20 +78,34 @@
         <settingConfig type="numeric" min="50" max="100"/>
     </setting>
 
-    <setting propertyKey="@Properties.BezelOffsetHDG" title="@Strings.SettingBezelOffsetHDGTitle">
-        <settingConfig type="numeric" min="-20" max="20"/>
+    <!-- ── Auto Backlight ─────────────────────────────────────── -->
+    <setting propertyKey="@Properties.AutoBacklight" title="Auto Backlight">
+        <settingConfig type="list">
+            <listEntry value="0">Off</listEntry>
+            <listEntry value="1">Always</listEntry>
+            <listEntry value="2">Night-only</listEntry>
+        </settingConfig>
     </setting>
 
-    <setting propertyKey="@Properties.BezelOffsetGS" title="@Strings.SettingBezelOffsetGSTitle">
-        <settingConfig type="numeric" min="-20" max="20"/>
+    <setting propertyKey="@Properties.NightStartHour" title="Night Start (h)">
+        <settingConfig type="numeric" min="0" max="23"/>
     </setting>
 
-    <setting propertyKey="@Properties.BezelOffsetALT" title="@Strings.SettingBezelOffsetALTTitle">
-        <settingConfig type="numeric" min="-20" max="20"/>
+    <setting propertyKey="@Properties.NightEndHour" title="Night End (h)">
+        <settingConfig type="numeric" min="0" max="23"/>
     </setting>
 
-    <setting propertyKey="@Properties.BezelOffsetQNH" title="@Strings.SettingBezelOffsetQNHTitle">
-        <settingConfig type="numeric" min="-20" max="20"/>
+    <!-- ── Display layout ─────────────────────────────────────── -->
+    <setting propertyKey="@Properties.DisplayMode" title="@Strings.SettingDisplayTitle">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.SettingDisplayRing</listEntry>
+            <listEntry value="1">@Strings.SettingDisplayBig</listEntry>
+        </settingConfig>
+    </setting>
+
+    <!-- Auto page cycle: 0 = off (pages change only when you press UP/DOWN) -->
+    <setting propertyKey="@Properties.PageCycleSec" title="@Strings.SettingPageCycleTitle">
+        <settingConfig type="numeric" min="0" max="60"/>
     </setting>
 
 </settings>

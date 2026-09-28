@@ -7,6 +7,7 @@ import Toybox.WatchUi;
 class VFRQuickInfoWeather2View extends WatchUi.View {
     private var _main    as VFRStopWatchView;
     private var _bigFont as Graphics.VectorFont? = null;
+    private var _lastRefresh as Number = 0;
     function initialize(main as VFRStopWatchView) {
         View.initialize();
         _main = main;
@@ -95,7 +96,8 @@ class VFRQuickInfoWeather2View extends WatchUi.View {
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(cx, y, Graphics.FONT_SMALL, trend, jc);
 
-        WatchUi.requestUpdate();
+        // Throttle to 1 Hz to avoid a continuous redraw loop.
+        if ((now - _lastRefresh) >= 1000) { _lastRefresh = now; WatchUi.requestUpdate(); }
     }
 }
 

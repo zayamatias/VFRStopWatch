@@ -9,14 +9,18 @@ class VFRSettingsSnapshot {
     var hrThreshold as Number;
     var fuelCheckIntervalMin as Number;
     var useCompanionApp as Boolean;
-    var bezelUseAtlas as Boolean;
     var bezelFontScale as Number;
     var bezelContrast as Number;
-    var bezelOffsetHDG as Number;
-    var bezelOffsetGS as Number;
-    var bezelOffsetALT as Number;
-    var bezelOffsetQNH as Number;
     var altitudeSource as Number;  // 0=Baro, 1=GPS
+    var circuitEnabled as Boolean;
+    var manualFieldElevationFt as Number; // 0 = auto
+    var runwayLengthM as Number;
+    var altAlertFt as Number;            // 0 = off
+    var autoBacklight as Number;         // 0=off, 1=always, 2=night-only
+    var nightStartHour as Number;        // backlight window start (0-23)
+    var nightEndHour as Number;          // backlight window end (0-23)
+    var displayMode as Number;           // 0=bezel ring, 1=paged big values
+    var pageCycleSec as Number;          // paged face: seconds per page, 0 = manual only
 
     function initialize() {
         gpsMode = 3;
@@ -26,18 +30,64 @@ class VFRSettingsSnapshot {
         hrThreshold = 130;
         fuelCheckIntervalMin = 30;
         useCompanionApp = false;
-        bezelUseAtlas = false;
         bezelFontScale = 100;
         bezelContrast = 100;
-        bezelOffsetHDG = 0;
-        bezelOffsetGS = 0;
-        bezelOffsetALT = 10;
-        bezelOffsetQNH = 10;
         altitudeSource = 0;
+        circuitEnabled = false;
+        manualFieldElevationFt = 0;
+        runwayLengthM = 2405;
+        altAlertFt = 0;
+        autoBacklight = 0;
+        nightStartHour = 20;
+        nightEndHour = 7;
+        displayMode = 1;
+        pageCycleSec = 0;
     }
 }
 
 class VFRSettings {
+
+    // Application.Properties.setValue() is ASYNCHRONOUS, and loadSettings()
+    // re-reads the properties every time the face re-appears (onShow), so a
+    // value written by the settings menu can be read back stale and silently
+    // revert the face. Remember the last requested value for this session.
+    static var displayModeOverride as Number? = null;
+
+    // Face layout. The settings.xml "DisplayMode" property is what Garmin
+    // Connect shows, but a value stored by an install that predates the paged
+    // face is 0 (the OLD default), which would hide the new face for ever and
+    // make the update look like it changed nothing (it did: the watch kept
+    // drawing the ring). So the effective layout comes from this separate key:
+    // absent = never chosen = use the paged face, and that is remembered.
+    // Because absence means "pages", a lost/slow asynchronous write can never
+    // pin the wrong face. The DisplayMode property is still written alongside so
+    // the Connect-visible setting matches.
+    static var faceLayoutKey as String = "vfr_faceLayout";
+
+    static function effectiveDisplayMode() as Number {
+        if (VFRSettings.displayModeOverride != null) {
+            return VFRSettings.displayModeOverride as Number;
+        }
+        try {
+            var raw = Application.Properties.getValue(VFRSettings.faceLayoutKey);
+            if (raw != null) { return VFRSettings.clampNumber(raw as Number, 0, 1); }
+            // First launch after the face rework (or a lost write): paged face.
+            Application.Properties.setValue(VFRSettings.faceLayoutKey, 1);
+        } catch (ex) { }
+        return 1;
+    }
+
+    // Store a face layout chosen in the on-device settings menu and apply it
+    // immediately (no re-read, so the toggle cannot appear to do nothing).
+    static function setDisplayMode(view as VFRStopWatchView, mode as Number) as Void {
+        var m = VFRSettings.clampNumber(mode, 0, 1);
+        VFRSettings.displayModeOverride = m;
+        view.displayMode = m;
+        view.pageIdx = 0;
+        try { Application.Properties.setValue(VFRSettings.faceLayoutKey, m); } catch (ex) { }
+        try { Application.Properties.setValue("DisplayMode", m); } catch (ex) { }
+    }
+
     static function read() as VFRSettingsSnapshot {
         var s = new VFRSettingsSnapshot();
         s.gpsMode = VFRSettings.readClampedNumber("GpsMode", 3, 0, 3);
@@ -47,14 +97,18 @@ class VFRSettings {
         s.hrThreshold = VFRSettings.readClampedNumber("HrThreshold", 130, 0, 220);
         s.fuelCheckIntervalMin = VFRSettings.readClampedNumber("FuelCheckInterval", 30, 0, 120);
         s.useCompanionApp = VFRSettings.readClampedNumber("UseCompanionApp", 0, 0, 1) == 1;
-        s.bezelUseAtlas = VFRSettings.readClampedNumber("BezelUseAtlas", 0, 0, 1) == 1;
         s.bezelFontScale = VFRSettings.readClampedNumber("BezelFontScale", 100, 70, 130);
         s.bezelContrast = VFRSettings.readClampedNumber("BezelContrast", 100, 50, 100);
-        s.bezelOffsetHDG = VFRSettings.readClampedNumber("BezelOffsetHDG", 0, -20, 20);
-        s.bezelOffsetGS = VFRSettings.readClampedNumber("BezelOffsetGS", 0, -20, 20);
-        s.bezelOffsetALT = VFRSettings.readClampedNumber("BezelOffsetALT", 10, -20, 20);
-        s.bezelOffsetQNH = VFRSettings.readClampedNumber("BezelOffsetQNH", 10, -20, 20);
         s.altitudeSource = VFRSettings.readClampedNumber("AltitudeSource", 0, 0, 1);
+        s.circuitEnabled = VFRSettings.readClampedNumber("CircuitPractice", 0, 0, 1) == 1;
+        s.manualFieldElevationFt = VFRSettings.readClampedNumber("FieldElevationFt", 0, 0, 20000);
+        s.runwayLengthM = VFRSettings.readClampedNumber("RunwayLengthM", 2405, 0, 10000);
+        s.altAlertFt = VFRSettings.readClampedNumber("AltitudeAlertFt", 0, 0, 30000);
+        s.autoBacklight = VFRSettings.readClampedNumber("AutoBacklight", 0, 0, 2);
+        s.nightStartHour = VFRSettings.readClampedNumber("NightStartHour", 20, 0, 23);
+        s.nightEndHour = VFRSettings.readClampedNumber("NightEndHour", 7, 0, 23);
+        s.displayMode = VFRSettings.effectiveDisplayMode();
+        s.pageCycleSec = VFRSettings.readClampedNumber("PageCycleSec", 0, 0, 60);
         return s;
     }
 
@@ -86,14 +140,21 @@ class VFRSettings {
         view.HR_THRESHOLD = settings.hrThreshold;
         view.FUEL_CHECK_INTERVAL_MS = settings.fuelCheckIntervalMin * 60000;
         view.useCompanionApp = settings.useCompanionApp;
-        view.bezelUseAtlas = settings.bezelUseAtlas;
         view.bezelFontScale = settings.bezelFontScale;
         view.bezelContrast = settings.bezelContrast;
-        view.bezelOffsetHDG = settings.bezelOffsetHDG;
-        view.bezelOffsetGS = settings.bezelOffsetGS;
-        view.bezelOffsetALT = settings.bezelOffsetALT;
-        view.bezelOffsetQNH = settings.bezelOffsetQNH;
         view.altitudeSource = settings.altitudeSource;
+        view.circuitEnabled = settings.circuitEnabled;
+        view.manualFieldElevationFt = settings.manualFieldElevationFt;
+        view.runwayLengthM = settings.runwayLengthM;
+        view.altAlertFt = settings.altAlertFt;
+        view.autoBacklight = settings.autoBacklight;
+        view.nightStartHour = settings.nightStartHour;
+        view.nightEndHour = settings.nightEndHour;
+        view.displayMode = settings.displayMode;
+        view.pageCycleSec = settings.pageCycleSec;
+        if (settings.manualFieldElevationFt > 0) {
+            view.fieldElevationFt = settings.manualFieldElevationFt;
+        }
     }
 
     static function applySavedNumber(view as VFRStopWatchView, propKey as String, value as Number) as Void {
@@ -111,24 +172,30 @@ class VFRSettings {
             var fuelMin = VFRSettings.clampNumber(value, 0, 120);
             view.FUEL_CHECK_INTERVAL_MS = fuelMin * 60000;
             if (!view.running) { view.nextFuelCheckAt = view.FUEL_CHECK_INTERVAL_MS; }
-        } else if (propKey.equals("BezelUseAtlas")) {
-            view.bezelUseAtlas = VFRSettings.clampNumber(value, 0, 1) == 1;
-            view.invalidateBezelRendering();
         } else if (propKey.equals("BezelFontScale")) {
             view.bezelFontScale = VFRSettings.clampNumber(value, 70, 130);
             view.invalidateBezelRendering();
         } else if (propKey.equals("BezelContrast")) {
             view.bezelContrast = VFRSettings.clampNumber(value, 50, 100);
-        } else if (propKey.equals("BezelOffsetHDG")) {
-            view.bezelOffsetHDG = VFRSettings.clampNumber(value, -20, 20);
-        } else if (propKey.equals("BezelOffsetGS")) {
-            view.bezelOffsetGS = VFRSettings.clampNumber(value, -20, 20);
-        } else if (propKey.equals("BezelOffsetALT")) {
-            view.bezelOffsetALT = VFRSettings.clampNumber(value, -20, 20);
-        } else if (propKey.equals("BezelOffsetQNH")) {
-            view.bezelOffsetQNH = VFRSettings.clampNumber(value, -20, 20);
+        } else if (propKey.equals("DisplayMode")) {
+            view.displayMode = VFRSettings.clampNumber(value, 0, 1);
+        } else if (propKey.equals("PageCycleSec")) {
+            view.pageCycleSec = VFRSettings.clampNumber(value, 0, 60);
         } else if (propKey.equals("AltitudeSource")) {
             view.altitudeSource = VFRSettings.clampNumber(value, 0, 1);
+        } else if (propKey.equals("CircuitPractice")) {
+            view.circuitEnabled = VFRSettings.clampNumber(value, 0, 1) == 1;
+        } else if (propKey.equals("FieldElevationFt")) {
+            view.manualFieldElevationFt = VFRSettings.clampNumber(value, 0, 20000);
+            view.fieldElevationFt = view.manualFieldElevationFt;
+        } else if (propKey.equals("RunwayLengthM")) {
+            view.runwayLengthM = VFRSettings.clampNumber(value, 0, 10000);
+        } else if (propKey.equals("AltitudeAlertFt")) {
+            view.altAlertFt = VFRSettings.clampNumber(value, 0, 30000);
+        } else if (propKey.equals("NightStartHour")) {
+            view.nightStartHour = VFRSettings.clampNumber(value, 0, 23);
+        } else if (propKey.equals("NightEndHour")) {
+            view.nightEndHour = VFRSettings.clampNumber(value, 0, 23);
         }
     }
 

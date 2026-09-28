@@ -56,8 +56,8 @@ class VFRTrip {
                 if (!(wp instanceof Lang.Dictionary)) { return false; }
                 var w = wp as Dictionary;
 
-                lats[i] = (w["lat"] as Float).toFloat();
-                lons[i] = (w["lon"] as Float).toFloat();
+                lats[i] = VFRTrip.coerceFloat(w["lat"], 0.0);
+                lons[i] = VFRTrip.coerceFloat(w["lon"], 0.0);
 
                 try {
                     var a = w["alt_ft"];
@@ -180,6 +180,18 @@ class VFRTrip {
     }
 
     // ── Private ──────────────────────────────────────────────────────────────
+
+    // JSON payloads may encode lat/lon as any numeric type (Number, Long, Float
+    // or Double) depending on whether the value is integral. Normalise to Float
+    // instead of a hard `as Float` cast that throws on integer/Double values.
+    private static function coerceFloat(v as Object?, fallback as Float) as Float {
+        if (v == null) { return fallback; }
+        if (v instanceof Float)  { return (v as Float).toFloat(); }
+        if (v instanceof Double) { return (v as Double).toFloat(); }
+        if (v instanceof Number) { return (v as Number).toFloat(); }
+        if (v instanceof Long)   { return (v as Long).toFloat(); }
+        return fallback;
+    }
 
     private function _resetCache() as Void {
         bearingDeg = -1;

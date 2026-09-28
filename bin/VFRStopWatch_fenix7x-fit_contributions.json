@@ -1,0 +1,173 @@
+{
+  "datafields" : [ {
+    "id" : 0,
+    "chart-visible" : false,
+    "activity-visible" : true,
+    "lap-visible" : false,
+    "chart-title-key" : null,
+    "label-key" : "fit_obt_label",
+    "unit-label-key" : "fit_unit_none",
+    "sort-order" : 0,
+    "precision" : null,
+    "fill-color" : null
+  }, {
+    "id" : 1,
+    "chart-visible" : false,
+    "activity-visible" : true,
+    "lap-visible" : false,
+    "chart-title-key" : null,
+    "label-key" : "fit_ibt_label",
+    "unit-label-key" : "fit_unit_none",
+    "sort-order" : 1,
+    "precision" : null,
+    "fill-color" : null
+  }, {
+    "id" : 2,
+    "chart-visible" : false,
+    "activity-visible" : true,
+    "lap-visible" : false,
+    "chart-title-key" : null,
+    "label-key" : "fit_block_label",
+    "unit-label-key" : "fit_unit_s",
+    "sort-order" : 2,
+    "precision" : 0,
+    "fill-color" : null
+  }, {
+    "id" : 3,
+    "chart-visible" : false,
+    "activity-visible" : true,
+    "lap-visible" : false,
+    "chart-title-key" : null,
+    "label-key" : "fit_ldg_label",
+    "unit-label-key" : "fit_unit_none",
+    "sort-order" : 3,
+    "precision" : 0,
+    "fill-color" : null
+  }, {
+    "id" : 4,
+    "chart-visible" : false,
+    "activity-visible" : true,
+    "lap-visible" : false,
+    "chart-title-key" : null,
+    "label-key" : "fit_dist_label",
+    "unit-label-key" : "fit_unit_nm",
+    "sort-order" : 4,
+    "precision" : 1,
+    "fill-color" : null
+  }, {
+    "id" : 5,
+    "chart-visible" : false,
+    "activity-visible" : true,
+    "lap-visible" : false,
+    "chart-title-key" : null,
+    "label-key" : "fit_malt_label",
+    "unit-label-key" : "fit_unit_ft",
+    "sort-order" : 5,
+    "precision" : 0,
+    "fill-color" : null
+  }, {
+    "id" : 6,
+    "chart-visible" : false,
+    "activity-visible" : true,
+    "lap-visible" : false,
+    "chart-title-key" : null,
+    "label-key" : "fit_ags_label",
+    "unit-label-key" : "fit_unit_kt",
+    "sort-order" : 6,
+    "precision" : 0,
+    "fill-color" : null
+  }, {
+    "id" : 7,
+    "chart-visible" : false,
+    "activity-visible" : true,
+    "lap-visible" : false,
+    "chart-title-key" : null,
+    "label-key" : "fit_maxg_label",
+    "unit-label-key" : "fit_unit_g",
+    "sort-order" : 7,
+    "precision" : 2,
+    "fill-color" : null
+  }, {
+    "id" : 8,
+    "chart-visible" : false,
+    "activity-visible" : true,
+    "lap-visible" : false,
+    "chart-title-key" : null,
+    "label-key" : "fit_mbank_label",
+    "unit-label-key" : "fit_unit_deg",
+    "sort-order" : 8,
+    "precision" : 0,
+    "fill-color" : null
+  }, {
+    "id" : 12,
+    "chart-visible" : false,
+    "activity-visible" : true,
+    "lap-visible" : false,
+    "chart-title-key" : null,
+    "label-key" : "fit_mpitch_label",
+    "unit-label-key" : "fit_unit_deg",
+    "sort-order" : 12,
+    "precision" : 0,
+    "fill-color" : null
+  }, {
+    "id" : 9,
+    "chart-visible" : true,
+    "activity-visible" : false,
+    "lap-visible" : false,
+    "chart-title-key" : "fit_chart_g",
+    "label-key" : "fit_g_label",
+    "unit-label-key" : "fit_unit_g",
+    "sort-order" : 9,
+    "precision" : 2,
+    "fill-color" : "rgba(255, 59, 48, 1.0)"
+  }, {
+    "id" : 10,
+    "chart-visible" : true,
+    "activity-visible" : false,
+    "lap-visible" : false,
+    "chart-title-key" : "fit_chart_bank",
+    "label-key" : "fit_bank_label",
+    "unit-label-key" : "fit_unit_deg",
+    "sort-order" : 10,
+    "precision" : 0,
+    "fill-color" : "rgba(52, 199, 89, 1.0)"
+  }, {
+    "id" : 11,
+    "chart-visible" : true,
+    "activity-visible" : false,
+    "lap-visible" : false,
+    "chart-title-key" : "fit_chart_pitch",
+    "label-key" : "fit_pitch_label",
+    "unit-label-key" : "fit_unit_deg",
+    "sort-order" : 11,
+    "precision" : 0,
+    "fill-color" : "rgba(10, 132, 255, 1.0)"
+  } ],
+  "strings" : {
+    "default" : {
+      "fit_obt_label" : "OBT",
+      "fit_unit_none" : "",
+      "fit_ibt_label" : "IBT",
+      "fit_block_label" : "Block Time",
+      "fit_unit_s" : "s",
+      "fit_ldg_label" : "Landings",
+      "fit_dist_label" : "Distance",
+      "fit_unit_nm" : "nm",
+      "fit_malt_label" : "Max Altitude",
+      "fit_unit_ft" : "ft",
+      "fit_ags_label" : "Avg Ground Speed",
+      "fit_unit_kt" : "kt",
+      "fit_maxg_label" : "Max G",
+      "fit_unit_g" : "G",
+      "fit_mbank_label" : "Max Bank",
+      "fit_unit_deg" : "deg",
+      "fit_mpitch_label" : "Max Pitch",
+      "fit_chart_g" : "G-Force",
+      "fit_g_label" : "G-Force",
+      "fit_chart_bank" : "Bank angle",
+      "fit_bank_label" : "Bank Angle",
+      "fit_chart_pitch" : "Pitch angle",
+      "fit_pitch_label" : "Pitch (flight path)"
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import Toybox.Lang;
 import Toybox.Math;
+import Toybox.Position;
 import Toybox.Sensor;
 import Toybox.Time;
 import Toybox.Weather;
@@ -49,12 +50,23 @@ class VFRAvionicsData {
     }
 
     static function readAltitudeFeet() as Number? {
+        // Barometric (QNH) altitude is preferred. When the device (or simulator)
+        // reports no baro altitude, fall back to GPS altitude so AGL-based
+        // features (landing counter, circuit practice) still work. Field
+        // elevation is captured through this same function, so the AGL datum
+        // stays consistent even when falling back to GPS.
         try {
             var sInfo = Sensor.getInfo();
             if (sInfo != null && sInfo.altitude != null) {
                 return ((sInfo.altitude as Float) * 3.28084).toNumber();
             }
         } catch (se) { }
+        try {
+            var pInfo = Position.getInfo();
+            if (pInfo != null && pInfo.altitude != null) {
+                return ((pInfo.altitude as Float) * 3.28084).toNumber();
+            }
+        } catch (pe) { }
         return null;
     }
 

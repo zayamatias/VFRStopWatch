@@ -35,6 +35,21 @@ class VFRConnListener extends Communications.ConnectionListener {
 //
 // Flight events are queued independently and retried with exponential back-off
 // (up to MAX_RETRIES attempts) regardless of handshake state.
+//
+// Flight event payload (watch → phone, routed via the Garmin Connect app):
+//   { "type": "flight_event", "event": "start"|"stop",
+//     "flight_id": "vfr-<epoch>-<n>", "ts": <utc epoch seconds>,
+//     ...plus the trip report fields supplied by the caller (see
+//     VFRStopWatchView.buildFlightReport):
+//       "obt"/"ibt"     off-/in-block UTC epoch seconds
+//       "obt_text"/"ibt_text"  "HHMMZ" clock strings
+//       "block_time_s"  flight time in seconds
+//       "landings"      landing count for the logbook
+//       "distance_nm"   distance flown in nautical miles
+//       "max_alt_ft"    maximum altitude in feet
+//       "avg_gs_kt"/"max_gs_kt"  ground speeds in knots
+//       "trip_name"     active flight-plan name, when one is loaded
+//   }
 class VFRPhoneComms {
 
     // Read by the UI indicator
@@ -115,13 +130,16 @@ class VFRPhoneComms {
 
     // ── Public API ───────────────────────────────────────────────────────────
 
-    function sendFlightStart(utcEpochSec as Number) as Void {
+    // report: optional trip summary (start time, landings, distance, …) merged
+    // into the payload so the companion app can file the full flight report.
+    function sendFlightStart(utcEpochSec as Number, report as Dictionary?) as Void {
         flightId = "vfr-" + utcEpochSec.toString() + "-"
                  + (System.getTimer() % 99991).toString();
         _startPayload    = { "type"      => "flight_event",
                              "event"     => "start",
                              "flight_id" => flightId,
                              "ts"        => utcEpochSec };
+        _mergeReport(_startPayload as Dictionary, report);
         _startRetryCount = 0;
         // Schedule first attempt 1 s out so it doesn't collide with any
         // in-flight handshake on the same tick.
@@ -129,14 +147,37 @@ class VFRPhoneComms {
         
     }
 
-    function sendFlightStop(utcEpochSec as Number) as Void {
+    // report: trip summary captured at (auto)stop — OBT/IBT, block time,
+    // landings, distance, max altitude and average/max ground speed.
+    function sendFlightStop(utcEpochSec as Number, report as Dictionary?) as Void {
         _stopPayload    = { "type"      => "flight_event",
                             "event"     => "stop",
                             "flight_id" => flightId,
                             "ts"        => utcEpochSec };
+        _mergeReport(_stopPayload as Dictionary, report);
         _stopRetryCount = 0;
         _stopRetryAt    = System.getTimer() + 1000;
         
+    }
+
+    // Copy the flight report entries into an outgoing payload. Only values that
+    // survive the BLE/JSON bridge are forwarded (Number, Float, String, Boolean).
+    private function _mergeReport(payload as Dictionary, report as Dictionary?) as Void {
+        if (report == null) { return; }
+        try {
+            var keys = (report as Dictionary).keys();
+            for (var i = 0; i < keys.size(); i++) {
+                var k = keys[i];
+                var v = (report as Dictionary)[k];
+                if (v == null) { continue; }
+                if (v instanceof Number || v instanceof Float || v instanceof Double
+                        || v instanceof String || v instanceof Boolean) {
+                    payload[k] = v;
+                }
+            }
+        } catch (ex) {
+            try { System.println("VFRComms: report merge failed: " + ex.getErrorMessage()); } catch (e) { }
+        }
     }
 
     // Drive the whole state machine — call once per onUpdate frame.

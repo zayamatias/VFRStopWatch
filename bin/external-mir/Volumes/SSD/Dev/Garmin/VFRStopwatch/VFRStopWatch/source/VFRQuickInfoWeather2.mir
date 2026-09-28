@@ -21,270 +21,273 @@ class VFRQuickInfoWeather2View extends WatchUi.View {
     [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 9; @position = 16; @symbol_vardef = [_bigFont,9,16,24]; @symbol_type<0> = [Graphics,9,28,36]; @symbol_type<1> = [VectorFont,9,37,47]; ]
     private
     var _bigFont as Graphics.VectorFont or Null = null;
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 10; @symbol_functiondef = [initialize,10,13,23]; @symbol_param<0> = [main,10,24,28]; @symbol_param<0>_type<0> = [VFRStopWatchView,10,32,48]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 10; @position = 16; @symbol_vardef = [_lastRefresh,10,16,28]; @symbol_type<0> = [Number,10,32,38]; ]
+    private
+    var _lastRefresh as Number = 0;
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 11; @symbol_functiondef = [initialize,11,13,23]; @symbol_param<0> = [main,11,24,28]; @symbol_param<0>_type<0> = [VFRStopWatchView,11,32,48]; ]
     function initialize(main as VFRStopWatchView) as Void {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_10_50_13_4_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 11 8 ]
-        symbol [ View %tmp.2 11 8 12 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_11_50_14_4_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 12 8 ]
+        symbol [ View %tmp.2 12 8 12 ];
         %tmp.2 = getv ? :View;
-        symbol [ initialize %tmp.3 11 13 23 ];
+        symbol [ initialize %tmp.3 12 13 23 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 12 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 13 8 ]
         %tmp.4 = lgetv %main;
-        symbol [ main %tmp.4 12 16 20 ];
-        symbol [ _main ? 12 8 13 ];
+        symbol [ main %tmp.4 13 16 20 ];
+        symbol [ _main ? 13 8 13 ];
         putv self :_main %tmp.4;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_10_50_13_4_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_11_50_14_4_stop:
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 14; @symbol_functiondef = [onShow,14,13,19]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 15; @symbol_functiondef = [onShow,15,13,19]; ]
     function onShow() as Void {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_14_30_14_57_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 14 32 ]
-        symbol [ WatchUi %tmp.1 14 32 39 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_15_30_15_57_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 15 32 ]
+        symbol [ WatchUi %tmp.1 15 32 39 ];
         %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.2 14 40 53 ];
+        symbol [ requestUpdate %tmp.2 15 40 53 ];
         %tmp.2 = getv function %tmp.1 :requestUpdate;
         invoke %tmp.1 %tmp.2();
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_14_30_14_57_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_15_30_15_57_stop:
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 15; @symbol_functiondef = [onLayout,15,13,21]; @symbol_param<0> = [dc,15,22,24]; @symbol_param<0>_type<0> = [Dc,15,28,30]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 16; @symbol_functiondef = [onLayout,16,13,21]; @symbol_param<0> = [dc,16,22,24]; @symbol_param<0>_type<0> = [Dc,16,28,30]; ]
     function onLayout(dc as Dc) as Void {
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 16; @symbol_functiondef = [onUpdate,16,13,21]; @symbol_param<0> = [dc,16,22,24]; @symbol_param<0>_type<0> = [Dc,16,28,30]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 17; @symbol_functiondef = [onUpdate,17,13,21]; @symbol_param<0> = [dc,17,22,24]; @symbol_param<0>_type<0> = [Dc,17,28,30]; ]
     function onUpdate(dc as Dc) as Void {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 17 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_stop" ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 18 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_stop" ]
         %now.1 = local;
-        symbol [ now %now.1 17 12 15 ];
-        symbol [ System %tmp.1 17 18 24 ];
+        symbol [ now %now.1 18 12 15 ];
+        symbol [ System %tmp.1 18 18 24 ];
         %tmp.1 = getm $.Toybox.System;
-        symbol [ getTimer %tmp.2 17 25 33 ];
+        symbol [ getTimer %tmp.2 18 25 33 ];
         %tmp.2 = getv function %tmp.1 :getTimer;
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %now.1 %tmp.3;
-        symbol [ now %now.1 17 12 15 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 18 8 ]
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_8_18_89_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_8_18_89_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_8_18_89_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_8_18_89_finally;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_8_18_89_beginTry:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_12_18_75_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 18 14 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_12_18_75_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_12_18_75_stop" ]
+        symbol [ now %now.1 18 12 15 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 19 8 ]
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_8_19_89_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_8_19_89_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_8_19_89_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_8_19_89_finally;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_8_19_89_beginTry:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_12_19_75_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 19 14 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_12_19_75_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_12_19_75_stop" ]
         %c.2 = local;
-        symbol [ c %c.2 18 18 19 ];
+        symbol [ c %c.2 19 18 19 ];
         %tmp.4 = self;
-        symbol [ getApp %tmp.5 18 22 28 ];
+        symbol [ getApp %tmp.5 19 22 28 ];
         %tmp.5 = getv function %tmp.4 :getApp;
         %tmp.6 = invoke %tmp.4 %tmp.5();
-        symbol [ getComms %tmp.7 18 31 39 ];
+        symbol [ getComms %tmp.7 19 31 39 ];
         %tmp.7 = getv function %tmp.6 :getComms;
         %tmp.8 = invoke %tmp.6 %tmp.7();
         lputv %c.2 %tmp.8;
-        symbol [ c %c.2 18 18 19 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 18 43 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_43_18_73_if_stmt:
+        symbol [ c %c.2 19 18 19 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 19 43 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_43_19_73_if_stmt:
         %tmp.9 = lgetv %c.2;
-        symbol [ c %tmp.9 18 47 48 ];
+        symbol [ c %tmp.9 19 47 48 ];
         %tmp.10 = null;
         %tmp.11 = ne %tmp.9 %tmp.10;
-        bf %tmp.11 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_43_18_73_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_43_18_73_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_58_18_73_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 18 60 ]
+        bf %tmp.11 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_43_19_73_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_43_19_73_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_58_19_73_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 19 60 ]
         %tmp.12 = lgetv %c.2;
-        symbol [ c %tmp.12 18 60 61 ];
+        symbol [ c %tmp.12 19 60 61 ];
         %tmp.13 = as %tmp.12 { (!Null) };
-        symbol [ tick %tmp.14 18 62 66 ];
+        symbol [ tick %tmp.14 19 62 66 ];
         %tmp.14 = getv function %tmp.13 :tick;
         %tmp.15 = lgetv %now.1;
-        symbol [ now %tmp.15 18 67 70 ];
+        symbol [ now %tmp.15 19 67 70 ];
         invoke %tmp.13 %tmp.14(%tmp.15);
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_58_18_73_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_43_18_73_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_43_18_73_if_end:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_12_18_75_stop:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_8_18_89_endTry:
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_8_18_89_finally;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_8_18_89_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_8_18_89_catch:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_58_19_73_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_43_19_73_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_43_19_73_if_end:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_12_19_75_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_8_19_89_endTry:
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_8_19_89_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_8_19_89_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_8_19_89_catch:
         %tmp.16 = exception;
         push %tmp.16;
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 18 77 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_8_18_89_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_77_18_89_end" ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 19 77 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_8_19_89_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_77_19_89_end" ]
         %ce.3 = local;
-        symbol [ ce %ce.3 18 84 86 ];
+        symbol [ ce %ce.3 19 84 86 ];
         %tmp.17 = dup %tmp.16;
         lputv %ce.3 %tmp.17;
-        symbol [ ce %ce.3 18 84 86 ];
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_8_18_89_finally;
+        symbol [ ce %ce.3 19 84 86 ];
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_8_19_89_finally;
         pop;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_8_18_89_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_77_18_89_end:
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_8_18_89_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_77_18_89_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_77_18_89_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_8_18_89_finally;
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_8_18_89_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_8_19_89_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_77_19_89_end:
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_8_19_89_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_77_19_89_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_77_19_89_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_8_19_89_finally;
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_8_19_89_finally;
         throw %tmp.16;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_8_18_89_finally:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_8_19_89_finally:
         jsrret;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_18_8_18_89_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 19 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_stop" ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_19_8_19_89_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 20 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_stop" ]
         %w.4 = local;
-        symbol [ w %w.4 19 12 13 ];
+        symbol [ w %w.4 20 12 13 ];
         %tmp.18 = lgetv %dc;
-        symbol [ dc %tmp.18 19 17 19 ];
-        symbol [ getWidth %tmp.19 19 20 28 ];
+        symbol [ dc %tmp.18 20 17 19 ];
+        symbol [ getWidth %tmp.19 20 20 28 ];
         %tmp.19 = getv function %tmp.18 :getWidth;
         %tmp.20 = invoke %tmp.18 %tmp.19();
         lputv %w.4 %tmp.20;
-        symbol [ w %w.4 19 12 13 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 20 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_stop" ]
+        symbol [ w %w.4 20 12 13 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 21 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_stop" ]
         %h.5 = local;
-        symbol [ h %h.5 20 12 13 ];
+        symbol [ h %h.5 21 12 13 ];
         %tmp.21 = lgetv %dc;
-        symbol [ dc %tmp.21 20 17 19 ];
-        symbol [ getHeight %tmp.22 20 20 29 ];
+        symbol [ dc %tmp.21 21 17 19 ];
+        symbol [ getHeight %tmp.22 21 20 29 ];
         %tmp.22 = getv function %tmp.21 :getHeight;
         %tmp.23 = invoke %tmp.21 %tmp.22();
         lputv %h.5 %tmp.23;
-        symbol [ h %h.5 20 12 13 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 21 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_stop" ]
+        symbol [ h %h.5 21 12 13 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 22 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_stop" ]
         %cx.6 = local;
-        symbol [ cx %cx.6 21 12 14 ];
+        symbol [ cx %cx.6 22 12 14 ];
         %tmp.24 = lgetv %w.4;
-        symbol [ w %tmp.24 21 17 18 ];
+        symbol [ w %tmp.24 22 17 18 ];
         %tmp.25 = 2;
         %tmp.26 = div %tmp.24 %tmp.25;
         lputv %cx.6 %tmp.26;
-        symbol [ cx %cx.6 21 12 14 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 24 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_stop" ]
+        symbol [ cx %cx.6 22 12 14 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 25 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_stop" ]
         %topStart.7 = local;
-        symbol [ topStart %topStart.7 24 12 20 ];
+        symbol [ topStart %topStart.7 25 12 20 ];
         %tmp.27 = 40;
         lputv %topStart.7 %tmp.27;
-        symbol [ topStart %topStart.7 24 12 20 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 25 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_stop" ]
+        symbol [ topStart %topStart.7 25 12 20 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 26 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_stop" ]
         %jc.8 = local;
-        symbol [ jc %jc.8 25 12 14 ];
-        symbol [ Graphics %tmp.28 25 17 25 ];
+        symbol [ jc %jc.8 26 12 14 ];
+        symbol [ Graphics %tmp.28 26 17 25 ];
         %tmp.28 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.29 25 26 45 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.29 26 26 45 ];
         %tmp.29 = getv %tmp.28 :TEXT_JUSTIFY_CENTER;
-        symbol [ Graphics %tmp.30 25 48 56 ];
+        symbol [ Graphics %tmp.30 26 48 56 ];
         %tmp.30 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_VCENTER %tmp.31 25 57 77 ];
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.31 26 57 77 ];
         %tmp.31 = getv %tmp.30 :TEXT_JUSTIFY_VCENTER;
         %tmp.32 = bitor %tmp.29 %tmp.31;
         lputv %jc.8 %tmp.32;
-        symbol [ jc %jc.8 25 12 14 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 27 8 ]
-        symbol [ _main %tmp.34 27 8 13 ];
+        symbol [ jc %jc.8 26 12 14 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 28 8 ]
+        symbol [ _main %tmp.34 28 8 13 ];
         %tmp.34 = getv ? :_main;
-        symbol [ drawBezelBackground %tmp.35 27 14 33 ];
+        symbol [ drawBezelBackground %tmp.35 28 14 33 ];
         %tmp.35 = getv function %tmp.34 :drawBezelBackground;
         %tmp.36 = lgetv %dc;
-        symbol [ dc %tmp.36 27 34 36 ];
+        symbol [ dc %tmp.36 28 34 36 ];
         invoke %tmp.34 %tmp.35(%tmp.36);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 30 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_stop" ]
-        %minWh.9 = local;
-        symbol [ minWh %minWh.9 30 12 17 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_30_20_30_34_begin:
-        %tmp.37 = lgetv %w.4;
-        symbol [ w %tmp.37 30 21 22 ];
-        %tmp.38 = lgetv %h.5;
-        symbol [ h %tmp.38 30 25 26 ];
-        %tmp.39 = lt %tmp.37 %tmp.38;
-        bf %tmp.39 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_30_20_30_34_else_false;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_30_20_30_34_true:
-        %tmp.40 = lgetv %w.4;
-        symbol [ w %tmp.40 30 30 31 ];
-        push %tmp.40;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_30_20_30_34_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_30_20_30_34_else_false:
-        %tmp.41 = lgetv %h.5;
-        symbol [ h %tmp.41 30 34 35 ];
-        push %tmp.41;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_30_20_30_34_end:
-        %tmp.42 = phi [%tmp.39 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_30_20_30_34_begin] [%tmp.40 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_30_20_30_34_true] [%tmp.41 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_30_20_30_34_else_false] [%tmp.42 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_30_20_30_34_end];
-        lputv %minWh.9 %tmp.42;
-        symbol [ minWh %minWh.9 30 12 17 ];
 [ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 31 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_stop" ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_stop" ]
+        %minWh.9 = local;
+        symbol [ minWh %minWh.9 31 12 17 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_31_20_31_34_begin:
+        %tmp.37 = lgetv %w.4;
+        symbol [ w %tmp.37 31 21 22 ];
+        %tmp.38 = lgetv %h.5;
+        symbol [ h %tmp.38 31 25 26 ];
+        %tmp.39 = lt %tmp.37 %tmp.38;
+        bf %tmp.39 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_31_20_31_34_else_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_31_20_31_34_true:
+        %tmp.40 = lgetv %w.4;
+        symbol [ w %tmp.40 31 30 31 ];
+        push %tmp.40;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_31_20_31_34_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_31_20_31_34_else_false:
+        %tmp.41 = lgetv %h.5;
+        symbol [ h %tmp.41 31 34 35 ];
+        push %tmp.41;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_31_20_31_34_end:
+        %tmp.42 = phi [%tmp.39 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_31_20_31_34_begin] [%tmp.40 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_31_20_31_34_true] [%tmp.41 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_31_20_31_34_else_false] [%tmp.42 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_31_20_31_34_end];
+        lputv %minWh.9 %tmp.42;
+        symbol [ minWh %minWh.9 31 12 17 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 32 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_stop" ]
         %sepR.10 = local;
-        symbol [ sepR %sepR.10 31 12 16 ];
+        symbol [ sepR %sepR.10 32 12 16 ];
         %tmp.43 = lgetv %minWh.9;
-        symbol [ minWh %tmp.43 31 22 27 ];
-        symbol [ toFloat %tmp.44 31 28 35 ];
+        symbol [ minWh %tmp.43 32 22 27 ];
+        symbol [ toFloat %tmp.44 32 28 35 ];
         %tmp.44 = getv function %tmp.43 :toFloat;
         %tmp.45 = invoke %tmp.43 %tmp.44();
         %tmp.46 = 2.0;
         %tmp.47 = div %tmp.45 %tmp.46;
         %tmp.48 = 27.0;
         %tmp.49 = sub %tmp.47 %tmp.48;
-        symbol [ toNumber %tmp.50 31 53 61 ];
+        symbol [ toNumber %tmp.50 32 53 61 ];
         %tmp.50 = getv function %tmp.49 :toNumber;
         %tmp.51 = invoke %tmp.49 %tmp.50();
         lputv %sepR.10 %tmp.51;
-        symbol [ sepR %sepR.10 31 12 16 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 32 8 ]
+        symbol [ sepR %sepR.10 32 12 16 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 33 8 ]
         %tmp.52 = lgetv %dc;
-        symbol [ dc %tmp.52 32 8 10 ];
-        symbol [ setColor %tmp.53 32 11 19 ];
+        symbol [ dc %tmp.52 33 8 10 ];
+        symbol [ setColor %tmp.53 33 11 19 ];
         %tmp.53 = getv function %tmp.52 :setColor;
-        symbol [ Graphics %tmp.54 32 20 28 ];
+        symbol [ Graphics %tmp.54 33 20 28 ];
         %tmp.54 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.55 32 29 40 ];
+        symbol [ COLOR_BLACK %tmp.55 33 29 40 ];
         %tmp.55 = getv %tmp.54 :COLOR_BLACK;
-        symbol [ Graphics %tmp.56 32 42 50 ];
+        symbol [ Graphics %tmp.56 33 42 50 ];
         %tmp.56 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.57 32 51 62 ];
+        symbol [ COLOR_BLACK %tmp.57 33 51 62 ];
         %tmp.57 = getv %tmp.56 :COLOR_BLACK;
         invoke %tmp.52 %tmp.53(%tmp.55, %tmp.57);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 33 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 34 8 ]
         %tmp.58 = lgetv %dc;
-        symbol [ dc %tmp.58 33 8 10 ];
-        symbol [ fillCircle %tmp.59 33 11 21 ];
+        symbol [ dc %tmp.58 34 8 10 ];
+        symbol [ fillCircle %tmp.59 34 11 21 ];
         %tmp.59 = getv function %tmp.58 :fillCircle;
         %tmp.60 = lgetv %cx.6;
-        symbol [ cx %tmp.60 33 22 24 ];
+        symbol [ cx %tmp.60 34 22 24 ];
         %tmp.61 = lgetv %h.5;
-        symbol [ h %tmp.61 33 26 27 ];
+        symbol [ h %tmp.61 34 26 27 ];
         %tmp.62 = 2;
         %tmp.63 = div %tmp.61 %tmp.62;
         %tmp.64 = lgetv %sepR.10;
-        symbol [ sepR %tmp.64 33 33 37 ];
+        symbol [ sepR %tmp.64 34 33 37 ];
         invoke %tmp.58 %tmp.59(%tmp.60, %tmp.63, %tmp.64);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 36 8 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_36_8_42_8_if_stmt:
-        symbol [ _bigFont %tmp.66 36 12 20 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 37 8 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_37_8_43_8_if_stmt:
+        symbol [ _bigFont %tmp.66 37 12 20 ];
         %tmp.66 = getv ? :_bigFont;
         %tmp.67 = null;
         %tmp.68 = eq %tmp.66 %tmp.67;
-        bf %tmp.68 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_36_8_42_8_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_36_8_42_8_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_36_30_42_8_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 37 12 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_36_30_42_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_36_30_42_8_stop" ]
+        bf %tmp.68 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_37_8_43_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_37_8_43_8_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_37_30_43_8_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 38 12 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_37_30_43_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_37_30_43_8_stop" ]
         %sz.11 = local;
-        symbol [ sz %sz.11 37 16 18 ];
+        symbol [ sz %sz.11 38 16 18 ];
         %tmp.69 = lgetv %minWh.9;
-        symbol [ minWh %tmp.69 37 25 30 ];
+        symbol [ minWh %tmp.69 38 25 30 ];
         %tmp.70 = 0.14;
         %tmp.71 = mul %tmp.69 %tmp.70;
-        symbol [ toNumber %tmp.72 37 39 47 ];
+        symbol [ toNumber %tmp.72 38 39 47 ];
         %tmp.72 = getv function %tmp.71 :toNumber;
         %tmp.73 = invoke %tmp.71 %tmp.72();
         lputv %sz.11 %tmp.73;
-        symbol [ sz %sz.11 37 16 18 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 38 12 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_36_30_42_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_36_30_42_8_stop" ]
+        symbol [ sz %sz.11 38 16 18 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 39 12 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_37_30_43_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_37_30_43_8_stop" ]
         %faces.12 = local;
-        symbol [ faces %faces.12 38 16 21 ];
+        symbol [ faces %faces.12 39 16 21 ];
         %tmp.74 = newa 5;
         %tmp.75 = "RobotoCondensed";
         %tmp.76 = dup %tmp.74;
@@ -302,1034 +305,1054 @@ _Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc
         %tmp.88 = dup %tmp.86;
         %tmp.89 = aputv %tmp.88 4 %tmp.87;
         lputv %faces.12 %tmp.89;
-        symbol [ faces %faces.12 38 16 21 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 39 12 ]
-        for @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_12_41_12_for_test @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_12_41_12_for_incr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_12_41_12_for_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_12_41_12_for_init:
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_12_41_12_for_begin" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_12_41_12_for_end" ]
+        symbol [ faces %faces.12 39 16 21 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 40 12 ]
+        for @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_12_42_12_for_test @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_12_42_12_for_incr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_12_42_12_for_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_12_42_12_for_init:
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_12_42_12_for_begin" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_12_42_12_for_end" ]
         %fi.13 = local;
-        symbol [ fi %fi.13 39 21 23 ];
+        symbol [ fi %fi.13 40 21 23 ];
         %tmp.90 = 0;
         lputv %fi.13 %tmp.90;
-        symbol [ fi %fi.13 39 21 23 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_12_41_12_for_test:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_29_39_62_begin:
+        symbol [ fi %fi.13 40 21 23 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_12_42_12_for_test:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_29_40_62_begin:
         %tmp.91 = lgetv %fi.13;
-        symbol [ fi %tmp.91 39 29 31 ];
+        symbol [ fi %tmp.91 40 29 31 ];
         %tmp.92 = lgetv %faces.12;
-        symbol [ faces %tmp.92 39 34 39 ];
-        symbol [ size %tmp.93 39 40 44 ];
+        symbol [ faces %tmp.92 40 34 39 ];
+        symbol [ size %tmp.93 40 40 44 ];
         %tmp.93 = getv function %tmp.92 :size;
         %tmp.94 = invoke %tmp.92 %tmp.93();
         %tmp.95 = lt %tmp.91 %tmp.94;
         %tmp.96 = dup %tmp.95;
-        bf %tmp.96 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_50_39_62_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_50_39_62_true:
-        symbol [ _bigFont %tmp.98 39 50 58 ];
+        bf %tmp.96 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_50_40_62_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_50_40_62_true:
+        symbol [ _bigFont %tmp.98 40 50 58 ];
         %tmp.98 = getv ? :_bigFont;
         %tmp.99 = null;
         %tmp.100 = eq %tmp.98 %tmp.99;
         %tmp.101 = and %tmp.95 %tmp.100;
         push %tmp.101;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_50_39_62_end:
-        %tmp.102 = phi [%tmp.96 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_29_39_62_begin] [%tmp.101 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_50_39_62_true] [%tmp.102 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_50_39_62_end];
-        bf %tmp.102 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_12_41_12_for_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_12_41_12_for_begin:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_74_41_12_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 40 16 ]
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_16_40_105_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_16_40_105_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_16_40_105_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_16_40_105_finally;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_16_40_105_beginTry:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_20_40_92_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 40 22 ]
-        symbol [ Graphics %tmp.103 40 33 41 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_50_40_62_end:
+        %tmp.102 = phi [%tmp.96 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_29_40_62_begin] [%tmp.101 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_50_40_62_true] [%tmp.102 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_50_40_62_end];
+        bf %tmp.102 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_12_42_12_for_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_12_42_12_for_begin:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_74_42_12_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 41 16 ]
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_16_41_105_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_16_41_105_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_16_41_105_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_16_41_105_finally;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_16_41_105_beginTry:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_20_41_92_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 41 22 ]
+        symbol [ Graphics %tmp.103 41 33 41 ];
         %tmp.103 = getm $.Toybox.Graphics;
-        symbol [ getVectorFont %tmp.104 40 42 55 ];
+        symbol [ getVectorFont %tmp.104 41 42 55 ];
         %tmp.104 = getv function %tmp.103 :getVectorFont;
         %tmp.105 = newd 2;
         %tmp.107 = const :face;
-        symbol [ face %tmp.107 40 58 62 const ];
+        symbol [ face %tmp.107 41 58 62 const ];
         %tmp.108 = lgetv %faces.12;
-        symbol [ faces %tmp.108 40 66 71 ];
+        symbol [ faces %tmp.108 41 66 71 ];
         %tmp.109 = lgetv %fi.13;
-        symbol [ fi %tmp.109 40 72 74 ];
+        symbol [ fi %tmp.109 41 72 74 ];
         %tmp.110 = agetv %tmp.108 %tmp.109;
         %tmp.111 = dup %tmp.105;
         %tmp.112 = aputv %tmp.111 %tmp.107 %tmp.110;
         %tmp.114 = const :size;
-        symbol [ size %tmp.114 40 78 82 const ];
+        symbol [ size %tmp.114 41 78 82 const ];
         %tmp.115 = lgetv %sz.11;
-        symbol [ sz %tmp.115 40 86 88 ];
+        symbol [ sz %tmp.115 41 86 88 ];
         %tmp.116 = dup %tmp.112;
         %tmp.117 = aputv %tmp.116 %tmp.114 %tmp.115;
         %tmp.118 = invoke %tmp.103 %tmp.104(%tmp.117);
-        symbol [ _bigFont ? 40 22 30 ];
+        symbol [ _bigFont ? 41 22 30 ];
         putv self :_bigFont %tmp.118;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_20_40_92_stop:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_16_40_105_endTry:
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_16_40_105_finally;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_16_40_105_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_16_40_105_catch:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_20_41_92_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_16_41_105_endTry:
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_16_41_105_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_16_41_105_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_16_41_105_catch:
         %tmp.119 = exception;
         push %tmp.119;
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 40 94 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_16_40_105_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_94_40_105_end" ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 41 94 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_16_41_105_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_94_41_105_end" ]
         %e.14 = local;
-        symbol [ e %e.14 40 101 102 ];
+        symbol [ e %e.14 41 101 102 ];
         %tmp.120 = dup %tmp.119;
         lputv %e.14 %tmp.120;
-        symbol [ e %e.14 40 101 102 ];
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_16_40_105_finally;
+        symbol [ e %e.14 41 101 102 ];
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_16_41_105_finally;
         pop;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_16_40_105_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_94_40_105_end:
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_16_40_105_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_94_40_105_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_94_40_105_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_16_40_105_finally;
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_16_40_105_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_16_41_105_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_94_41_105_end:
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_16_41_105_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_94_41_105_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_94_41_105_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_16_41_105_finally;
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_16_41_105_finally;
         throw %tmp.119;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_16_40_105_finally:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_16_41_105_finally:
         jsrret;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_16_40_105_end:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_74_41_12_stop:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_12_41_12_for_incr:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 39 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_41_16_41_105_end:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_74_42_12_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_12_42_12_for_incr:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 40 ]
         %tmp.123 = lgetv %fi.13;
-        symbol [ fi %tmp.123 39 68 70 ];
+        symbol [ fi %tmp.123 40 68 70 ];
         %tmp.124 = add %tmp.123 1;
         lputv %fi.13 %tmp.124;
-        symbol [ fi %fi.13 39 68 70 ];
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_12_41_12_for_test;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_39_12_41_12_for_end:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_36_30_42_8_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_36_8_42_8_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_36_8_42_8_if_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 43 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_stop" ]
+        symbol [ fi %fi.13 40 68 70 ];
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_12_42_12_for_test;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_40_12_42_12_for_end:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_37_30_43_8_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_37_8_43_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_37_8_43_8_if_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 44 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_stop" ]
         %bigFont.15 = local;
-        symbol [ bigFont %bigFont.15 43 12 19 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_43_22_43_63_begin:
-        symbol [ _bigFont %tmp.126 43 23 31 ];
+        symbol [ bigFont %bigFont.15 44 12 19 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_44_22_44_63_begin:
+        symbol [ _bigFont %tmp.126 44 23 31 ];
         %tmp.126 = getv ? :_bigFont;
         %tmp.127 = null;
         %tmp.128 = ne %tmp.126 %tmp.127;
-        bf %tmp.128 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_43_22_43_63_else_false;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_43_22_43_63_true:
-        symbol [ _bigFont %tmp.130 43 43 51 ];
+        bf %tmp.128 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_44_22_44_63_else_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_44_22_44_63_true:
+        symbol [ _bigFont %tmp.130 44 43 51 ];
         %tmp.130 = getv ? :_bigFont;
         %tmp.131 = as %tmp.130 { (!Null) };
         push %tmp.131;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_43_22_43_63_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_43_22_43_63_else_false:
-        symbol [ Graphics %tmp.132 43 54 62 ];
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_44_22_44_63_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_44_22_44_63_else_false:
+        symbol [ Graphics %tmp.132 44 54 62 ];
         %tmp.132 = getm $.Toybox.Graphics;
-        symbol [ FONT_NUMBER_HOT %tmp.133 43 63 78 ];
+        symbol [ FONT_NUMBER_HOT %tmp.133 44 63 78 ];
         %tmp.133 = getv %tmp.132 :FONT_NUMBER_HOT;
         push %tmp.133;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_43_22_43_63_end:
-        %tmp.134 = phi [%tmp.128 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_43_22_43_63_begin] [%tmp.131 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_43_22_43_63_true] [%tmp.133 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_43_22_43_63_else_false] [%tmp.134 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_43_22_43_63_end];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_44_22_44_63_end:
+        %tmp.134 = phi [%tmp.128 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_44_22_44_63_begin] [%tmp.131 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_44_22_44_63_true] [%tmp.133 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_44_22_44_63_else_false] [%tmp.134 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_44_22_44_63_end];
         lputv %bigFont.15 %tmp.134;
-        symbol [ bigFont %bigFont.15 43 12 19 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 46 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_stop" ]
+        symbol [ bigFont %bigFont.15 44 12 19 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 47 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_stop" ]
         %wr.16 = local;
-        symbol [ wr %wr.16 46 12 14 ];
-        symbol [ VFRWeather %tmp.136 46 17 27 ];
+        symbol [ wr %wr.16 47 12 14 ];
+        symbol [ VFRWeather %tmp.136 47 17 27 ];
         %tmp.136 = getv ? :VFRWeather;
-        symbol [ read %tmp.137 46 28 32 ];
+        symbol [ read %tmp.137 47 28 32 ];
         %tmp.137 = getv function %tmp.136 :read;
         %tmp.138 = self;
-        symbol [ getApp %tmp.139 46 33 39 ];
+        symbol [ getApp %tmp.139 47 33 39 ];
         %tmp.139 = getv function %tmp.138 :getApp;
         %tmp.140 = invoke %tmp.138 %tmp.139();
-        symbol [ getComms %tmp.141 46 42 50 ];
+        symbol [ getComms %tmp.141 47 42 50 ];
         %tmp.141 = getv function %tmp.140 :getComms;
         %tmp.142 = invoke %tmp.140 %tmp.141();
         %tmp.143 = invoke %tmp.136 %tmp.137(%tmp.142);
         lputv %wr.16 %tmp.143;
-        symbol [ wr %wr.16 46 12 14 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 49 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_stop" ]
+        symbol [ wr %wr.16 47 12 14 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 50 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_stop" ]
         %cloudStr.17 = local;
-        symbol [ cloudStr %cloudStr.17 49 12 20 ];
+        symbol [ cloudStr %cloudStr.17 50 12 20 ];
         %tmp.144 = "--%";
         lputv %cloudStr.17 %tmp.144;
-        symbol [ cloudStr %cloudStr.17 49 12 20 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 50 8 ]
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_8_50_100_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_8_50_100_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_8_50_100_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_8_50_100_finally;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_8_50_100_beginTry:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_12_50_87_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 50 14 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_14_50_85_if_stmt:
+        symbol [ cloudStr %cloudStr.17 50 12 20 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 51 8 ]
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_8_51_100_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_8_51_100_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_8_51_100_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_8_51_100_finally;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_8_51_100_beginTry:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_12_51_87_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 51 14 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_14_51_85_if_stmt:
         %tmp.145 = lgetv %wr.16;
-        symbol [ wr %tmp.145 50 18 20 ];
-        symbol [ cloudCover %tmp.146 50 21 31 ];
+        symbol [ wr %tmp.145 51 18 20 ];
+        symbol [ cloudCover %tmp.146 51 21 31 ];
         %tmp.146 = getv %tmp.145 :cloudCover;
         %tmp.147 = 0;
         %tmp.148 = gte %tmp.146 %tmp.147;
-        bf %tmp.148 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_14_50_85_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_14_50_85_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_38_50_85_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 50 40 ]
+        bf %tmp.148 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_14_51_85_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_14_51_85_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_38_51_85_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 51 40 ]
         %tmp.149 = lgetv %wr.16;
-        symbol [ wr %tmp.149 50 52 54 ];
-        symbol [ cloudCover %tmp.150 50 55 65 ];
+        symbol [ wr %tmp.149 51 52 54 ];
+        symbol [ cloudCover %tmp.150 51 55 65 ];
         %tmp.150 = getv %tmp.149 :cloudCover;
-        symbol [ toString %tmp.151 50 66 74 ];
+        symbol [ toString %tmp.151 51 66 74 ];
         %tmp.151 = getv function %tmp.150 :toString;
         %tmp.152 = invoke %tmp.150 %tmp.151();
         %tmp.153 = "%";
         %tmp.154 = add %tmp.152 %tmp.153;
         lputv %cloudStr.17 %tmp.154;
-        symbol [ cloudStr %cloudStr.17 50 40 48 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_38_50_85_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_14_50_85_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_14_50_85_if_end:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_12_50_87_stop:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_8_50_100_endTry:
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_8_50_100_finally;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_8_50_100_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_8_50_100_catch:
+        symbol [ cloudStr %cloudStr.17 51 40 48 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_38_51_85_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_14_51_85_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_14_51_85_if_end:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_12_51_87_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_8_51_100_endTry:
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_8_51_100_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_8_51_100_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_8_51_100_catch:
         %tmp.155 = exception;
         push %tmp.155;
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 50 89 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_8_50_100_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_89_50_100_end" ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 51 89 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_8_51_100_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_89_51_100_end" ]
         %e.18 = local;
-        symbol [ e %e.18 50 96 97 ];
+        symbol [ e %e.18 51 96 97 ];
         %tmp.156 = dup %tmp.155;
         lputv %e.18 %tmp.156;
-        symbol [ e %e.18 50 96 97 ];
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_8_50_100_finally;
+        symbol [ e %e.18 51 96 97 ];
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_8_51_100_finally;
         pop;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_8_50_100_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_89_50_100_end:
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_8_50_100_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_89_50_100_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_89_50_100_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_8_50_100_finally;
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_8_50_100_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_8_51_100_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_89_51_100_end:
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_8_51_100_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_89_51_100_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_89_51_100_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_8_51_100_finally;
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_8_51_100_finally;
         throw %tmp.155;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_8_50_100_finally:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_8_51_100_finally:
         jsrret;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_50_8_50_100_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 53 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_stop" ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_51_8_51_100_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 54 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_stop" ]
         %cloudAltStr.19 = local;
-        symbol [ cloudAltStr %cloudAltStr.19 53 12 23 ];
+        symbol [ cloudAltStr %cloudAltStr.19 54 12 23 ];
         %tmp.157 = "--";
         lputv %cloudAltStr.19 %tmp.157;
-        symbol [ cloudAltStr %cloudAltStr.19 53 12 23 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 54 8 ]
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_54_8_61_21_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_54_8_61_21_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_54_8_61_21_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_54_8_61_21_finally;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_54_8_61_21_beginTry:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_54_12_61_8_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 55 12 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_12_60_12_if_stmt:
+        symbol [ cloudAltStr %cloudAltStr.19 54 12 23 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 55 8 ]
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_8_62_21_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_8_62_21_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_8_62_21_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_8_62_21_finally;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_8_62_21_beginTry:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_12_62_8_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 56 12 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_56_12_61_12_if_stmt:
         %tmp.158 = lgetv %wr.16;
-        symbol [ wr %tmp.158 55 16 18 ];
-        symbol [ cloudAlt %tmp.159 55 19 27 ];
+        symbol [ wr %tmp.158 56 16 18 ];
+        symbol [ cloudAlt %tmp.159 56 19 27 ];
         %tmp.159 = getv %tmp.158 :cloudAlt;
         %tmp.160 = 0;
         %tmp.161 = gte %tmp.159 %tmp.160;
-        bf %tmp.161 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_12_60_12_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_12_60_12_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_34_60_12_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 56 16 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_34_60_12_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_34_60_12_stop" ]
+        bf %tmp.161 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_56_12_61_12_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_56_12_61_12_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_56_34_61_12_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 57 16 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_56_34_61_12_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_56_34_61_12_stop" ]
         %altM.20 = local;
-        symbol [ altM %altM.20 56 20 24 ];
+        symbol [ altM %altM.20 57 20 24 ];
         %tmp.162 = lgetv %wr.16;
-        symbol [ wr %tmp.162 56 27 29 ];
-        symbol [ cloudAlt %tmp.163 56 30 38 ];
+        symbol [ wr %tmp.162 57 27 29 ];
+        symbol [ cloudAlt %tmp.163 57 30 38 ];
         %tmp.163 = getv %tmp.162 :cloudAlt;
-        symbol [ toFloat %tmp.164 56 39 46 ];
+        symbol [ toFloat %tmp.164 57 39 46 ];
         %tmp.164 = getv function %tmp.163 :toFloat;
         %tmp.165 = invoke %tmp.163 %tmp.164();
         lputv %altM.20 %tmp.165;
-        symbol [ altM %altM.20 56 20 24 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 57 16 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_34_60_12_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_34_60_12_stop" ]
+        symbol [ altM %altM.20 57 20 24 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 58 16 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_56_34_61_12_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_56_34_61_12_stop" ]
         %altFt.21 = local;
-        symbol [ altFt %altFt.21 57 20 25 ];
+        symbol [ altFt %altFt.21 58 20 25 ];
         %tmp.166 = lgetv %altM.20;
-        symbol [ altM %tmp.166 57 29 33 ];
+        symbol [ altM %tmp.166 58 29 33 ];
         %tmp.167 = 3.28084;
         %tmp.168 = mul %tmp.166 %tmp.167;
-        symbol [ toNumber %tmp.169 57 45 53 ];
+        symbol [ toNumber %tmp.169 58 45 53 ];
         %tmp.169 = getv function %tmp.168 :toNumber;
         %tmp.170 = invoke %tmp.168 %tmp.169();
         lputv %altFt.21 %tmp.170;
-        symbol [ altFt %altFt.21 57 20 25 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 58 16 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_34_60_12_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_34_60_12_stop" ]
+        symbol [ altFt %altFt.21 58 20 25 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 59 16 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_56_34_61_12_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_56_34_61_12_stop" ]
         %altInt.22 = local;
-        symbol [ altInt %altInt.22 58 20 26 ];
-        symbol [ Math %tmp.172 58 29 33 ];
+        symbol [ altInt %altInt.22 59 20 26 ];
+        symbol [ Math %tmp.172 59 29 33 ];
         %tmp.172 = getv ? :Math;
-        symbol [ floor %tmp.173 58 34 39 ];
+        symbol [ floor %tmp.173 59 34 39 ];
         %tmp.173 = getv function %tmp.172 :floor;
         %tmp.174 = lgetv %altFt.21;
-        symbol [ altFt %tmp.174 58 40 45 ];
+        symbol [ altFt %tmp.174 59 40 45 ];
         %tmp.175 = invoke %tmp.172 %tmp.173(%tmp.174);
-        symbol [ toNumber %tmp.176 58 47 55 ];
+        symbol [ toNumber %tmp.176 59 47 55 ];
         %tmp.176 = getv function %tmp.175 :toNumber;
         %tmp.177 = invoke %tmp.175 %tmp.176();
         lputv %altInt.22 %tmp.177;
-        symbol [ altInt %altInt.22 58 20 26 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 59 16 ]
+        symbol [ altInt %altInt.22 59 20 26 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 60 16 ]
         %tmp.178 = lgetv %altInt.22;
-        symbol [ altInt %tmp.178 59 30 36 ];
-        symbol [ toString %tmp.179 59 37 45 ];
+        symbol [ altInt %tmp.178 60 30 36 ];
+        symbol [ toString %tmp.179 60 37 45 ];
         %tmp.179 = getv function %tmp.178 :toString;
         %tmp.180 = invoke %tmp.178 %tmp.179();
         %tmp.181 = " ft";
         %tmp.182 = add %tmp.180 %tmp.181;
         lputv %cloudAltStr.19 %tmp.182;
-        symbol [ cloudAltStr %cloudAltStr.19 59 16 27 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_34_60_12_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_12_60_12_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_12_60_12_if_end:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_54_12_61_8_stop:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_54_8_61_21_endTry:
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_54_8_61_21_finally;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_54_8_61_21_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_54_8_61_21_catch:
+        symbol [ cloudAltStr %cloudAltStr.19 60 16 27 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_56_34_61_12_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_56_12_61_12_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_56_12_61_12_if_end:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_12_62_8_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_8_62_21_endTry:
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_8_62_21_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_8_62_21_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_8_62_21_catch:
         %tmp.183 = exception;
         push %tmp.183;
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 61 10 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_54_8_61_21_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_61_10_61_21_end" ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 62 10 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_8_62_21_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_62_10_62_21_end" ]
         %e.23 = local;
-        symbol [ e %e.23 61 17 18 ];
+        symbol [ e %e.23 62 17 18 ];
         %tmp.184 = dup %tmp.183;
         lputv %e.23 %tmp.184;
-        symbol [ e %e.23 61 17 18 ];
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_54_8_61_21_finally;
+        symbol [ e %e.23 62 17 18 ];
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_8_62_21_finally;
         pop;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_54_8_61_21_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_61_10_61_21_end:
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_54_8_61_21_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_61_10_61_21_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_61_10_61_21_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_54_8_61_21_finally;
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_54_8_61_21_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_8_62_21_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_62_10_62_21_end:
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_8_62_21_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_62_10_62_21_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_62_10_62_21_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_8_62_21_finally;
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_8_62_21_finally;
         throw %tmp.183;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_54_8_61_21_finally:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_8_62_21_finally:
         jsrret;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_54_8_61_21_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 64 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_stop" ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_55_8_62_21_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 65 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_stop" ]
         %trend.24 = local;
-        symbol [ trend %trend.24 64 12 17 ];
+        symbol [ trend %trend.24 65 12 17 ];
         %tmp.185 = "UNCHANGED";
         lputv %trend.24 %tmp.185;
-        symbol [ trend %trend.24 64 12 17 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 65 8 ]
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_65_8_71_21_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_65_8_71_21_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_65_8_71_21_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_65_8_71_21_finally;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_65_8_71_21_beginTry:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_65_12_71_8_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 66 12 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_12_70_12_if_stmt:
+        symbol [ trend %trend.24 65 12 17 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 66 8 ]
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_8_72_21_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_8_72_21_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_8_72_21_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_8_72_21_finally;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_8_72_21_beginTry:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_12_72_8_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 67 12 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_67_12_71_12_if_stmt:
         %tmp.186 = lgetv %wr.16;
-        symbol [ wr %tmp.186 66 16 18 ];
-        symbol [ precipChance %tmp.187 66 19 31 ];
+        symbol [ wr %tmp.186 67 16 18 ];
+        symbol [ precipChance %tmp.187 67 19 31 ];
         %tmp.187 = getv %tmp.186 :precipChance;
         %tmp.188 = 0;
         %tmp.189 = gte %tmp.187 %tmp.188;
-        bf %tmp.189 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_12_70_12_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_12_70_12_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_38_70_12_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 67 16 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_67_16_69_44_if_stmt:
+        bf %tmp.189 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_67_12_71_12_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_67_12_71_12_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_67_38_71_12_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 68 16 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_68_16_70_44_if_stmt:
         %tmp.190 = lgetv %wr.16;
-        symbol [ wr %tmp.190 67 20 22 ];
-        symbol [ precipChance %tmp.191 67 23 35 ];
+        symbol [ wr %tmp.190 68 20 22 ];
+        symbol [ precipChance %tmp.191 68 23 35 ];
         %tmp.191 = getv %tmp.190 :precipChance;
         %tmp.192 = 50;
         %tmp.193 = gt %tmp.191 %tmp.192;
-        bf %tmp.193 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_67_16_69_44_if_false;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_67_16_69_44_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_67_42_67_62_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 67 44 ]
+        bf %tmp.193 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_68_16_70_44_if_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_68_16_70_44_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_68_42_68_62_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 68 44 ]
         %tmp.194 = "WORSEN";
         lputv %trend.24 %tmp.194;
-        symbol [ trend %trend.24 67 44 49 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_67_42_67_62_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_67_16_69_44_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_67_16_69_44_if_false:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 68 21 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_68_21_69_44_if_stmt:
+        symbol [ trend %trend.24 68 44 49 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_68_42_68_62_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_68_16_70_44_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_68_16_70_44_if_false:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 69 21 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_69_21_70_44_if_stmt:
         %tmp.195 = lgetv %wr.16;
-        symbol [ wr %tmp.195 68 25 27 ];
-        symbol [ precipChance %tmp.196 68 28 40 ];
+        symbol [ wr %tmp.195 69 25 27 ];
+        symbol [ precipChance %tmp.196 69 28 40 ];
         %tmp.196 = getv %tmp.195 :precipChance;
         %tmp.197 = 20;
         %tmp.198 = lt %tmp.196 %tmp.197;
-        bf %tmp.198 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_68_21_69_44_if_else_false;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_68_21_69_44_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_68_47_68_68_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 68 49 ]
+        bf %tmp.198 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_69_21_70_44_if_else_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_69_21_70_44_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_69_47_69_68_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 69 49 ]
         %tmp.199 = "IMPROVE";
         lputv %trend.24 %tmp.199;
-        symbol [ trend %trend.24 68 49 54 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_68_47_68_68_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_68_21_69_44_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_68_21_69_44_if_else_false:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_69_21_69_44_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 69 23 ]
+        symbol [ trend %trend.24 69 49 54 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_69_47_69_68_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_69_21_70_44_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_69_21_70_44_if_else_false:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_70_21_70_44_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 70 23 ]
         %tmp.200 = "UNCHANGED";
         lputv %trend.24 %tmp.200;
-        symbol [ trend %trend.24 69 23 28 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_69_21_69_44_stop:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_68_21_69_44_if_end:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_67_16_69_44_if_end:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_38_70_12_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_12_70_12_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_12_70_12_if_end:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_65_12_71_8_stop:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_65_8_71_21_endTry:
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_65_8_71_21_finally;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_65_8_71_21_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_65_8_71_21_catch:
+        symbol [ trend %trend.24 70 23 28 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_70_21_70_44_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_69_21_70_44_if_end:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_68_16_70_44_if_end:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_67_38_71_12_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_67_12_71_12_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_67_12_71_12_if_end:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_12_72_8_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_8_72_21_endTry:
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_8_72_21_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_8_72_21_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_8_72_21_catch:
         %tmp.201 = exception;
         push %tmp.201;
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 71 10 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_65_8_71_21_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_71_10_71_21_end" ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 72 10 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_8_72_21_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_72_10_72_21_end" ]
         %e.25 = local;
-        symbol [ e %e.25 71 17 18 ];
+        symbol [ e %e.25 72 17 18 ];
         %tmp.202 = dup %tmp.201;
         lputv %e.25 %tmp.202;
-        symbol [ e %e.25 71 17 18 ];
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_65_8_71_21_finally;
+        symbol [ e %e.25 72 17 18 ];
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_8_72_21_finally;
         pop;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_65_8_71_21_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_71_10_71_21_end:
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_65_8_71_21_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_71_10_71_21_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_71_10_71_21_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_65_8_71_21_finally;
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_65_8_71_21_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_8_72_21_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_72_10_72_21_end:
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_8_72_21_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_72_10_72_21_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_72_10_72_21_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_8_72_21_finally;
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_8_72_21_finally;
         throw %tmp.201;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_65_8_71_21_finally:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_8_72_21_finally:
         jsrret;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_65_8_71_21_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 74 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_stop" ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_66_8_72_21_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 75 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_stop" ]
         %y.26 = local;
-        symbol [ y %y.26 74 12 13 ];
+        symbol [ y %y.26 75 12 13 ];
         %tmp.203 = lgetv %topStart.7;
-        symbol [ topStart %tmp.203 74 16 24 ];
+        symbol [ topStart %tmp.203 75 16 24 ];
         %tmp.204 = 6;
         %tmp.205 = add %tmp.203 %tmp.204;
         lputv %y.26 %tmp.205;
-        symbol [ y %y.26 74 12 13 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 75 8 ]
+        symbol [ y %y.26 75 12 13 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 76 8 ]
         %tmp.206 = lgetv %dc;
-        symbol [ dc %tmp.206 75 8 10 ];
-        symbol [ setColor %tmp.207 75 11 19 ];
+        symbol [ dc %tmp.206 76 8 10 ];
+        symbol [ setColor %tmp.207 76 11 19 ];
         %tmp.207 = getv function %tmp.206 :setColor;
-        symbol [ Graphics %tmp.208 75 20 28 ];
+        symbol [ Graphics %tmp.208 76 20 28 ];
         %tmp.208 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLUE %tmp.209 75 29 39 ];
+        symbol [ COLOR_BLUE %tmp.209 76 29 39 ];
         %tmp.209 = getv %tmp.208 :COLOR_BLUE;
-        symbol [ Graphics %tmp.210 75 41 49 ];
+        symbol [ Graphics %tmp.210 76 41 49 ];
         %tmp.210 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.211 75 50 67 ];
+        symbol [ COLOR_TRANSPARENT %tmp.211 76 50 67 ];
         %tmp.211 = getv %tmp.210 :COLOR_TRANSPARENT;
         invoke %tmp.206 %tmp.207(%tmp.209, %tmp.211);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 76 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 77 8 ]
         %tmp.212 = lgetv %dc;
-        symbol [ dc %tmp.212 76 8 10 ];
-        symbol [ drawText %tmp.213 76 11 19 ];
+        symbol [ dc %tmp.212 77 8 10 ];
+        symbol [ drawText %tmp.213 77 11 19 ];
         %tmp.213 = getv function %tmp.212 :drawText;
         %tmp.214 = lgetv %cx.6;
-        symbol [ cx %tmp.214 76 20 22 ];
+        symbol [ cx %tmp.214 77 20 22 ];
         %tmp.215 = lgetv %y.26;
-        symbol [ y %tmp.215 76 24 25 ];
-        symbol [ Graphics %tmp.216 76 27 35 ];
+        symbol [ y %tmp.215 77 24 25 ];
+        symbol [ Graphics %tmp.216 77 27 35 ];
         %tmp.216 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.217 76 36 46 ];
+        symbol [ FONT_SMALL %tmp.217 77 36 46 ];
         %tmp.217 = getv %tmp.216 :FONT_SMALL;
         %tmp.218 = "CLOUDS";
         %tmp.219 = lgetv %jc.8;
-        symbol [ jc %tmp.219 76 58 60 ];
+        symbol [ jc %tmp.219 77 58 60 ];
         invoke %tmp.212 %tmp.213(%tmp.214, %tmp.215, %tmp.217, %tmp.218, %tmp.219);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 78 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 79 8 ]
         %tmp.220 = lgetv %y.26;
-        symbol [ y %tmp.220 78 8 9 ];
+        symbol [ y %tmp.220 79 8 9 ];
         %tmp.221 = 26;
         %tmp.222 = add %tmp.220 %tmp.221;
         lputv %y.26 %tmp.222;
-        symbol [ y %y.26 78 8 9 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 79 8 ]
+        symbol [ y %y.26 79 8 9 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 80 8 ]
         %tmp.223 = lgetv %dc;
-        symbol [ dc %tmp.223 79 8 10 ];
-        symbol [ setColor %tmp.224 79 11 19 ];
+        symbol [ dc %tmp.223 80 8 10 ];
+        symbol [ setColor %tmp.224 80 11 19 ];
         %tmp.224 = getv function %tmp.223 :setColor;
-        symbol [ Graphics %tmp.225 79 20 28 ];
+        symbol [ Graphics %tmp.225 80 20 28 ];
         %tmp.225 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.226 79 29 40 ];
+        symbol [ COLOR_WHITE %tmp.226 80 29 40 ];
         %tmp.226 = getv %tmp.225 :COLOR_WHITE;
-        symbol [ Graphics %tmp.227 79 42 50 ];
+        symbol [ Graphics %tmp.227 80 42 50 ];
         %tmp.227 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.228 79 51 68 ];
+        symbol [ COLOR_TRANSPARENT %tmp.228 80 51 68 ];
         %tmp.228 = getv %tmp.227 :COLOR_TRANSPARENT;
         invoke %tmp.223 %tmp.224(%tmp.226, %tmp.228);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 80 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 81 8 ]
         %tmp.229 = lgetv %dc;
-        symbol [ dc %tmp.229 80 8 10 ];
-        symbol [ drawText %tmp.230 80 11 19 ];
+        symbol [ dc %tmp.229 81 8 10 ];
+        symbol [ drawText %tmp.230 81 11 19 ];
         %tmp.230 = getv function %tmp.229 :drawText;
         %tmp.231 = lgetv %cx.6;
-        symbol [ cx %tmp.231 80 20 22 ];
+        symbol [ cx %tmp.231 81 20 22 ];
         %tmp.232 = lgetv %y.26;
-        symbol [ y %tmp.232 80 24 25 ];
+        symbol [ y %tmp.232 81 24 25 ];
         %tmp.233 = lgetv %bigFont.15;
-        symbol [ bigFont %tmp.233 80 27 34 ];
+        symbol [ bigFont %tmp.233 81 27 34 ];
         %tmp.234 = lgetv %cloudStr.17;
-        symbol [ cloudStr %tmp.234 80 36 44 ];
+        symbol [ cloudStr %tmp.234 81 36 44 ];
         %tmp.235 = lgetv %jc.8;
-        symbol [ jc %tmp.235 80 46 48 ];
+        symbol [ jc %tmp.235 81 46 48 ];
         invoke %tmp.229 %tmp.230(%tmp.231, %tmp.232, %tmp.233, %tmp.234, %tmp.235);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 82 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 83 8 ]
         %tmp.236 = lgetv %y.26;
-        symbol [ y %tmp.236 82 8 9 ];
+        symbol [ y %tmp.236 83 8 9 ];
         %tmp.237 = 34;
         %tmp.238 = add %tmp.236 %tmp.237;
         lputv %y.26 %tmp.238;
-        symbol [ y %y.26 82 8 9 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 83 8 ]
+        symbol [ y %y.26 83 8 9 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 84 8 ]
         %tmp.239 = lgetv %dc;
-        symbol [ dc %tmp.239 83 8 10 ];
-        symbol [ setColor %tmp.240 83 11 19 ];
+        symbol [ dc %tmp.239 84 8 10 ];
+        symbol [ setColor %tmp.240 84 11 19 ];
         %tmp.240 = getv function %tmp.239 :setColor;
-        symbol [ Graphics %tmp.241 83 20 28 ];
+        symbol [ Graphics %tmp.241 84 20 28 ];
         %tmp.241 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLUE %tmp.242 83 29 39 ];
+        symbol [ COLOR_BLUE %tmp.242 84 29 39 ];
         %tmp.242 = getv %tmp.241 :COLOR_BLUE;
-        symbol [ Graphics %tmp.243 83 41 49 ];
+        symbol [ Graphics %tmp.243 84 41 49 ];
         %tmp.243 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.244 83 50 67 ];
+        symbol [ COLOR_TRANSPARENT %tmp.244 84 50 67 ];
         %tmp.244 = getv %tmp.243 :COLOR_TRANSPARENT;
         invoke %tmp.239 %tmp.240(%tmp.242, %tmp.244);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 84 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 85 8 ]
         %tmp.245 = lgetv %dc;
-        symbol [ dc %tmp.245 84 8 10 ];
-        symbol [ drawText %tmp.246 84 11 19 ];
+        symbol [ dc %tmp.245 85 8 10 ];
+        symbol [ drawText %tmp.246 85 11 19 ];
         %tmp.246 = getv function %tmp.245 :drawText;
         %tmp.247 = lgetv %cx.6;
-        symbol [ cx %tmp.247 84 20 22 ];
+        symbol [ cx %tmp.247 85 20 22 ];
         %tmp.248 = lgetv %y.26;
-        symbol [ y %tmp.248 84 24 25 ];
-        symbol [ Graphics %tmp.249 84 27 35 ];
+        symbol [ y %tmp.248 85 24 25 ];
+        symbol [ Graphics %tmp.249 85 27 35 ];
         %tmp.249 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.250 84 36 46 ];
+        symbol [ FONT_SMALL %tmp.250 85 36 46 ];
         %tmp.250 = getv %tmp.249 :FONT_SMALL;
         %tmp.251 = "BASE";
         %tmp.252 = lgetv %jc.8;
-        symbol [ jc %tmp.252 84 56 58 ];
+        symbol [ jc %tmp.252 85 56 58 ];
         invoke %tmp.245 %tmp.246(%tmp.247, %tmp.248, %tmp.250, %tmp.251, %tmp.252);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 86 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 87 8 ]
         %tmp.253 = lgetv %y.26;
-        symbol [ y %tmp.253 86 8 9 ];
+        symbol [ y %tmp.253 87 8 9 ];
         %tmp.254 = 26;
         %tmp.255 = add %tmp.253 %tmp.254;
         lputv %y.26 %tmp.255;
-        symbol [ y %y.26 86 8 9 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 87 8 ]
+        symbol [ y %y.26 87 8 9 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 88 8 ]
         %tmp.256 = lgetv %dc;
-        symbol [ dc %tmp.256 87 8 10 ];
-        symbol [ setColor %tmp.257 87 11 19 ];
+        symbol [ dc %tmp.256 88 8 10 ];
+        symbol [ setColor %tmp.257 88 11 19 ];
         %tmp.257 = getv function %tmp.256 :setColor;
-        symbol [ Graphics %tmp.258 87 20 28 ];
+        symbol [ Graphics %tmp.258 88 20 28 ];
         %tmp.258 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.259 87 29 40 ];
+        symbol [ COLOR_WHITE %tmp.259 88 29 40 ];
         %tmp.259 = getv %tmp.258 :COLOR_WHITE;
-        symbol [ Graphics %tmp.260 87 42 50 ];
+        symbol [ Graphics %tmp.260 88 42 50 ];
         %tmp.260 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.261 87 51 68 ];
+        symbol [ COLOR_TRANSPARENT %tmp.261 88 51 68 ];
         %tmp.261 = getv %tmp.260 :COLOR_TRANSPARENT;
         invoke %tmp.256 %tmp.257(%tmp.259, %tmp.261);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 88 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 89 8 ]
         %tmp.262 = lgetv %dc;
-        symbol [ dc %tmp.262 88 8 10 ];
-        symbol [ drawText %tmp.263 88 11 19 ];
+        symbol [ dc %tmp.262 89 8 10 ];
+        symbol [ drawText %tmp.263 89 11 19 ];
         %tmp.263 = getv function %tmp.262 :drawText;
         %tmp.264 = lgetv %cx.6;
-        symbol [ cx %tmp.264 88 20 22 ];
+        symbol [ cx %tmp.264 89 20 22 ];
         %tmp.265 = lgetv %y.26;
-        symbol [ y %tmp.265 88 24 25 ];
+        symbol [ y %tmp.265 89 24 25 ];
         %tmp.266 = lgetv %bigFont.15;
-        symbol [ bigFont %tmp.266 88 27 34 ];
+        symbol [ bigFont %tmp.266 89 27 34 ];
         %tmp.267 = lgetv %cloudAltStr.19;
-        symbol [ cloudAltStr %tmp.267 88 36 47 ];
+        symbol [ cloudAltStr %tmp.267 89 36 47 ];
         %tmp.268 = lgetv %jc.8;
-        symbol [ jc %tmp.268 88 49 51 ];
+        symbol [ jc %tmp.268 89 49 51 ];
         invoke %tmp.262 %tmp.263(%tmp.264, %tmp.265, %tmp.266, %tmp.267, %tmp.268);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 90 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 91 8 ]
         %tmp.269 = lgetv %y.26;
-        symbol [ y %tmp.269 90 8 9 ];
+        symbol [ y %tmp.269 91 8 9 ];
         %tmp.270 = 38;
         %tmp.271 = add %tmp.269 %tmp.270;
         lputv %y.26 %tmp.271;
-        symbol [ y %y.26 90 8 9 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 91 8 ]
+        symbol [ y %y.26 91 8 9 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 92 8 ]
         %tmp.272 = lgetv %dc;
-        symbol [ dc %tmp.272 91 8 10 ];
-        symbol [ setColor %tmp.273 91 11 19 ];
+        symbol [ dc %tmp.272 92 8 10 ];
+        symbol [ setColor %tmp.273 92 11 19 ];
         %tmp.273 = getv function %tmp.272 :setColor;
-        symbol [ Graphics %tmp.274 91 20 28 ];
+        symbol [ Graphics %tmp.274 92 20 28 ];
         %tmp.274 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLUE %tmp.275 91 29 39 ];
+        symbol [ COLOR_BLUE %tmp.275 92 29 39 ];
         %tmp.275 = getv %tmp.274 :COLOR_BLUE;
-        symbol [ Graphics %tmp.276 91 41 49 ];
+        symbol [ Graphics %tmp.276 92 41 49 ];
         %tmp.276 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.277 91 50 67 ];
+        symbol [ COLOR_TRANSPARENT %tmp.277 92 50 67 ];
         %tmp.277 = getv %tmp.276 :COLOR_TRANSPARENT;
         invoke %tmp.272 %tmp.273(%tmp.275, %tmp.277);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 92 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 93 8 ]
         %tmp.278 = lgetv %dc;
-        symbol [ dc %tmp.278 92 8 10 ];
-        symbol [ drawText %tmp.279 92 11 19 ];
+        symbol [ dc %tmp.278 93 8 10 ];
+        symbol [ drawText %tmp.279 93 11 19 ];
         %tmp.279 = getv function %tmp.278 :drawText;
         %tmp.280 = lgetv %cx.6;
-        symbol [ cx %tmp.280 92 20 22 ];
+        symbol [ cx %tmp.280 93 20 22 ];
         %tmp.281 = lgetv %y.26;
-        symbol [ y %tmp.281 92 24 25 ];
-        symbol [ Graphics %tmp.282 92 27 35 ];
+        symbol [ y %tmp.281 93 24 25 ];
+        symbol [ Graphics %tmp.282 93 27 35 ];
         %tmp.282 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.283 92 36 46 ];
+        symbol [ FONT_SMALL %tmp.283 93 36 46 ];
         %tmp.283 = getv %tmp.282 :FONT_SMALL;
         %tmp.284 = "TREND";
         %tmp.285 = lgetv %jc.8;
-        symbol [ jc %tmp.285 92 57 59 ];
+        symbol [ jc %tmp.285 93 57 59 ];
         invoke %tmp.278 %tmp.279(%tmp.280, %tmp.281, %tmp.283, %tmp.284, %tmp.285);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 94 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 95 8 ]
         %tmp.286 = lgetv %y.26;
-        symbol [ y %tmp.286 94 8 9 ];
+        symbol [ y %tmp.286 95 8 9 ];
         %tmp.287 = 22;
         %tmp.288 = add %tmp.286 %tmp.287;
         lputv %y.26 %tmp.288;
-        symbol [ y %y.26 94 8 9 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 95 8 ]
+        symbol [ y %y.26 95 8 9 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 96 8 ]
         %tmp.289 = lgetv %dc;
-        symbol [ dc %tmp.289 95 8 10 ];
-        symbol [ setColor %tmp.290 95 11 19 ];
+        symbol [ dc %tmp.289 96 8 10 ];
+        symbol [ setColor %tmp.290 96 11 19 ];
         %tmp.290 = getv function %tmp.289 :setColor;
-        symbol [ Graphics %tmp.291 95 20 28 ];
+        symbol [ Graphics %tmp.291 96 20 28 ];
         %tmp.291 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.292 95 29 40 ];
+        symbol [ COLOR_WHITE %tmp.292 96 29 40 ];
         %tmp.292 = getv %tmp.291 :COLOR_WHITE;
-        symbol [ Graphics %tmp.293 95 42 50 ];
+        symbol [ Graphics %tmp.293 96 42 50 ];
         %tmp.293 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.294 95 51 68 ];
+        symbol [ COLOR_TRANSPARENT %tmp.294 96 51 68 ];
         %tmp.294 = getv %tmp.293 :COLOR_TRANSPARENT;
         invoke %tmp.289 %tmp.290(%tmp.292, %tmp.294);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 96 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 97 8 ]
         %tmp.295 = lgetv %dc;
-        symbol [ dc %tmp.295 96 8 10 ];
-        symbol [ drawText %tmp.296 96 11 19 ];
+        symbol [ dc %tmp.295 97 8 10 ];
+        symbol [ drawText %tmp.296 97 11 19 ];
         %tmp.296 = getv function %tmp.295 :drawText;
         %tmp.297 = lgetv %cx.6;
-        symbol [ cx %tmp.297 96 20 22 ];
+        symbol [ cx %tmp.297 97 20 22 ];
         %tmp.298 = lgetv %y.26;
-        symbol [ y %tmp.298 96 24 25 ];
-        symbol [ Graphics %tmp.299 96 27 35 ];
+        symbol [ y %tmp.298 97 24 25 ];
+        symbol [ Graphics %tmp.299 97 27 35 ];
         %tmp.299 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.300 96 36 46 ];
+        symbol [ FONT_SMALL %tmp.300 97 36 46 ];
         %tmp.300 = getv %tmp.299 :FONT_SMALL;
         %tmp.301 = lgetv %trend.24;
-        symbol [ trend %tmp.301 96 48 53 ];
+        symbol [ trend %tmp.301 97 48 53 ];
         %tmp.302 = lgetv %jc.8;
-        symbol [ jc %tmp.302 96 55 57 ];
+        symbol [ jc %tmp.302 97 55 57 ];
         invoke %tmp.295 %tmp.296(%tmp.297, %tmp.298, %tmp.300, %tmp.301, %tmp.302);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 98 8 ]
-        symbol [ WatchUi %tmp.303 98 8 15 ];
-        %tmp.303 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.304 98 16 29 ];
-        %tmp.304 = getv function %tmp.303 :requestUpdate;
-        invoke %tmp.303 %tmp.304();
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_16_40_99_4_stop:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 100 8 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_100_8_100_89_if_stmt:
+        %tmp.303 = lgetv %now.1;
+        symbol [ now %tmp.303 100 13 16 ];
+        symbol [ _lastRefresh %tmp.305 100 19 31 ];
+        %tmp.305 = getv ? :_lastRefresh;
+        %tmp.306 = sub %tmp.303 %tmp.305;
+        %tmp.307 = 1000;
+        %tmp.308 = gte %tmp.306 %tmp.307;
+        bf %tmp.308 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_100_8_100_89_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_100_8_100_89_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_100_42_100_89_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 100 44 ]
+        %tmp.309 = lgetv %now.1;
+        symbol [ now %tmp.309 100 59 62 ];
+        symbol [ _lastRefresh ? 100 44 56 ];
+        putv self :_lastRefresh %tmp.309;
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 100 64 ]
+        symbol [ WatchUi %tmp.310 100 64 71 ];
+        %tmp.310 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.311 100 72 85 ];
+        %tmp.311 = getv function %tmp.310 :requestUpdate;
+        invoke %tmp.310 %tmp.311();
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_100_42_100_89_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_100_8_100_89_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_100_8_100_89_if_end:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_17_40_101_4_stop:
     }
 }
-[ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 102; @symbol_classdef = [VFRQuickInfoWeather2Delegate,102,6,34]; @symbol_extends<0> = [WatchUi,102,43,50]; @symbol_extends<1> = [BehaviorDelegate,102,51,67]; ]
+[ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 104; @symbol_classdef = [VFRQuickInfoWeather2Delegate,104,6,34]; @symbol_extends<0> = [WatchUi,104,43,50]; @symbol_extends<1> = [BehaviorDelegate,104,51,67]; ]
 class VFRQuickInfoWeather2Delegate extends WatchUi.BehaviorDelegate {
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 102; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 104; ]
     <init> {
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 102; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 104; ]
     static
     <init> {
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 103; @position = 16; @symbol_vardef = [_main,103,16,21]; @symbol_type<0> = [VFRStopWatchView,103,25,41]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 105; @position = 16; @symbol_vardef = [_main,105,16,21]; @symbol_type<0> = [VFRStopWatchView,105,25,41]; ]
     private
     var _main as VFRStopWatchView;
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 104; @symbol_functiondef = [initialize,104,13,23]; @symbol_param<0> = [main,104,24,28]; @symbol_param<0>_type<0> = [VFRStopWatchView,104,32,48]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 106; @symbol_functiondef = [initialize,106,13,23]; @symbol_param<0> = [main,106,24,28]; @symbol_param<0>_type<0> = [VFRStopWatchView,106,32,48]; ]
     function initialize(main as VFRStopWatchView) as Void {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_104_50_107_4_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 105 8 ]
-        symbol [ BehaviorDelegate %tmp.2 105 8 24 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_106_50_109_4_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 107 8 ]
+        symbol [ BehaviorDelegate %tmp.2 107 8 24 ];
         %tmp.2 = getv ? :BehaviorDelegate;
-        symbol [ initialize %tmp.3 105 25 35 ];
+        symbol [ initialize %tmp.3 107 25 35 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 106 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 108 8 ]
         %tmp.4 = lgetv %main;
-        symbol [ main %tmp.4 106 16 20 ];
-        symbol [ _main ? 106 8 13 ];
+        symbol [ main %tmp.4 108 16 20 ];
+        symbol [ _main ? 108 8 13 ];
         putv self :_main %tmp.4;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_104_50_107_4_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_106_50_109_4_stop:
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 108; @symbol_functiondef = [onBack,108,13,19]; @symbol_return<0> = [Boolean,108,25,32]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 110; @symbol_functiondef = [onBack,110,13,19]; @symbol_return<0> = [Boolean,110,25,32]; ]
     function onBack() as Boolean {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_108_33_112_4_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 109 8 ]
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_8_109_58_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_8_109_58_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_8_109_58_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_8_109_58_finally;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_8_109_58_beginTry:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_12_109_44_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 109 14 ]
-        symbol [ _main %tmp.1 109 14 19 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_110_33_114_4_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 111 8 ]
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_8_111_58_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_8_111_58_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_8_111_58_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_8_111_58_finally;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_8_111_58_beginTry:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_12_111_44_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 111 14 ]
+        symbol [ _main %tmp.1 111 14 19 ];
         %tmp.1 = getv self :_main;
         %tmp.2 = false;
-        symbol [ quickInfoShown ? 109 20 34 ];
+        symbol [ quickInfoShown ? 111 20 34 ];
         putv %tmp.1 :quickInfoShown %tmp.2;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_12_109_44_stop:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_8_109_58_endTry:
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_8_109_58_finally;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_8_109_58_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_8_109_58_catch:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_12_111_44_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_8_111_58_endTry:
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_8_111_58_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_8_111_58_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_8_111_58_catch:
         %tmp.3 = exception;
         push %tmp.3;
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 109 46 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_8_109_58_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_46_109_58_end" ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 111 46 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_8_111_58_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_46_111_58_end" ]
         %ex.1 = local;
-        symbol [ ex %ex.1 109 53 55 ];
+        symbol [ ex %ex.1 111 53 55 ];
         %tmp.4 = dup %tmp.3;
         lputv %ex.1 %tmp.4;
-        symbol [ ex %ex.1 109 53 55 ];
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_8_109_58_finally;
+        symbol [ ex %ex.1 111 53 55 ];
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_8_111_58_finally;
         pop;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_8_109_58_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_46_109_58_end:
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_8_109_58_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_46_109_58_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_46_109_58_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_8_109_58_finally;
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_8_109_58_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_8_111_58_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_46_111_58_end:
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_8_111_58_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_46_111_58_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_46_111_58_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_8_111_58_finally;
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_8_111_58_finally;
         throw %tmp.3;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_8_109_58_finally:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_8_111_58_finally:
         jsrret;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_109_8_109_58_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 110 8 ]
-        symbol [ WatchUi %tmp.5 110 8 15 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_111_8_111_58_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 112 8 ]
+        symbol [ WatchUi %tmp.5 112 8 15 ];
         %tmp.5 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.6 110 16 23 ];
+        symbol [ popView %tmp.6 112 16 23 ];
         %tmp.6 = getv function %tmp.5 :popView;
-        symbol [ WatchUi %tmp.7 110 24 31 ];
+        symbol [ WatchUi %tmp.7 112 24 31 ];
         %tmp.7 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_DOWN %tmp.8 110 32 42 ];
+        symbol [ SLIDE_DOWN %tmp.8 112 32 42 ];
         %tmp.8 = getv %tmp.7 :SLIDE_DOWN;
         invoke %tmp.5 %tmp.6(%tmp.8);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 111 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 113 8 ]
         %tmp.9 = true;
         ret %tmp.9;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_108_33_112_4_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_110_33_114_4_stop:
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 113; @symbol_functiondef = [onSelect,113,13,21]; @symbol_return<0> = [Boolean,113,27,34]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 115; @symbol_functiondef = [onSelect,115,13,21]; @symbol_return<0> = [Boolean,115,27,34]; ]
     function onSelect() as Boolean {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_113_35_113_54_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 113 37 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_115_35_115_54_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 115 37 ]
         %tmp.1 = self;
-        symbol [ onBack %tmp.2 113 44 50 ];
+        symbol [ onBack %tmp.2 115 44 50 ];
         %tmp.2 = getv function %tmp.1 :onBack;
         %tmp.3 = invoke %tmp.1 %tmp.2();
         ret %tmp.3;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_113_35_113_54_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_115_35_115_54_stop:
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 114; @symbol_functiondef = [onKeyPressed,114,13,25]; @symbol_param<0> = [keyEvent,114,26,34]; @symbol_param<0>_type<0> = [WatchUi,114,38,45]; @symbol_param<0>_type<1> = [KeyEvent,114,46,54]; @symbol_return<0> = [Boolean,114,59,66]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 116; @symbol_functiondef = [onKeyPressed,116,13,25]; @symbol_param<0> = [keyEvent,116,26,34]; @symbol_param<0>_type<0> = [WatchUi,116,38,45]; @symbol_param<0>_type<1> = [KeyEvent,116,46,54]; @symbol_return<0> = [Boolean,116,59,66]; ]
     function onKeyPressed(keyEvent as WatchUi.KeyEvent) as Boolean {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_114_67_117_4_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 115 8 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_115_8_115_66_if_stmt:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_116_67_119_4_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 117 8 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_117_8_117_66_if_stmt:
         %tmp.1 = lgetv %keyEvent;
-        symbol [ keyEvent %tmp.1 115 12 20 ];
-        symbol [ getKey %tmp.2 115 21 27 ];
+        symbol [ keyEvent %tmp.1 117 12 20 ];
+        symbol [ getKey %tmp.2 117 21 27 ];
         %tmp.2 = getv function %tmp.1 :getKey;
         %tmp.3 = invoke %tmp.1 %tmp.2();
-        symbol [ WatchUi %tmp.4 115 33 40 ];
+        symbol [ WatchUi %tmp.4 117 33 40 ];
         %tmp.4 = getm $.Toybox.WatchUi;
-        symbol [ KEY_DOWN %tmp.5 115 41 49 ];
+        symbol [ KEY_DOWN %tmp.5 117 41 49 ];
         %tmp.5 = getv %tmp.4 :KEY_DOWN;
         %tmp.6 = eq %tmp.3 %tmp.5;
-        bf %tmp.6 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_115_8_115_66_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_115_8_115_66_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_115_51_115_66_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 115 53 ]
+        bf %tmp.6 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_117_8_117_66_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_117_8_117_66_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_117_51_117_66_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 117 53 ]
         %tmp.7 = true;
         ret %tmp.7;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_115_51_115_66_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_115_8_115_66_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_115_8_115_66_if_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 116 8 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_117_51_117_66_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_117_8_117_66_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_117_8_117_66_if_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 118 8 ]
         %tmp.8 = false;
         ret %tmp.8;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_114_67_117_4_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_116_67_119_4_stop:
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 118; @symbol_functiondef = [onKeyReleased,118,13,26]; @symbol_param<0> = [keyEvent,118,27,35]; @symbol_param<0>_type<0> = [WatchUi,118,39,46]; @symbol_param<0>_type<1> = [KeyEvent,118,47,55]; @symbol_return<0> = [Boolean,118,60,67]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 120; @symbol_functiondef = [onKeyReleased,120,13,26]; @symbol_param<0> = [keyEvent,120,27,35]; @symbol_param<0>_type<0> = [WatchUi,120,39,46]; @symbol_param<0>_type<1> = [KeyEvent,120,47,55]; @symbol_return<0> = [Boolean,120,60,67]; ]
     function onKeyReleased(keyEvent as WatchUi.KeyEvent) as Boolean {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_118_68_132_4_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 119 8 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_119_8_130_8_if_stmt:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_120_68_134_4_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 121 8 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_121_8_132_8_if_stmt:
         %tmp.1 = lgetv %keyEvent;
-        symbol [ keyEvent %tmp.1 119 12 20 ];
-        symbol [ getKey %tmp.2 119 21 27 ];
+        symbol [ keyEvent %tmp.1 121 12 20 ];
+        symbol [ getKey %tmp.2 121 21 27 ];
         %tmp.2 = getv function %tmp.1 :getKey;
         %tmp.3 = invoke %tmp.1 %tmp.2();
-        symbol [ WatchUi %tmp.4 119 33 40 ];
+        symbol [ WatchUi %tmp.4 121 33 40 ];
         %tmp.4 = getm $.Toybox.WatchUi;
-        symbol [ KEY_DOWN %tmp.5 119 41 49 ];
+        symbol [ KEY_DOWN %tmp.5 121 41 49 ];
         %tmp.5 = getv %tmp.4 :KEY_DOWN;
         %tmp.6 = eq %tmp.3 %tmp.5;
-        bf %tmp.6 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_119_8_130_8_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_119_8_130_8_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_119_51_130_8_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 120 12 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_119_51_130_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_119_51_130_8_stop" ]
+        bf %tmp.6 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_121_8_132_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_121_8_132_8_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_121_51_132_8_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 122 12 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_121_51_132_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_121_51_132_8_stop" ]
         %now.1 = local;
-        symbol [ now %now.1 120 16 19 ];
-        symbol [ System %tmp.7 120 22 28 ];
+        symbol [ now %now.1 122 16 19 ];
+        symbol [ System %tmp.7 122 22 28 ];
         %tmp.7 = getm $.Toybox.System;
-        symbol [ getTimer %tmp.8 120 29 37 ];
+        symbol [ getTimer %tmp.8 122 29 37 ];
         %tmp.8 = getv function %tmp.7 :getTimer;
         %tmp.9 = invoke %tmp.7 %tmp.8();
         lputv %now.1 %tmp.9;
-        symbol [ now %now.1 120 16 19 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 121 12 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_121_12_121_71_if_stmt:
+        symbol [ now %now.1 122 16 19 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 123 12 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_12_123_71_if_stmt:
         %tmp.10 = lgetv %now.1;
-        symbol [ now %tmp.10 121 17 20 ];
-        symbol [ _main %tmp.12 121 23 28 ];
+        symbol [ now %tmp.10 123 17 20 ];
+        symbol [ _main %tmp.12 123 23 28 ];
         %tmp.12 = getv ? :_main;
-        symbol [ quickInfoLastNavAt %tmp.13 121 29 47 ];
+        symbol [ quickInfoLastNavAt %tmp.13 123 29 47 ];
         %tmp.13 = getv %tmp.12 :quickInfoLastNavAt;
         %tmp.14 = sub %tmp.10 %tmp.13;
         %tmp.15 = 300;
         %tmp.16 = lt %tmp.14 %tmp.15;
-        bf %tmp.16 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_121_12_121_71_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_121_12_121_71_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_121_56_121_71_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 121 58 ]
+        bf %tmp.16 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_12_123_71_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_12_123_71_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_56_123_71_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 123 58 ]
         %tmp.17 = true;
         ret %tmp.17;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_121_56_121_71_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_121_12_121_71_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_121_12_121_71_if_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 122 12 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_122_12_128_12_if_stmt:
-        symbol [ WatchUi %tmp.18 122 16 23 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_56_123_71_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_12_123_71_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_12_123_71_if_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 124 12 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_124_12_130_12_if_stmt:
+        symbol [ WatchUi %tmp.18 124 16 23 ];
         %tmp.18 = getm $.Toybox.WatchUi;
         %tmp.20 = const :MapView;
-        symbol [ MapView %tmp.20 122 29 36 const ];
+        symbol [ MapView %tmp.20 124 29 36 const ];
         %tmp.21 = canhazplz %tmp.18 %tmp.20;
-        bf %tmp.21 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_122_12_128_12_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_122_12_128_12_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_122_38_128_12_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 123 16 ]
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_16_127_16_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_16_127_16_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_16_127_16_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_16_127_16_finally;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_16_127_16_beginTry:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_20_126_16_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 124 20 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_20_126_16_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_20_126_16_stop" ]
+        bf %tmp.21 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_124_12_130_12_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_124_12_130_12_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_124_38_130_12_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 125 16 ]
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_16_129_16_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_16_129_16_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_16_129_16_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_16_129_16_finally;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_16_129_16_beginTry:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_20_128_16_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 126 20 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_20_128_16_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_20_128_16_stop" ]
         %mapView.2 = local;
-        symbol [ mapView %mapView.2 124 24 31 ];
-        symbol [ VFRMapView %tmp.25 124 38 48 ];
+        symbol [ mapView %mapView.2 126 24 31 ];
+        symbol [ VFRMapView %tmp.25 126 38 48 ];
         %tmp.25 = getv ? :VFRMapView;
-        symbol [ _main %tmp.27 124 49 54 ];
+        symbol [ _main %tmp.27 126 49 54 ];
         %tmp.27 = getv ? :_main;
         %tmp.22 = newc %tmp.25 (%tmp.27);
         lputv %mapView.2 %tmp.22;
-        symbol [ mapView %mapView.2 124 24 31 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 125 20 ]
-        symbol [ WatchUi %tmp.28 125 20 27 ];
+        symbol [ mapView %mapView.2 126 24 31 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 127 20 ]
+        symbol [ WatchUi %tmp.28 127 20 27 ];
         %tmp.28 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.29 125 28 36 ];
+        symbol [ pushView %tmp.29 127 28 36 ];
         %tmp.29 = getv function %tmp.28 :pushView;
         %tmp.30 = lgetv %mapView.2;
-        symbol [ mapView %tmp.30 125 37 44 ];
-        symbol [ VFRMapDelegate %tmp.34 125 50 64 ];
+        symbol [ mapView %tmp.30 127 37 44 ];
+        symbol [ VFRMapDelegate %tmp.34 127 50 64 ];
         %tmp.34 = getv ? :VFRMapDelegate;
-        symbol [ _main %tmp.36 125 65 70 ];
+        symbol [ _main %tmp.36 127 65 70 ];
         %tmp.36 = getv ? :_main;
         %tmp.37 = lgetv %mapView.2;
-        symbol [ mapView %tmp.37 125 72 79 ];
+        symbol [ mapView %tmp.37 127 72 79 ];
         %tmp.31 = newc %tmp.34 (%tmp.36, %tmp.37);
-        symbol [ WatchUi %tmp.38 125 82 89 ];
+        symbol [ WatchUi %tmp.38 127 82 89 ];
         %tmp.38 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_IMMEDIATE %tmp.39 125 90 105 ];
+        symbol [ SLIDE_IMMEDIATE %tmp.39 127 90 105 ];
         %tmp.39 = getv %tmp.38 :SLIDE_IMMEDIATE;
         invoke %tmp.28 %tmp.29(%tmp.30, %tmp.31, %tmp.39);
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_20_126_16_stop:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_16_127_16_endTry:
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_16_127_16_finally;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_16_127_16_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_16_127_16_catch:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_20_128_16_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_16_129_16_endTry:
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_16_129_16_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_16_129_16_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_16_129_16_catch:
         %tmp.40 = exception;
         push %tmp.40;
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 126 18 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_16_127_16_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_126_18_127_16_end" ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 128 18 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_16_129_16_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_128_18_129_16_end" ]
         %ex.3 = local;
-        symbol [ ex %ex.3 126 25 27 ];
+        symbol [ ex %ex.3 128 25 27 ];
         %tmp.41 = dup %tmp.40;
         lputv %ex.3 %tmp.41;
-        symbol [ ex %ex.3 126 25 27 ];
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_16_127_16_finally;
+        symbol [ ex %ex.3 128 25 27 ];
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_16_129_16_finally;
         pop;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_16_127_16_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_126_18_127_16_end:
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_16_127_16_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_126_18_127_16_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_126_18_127_16_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_16_127_16_finally;
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_16_127_16_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_16_129_16_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_128_18_129_16_end:
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_16_129_16_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_128_18_129_16_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_128_18_129_16_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_16_129_16_finally;
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_16_129_16_finally;
         throw %tmp.40;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_16_127_16_finally:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_16_129_16_finally:
         jsrret;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_123_16_127_16_end:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_122_38_128_12_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_122_12_128_12_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_122_12_128_12_if_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 129 12 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_125_16_129_16_end:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_124_38_130_12_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_124_12_130_12_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_124_12_130_12_if_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 131 12 ]
         %tmp.42 = true;
         ret %tmp.42;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_119_51_130_8_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_119_8_130_8_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_119_8_130_8_if_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 131 8 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_121_51_132_8_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_121_8_132_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_121_8_132_8_if_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 133 8 ]
         %tmp.43 = false;
         ret %tmp.43;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_118_68_132_4_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_120_68_134_4_stop:
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 133; @symbol_functiondef = [onNextPage,133,13,23]; @symbol_return<0> = [Boolean,133,29,36]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 135; @symbol_functiondef = [onNextPage,135,13,23]; @symbol_return<0> = [Boolean,135,29,36]; ]
     function onNextPage() as Boolean {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_133_37_147_4_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 134 8 ]
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_8_138_23_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_8_138_23_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_8_138_23_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_8_138_23_finally;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_8_138_23_beginTry:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_12_138_8_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 135 12 ]
-        symbol [ _main %tmp.1 135 12 17 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_135_37_149_4_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 136 8 ]
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_8_140_23_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_8_140_23_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_8_140_23_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_8_140_23_finally;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_8_140_23_beginTry:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_12_140_8_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 137 12 ]
+        symbol [ _main %tmp.1 137 12 17 ];
         %tmp.1 = getv self :_main;
-        symbol [ System %tmp.2 135 39 45 ];
+        symbol [ System %tmp.2 137 39 45 ];
         %tmp.2 = getm $.Toybox.System;
-        symbol [ getTimer %tmp.3 135 46 54 ];
+        symbol [ getTimer %tmp.3 137 46 54 ];
         %tmp.3 = getv function %tmp.2 :getTimer;
         %tmp.4 = invoke %tmp.2 %tmp.3();
-        symbol [ quickInfoLastNavAt ? 135 18 36 ];
+        symbol [ quickInfoLastNavAt ? 137 18 36 ];
         putv %tmp.1 :quickInfoLastNavAt %tmp.4;
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 136 12 ]
-        symbol [ WatchUi %tmp.5 136 12 19 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 138 12 ]
+        symbol [ WatchUi %tmp.5 138 12 19 ];
         %tmp.5 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.6 136 20 28 ];
+        symbol [ pushView %tmp.6 138 20 28 ];
         %tmp.6 = getv function %tmp.5 :pushView;
-        symbol [ VFRQuickInfoDensityAltView %tmp.10 136 33 59 ];
+        symbol [ VFRQuickInfoDensityAltView %tmp.10 138 33 59 ];
         %tmp.10 = getv ? :VFRQuickInfoDensityAltView;
-        symbol [ _main %tmp.12 136 60 65 ];
+        symbol [ _main %tmp.12 138 60 65 ];
         %tmp.12 = getv ? :_main;
         %tmp.7 = newc %tmp.10 (%tmp.12);
-        symbol [ VFRQuickInfoDensityAltDelegate %tmp.16 136 72 102 ];
+        symbol [ VFRQuickInfoDensityAltDelegate %tmp.16 138 72 102 ];
         %tmp.16 = getv ? :VFRQuickInfoDensityAltDelegate;
-        symbol [ _main %tmp.18 136 103 108 ];
+        symbol [ _main %tmp.18 138 103 108 ];
         %tmp.18 = getv ? :_main;
         %tmp.13 = newc %tmp.16 (%tmp.18);
-        symbol [ WatchUi %tmp.19 136 111 118 ];
+        symbol [ WatchUi %tmp.19 138 111 118 ];
         %tmp.19 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_UP %tmp.20 136 119 127 ];
+        symbol [ SLIDE_UP %tmp.20 138 119 127 ];
         %tmp.20 = getv %tmp.19 :SLIDE_UP;
         invoke %tmp.5 %tmp.6(%tmp.7, %tmp.13, %tmp.20);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 137 12 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 139 12 ]
         %tmp.21 = true;
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_8_138_23_finally;
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_8_140_23_finally;
         ret %tmp.21;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_12_138_8_stop:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_8_138_23_endTry:
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_8_138_23_finally;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_8_138_23_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_8_138_23_catch:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_12_140_8_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_8_140_23_endTry:
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_8_140_23_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_8_140_23_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_8_140_23_catch:
         %tmp.22 = exception;
         push %tmp.22;
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 138 10 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_8_138_23_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_138_10_138_23_end" ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 140 10 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_8_140_23_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_140_10_140_23_end" ]
         %ex.1 = local;
-        symbol [ ex %ex.1 138 17 19 ];
+        symbol [ ex %ex.1 140 17 19 ];
         %tmp.23 = dup %tmp.22;
         lputv %ex.1 %tmp.23;
-        symbol [ ex %ex.1 138 17 19 ];
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_8_138_23_finally;
+        symbol [ ex %ex.1 140 17 19 ];
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_8_140_23_finally;
         pop;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_8_138_23_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_138_10_138_23_end:
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_8_138_23_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_138_10_138_23_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_138_10_138_23_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_8_138_23_finally;
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_8_138_23_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_8_140_23_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_140_10_140_23_end:
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_8_140_23_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_140_10_140_23_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_140_10_140_23_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_8_140_23_finally;
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_8_140_23_finally;
         throw %tmp.22;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_8_138_23_finally:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_8_140_23_finally:
         jsrret;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_134_8_138_23_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 140 8 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_140_8_145_8_if_stmt:
-        symbol [ WatchUi %tmp.24 140 12 19 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_136_8_140_23_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 142 8 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_142_8_147_8_if_stmt:
+        symbol [ WatchUi %tmp.24 142 12 19 ];
         %tmp.24 = getm $.Toybox.WatchUi;
         %tmp.26 = const :MapView;
-        symbol [ MapView %tmp.26 140 25 32 const ];
+        symbol [ MapView %tmp.26 142 25 32 const ];
         %tmp.27 = canhazplz %tmp.24 %tmp.26;
-        bf %tmp.27 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_140_8_145_8_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_140_8_145_8_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_140_34_145_8_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 141 12 ]
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_12_144_27_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_12_144_27_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_12_144_27_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_12_144_27_finally;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_12_144_27_beginTry:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_16_144_12_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 142 16 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_16_144_12_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_16_144_12_stop" ]
+        bf %tmp.27 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_142_8_147_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_142_8_147_8_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_142_34_147_8_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 143 12 ]
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_12_146_27_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_12_146_27_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_12_146_27_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_12_146_27_finally;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_12_146_27_beginTry:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_16_146_12_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 144 16 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_16_146_12_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_16_146_12_stop" ]
         %mapView.2 = local;
-        symbol [ mapView %mapView.2 142 20 27 ];
-        symbol [ VFRMapView %tmp.31 142 34 44 ];
+        symbol [ mapView %mapView.2 144 20 27 ];
+        symbol [ VFRMapView %tmp.31 144 34 44 ];
         %tmp.31 = getv ? :VFRMapView;
-        symbol [ _main %tmp.33 142 45 50 ];
+        symbol [ _main %tmp.33 144 45 50 ];
         %tmp.33 = getv ? :_main;
         %tmp.28 = newc %tmp.31 (%tmp.33);
         lputv %mapView.2 %tmp.28;
-        symbol [ mapView %mapView.2 142 20 27 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 143 16 ]
-        symbol [ WatchUi %tmp.34 143 16 23 ];
+        symbol [ mapView %mapView.2 144 20 27 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 145 16 ]
+        symbol [ WatchUi %tmp.34 145 16 23 ];
         %tmp.34 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.35 143 24 32 ];
+        symbol [ pushView %tmp.35 145 24 32 ];
         %tmp.35 = getv function %tmp.34 :pushView;
         %tmp.36 = lgetv %mapView.2;
-        symbol [ mapView %tmp.36 143 33 40 ];
-        symbol [ VFRMapDelegate %tmp.40 143 46 60 ];
+        symbol [ mapView %tmp.36 145 33 40 ];
+        symbol [ VFRMapDelegate %tmp.40 145 46 60 ];
         %tmp.40 = getv ? :VFRMapDelegate;
-        symbol [ _main %tmp.42 143 61 66 ];
+        symbol [ _main %tmp.42 145 61 66 ];
         %tmp.42 = getv ? :_main;
         %tmp.43 = lgetv %mapView.2;
-        symbol [ mapView %tmp.43 143 68 75 ];
+        symbol [ mapView %tmp.43 145 68 75 ];
         %tmp.37 = newc %tmp.40 (%tmp.42, %tmp.43);
-        symbol [ WatchUi %tmp.44 143 78 85 ];
+        symbol [ WatchUi %tmp.44 145 78 85 ];
         %tmp.44 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_IMMEDIATE %tmp.45 143 86 101 ];
+        symbol [ SLIDE_IMMEDIATE %tmp.45 145 86 101 ];
         %tmp.45 = getv %tmp.44 :SLIDE_IMMEDIATE;
         invoke %tmp.34 %tmp.35(%tmp.36, %tmp.37, %tmp.45);
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_16_144_12_stop:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_12_144_27_endTry:
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_12_144_27_finally;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_12_144_27_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_12_144_27_catch:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_16_146_12_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_12_146_27_endTry:
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_12_146_27_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_12_146_27_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_12_146_27_catch:
         %tmp.46 = exception;
         push %tmp.46;
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 144 14 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_12_144_27_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_144_14_144_27_end" ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 146 14 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_12_146_27_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_146_14_146_27_end" ]
         %ex.3 = local;
-        symbol [ ex %ex.3 144 21 23 ];
+        symbol [ ex %ex.3 146 21 23 ];
         %tmp.47 = dup %tmp.46;
         lputv %ex.3 %tmp.47;
-        symbol [ ex %ex.3 144 21 23 ];
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_12_144_27_finally;
+        symbol [ ex %ex.3 146 21 23 ];
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_12_146_27_finally;
         pop;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_12_144_27_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_144_14_144_27_end:
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_12_144_27_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_144_14_144_27_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_144_14_144_27_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_12_144_27_finally;
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_12_144_27_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_12_146_27_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_146_14_146_27_end:
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_12_146_27_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_146_14_146_27_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_146_14_146_27_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_12_146_27_finally;
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_12_146_27_finally;
         throw %tmp.46;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_12_144_27_finally:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_12_146_27_finally:
         jsrret;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_141_12_144_27_end:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_140_34_145_8_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_140_8_145_8_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_140_8_145_8_if_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 146 8 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_143_12_146_27_end:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_142_34_147_8_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_142_8_147_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_142_8_147_8_if_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc" 148 8 ]
         %tmp.48 = true;
         ret %tmp.48;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_133_37_147_4_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRQuickInfoWeather2_mc_135_37_149_4_stop:
     }
 }
 [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRQuickInfoWeather2.mc"; @line = 1; ]

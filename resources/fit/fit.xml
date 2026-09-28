@@ -1,0 +1,43 @@
+<resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <!--
+        Connect IQ / FIT developer fields written into the activity by
+        VFRStopWatchView (see _createFitFields / _writeFitSummary).
+
+        Attributes are validated against resources.xsd — the valid set is:
+          id (required)              field id; MUST match the FIT_FIELD_* constant
+                                     passed to Session.createField() in the code
+          dataLabel (required)       @Strings.<id>  label in the Garmin Connect
+                                                     activity summary / laps
+          unitLabel (required)       @Strings.<id>  unit shown next to the value
+          sortOrder (required)       display order (must be unique)
+          precision                  decimal places (0/1/2)
+          displayInActivitySummary   -> Activity Summary section
+          displayInActivityLaps      -> Activity Laps section
+          displayInChart             -> per-second graph on the activity page
+          chartTitle (needed with displayInChart)
+          fillColor  (needed with displayInChart)  #RRGGBB
+
+        NOTE: there is no displayLabel / units / mesgType attribute — the message
+        type (Record / Lap / Session) is chosen in code with
+        createField(..., {:mesgType => FitContributor.MESG_TYPE_*}) and the
+        unit text comes from unitLabel.
+    -->
+    <fitContributions>
+        <!-- Session summary: one value per flight -->
+        <fitField id="0"  dataLabel="@Strings.fit_obt_label"    unitLabel="@Strings.fit_unit_none" sortOrder="0"  displayInActivitySummary="true" />
+        <fitField id="1"  dataLabel="@Strings.fit_ibt_label"    unitLabel="@Strings.fit_unit_none" sortOrder="1"  displayInActivitySummary="true" />
+        <fitField id="2"  dataLabel="@Strings.fit_block_label"  unitLabel="@Strings.fit_unit_s"    sortOrder="2"  displayInActivitySummary="true" precision="0" />
+        <fitField id="3"  dataLabel="@Strings.fit_ldg_label"    unitLabel="@Strings.fit_unit_none" sortOrder="3"  displayInActivitySummary="true" precision="0" />
+        <fitField id="4"  dataLabel="@Strings.fit_dist_label"   unitLabel="@Strings.fit_unit_nm"   sortOrder="4"  displayInActivitySummary="true" precision="1" />
+        <fitField id="5"  dataLabel="@Strings.fit_malt_label"   unitLabel="@Strings.fit_unit_ft"   sortOrder="5"  displayInActivitySummary="true" precision="0" />
+        <fitField id="6"  dataLabel="@Strings.fit_ags_label"    unitLabel="@Strings.fit_unit_kt"   sortOrder="6"  displayInActivitySummary="true" precision="0" />
+        <fitField id="7"  dataLabel="@Strings.fit_maxg_label"   unitLabel="@Strings.fit_unit_g"    sortOrder="7"  displayInActivitySummary="true" precision="2" />
+        <fitField id="8"  dataLabel="@Strings.fit_mbank_label"  unitLabel="@Strings.fit_unit_deg"  sortOrder="8"  displayInActivitySummary="true" precision="0" />
+        <fitField id="12" dataLabel="@Strings.fit_mpitch_label" unitLabel="@Strings.fit_unit_deg"  sortOrder="12" displayInActivitySummary="true" precision="0" />
+
+        <!-- Per-second graphs on the Garmin Connect activity page -->
+        <fitField id="9"  dataLabel="@Strings.fit_g_label"      unitLabel="@Strings.fit_unit_g"    sortOrder="9"  displayInChart="true" chartTitle="@Strings.fit_chart_g"     fillColor="#FF3B30" precision="2" />
+        <fitField id="10" dataLabel="@Strings.fit_bank_label"   unitLabel="@Strings.fit_unit_deg"  sortOrder="10" displayInChart="true" chartTitle="@Strings.fit_chart_bank"  fillColor="#34C759" precision="0" />
+        <fitField id="11" dataLabel="@Strings.fit_pitch_label"  unitLabel="@Strings.fit_unit_deg"  sortOrder="11" displayInChart="true" chartTitle="@Strings.fit_chart_pitch" fillColor="#0A84FF" precision="0" />
+    </fitContributions>
+</resources>

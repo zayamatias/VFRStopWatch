@@ -21,8 +21,10 @@ class VFRGpsMenuDelegate extends WatchUi.Menu2InputDelegate {
     function onSelect(item as WatchUi.MenuItem) as Void {
         var mode = item.getId() as Number;
         Application.Properties.setValue("GpsMode", mode);
-        _view.gpsMode = mode;   // set directly — don't rely on Properties round-trip
-        _view.restartGps();
+        _view.gpsMode = mode;
+        // Re-register location events with the newly selected mode; restartGps()
+        // is intentionally a no-op and does not actually re-subscribe.
+        _view.loadSettings();
         WatchUi.popView(WatchUi.SLIDE_RIGHT); // pop GPS sub-menu
         WatchUi.popView(WatchUi.SLIDE_RIGHT); // pop Settings menu → back to main
     }
@@ -207,13 +209,6 @@ class VFRSettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
             var curFuel = VFRSettings.readClampedNumber("FuelCheckInterval", 30, 0, 120);
             var picker = new VFRNumberPickerView("Fuel Check (min)", curFuel, 0, 120, 5, "FuelCheckInterval", _view);
             WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
-        } else if (id.equals("setting_bezel_atlas")) {
-            var rawAtlas = Application.Properties.getValue("BezelUseAtlas");
-            var curAtlas = (rawAtlas != null) ? (rawAtlas as Number) : 0;
-            var newAtlas = (curAtlas == 1) ? 0 : 1;
-            Application.Properties.setValue("BezelUseAtlas", newAtlas);
-            VFRSettings.applySavedNumber(_view, "BezelUseAtlas", newAtlas);
-            WatchUi.popView(WatchUi.SLIDE_RIGHT);
         } else if (id.equals("setting_bezel_font")) {
             var curFont = VFRSettings.readClampedNumber("BezelFontScale", 100, 70, 130);
             var picker = new VFRNumberPickerView("Bezel Font (%)", curFont, 70, 130, 5, "BezelFontScale", _view);
@@ -221,22 +216,6 @@ class VFRSettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
         } else if (id.equals("setting_bezel_contrast")) {
             var curContrast = VFRSettings.readClampedNumber("BezelContrast", 100, 50, 100);
             var picker = new VFRNumberPickerView("Bezel Contrast (%)", curContrast, 50, 100, 5, "BezelContrast", _view);
-            WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
-        } else if (id.equals("setting_bezel_hdg")) {
-            var curHdg = VFRSettings.readClampedNumber("BezelOffsetHDG", 0, -20, 20);
-            var picker = new VFRNumberPickerView("HDG Offset (px)", curHdg, -20, 20, 1, "BezelOffsetHDG", _view);
-            WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
-        } else if (id.equals("setting_bezel_gs")) {
-            var curGs = VFRSettings.readClampedNumber("BezelOffsetGS", 0, -20, 20);
-            var picker = new VFRNumberPickerView("GS Offset (px)", curGs, -20, 20, 1, "BezelOffsetGS", _view);
-            WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
-        } else if (id.equals("setting_bezel_alt")) {
-            var curAlt = VFRSettings.readClampedNumber("BezelOffsetALT", 10, -20, 20);
-            var picker = new VFRNumberPickerView("ALT Offset (px)", curAlt, -20, 20, 1, "BezelOffsetALT", _view);
-            WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
-        } else if (id.equals("setting_bezel_qnh")) {
-            var curQnh = VFRSettings.readClampedNumber("BezelOffsetQNH", 10, -20, 20);
-            var picker = new VFRNumberPickerView("QNH Offset (px)", curQnh, -20, 20, 1, "BezelOffsetQNH", _view);
             WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
         } else if (id.equals("setting_altitude_source")) {
             // Toggle altitude source: 0=Baro, 1=GPS
@@ -246,6 +225,37 @@ class VFRSettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
             Application.Properties.setValue("AltitudeSource", newSrc);
             VFRSettings.applySavedNumber(_view, "AltitudeSource", newSrc);
             WatchUi.popView(WatchUi.SLIDE_RIGHT);
+        } else if (id.equals("setting_display")) {
+            // Toggle bezel ring <-> paged face. Use the view's live value rather
+            // than the stored property: setValue() is asynchronous, so reading
+            // the property straight back can return the previous value.
+            var newDisp = (_view.displayMode == 1) ? 0 : 1;
+            VFRSettings.setDisplayMode(_view, newDisp);
+            WatchUi.popView(WatchUi.SLIDE_RIGHT);
+        } else if (id.equals("setting_page_cycle")) {
+            // Paged face: seconds per page (0 = off, i.e. UP/DOWN only)
+            var curCyc = VFRSettings.readClampedNumber("PageCycleSec", 0, 0, 60);
+            var picker = new VFRNumberPickerView("Auto Page (s, 0=off)", curCyc, 0, 60, 5, "PageCycleSec", _view);
+            WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
+        } else if (id.equals("setting_circuit")) {
+            var rawCirc = Application.Properties.getValue("CircuitPractice");
+            var curCirc = (rawCirc != null) ? (rawCirc as Number) : 0;
+            var newCirc = (curCirc == 1) ? 0 : 1;
+            Application.Properties.setValue("CircuitPractice", newCirc);
+            _view.circuitEnabled = (newCirc == 1);
+            WatchUi.popView(WatchUi.SLIDE_RIGHT);
+        } else if (id.equals("setting_field_elev")) {
+            var curFe = VFRSettings.readClampedNumber("FieldElevationFt", 0, 0, 20000);
+            var picker = new VFRNumberPickerView("Field Elev (ft, 0=auto)", curFe, 0, 20000, 50, "FieldElevationFt", _view);
+            WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
+        } else if (id.equals("setting_runway")) {
+            var curRw = VFRSettings.readClampedNumber("RunwayLengthM", 2405, 0, 10000);
+            var picker = new VFRNumberPickerView("Runway (m)", curRw, 0, 10000, 50, "RunwayLengthM", _view);
+            WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
+        } else if (id.equals("setting_alt_alert")) {
+            var curAltAlert = VFRSettings.readClampedNumber("AltitudeAlertFt", 0, 0, 30000);
+            var picker = new VFRNumberPickerView("Alt Alert (ft, 0=off)", curAltAlert, 0, 30000, 100, "AltitudeAlertFt", _view);
+            WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
         } else if (id.equals("setting_companion")) {
             // Toggle companion app usage immediately
             var rawComp = Application.Properties.getValue("UseCompanionApp");
@@ -257,6 +267,23 @@ class VFRSettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
             // Notify app so it can start/stop comms
             try { getApp().onSettingsChanged(); } catch (e2) { }
             WatchUi.popView(WatchUi.SLIDE_RIGHT);
+        } else if (id.equals("setting_auto_backlight")) {
+            // Cycle: Off -> Always -> Night-only -> Off
+            var rawBl = Application.Properties.getValue("AutoBacklight");
+            var curBl = (rawBl != null) ? (rawBl as Number) : 0;
+            var newBl = (curBl + 1) % 3;
+            Application.Properties.setValue("AutoBacklight", newBl);
+            _view.autoBacklight = newBl;
+            if (_view.autoBacklight != 0 && _view.isBacklightWindow()) { _view.lightUpBacklight(); }
+            WatchUi.popView(WatchUi.SLIDE_RIGHT);
+        } else if (id.equals("setting_night_start")) {
+            var curNs = VFRSettings.readClampedNumber("NightStartHour", 20, 0, 23);
+            var picker = new VFRNumberPickerView("Night Start (h)", curNs, 0, 23, 1, "NightStartHour", _view);
+            WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
+        } else if (id.equals("setting_night_end")) {
+            var curNe = VFRSettings.readClampedNumber("NightEndHour", 7, 0, 23);
+            var picker = new VFRNumberPickerView("Night End (h)", curNe, 0, 23, 1, "NightEndHour", _view);
+            WatchUi.pushView(picker, new VFRNumberPickerDelegate(picker), WatchUi.SLIDE_LEFT);
         }
     }
 }

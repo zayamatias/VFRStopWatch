@@ -1,5 +1,6 @@
 import Toybox.ActivityRecording;
 import Toybox.Application;
+import Toybox.FitContributor;
 import Toybox.Graphics;
 import Toybox.WatchUi;
 import Toybox.System;
@@ -22,6 +23,25 @@ class VFRStopWatchView extends WatchUi.View {
     // --- GPS distance accumulation ---
     var lastUpdateTimer  as Number = 0;   // System.getTimer() at last onUpdate
     var totalDistanceM   as Float  = 0.0; // meters accumulated since reset
+    // --- GPS outage recovery for the distance accumulation ---
+    // Distance is integrated from ground speed each second, so anything flown
+    // while the fix is missing is lost. `fixLatDeg/fixLonDeg` cache the latest
+    // accepted fix and `accumRef*` the fix at the last accumulated sample: when
+    // accumulation resumes after an outage, the straight-line distance between
+    // the two is added back (see _bridgeDistanceGap).
+    var fixLatDeg        as Float   = 0.0;
+    var fixLonDeg        as Float   = 0.0;
+    var fixValid         as Boolean = false;
+    var accumRefLat      as Float   = 0.0;
+    var accumRefLon      as Float   = 0.0;
+    var accumRefValid    as Boolean = false;
+    var lastAccumAtMs    as Number  = 0;  // 0 = nothing accumulated yet
+    // Only bridge real outages — normal 1 Hz operation is already covered by the
+    // speed integration, so bridging then would double count.
+    var GAP_BRIDGE_MIN_MS    as Number = 3000;
+    // Reject a "gap" implying an impossible speed (GPS glitch rather than
+    // real movement): 200 m/s ≈ 390 kt.
+    var MAX_BRIDGE_SPEED_MPS as Float  = 200.0;
     // --- Trip statistics ---
     var maxAltitudeM     as Float  = 0.0; // maximum altitude seen during trip (meters)
     var maxGsKt          as Float  = 0.0; // maximum ground speed (knots)
@@ -73,6 +93,19 @@ class VFRStopWatchView extends WatchUi.View {
     // Armed at start/reset; disarmed as soon as the stopwatch begins running.
     var autoStartEnabled as Boolean = true;
     var AUTO_START_SPEED_MS as Float = 15.4333; // default 30 kts in m/s; updated by loadSettings()
+    // --- Off-block (taxi) start ---
+    // The clock now starts when the aircraft begins to roll, not at take-off, so
+    // OBT is the off-block time. The taxi threshold sits above walking pace (a
+    // pilot walking to the aircraft reaches ~1.6-2.7 kt, normal taxi is
+    // 5-15 kt) and must be held for TAXI_START_HOLD_MS so a speed spike can't
+    // start the clock.
+    var TAXI_START_SPEED_MS as Float  = 2.5722; // 5 kt
+    var TAXI_START_HOLD_MS  as Number = 5000;   // sustained speed required (ms)
+    var taxiStartSince      as Number = 0;      // 0 = not currently above the taxi threshold
+    // Set once ground speed has reached the take-off threshold: only then is the
+    // zero-speed auto-stop armed, so stopping during taxi (or pausing before
+    // take-off) cannot end the flight.
+    var hasTakenOff as Boolean = false;
 
     // --- Settings-derived runtime values ---
     // gpsMode:          0=GPS  1=GPS+GLONASS  2=All  3=Aviation
@@ -99,7 +132,18 @@ class VFRStopWatchView extends WatchUi.View {
     var tendencyUntil as Number = 0;            // System.getTimer() until which arrow is shown
     var tendencyVibrateCooldownMs as Number = 5000; // minimum ms between tendency vibrations
     var lastTendencyVibrateAt as Number = 0;
-    var vertSpeedFpm as Float = 0.0;            // current vertical speed in feet per minute
+    var vertSpeedFpm as Float = 0.0;            // raw instantaneous vertical speed (FPM, for tendency)
+    var VERT_SPEED_SMOOTH_ALPHA as Float = 0.15; // EMA smoothing factor (0.15 = heavy smoothing)
+    var vertSpeedSmoothFpm as Float = 0.0;       // EMA-smoothed vertical speed FPM (for display)
+    var MIN_VS_DT_MS as Number = 500;            // minimum ms between altitude samples for VS calc
+    var lastAltSource as Number = -1;            // -1=none, 0=baro, 1=gps (keeps VS on one datum)
+    var lastTrackDeg as Float = -1.0;            // last GPS track (deg) for turn-rate / bank estimate
+    var lastTrackMillis as Number = 0;           // System.getTimer() of the last track sample
+    var turnRateDegS as Float = 0.0;             // EMA-smoothed turn rate (deg/s)
+    // Sanity limits for the bank estimate: a GPS track jump is not a turn.
+    var MAX_TURN_RATE_DEG_S as Float = 15.0;     // clamp the rate fed into the model
+    var MAX_BANK_DEG        as Float = 60.0;     // clamp the reported bank
+    var liveBankDeg as Float = 0.0;              // estimated bank angle (deg, coordinated-turn model)
     // --- Altitude source (0=Baro, 1=GPS) ---
     var altitudeSource as Number = 0;
     var gpsAltitudeM as Float = 0.0;            // cached GPS altitude from Position.Info
@@ -117,32 +161,76 @@ class VFRStopWatchView extends WatchUi.View {
     // One session per start/stop cycle; saved as a FIT activity on stop.
     var _session as ActivityRecording.Session? = null;
 
+    // --- FIT developer fields (flight summary shown on the Garmin Connect report) ---
+    // Field ids MUST match the <fitField id="…"> entries in resources/fit/fit.xml
+    // or the values are written to the FIT file but never displayed.
+    var FIT_FIELD_OBT      as Number = 0;
+    var FIT_FIELD_IBT      as Number = 1;
+    var FIT_FIELD_BLOCK_S  as Number = 2;
+    var FIT_FIELD_LANDINGS as Number = 3;
+    var FIT_FIELD_DIST_NM  as Number = 4;
+    var FIT_FIELD_MAX_ALT  as Number = 5;
+    var FIT_FIELD_AVG_GS   as Number = 6;
+    var FIT_FIELD_MAX_G    as Number = 7;
+    var FIT_FIELD_MAX_BANK as Number = 8;
+    var FIT_FIELD_G        as Number = 9;
+    var FIT_FIELD_BANK     as Number = 10;
+    var FIT_FIELD_PITCH    as Number = 11;
+    var FIT_FIELD_MAX_PITCH as Number = 12;
+    var _fitObt      as FitContributor.Field? = null;
+    var _fitIbt      as FitContributor.Field? = null;
+    var _fitBlockS   as FitContributor.Field? = null;
+    var _fitLandings as FitContributor.Field? = null;
+    var _fitDistNm   as FitContributor.Field? = null;
+    var _fitMaxAltFt as FitContributor.Field? = null;
+    var _fitAvgGsKt  as FitContributor.Field? = null;
+    var _fitMaxG     as FitContributor.Field? = null;
+    var _fitMaxBank  as FitContributor.Field? = null;
+    var _fitMaxPitch as FitContributor.Field? = null;
+    var _fitG        as FitContributor.Field? = null;
+    var _fitBank     as FitContributor.Field? = null;
+    var _fitPitch    as FitContributor.Field? = null;
+
+    // --- Accelerometer (G-force) capture ---
+    // Magnitude is orientation independent, so sqrt(x2+y2+z2)/1000 is the
+    // resultant load factor. Wrist-mounted, so treat it as indicative.
+    var gForceG          as Float   = 1.0;  // smoothed current load factor (G)
+    var maxG             as Float   = 0.0;  // peak 1 s-averaged load factor (G)
+    var maxBankDeg       as Float   = 0.0;  // peak |bank| estimate (deg)
+    var maxPitchDeg      as Float   = 0.0;  // peak |flight-path angle| (deg)
+    var _sensorOn        as Boolean = false;
+    var _sensorDataSeen  as Boolean = false;  // true once the batch listener delivered data
+    var G_EMA_ALPHA      as Float   = 0.35;
+    // Minimum gap between counted touch-downs (debounce against a noisy AGL
+    // trace or the same event being seen by both onUpdate and onPosition)
+    var lastLandingAt    as Number  = 0;
+    var MIN_LANDING_GAP_MS as Number = 20000;
+
+    // --- Display layout (settings-driven) ---
+    // 0 = bezel ring with small radial fields, 1 = "pages": the chrono plus one
+    // large value per page, cycled with UP (previous) and DOWN (next). Built for
+    // legibility: the ring's radial text is capped by its arc length (~16-27 px
+    // glyphs), whereas a page value gets ~26% of the screen height in the
+    // boldest available face.
+    var displayMode as Number = 1;
+    var pageIdx as Number = 0;
+    var pageCycleSec as Number = 0;      // paged face: seconds per page, 0 = manual only
+    var lastPageCycleAt as Number = 0;   // System.getTimer() of the last page change
+    var bigValFonts as Array = [];   // candidate value fonts, largest first
+    var bigLblFont as Graphics.VectorFont? = null;
+    var bigSubFont as Graphics.VectorFont? = null;
+    var bigTimerFont as Graphics.VectorFont? = null;
+    var bigFontsInitialized as Boolean = false;
+
     // --- Vector fonts (optional rounded font resource) ---
     var roundedFontLarge as Graphics.VectorFont? = null;
     var roundedFontSmall as Graphics.VectorFont? = null;
     var bezelLblFont     as Graphics.VectorFont? = null; // small label font for bezel items
     var bezelLblFace     as String? = null;
     var bezelLblFaceSize as Number = 0;
-    var bezelSlotFont    as Graphics.VectorFont? = null;  // slot-sized font (auto-fit)
     var bezelFontsInitialized as Boolean = false;
-    var bezelUseAtlas as Boolean = false;
     var bezelFontScale as Number = 100;
     var bezelContrast as Number = 100;
-    var bezelOffsetHDG as Number = 0;
-    var bezelOffsetGS as Number = 0;
-    var bezelOffsetALT as Number = 10;
-    var bezelOffsetQNH as Number = 10;
-    var cachedBezelAtlas as Object? = null;
-    var bezelAtlasUnavailable as Boolean = false;
-    var bezelSlotCacheRadius as Float = -1.0;
-    var bezelSlotX as Array? = null;
-    var bezelSlotY as Array? = null;
-    var bezelSlotAngle as Array? = null;
-    var SHOW_BEZEL_ANGLE_DEBUG as Boolean = false; // debug overlay disabled
-    var lastDrawTimes as Dictionary = new Dictionary(); // guard per-label draw timestamps
-    var bezelFrameId as Number = 0; // incremented each onUpdate to identify a frame
-    // Cache loaded phone icon resource to avoid per-frame allocations
-    var cachedPhoneIcon as Object? = null;
     // Whether companion app features are enabled (settings-driven)
     var useCompanionApp as Boolean = false;
 
@@ -150,8 +238,44 @@ class VFRStopWatchView extends WatchUi.View {
     var downPressAt as Number = 0; // System.getTimer() when DOWN pressed
     var DOWN_HOLD_MS as Number = 800; // ms to consider a long press
     var lastDownEventAt as Number = 0; // debounce last physical press
+    // --- Up-button hold detection (pages mode: previous page, hold = sub-timer)
+    var upPressAt as Number = 0;  // System.getTimer() when UP pressed
+    var UP_HOLD_MS as Number = 800;
+    var lastUpEventAt as Number = 0; // debounce last physical UP press
     var quickInfoShown as Boolean = false;
     var quickInfoLastNavAt as Number = 0; // ms timestamp of last quick-info navigation action
+    var dimMode as Boolean = false;       // true when idle (clock showing) → dim chrome
+    var lastIdleRefresh as Number = 0;    // System.getTimer() of last throttled redraw
+    // Auto-backlight (settings-driven): keeps the display lit while flying so it
+    // can be read in a dark cockpit without pressing a key.
+    var autoBacklight as Number = 0;   // 0=off, 1=always, 2=night-only
+    var nightStartHour as Number = 20; // backlight window start hour (0-23)
+    var nightEndHour as Number = 7;    // backlight window end hour (0-23; < start = crosses midnight)
+    var lastBacklightAt as Number = 0;        // System.getTimer() of last backlight request
+    var BACKLIGHT_REPEAT_MS as Number = 20000; // re-light cadence while running
+
+    // --- Circuit practice & landing counter ---
+    var circuitEnabled as Boolean = false;
+    var fieldElevationFt as Number = 0;       // effective field elevation (ft MSL); 0 = not captured
+    var manualFieldElevationFt as Number = 0; // user override (0 = auto)
+    var runwayLengthM as Number = 2405;
+    var circuitPhase as Number = 0;           // 0=none, 1=upwind, 2=crosswind, 3=downwind, 4=base, 5=final
+    var circuitLegStartMs as Number = 0;
+    var circuitLevelVibrated as Boolean = false;
+    var landings as Number = 0;
+    var airborne as Boolean = false;
+    var lastAglFt as Float = 0.0;
+    var PATTERN_AGL_FT as Number = 1000;
+    var TURN_CROSSWIND_AGL_FT as Number = 700;
+    var CROSSWIND_SEC as Number = 35;
+    var BASE_SEC as Number = 20;
+    var DOWNWIND_EXTRA_M as Number = 300;
+
+    // --- Altitude alert ---
+    var altAlertFt as Number = 0;         // target MSL altitude (ft); 0 = off
+    var altAlertApproaching as Boolean = false;
+    var altAlertCrossed as Boolean = false;
+    var lastAltForAlert as Float = 0.0;
 
     function initialize() {
         View.initialize();
@@ -223,11 +347,44 @@ class VFRStopWatchView extends WatchUi.View {
         lastUpdateTimer = System.getTimer();
         loadSettings();
         restartGps();
+        // With Auto Backlight on, light the display as soon as the face appears
+        // (respecting the night-only window).
+        if (autoBacklight != 0 && isBacklightWindow()) {
+            lastBacklightAt = System.getTimer();
+            lightUpBacklight();
+        }
         if (needsResumePrompt) {
             needsResumePrompt = false;
             WatchUi.pushView(new VFRResumeView(self), new VFRResumeDelegate(self), WatchUi.SLIDE_UP);
         }
         WatchUi.requestUpdate();
+    }
+
+    // Request the display backlight at the system level. The backlight switches
+    // itself off after the device's configured timeout, so this never holds it on
+    // indefinitely (which could trip BacklightOnTooLongException on some devices).
+    function lightUpBacklight() as Void {
+        if (!(Attention has :backlight)) { return; }
+        try { Attention.backlight(true); } catch (ex) { }
+    }
+
+    // True when auto-backlight should act right now. "Always" mode is always
+    // true; "Night-only" mode checks the configured clock window (handles a
+    // window that crosses midnight, e.g. 20:00–07:00).
+    function isBacklightWindow() as Boolean {
+        if (autoBacklight == 2) {
+            var h = 0;
+            try {
+                var clk = System.getClockTime();
+                if (clk != null) { h = clk.hour; }
+            } catch (e) { h = 0; }
+            if (nightStartHour < nightEndHour) {
+                return (h >= nightStartHour) && (h < nightEndHour);
+            }
+            // Crosses midnight: active late (>= start) or early (< end).
+            return (h >= nightStartHour) || (h < nightEndHour);
+        }
+        return true; // off handled by callers; mode 1 = always
     }
 
     // Restart GPS subscriptions according to current settings.
@@ -241,37 +398,77 @@ class VFRStopWatchView extends WatchUi.View {
         // Update cached quality and timestamp so we can detect stale fixes
         if (info != null) {
             if (info.accuracy != null) { gpsQuality = info.accuracy; }
+            // Cache the latest accepted fix so a GPS outage can be repaired with
+            // the straight-line distance to the fix that ends it.
+            if (gpsQuality >= 3 && info.position != null) {
+                try {
+                    var degs = info.position.toDegrees();
+                    if (degs != null && degs.size() >= 2) {
+                        fixLatDeg = (degs[0] as Double).toFloat();
+                        fixLonDeg = (degs[1] as Double).toFloat();
+                        fixValid  = true;
+                    }
+                } catch (pe) { }
+            }
             // Capture altitude when available and compute vertical speed
             {
                 try {
                     var now = System.getTimer();
-                    // Prefer sensor-derived altitude (barometric) when available;
-                    // fall back to Position.Info.altitude (GPS) if not.
                     var sInfo = Sensor.getInfo();
+                    // Use ONE altitude source (per the user's setting) for max-altitude
+                    // and vertical speed. Barometric (QNH) and GPS altitudes sit on
+                    // different datums, so mixing samples between them produces bogus
+                    // vertical-speed spikes.
+                    var useSource = (altitudeSource == 1) ? 1 : 0;
                     var alt = null;
-                    if (sInfo != null && sInfo.altitude != null) {
-                        alt = (sInfo.altitude as Float);
-                    } else if (info.altitude != null) {
-                        alt = (info.altitude as Float);
+                    if (useSource == 1) {
+                        if (info.altitude != null) { alt = (info.altitude as Float); }
+                    } else {
+                        if (sInfo != null && sInfo.altitude != null) {
+                            alt = (sInfo.altitude as Float);
+                        } else if (info.altitude != null) {
+                            // Device without a baro altimeter: fall back to GPS altitude
+                            useSource = 1;
+                            alt = (info.altitude as Float);
+                        }
                     }
                     if (alt != null) {
-                        // Track max altitude during an active trip
                         if (running && (alt as Float) > maxAltitudeM) {
                             maxAltitudeM = (alt as Float);
                         }
-                        if (lastAltitudeMillis != 0) {
+                        // Take-off / touch-down detection and the bank & pitch
+                        // graphs also run from here (not only onUpdate): position
+                        // callbacks keep firing while a sub-view (quick info,
+                        // trip, map, settings) covers the main view, so a
+                        // landing can no longer be missed just because the
+                        // screen was hidden at touch-down.
+                        var aglFtPos = ((alt as Float) * 3.28084) - fieldElevationFt.toFloat();
+                        var gsKtPos  = -1.0; // -1 = speed unknown
+                        try {
+                            if (info.speed != null) { gsKtPos = (info.speed as Float) * 1.94384; }
+                        } catch (se) { }
+                        lastAglFt = aglFtPos;
+                        _updateAirborneState(aglFtPos, gsKtPos, now);
+                        _updateAttitude(gsKtPos);
+                        // GPS altitude is noisier → require longer spacing between samples
+                        var minVsDt = (useSource == 1) ? 1000 : MIN_VS_DT_MS;
+                        if (lastAltitudeMillis != 0 && lastAltSource == useSource) {
                             var dtMs = now - lastAltitudeMillis;
-                            if (dtMs > 0) {
+                            if (dtMs >= minVsDt) {
                                 var vspd = (alt - lastAltitudeMeters) / (dtMs.toFloat() / 1000.0); // m/s
-                                // Store vertical speed in FPM (1 m/s = 196.85 ft/min)
-                                vertSpeedFpm = vspd * 196.85;
+                                vertSpeedFpm = vspd * 196.85; // FPM
+                                if (vertSpeedSmoothFpm == 0.0) {
+                                    vertSpeedSmoothFpm = vertSpeedFpm;
+                                } else {
+                                    vertSpeedSmoothFpm = VERT_SPEED_SMOOTH_ALPHA * vertSpeedFpm
+                                                       + (1.0 - VERT_SPEED_SMOOTH_ALPHA) * vertSpeedSmoothFpm;
+                                }
                                 var newTendency = 0;
                                 if (vspd >= VERT_SPEED_THRESHOLD_MPS) { newTendency = 1; }
                                 else if (vspd <= -VERT_SPEED_THRESHOLD_MPS) { newTendency = -1; }
                                 if (newTendency != 0) {
                                     tendency = newTendency;
                                     tendencyUntil = now + 5000; // show arrow for 5s
-                                    // Vibrate on new detection but throttle repeats
                                     if ((now - lastTendencyVibrateAt) >= tendencyVibrateCooldownMs) {
                                         if (tendency > 0) { doTendencyVibrateUp(); }
                                         else { doTendencyVibrateDown(); }
@@ -282,46 +479,41 @@ class VFRStopWatchView extends WatchUi.View {
                         }
                         lastAltitudeMeters = alt;
                         lastAltitudeMillis = now;
-                        // Keep app-level live state fresh for cross-view telemetry.
-                        // Use the user-selected altitude source for telemetry too.
+                        lastAltSource = useSource;
                         try {
                             var la = getApp();
                             var teleAltM = (altitudeSource == 1 && gpsAltitudeM != 0.0) ? gpsAltitudeM : alt;
                             la.liveAltFt = Math.round(teleAltM * 3.28084).toNumber();
-                            la.liveVsFpm = (Math.round(vertSpeedFpm / 10.0).toNumber()) * 10;
+                            la.liveVsFpm = (Math.round(vertSpeedSmoothFpm / 10.0).toNumber()) * 10;
                             la.liveGpsQuality = gpsQuality;
                         } catch (le) {}
+                    }
+                    // --- Turn rate from GPS track changes (for the bank estimate) ---
+                    if (info.heading != null) {
+                        var trackDeg = ((info.heading as Float) * (180.0 / Math.PI)).toFloat();
+                        var trackNow = System.getTimer();
+                        if (lastTrackDeg >= 0.0 && lastTrackMillis != 0) {
+                            var dtS = (trackNow - lastTrackMillis).toFloat() / 1000.0;
+                            if (dtS >= 0.5 && dtS <= 5.0) {
+                                var dTrk = trackDeg - lastTrackDeg;
+                                while (dTrk > 180.0) { dTrk -= 360.0; }
+                                while (dTrk < -180.0) { dTrk += 360.0; }
+                                var instRate = dTrk / dtS;
+                                if (turnRateDegS == 0.0) { turnRateDegS = instRate; }
+                                else { turnRateDegS = (0.3 * instRate) + (0.7 * turnRateDegS); }
+                            }
+                        }
+                        lastTrackDeg = trackDeg;
+                        lastTrackMillis = trackNow;
                     }
                     // Always cache GPS altitude separately (for GPS altitude source mode)
                     if (info.altitude != null) {
                         gpsAltitudeM = (info.altitude as Float);
                         gpsAltitudeMillis = now;
                     }
-                    // Update transition flag using pressure if available
-                    try {
-                        var sPressure = null;
-                        if (sInfo != null) {
-                            if (sInfo.pressure != null) { sPressure = sInfo.pressure as Float; }
-                        }
-                        if (sPressure != null) {
-                            // Convert raw sensor pressure (Pa) to hPa before applying
-                            // the pressure-altitude formula — Sensor.getInfo().pressure is
-                            // in Pascals (101325 at sea level), not hPa (1013.25).
-                            var hPa = VFRAvionicsData.pressureToHpa((sPressure as Float));
-                            var paFt = 145366.45 * (1.0 - Math.pow((hPa / 1013.25), 0.190284));
-                            if (!transitionActive && paFt >= transitionAltitudeFt) {
-                                transitionActive = true;
-                            } else if (transitionActive && paFt <= (transitionAltitudeFt - transitionExitOffsetFt)) {
-                                transitionActive = false;
-                            }
-                        } else {
-                            if (lastAltitudeMeters != 0) {
-                                var altFtF = lastAltitudeMeters * 3.28084;
-                                if (!transitionActive && altFtF >= transitionAltitudeFt) { transitionActive = true; }
-                                else if (transitionActive && altFtF <= (transitionAltitudeFt - transitionExitOffsetFt)) { transitionActive = false; }
-                            }
-                        }
-                    } catch (ex) { }
+                    // Flight-level transition re-evaluated from the latest altitude.
+                    // Runs off the baro sensor so it does not depend on GPS fix quality.
+                    updateTransitionActive();
                 } catch (ex) { }
             }
         }
@@ -329,12 +521,59 @@ class VFRStopWatchView extends WatchUi.View {
         WatchUi.requestUpdate();
     }
 
+    // Flight Level transition: active once the DISPLAYED altitude crosses the
+    // configured transition altitude (with hysteresis). We decide from the same
+    // altitude shown below transition — QNH-indicated baro altitude in baro mode,
+    // GPS altitude in GPS mode — NOT pressure altitude, so the switch matches the
+    // altimeter a pilot reads. (The FL value itself and the QNH=1013 display are
+    // handled separately in drawBezelBackground.) Re-run every frame from the
+    // sensor, so it works even without a GPS fix.
+    function updateTransitionActive() as Void {
+        var decideFt = -1.0;
+        try {
+            if (altitudeSource == 1) {
+                if (gpsAltitudeM != 0.0) {
+                    decideFt = gpsAltitudeM * 3.28084;
+                } else {
+                    var b = VFRAvionicsData.readAltitudeFeet();
+                    if (b != null) { decideFt = (b as Number).toFloat(); }
+                }
+            } else {
+                var a = VFRAvionicsData.readAltitudeFeet();
+                if (a != null) { decideFt = (a as Number).toFloat(); }
+            }
+        } catch (ex) { decideFt = -1.0; }
+        if (decideFt < 0.0) { return; }
+        if (!transitionActive && decideFt >= transitionAltitudeFt) {
+            transitionActive = true;
+        } else if (transitionActive && decideFt <= (transitionAltitudeFt - transitionExitOffsetFt)) {
+            transitionActive = false;
+        }
+    }
+
     function startStop() as Void {
         if (!running) {
             // First press: start the main stopwatch (no 5-min alerts yet)
             running = true;
             autoStartEnabled = false; // disarm auto-start once running
+            hasTakenOff = false;      // re-armed when the take-off speed is reached
+            taxiStartSince = 0;
             checkpointActive = false;
+            // Capture field elevation on start (unless manually set)
+            if (manualFieldElevationFt > 0) {
+                fieldElevationFt = manualFieldElevationFt;
+            } else if (fieldElevationFt == 0) {
+                try {
+                    var altStart = VFRAvionicsData.readAltitudeFeet();
+                    if (altStart != null) { fieldElevationFt = (altStart as Number); }
+                } catch (fe) { }
+            }
+            circuitPhase = 0;
+            circuitLevelVibrated = false;
+            airborne = false;
+            altAlertApproaching = false;
+            altAlertCrossed = false;
+            lastAltForAlert = 0.0;
             startTime = System.getTimer() - elapsed;
             try { var la = getApp(); la.liveRunning = true; la.liveStartTime = startTime; } catch (le) {}
             // record trip start wall-clock times
@@ -356,19 +595,30 @@ class VFRStopWatchView extends WatchUi.View {
                     :subSport => ActivityRecording.SUB_SPORT_GENERIC
                 });
                 _session.start();
+                // Developer fields are attached once the session is recording
+                // (same ordering as Garmin's own MO2Display sample).
+                var sess = _session;
+                if (sess != null && (sess has :createField)) {
+                    _createFitFields(sess as ActivityRecording.Session);
+                }
+                _startSensorCapture();
             }
-            // Notify phone of flight start
+            // Notify phone of flight start (OBT is already known here)
             var commsStart = getApp().getComms();
             if (commsStart != null && tripStartUtcMoment != null) {
-                try { commsStart.sendFlightStart((tripStartUtcMoment as Time.Moment).value().toNumber()); } catch (ex) {}
+                try {
+                    commsStart.sendFlightStart((tripStartUtcMoment as Time.Moment).value().toNumber(),
+                                               buildFlightReport(false));
+                } catch (ex) {}
             }
+            doStartVibrate();
             WatchUi.requestUpdate();
         } else if (running && !checkpointActive && timerIntervalMs > 0) {
             // Second press while running and interval enabled: start checkpoint alerts
             checkpointActive = true;
             // schedule next alert from now using the settings-driven interval
             var now = System.getTimer();
-            var curElapsed = now - startTime;
+            var curElapsed = elapsedSince(now, startTime);
             nextVibrateAt = curElapsed + timerIntervalMs;
             checkpointHit = false;
             WatchUi.requestUpdate();
@@ -386,11 +636,22 @@ class VFRStopWatchView extends WatchUi.View {
             }
             _session.discard();
             _session = null;
+            _clearFitFields();
         }
+        _stopSensorCapture();
+        maxG = 0.0;        gForceG = 1.0;
+        maxBankDeg = 0.0;
+        maxPitchDeg = 0.0;
         running = false;
         elapsed = 0;
         try { var la = getApp(); la.liveRunning = false; la.liveBaseElapsed = 0; la.liveStartTime = 0; } catch (le) {}
         autoStartEnabled = true; // re-arm auto-start after reset
+        hasTakenOff = false;     // next flight must reach take-off speed again
+        taxiStartSince = 0;
+        // Drop the stored fixes so a new flight cannot bridge across flights
+        fixValid = false;
+        accumRefValid = false;
+        lastAccumAtMs = 0;
         totalDistanceM = 0.0;
         maxAltitudeM = 0.0;
         maxGsKt = 0.0;
@@ -420,7 +681,17 @@ class VFRStopWatchView extends WatchUi.View {
         tripEndUtcMin    = -1;
         zeroSpeedStartMs = 0;
         lastUpdateTimer = System.getTimer();
+        landings = 0;
+        airborne = false;
+        circuitPhase = 0;
+        circuitLevelVibrated = false;
+        fieldElevationFt = 0;
+        lastAglFt = 0.0;
+        altAlertApproaching = false;
+        altAlertCrossed = false;
+        lastAltForAlert = 0.0;
         clearBackupProperties();
+        doResetVibrate();
         WatchUi.requestUpdate();
     }
 
@@ -433,7 +704,7 @@ class VFRStopWatchView extends WatchUi.View {
             subTimerState = 1;
         } else if (subTimerState == 1) {
             // Stop (freeze) sub-timer
-            subTimerElapsed = now - subTimerStart;
+            subTimerElapsed = elapsedSince(now, subTimerStart);
             subTimerState = 2;
         } else {
             // Return to main view
@@ -442,10 +713,27 @@ class VFRStopWatchView extends WatchUi.View {
         WatchUi.requestUpdate();
     }
 
+    // Wrap-safe elapsed since a System.getTimer() reference. System.getTimer()
+    // is a signed 32-bit millisecond counter that wraps after ~24.8 days of
+    // continuous uptime. Interpreting both values as unsigned 32-bit and
+    // subtracting in 64-bit keeps the timer correct across a single wrap
+    // (a flight is always far shorter than one full wrap period).
+    function elapsedSince(now as Number, start as Number) as Number {
+        var unow = now.toDouble();
+        if (unow < 0.0) { unow = unow + 4294967296.0; }
+        var ustart = start.toDouble();
+        if (ustart < 0.0) { ustart = ustart + 4294967296.0; }
+        var d = unow - ustart;
+        if (d < 0.0) { d = 0.0; }
+        return d.toNumber();
+    }
+
     function onUpdate(dc as Dc) as Void {
         var now = System.getTimer();
-        // bump frame id so per-label guards can skip duplicates within the same frame
-        bezelFrameId = (bezelFrameId as Number) + 1;
+        dc.setAntiAlias(true);
+        // Keep the Flight Level / QNH transition fresh from the baro sensor every
+        // frame — independent of GPS callbacks and throttled redraws.
+        updateTransitionActive();
         // Drive phone comms retry logic
         var comms = getApp().getComms();
         if (comms != null) {
@@ -465,16 +753,29 @@ class VFRStopWatchView extends WatchUi.View {
         var actInfo = Activity.getActivityInfo();
 
         if (running) {
-            elapsed = now - startTime;
+            elapsed = elapsedSince(now, startTime);
 
-            // Accumulate GPS ground speed into distance
-            var deltaMs = now - lastUpdateTimer;
-            if (deltaMs > 0 && deltaMs < 2000 && actInfo != null) {
+            // Auto backlight: periodically re-light while flying so the pilot can
+            // read the face in a dark cockpit without pressing a button.
+            if (autoBacklight != 0 && isBacklightWindow()
+                && (now - lastBacklightAt) >= BACKLIGHT_REPEAT_MS) {
+                lastBacklightAt = now;
+                lightUpBacklight();
+            }
+
+            // Accumulate GPS ground speed into distance. Only with a usable fix:
+            // a gap (no speed, no fix) is repaired by _bridgeDistanceGap() as
+            // soon as the fix is back, so the metres flown meanwhile are not lost.
+            var deltaMs = elapsedSince(now, lastUpdateTimer);
+            if (deltaMs > 0 && deltaMs < 2000 && actInfo != null && gpsQuality >= 3) {
                 var spd = actInfo.currentSpeed;
                 if (spd != null) {
                     // currentSpeed is m/s; deltaMs is ms
                     var addM = (spd as Float) * (deltaMs.toFloat() / 1000.0);
                     totalDistanceM += addM;
+                    // Add back the distance covered during any GPS outage and
+                    // remember this fix as the new reference point.
+                    _bridgeDistanceGap(now);
                     // Track max ground speed (knots)
                     try {
                         var gsKt = ((spd as Float) * 1.94384).toFloat();
@@ -507,12 +808,15 @@ class VFRStopWatchView extends WatchUi.View {
             // Auto-stop if speed is truly zero for AUTO_STOP_DELAY_MS.
             // Only count while GPS fix is good (quality >= 3) and speed is
             // explicitly non-null — a null speed means GPS is lost, not grounded.
-            if (actInfo != null && gpsQuality >= 3) {
+            // ALSO gated on hasTakenOff: the flight now starts during taxi, so a
+            // stop on the apron (before the take-off threshold is ever reached)
+            // must not end the flight — that is the pilot's manual job.
+            if (actInfo != null && gpsQuality >= 3 && hasTakenOff) {
                 var aspd = actInfo.currentSpeed;
                 if (aspd != null && (aspd as Float) < 0.5) {
                     // Confirmed zero speed with a good GPS fix
                     if (zeroSpeedStartMs == 0) { zeroSpeedStartMs = now; }
-                    else if ((now - zeroSpeedStartMs) >= AUTO_STOP_DELAY_MS) {
+                    else if (elapsedSince(now, zeroSpeedStartMs) >= AUTO_STOP_DELAY_MS) {
                         zeroSpeedStartMs = 0;
                         autoStop();
                     }
@@ -523,6 +827,59 @@ class VFRStopWatchView extends WatchUi.View {
             } else {
                 // GPS not good enough to make a call — reset counter to avoid false trigger
                 zeroSpeedStartMs = 0;
+            }
+
+            // --- Circuit practice & landing counter ---
+            if (running) {
+                // G-force fallback when the batch listener is silent (also the
+                // 1 Hz graph heartbeat for the accelerometer channel).
+                _captureGForceFallback();
+                var gsKtNow = -1.0; // -1 = speed unknown
+                if (actInfo != null && actInfo.currentSpeed != null) {
+                    gsKtNow = (actInfo.currentSpeed as Float) * 1.94384;
+                }
+                var aglNow = 0.0;
+                var altMslNow = VFRAvionicsData.readAltitudeFeet();
+                var haveAlt = (altMslNow != null);
+                if (haveAlt) {
+                    aglNow = (altMslNow as Number).toFloat() - fieldElevationFt.toFloat();
+                    lastAglFt = aglNow;
+                    checkAltitudeAlert((altMslNow as Number).toFloat());
+                }
+
+                // Estimated bank angle from smoothed turn rate (coordinated-turn model)
+                // → computed in onPosition() along with the bank/pitch graphs.
+
+                // Airborne / landing + circuit only when altitude is valid, so a
+                // momentary sensor dropout can't be misread as "on the ground".
+                if (haveAlt) {
+                    _updateAirborneState(aglNow, gsKtNow, now);
+
+                    // Circuit phase machine
+                    if (circuitEnabled && airborne && circuitPhase > 0) {
+                        var legMs = now - circuitLegStartMs;
+                        if (circuitPhase == 1) {
+                            if (aglNow >= TURN_CROSSWIND_AGL_FT) {
+                                circuitPhase = 2; circuitLegStartMs = now; doTurnVibrate();
+                            }
+                        } else if (circuitPhase == 2) {
+                            if (legMs >= CROSSWIND_SEC * 1000) {
+                                circuitPhase = 3; circuitLegStartMs = now; circuitLevelVibrated = false; doTurnVibrate();
+                            }
+                        } else if (circuitPhase == 3) {
+                            if (!circuitLevelVibrated && aglNow >= (PATTERN_AGL_FT - 50)) {
+                                circuitLevelVibrated = true; doLevelVibrate();
+                            }
+                            if (legMs >= computeDownwindMs(gsKtNow)) {
+                                circuitPhase = 4; circuitLegStartMs = now; doTurnVibrate();
+                            }
+                        } else if (circuitPhase == 4) {
+                            if (legMs >= BASE_SEC * 1000) {
+                                circuitPhase = 5; circuitLegStartMs = now; doTurnVibrate();
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -553,22 +910,39 @@ class VFRStopWatchView extends WatchUi.View {
         // If we haven't received a position update recently, consider the fix lost
         // and force quality to 0 so the UI shows the no-fix state (red).
         // Use a short timeout (5s) to avoid false positives during brief gaps.
-        if ((now - lastPositionMillis) > 5000) {
+        if (elapsedSince(now, lastPositionMillis) > 5000) {
             if (gpsQuality != 0) {
                 gpsQuality = 0;
             }
         }
 
-        // --- Auto-start: begin stopwatch when ground speed exceeds configured threshold ---
-        // Require a recent, good GPS fix to avoid false triggers on devices
-        // that may report a non-zero speed without a valid location fix.
+        // --- Auto-start on taxi: begin the clock as soon as the aircraft starts
+        // rolling, so OBT is the off-block time. Requires a recent good fix and
+        // the taxi speed held for TAXI_START_HOLD_MS, which keeps the pilot
+        // walking to the aircraft (well under the taxi threshold) from starting
+        // the flight. ---
         if (autoStartEnabled && !running && AUTO_START_SPEED_MS > 0.0 && actInfo != null
-            && gpsQuality >= 3 && ((System.getTimer() - lastPositionMillis) <= 5000)) {
+            && gpsQuality >= 3 && (elapsedSince(now, lastPositionMillis) <= 5000)) {
             var spd = actInfo.currentSpeed;
-            if (spd != null && (spd as Float) >= AUTO_START_SPEED_MS) {
-                
-                startStop();
+            if (spd != null && (spd as Float) >= TAXI_START_SPEED_MS) {
+                if (taxiStartSince == 0) {
+                    taxiStartSince = now;
+                } else if (elapsedSince(now, taxiStartSince) >= TAXI_START_HOLD_MS) {
+                    taxiStartSince = 0;
+                    startStop();
+                }
+            } else {
+                // Slowed down / no usable speed → restart the hold window
+                taxiStartSince = 0;
             }
+        } else {
+            taxiStartSince = 0;
+        }
+        // Reaching the take-off speed marks the flight as genuinely airborne and
+        // arms the zero-speed auto-stop for the rest of the flight.
+        if (running && !hasTakenOff && actInfo != null && actInfo.currentSpeed != null
+                && (actInfo.currentSpeed as Float) >= takeoffArmSpeedMs()) {
+            hasTakenOff = true;
         }
         if (HR_THRESHOLD > 0 && lastHr > 0 && lastHr > HR_THRESHOLD) {
             hrFlashOn = (((now / 500).toNumber() % 2) == 0); // time-based 1 Hz blink
@@ -610,11 +984,12 @@ class VFRStopWatchView extends WatchUi.View {
         // --- Compute sub-timer elapsed if running ---
         var subMs = subTimerElapsed;
         if (subTimerState == 1) {
-            subMs = now - subTimerStart;
+            subMs = elapsedSince(now, subTimerStart);
         }
 
         // --- Decide whether to display clock or timer ---
         var displayClock = (!running && elapsed == 0 && subTimerState == 0);
+        dimMode = displayClock;
 
         // --- Pick which values to display ---
         // Sub-timer takes priority over lap mode for the number display
@@ -628,9 +1003,9 @@ class VFRStopWatchView extends WatchUi.View {
             timerColor = Graphics.COLOR_GREEN;
         } else {
             displayMs  = elapsed < 0 ? 0 : elapsed;
-            // GPS fix indicator: red=no fix, blinking orange=acquiring, white=fix
+            // GPS fix indicator on the timer colour: red=no fix, flashing orange=acquiring, green=captured
             if (gpsQuality >= 3) {
-                timerColor = Graphics.COLOR_WHITE;
+                timerColor = Graphics.COLOR_GREEN;
             } else if (gpsQuality == 2) {
                 // Blink between orange and black (text disappears against black bg)
                 var blinkPhase = ((now / 500).toNumber() % 2).toNumber();
@@ -639,9 +1014,6 @@ class VFRStopWatchView extends WatchUi.View {
                 timerColor = Graphics.COLOR_RED;
             }
         }
-        var displayKm  = lapMode ? lapKm  : kmAtCheckpoint;
-        var showDist   = lapMode || checkpointHit;
-
         // Fuel flash active while within the flash window
         var fuelFlashActive = fuelFlashUntil > now;
         if (fuelFlashActive) {
@@ -660,15 +1032,22 @@ class VFRStopWatchView extends WatchUi.View {
         var mStr = minutes < 10 ? "0" + minutes.toString() : minutes.toString();
         var sStr = seconds < 10 ? "0" + seconds.toString() : seconds.toString();
 
-        // --- Draw (circular/bezel layout) ---
+        // Optional auto page rotation (off unless PageCycleSec > 0)
+        updatePageCycle(now);
+
+        // --- Draw (face layout) ---
         var w  = dc.getWidth();
         var h  = dc.getHeight();
         var cx = w / 2;
         var cy = h / 2;
         var minWh = (w < h) ? w : h;
-        var margin = (minWh * 8) / 100;
-        var radius = (minWh / 2) - margin;
+        var R2 = (minWh / 2).toFloat();
 
+        if (displayMode == 1) {
+            // Paged layout: the chrono plus one large value per page. UP cycles
+            // backwards, DOWN forwards (hold UP for the sub-timer).
+            drawPagesView(dc, displayTimerString(displayClock, hours, mStr, sStr), timerColor);
+        } else {
         drawBezelBackground(dc);
 
         // --- FPL indicator (shown when a flight plan is loaded) ---
@@ -676,88 +1055,79 @@ class VFRStopWatchView extends WatchUi.View {
         if (tripFpl.active) {
             var wpLbl = "FPL " + (tripFpl.activeIdx + 1).toString() + "/" + tripFpl.count.toString();
             dc.setColor(0x00FFFF, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(cx, cy - (radius * 0.70).toNumber(), Graphics.FONT_TINY, wpLbl,
+            dc.drawText(cx, cy - (R2 * 0.48).toNumber(), Graphics.FONT_XTINY, wpLbl,
                 Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         }
 
-        // --- Centre: large chrono or clock ---
+        // --- Centre: timer / clock (colour reflects GPS/run state) ---
         var chronoFont = (roundedFontLarge != null) ? roundedFontLarge : Graphics.FONT_NUMBER_HOT;
-        if (displayClock) {
-            // Draw the current local clock HH:MM
-            var hour = 0; var min = 0;
-            try {
-                var clk = System.getClockTime();
-                if (clk != null) {
-                    try { hour = clk.hour; } catch (e) { hour = 0; }
-                    try { min  = clk.min;  } catch (e) { min = 0; }
-                }
-            } catch (e2) {
-                try {
-                    var nowMoment = Time.now();
-                    var info = Gregorian.utcInfo((nowMoment as Time.Moment), Time.FORMAT_SHORT);
-                    hour = info.hour;
-                    min  = info.min;
-                } catch (e3) { hour = 0; min = 0; }
-            }
-            var hh = (hour < 10) ? ("0" + hour.toString()) : hour.toString();
-            var mm = (min  < 10) ? ("0" + min.toString())  : min.toString();
-            dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(cx, cy, chronoFont, hh + ":" + mm,
-                Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        } else {
-            dc.setColor(timerColor, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(cx, cy, chronoFont, mStr + ":" + sStr,
-                Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-            // Hours indicator above timer (shown only when elapsed >= 1 hour)
-            if (hours >= 1) {
-                var hrsFont = (roundedFontSmall != null) ? roundedFontSmall : Graphics.FONT_SMALL;
-                dc.setColor(timerColor, Graphics.COLOR_TRANSPARENT);
-                dc.drawText(cx, cy - (radius * 0.48).toNumber(), hrsFont,
-                    hours.toString() + "H",
-                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-            }
-        }
+        var centerStr = displayTimerString(displayClock, hours, mStr, sStr);
+        dc.setColor(timerColor, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(cx, cy, chronoFont, centerStr,
+            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // V/S display below timer (when recent altitude data is available)
+        // V/S below the timer (when recent altitude data is available)
         if (lastAltitudeMillis != 0 && (now - lastAltitudeMillis) < 10000) {
-            var fpmRounded = (Math.round(vertSpeedFpm / 10.0) * 10.0).toNumber();
+            var fpmRounded = (Math.round(vertSpeedSmoothFpm / 10.0) * 10.0).toNumber();
             var vsSign = fpmRounded >= 0 ? "+" : "";
-            var vsStr = "V/S " + vsSign + fpmRounded.toString() + "fpm";
+            var vsStr = "V/S " + vsSign + fpmRounded.toString();
             var vsFont = (roundedFontSmall != null) ? roundedFontSmall : Graphics.FONT_SMALL;
             dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(cx, cy + (radius * 0.48).toNumber(), vsFont, vsStr,
+            dc.drawText(cx, cy + (R2 * 0.28).toNumber(), vsFont, vsStr,
                 Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         }
 
-        // --- Distance (small) ---
-        if (showDist) {
-            var kmInt = displayKm.toNumber();
-            var kmDecFloat = displayKm - kmInt.toFloat();
-            var kmDec = (kmDecFloat * 10.0).toNumber();
-            if (kmDec < 0) { kmDec = 0; }
-            var kmStr = kmInt.toString() + "." + kmDec.toString() + " km";
+        // --- Circuit practice status (cyan line above the timer) ---
+        // While airborne in a circuit: current leg + AGL + bank. Before the
+        // pattern begins (armed but still on the ground / climbing out) show a
+        // plain "CIRCUIT" cue so the pilot can confirm the helper is active.
+        if (circuitEnabled && running) {
+            var circStr = "";
+            if (circuitPhase > 0) {
+                circStr = circuitPhaseName() + " " + Math.round(lastAglFt).toNumber().toString() + "FT";
+                var bankAbs = liveBankDeg < 0.0 ? -liveBankDeg : liveBankDeg;
+                if (bankAbs >= 5.0) {
+                    circStr = circStr + " B" + Math.round(liveBankDeg).toNumber().toString() + "\u00B0";
+                }
+            } else {
+                circStr = "CIRCUIT";
+            }
+            dc.setColor(0x00FFFF, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(cx, cy - (R2 * 0.30).toNumber(), Graphics.FONT_XTINY, circStr,
+                Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        }
+
+        // --- Distance flown (NM, persistent while running or frozen on lap/checkpoint) ---
+        if (running || lapMode || checkpointHit) {
+            var nmVal = lapMode ? lapNm : (checkpointHit ? nmAtCheckpoint : (totalDistanceM / 1852.0));
+            var nmInt = nmVal.toNumber();
+            var nmDec = ((nmVal - nmInt.toFloat()) * 10.0).toNumber();
+            if (nmDec < 0) { nmDec = 0; }
+            var nmStr = nmInt.toString() + "." + nmDec.toString() + " NM";
             dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(cx, cy + radius * 0.9, Graphics.FONT_TINY, kmStr,
+            dc.drawText(cx, cy + (R2 * 0.50).toNumber(), Graphics.FONT_TINY, nmStr,
                 Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         }
+        }   // end of ring layout
 
-        if (running || subTimerState == 1 || hrAlertActive || fuelFlashActive || autoStartEnabled || gpsQuality < 3 || (tendency != 0 && tendencyUntil > now) || displayClock) {
+        // Refresh policy: fast while anything is live/flashing, otherwise throttle.
+        var fast = running || subTimerState == 1 || hrAlertActive || fuelFlashActive
+                 || (tendency != 0 && tendencyUntil > now);
+        var slow = false;
+        if (!fast) {
+            if ((autoStartEnabled && AUTO_START_SPEED_MS > 0.0) || gpsQuality < 3) {
+                // Armed waiting for takeoff or still acquiring GPS → poll at 1 Hz
+                slow = (now - lastIdleRefresh) >= 1000;
+            } else if (displayClock) {
+                // Idle clock → refresh every 5 s (clock text changes per minute;
+                // GPS colour updates come via position callbacks)
+                slow = (now - lastIdleRefresh) >= 5000;
+            }
+        }
+        if (fast || slow) {
+            lastIdleRefresh = now;
             WatchUi.requestUpdate();
         }
-    }
-
-    function lap() as Void {
-        if (lapMode) {
-            // Second press: return to live view
-            lapMode = false;
-        } else {
-            // First press: snapshot current values
-            lapMode = true;
-            lapElapsed = elapsed < 0 ? 0 : elapsed;
-            lapKm = totalDistanceM / 1000.0;
-            lapNm = totalDistanceM / 1852.0;
-        }
-        WatchUi.requestUpdate();
     }
 
     // Draw the static bezel background: clear, annulus labels, separator ring,
@@ -779,16 +1149,14 @@ class VFRStopWatchView extends WatchUi.View {
         dc.clear();
 
         var minWh = (w < h) ? w : h;
-        var margin = (minWh * 8) / 100;
-        var radius = (minWh / 2) - margin;
 
         // Initialize vector fonts once.  Bezel text chooses its own small face
         // instead of inheriting whichever face happened to fit the chrono.
         if (!bezelFontsInitialized) {
-            var chronoSize   = (minWh * 0.30).toNumber();
+            var chronoSize   = (minWh * 0.24).toNumber();
             var fontScale = bezelFontScale.toFloat() / 100.0;
-            var bezelSize    = (minWh.toFloat() * 0.110 * fontScale).toNumber();
-            var bezelLblSize = (minWh.toFloat() * 0.095 * fontScale).toNumber();
+            var bezelSize    = (minWh.toFloat() * 0.062 * fontScale).toNumber();
+            var bezelLblSize = (minWh.toFloat() * 0.082 * fontScale).toNumber();
             var faces = ["OpenSans", "OpenSansRegular", "Nunito", "NunitoRegular", "RobotoCondensed", "Roboto", "RobotoBlack", "RobotoRegular", "Swiss721Bold", "TomorrowBold"];
             for (var fi = 0; fi < faces.size() && roundedFontLarge == null; fi++) {
                 try {
@@ -885,359 +1253,96 @@ class VFRStopWatchView extends WatchUi.View {
             altStr = altStr + (tendency > 0 ? "+" : "-");
         }
 
-        // --- Radial bezel geometry ---
+        // --- Face chrome ---
         var R = (minWh / 2).toFloat();
-        var radiusOuter = (R - 2.0).toFloat();
-        var sepRadius = (radiusOuter - 25.0).toNumber();
-        var radiusCenter = (radiusOuter - 17.0).toFloat();
-        // Inner ring when GPS lock is good: show a thicker green circle line only
-        try {
-            if (gpsQuality >= 3) {
-                var innerR = (radiusCenter - 6.0).toNumber();
-                dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_TRANSPARENT);
-                dc.setPenWidth(2);
-                dc.drawCircle(cx, cy, innerR);
-            }
-        } catch (e) { }
-        dc.setColor(bezelGuideColor(), Graphics.COLOR_TRANSPARENT);
+        var ringR = (R - 6.0).toNumber();
+        var guideColor = bezelGuideColor();
+
+        // Anti-aliased reference ring
+        dc.setColor(guideColor, Graphics.COLOR_TRANSPARENT);
+        dc.setPenWidth(3);
+        dc.drawCircle(cx, cy, ringR);
+
+        // Inner circle to form the data ring (annulus) with the outer ring
+        var ringInner = (R * 0.79).toNumber();
+        dc.setColor(guideColor, Graphics.COLOR_TRANSPARENT);
+        dc.setPenWidth(3);
+        dc.drawCircle(cx, cy, ringInner);
         dc.setPenWidth(1);
-        dc.drawCircle(cx, cy, sepRadius);
 
-        var angleHDG = 135.0;
-        var angleGS  = 45.0;
-        var angleQNH = 315.0;
-        var angleALT = 225.0;
-
-        var qnhDisplay = transitionActive ? "1013" : VFRAvionicsData.formatQnh(qnhInfo);
-
-        // Compute a dedicated text radius (visual centroid of the annulus).
-        // Start with the mathematical midpoint but allow small per-quadrant
-        // nudges; this lets us calibrate to the bezel art without changing
-        // slot math or rotation.
-        var radiusText = radiusCenter;
-        var rTextHDG = radiusText + bezelOffsetHDG.toFloat(); // NW
-        var rTextGS  = radiusText + bezelOffsetGS.toFloat(); // NE
-        var rTextALT = radiusText + bezelOffsetALT.toFloat(); // SW
-        var rTextQNH = radiusText + bezelOffsetQNH.toFloat(); // SE
-
-        // Debug overlay: when enabled, draw slot centres and quadrant guide lines
-        // to help measure the correct angles/radii in the screenshot tool.
-        if (SHOW_BEZEL_ANGLE_DEBUG) {
-            try {
-                dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
-                // small markers at each of the 48 slot CENTRES
-                for (var kk = 0; kk < 48; kk++) {
-                    var slotTheta = (90.0 - (kk.toFloat() + 0.5) * 7.5) * (Math.PI / 180.0);
-                    var mx = (cx.toFloat() + radiusText * Math.cos(slotTheta)).toNumber();
-                    var my = (cy.toFloat() - radiusText * Math.sin(slotTheta)).toNumber();
-                    dc.fillCircle(mx, my, 2);
-                }
-                // Crosshair at exact centre
-                dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
-                dc.setPenWidth(1);
-                dc.drawLine(cx - 2, cy, cx + 2, cy);
-                dc.drawLine(cx, cy - 2, cx, cy + 2);
-
-                // Draw radial guide for each configured quadrant anchor
-                dc.setColor(Graphics.COLOR_ORANGE, Graphics.COLOR_TRANSPARENT);
-                var quads = [ [angleHDG, "HDG"], [angleGS, "GS"], [angleALT, "ALT"], [angleQNH, "QNH"] ];
-                for (var qi = 0; qi < quads.size(); qi++) {
-                    var a = (quads[qi][0] as Number).toFloat();
-                    var aRad = a * (Math.PI / 180.0);
-                    var ex = (cx.toFloat() + radiusText * Math.cos(aRad)).toNumber();
-                    var ey = (cy.toFloat() - radiusText * Math.sin(aRad)).toNumber();
-                    dc.drawLine(cx, cy, ex, ey);
-                    // label the guide at its tip so you can read the angle visually
-                    try { dc.drawText(ex, ey, bezelLblFont, (quads[qi][1] as String), Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER); } catch (e) { }
-                }
-                dc.setPenWidth(1);
-            } catch (dbgEx) { }
+        // Cardinal tick marks at 12/3/6/9 o'clock
+        dc.setColor(guideColor, Graphics.COLOR_TRANSPARENT);
+        dc.setPenWidth(3);
+        var tickAngles = [90.0, 0.0, 270.0, 180.0];
+        for (var ti = 0; ti < tickAngles.size(); ti++) {
+            var aDeg = (tickAngles[ti] as Float).toFloat();
+            var aRad = aDeg * (Math.PI / 180.0);
+            var sx = (cx.toFloat() + (ringR - 1.0) * Math.cos(aRad)).toNumber();
+            var sy = (cy.toFloat() - (ringR - 1.0) * Math.sin(aRad)).toNumber();
+            var ex = (cx.toFloat() + (ringR - 8.0) * Math.cos(aRad)).toNumber();
+            var ey = (cy.toFloat() - (ringR - 8.0) * Math.sin(aRad)).toNumber();
+            dc.drawLine(sx, sy, ex, ey);
         }
+        dc.setPenWidth(1);
 
-        // Call drawLabelInQuadrant with per-quadrant radii so the visual
-        // text radius can be calibrated independently of the slot math.
-        var bezelTextColor = bezelLabelColor();
-        drawLabelInQuadrant(dc, cx, cy, angleHDG, "HDG", hdgStr,     bezelTextColor, rTextHDG, false);
-        drawLabelInQuadrant(dc, cx, cy, angleGS,  "GS",  gsStr + " kt", bezelTextColor, rTextGS,  false);
-        drawLabelInQuadrant(dc, cx, cy, angleALT, altLbl, altStr,    bezelTextColor, rTextALT, true);
-        drawLabelInQuadrant(dc, cx, cy, angleQNH, "QNH", qnhDisplay, bezelTextColor, rTextQNH, true);
+        // --- Bezel fields: HDG / GS on top, ALT below ---
+        // QNH was dropped by request (set from ATIS, not read in flight), which
+        // also frees the SE quadrant.
+        // Angles are degrees CCW from 3 o'clock (0=right, 90=top).
+        // CLOCKWISE extends glyphs outward from the given radius, while
+        // COUNTER_CLOCKWISE extends them inward — compensate so both halves
+        // share the same visual ring, hugging the outer reference ring.
+        // Use the ACTUAL scaled bezel label size for the radius compensation so
+        // the top (clockwise) fields don't overlap the ring when Bezel Font >100%.
+        var textH    = (bezelLblFaceSize > 0) ? bezelLblFaceSize : (minWh * 0.082).toNumber();
+        var rOuter   = (R - 8.0).toNumber();
+        var rClock   = rOuter - textH + 5;
+        var rCounter = rOuter;
+        var neutralColor = bezelLabelColor();
+        var altColor     = transitionActive ? 0x00FFFF : neutralColor;   // cyan in FL regime
+        drawRadialField(dc, cx, cy, 135.0, "HDG " + hdgStr,       rClock,   Graphics.RADIAL_TEXT_DIRECTION_CLOCKWISE,         neutralColor);
+        drawRadialField(dc, cx, cy, 45.0,  "GS " + gsStr,         rClock,   Graphics.RADIAL_TEXT_DIRECTION_CLOCKWISE,         neutralColor);
+        drawRadialField(dc, cx, cy, 225.0, altLbl + " " + altStr, rCounter, Graphics.RADIAL_TEXT_DIRECTION_COUNTER_CLOCKWISE, altColor);
 
-        // Group separators
-        try {
-            dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
-            dc.setPenWidth(2);
-            // Four primary separators at 12, 3, 6, 9 o'clock
-            var groupAngles = [90.0, 0.0, 270.0, 180.0];
-            var innerClamp = ((sepRadius as Number).toFloat() + 1.0).toFloat();
-            var outerClamp = (R - 1.0).toFloat();
-            for (var gi = 0; gi < groupAngles.size(); gi++) {
-                var a = (groupAngles[gi] as Float).toFloat();
-                var aRad = a * (Math.PI / 180.0);
-                var sx = (cx.toFloat() + innerClamp * Math.cos(aRad)).toNumber();
-                var sy = (cy.toFloat() - innerClamp * Math.sin(aRad)).toNumber();
-                var ex = (cx.toFloat() + outerClamp * Math.cos(aRad)).toNumber();
-                var ey = (cy.toFloat() - outerClamp * Math.sin(aRad)).toNumber();
-                dc.drawLine(sx, sy, ex, ey);
-            }
-            dc.setPenWidth(1);
-        } catch (sepEx) { }
-
-        // --- Phone connection indicator arc ---
+        // --- Phone connection dot (just inside the ring at 6 o'clock) ---
         if (useCompanionApp) {
-        var commsIndicator = getApp().getComms();
-        try {
-            if (cachedPhoneIcon == null) {
-                try { cachedPhoneIcon = WatchUi.loadResource(Rez.Drawables.PhoneIcon); } catch (rEx) { cachedPhoneIcon = null; }
-            }
-            if (cachedPhoneIcon != null) {
-                var iconHalf = 12.0;
-                var px = (cx.toFloat() - iconHalf).toNumber();
-                var py = (cy.toFloat() + radius * 0.52 - iconHalf).toNumber();
-                var drawColour = Graphics.COLOR_YELLOW;
-                var visible = true;
-                if (commsIndicator != null) {
-                    if (commsIndicator.connected) {
-                        drawColour = Graphics.COLOR_GREEN;
-                    } else if (commsIndicator.connecting) {
-                        var lastShake = 0;
-                        try { lastShake = (commsIndicator.lastHandshakeAt as Number); } catch (e) { lastShake = 0; }
-                        var since = (lastShake > 0) ? (now - lastShake) : 0;
-                        if (since >= 30000) {
-                            drawColour = Graphics.COLOR_RED;
-                            visible = true;
-                        } else {
-                            var blinkPhase = ((now / 500).toNumber() % 2).toNumber();
-                            visible = (blinkPhase == 0);
-                            drawColour = Graphics.COLOR_YELLOW;
-                        }
+            var cInd = getApp().getComms();
+            var dotCol = Graphics.COLOR_YELLOW;
+            var showDot = true;
+            if (cInd != null) {
+                if (cInd.connected) {
+                    dotCol = Graphics.COLOR_GREEN;
+                } else if (cInd.connecting) {
+                    var lastShake = 0;
+                    try { lastShake = (cInd.lastHandshakeAt as Number); } catch (e) { lastShake = 0; }
+                    if (lastShake > 0 && (now - lastShake) < 30000) {
+                        showDot = (((now / 500).toNumber() % 2) == 0);
+                        dotCol = Graphics.COLOR_YELLOW;
                     } else {
-                        drawColour = Graphics.COLOR_RED;
+                        dotCol = Graphics.COLOR_RED;
                     }
                 } else {
-                    drawColour = Graphics.COLOR_YELLOW;
-                }
-                if (visible) {
-                    var arcStartDeg = 10.0;
-                    var arcEndDeg   = 80.0;
-                    var arcStepDeg  = 4.0;
-                    var arcR = (sepRadius as Number).toFloat();
-                    dc.setColor(drawColour, Graphics.COLOR_TRANSPARENT);
-                    dc.setPenWidth(3);
-                    var prevX = 0.0;
-                    var prevY = 0.0;
-                    var havePrev = false;
-                    for (var a = arcStartDeg; a <= arcEndDeg; a += arcStepDeg) {
-                        var aRad = a * (Math.PI / 180.0);
-                        var px1 = (cx.toFloat() + arcR * Math.cos(aRad)).toNumber();
-                        var py1 = (cy.toFloat() - arcR * Math.sin(aRad)).toNumber();
-                        if (havePrev) {
-                            dc.drawLine(prevX, prevY, px1, py1);
-                        }
-                        prevX = px1; prevY = py1; havePrev = true;
-                    }
-                    var aRadEnd = arcEndDeg * (Math.PI / 180.0);
-                    var endX = (cx.toFloat() + arcR * Math.cos(aRadEnd)).toNumber();
-                    var endY = (cy.toFloat() - arcR * Math.sin(aRadEnd)).toNumber();
-                    if (havePrev) { dc.drawLine(prevX, prevY, endX, endY); }
-                    dc.setPenWidth(1);
+                    dotCol = Graphics.COLOR_RED;
                 }
             }
-        } catch (iconEx) { }
+            if (showDot) {
+                dc.setColor(dotCol, Graphics.COLOR_TRANSPARENT);
+                dc.fillCircle(cx, cy + (R - 14.0).toNumber(), 4);
+            }
         }
-    }
-
-    // Helper: draw a metric using a small radial arc to approximate rotation.
-    function drawRotatedMetric(dc as Dc, cx as Number, cy as Number, angle as Float,
-                                text as String, color as Number, r as Number, arcSpan as Float, reverse as Boolean, flipTangent as Boolean, preferRadial as Boolean, slotDeg as Float, radiusCenter as Float, radiusOuter as Float) as Void {
-        // Debug logging removed to avoid per-frame overhead
-        // Skip duplicate draws within the same millisecond per-label (prevents double-rendering)
-        try {
-            var lastFrame = lastDrawTimes[text];
-            if (lastFrame != null && (lastFrame as Number) == bezelFrameId) {
-                try { } catch (e) { }
-                return;
-            }
-            lastDrawTimes[text] = bezelFrameId;
-        } catch (exSkip) { }
-        // Try vector font radial drawing first (main text), then draw a red trailing pipe.
-        try {
-            if (roundedFontSmall != null) {
-                // In fixed-grid mode (slotDeg > 0), arcSpan is the total allocated
-                // slot span — use it as-is.  In dynamic mode, expand it from text width.
-                var estSpan = arcSpan.toFloat();
-                // Optionally reverse the text for rendering order when APIs
-                // produce inverted glyph sequences for some directions.
-                var drawTextStr = text;
-                if (reverse) {
-                    var rb = "";
-                    for (var ri = text.length() - 1; ri >= 0; ri--) {
-                        rb += text.substring(ri, ri + 1);
-                    }
-                    drawTextStr = rb;
-                }
-                if (slotDeg <= 0.0) {
-                    // Dynamic mode: compute span from character pixel width (fallback)
-                    try {
-                        if (roundedFontSmall != null) {
-                            var px = 18.0 * drawTextStr.length();
-                            var paddingFactor = 1.25;
-                            var rawDeg = (px * 180.0) / (Math.PI * r.toFloat());
-                            var minSpan = 8.0;
-                            var maxSpan = 120.0;
-                            var computed = rawDeg * paddingFactor;
-                            if (drawTextStr.length() <= 1) {
-                                estSpan = minSpan;
-                            } else {
-                                if (computed < minSpan) { estSpan = minSpan; }
-                                else if (computed > maxSpan) { estSpan = maxSpan; }
-                                else { estSpan = computed; }
-                            }
-                        } else {
-                            var nChars = drawTextStr.length();
-                            if (nChars > 1) {
-                                var perCharPx = 13.0;
-                                var perCharDeg = (perCharPx * 180.0) / (Math.PI * r.toFloat());
-                                var needed = perCharDeg * nChars * 1.20;
-                                if (needed > estSpan) { estSpan = needed; }
-                            }
-                        }
-                    } catch (exSpan) { /* fall back to provided arcSpan */ }
-                }
-                var startAngle = angle - (estSpan / 2);
-                var dir = (angle <= 180)
-                    ? Graphics.RADIAL_TEXT_DIRECTION_CLOCKWISE
-                    : Graphics.RADIAL_TEXT_DIRECTION_COUNTER_CLOCKWISE;
-                dc.setColor(color, Graphics.COLOR_TRANSPARENT);
-                // Per-character arcing: split text and draw each char at its own angle
-                        try {
-                    var n = drawTextStr.length();
-                    // Instead of relying on `drawRadialText` (which appears to
-                    // produce inconsistent orientation across devices), compute
-                    // per-character polar positions and draw each character flat
-                    // at the computed point. This keeps characters spaced along
-                    // the arc while avoiding the vector radial API quirks.
-                    var start = angle - (estSpan / 2.0);
-                        if (n <= 1) {
-                        var rad = angle.toFloat() * (Math.PI / 180.0);
-                        // Use annulus outer for bottom-half single-char, centre for top-half
-                        var baseR = (angle <= 180) ? radiusCenter : radiusOuter;
-                        var px = (cx.toFloat() + baseR * Math.cos(rad)).toNumber();
-                        var py = (cy.toFloat() - baseR * Math.sin(rad)).toNumber();
-                        dc.drawText(px, py, roundedFontSmall, drawTextStr,
-                            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-                    } else {
-                        // Per-character angled drawing so glyphs follow the bezel tangent.
-                        // angledOk=false when preferRadial — skip the angled loop entirely.
-                        // IMPORTANT: must guard the loop with angledOk, otherwise when
-                        // preferRadial=true BOTH this loop AND the radial fallback run,
-                        // drawing every character twice and producing the visible duplicate.
-                        var angledOk = !preferRadial;
-                        if (angledOk) {
-                            try {
-                                for (var ci = 0; ci < n; ci++) {
-                                    var ch = drawTextStr.substring(ci, ci + 1);
-                                    // Top-half labels (angle 0-180°): in screen coords, increasing
-                                    // angle goes RIGHT→LEFT, so character 0 at lowest angle lands
-                                    // on the right side — producing a mirrored string.  Fix: reverse
-                                    // the character index for top-half labels so char 0 appears on
-                                    // the screen-left (highest angular position).
-                                    var effectiveCi = (angle <= 180) ? (n - 1 - ci) : ci;
-                                    var chAngle;
-                                    if (slotDeg > 0.0) {
-                                        // Fixed-grid: each char in exactly one slot, group centred
-                                        var firstSlotOff = (estSpan - n.toFloat() * slotDeg) / 2.0;
-                                        chAngle = start + firstSlotOff + (effectiveCi.toFloat() + 0.5) * slotDeg;
-                                    } else {
-                                        chAngle = start + ((effectiveCi.toFloat() + 0.5) * (estSpan.toFloat() / n.toFloat()));
-                                    }
-                                    // screen position along the arc
-                                    var chRad = chAngle.toFloat() * (Math.PI / 180.0);
-                                    // drawAngledText anchors at the TOP of the glyph (in rotated local frame).
-                                    // Top half (angle<=180): after normT flip, glyph top faces OUTWARD →
-                                    //   anchor must be placed further OUT so the glyph centre lands on r.
-                                    // Bottom half: glyph top faces INWARD → anchor placed further IN.
-                                    var fontHalfH = 6;
-                                    // Use annulus centre for character anchor, offset by glyph half-height
-                                    // For top-half use annulus centre; for bottom-half use annulus outer edge
-                                    var rChBase = (angle <= 180) ? radiusCenter : radiusOuter;
-                                    var rCh = (angle <= 180)
-                                        ? (rChBase + fontHalfH)
-                                        : (rChBase - fontHalfH);
-                                    var chPx = (cx.toFloat() + rCh * Math.cos(chRad)).toNumber();
-                                    var chPy = (cy.toFloat() - rCh * Math.sin(chRad)).toNumber();
-                                    // Tangent: chAngle-90 gives the clockwise tangent in screen coords.
-                                    var normT = chAngle - 90.0;
-                                    while (normT > 180.0)  { normT -= 360.0; }
-                                    while (normT <= -180.0) { normT += 360.0; }
-                                    // Flip glyphs that would appear upside-down (|tilt|>90°)
-                                    if (normT > 90.0)       { normT -= 180.0; }
-                                    else if (normT < -90.0) { normT += 180.0; }
-                                    dc.drawAngledText(chPx, chPy, roundedFontSmall, ch,
-                                        Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER, normT);
-                                }
-                            } catch (angEx) {
-                                // angled API unavailable; fall through to radial
-                                angledOk = false;
-                            }
-                        }
-                        if (!angledOk) {
-                            var radialOk = true;
-                            try {
-                                for (var ci2 = 0; ci2 < n; ci2++) {
-                                    var ch2 = drawTextStr.substring(ci2, ci2 + 1);
-                                    var chAngle2 = start + ((ci2 + 0.5) * (estSpan / n));
-                                    dc.drawRadialText(cx, cy, roundedFontSmall, ch2,
-                                        Graphics.TEXT_JUSTIFY_CENTER, chAngle2, r, dir);
-                                }
-                            } catch (radEx) {
-                                radialOk = false;
-                            }
-                            if (!radialOk) {
-                                for (var ci3 = 0; ci3 < n; ci3++) {
-                                    var ch3 = drawTextStr.substring(ci3, ci3 + 1);
-                                    var chAngle3 = start + ((ci3 + 0.5) * (estSpan / n));
-                                    var chRad3 = chAngle3.toFloat() * (Math.PI / 180.0);
-                                    var chPx3  = (cx.toFloat() + r.toFloat() * Math.cos(chRad3)).toNumber();
-                                    var chPy3  = (cy.toFloat() - r.toFloat() * Math.sin(chRad3)).toNumber();
-                                    dc.drawText(chPx3, chPy3, roundedFontSmall, ch3,
-                                        Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-                                }
-                            }
-                        }
-                    }
-                    // trailing pipe removed here — group separators drawn centrally
-                    return;
-                } catch (exChars) {
-                    // fallback: draw whole text centered at angle
-                    dc.drawRadialText(cx, cy, roundedFontSmall, drawTextStr,
-                        Graphics.TEXT_JUSTIFY_CENTER, angle, r, dir);
-                    dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
-                    // radial fallback: draw short radial line instead of rotated glyph
-                    var pAngle = (angle + 6).toFloat() * (Math.PI / 180.0);
-                    var pHalf = 8.0;
-                    var prInner = r.toFloat() - pHalf;
-                    var prOuter = r.toFloat() + pHalf;
-                    return;
-                }
-            }
-        } catch (ex) { }
-        // Fallback to flat placement (no rotation): compute base position and draw pipe
-        // Standard polar -> screen: x = cx + r * cos(theta), y = cy - r * sin(theta)
-        var rad = angle.toFloat() * (Math.PI / 180.0);
-        var px  = (cx.toFloat() + r.toFloat() * Math.cos(rad)).toNumber();
-        var py  = (cy.toFloat() - r.toFloat() * Math.sin(rad)).toNumber();
-        dc.setColor(color, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(px, py, Graphics.FONT_XTINY, text,
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        // no trailing pipe in flat fallback — group separators drawn below
     }
 
     function saveState() as Dictionary {
-        var d = new Dictionary();
+        // NOTE: seed with a LITERAL. In this project's typing mode
+        // `new Dictionary()` builds a SYMBOL-keyed dictionary, so writing a
+        // String key into it throws "ExpectedTypeException: Expected Symbol,
+        // given String" — and the caller swallows that exception, silently
+        // losing the state. A literal creates a String-keyed dictionary.
+        var d = { "running" => running };
         d["running"] = running;
         d["startTime"] = startTime;
         // When running, 'elapsed' field is 0; compute live elapsed for persistence
-        d["elapsed"] = running ? (System.getTimer() - startTime) : elapsed;
+        d["elapsed"] = running ? elapsedSince(System.getTimer(), startTime) : elapsed;
         d["totalDistanceM"] = totalDistanceM;
         d["checkpointActive"] = checkpointActive;
         d["nextVibrateAt"] = nextVibrateAt;
@@ -1249,7 +1354,9 @@ class VFRStopWatchView extends WatchUi.View {
         d["lapNm"] = lapNm;
         d["subTimerState"] = subTimerState;
         d["subTimerStart"] = subTimerStart;
-        d["subTimerElapsed"] = subTimerElapsed;
+        // Persist a live sub-timer elapsed so a kill mid-sub-timer freezes at
+        // the correct value instead of 0.
+        d["subTimerElapsed"] = (subTimerState == 1) ? elapsedSince(System.getTimer(), subTimerStart) : subTimerElapsed;
         // Save trip start/end times as epoch numbers if available
         // Save simple hour/min snapshots for display on restore
         if (tripStartUtcHour >= 0) { d["tripStartUtcHour"] = tripStartUtcHour; }
@@ -1259,241 +1366,43 @@ class VFRStopWatchView extends WatchUi.View {
         return d;
     }
 
-    // ── drawLabelInQuadrant ────────────────────────────────────────────────
-    // Mathematical model (see LESSONS_LEARNT.md):
-    //   48 global slots uniformly spaced around the full circle.
-    //   Slot k:  θ_k = 90° − k × 7.5°  (math/CCW convention; k=0 at 12 o'clock)
-    //   Position: x = cx + R·cos(θ_k),  y = cy − R·sin(θ_k)   (screen y-down)
-    //   Rotation: normT = θ_k − 90°, folded into [−90°, +90°]  (drawAngledText degrees)
-    //   Font size: charWidth ≤ 0.80 × arc-length-per-slot
-    //
-    //   quadAngle is in standard math/CCW degrees (e.g. angleHDG = 135°).
-    //   The quadrant's start slot is derived from quadAngle so that the centre
-    //   of the 12-slot band aligns with quadAngle.
-    // reverseChars: pass true for SW (ALT) and SE (QNH) quadrants — CW slot order
-    // runs right-to-left from the viewer at bottom positions, so we reverse the
-    // character assignment.  NW (HDG) and NE (GS) pass false.  Each quadrant is
-    // explicitly independent; changing one cannot affect the others.
+    // ── Bezel labels ────────────────────────────────────────────────────────
+    // Each bezel label is drawn with Dc.drawRadialText(), which arcs the whole
+    // string around the ring (the native Garmin approach). The `angle` passed
+    // in is degrees counter-clockwise from 3 o'clock (0° = right, 90° = top),
+    // matching angleHDG/GS/ALT/QNH in drawBezelBackground().
     function invalidateBezelRendering() as Void {
         roundedFontLarge = null;
         roundedFontSmall = null;
         bezelLblFont = null;
         bezelLblFace = null;
         bezelLblFaceSize = 0;
-        bezelSlotFont = null;
         bezelFontsInitialized = false;
-        bezelSlotCacheRadius = -1.0;
-        bezelSlotX = null;
-        bezelSlotY = null;
-        bezelSlotAngle = null;
+    }
+
+    // Draw a bezel field as a single line of text oriented along the ring
+    // (label and value combined, e.g. "HDG 330"), rendered with the native
+    // drawRadialText API. `angle` is degrees counter-clockwise from 3 o'clock.
+    function drawRadialField(dc as Dc, cx as Number, cy as Number, angle as Float,
+            text as String, radius as Number, direction as Graphics.RadialTextDirection,
+            valueColor as Number) as Void {
+        if (bezelLblFont != null) {
+            dc.setColor(valueColor, Graphics.COLOR_TRANSPARENT);
+            dc.drawRadialText(cx, cy, bezelLblFont as Graphics.VectorFont, text,
+                Graphics.TEXT_JUSTIFY_CENTER, angle.toFloat(), radius.toFloat(), direction);
+        }
     }
 
     function bezelLabelColor() as Number {
-        if (bezelContrast >= 85) { return Graphics.COLOR_WHITE; }
-        if (bezelContrast >= 65) { return Graphics.COLOR_LT_GRAY; }
-        return Graphics.COLOR_DK_GRAY;
+        // Field text is always full white for clear readability; the idle dim
+        // only softens the decorative guide ring below, never the data text.
+        return Graphics.COLOR_WHITE;
     }
 
     function bezelGuideColor() as Number {
+        if (dimMode) { return Graphics.COLOR_DK_GRAY; }
         if (bezelContrast >= 75) { return Graphics.COLOR_LT_GRAY; }
         return Graphics.COLOR_DK_GRAY;
-    }
-
-    function ensureBezelSlotGeometry(cx as Number, cy as Number, radiusCenter as Float) as Void {
-        if (bezelSlotX != null && bezelSlotY != null && bezelSlotAngle != null && bezelSlotCacheRadius == radiusCenter) { return; }
-        bezelSlotX = new [48];
-        bezelSlotY = new [48];
-        bezelSlotAngle = new [48];
-        bezelSlotCacheRadius = radiusCenter;
-        for (var k = 0; k < 48; k++) {
-            var thetaDeg = 90.0 - (k.toFloat() + 0.5) * 7.5;
-            var thetaRad = thetaDeg * (Math.PI / 180.0);
-            (bezelSlotX as Array)[k] = (cx.toFloat() + radiusCenter * Math.cos(thetaRad)).toNumber();
-            (bezelSlotY as Array)[k] = (cy.toFloat() - radiusCenter * Math.sin(thetaRad)).toNumber();
-            (bezelSlotAngle as Array)[k] = thetaDeg;
-        }
-    }
-
-    function bezelAtlasCharIndex(ch as String) as Number {
-        if (ch.equals("0")) { return 0; }
-        if (ch.equals("1")) { return 1; }
-        if (ch.equals("2")) { return 2; }
-        if (ch.equals("3")) { return 3; }
-        if (ch.equals("4")) { return 4; }
-        if (ch.equals("5")) { return 5; }
-        if (ch.equals("6")) { return 6; }
-        if (ch.equals("7")) { return 7; }
-        if (ch.equals("8")) { return 8; }
-        if (ch.equals("9")) { return 9; }
-        if (ch.equals("A") || ch.equals("a")) { return 10; }
-        if (ch.equals("B") || ch.equals("b")) { return 11; }
-        if (ch.equals("C") || ch.equals("c")) { return 12; }
-        if (ch.equals("D") || ch.equals("d")) { return 13; }
-        if (ch.equals("E") || ch.equals("e")) { return 14; }
-        if (ch.equals("F") || ch.equals("f")) { return 15; }
-        if (ch.equals("G") || ch.equals("g")) { return 16; }
-        if (ch.equals("H") || ch.equals("h")) { return 17; }
-        if (ch.equals("I") || ch.equals("i")) { return 18; }
-        if (ch.equals("J") || ch.equals("j")) { return 19; }
-        if (ch.equals("K") || ch.equals("k")) { return 20; }
-        if (ch.equals("L") || ch.equals("l")) { return 21; }
-        if (ch.equals("M") || ch.equals("m")) { return 22; }
-        if (ch.equals("N") || ch.equals("n")) { return 23; }
-        if (ch.equals("O") || ch.equals("o")) { return 24; }
-        if (ch.equals("P") || ch.equals("p")) { return 25; }
-        if (ch.equals("Q") || ch.equals("q")) { return 26; }
-        if (ch.equals("R") || ch.equals("r")) { return 27; }
-        if (ch.equals("S") || ch.equals("s")) { return 28; }
-        if (ch.equals("T") || ch.equals("t")) { return 29; }
-        if (ch.equals("U") || ch.equals("u")) { return 30; }
-        if (ch.equals("V") || ch.equals("v")) { return 31; }
-        if (ch.equals("W") || ch.equals("w")) { return 32; }
-        if (ch.equals("X") || ch.equals("x")) { return 33; }
-        if (ch.equals("Y") || ch.equals("y")) { return 34; }
-        if (ch.equals("Z") || ch.equals("z")) { return 35; }
-        if (ch.equals(":")) { return 36; }
-        if (ch.equals("-")) { return 37; }
-        if (ch.equals("/")) { return 38; }
-        if (ch.equals(" ")) { return 39; }
-        return -1;
-    }
-
-    function drawAtlasGlyph(dc as Dc, ch as String, px as Number, py as Number, angleDeg as Float, color as Number) as Boolean {
-        if (!bezelUseAtlas || bezelAtlasUnavailable) { return false; }
-        if (cachedBezelAtlas == null) {
-            try { cachedBezelAtlas = WatchUi.loadResource(Rez.Drawables.BezelFontAtlas); } catch (rx) { bezelAtlasUnavailable = true; return false; }
-        }
-        var charIndex = bezelAtlasCharIndex(ch);
-        if (charIndex < 0 || cachedBezelAtlas == null) { return false; }
-
-        var normalizedAngle = angleDeg;
-        while (normalizedAngle < 0.0) { normalizedAngle += 360.0; }
-        while (normalizedAngle >= 360.0) { normalizedAngle -= 360.0; }
-        // Atlas uses 15-degree steps (24 angles per character)
-        var angleIndex = Math.round(normalizedAngle / 15.0).toNumber();
-        if (angleIndex >= 24) { angleIndex = 0; }
-
-        var atlasIndex = charIndex * 24 + angleIndex;
-        // Cell size matches the pre-baked atlas (24×24, RGBA with alpha transparency — no transform, no tintColor)
-        var cellSize = 24;
-        var sourceX = (atlasIndex % 16) * cellSize;
-        var sourceY = (atlasIndex / 16) * cellSize;
-        var targetX = px - cellSize / 2;
-        var targetY = py - cellSize / 2;
-        try {
-            dc.drawBitmap2(targetX, targetY, (cachedBezelAtlas as WatchUi.BitmapResource), {
-                :bitmapX => sourceX,
-                :bitmapY => sourceY,
-                :bitmapWidth => cellSize,
-                :bitmapHeight => cellSize,
-                :tintColor => color
-            });
-            return true;
-        } catch (dx) {
-            bezelAtlasUnavailable = true;
-            return false;
-        }
-    }
-
-    function drawLabelInQuadrant(dc as Dc, cx as Number, cy as Number,
-            quadAngle as Float, prefix as String, suffix as String,
-            color as Number, radiusCenter as Float, reverseChars as Boolean) as Void {
-        // Allow rendering if atlas is available even when vector font is absent
-        var hasAtlas = bezelUseAtlas && !bezelAtlasUnavailable;
-        if (!hasAtlas && bezelLblFont == null) { return; }
-        ensureBezelSlotGeometry(cx, cy, radiusCenter);
-
-        // ── 1. Build label string, centre within 12 slots ─────────────────
-        var combined = prefix;
-        if (suffix != null && suffix.length() > 0) { combined = combined + " " + suffix; }
-        var QUAD_SLOTS = 12;
-        if (combined.length() > QUAD_SLOTS) { combined = combined.substring(0, QUAD_SLOTS); }
-        var nChars = combined.length();
-        // Use floating slot offset so odd/even label lengths can sit exactly
-        // around the quadrant centre instead of snapping half a slot off.
-        var startOffset = (QUAD_SLOTS - nChars).toFloat() / 2.0;
-        if (startOffset < 0.0) { startOffset = 0.0; }
-
-        // ── 2. Map quadAngle → global start slot ──────────────────────────
-        // Convert math-CCW angle to clock-CW degrees (0 = 12 o'clock).
-        // Float % Float is not supported in Monkey C → use while-loop normalise.
-        var clockDeg = 90.0 - quadAngle;
-        while (clockDeg <    0.0) { clockDeg += 360.0; }
-        while (clockDeg >= 360.0) { clockDeg -= 360.0; }
-        // Quadrant occupies 12 slots centred on clockDeg; start slot = centre − 6.
-        // Align quadrant centre to slot CENTER: subtract 0.5 so the
-        // rounded result maps to the slot index whose centre is nearest
-        // the requested clockDeg. (Required Fix #2)
-        var quadCentreSlot = Math.round((clockDeg / 7.5) - 0.5).toNumber() % 48;  // nearest slot center
-        var quadStartSlot  = (quadCentreSlot - 6 + 48) % 48;
-
-        // ── 3. Compute slot font (cached; sized so glyph fits in arc length) ─
-        if (bezelSlotFont == null && bezelLblFace != null && bezelLblFaceSize > 0) {
-            // Arc length per global slot = R × Δθ = R × 2π/48
-            var arcLen = (radiusCenter.toFloat() * (2.0 * Math.PI / 48.0)).toFloat();
-            // Use 75 % of arc for the glyph (slightly more spacing); glyph width ≈ 0.55 × fontSize
-            var tgtSize = (arcLen * 0.75 / 0.55).toNumber();
-            if (tgtSize < 8)               { tgtSize = 8; }
-            if (tgtSize > bezelLblFaceSize) { tgtSize = bezelLblFaceSize; }
-            try {
-                var f = Graphics.getVectorFont({:face => bezelLblFace, :size => tgtSize});
-                bezelSlotFont = (f != null) ? f : bezelLblFont;
-            } catch (fe) { bezelSlotFont = bezelLblFont; }
-        }
-        var useFont = (bezelSlotFont != null) ? bezelSlotFont : bezelLblFont;
-
-        // ── 4. Draw each character ─────────────────────────────────────────
-        // Single formula for ALL positions: normT = theta_deg - 90, folded
-        // into [−90, +90].  The fold naturally makes tops point outward in the
-        // top half and toward the centre in the bottom half, so characters are
-        // always readable.  Slot order is always CW (increasing k) — that is
-        // left-to-right from the viewer's perspective for every quadrant.
-        dc.setColor(color, Graphics.COLOR_TRANSPARENT);
-        for (var si = 0; si < nChars; si++) {
-            // reverseChars: bottom quadrants (SW/SE) must read chars in reverse order
-            // so that the label reads left-to-right from the viewer despite CW slot
-            // traversal going right-to-left at those positions.
-            var readIndex = reverseChars ? (nChars - 1 - si) : si;
-            var ch = combined.substring(readIndex, readIndex + 1);
-            if (ch.equals(" ")) { continue; }
-
-            // Global slot position — always clockwise, with fractional offset
-            // preserved for optical centering between physical slots.
-            var slotPos = quadStartSlot.toFloat() + startOffset + si.toFloat();
-
-            var baseSlot = Math.floor(slotPos).toNumber();
-            var slotFrac = slotPos - baseSlot.toFloat();
-            var theta_deg;
-            var px;
-            var py;
-            if (slotFrac == 0.0 && bezelSlotX != null && bezelSlotY != null && bezelSlotAngle != null) {
-                var slotIndex = baseSlot % 48;
-                theta_deg = ((bezelSlotAngle as Array)[slotIndex] as Float);
-                px = ((bezelSlotX as Array)[slotIndex] as Number);
-                py = ((bezelSlotY as Array)[slotIndex] as Number);
-            } else {
-                // Fractional slot positions support optical half-slot centering.
-                theta_deg = 90.0 - (slotPos + 0.5) * 7.5;
-                var theta_rad = theta_deg * (Math.PI / 180.0);
-                px = (cx.toFloat() + radiusCenter * Math.cos(theta_rad)).toNumber();
-                py = (cy.toFloat() - radiusCenter * Math.sin(theta_rad)).toNumber();
-            }
-
-            // Tangent rotation: theta - 90, folded into [−90°, +90°].
-            // The fold flips the direction for the bottom half automatically,
-            // keeping all characters upright and readable from outside.
-            var normT = theta_deg - 90.0;
-            while (normT >  90.0) { normT -= 180.0; }
-            while (normT < -90.0) { normT += 180.0; }
-
-            if (!drawAtlasGlyph(dc, ch, px, py, normT, color)) {
-                try {
-                    dc.drawAngledText(px, py, useFont, ch,
-                        Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER, normT);
-                } catch (ex) {
-                }
-            }
-        }
     }
 
     function loadState(d as Dictionary) as Void {
@@ -1525,7 +1434,11 @@ class VFRStopWatchView extends WatchUi.View {
     function autoStop() as Void {
         if (!running) { return; }
         running = false;
-        elapsed = System.getTimer() - startTime;
+        // The clock can be stopped by hand or by the zero-speed timer; make sure
+        // the last touch-down is in the logbook either way.
+        _countLandingIfGroundborne();
+        doStopVibrate();
+        elapsed = elapsedSince(System.getTimer(), startTime);
         try { var la = getApp(); la.liveRunning = false; la.liveBaseElapsed = elapsed; } catch (le) {}
         tripEndUtcMoment = Time.now();
         try {
@@ -1536,18 +1449,481 @@ class VFRStopWatchView extends WatchUi.View {
         checkpointActive = false;
         zeroSpeedStartMs = 0;
         if (_session != null) {
+            // Session developer fields are written once, at the end of the
+            // recording — so the summary has to be set before stop().
+            _writeFitSummary();
             if (_session.isRecording()) { _session.stop(); }
             _session.save();
             _session = null;
-            
+            _clearFitFields();
         }
+        _stopSensorCapture();
         saveBackupProperties(); // persist so summary survives a kill
-        // Notify phone of flight stop
+        // Notify phone of flight stop, with the flight report attached
         var commsStop = getApp().getComms();
         if (commsStop != null && tripEndUtcMoment != null) {
-            try { commsStop.sendFlightStop((tripEndUtcMoment as Time.Moment).value().toNumber()); } catch (ex) {}
+            try {
+                commsStop.sendFlightStop((tripEndUtcMoment as Time.Moment).value().toNumber(),
+                                         buildFlightReport(true));
+            } catch (ex) {}
         }
         WatchUi.pushView(new VFRSummaryView(self), new VFRSummaryDelegate(self), WatchUi.SLIDE_UP);
+    }
+
+    // Speed that marks "we have taken off": the configured take-off speed, or
+    // 30 kt when auto-start has been disabled by setting it to 0.
+    function takeoffArmSpeedMs() as Float {
+        return (AUTO_START_SPEED_MS > 0.0) ? AUTO_START_SPEED_MS : 15.4333;
+    }
+
+    // ── Distance gap repair ──────────────────────────────────────────────
+
+    // Called after every accumulated sample. If accumulation was interrupted
+    // (GPS outage, stale fix, app busy elsewhere) the distance flown meanwhile
+    // is missing, so add the great-circle distance from the fix at the last
+    // accumulated sample to the current one. Normal 1 Hz operation is skipped
+    // (the speed integration already covers it) and so is any "gap" implying an
+    // impossible speed, which is a GPS glitch rather than movement.
+    function _bridgeDistanceGap(now as Number) as Void {
+        var gapMs = (lastAccumAtMs != 0) ? elapsedSince(now, lastAccumAtMs) : 0;
+        if (gapMs >= GAP_BRIDGE_MIN_MS && fixValid && accumRefValid) {
+            var dM = _distanceM(accumRefLat, accumRefLon, fixLatDeg, fixLonDeg);
+            var gapS = gapMs.toFloat() / 1000.0;
+            var impliedMps = (gapS > 0.0) ? (dM / gapS) : 0.0;
+            if (impliedMps <= MAX_BRIDGE_SPEED_MPS) {
+                totalDistanceM += dM;
+                try {
+                    System.println("VFR: GPS gap " + (gapMs / 1000).toString() + "s bridged, +"
+                        + dM.toNumber().toString() + " m");
+                } catch (le) { }
+            }
+        }
+        // The current fix becomes the reference for the next gap
+        if (fixValid) {
+            accumRefLat   = fixLatDeg;
+            accumRefLon   = fixLonDeg;
+            accumRefValid = true;
+        }
+        lastAccumAtMs = now;
+    }
+
+    // Great-circle distance in metres between two decimal-degree positions.
+    function _distanceM(lat1 as Float, lon1 as Float, lat2 as Float, lon2 as Float) as Float {
+        var d2r = Math.PI / 180.0;
+        var rlat1 = lat1 * d2r;
+        var rlat2 = lat2 * d2r;
+        var dLat  = (lat2 - lat1) * d2r;
+        var dLon  = (lon2 - lon1) * d2r;
+        var sinDLat = Math.sin(dLat / 2.0);
+        var sinDLon = Math.sin(dLon / 2.0);
+        var a = (sinDLat * sinDLat)
+              + (Math.cos(rlat1) * Math.cos(rlat2) * sinDLon * sinDLon);
+        var c = 2.0 * Math.atan2(Math.sqrt(a), Math.sqrt(1.0 - a));
+        return (6371000.0 * c).toFloat();
+    }
+
+    // ── Flight report ───────────────────────────────────────────────────────
+    // The same figures shown on the TRIP SUMMARY screen are also written into
+    // the saved activity (FIT developer fields → Garmin Connect) and sent to
+    // the phone companion app with the flight_event stop message.
+
+    // UTC epoch seconds for a Moment, or -1 when unavailable.
+    function momentEpochSec(m as Time.Moment?) as Number {
+        if (m == null) { return -1; }
+        try { return (m as Time.Moment).value().toNumber(); } catch (ex) { return -1; }
+    }
+
+    // "HHMMZ" for a stored UTC hour/min snapshot, "--" when unknown.
+    function hhmmZ(h as Number, mn as Number) as String {
+        if (h < 0 || mn < 0) { return "--"; }
+        return ((h < 10) ? "0" : "") + h.toString()
+             + ((mn < 10) ? "0" : "") + mn.toString() + "Z";
+    }
+
+    // Average ground speed over the flight (kt); 0 when no samples were taken.
+    function avgGsKtValue() as Float {
+        if (gsSamples <= 0) { return 0.0; }
+        return (gsSumKt / gsSamples.toFloat()).toFloat();
+    }
+
+    // Flight report as a phone-message payload. `withEnd` adds the arrival /
+    // landing figures, which only exist once the flight has been stopped.
+    function buildFlightReport(withEnd as Boolean) as Dictionary {
+        var obt = momentEpochSec(tripStartUtcMoment);
+        // Seeded with a LITERAL on purpose: `new Dictionary()` is Symbol-keyed in
+        // this typing mode and a String-key write throws, which silently killed
+        // this whole report (the call sites wrap it in try/catch). "obt" is
+        // therefore always present; -1 means the time was unavailable.
+        var d = { "obt" => obt };
+        if (obt >= 0) { d["obt"] = obt; }
+        if (tripStartUtcHour >= 0) { d["obt_text"] = hhmmZ(tripStartUtcHour, tripStartUtcMin); }
+        if (!withEnd) { return d; }
+
+        var ibt = momentEpochSec(tripEndUtcMoment);
+        if (ibt >= 0) { d["ibt"] = ibt; }
+        if (tripEndUtcHour >= 0) { d["ibt_text"] = hhmmZ(tripEndUtcHour, tripEndUtcMin); }
+        d["block_time_s"] = (elapsed / 1000).toNumber();
+        d["landings"]     = landings;
+        d["distance_nm"]  = (totalDistanceM / 1852.0).toFloat();
+        d["max_alt_ft"]   = (maxAltitudeM * 3.28084).toFloat();
+        d["avg_gs_kt"]    = avgGsKtValue();
+        d["max_gs_kt"]    = maxGsKt;
+        try {
+            var trip = getApp().getTrip();
+            if (trip != null && trip.active && trip.tripName.length() > 0) {
+                d["trip_name"] = trip.tripName;
+            }
+        } catch (tex) {}
+        if (maxG > 0.0)     { d["max_g"] = maxG; }
+        d["max_bank_deg"] = maxBankDeg;
+        if (maxPitchDeg > 0.0) { d["max_pitch_deg"] = maxPitchDeg; }
+        if (gForceG > 0.0)  { d["g_force"] = gForceG; }
+
+        // Final density altitude (needs indicated altitude and OAT)
+        try {
+            var dens = densityAltFt();
+            if (dens != null) { d["density_alt_ft"] = dens as Number; }
+        } catch (dex) { }
+
+        // Latest weather observation, when the companion app has one
+        try {
+            var wr = VFRWeather.read(getApp().getComms());
+            if (wr != null) {
+                try { if (wr.windDir >= 0) { d["wind_dir_deg"] = wr.windDir; } } catch (e) { }
+                try { if (wr.windSpd >= 0) { d["wind_spd_kt"] = wr.windSpd; } } catch (e) { }
+                try { if (wr.temp != -999) { d["oat_c"] = wr.temp; } } catch (e) { }
+                try { if (wr.dew != -999) { d["dew_c"] = wr.dew; } } catch (e) { }
+                try { if (wr.cloudCover >= 0) { d["clouds_pct"] = wr.cloudCover; } } catch (e) { }
+                try {
+                    if (wr.cloudAlt >= 0) {
+                        d["cloud_base_ft"] = (wr.cloudAlt.toFloat() * 3.28084).toNumber();
+                    }
+                } catch (e) { }
+            }
+        } catch (wex) { }
+        return d;
+    }
+
+    // ── Take-off / touch-down state machine ─────────────────────────────────
+
+    // Runs from onUpdate() AND onPosition() so the landing counter keeps
+    // working while a sub-view covers the main view.
+    // gsKt < 0 means "speed unknown" (GPS lost) — deliberately NOT the same as
+    // 0 kt, otherwise a dropout at altitude would look like a touch-down.
+    function _updateAirborneState(aglFt as Float, gsKt as Float, now as Number) as Void {
+        if (!running) { return; }
+        if (!airborne) {
+            // Airborne once clearly clear of the ground
+            if (aglFt > 300.0) {
+                airborne = true;
+                if (circuitEnabled) { circuitPhase = 1; circuitLegStartMs = now; circuitLevelVibrated = false; }
+            }
+            return;
+        }
+        // Touch-down, either:
+        //  * close to the ground and no longer flying, or
+        //  * down at taxi speed — no aircraft is still airborne at 15 kt GS.
+        // The second test matters because AGL is only as good as the field
+        // elevation captured at start: if the QNH drifts during the flight the
+        // whole AGL trace is offset and "agl < 50" can never become true, which
+        // silently loses every landing.
+        var gsKnown = (gsKt >= 0.0);
+        var lowAndSlow = (aglFt < 50.0) && (!gsKnown || gsKt < 40.0);
+        var atTaxiSpeed = gsKnown && (gsKt < 15.0);
+        if (lowAndSlow || atTaxiSpeed) {
+            // Wrap-safe debounce: System.getTimer() is a signed 32-bit counter,
+            // so a raw `now - lastLandingAt` goes negative after ~24.8 days of
+            // uptime and blocks every landing for the rest of the session.
+            if (lastLandingAt != 0 && elapsedSince(now, lastLandingAt) < MIN_LANDING_GAP_MS) { return; }
+            _registerLanding(now);
+        }
+    }
+
+    // Count one touch-down and reset the pattern state.
+    private function _registerLanding(now as Number) as Void {
+        airborne = false;
+        lastLandingAt = now;
+        landings = (landings as Number) + 1;
+        circuitPhase = 0;
+        doLandingVibrate();
+    }
+
+    // Safety net for the END of a flight: if the recording is being stopped
+    // while the aircraft is on the ground (taxi speed) but the touch-down test
+    // never fired — wrong field elevation, QNH drift, sensor dropout, or the
+    // pilot stopping the clock by hand — count that final landing before the
+    // summary and the saved activity are built.
+    private function _countLandingIfGroundborne() as Void {
+        if (!airborne) { return; }
+        var gsKt = -1.0;
+        try {
+            var ai = Activity.getActivityInfo();
+            if (ai != null && ai.currentSpeed != null) {
+                gsKt = (ai.currentSpeed as Float) * 1.94384;
+            }
+        } catch (ex) { }
+        // Unknown speed falls back to the AGL reading
+        if (gsKt < 0.0) {
+            if (lastAglFt < 50.0) { _registerLanding(System.getTimer()); }
+            return;
+        }
+        if (gsKt < 40.0) { _registerLanding(System.getTimer()); }
+    }
+
+    // ── Bank / pitch capture ────────────────────────────────────────────────
+
+    // bank  = coordinated-turn estimate atan(omega * v / g), from the smoothed
+    //         GPS turn rate and ground speed (signed: negative = left turn).
+    // pitch = flight-path angle atan2(VS, GS), i.e. the climb/descent angle —
+    //         NOT the attitude shown on an artificial horizon.
+    // Both feed the per-second FIT graphs; maxBankDeg is summarised at stop.
+    function _updateAttitude(gsKt as Float) as Void {
+        var bankDeg = 0.0;
+        // A GPS track jump (or a turn during taxi) can produce an absurd turn
+        // rate, and the coordinated-turn formula turns that into an impossible
+        // bank (a real flight logged -71°). Clamp the input to a plausible rate
+        // (a standard-rate turn is 3°/s, a steep 60° turn ≈ 10°/s), require real
+        // flying speed and a usable fix, and clamp the result.
+        var rate = turnRateDegS;
+        if (rate > MAX_TURN_RATE_DEG_S) { rate = MAX_TURN_RATE_DEG_S; }
+        if (rate < -MAX_TURN_RATE_DEG_S) { rate = -MAX_TURN_RATE_DEG_S; }
+        if (gsKt > 40.0 && gpsQuality >= 3 && rate != 0.0) {
+            var omega = rate * (Math.PI / 180.0);
+            var vMps  = gsKt * 0.514444;
+            bankDeg = Math.atan(omega * vMps / 9.81) * (180.0 / Math.PI);
+            if (bankDeg >  MAX_BANK_DEG) { bankDeg =  MAX_BANK_DEG; }
+            if (bankDeg < -MAX_BANK_DEG) { bankDeg = -MAX_BANK_DEG; }
+        }
+        liveBankDeg = bankDeg;
+        var absBank = (bankDeg < 0.0) ? -bankDeg : bankDeg;
+        if (absBank > maxBankDeg) { maxBankDeg = absBank; }
+
+        var pitchDeg = 0.0;
+        if (gsKt > 30.0) {
+            pitchDeg = Math.atan2(vertSpeedSmoothFpm, gsKt * 101.269) * (180.0 / Math.PI);
+        }
+        // Track the peak magnitude of the flight-path angle (nose-up OR
+        // nose-down), same idea as maxBankDeg, so the flight summary can report
+        // it and it does not have to be read back out of the per-second graph.
+        var absPitch = (pitchDeg < 0.0) ? -pitchDeg : pitchDeg;
+        if (absPitch > maxPitchDeg) { maxPitchDeg = absPitch; }
+        try {
+            if (_fitBank  != null) { (_fitBank  as FitContributor.Field).setData(bankDeg); }
+            if (_fitPitch != null) { (_fitPitch as FitContributor.Field).setData(pitchDeg); }
+        } catch (ex) { }
+    }
+
+    // ── Accelerometer (G-force) ─────────────────────────────────────────────
+
+    // Register the 1 Hz accelerometer batch while a flight is being recorded.
+    // The callback keeps firing when the main view is hidden, so the graph has
+    // no holes while the pilot is on another screen.
+    function _startSensorCapture() as Void {
+        if (_sensorOn) { return; }
+        if (!(Sensor has :registerSensorDataListener)) { return; }
+        try {
+            Sensor.registerSensorDataListener(method(:onSensorData), {
+                :period        => 1,
+                :accelerometer => { :enabled => true, :sampleRate => 25, :includePower => true }
+            });
+            _sensorOn = true;
+            _sensorDataSeen = false;
+            try { System.println("VFR: accelerometer capture started"); } catch (e) { }
+        } catch (ex) {
+            _sensorOn = false;
+            try { System.println("VFR: accelerometer start failed: " + ex.getErrorMessage()); } catch (e) { }
+        }
+    }
+
+    function _stopSensorCapture() as Void {
+        if (!_sensorOn) { return; }
+        try {
+            if (Sensor has :unregisterSensorDataListener) { Sensor.unregisterSensorDataListener(); }
+        } catch (ex) { }
+        _sensorOn = false;
+    }
+
+    // One batch per second (≈25 samples). The magnitude is orientation
+    // independent, so the mean resultant acceleration is the load factor in G.
+    // CAVEAT: this is the wrist IMU — it measures the aircraft's specific force
+    // plus any wrist movement, so read the graph as indicative.
+    function onSensorData(data as Sensor.SensorData) as Void {
+        try {
+            if (data == null || !(data has :accelerometerData)) { return; }
+            var ad = data.accelerometerData;
+            if (ad == null) { return; }
+            _sensorDataSeen = true;
+            var g = _averageGForce(ad as Sensor.AccelerometerData);
+            _applyGForce(g);
+        } catch (ex) { }
+    }
+
+    // Fallback for when the batch listener is unavailable or silent (it also
+    // covers devices that reject the :includePower option): read the vector
+    // accelerometer straight from Sensor.Info once per second.
+    function _captureGForceFallback() as Void {
+        if (_sensorDataSeen) { return; }
+        try {
+            var si = Sensor.getInfo();
+            if (si == null || si.accel == null) { return; }
+            var a = si.accel as Array;
+            if (a.size() < 3) { return; }
+            var ax = (a[0] as Number).toFloat();
+            var ay = (a[1] as Number).toFloat();
+            var az = (a[2] as Number).toFloat();
+            _applyGForce((Math.sqrt((ax * ax) + (ay * ay) + (az * az)) / 1000.0));
+        } catch (ex) { }
+    }
+
+    // Smooth, remember the peak and push the value to the FIT graph.
+    private function _applyGForce(g as Float) as Void {
+        if (g <= 0.0) { return; }
+        gForceG = (G_EMA_ALPHA * g) + ((1.0 - G_EMA_ALPHA) * gForceG);
+        if (g > maxG) { maxG = g; }
+        try {
+            if (_fitG != null) { (_fitG as FitContributor.Field).setData(gForceG); }
+        } catch (ex) { }
+    }
+
+    // Mean resultant acceleration of the batch, in G (sensor reports milli-g).
+    // Prefers the vector power channel; falls back to sqrt(x²+y²+z²).
+    private function _averageGForce(ad as Sensor.AccelerometerData) as Float {
+        try {
+            var pw = ad.power;
+            if (pw != null && pw.size() > 0) {
+                var p = pw as Array;
+                var sum = 0.0;
+                for (var i = 0; i < p.size(); i++) { sum += (p[i] as Number).toFloat(); }
+                return (sum / p.size().toFloat()) / 1000.0;
+            }
+            var xs = ad.x as Array;
+            var ys = ad.y as Array;
+            var zs = ad.z as Array;
+            var n  = xs.size();
+            if (n == 0) { return 0.0; }
+            var acc = 0.0;
+            for (var i = 0; i < n; i++) {
+                var ax = (xs[i] as Number).toFloat();
+                var ay = (ys[i] as Number).toFloat();
+                var az = (zs[i] as Number).toFloat();
+                acc += Math.sqrt((ax * ax) + (ay * ay) + (az * az));
+            }
+            return (acc / n.toFloat()) / 1000.0;
+        } catch (ex) { return 0.0; }
+    }
+
+    // ── FIT developer fields (Garmin Connect activity report) ───────────────
+
+    // Create the custom summary fields on a recording session. Field ids must
+    // match the <fitField id="…"> entries in resources/fit/fit.xml.
+    private function _createFitFields(session as ActivityRecording.Session) as Void {
+        _clearFitFields();
+        try {
+            _fitObt = session.createField("obt", FIT_FIELD_OBT,
+                FitContributor.DATA_TYPE_STRING,
+                { :mesgType => FitContributor.MESG_TYPE_SESSION, :count => 8 });
+            _fitIbt = session.createField("ibt", FIT_FIELD_IBT,
+                FitContributor.DATA_TYPE_STRING,
+                { :mesgType => FitContributor.MESG_TYPE_SESSION, :count => 8 });
+            _fitBlockS = session.createField("block_time_s", FIT_FIELD_BLOCK_S,
+                FitContributor.DATA_TYPE_UINT32,
+                { :mesgType => FitContributor.MESG_TYPE_SESSION, :units => "s" });
+            _fitLandings = session.createField("landings", FIT_FIELD_LANDINGS,
+                FitContributor.DATA_TYPE_UINT16,
+                { :mesgType => FitContributor.MESG_TYPE_SESSION });
+            _fitDistNm = session.createField("distance_nm", FIT_FIELD_DIST_NM,
+                FitContributor.DATA_TYPE_FLOAT,
+                { :mesgType => FitContributor.MESG_TYPE_SESSION, :units => "nm" });
+            _fitMaxAltFt = session.createField("max_alt_ft", FIT_FIELD_MAX_ALT,
+                FitContributor.DATA_TYPE_FLOAT,
+                { :mesgType => FitContributor.MESG_TYPE_SESSION, :units => "ft" });
+            _fitAvgGsKt = session.createField("avg_gs_kt", FIT_FIELD_AVG_GS,
+                FitContributor.DATA_TYPE_FLOAT,
+                { :mesgType => FitContributor.MESG_TYPE_SESSION, :units => "kt" });
+            _fitMaxG = session.createField("max_g", FIT_FIELD_MAX_G,
+                FitContributor.DATA_TYPE_FLOAT,
+                { :mesgType => FitContributor.MESG_TYPE_SESSION, :units => "G" });
+            _fitMaxBank = session.createField("max_bank_deg", FIT_FIELD_MAX_BANK,
+                FitContributor.DATA_TYPE_FLOAT,
+                { :mesgType => FitContributor.MESG_TYPE_SESSION, :units => "deg" });
+            // Per-second graphs (MESG_TYPE_RECORD). These are what produce the
+            // charts on the Garmin Connect activity page; setData() must be
+            // called about once per second while recording.
+            _fitG = session.createField("g_force", FIT_FIELD_G,
+                FitContributor.DATA_TYPE_FLOAT,
+                { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => "G" });
+            _fitBank = session.createField("bank_deg", FIT_FIELD_BANK,
+                FitContributor.DATA_TYPE_FLOAT,
+                { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => "deg" });
+            _fitPitch = session.createField("pitch_deg", FIT_FIELD_PITCH,
+                FitContributor.DATA_TYPE_FLOAT,
+                { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => "deg" });
+
+            // Peak |flight-path angle| for the flight (session summary)
+            if (session has :createField) {
+                _fitMaxPitch = session.createField("max_pitch_deg", FIT_FIELD_MAX_PITCH,
+                    FitContributor.DATA_TYPE_FLOAT,
+                    { :mesgType => FitContributor.MESG_TYPE_SESSION, :units => "deg" });
+            }
+        } catch (ex) {
+            try { System.println("VFR: FIT field setup failed: " + ex.getErrorMessage()); } catch (e) { }
+            _clearFitFields();
+        }
+    }
+
+    // Push the trip summary into the session's developer fields. Must be called
+    // while recording — session data is written out once, at the end.
+    private function _writeFitSummary() as Void {
+        try {
+            if (_fitObt != null && tripStartUtcHour >= 0) {
+                (_fitObt as FitContributor.Field).setData(hhmmZ(tripStartUtcHour, tripStartUtcMin));
+            }
+            if (_fitIbt != null && tripEndUtcHour >= 0) {
+                (_fitIbt as FitContributor.Field).setData(hhmmZ(tripEndUtcHour, tripEndUtcMin));
+            }
+            if (_fitBlockS != null) {
+                (_fitBlockS as FitContributor.Field).setData((elapsed / 1000).toNumber());
+            }
+            if (_fitLandings != null) {
+                (_fitLandings as FitContributor.Field).setData(landings);
+            }
+            if (_fitDistNm != null) {
+                (_fitDistNm as FitContributor.Field).setData((totalDistanceM / 1852.0).toFloat());
+            }
+            if (_fitMaxAltFt != null) {
+                (_fitMaxAltFt as FitContributor.Field).setData((maxAltitudeM * 3.28084).toFloat());
+            }
+            if (_fitAvgGsKt != null) {
+                (_fitAvgGsKt as FitContributor.Field).setData(avgGsKtValue());
+            }
+            // Only claim a peak G when the accelerometer actually produced data
+            if (_fitMaxG != null && maxG > 0.0) {
+                (_fitMaxG as FitContributor.Field).setData(maxG);
+            }
+            if (_fitMaxBank != null) {
+                (_fitMaxBank as FitContributor.Field).setData(maxBankDeg);
+            }
+            if (_fitMaxPitch != null && maxPitchDeg > 0.0) {
+                (_fitMaxPitch as FitContributor.Field).setData(maxPitchDeg);
+            }
+        } catch (ex) {
+            try { System.println("VFR: FIT summary write failed: " + ex.getErrorMessage()); } catch (e) { }
+        }
+    }
+
+    private function _clearFitFields() as Void {
+        _fitObt      = null;
+        _fitIbt      = null;
+        _fitBlockS   = null;
+        _fitLandings = null;
+        _fitDistNm   = null;
+        _fitMaxAltFt = null;
+        _fitAvgGsKt  = null;
+        _fitMaxG     = null;
+        _fitMaxBank  = null;
+        _fitG        = null;
+        _fitBank     = null;
+        _fitPitch    = null;
     }
 
     // Clear the on-disk backup (call on reset so no stale resume prompt appears)
@@ -1563,7 +1939,7 @@ class VFRStopWatchView extends WatchUi.View {
     function saveBackupProperties() as Void {
         try {
             // When running, the 'elapsed' field is 0; compute live elapsed instead
-            var liveElapsed = running ? (System.getTimer() - startTime) : elapsed;
+            var liveElapsed = running ? elapsedSince(System.getTimer(), startTime) : elapsed;
             Application.Properties.setValue("vfr_backup_hasBackup", true);
             Application.Properties.setValue("vfr_backup_running", running);
             Application.Properties.setValue("vfr_backup_startTime", startTime);
@@ -1577,13 +1953,23 @@ class VFRStopWatchView extends WatchUi.View {
             Application.Properties.setValue("vfr_backup_maxGsKt", maxGsKt);
             Application.Properties.setValue("vfr_backup_gsSumKt", gsSumKt);
             Application.Properties.setValue("vfr_backup_gsSamples", gsSamples);
+            // The landing counter and the attitude/G peaks must survive an app
+            // restart: otherwise a mid-flight kill silently resets the logbook
+            // count (and the aircraft state), under-reporting landings.
+            Application.Properties.setValue("vfr_backup_landings", landings);
+            Application.Properties.setValue("vfr_backup_airborne", airborne);
+            Application.Properties.setValue("vfr_backup_hasTakenOff", hasTakenOff);
+            Application.Properties.setValue("vfr_backup_maxG", maxG);
+            Application.Properties.setValue("vfr_backup_maxBankDeg", maxBankDeg);
+            Application.Properties.setValue("vfr_backup_maxPitchDeg", maxPitchDeg);
             Application.Properties.setValue("vfr_backup_lapMode", lapMode);
             Application.Properties.setValue("vfr_backup_lapElapsed", lapElapsed);
             Application.Properties.setValue("vfr_backup_lapKm", lapKm);
             Application.Properties.setValue("vfr_backup_lapNm", lapNm);
             Application.Properties.setValue("vfr_backup_subTimerState", subTimerState);
             Application.Properties.setValue("vfr_backup_subTimerStart", subTimerStart);
-            Application.Properties.setValue("vfr_backup_subTimerElapsed", subTimerElapsed);
+            var liveSubElapsed = (subTimerState == 1) ? elapsedSince(System.getTimer(), subTimerStart) : subTimerElapsed;
+            Application.Properties.setValue("vfr_backup_subTimerElapsed", liveSubElapsed);
             Application.Properties.setValue("vfr_backup_tripStartUtcHour", tripStartUtcHour);
             Application.Properties.setValue("vfr_backup_tripStartUtcMin", tripStartUtcMin);
             Application.Properties.setValue("vfr_backup_tripEndUtcHour", tripEndUtcHour);
@@ -1612,6 +1998,12 @@ class VFRStopWatchView extends WatchUi.View {
             v = Application.Properties.getValue("vfr_backup_maxGsKt"); if (v != null) { maxGsKt = v as Float; }
             v = Application.Properties.getValue("vfr_backup_gsSumKt"); if (v != null) { gsSumKt = v as Float; }
             v = Application.Properties.getValue("vfr_backup_gsSamples"); if (v != null) { gsSamples = v as Number; }
+            v = Application.Properties.getValue("vfr_backup_landings"); if (v != null) { landings = v as Number; }
+            v = Application.Properties.getValue("vfr_backup_airborne"); if (v != null) { airborne = v as Boolean; }
+            v = Application.Properties.getValue("vfr_backup_hasTakenOff"); if (v != null) { hasTakenOff = v as Boolean; }
+            v = Application.Properties.getValue("vfr_backup_maxG"); if (v != null) { maxG = v as Float; }
+            v = Application.Properties.getValue("vfr_backup_maxBankDeg"); if (v != null) { maxBankDeg = v as Float; }
+            v = Application.Properties.getValue("vfr_backup_maxPitchDeg"); if (v != null) { maxPitchDeg = v as Float; }
             v = Application.Properties.getValue("vfr_backup_lapMode"); if (v != null) { lapMode = v as Boolean; }
             v = Application.Properties.getValue("vfr_backup_lapElapsed"); if (v != null) { lapElapsed = v as Number; }
             v = Application.Properties.getValue("vfr_backup_lapKm"); if (v != null) { lapKm = v as Float; }
@@ -1635,6 +2027,467 @@ class VFRStopWatchView extends WatchUi.View {
         WatchUi.requestUpdate();
     }
 
+    // Timer / clock string shown in the middle of the face: the local time when
+    // idle, otherwise the elapsed time (H:MM:SS past an hour, else MM:SS).
+    function displayTimerString(displayClock as Boolean, hours as Number, mStr as String, sStr as String) as String {
+        if (displayClock) {
+            var hour = 0; var min = 0;
+            try {
+                var clk = System.getClockTime();
+                if (clk != null) {
+                    try { hour = clk.hour; } catch (e) { hour = 0; }
+                    try { min  = clk.min;  } catch (e) { min = 0; }
+                }
+            } catch (e2) {
+                try {
+                    var nowMoment = Time.now();
+                    var info = Gregorian.utcInfo((nowMoment as Time.Moment), Time.FORMAT_SHORT);
+                    hour = info.hour;
+                    min  = info.min;
+                } catch (e3) { hour = 0; min = 0; }
+            }
+            var hh = (hour < 10) ? ("0" + hour.toString()) : hour.toString();
+            var mm = (min  < 10) ? ("0" + min.toString())  : min.toString();
+            return hh + ":" + mm;
+        }
+        if (hours >= 1) { return hours.toString() + ":" + mStr + ":" + sStr; }
+        return mStr + ":" + sStr;
+    }
+
+    // ── Paged face ──────────────────────────────────────────────────────────
+    // One value at a time, cycled with UP (previous) / DOWN (next). Page 0 is
+    // the chrono, then distance, altitude, heading, ... — the same data the ring
+    // shows, but each value gets ~a quarter of the screen height in the boldest
+    // available face. The ring cannot do that: its radial glyphs are capped by
+    // the quadrant's arc length (16-27 px whatever Bezel Font is set to).
+
+    var PAGE_CHRONO as Number = 0;
+    var PAGE_DIST   as Number = 1;
+    var PAGE_ALT    as Number = 2;
+    var PAGE_HDG    as Number = 3;
+    var PAGE_GS     as Number = 4;
+    var PAGE_VS     as Number = 5;
+    var PAGE_ZULU   as Number = 6;
+    var PAGE_WIND   as Number = 7;
+    var PAGE_TEMP   as Number = 8;
+    var PAGE_CLOUDS as Number = 9;
+    var PAGE_QNH    as Number = 10;
+    var PAGE_DENS   as Number = 11;
+    var PAGE_FPL    as Number = 12;
+    var PAGE_STATS  as Number = 13;
+    var PAGE_COUNT  as Number = 14;
+    // Set while computing the density-altitude page, for its "approx" note
+    var densAltApprox as Boolean = false;
+
+    // Label (with unit) for page `idx`.
+    function pageLabel(idx as Number) as String {
+        if (idx == PAGE_DIST)  { return "DIST nm"; }
+        if (idx == PAGE_ALT)   { return "ALT ft"; }
+        if (idx == PAGE_HDG)   { return "HDG"; }
+        if (idx == PAGE_GS)    { return "GS kt"; }
+        if (idx == PAGE_VS)    { return "V/S fpm"; }
+        if (idx == PAGE_ZULU)  { return "ZULU"; }
+        if (idx == PAGE_WIND)  { return "WIND"; }
+        if (idx == PAGE_TEMP)  { return "OAT/DP"; }
+        if (idx == PAGE_CLOUDS) { return "CLOUDS"; }
+        if (idx == PAGE_QNH)   { return "QNH hPa"; }
+        if (idx == PAGE_DENS)  { return "DENS ALT"; }
+        if (idx == PAGE_FPL)   { return "FLIGHT PLAN"; }
+        if (idx == PAGE_STATS) { return "LANDINGS"; }
+        return "CHRONO";
+    }
+
+    // One decimal place, e.g. 12.4
+    function fmtOneDec(v as Float) as String {
+        var i = v.toNumber();
+        var d = ((v - i.toFloat()) * 10.0).toNumber();
+        if (d < 0) { d = 0; }
+        return i.toString() + "." + d.toString();
+    }
+
+    // Zero-padded to `digits` places.
+    function fmtPadded(v as Number, digits as Number) as String {
+        var s = v.toString();
+        while (s.length() < digits) { s = "0" + s; }
+        return s;
+    }
+
+    // Density altitude in feet, or null when indicated altitude or OAT is
+    // missing. Pressure altitude (indicated, adjusted by QNH when known) plus
+    // 120 ft per °C above ISA. Sets densAltApprox when no QNH was available.
+    function densityAltFt() as Number? {
+        densAltApprox = false;
+        try {
+            var indicated = VFRAvionicsData.readAltitudeFeet();
+            if (indicated == null) { return null; }
+            var oat = -999;
+            try {
+                var wr = VFRWeather.read(getApp().getComms());
+                if (wr != null && wr.temp != -999) { oat = wr.temp; }
+            } catch (we) { }
+            if (oat == -999) { return null; }
+
+            var pressureAltFt = (indicated as Number).toFloat();
+            densAltApprox = true;
+            try {
+                var qnhInfo = VFRAvionicsData.readQnhInfo();
+                if (qnhInfo != null && (qnhInfo as VFRQnhInfo).isQnh) {
+                    pressureAltFt = (indicated as Number).toFloat()
+                                  + ((1013.0 - (qnhInfo as VFRQnhInfo).hPa) * 27.0);
+                    densAltApprox = false;
+                }
+            } catch (qe) { }
+
+            var thousands = (pressureAltFt / 1000.0).toFloat();
+            var isa = (15.0 - (2.0 * thousands)).toFloat();
+            var dens = (pressureAltFt + (120.0 * (oat.toFloat() - isa))).toFloat();
+            return Math.round(dens).toNumber();
+        } catch (ex) { return null; }
+    }
+
+    // Same value as the DENS ALT page: a string, "----" when unavailable.
+    function densityAltStr() as String {
+        var ft = densityAltFt();
+        return (ft != null) ? (ft as Number).toString() : "----";
+    }
+
+    // Formatted value for page `idx` (page 0 is the timer, supplied by the caller).
+    function pageValue(idx as Number) as String {
+        if (idx == PAGE_DIST) { return fmtOneDec((totalDistanceM / 1852.0).toFloat()); }
+
+        if (idx == PAGE_ALT) {
+            try {
+                var alt = VFRAvionicsData.readAltitudeFeet();
+                if (alt == null) { return "----"; }
+                var altFt = (alt as Number);
+                if (transitionActive) {
+                    return "FL" + Math.round(altFt.toFloat() / 100.0).toNumber().toString();
+                }
+                return altFt.toString();
+            } catch (ex) { return "----"; }
+        }
+
+        if (idx == PAGE_HDG) {
+            try {
+                var hdg = VFRHeading.getHeadingDeg();
+                if (hdg < 0.0) { return "---"; }
+                return fmtPadded(Math.round(hdg).toNumber() % 360, 3);
+            } catch (ex) { return "---"; }
+        }
+
+        if (idx == PAGE_GS) {
+            try {
+                var ai = Activity.getActivityInfo();
+                if (ai != null && ai.currentSpeed != null) {
+                    return Math.round((ai.currentSpeed as Float) * 1.94384).toNumber().toString();
+                }
+            } catch (ex) { }
+            return "---";
+        }
+
+        if (idx == PAGE_VS) {
+            if (lastAltitudeMillis == 0) { return "----"; }
+            var fpm = (Math.round(vertSpeedSmoothFpm / 10.0) * 10.0).toNumber();
+            return (fpm >= 0 ? "+" : "") + fpm.toString();
+        }
+
+        if (idx == PAGE_ZULU) {
+            // Zulu time; the page label already says ZULU, so no "Z" suffix.
+            try {
+                var info = Gregorian.utcInfo(Time.now() as Time.Moment, Time.FORMAT_SHORT);
+                return fmtPadded(info.hour, 2) + ":" + fmtPadded(info.min, 2);
+            } catch (ex) { return "--:--"; }
+        }
+
+        if (idx == PAGE_WIND || idx == PAGE_TEMP) {
+            var wDir = -1; var wSpd = -1; var tmp = -999; var dew = -999;
+            try {
+                var wr = VFRWeather.read(getApp().getComms());
+                if (wr != null) {
+                    try { wDir = wr.windDir; } catch (e) { }
+                    try { wSpd = wr.windSpd; } catch (e) { }
+                    try { tmp  = wr.temp;    } catch (e) { }
+                    try { dew  = wr.dew;     } catch (e) { }
+                }
+            } catch (we) { }
+            if (idx == PAGE_WIND) {
+                if (wDir < 0 && wSpd < 0) { return "--/--"; }
+                var dStr = (wDir < 0) ? "--" : fmtPadded(wDir, 3);
+                var sStr = (wSpd < 0) ? "--" : wSpd.toString();
+                return dStr + "/" + sStr;
+            }
+            if (tmp == -999 && dew == -999) { return "--/--"; }
+            var tStr = (tmp == -999) ? "--" : Math.round(tmp.toFloat()).toNumber().toString();
+            var d2Str = (dew == -999) ? "--" : Math.round(dew.toFloat()).toNumber().toString();
+            return tStr + "/" + d2Str;
+        }
+
+        if (idx == PAGE_CLOUDS) {
+            try {
+                var cw = VFRWeather.read(getApp().getComms());
+                if (cw != null && cw.cloudCover >= 0) { return cw.cloudCover.toString() + "%"; }
+            } catch (ce) { }
+            return "---%";
+        }
+
+        if (idx == PAGE_QNH) {
+            try {
+                return VFRAvionicsData.formatQnh(VFRAvionicsData.readQnhInfo());
+            } catch (qe) { return "----"; }
+        }
+
+        if (idx == PAGE_DENS) { return densityAltStr(); }
+        if (idx == PAGE_FPL) {
+            try {
+                var trip = getApp().getTrip();
+                if (trip.active && trip.bearingDeg >= 0) {
+                    return fmtPadded(trip.bearingDeg, 3) + "\u00B0";
+                }
+            } catch (ex) { }
+            return "---";
+        }
+
+        if (idx == PAGE_STATS) { return (landings as Number).toString(); }
+
+        return "";   // chrono: value comes from the caller
+    }
+
+    // Small second line under the value; "" when there is nothing useful to add.
+    function pageSub(idx as Number) as String {
+        if (idx == PAGE_CHRONO) {
+            if (subTimerState != 0) {
+                var ms = (subTimerState == 1) ? elapsedSince(System.getTimer(), subTimerStart) : subTimerElapsed;
+                var sec = ms / 1000;
+                return "SUB " + fmtPadded(sec / 60, 2) + ":" + fmtPadded(sec % 60, 2);
+            }
+            return "";
+        }
+        if (idx == PAGE_DIST) {
+            // No lap line: the lap snapshot feature is not used in flight.
+            return "";
+        }
+        if (idx == PAGE_ALT) {
+            if (fieldElevationFt > 0) {
+                // Clamp: a negative AGL only means the field elevation / QNH is
+                // off, and "AGL -1259" is worse than useless in flight.
+                var agl = Math.round(getAglFt()).toNumber();
+                if (agl < 0) { agl = 0; }
+                return "AGL " + agl.toString();
+            }
+            return "";
+        }
+        if (idx == PAGE_GS) {
+            if (maxGsKt > 0.0) { return "MAX " + Math.round(maxGsKt).toNumber().toString(); }
+            return "";
+        }
+        if (idx == PAGE_VS) {
+            if (altAlertFt > 0) { return "TGT " + altAlertFt.toString(); }
+            return "";
+        }
+        if (idx == PAGE_ZULU) {
+            try {
+                var clk = System.getClockTime();
+                if (clk != null) {
+                    return "LOCAL " + fmtPadded(clk.hour, 2) + ":" + fmtPadded(clk.min, 2);
+                }
+            } catch (e) { }
+            return "";
+        }
+        if (idx == PAGE_CLOUDS) {
+            // Cloud base comes from the weather provider in metres.
+            try {
+                var cw = VFRWeather.read(getApp().getComms());
+                if (cw != null && cw.cloudAlt >= 0) {
+                    var ft = ((cw.cloudAlt.toFloat() * 3.28084)).toNumber();
+                    return "BASE " + ft.toString() + " ft";
+                }
+            } catch (ce) { }
+            return "";
+        }
+        if (idx == PAGE_QNH) {
+            try {
+                var qi = VFRAvionicsData.readQnhInfo();
+                if (qi == null) { return ""; }
+                return (qi as VFRQnhInfo).isQnh ? "weather" : "barometer";
+            } catch (qe) { return ""; }
+        }
+        if (idx == PAGE_DENS) { return densAltApprox ? "~ no QNH set" : ""; }
+        if (idx == PAGE_FPL) {
+            try {
+                var trip = getApp().getTrip();
+                if (trip.active) {
+                    var s = "";
+                    if (trip.distanceNm >= 0.0) { s = fmtOneDec(trip.distanceNm) + " nm"; }
+                    if (trip.eteSec >= 0) {
+                        s = (s.length() > 0 ? s + "  " : "") + (trip.eteSec / 60).toString() + " min";
+                    }
+                    return s;
+                }
+            } catch (ex) { }
+            return "no plan";
+        }
+        if (idx == PAGE_STATS) {
+            var s2 = "";
+            if (maxG > 0.0) { s2 = "G " + fmtOneDec(maxG); }
+            if (maxBankDeg > 0.0) {
+                s2 = (s2.length() > 0 ? s2 + "  " : "") + "BANK " + Math.round(maxBankDeg).toNumber().toString();
+            }
+            return s2;
+        }
+        return "";
+    }
+
+    // Usable width of the round screen at a vertical offset from the centre
+    // (`frac` is a fraction of minWh). Half-width is sqrt(R^2 - dy^2), so text
+    // that is drawn lower needs to be narrower to avoid being clipped.
+    function chordWidthAt(minWh as Number, frac as Float) as Number {
+        var r = minWh.toFloat() / 2.0;
+        var dy = minWh.toFloat() * frac;
+        if (dy < 0.0) { dy = -dy; }
+        if (dy >= r) { return 0; }
+        return (2.0 * Math.sqrt((r * r) - (dy * dy))).toNumber();
+    }
+
+    // Largest candidate value font whose rendered width fits `maxW`, or null if
+    // even the smallest does not. Measuring beats guessing an em-width: the
+    // difference between a 4-character and a 7-character value is then used to
+    // make the type as large as the screen allows, page by page.
+    function pickValFont(dc as Dc, text as String, maxW as Number) as Graphics.VectorFont? {
+        for (var i = 0; i < bigValFonts.size(); i++) {
+            var f = bigValFonts[i] as Graphics.VectorFont;
+            try {
+                var dim = dc.getTextDimensions(text, f);
+                if (dim != null && (dim[0] as Number) <= maxW) { return f; }
+            } catch (ex) { }
+        }
+        return null;
+    }
+
+    // Draw the paged face. `timerStr` is only used by page 0 (the chrono) and
+    // `timerColor` carries the usual GPS/fuel/HR colour coding.
+    function drawPagesView(dc as Dc, timerStr as String, timerColor as Number) as Void {
+        var w = dc.getWidth();
+        var h = dc.getHeight();
+        var cx = w / 2;
+        var cy = h / 2;
+        var minWh = (w < h) ? w : h;
+        var jc = Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER;
+
+        // Background (flashes red on an HR alert, same as the ring layout)
+        if (hrAlertActive && hrFlashOn) {
+            dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_RED);
+        } else {
+            dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
+        }
+        dc.clear();
+
+        // Fonts, created once. Condensed faces first: they carry the same text
+        // in ~15% less width, so the type can be TALLER without the round screen
+        // clipping the sides. Bold faces next, then the plain ones.
+        if (!bigFontsInitialized) {
+            var faces    = ["RobotoCondensed", "RobotoCondensed-Bold", "RobotoBlack",
+                            "Swiss721Bold", "TomorrowBold", "RobotoBold", "Roboto", "OpenSans"];
+            // Candidate value sizes (fraction of minWh), largest first. The
+            // draw code measures the actual string and picks the biggest one
+            // that fits the usable chord at that line's height.
+            var valSizes = [0.32, 0.28, 0.24, 0.20];
+            var timerSize = (minWh.toFloat() * 0.19).toNumber();
+            var lblSize   = (minWh.toFloat() * 0.08).toNumber();
+            var subSize   = (minWh.toFloat() * 0.065).toNumber();
+            for (var bi = 0; bi < faces.size() && bigValFonts.size() == 0; bi++) {
+                try {
+                    var probeSize = (minWh.toFloat() * valSizes[0]).toNumber();
+                    var probe = Graphics.getVectorFont({:face => faces[bi], :size => probeSize});
+                    if (probe != null) {
+                        bigValFonts.add(probe);
+                        for (var si = 1; si < valSizes.size(); si++) {
+                            var fs = (minWh.toFloat() * valSizes[si]).toNumber();
+                            var f  = Graphics.getVectorFont({:face => faces[bi], :size => fs});
+                            if (f != null) { bigValFonts.add(f); }
+                        }
+                        bigTimerFont = Graphics.getVectorFont({:face => faces[bi], :size => timerSize});
+                        bigLblFont   = Graphics.getVectorFont({:face => faces[bi], :size => lblSize});
+                        bigSubFont   = Graphics.getVectorFont({:face => faces[bi], :size => subSize});
+                    }
+                } catch (exf) { }
+            }
+            bigFontsInitialized = true;
+        }
+        var lblFont    = (bigLblFont   != null) ? bigLblFont   : Graphics.FONT_TINY;
+        var subFont    = (bigSubFont   != null) ? bigSubFont   : Graphics.FONT_XTINY;
+        var chronoFont = (bigTimerFont != null) ? bigTimerFont :
+                         ((roundedFontLarge != null) ? roundedFontLarge : Graphics.FONT_NUMBER_HOT);
+
+        // Timer / clock: on every page except the chrono it sits in the upper
+        // slot as a small reference line (the chrono page replaces it with the
+        // hero value, centred). Any page-value failure degrades to a placeholder
+        // instead of crashing the whole face (seen on the first weather page).
+        var vs = "----";
+        try { vs = pageValue(pageIdx); } catch (ex) { vs = "----"; }
+        var labelY  = (pageIdx == PAGE_CHRONO) ? -0.30 : -0.075;
+        var valueY  = (pageIdx == PAGE_CHRONO) ?  0.00 :  0.16;
+        if (pageIdx != PAGE_CHRONO) {
+            dc.setColor(timerColor, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(cx, cy - (minWh.toFloat() * 0.245).toNumber(), chronoFont, timerStr, jc);
+
+            // Separator
+            dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+            dc.setPenWidth(3);
+            dc.drawLine(cx - (minWh.toFloat() * 0.32).toNumber(), cy - (minWh.toFloat() * 0.135).toNumber(),
+                        cx + (minWh.toFloat() * 0.32).toNumber(), cy - (minWh.toFloat() * 0.135).toNumber());
+            dc.setPenWidth(1);
+        }
+
+        // Label above the value
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(cx, cy + (minWh.toFloat() * labelY).toNumber(), lblFont, pageLabel(pageIdx), jc);
+
+        // The value: the largest prepared font whose rendered width still fits
+        // the circle at this line's height. Using the measured width (instead of
+        // assuming ~0.55em per glyph) is what lets the type grow on the shorter
+        // pages without ever being clipped on the longer ones.
+        var valueStr  = (pageIdx == PAGE_CHRONO) ? timerStr : vs;
+        var valueCol  = (pageIdx == PAGE_CHRONO) ? timerColor : Graphics.COLOR_WHITE;
+        if (pageIdx != PAGE_CHRONO && valueStr.length() > 0
+            && valueStr.substring(0, 1).equals("-")) {
+            valueCol = Graphics.COLOR_DK_GRAY;   // placeholder (---): grey it out
+        }
+        var maxW = chordWidthAt(minWh, valueY) - 12;
+        if (maxW < 40) { maxW = 40; }
+        var vf = pickValFont(dc, valueStr, maxW);
+        dc.setColor(valueCol, Graphics.COLOR_TRANSPARENT);
+        if (vf != null) {
+            dc.drawText(cx, cy + (minWh.toFloat() * valueY).toNumber(), vf, valueStr, jc);
+        } else {
+            dc.drawText(cx, cy + (minWh.toFloat() * valueY).toNumber(), chronoFont, valueStr, jc);
+        }
+
+        // Optional sub-line (lap / AGL / max GS / local time / trip ETE / stats)
+        var sub = "";
+        try { sub = pageSub(pageIdx); } catch (ex) { sub = ""; }
+        if (sub.length() > 0) {
+            dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(cx, cy + (minWh.toFloat() * 0.41).toNumber(), subFont, sub, jc);
+        }
+
+        // Page indicator (bottom centre) plus the phone status dot to its left
+        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(cx + 8, cy + (minWh.toFloat() * 0.472).toNumber(), subFont,
+                    (pageIdx + 1).toString() + "/" + PAGE_COUNT.toString(), jc);
+        if (useCompanionApp) {
+            var cInd = getApp().getComms();
+            var dotCol = Graphics.COLOR_RED;
+            if (cInd != null) {
+                if (cInd.connected) { dotCol = Graphics.COLOR_GREEN; }
+                else if (cInd.connecting) {
+                    dotCol = (((System.getTimer() / 500).toNumber() % 2) == 0) ? Graphics.COLOR_YELLOW : Graphics.COLOR_BLACK;
+                }
+            }
+            dc.setColor(dotCol, Graphics.COLOR_TRANSPARENT);
+            dc.fillCircle(cx - 26, (cy + (minWh.toFloat() * 0.472).toNumber()).toNumber(), 4);
+        }
+    }
+
     // Open the on-device settings menu (called from DOWN shortcut and main menu).
     function openSettingsMenu() as Void {
         var settings = VFRSettings.read();
@@ -1648,52 +2501,121 @@ class VFRStopWatchView extends WatchUi.View {
         menu.addItem(new WatchUi.MenuItem("Fuel Check", settings.fuelCheckIntervalMin.toString() + " min", "setting_fuel", null));
         menu.addItem(new WatchUi.MenuItem("Altitude Source",  settings.altitudeSource == 1 ? "GPS" : "Baro", "setting_altitude_source", null));
         menu.addItem(new WatchUi.MenuItem("Use Companion App", settings.useCompanionApp ? "On" : "Off", "setting_companion", null));
-        menu.addItem(new WatchUi.MenuItem("Bezel Renderer", settings.bezelUseAtlas ? "Atlas" : "Vector", "setting_bezel_atlas", null));
+        menu.addItem(new WatchUi.MenuItem("Circuit Practice", settings.circuitEnabled ? "On" : "Off", "setting_circuit", null));
+        menu.addItem(new WatchUi.MenuItem("Field Elevation", settings.manualFieldElevationFt == 0 ? "Auto" : settings.manualFieldElevationFt.toString() + " ft", "setting_field_elev", null));
+        menu.addItem(new WatchUi.MenuItem("Runway Length", settings.runwayLengthM.toString() + " m", "setting_runway", null));
+        menu.addItem(new WatchUi.MenuItem("Altitude Alert", settings.altAlertFt == 0 ? "Off" : settings.altAlertFt.toString() + " ft", "setting_alt_alert", null));
+        menu.addItem(new WatchUi.MenuItem("Auto Backlight", settings.autoBacklight == 2 ? "Night" : (settings.autoBacklight == 1 ? "Always" : "Off"), "setting_auto_backlight", null));
+        if (settings.autoBacklight == 2) {
+            menu.addItem(new WatchUi.MenuItem("Night Start", settings.nightStartHour.toString() + ":00", "setting_night_start", null));
+            menu.addItem(new WatchUi.MenuItem("Night End", settings.nightEndHour.toString() + ":00", "setting_night_end", null));
+        }
         menu.addItem(new WatchUi.MenuItem("Bezel Font", settings.bezelFontScale.toString() + "%", "setting_bezel_font", null));
         menu.addItem(new WatchUi.MenuItem("Bezel Contrast", settings.bezelContrast.toString() + "%", "setting_bezel_contrast", null));
-        menu.addItem(new WatchUi.MenuItem("HDG Offset", settings.bezelOffsetHDG.toString() + " px", "setting_bezel_hdg", null));
-        menu.addItem(new WatchUi.MenuItem("GS Offset", settings.bezelOffsetGS.toString() + " px", "setting_bezel_gs", null));
-        menu.addItem(new WatchUi.MenuItem("ALT Offset", settings.bezelOffsetALT.toString() + " px", "setting_bezel_alt", null));
-        menu.addItem(new WatchUi.MenuItem("QNH Offset", settings.bezelOffsetQNH.toString() + " px", "setting_bezel_qnh", null));
+        menu.addItem(new WatchUi.MenuItem("Display", settings.displayMode == 1 ? "Pages (big)" : "Bezel ring", "setting_display", null));
+        menu.addItem(new WatchUi.MenuItem("Auto Page Cycle", settings.pageCycleSec == 0 ? "Off" : settings.pageCycleSec.toString() + " s", "setting_page_cycle", null));
         WatchUi.pushView(menu, new VFRSettingsMenuDelegate(self), WatchUi.SLIDE_UP);
     }
 
     // DOWN button behavior:
-    //   initial state (!running, elapsed==0)  → open settings (held)
-    //   stopped but has elapsed time          → reset
-    //   running                               → toggle lap
+    //   The hold timer is armed on press; the action is decided on release so a
+    //   short tap can never destroy a flight. Long press (hold):
+    //     idle (no elapsed)  → settings
+    //     stopped (elapsed)  → RESET (hold is the confirmation)
+    //     running            → settings
     function onDownPressed() as Void {
         var now = System.getTimer();
         // debounce spurious repeated press events (200 ms)
         if (lastDownEventAt != 0 && (now - lastDownEventAt) < 200) { return; }
         lastDownEventAt = now;
-        if (!running && elapsed == 0) {
-            // start timing the press; actual action happens on release
-            if (downPressAt == 0) {
-                downPressAt = now;
-                
-            }
-        } else if (!running) {
-            reset();
-            
-        } else {
-            // When running, don't toggle lap on immediate press.
-            // Start the hold timer so release triggers shortDownAction (quick-info),
-            // and a long hold is still available if desired.
-            if (downPressAt == 0) {
-                downPressAt = now;
-                
-            }
+        if (downPressAt == 0) {
+            downPressAt = now;
         }
     }
 
-    // Short-press action (first press): show quick info overlay
+    function onDownLongPress() as Void {
+        if (!running && elapsed == 0) {
+            openSettingsMenu();
+        } else if (!running) {
+            reset();
+        } else {
+            openSettingsMenu();
+        }
+    }
+
+    // Short-press action for DOWN.
+    //   pages mode → next page
+    //   ring mode  → quick-info chain (heading/GS, wind, temp, dens alt, map)
     function shortDownAction() as Void {
+        // In "pages" mode a short DOWN press cycles to the next value, so the
+        // quick-info screens would be redundant — every one of their values is
+        // a page now (the map is in the MENU instead).
+        if (displayMode == 1) {
+            pageNext();
+            return;
+        }
         if (quickInfoShown) { return; }
         quickInfoShown = true;
         // Show heading/GS summary first, then allow navigating to wind/temp
         quickInfoLastNavAt = System.getTimer();
         WatchUi.pushView(new VFRQuickInfoHdgGsView(self), new VFRQuickInfoHdgGsDelegate(self), WatchUi.SLIDE_UP);
+    }
+
+    // --- Paged face navigation ---
+    // Pages change ONLY when the user presses UP/DOWN, unless the optional
+    // "Auto Page Cycle" setting (pageCycleSec > 0) is enabled, which advances
+    // one page every N seconds while the clock is running. A manual press
+    // always restarts that timer, so it never steals the page you just chose.
+    function pageNext() as Void {
+        pageIdx = (pageIdx + 1) % PAGE_COUNT;
+        lastPageCycleAt = System.getTimer();
+        WatchUi.requestUpdate();
+    }
+
+    function pagePrev() as Void {
+        pageIdx = (pageIdx + PAGE_COUNT - 1) % PAGE_COUNT;
+        lastPageCycleAt = System.getTimer();
+        WatchUi.requestUpdate();
+    }
+
+    // Called from onUpdate: rotate the paged face on a timer when configured.
+    function updatePageCycle(now as Number) as Void {
+        if (displayMode != 1 || pageCycleSec <= 0) { return; }
+        // Only while a flight/timer is running: an idle face should sit still on
+        // whatever page was left showing.
+        if (!running && subTimerState == 0) { return; }
+        if (lastPageCycleAt == 0) { lastPageCycleAt = now; return; }
+        var intervalMs = pageCycleSec * 1000;
+        if (elapsedSince(now, lastPageCycleAt) >= intervalMs) {
+            lastPageCycleAt = now;
+            pageIdx = (pageIdx + 1) % PAGE_COUNT;
+        }
+    }
+
+    // UP press/release, mirroring the DOWN pattern: the action is decided on
+    // release so a short tap pages backwards and a hold opens the sub-timer.
+    function onUpPressed() as Void {
+        var now = System.getTimer();
+        // debounce spurious repeated press events (200 ms)
+        if (lastUpEventAt != 0 && (now - lastUpEventAt) < 200) { return; }
+        lastUpEventAt = now;
+        if (upPressAt == 0) {
+            upPressAt = now;
+        }
+    }
+
+    // Long-press UP → sub-timer (relocated here in pages mode because a short
+    // UP now means "previous page"; the ring face keeps short UP = sub-timer).
+    function onUpLongPress() as Void {
+        subTimer();
+    }
+
+    function shortUpAction() as Void {
+        if (displayMode == 1) {
+            pagePrev();
+            return;
+        }
+        subTimer();
     }
 
     // 5 short vibration pulses (100% duty, 200 ms each)
@@ -1772,7 +2694,181 @@ class VFRStopWatchView extends WatchUi.View {
         }
     }
 
+    // Start: two quick pulses
+    function doStartVibrate() as Void {
+        if (!(Attention has :vibrate)) { return; }
+        try {
+            var pattern = [
+                new Attention.VibeProfile(100, 120),
+                new Attention.VibeProfile(1,   60),
+                new Attention.VibeProfile(100, 120)
+            ];
+            Attention.vibrate(pattern);
+        } catch (ex instanceof Lang.Exception) {
+        }
+    }
+
+    // Stop: one long pulse
+    function doStopVibrate() as Void {
+        if (!(Attention has :vibrate)) { return; }
+        try {
+            var pattern = [ new Attention.VibeProfile(100, 300) ];
+            Attention.vibrate(pattern);
+        } catch (ex instanceof Lang.Exception) {
+        }
+    }
+
+    // Reset: three quick pulses
+    function doResetVibrate() as Void {
+        if (!(Attention has :vibrate)) { return; }
+        try {
+            var pattern = [
+                new Attention.VibeProfile(100, 100),
+                new Attention.VibeProfile(1,   60),
+                new Attention.VibeProfile(100, 100),
+                new Attention.VibeProfile(1,   60),
+                new Attention.VibeProfile(100, 100)
+            ];
+            Attention.vibrate(pattern);
+        } catch (ex instanceof Lang.Exception) {
+        }
+    }
+
+    // Turn point in the circuit: two medium pulses
+    function doTurnVibrate() as Void {
+        if (!(Attention has :vibrate)) { return; }
+        try {
+            var pattern = [
+                new Attention.VibeProfile(100, 200),
+                new Attention.VibeProfile(1,   100),
+                new Attention.VibeProfile(100, 200)
+            ];
+            Attention.vibrate(pattern);
+        } catch (ex instanceof Lang.Exception) {
+        }
+    }
+
+    // Level-off reached: one medium pulse
+    function doLevelVibrate() as Void {
+        if (!(Attention has :vibrate)) { return; }
+        try {
+            var pattern = [ new Attention.VibeProfile(100, 250) ];
+            Attention.vibrate(pattern);
+        } catch (ex instanceof Lang.Exception) {
+        }
+    }
+
+    // Touchdown: two long pulses
+    function doLandingVibrate() as Void {
+        if (!(Attention has :vibrate)) { return; }
+        try {
+            var pattern = [
+                new Attention.VibeProfile(100, 400),
+                new Attention.VibeProfile(1,   120),
+                new Attention.VibeProfile(100, 400)
+            ];
+            Attention.vibrate(pattern);
+        } catch (ex instanceof Lang.Exception) {
+        }
+    }
+
+    // Approaching the altitude target: two pulses
+    function doApproachVibrate() as Void {
+        if (!(Attention has :vibrate)) { return; }
+        try {
+            var pattern = [
+                new Attention.VibeProfile(100, 150),
+                new Attention.VibeProfile(1,   80),
+                new Attention.VibeProfile(100, 150)
+            ];
+            Attention.vibrate(pattern);
+        } catch (ex instanceof Lang.Exception) {
+        }
+    }
+
+    // Reached the altitude target: three medium pulses
+    function doAltAlertVibrate() as Void {
+        if (!(Attention has :vibrate)) { return; }
+        try {
+            var pattern = [
+                new Attention.VibeProfile(100, 180),
+                new Attention.VibeProfile(1,   100),
+                new Attention.VibeProfile(100, 180),
+                new Attention.VibeProfile(1,   100),
+                new Attention.VibeProfile(100, 180)
+            ];
+            Attention.vibrate(pattern);
+        } catch (ex instanceof Lang.Exception) {
+        }
+    }
+
+    // Monitor the MSL altitude against the configured alert target.
+    // Re-arms with hysteresis so repeated level-off / cross events alert again,
+    // instead of firing only once for the whole flight.
+    function checkAltitudeAlert(altFt as Float) as Void {
+        if (altAlertFt <= 0) { return; }
+        var target = altAlertFt.toFloat();
+        var lead = 200.0;
+        if (lastAltForAlert == 0.0) { lastAltForAlert = altFt; return; }
+        var prev = lastAltForAlert;
+        lastAltForAlert = altFt;
+
+        // Once well clear of the target (more than `lead` away), reset both
+        // one-shot flags so a later approach/cross alerts again.
+        var dist = altFt - target;
+        var adist = dist < 0.0 ? -dist : dist;
+        if (adist > lead) {
+            altAlertApproaching = false;
+            altAlertCrossed = false;
+        }
+
+        if (!altAlertCrossed) {
+            var crossed = (prev < target && altFt >= target) || (prev > target && altFt <= target);
+            if (crossed) {
+                altAlertCrossed = true;
+                altAlertApproaching = false;
+                doAltAlertVibrate();
+                return;
+            }
+        }
+        if (!altAlertApproaching && prev < (target - lead) && altFt >= (target - lead)) {
+            altAlertApproaching = true;
+            doApproachVibrate();
+        }
+    }
+
+    // Estimated height above field elevation (feet).
+    function getAglFt() as Float {
+        var alt = VFRAvionicsData.readAltitudeFeet();
+        if (alt == null) { return 0.0; }
+        return (alt as Number).toFloat() - fieldElevationFt.toFloat();
+    }
+
+    function circuitPhaseName() as String {
+        if (circuitPhase == 1) { return "UPWIND"; }
+        if (circuitPhase == 2) { return "XWIND"; }
+        if (circuitPhase == 3) { return "DWIND"; }
+        if (circuitPhase == 4) { return "BASE"; }
+        if (circuitPhase == 5) { return "FINAL"; }
+        return "";
+    }
+
+    // Downwind duration derived from runway length + margin, divided by groundspeed.
+    function computeDownwindMs(gsKt as Float) as Number {
+        var gsMps = gsKt.toFloat() * 0.514444;
+        if (gsMps < 5.0) { return 60000; }
+        var sec = (runwayLengthM.toFloat() + DOWNWIND_EXTRA_M.toFloat()) / gsMps;
+        if (sec < 20.0) { sec = 20.0; }
+        if (sec > 120.0) { sec = 120.0; }
+        return (sec * 1000.0).toNumber();
+    }
+
     function onHide() as Void {
+        // Keep GPS live while a flight is in progress: pushing a subview
+        // (quick info, map, trip, settings) hides the main view, and disabling
+        // location events here would freeze altitude/V-S updates and drive the
+        // timer colour back to red mid-flight.
+        if (running) { return; }
         if (Position has :enableLocationEvents) {
             Position.enableLocationEvents(Position.LOCATION_DISABLE, null);
         }
@@ -1784,6 +2880,7 @@ class VFRStopWatchView extends WatchUi.View {
 class VFRQuickInfoView extends WatchUi.View {
     private var _main    as VFRStopWatchView;
     private var _bigFont as Graphics.VectorFont? = null;
+    private var _lastRefresh as Number = 0;
     function initialize(main as VFRStopWatchView) {
         View.initialize();
         _main = main;
@@ -1886,7 +2983,9 @@ class VFRQuickInfoView extends WatchUi.View {
 
         var comms = getApp().getComms();
 
-        WatchUi.requestUpdate();
+        // Throttle to 1 Hz: an unconditional requestUpdate() here redraws at full
+        // frame rate for as long as the quick-info view is open, draining battery.
+        if ((now - _lastRefresh) >= 1000) { _lastRefresh = now; WatchUi.requestUpdate(); }
     }
 }
 
@@ -1894,6 +2993,7 @@ class VFRQuickInfoView extends WatchUi.View {
 class VFRQuickInfoHdgGsView extends WatchUi.View {
     private var _main as VFRStopWatchView;
     private var _bigFont as Graphics.VectorFont? = null;
+    private var _lastRefresh as Number = 0;
     function initialize(main as VFRStopWatchView) {
         View.initialize();
         _main = main;
@@ -1966,7 +3066,8 @@ class VFRQuickInfoHdgGsView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(cx, cy + 65, Graphics.FONT_SMALL, "GS", jc);
 
-        WatchUi.requestUpdate();
+        // Throttle to 1 Hz to avoid a continuous redraw loop.
+        if ((now - _lastRefresh) >= 1000) { _lastRefresh = now; WatchUi.requestUpdate(); }
     }
 }
 

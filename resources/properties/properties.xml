@@ -23,12 +23,26 @@
     <!-- Altitude source: 0=Barometric (default)  1=GPS -->
     <property id="AltitudeSource" type="number">0</property>
 
+    <!-- Circuit practice: 0=off, 1=on. Field elevation 0=auto. -->
+    <property id="CircuitPractice" type="number">0</property>
+    <property id="FieldElevationFt" type="number">0</property>
+    <property id="RunwayLengthM" type="number">2405</property>
+    <property id="AltitudeAlertFt" type="number">0</property>
+
     <!-- Bezel rendering controls. Offsets are pixels relative to the text radius. -->
-    <property id="BezelUseAtlas" type="number">0</property>
     <property id="BezelFontScale" type="number">100</property>
     <property id="BezelContrast" type="number">100</property>
-    <property id="BezelOffsetHDG" type="number">0</property>
-    <property id="BezelOffsetGS" type="number">0</property>
-    <property id="BezelOffsetALT" type="number">10</property>
-    <property id="BezelOffsetQNH" type="number">10</property>
+
+    <!-- Auto backlight: 0=off (default), 1=always while flying, 2=night-only -->
+    <property id="AutoBacklight" type="number">0</property>
+    <!-- Night-only window (hours, 0-23). Default 20:00-07:00. -->
+    <property id="NightStartHour" type="number">20</property>
+    <property id="NightEndHour" type="number">7</property>
+
+    <!-- Display layout: 0 = bezel ring with four fields (default),
+         1 = "big fields": the timer plus one large value, cycled with a short
+         DOWN press. Aimed at legibility on the small round screen. -->
+    <property id="DisplayMode" type="number">1</property>
+    <!-- Seconds per page on the paged face; 0 = manual only (UP/DOWN presses) -->
+    <property id="PageCycleSec" type="number">0</property>
 </properties>

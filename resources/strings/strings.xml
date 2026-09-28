@@ -7,7 +7,8 @@
     <string id="menu_label_2">Reset</string>
     <string id="menu_label_3">Settings</string>
     <string id="menu_label_4">Flight Plan</string>
-
+    <string id="menu_label_5">Map</string>
+    <string id="menu_label_6">Weather</string>
     <!-- Settings labels -->
     <string id="SettingGpsModeTitle">GPS Mode</string>
     <string id="SettingGpsModeGps">GPS</string>
@@ -22,11 +23,43 @@
     <string id="SettingAltitudeSourceTitle">Altitude Source</string>
     <string id="SettingAltitudeSourceBaro">Barometric</string>
     <string id="SettingAltitudeSourceGps">GPS</string>
-    <string id="SettingBezelAtlasTitle">Bezel Renderer</string>
+    <string id="SettingCircuitTitle">Circuit Practice</string>
+    <string id="SettingFieldElevTitle">Field Elev (ft, 0=auto)</string>
+    <string id="SettingRunwayTitle">Runway (m)</string>
+    <string id="SettingAltAlertTitle">Altitude Alert (ft, 0=off)</string>
     <string id="SettingBezelFontScaleTitle">Bezel Font (%)</string>
     <string id="SettingBezelContrastTitle">Bezel Contrast (%)</string>
-    <string id="SettingBezelOffsetHDGTitle">HDG Offset (px)</string>
-    <string id="SettingBezelOffsetGSTitle">GS Offset (px)</string>
-    <string id="SettingBezelOffsetALTTitle">ALT Offset (px)</string>
-    <string id="SettingBezelOffsetQNHTitle">QNH Offset (px)</string>
+
+    <!-- Display layout -->
+    <string id="SettingDisplayTitle">Display</string>
+    <string id="SettingDisplayRing">Bezel ring</string>
+    <string id="SettingDisplayBig">Pages (big)</string>
+    <string id="SettingPageCycleTitle">Auto Page Cycle (s, 0=off)</string>
+
+    <!-- FIT developer field labels (Garmin Connect activity summary) -->
+    <string id="fit_obt_label">OBT</string>
+    <string id="fit_ibt_label">IBT</string>
+    <string id="fit_block_label">Block Time</string>
+    <string id="fit_ldg_label">Landings</string>
+    <string id="fit_dist_label">Distance</string>
+    <string id="fit_malt_label">Max Altitude</string>
+    <string id="fit_ags_label">Avg Ground Speed</string>
+    <string id="fit_maxg_label">Max G</string>
+    <string id="fit_mbank_label">Max Bank</string>
+    <string id="fit_mpitch_label">Max Pitch</string>
+    <string id="fit_g_label">G-Force</string>
+    <string id="fit_bank_label">Bank Angle</string>
+    <string id="fit_pitch_label">Pitch (flight path)</string>
+    <!-- FIT chart titles -->
+    <string id="fit_chart_g">G-Force</string>
+    <string id="fit_chart_bank">Bank angle</string>
+    <string id="fit_chart_pitch">Pitch angle</string>
+    <!-- FIT units -->
+    <string id="fit_unit_none"></string>
+    <string id="fit_unit_s">s</string>
+    <string id="fit_unit_nm">nm</string>
+    <string id="fit_unit_ft">ft</string>
+    <string id="fit_unit_kt">kt</string>
+    <string id="fit_unit_g">G</string>
+    <string id="fit_unit_deg">deg</string>
 </strings>

@@ -7,7 +7,6 @@ import Toybox.WatchUi;
 
 class VFRSummaryView extends WatchUi.View {
     private var _main as VFRStopWatchView;
-    private var _bigFont as Graphics.VectorFont? = null;
 
     function initialize(mainView as VFRStopWatchView) {
         View.initialize();
@@ -35,6 +34,25 @@ class VFRSummaryView extends WatchUi.View {
         return intPart.toString() + "." + decPart.toString() + " " + unit;
     }
 
+    // Draw a centred label/value row: label (blue, right-aligned) and value
+    // (white, left-aligned), with the whole pair centred horizontally on cx.
+    private function drawStatRow(dc as Dc, cx as Number, y as Number,
+            label as String, value as String,
+            lChar as Number, vChar as Number, gap as Number) as Void {
+        var lw = label.length() * lChar;
+        var vw = value.length() * vChar;
+        var totalW = lw + gap + vw;
+        var labelRightX = cx - (totalW / 2).toNumber() + lw;
+        var valueLeftX  = labelRightX + gap;
+
+        dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(labelRightX, y, Graphics.FONT_SMALL, label,
+            Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(valueLeftX, y, Graphics.FONT_MEDIUM, value,
+            Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
+    }
+
     function onUpdate(dc as Dc) as Void {
         var now = System.getTimer();
         try { var c = getApp().getComms(); if (c != null) { c.tick(now); } } catch (ce) {}
@@ -46,8 +64,8 @@ class VFRSummaryView extends WatchUi.View {
 
         _main.drawBezelBackground(dc);
 
-        // Black inner circle
-        var sepR = ((minWh.toFloat() / 2.0) - 27.0).toNumber();
+        // Black inner circle (leave the separator ring drawn by the bezel visible)
+        var sepR = ((minWh.toFloat() / 2.0) - 30.0).toNumber();
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.fillCircle(cx, cy, sepR);
 
@@ -76,55 +94,66 @@ class VFRSummaryView extends WatchUi.View {
         if (nmDec < 0) { nmDec = 0; }
         var distStr = nmInt.toString() + "." + nmDec.toString() + "NM";
 
-        var altStr = "---FT";
+        var altStr = "---";
         if (_main.maxAltitudeM != null && (_main.maxAltitudeM as Float) > 0.0) {
             var altFt = ((_main.maxAltitudeM as Float) * 3.28084).toNumber();
-            altStr = altFt.toString() + "FT";
+            altStr = altFt.toString();
         }
 
-        var gsStr = "--KT";
+        var ldgStr = (_main.landings as Number).toString();
+
+        // Block time (H:MM:SS, or MM:SS under an hour)
+        var blockMs = (_main.elapsed as Number);
+        var blockSec = blockMs / 1000;
+        var bh = blockSec / 3600;
+        var bm = (blockSec % 3600) / 60;
+        var bs = blockSec % 60;
+        var timeStr = (bh >= 1)
+            ? bh.toString() + ":" + (bm < 10 ? "0" : "") + bm.toString() + ":" + (bs < 10 ? "0" : "") + bs.toString()
+            : bm.toString() + ":" + (bs < 10 ? "0" : "") + bs.toString();
+
+        // Peak load factor (only when the accelerometer produced data)
+        var gStr = "--G";
         try {
-            if ((_main as VFRStopWatchView).gsSamples > 0) {
-                var avg = (_main as VFRStopWatchView).gsSumKt / (_main as VFRStopWatchView).gsSamples.toFloat();
-                gsStr = Math.round(avg).toNumber().toString() + "KT";
+            if ((_main.maxG as Float) > 0.0) {
+                var gv = _main.maxG as Float;
+                var gi = gv.toNumber();
+                var gd = ((gv - gi.toFloat()) * 100.0).toNumber();
+                if (gd < 0) { gd = 0; }
+                gStr = gi.toString() + "." + (gd < 10 ? "0" : "") + gd.toString() + "G";
             }
-        } catch (ex) { }
+        } catch (gex) { }
+
+        // --- Title ---
+        var jc = Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER;
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(cx, 42, Graphics.FONT_XTINY, "TRIP SUMMARY", jc);
 
         // --- Layout constants ---
-        // Each row: label right-justified at cx-6 (blue), value left-justified at cx+6 (white)
-        // This pair is symmetric about cx → visually centered on screen
-        var lblX  = cx - 6;
-        var valX  = cx + 6;
-        var jrvc  = Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER;
-        var jlvc  = Graphics.TEXT_JUSTIFY_LEFT  | Graphics.TEXT_JUSTIFY_VCENTER;
-        var lFont = Graphics.FONT_SMALL;   // blue labels
-        var vFont = Graphics.FONT_MEDIUM;  // white values
+        // Seven rows inside the black inner circle (R ≈ 100 px). Row offsets and
+        // label/value lengths were measured (Dc.getTextDimensions against the
+        // circle's chord 2·sqrt(R²−dy²)): the widest rows sit near the middle,
+        // where the chord is widest, so nothing is clipped by the round bezel.
+        // Measured: OBT 147 px, IBT 138, TIME 163, DIST 164, LDG 90, ALT 117,
+        // G 105 — chords: 157 @−62, 198 @−14, 187 @+36, 125 @+78.
+        // "ALT" shows feet only (the old "M.ALT 4969FT" row was 180 px, wider
+        // than the chord at any usable row height).
+        var lChar = 10;   // FONT_SMALL label glyph width
+        var vChar = 13;   // FONT_MEDIUM value glyph width
+        var gap   = 18;   // gutter between label and value
 
-        // 3 rows above divider (OBT / IBT / DIST.), pitch = 28px
-        var pitch = 28;
-        var divY  = cy + 12;
-        var row3Y = divY - 14;           // DIST.
-        var row2Y = row3Y - pitch;       // IBT
-        var row1Y = row2Y - pitch;       // OBT
+        var rowY0 = cy - 62;   // OBT
+        var rowY1 = cy - 38;   // IBT
+        var rowY2 = cy - 14;   // TIME
+        var divY  = cy - 2;    // divider between the time block and the rest
+        var rowY3 = cy + 12;   // DIST
+        var rowY4 = cy + 36;   // LDG
+        var rowY5 = cy + 58;   // ALT
+        var rowY6 = cy + 78;   // G (peak)
 
-        // 2 rows below divider (M.ALT / A.GS), pitch = 30px
-        var row4Y = divY + 22;           // M.ALT
-        var row5Y = row4Y + 30;          // A.GS
-
-        dc.setColor(Graphics.COLOR_BLUE,  Graphics.COLOR_TRANSPARENT);
-        dc.drawText(lblX, row1Y, lFont, "OBT", jrvc);
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(valX, row1Y, vFont, startStr, jlvc);
-
-        dc.setColor(Graphics.COLOR_BLUE,  Graphics.COLOR_TRANSPARENT);
-        dc.drawText(lblX, row2Y, lFont, "IBT", jrvc);
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(valX, row2Y, vFont, endStr, jlvc);
-
-        dc.setColor(Graphics.COLOR_BLUE,  Graphics.COLOR_TRANSPARENT);
-        dc.drawText(lblX, row3Y, lFont, "DIST.", jrvc);
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(valX, row3Y, vFont, distStr, jlvc);
+        drawStatRow(dc, cx, rowY0, "OBT",   startStr, lChar, vChar, gap);
+        drawStatRow(dc, cx, rowY1, "IBT",   endStr,   lChar, vChar, gap);
+        drawStatRow(dc, cx, rowY2, "TIME",  timeStr,  lChar, vChar, gap);
 
         // Divider
         dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
@@ -132,15 +161,10 @@ class VFRSummaryView extends WatchUi.View {
         dc.drawLine(cx - sepR + 8, divY, cx + sepR - 8, divY);
         dc.setPenWidth(1);
 
-        dc.setColor(Graphics.COLOR_BLUE,  Graphics.COLOR_TRANSPARENT);
-        dc.drawText(lblX, row4Y, lFont, "M.ALT", jrvc);
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(valX, row4Y, vFont, altStr, jlvc);
-
-        dc.setColor(Graphics.COLOR_BLUE,  Graphics.COLOR_TRANSPARENT);
-        dc.drawText(lblX, row5Y, lFont, "A.GS", jrvc);
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(valX, row5Y, vFont, gsStr, jlvc);
+        drawStatRow(dc, cx, rowY3, "DIST",  distStr, lChar, vChar, gap);
+        drawStatRow(dc, cx, rowY4, "LDG",   ldgStr,  lChar, vChar, gap);
+        drawStatRow(dc, cx, rowY5, "ALT",   altStr,  lChar, vChar, gap);
+        drawStatRow(dc, cx, rowY6, "G",     gStr,    lChar, vChar, gap);
     }
 }
 

@@ -19,6 +19,8 @@ import Toybox.WatchUi;
 
 class VFRTripView extends WatchUi.View {
 
+    private var _lastRefresh as Number = 0;
+
     function initialize() {
         View.initialize();
     }
@@ -122,17 +124,18 @@ class VFRTripView extends WatchUi.View {
 
         // ── Prev / Next waypoint arrows ───────────────────────────────────────
         if (trip.activeIdx > 0) {
-            dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+            dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
             dc.drawText(14, cy, Graphics.FONT_SMALL, "<",
                 Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
         }
         if (trip.activeIdx < trip.count - 1) {
-            dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+            dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
             dc.drawText(w - 14, cy, Graphics.FONT_SMALL, ">",
                 Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER);
         }
 
-        // Keep refreshing while this view is shown
-        WatchUi.requestUpdate();
+        // Keep refreshing while this view is shown, but throttle to 1 Hz to
+        // avoid a continuous redraw loop draining the battery.
+        if ((now - _lastRefresh) >= 1000) { _lastRefresh = now; WatchUi.requestUpdate(); }
     }
 }

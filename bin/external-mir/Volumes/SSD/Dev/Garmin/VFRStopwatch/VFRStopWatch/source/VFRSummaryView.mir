@@ -22,1459 +22,1684 @@ class VFRSummaryView extends WatchUi.View {
     [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 9; @position = 16; @symbol_vardef = [_main,9,16,21]; @symbol_type<0> = [VFRStopWatchView,9,25,41]; ]
     private
     var _main as VFRStopWatchView;
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 10; @position = 16; @symbol_vardef = [_bigFont,10,16,24]; @symbol_type<0> = [Graphics,10,28,36]; @symbol_type<1> = [VectorFont,10,37,47]; ]
-    private
-    var _bigFont as Graphics.VectorFont or Null = null;
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 12; @symbol_functiondef = [initialize,12,13,23]; @symbol_param<0> = [mainView,12,24,32]; @symbol_param<0>_type<0> = [VFRStopWatchView,12,36,52]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 11; @symbol_functiondef = [initialize,11,13,23]; @symbol_param<0> = [mainView,11,24,32]; @symbol_param<0>_type<0> = [VFRStopWatchView,11,36,52]; ]
     function initialize(mainView as VFRStopWatchView) as Void {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_12_54_15_4_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 13 8 ]
-        symbol [ View %tmp.2 13 8 12 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_11_54_14_4_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 12 8 ]
+        symbol [ View %tmp.2 12 8 12 ];
         %tmp.2 = getv ? :View;
-        symbol [ initialize %tmp.3 13 13 23 ];
+        symbol [ initialize %tmp.3 12 13 23 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 14 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 13 8 ]
         %tmp.4 = lgetv %mainView;
-        symbol [ mainView %tmp.4 14 16 24 ];
-        symbol [ _main ? 14 8 13 ];
+        symbol [ mainView %tmp.4 13 16 24 ];
+        symbol [ _main ? 13 8 13 ];
         putv self :_main %tmp.4;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_12_54_15_4_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_11_54_14_4_stop:
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 17; @symbol_functiondef = [onLayout,17,13,21]; @symbol_param<0> = [dc,17,22,24]; @symbol_param<0>_type<0> = [Dc,17,28,30]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 16; @symbol_functiondef = [onLayout,16,13,21]; @symbol_param<0> = [dc,16,22,24]; @symbol_param<0>_type<0> = [Dc,16,28,30]; ]
     function onLayout(dc as Dc) as Void {
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 20; @symbol_functiondef = [fmtUtc,20,21,27]; @symbol_param<0> = [moment,20,28,34]; @symbol_param<0>_type<0> = [Time,20,38,42]; @symbol_param<0>_type<1> = [Moment,20,43,49]; @symbol_return<0> = [String,20,54,60]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 19; @symbol_functiondef = [fmtUtc,19,21,27]; @symbol_param<0> = [moment,19,28,34]; @symbol_param<0>_type<0> = [Time,19,38,42]; @symbol_param<0>_type<1> = [Moment,19,43,49]; @symbol_return<0> = [String,19,54,60]; ]
     private
     function fmtUtc(moment as Time.Moment) as String {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_20_61_27_4_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 21 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_20_61_27_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_20_61_27_4_stop" ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 20 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_stop" ]
         %info.1 = local;
-        symbol [ info %info.1 21 12 16 ];
-        symbol [ Gregorian %tmp.1 21 19 28 ];
+        symbol [ info %info.1 20 12 16 ];
+        symbol [ Gregorian %tmp.1 20 19 28 ];
         %tmp.1 = getm $.Toybox.Time.Gregorian;
-        symbol [ utcInfo %tmp.2 21 29 36 ];
+        symbol [ utcInfo %tmp.2 20 29 36 ];
         %tmp.2 = getv function %tmp.1 :utcInfo;
         %tmp.3 = lgetv %moment;
-        symbol [ moment %tmp.3 21 37 43 ];
-        symbol [ Time %tmp.4 21 45 49 ];
+        symbol [ moment %tmp.3 20 37 43 ];
+        symbol [ Time %tmp.4 20 45 49 ];
         %tmp.4 = getm $.Toybox.Time;
-        symbol [ FORMAT_SHORT %tmp.5 21 50 62 ];
+        symbol [ FORMAT_SHORT %tmp.5 20 50 62 ];
         %tmp.5 = getv %tmp.4 :FORMAT_SHORT;
         %tmp.6 = invoke %tmp.1 %tmp.2(%tmp.3, %tmp.5);
         lputv %info.1 %tmp.6;
-        symbol [ info %info.1 21 12 16 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 22 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_20_61_27_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_20_61_27_4_stop" ]
+        symbol [ info %info.1 20 12 16 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 21 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_stop" ]
         %h.2 = local;
-        symbol [ h %h.2 22 12 13 ];
+        symbol [ h %h.2 21 12 13 ];
         %tmp.7 = lgetv %info.1;
-        symbol [ info %tmp.7 22 16 20 ];
-        symbol [ hour %tmp.8 22 21 25 ];
+        symbol [ info %tmp.7 21 16 20 ];
+        symbol [ hour %tmp.8 21 21 25 ];
         %tmp.8 = getv %tmp.7 :hour;
         lputv %h.2 %tmp.8;
-        symbol [ h %h.2 22 12 13 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 23 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_20_61_27_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_20_61_27_4_stop" ]
+        symbol [ h %h.2 21 12 13 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 22 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_stop" ]
         %m.3 = local;
-        symbol [ m %m.3 23 12 13 ];
+        symbol [ m %m.3 22 12 13 ];
         %tmp.9 = lgetv %info.1;
-        symbol [ info %tmp.9 23 16 20 ];
-        symbol [ min %tmp.10 23 21 24 ];
+        symbol [ info %tmp.9 22 16 20 ];
+        symbol [ min %tmp.10 22 21 24 ];
         %tmp.10 = getv %tmp.9 :min;
         lputv %m.3 %tmp.10;
-        symbol [ m %m.3 23 12 13 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 24 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_20_61_27_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_20_61_27_4_stop" ]
+        symbol [ m %m.3 22 12 13 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 23 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_stop" ]
         %hStr.4 = local;
-        symbol [ hStr %hStr.4 24 12 16 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_begin:
+        symbol [ hStr %hStr.4 23 12 16 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_begin:
         %tmp.11 = lgetv %h.2;
-        symbol [ h %tmp.11 24 19 20 ];
+        symbol [ h %tmp.11 23 19 20 ];
         %tmp.12 = 10;
         %tmp.13 = lt %tmp.11 %tmp.12;
-        bf %tmp.13 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_else_false;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_true:
+        bf %tmp.13 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_else_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_true:
         %tmp.14 = "0";
         %tmp.15 = lgetv %h.2;
-        symbol [ h %tmp.15 24 34 35 ];
-        symbol [ toString %tmp.16 24 36 44 ];
+        symbol [ h %tmp.15 23 34 35 ];
+        symbol [ toString %tmp.16 23 36 44 ];
         %tmp.16 = getv function %tmp.15 :toString;
         %tmp.17 = invoke %tmp.15 %tmp.16();
         %tmp.18 = add %tmp.14 %tmp.17;
         push %tmp.18;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_else_false:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_else_false:
         %tmp.19 = lgetv %h.2;
-        symbol [ h %tmp.19 24 49 50 ];
-        symbol [ toString %tmp.20 24 51 59 ];
+        symbol [ h %tmp.19 23 49 50 ];
+        symbol [ toString %tmp.20 23 51 59 ];
         %tmp.20 = getv function %tmp.19 :toString;
         %tmp.21 = invoke %tmp.19 %tmp.20();
         push %tmp.21;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_end:
-        %tmp.22 = phi [%tmp.13 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_begin] [%tmp.18 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_true] [%tmp.21 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_else_false] [%tmp.22 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_end];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_end:
+        %tmp.22 = phi [%tmp.13 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_begin] [%tmp.18 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_true] [%tmp.21 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_else_false] [%tmp.22 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_23_19_23_60_end];
         lputv %hStr.4 %tmp.22;
-        symbol [ hStr %hStr.4 24 12 16 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 25 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_20_61_27_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_20_61_27_4_stop" ]
+        symbol [ hStr %hStr.4 23 12 16 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 24 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_stop" ]
         %mStr.5 = local;
-        symbol [ mStr %mStr.5 25 12 16 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_60_begin:
+        symbol [ mStr %mStr.5 24 12 16 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_begin:
         %tmp.23 = lgetv %m.3;
-        symbol [ m %tmp.23 25 19 20 ];
+        symbol [ m %tmp.23 24 19 20 ];
         %tmp.24 = 10;
         %tmp.25 = lt %tmp.23 %tmp.24;
-        bf %tmp.25 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_60_else_false;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_60_true:
+        bf %tmp.25 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_else_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_true:
         %tmp.26 = "0";
         %tmp.27 = lgetv %m.3;
-        symbol [ m %tmp.27 25 34 35 ];
-        symbol [ toString %tmp.28 25 36 44 ];
+        symbol [ m %tmp.27 24 34 35 ];
+        symbol [ toString %tmp.28 24 36 44 ];
         %tmp.28 = getv function %tmp.27 :toString;
         %tmp.29 = invoke %tmp.27 %tmp.28();
         %tmp.30 = add %tmp.26 %tmp.29;
         push %tmp.30;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_60_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_60_else_false:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_else_false:
         %tmp.31 = lgetv %m.3;
-        symbol [ m %tmp.31 25 49 50 ];
-        symbol [ toString %tmp.32 25 51 59 ];
+        symbol [ m %tmp.31 24 49 50 ];
+        symbol [ toString %tmp.32 24 51 59 ];
         %tmp.32 = getv function %tmp.31 :toString;
         %tmp.33 = invoke %tmp.31 %tmp.32();
         push %tmp.33;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_60_end:
-        %tmp.34 = phi [%tmp.25 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_60_begin] [%tmp.30 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_60_true] [%tmp.33 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_60_else_false] [%tmp.34 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_25_19_25_60_end];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_end:
+        %tmp.34 = phi [%tmp.25 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_begin] [%tmp.30 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_true] [%tmp.33 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_else_false] [%tmp.34 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_24_19_24_60_end];
         lputv %mStr.5 %tmp.34;
-        symbol [ mStr %mStr.5 25 12 16 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 26 8 ]
+        symbol [ mStr %mStr.5 24 12 16 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 25 8 ]
         %tmp.35 = lgetv %hStr.4;
-        symbol [ hStr %tmp.35 26 15 19 ];
+        symbol [ hStr %tmp.35 25 15 19 ];
         %tmp.36 = ":";
         %tmp.37 = add %tmp.35 %tmp.36;
         %tmp.38 = lgetv %mStr.5;
-        symbol [ mStr %tmp.38 26 28 32 ];
+        symbol [ mStr %tmp.38 25 28 32 ];
         %tmp.39 = add %tmp.37 %tmp.38;
         %tmp.40 = "Z";
         %tmp.41 = add %tmp.39 %tmp.40;
         ret %tmp.41;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_20_61_27_4_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_19_61_26_4_stop:
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 30; @symbol_functiondef = [fmtDist,30,21,28]; @symbol_param<0> = [metres,30,29,35]; @symbol_param<0>_type<0> = [Float,30,39,44]; @symbol_param<1> = [divisor,30,46,53]; @symbol_param<1>_type<0> = [Float,30,57,62]; @symbol_param<2> = [unit,30,64,68]; @symbol_param<2>_type<0> = [String,30,72,78]; @symbol_return<0> = [String,30,83,89]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 29; @symbol_functiondef = [fmtDist,29,21,28]; @symbol_param<0> = [metres,29,29,35]; @symbol_param<0>_type<0> = [Float,29,39,44]; @symbol_param<1> = [divisor,29,46,53]; @symbol_param<1>_type<0> = [Float,29,57,62]; @symbol_param<2> = [unit,29,64,68]; @symbol_param<2>_type<0> = [String,29,72,78]; @symbol_return<0> = [String,29,83,89]; ]
     private
     function fmtDist(metres as Float, divisor as Float, unit as String) as String {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_30_90_36_4_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 31 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_30_90_36_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_30_90_36_4_stop" ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_90_35_4_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 30 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_90_35_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_90_35_4_stop" ]
         %val.1 = local;
-        symbol [ val %val.1 31 12 15 ];
+        symbol [ val %val.1 30 12 15 ];
         %tmp.1 = lgetv %metres;
-        symbol [ metres %tmp.1 31 18 24 ];
+        symbol [ metres %tmp.1 30 18 24 ];
         %tmp.2 = lgetv %divisor;
-        symbol [ divisor %tmp.2 31 27 34 ];
+        symbol [ divisor %tmp.2 30 27 34 ];
         %tmp.3 = div %tmp.1 %tmp.2;
         lputv %val.1 %tmp.3;
-        symbol [ val %val.1 31 12 15 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 32 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_30_90_36_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_30_90_36_4_stop" ]
+        symbol [ val %val.1 30 12 15 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 31 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_90_35_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_90_35_4_stop" ]
         %intPart.2 = local;
-        symbol [ intPart %intPart.2 32 12 19 ];
+        symbol [ intPart %intPart.2 31 12 19 ];
         %tmp.4 = lgetv %val.1;
-        symbol [ val %tmp.4 32 22 25 ];
-        symbol [ toNumber %tmp.5 32 26 34 ];
+        symbol [ val %tmp.4 31 22 25 ];
+        symbol [ toNumber %tmp.5 31 26 34 ];
         %tmp.5 = getv function %tmp.4 :toNumber;
         %tmp.6 = invoke %tmp.4 %tmp.5();
         lputv %intPart.2 %tmp.6;
-        symbol [ intPart %intPart.2 32 12 19 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 33 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_30_90_36_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_30_90_36_4_stop" ]
+        symbol [ intPart %intPart.2 31 12 19 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 32 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_90_35_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_90_35_4_stop" ]
         %decPart.3 = local;
-        symbol [ decPart %decPart.3 33 12 19 ];
+        symbol [ decPart %decPart.3 32 12 19 ];
         %tmp.7 = lgetv %val.1;
-        symbol [ val %tmp.7 33 24 27 ];
+        symbol [ val %tmp.7 32 24 27 ];
         %tmp.8 = lgetv %intPart.2;
-        symbol [ intPart %tmp.8 33 30 37 ];
-        symbol [ toFloat %tmp.9 33 38 45 ];
+        symbol [ intPart %tmp.8 32 30 37 ];
+        symbol [ toFloat %tmp.9 32 38 45 ];
         %tmp.9 = getv function %tmp.8 :toFloat;
         %tmp.10 = invoke %tmp.8 %tmp.9();
         %tmp.11 = sub %tmp.7 %tmp.10;
         %tmp.12 = 10.0;
         %tmp.13 = mul %tmp.11 %tmp.12;
-        symbol [ toNumber %tmp.14 33 57 65 ];
+        symbol [ toNumber %tmp.14 32 57 65 ];
         %tmp.14 = getv function %tmp.13 :toNumber;
         %tmp.15 = invoke %tmp.13 %tmp.14();
         lputv %decPart.3 %tmp.15;
-        symbol [ decPart %decPart.3 33 12 19 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 34 8 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_34_8_34_40_if_stmt:
+        symbol [ decPart %decPart.3 32 12 19 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 33 8 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_33_8_33_40_if_stmt:
         %tmp.16 = lgetv %decPart.3;
-        symbol [ decPart %tmp.16 34 12 19 ];
+        symbol [ decPart %tmp.16 33 12 19 ];
         %tmp.17 = 0;
         %tmp.18 = lt %tmp.16 %tmp.17;
-        bf %tmp.18 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_34_8_34_40_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_34_8_34_40_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_34_25_34_40_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 34 27 ]
+        bf %tmp.18 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_33_8_33_40_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_33_8_33_40_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_33_25_33_40_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 33 27 ]
         %tmp.19 = 0;
         lputv %decPart.3 %tmp.19;
-        symbol [ decPart %decPart.3 34 27 34 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_34_25_34_40_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_34_8_34_40_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_34_8_34_40_if_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 35 8 ]
+        symbol [ decPart %decPart.3 33 27 34 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_33_25_33_40_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_33_8_33_40_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_33_8_33_40_if_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 34 8 ]
         %tmp.20 = lgetv %intPart.2;
-        symbol [ intPart %tmp.20 35 15 22 ];
-        symbol [ toString %tmp.21 35 23 31 ];
+        symbol [ intPart %tmp.20 34 15 22 ];
+        symbol [ toString %tmp.21 34 23 31 ];
         %tmp.21 = getv function %tmp.20 :toString;
         %tmp.22 = invoke %tmp.20 %tmp.21();
         %tmp.23 = ".";
         %tmp.24 = add %tmp.22 %tmp.23;
         %tmp.25 = lgetv %decPart.3;
-        symbol [ decPart %tmp.25 35 42 49 ];
-        symbol [ toString %tmp.26 35 50 58 ];
+        symbol [ decPart %tmp.25 34 42 49 ];
+        symbol [ toString %tmp.26 34 50 58 ];
         %tmp.26 = getv function %tmp.25 :toString;
         %tmp.27 = invoke %tmp.25 %tmp.26();
         %tmp.28 = add %tmp.24 %tmp.27;
         %tmp.29 = " ";
         %tmp.30 = add %tmp.28 %tmp.29;
         %tmp.31 = lgetv %unit;
-        symbol [ unit %tmp.31 35 69 73 ];
+        symbol [ unit %tmp.31 34 69 73 ];
         %tmp.32 = add %tmp.30 %tmp.31;
         ret %tmp.32;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_30_90_36_4_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_29_90_35_4_stop:
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 38; @symbol_functiondef = [onUpdate,38,13,21]; @symbol_param<0> = [dc,38,22,24]; @symbol_param<0>_type<0> = [Dc,38,28,30]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 39; @symbol_functiondef = [drawStatRow,39,21,32]; @symbol_param<0> = [dc,39,33,35]; @symbol_param<0>_type<0> = [Dc,39,39,41]; @symbol_param<1> = [cx,39,43,45]; @symbol_param<1>_type<0> = [Number,39,49,55]; @symbol_param<2> = [y,39,57,58]; @symbol_param<2>_type<0> = [Number,39,62,68]; @symbol_param<3> = [label,40,12,17]; @symbol_param<3>_type<0> = [String,40,21,27]; @symbol_param<4> = [value,40,29,34]; @symbol_param<4>_type<0> = [String,40,38,44]; @symbol_param<5> = [lChar,41,12,17]; @symbol_param<5>_type<0> = [Number,41,21,27]; @symbol_param<6> = [vChar,41,29,34]; @symbol_param<6>_type<0> = [Number,41,38,44]; @symbol_param<7> = [gap,41,46,49]; @symbol_param<7>_type<0> = [Number,41,53,59]; ]
+    private
+    function drawStatRow(dc as Dc, cx as Number, y as Number, label as String, value as String, lChar as Number, vChar as Number, gap as Number) as Void {
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_41_69_54_4_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 42 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_41_69_54_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_41_69_54_4_stop" ]
+        %lw.1 = local;
+        symbol [ lw %lw.1 42 12 14 ];
+        %tmp.1 = lgetv %label;
+        symbol [ label %tmp.1 42 17 22 ];
+        symbol [ length %tmp.2 42 23 29 ];
+        %tmp.2 = getv function %tmp.1 :length;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        %tmp.4 = lgetv %lChar;
+        symbol [ lChar %tmp.4 42 34 39 ];
+        %tmp.5 = mul %tmp.3 %tmp.4;
+        lputv %lw.1 %tmp.5;
+        symbol [ lw %lw.1 42 12 14 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 43 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_41_69_54_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_41_69_54_4_stop" ]
+        %vw.2 = local;
+        symbol [ vw %vw.2 43 12 14 ];
+        %tmp.6 = lgetv %value;
+        symbol [ value %tmp.6 43 17 22 ];
+        symbol [ length %tmp.7 43 23 29 ];
+        %tmp.7 = getv function %tmp.6 :length;
+        %tmp.8 = invoke %tmp.6 %tmp.7();
+        %tmp.9 = lgetv %vChar;
+        symbol [ vChar %tmp.9 43 34 39 ];
+        %tmp.10 = mul %tmp.8 %tmp.9;
+        lputv %vw.2 %tmp.10;
+        symbol [ vw %vw.2 43 12 14 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 44 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_41_69_54_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_41_69_54_4_stop" ]
+        %totalW.3 = local;
+        symbol [ totalW %totalW.3 44 12 18 ];
+        %tmp.11 = lgetv %lw.1;
+        symbol [ lw %tmp.11 44 21 23 ];
+        %tmp.12 = lgetv %gap;
+        symbol [ gap %tmp.12 44 26 29 ];
+        %tmp.13 = add %tmp.11 %tmp.12;
+        %tmp.14 = lgetv %vw.2;
+        symbol [ vw %tmp.14 44 32 34 ];
+        %tmp.15 = add %tmp.13 %tmp.14;
+        lputv %totalW.3 %tmp.15;
+        symbol [ totalW %totalW.3 44 12 18 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 45 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_41_69_54_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_41_69_54_4_stop" ]
+        %labelRightX.4 = local;
+        symbol [ labelRightX %labelRightX.4 45 12 23 ];
+        %tmp.16 = lgetv %cx;
+        symbol [ cx %tmp.16 45 26 28 ];
+        %tmp.17 = lgetv %totalW.3;
+        symbol [ totalW %tmp.17 45 32 38 ];
+        %tmp.18 = 2;
+        %tmp.19 = div %tmp.17 %tmp.18;
+        symbol [ toNumber %tmp.20 45 44 52 ];
+        %tmp.20 = getv function %tmp.19 :toNumber;
+        %tmp.21 = invoke %tmp.19 %tmp.20();
+        %tmp.22 = sub %tmp.16 %tmp.21;
+        %tmp.23 = lgetv %lw.1;
+        symbol [ lw %tmp.23 45 57 59 ];
+        %tmp.24 = add %tmp.22 %tmp.23;
+        lputv %labelRightX.4 %tmp.24;
+        symbol [ labelRightX %labelRightX.4 45 12 23 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 46 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_41_69_54_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_41_69_54_4_stop" ]
+        %valueLeftX.5 = local;
+        symbol [ valueLeftX %valueLeftX.5 46 12 22 ];
+        %tmp.25 = lgetv %labelRightX.4;
+        symbol [ labelRightX %tmp.25 46 26 37 ];
+        %tmp.26 = lgetv %gap;
+        symbol [ gap %tmp.26 46 40 43 ];
+        %tmp.27 = add %tmp.25 %tmp.26;
+        lputv %valueLeftX.5 %tmp.27;
+        symbol [ valueLeftX %valueLeftX.5 46 12 22 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 48 8 ]
+        %tmp.28 = lgetv %dc;
+        symbol [ dc %tmp.28 48 8 10 ];
+        symbol [ setColor %tmp.29 48 11 19 ];
+        %tmp.29 = getv function %tmp.28 :setColor;
+        symbol [ Graphics %tmp.30 48 20 28 ];
+        %tmp.30 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLUE %tmp.31 48 29 39 ];
+        %tmp.31 = getv %tmp.30 :COLOR_BLUE;
+        symbol [ Graphics %tmp.32 48 41 49 ];
+        %tmp.32 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.33 48 50 67 ];
+        %tmp.33 = getv %tmp.32 :COLOR_TRANSPARENT;
+        invoke %tmp.28 %tmp.29(%tmp.31, %tmp.33);
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 49 8 ]
+        %tmp.34 = lgetv %dc;
+        symbol [ dc %tmp.34 49 8 10 ];
+        symbol [ drawText %tmp.35 49 11 19 ];
+        %tmp.35 = getv function %tmp.34 :drawText;
+        %tmp.36 = lgetv %labelRightX.4;
+        symbol [ labelRightX %tmp.36 49 20 31 ];
+        %tmp.37 = lgetv %y;
+        symbol [ y %tmp.37 49 33 34 ];
+        symbol [ Graphics %tmp.38 49 36 44 ];
+        %tmp.38 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.39 49 45 55 ];
+        %tmp.39 = getv %tmp.38 :FONT_SMALL;
+        %tmp.40 = lgetv %label;
+        symbol [ label %tmp.40 49 57 62 ];
+        symbol [ Graphics %tmp.41 50 12 20 ];
+        %tmp.41 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_RIGHT %tmp.42 50 21 39 ];
+        %tmp.42 = getv %tmp.41 :TEXT_JUSTIFY_RIGHT;
+        symbol [ Graphics %tmp.43 50 42 50 ];
+        %tmp.43 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.44 50 51 71 ];
+        %tmp.44 = getv %tmp.43 :TEXT_JUSTIFY_VCENTER;
+        %tmp.45 = bitor %tmp.42 %tmp.44;
+        invoke %tmp.34 %tmp.35(%tmp.36, %tmp.37, %tmp.39, %tmp.40, %tmp.45);
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 51 8 ]
+        %tmp.46 = lgetv %dc;
+        symbol [ dc %tmp.46 51 8 10 ];
+        symbol [ setColor %tmp.47 51 11 19 ];
+        %tmp.47 = getv function %tmp.46 :setColor;
+        symbol [ Graphics %tmp.48 51 20 28 ];
+        %tmp.48 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.49 51 29 40 ];
+        %tmp.49 = getv %tmp.48 :COLOR_WHITE;
+        symbol [ Graphics %tmp.50 51 42 50 ];
+        %tmp.50 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.51 51 51 68 ];
+        %tmp.51 = getv %tmp.50 :COLOR_TRANSPARENT;
+        invoke %tmp.46 %tmp.47(%tmp.49, %tmp.51);
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 52 8 ]
+        %tmp.52 = lgetv %dc;
+        symbol [ dc %tmp.52 52 8 10 ];
+        symbol [ drawText %tmp.53 52 11 19 ];
+        %tmp.53 = getv function %tmp.52 :drawText;
+        %tmp.54 = lgetv %valueLeftX.5;
+        symbol [ valueLeftX %tmp.54 52 20 30 ];
+        %tmp.55 = lgetv %y;
+        symbol [ y %tmp.55 52 32 33 ];
+        symbol [ Graphics %tmp.56 52 35 43 ];
+        %tmp.56 = getm $.Toybox.Graphics;
+        symbol [ FONT_MEDIUM %tmp.57 52 44 55 ];
+        %tmp.57 = getv %tmp.56 :FONT_MEDIUM;
+        %tmp.58 = lgetv %value;
+        symbol [ value %tmp.58 52 57 62 ];
+        symbol [ Graphics %tmp.59 53 12 20 ];
+        %tmp.59 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_LEFT %tmp.60 53 21 38 ];
+        %tmp.60 = getv %tmp.59 :TEXT_JUSTIFY_LEFT;
+        symbol [ Graphics %tmp.61 53 41 49 ];
+        %tmp.61 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.62 53 50 70 ];
+        %tmp.62 = getv %tmp.61 :TEXT_JUSTIFY_VCENTER;
+        %tmp.63 = bitor %tmp.60 %tmp.62;
+        invoke %tmp.52 %tmp.53(%tmp.54, %tmp.55, %tmp.57, %tmp.58, %tmp.63);
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_41_69_54_4_stop:
+    }
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 56; @symbol_functiondef = [onUpdate,56,13,21]; @symbol_param<0> = [dc,56,22,24]; @symbol_param<0>_type<0> = [Dc,56,28,30]; ]
     function onUpdate(dc as Dc) as Void {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 39 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 57 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
         %now.1 = local;
-        symbol [ now %now.1 39 12 15 ];
-        symbol [ System %tmp.1 39 18 24 ];
+        symbol [ now %now.1 57 12 15 ];
+        symbol [ System %tmp.1 57 18 24 ];
         %tmp.1 = getm $.Toybox.System;
-        symbol [ getTimer %tmp.2 39 25 33 ];
+        symbol [ getTimer %tmp.2 57 25 33 ];
         %tmp.2 = getv function %tmp.1 :getTimer;
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %now.1 %tmp.3;
-        symbol [ now %now.1 39 12 15 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 40 8 ]
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_8_40_89_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_8_40_89_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_8_40_89_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_8_40_89_finally;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_8_40_89_beginTry:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_12_40_75_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 40 14 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_12_40_75_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_12_40_75_stop" ]
+        symbol [ now %now.1 57 12 15 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 58 8 ]
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_8_58_89_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_8_58_89_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_8_58_89_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_8_58_89_finally;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_8_58_89_beginTry:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_12_58_75_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 58 14 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_12_58_75_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_12_58_75_stop" ]
         %c.2 = local;
-        symbol [ c %c.2 40 18 19 ];
+        symbol [ c %c.2 58 18 19 ];
         %tmp.4 = self;
-        symbol [ getApp %tmp.5 40 22 28 ];
+        symbol [ getApp %tmp.5 58 22 28 ];
         %tmp.5 = getv function %tmp.4 :getApp;
         %tmp.6 = invoke %tmp.4 %tmp.5();
-        symbol [ getComms %tmp.7 40 31 39 ];
+        symbol [ getComms %tmp.7 58 31 39 ];
         %tmp.7 = getv function %tmp.6 :getComms;
         %tmp.8 = invoke %tmp.6 %tmp.7();
         lputv %c.2 %tmp.8;
-        symbol [ c %c.2 40 18 19 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 40 43 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_43_40_73_if_stmt:
+        symbol [ c %c.2 58 18 19 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 58 43 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_43_58_73_if_stmt:
         %tmp.9 = lgetv %c.2;
-        symbol [ c %tmp.9 40 47 48 ];
+        symbol [ c %tmp.9 58 47 48 ];
         %tmp.10 = null;
         %tmp.11 = ne %tmp.9 %tmp.10;
-        bf %tmp.11 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_43_40_73_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_43_40_73_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_58_40_73_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 40 60 ]
+        bf %tmp.11 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_43_58_73_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_43_58_73_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_58_58_73_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 58 60 ]
         %tmp.12 = lgetv %c.2;
-        symbol [ c %tmp.12 40 60 61 ];
+        symbol [ c %tmp.12 58 60 61 ];
         %tmp.13 = as %tmp.12 { (!Null) };
-        symbol [ tick %tmp.14 40 62 66 ];
+        symbol [ tick %tmp.14 58 62 66 ];
         %tmp.14 = getv function %tmp.13 :tick;
         %tmp.15 = lgetv %now.1;
-        symbol [ now %tmp.15 40 67 70 ];
+        symbol [ now %tmp.15 58 67 70 ];
         invoke %tmp.13 %tmp.14(%tmp.15);
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_58_40_73_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_43_40_73_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_43_40_73_if_end:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_12_40_75_stop:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_8_40_89_endTry:
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_8_40_89_finally;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_8_40_89_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_8_40_89_catch:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_58_58_73_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_43_58_73_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_43_58_73_if_end:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_12_58_75_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_8_58_89_endTry:
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_8_58_89_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_8_58_89_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_8_58_89_catch:
         %tmp.16 = exception;
         push %tmp.16;
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 40 77 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_8_40_89_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_77_40_89_end" ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 58 77 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_8_58_89_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_77_58_89_end" ]
         %ce.3 = local;
-        symbol [ ce %ce.3 40 84 86 ];
+        symbol [ ce %ce.3 58 84 86 ];
         %tmp.17 = dup %tmp.16;
         lputv %ce.3 %tmp.17;
-        symbol [ ce %ce.3 40 84 86 ];
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_8_40_89_finally;
+        symbol [ ce %ce.3 58 84 86 ];
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_8_58_89_finally;
         pop;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_8_40_89_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_77_40_89_end:
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_8_40_89_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_77_40_89_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_77_40_89_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_8_40_89_finally;
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_8_40_89_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_8_58_89_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_77_58_89_end:
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_8_58_89_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_77_58_89_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_77_58_89_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_8_58_89_finally;
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_8_58_89_finally;
         throw %tmp.16;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_8_40_89_finally:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_8_58_89_finally:
         jsrret;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_40_8_40_89_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 41 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_8_58_89_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 59 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
         %w.4 = local;
-        symbol [ w %w.4 41 12 13 ];
+        symbol [ w %w.4 59 12 13 ];
         %tmp.18 = lgetv %dc;
-        symbol [ dc %tmp.18 41 17 19 ];
-        symbol [ getWidth %tmp.19 41 20 28 ];
+        symbol [ dc %tmp.18 59 17 19 ];
+        symbol [ getWidth %tmp.19 59 20 28 ];
         %tmp.19 = getv function %tmp.18 :getWidth;
         %tmp.20 = invoke %tmp.18 %tmp.19();
         lputv %w.4 %tmp.20;
-        symbol [ w %w.4 41 12 13 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 42 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
+        symbol [ w %w.4 59 12 13 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 60 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
         %h.5 = local;
-        symbol [ h %h.5 42 12 13 ];
+        symbol [ h %h.5 60 12 13 ];
         %tmp.21 = lgetv %dc;
-        symbol [ dc %tmp.21 42 17 19 ];
-        symbol [ getHeight %tmp.22 42 20 29 ];
+        symbol [ dc %tmp.21 60 17 19 ];
+        symbol [ getHeight %tmp.22 60 20 29 ];
         %tmp.22 = getv function %tmp.21 :getHeight;
         %tmp.23 = invoke %tmp.21 %tmp.22();
         lputv %h.5 %tmp.23;
-        symbol [ h %h.5 42 12 13 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 43 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
+        symbol [ h %h.5 60 12 13 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 61 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
         %cx.6 = local;
-        symbol [ cx %cx.6 43 12 14 ];
+        symbol [ cx %cx.6 61 12 14 ];
         %tmp.24 = lgetv %w.4;
-        symbol [ w %tmp.24 43 17 18 ];
+        symbol [ w %tmp.24 61 17 18 ];
         %tmp.25 = 2;
         %tmp.26 = div %tmp.24 %tmp.25;
         lputv %cx.6 %tmp.26;
-        symbol [ cx %cx.6 43 12 14 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 44 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
+        symbol [ cx %cx.6 61 12 14 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 62 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
         %cy.7 = local;
-        symbol [ cy %cy.7 44 12 14 ];
+        symbol [ cy %cy.7 62 12 14 ];
         %tmp.27 = lgetv %h.5;
-        symbol [ h %tmp.27 44 17 18 ];
+        symbol [ h %tmp.27 62 17 18 ];
         %tmp.28 = 2;
         %tmp.29 = div %tmp.27 %tmp.28;
         lputv %cy.7 %tmp.29;
-        symbol [ cy %cy.7 44 12 14 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 45 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
+        symbol [ cy %cy.7 62 12 14 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 63 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
         %minWh.8 = local;
-        symbol [ minWh %minWh.8 45 12 17 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_45_20_45_34_begin:
+        symbol [ minWh %minWh.8 63 12 17 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_63_20_63_34_begin:
         %tmp.30 = lgetv %w.4;
-        symbol [ w %tmp.30 45 21 22 ];
+        symbol [ w %tmp.30 63 21 22 ];
         %tmp.31 = lgetv %h.5;
-        symbol [ h %tmp.31 45 25 26 ];
+        symbol [ h %tmp.31 63 25 26 ];
         %tmp.32 = lt %tmp.30 %tmp.31;
-        bf %tmp.32 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_45_20_45_34_else_false;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_45_20_45_34_true:
+        bf %tmp.32 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_63_20_63_34_else_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_63_20_63_34_true:
         %tmp.33 = lgetv %w.4;
-        symbol [ w %tmp.33 45 30 31 ];
+        symbol [ w %tmp.33 63 30 31 ];
         push %tmp.33;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_45_20_45_34_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_45_20_45_34_else_false:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_63_20_63_34_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_63_20_63_34_else_false:
         %tmp.34 = lgetv %h.5;
-        symbol [ h %tmp.34 45 34 35 ];
+        symbol [ h %tmp.34 63 34 35 ];
         push %tmp.34;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_45_20_45_34_end:
-        %tmp.35 = phi [%tmp.32 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_45_20_45_34_begin] [%tmp.33 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_45_20_45_34_true] [%tmp.34 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_45_20_45_34_else_false] [%tmp.35 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_45_20_45_34_end];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_63_20_63_34_end:
+        %tmp.35 = phi [%tmp.32 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_63_20_63_34_begin] [%tmp.33 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_63_20_63_34_true] [%tmp.34 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_63_20_63_34_else_false] [%tmp.35 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_63_20_63_34_end];
         lputv %minWh.8 %tmp.35;
-        symbol [ minWh %minWh.8 45 12 17 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 47 8 ]
-        symbol [ _main %tmp.37 47 8 13 ];
+        symbol [ minWh %minWh.8 63 12 17 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 65 8 ]
+        symbol [ _main %tmp.37 65 8 13 ];
         %tmp.37 = getv ? :_main;
-        symbol [ drawBezelBackground %tmp.38 47 14 33 ];
+        symbol [ drawBezelBackground %tmp.38 65 14 33 ];
         %tmp.38 = getv function %tmp.37 :drawBezelBackground;
         %tmp.39 = lgetv %dc;
-        symbol [ dc %tmp.39 47 34 36 ];
+        symbol [ dc %tmp.39 65 34 36 ];
         invoke %tmp.37 %tmp.38(%tmp.39);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 50 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 68 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
         %sepR.9 = local;
-        symbol [ sepR %sepR.9 50 12 16 ];
+        symbol [ sepR %sepR.9 68 12 16 ];
         %tmp.40 = lgetv %minWh.8;
-        symbol [ minWh %tmp.40 50 21 26 ];
-        symbol [ toFloat %tmp.41 50 27 34 ];
+        symbol [ minWh %tmp.40 68 21 26 ];
+        symbol [ toFloat %tmp.41 68 27 34 ];
         %tmp.41 = getv function %tmp.40 :toFloat;
         %tmp.42 = invoke %tmp.40 %tmp.41();
         %tmp.43 = 2.0;
         %tmp.44 = div %tmp.42 %tmp.43;
-        %tmp.45 = 27.0;
+        %tmp.45 = 30.0;
         %tmp.46 = sub %tmp.44 %tmp.45;
-        symbol [ toNumber %tmp.47 50 52 60 ];
+        symbol [ toNumber %tmp.47 68 52 60 ];
         %tmp.47 = getv function %tmp.46 :toNumber;
         %tmp.48 = invoke %tmp.46 %tmp.47();
         lputv %sepR.9 %tmp.48;
-        symbol [ sepR %sepR.9 50 12 16 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 51 8 ]
+        symbol [ sepR %sepR.9 68 12 16 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 69 8 ]
         %tmp.49 = lgetv %dc;
-        symbol [ dc %tmp.49 51 8 10 ];
-        symbol [ setColor %tmp.50 51 11 19 ];
+        symbol [ dc %tmp.49 69 8 10 ];
+        symbol [ setColor %tmp.50 69 11 19 ];
         %tmp.50 = getv function %tmp.49 :setColor;
-        symbol [ Graphics %tmp.51 51 20 28 ];
+        symbol [ Graphics %tmp.51 69 20 28 ];
         %tmp.51 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.52 51 29 40 ];
+        symbol [ COLOR_BLACK %tmp.52 69 29 40 ];
         %tmp.52 = getv %tmp.51 :COLOR_BLACK;
-        symbol [ Graphics %tmp.53 51 42 50 ];
+        symbol [ Graphics %tmp.53 69 42 50 ];
         %tmp.53 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.54 51 51 62 ];
+        symbol [ COLOR_BLACK %tmp.54 69 51 62 ];
         %tmp.54 = getv %tmp.53 :COLOR_BLACK;
         invoke %tmp.49 %tmp.50(%tmp.52, %tmp.54);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 52 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 70 8 ]
         %tmp.55 = lgetv %dc;
-        symbol [ dc %tmp.55 52 8 10 ];
-        symbol [ fillCircle %tmp.56 52 11 21 ];
+        symbol [ dc %tmp.55 70 8 10 ];
+        symbol [ fillCircle %tmp.56 70 11 21 ];
         %tmp.56 = getv function %tmp.55 :fillCircle;
         %tmp.57 = lgetv %cx.6;
-        symbol [ cx %tmp.57 52 22 24 ];
+        symbol [ cx %tmp.57 70 22 24 ];
         %tmp.58 = lgetv %cy.7;
-        symbol [ cy %tmp.58 52 26 28 ];
+        symbol [ cy %tmp.58 70 26 28 ];
         %tmp.59 = lgetv %sepR.9;
-        symbol [ sepR %tmp.59 52 30 34 ];
+        symbol [ sepR %tmp.59 70 30 34 ];
         invoke %tmp.55 %tmp.56(%tmp.57, %tmp.58, %tmp.59);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 55 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 73 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
         %startStr.10 = local;
-        symbol [ startStr %startStr.10 55 12 20 ];
+        symbol [ startStr %startStr.10 73 12 20 ];
         %tmp.60 = "--:--Z";
         lputv %startStr.10 %tmp.60;
-        symbol [ startStr %startStr.10 55 12 20 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 56 8 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_8_62_8_if_stmt:
-        symbol [ _main %tmp.62 56 12 17 ];
+        symbol [ startStr %startStr.10 73 12 20 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 74 8 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_74_8_80_8_if_stmt:
+        symbol [ _main %tmp.62 74 12 17 ];
         %tmp.62 = getv ? :_main;
-        symbol [ tripStartUtcMoment %tmp.63 56 18 36 ];
+        symbol [ tripStartUtcMoment %tmp.63 74 18 36 ];
         %tmp.63 = getv %tmp.62 :tripStartUtcMoment;
         %tmp.64 = null;
         %tmp.65 = ne %tmp.63 %tmp.64;
-        bf %tmp.65 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_8_62_8_if_false;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_8_62_8_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_46_58_8_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 57 12 ]
+        bf %tmp.65 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_74_8_80_8_if_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_74_8_80_8_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_74_46_76_8_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 75 12 ]
         %tmp.66 = self;
-        symbol [ fmtUtc %tmp.67 57 23 29 ];
+        symbol [ fmtUtc %tmp.67 75 23 29 ];
         %tmp.67 = getv function %tmp.66 :fmtUtc;
-        symbol [ _main %tmp.69 57 30 35 ];
+        symbol [ _main %tmp.69 75 30 35 ];
         %tmp.69 = getv ? :_main;
-        symbol [ tripStartUtcMoment %tmp.70 57 36 54 ];
+        symbol [ tripStartUtcMoment %tmp.70 75 36 54 ];
         %tmp.70 = getv %tmp.69 :tripStartUtcMoment;
         %tmp.71 = as %tmp.70 Time.Moment;
-        symbol [ Time %tmp.71 57 58 62 ];
-        symbol [ Moment %tmp.71 57 63 69 ];
+        symbol [ Time %tmp.71 75 58 62 ];
+        symbol [ Moment %tmp.71 75 63 69 ];
         %tmp.72 = invoke %tmp.66 %tmp.67(%tmp.71);
         lputv %startStr.10 %tmp.72;
-        symbol [ startStr %startStr.10 57 12 20 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_46_58_8_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_8_62_8_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_8_62_8_if_false:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 58 15 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_15_62_8_if_stmt:
-        symbol [ _main %tmp.74 58 19 24 ];
+        symbol [ startStr %startStr.10 75 12 20 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_74_46_76_8_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_74_8_80_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_74_8_80_8_if_false:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 76 15 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_15_80_8_if_stmt:
+        symbol [ _main %tmp.74 76 19 24 ];
         %tmp.74 = getv ? :_main;
-        symbol [ tripStartUtcHour %tmp.75 58 25 41 ];
+        symbol [ tripStartUtcHour %tmp.75 76 25 41 ];
         %tmp.75 = getv %tmp.74 :tripStartUtcHour;
         %tmp.76 = 0;
         %tmp.77 = gte %tmp.75 %tmp.76;
-        bf %tmp.77 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_15_62_8_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_15_62_8_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_48_62_8_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 59 12 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_48_62_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_48_62_8_stop" ]
+        bf %tmp.77 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_15_80_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_15_80_8_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_48_80_8_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 77 12 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_48_80_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_48_80_8_stop" ]
         %sh.11 = local;
-        symbol [ sh %sh.11 59 16 18 ];
-        symbol [ _main %tmp.79 59 21 26 ];
+        symbol [ sh %sh.11 77 16 18 ];
+        symbol [ _main %tmp.79 77 21 26 ];
         %tmp.79 = getv ? :_main;
-        symbol [ tripStartUtcHour %tmp.80 59 27 43 ];
+        symbol [ tripStartUtcHour %tmp.80 77 27 43 ];
         %tmp.80 = getv %tmp.79 :tripStartUtcHour;
         lputv %sh.11 %tmp.80;
-        symbol [ sh %sh.11 59 16 18 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 60 12 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_48_62_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_48_62_8_stop" ]
+        symbol [ sh %sh.11 77 16 18 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 78 12 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_48_80_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_48_80_8_stop" ]
         %sm.12 = local;
-        symbol [ sm %sm.12 60 16 18 ];
-        symbol [ _main %tmp.82 60 21 26 ];
+        symbol [ sm %sm.12 78 16 18 ];
+        symbol [ _main %tmp.82 78 21 26 ];
         %tmp.82 = getv ? :_main;
-        symbol [ tripStartUtcMin %tmp.83 60 27 42 ];
+        symbol [ tripStartUtcMin %tmp.83 78 27 42 ];
         %tmp.83 = getv %tmp.82 :tripStartUtcMin;
         lputv %sm.12 %tmp.83;
-        symbol [ sm %sm.12 60 16 18 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 61 12 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_24_61_40_begin:
+        symbol [ sm %sm.12 78 16 18 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 79 12 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_24_79_40_begin:
         %tmp.84 = lgetv %sh.11;
-        symbol [ sh %tmp.84 61 24 26 ];
+        symbol [ sh %tmp.84 79 24 26 ];
         %tmp.85 = 10;
         %tmp.86 = lt %tmp.84 %tmp.85;
-        bf %tmp.86 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_24_61_40_else_false;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_24_61_40_true:
+        bf %tmp.86 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_24_79_40_else_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_24_79_40_true:
         %tmp.87 = "0";
         push %tmp.87;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_24_61_40_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_24_61_40_else_false:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_24_79_40_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_24_79_40_else_false:
         %tmp.88 = "";
         push %tmp.88;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_24_61_40_end:
-        %tmp.89 = phi [%tmp.86 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_24_61_40_begin] [%tmp.87 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_24_61_40_true] [%tmp.88 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_24_61_40_else_false] [%tmp.89 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_24_61_40_end];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_24_79_40_end:
+        %tmp.89 = phi [%tmp.86 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_24_79_40_begin] [%tmp.87 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_24_79_40_true] [%tmp.88 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_24_79_40_else_false] [%tmp.89 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_24_79_40_end];
         %tmp.90 = lgetv %sh.11;
-        symbol [ sh %tmp.90 61 46 48 ];
-        symbol [ toString %tmp.91 61 49 57 ];
+        symbol [ sh %tmp.90 79 46 48 ];
+        symbol [ toString %tmp.91 79 49 57 ];
         %tmp.91 = getv function %tmp.90 :toString;
         %tmp.92 = invoke %tmp.90 %tmp.91();
         %tmp.93 = add %tmp.89 %tmp.92;
         %tmp.94 = ":";
         %tmp.95 = add %tmp.93 %tmp.94;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_69_61_85_begin:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_69_79_85_begin:
         %tmp.96 = lgetv %sm.12;
-        symbol [ sm %tmp.96 61 69 71 ];
+        symbol [ sm %tmp.96 79 69 71 ];
         %tmp.97 = 10;
         %tmp.98 = lt %tmp.96 %tmp.97;
-        bf %tmp.98 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_69_61_85_else_false;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_69_61_85_true:
+        bf %tmp.98 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_69_79_85_else_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_69_79_85_true:
         %tmp.99 = "0";
         push %tmp.99;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_69_61_85_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_69_61_85_else_false:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_69_79_85_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_69_79_85_else_false:
         %tmp.100 = "";
         push %tmp.100;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_69_61_85_end:
-        %tmp.101 = phi [%tmp.98 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_69_61_85_begin] [%tmp.99 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_69_61_85_true] [%tmp.100 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_69_61_85_else_false] [%tmp.101 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_61_69_61_85_end];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_69_79_85_end:
+        %tmp.101 = phi [%tmp.98 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_69_79_85_begin] [%tmp.99 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_69_79_85_true] [%tmp.100 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_69_79_85_else_false] [%tmp.101 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_79_69_79_85_end];
         %tmp.102 = add %tmp.95 %tmp.101;
         %tmp.103 = lgetv %sm.12;
-        symbol [ sm %tmp.103 61 91 93 ];
-        symbol [ toString %tmp.104 61 94 102 ];
+        symbol [ sm %tmp.103 79 91 93 ];
+        symbol [ toString %tmp.104 79 94 102 ];
         %tmp.104 = getv function %tmp.103 :toString;
         %tmp.105 = invoke %tmp.103 %tmp.104();
         %tmp.106 = add %tmp.102 %tmp.105;
         %tmp.107 = "Z";
         %tmp.108 = add %tmp.106 %tmp.107;
         lputv %startStr.10 %tmp.108;
-        symbol [ startStr %startStr.10 61 12 20 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_48_62_8_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_15_62_8_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_58_15_62_8_if_end:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_8_62_8_if_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 63 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
+        symbol [ startStr %startStr.10 79 12 20 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_48_80_8_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_15_80_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_15_80_8_if_end:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_74_8_80_8_if_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 81 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
         %endStr.13 = local;
-        symbol [ endStr %endStr.13 63 12 18 ];
+        symbol [ endStr %endStr.13 81 12 18 ];
         %tmp.109 = "--:--Z";
         lputv %endStr.13 %tmp.109;
-        symbol [ endStr %endStr.13 63 12 18 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 64 8 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_64_8_70_8_if_stmt:
-        symbol [ _main %tmp.111 64 12 17 ];
+        symbol [ endStr %endStr.13 81 12 18 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 82 8 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_82_8_88_8_if_stmt:
+        symbol [ _main %tmp.111 82 12 17 ];
         %tmp.111 = getv ? :_main;
-        symbol [ tripEndUtcMoment %tmp.112 64 18 34 ];
+        symbol [ tripEndUtcMoment %tmp.112 82 18 34 ];
         %tmp.112 = getv %tmp.111 :tripEndUtcMoment;
         %tmp.113 = null;
         %tmp.114 = ne %tmp.112 %tmp.113;
-        bf %tmp.114 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_64_8_70_8_if_false;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_64_8_70_8_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_64_44_66_8_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 65 12 ]
+        bf %tmp.114 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_82_8_88_8_if_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_82_8_88_8_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_82_44_84_8_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 83 12 ]
         %tmp.115 = self;
-        symbol [ fmtUtc %tmp.116 65 21 27 ];
+        symbol [ fmtUtc %tmp.116 83 21 27 ];
         %tmp.116 = getv function %tmp.115 :fmtUtc;
-        symbol [ _main %tmp.118 65 28 33 ];
+        symbol [ _main %tmp.118 83 28 33 ];
         %tmp.118 = getv ? :_main;
-        symbol [ tripEndUtcMoment %tmp.119 65 34 50 ];
+        symbol [ tripEndUtcMoment %tmp.119 83 34 50 ];
         %tmp.119 = getv %tmp.118 :tripEndUtcMoment;
         %tmp.120 = as %tmp.119 Time.Moment;
-        symbol [ Time %tmp.120 65 54 58 ];
-        symbol [ Moment %tmp.120 65 59 65 ];
+        symbol [ Time %tmp.120 83 54 58 ];
+        symbol [ Moment %tmp.120 83 59 65 ];
         %tmp.121 = invoke %tmp.115 %tmp.116(%tmp.120);
         lputv %endStr.13 %tmp.121;
-        symbol [ endStr %endStr.13 65 12 18 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_64_44_66_8_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_64_8_70_8_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_64_8_70_8_if_false:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 66 15 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_66_15_70_8_if_stmt:
-        symbol [ _main %tmp.123 66 19 24 ];
+        symbol [ endStr %endStr.13 83 12 18 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_82_44_84_8_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_82_8_88_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_82_8_88_8_if_false:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 84 15 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_84_15_88_8_if_stmt:
+        symbol [ _main %tmp.123 84 19 24 ];
         %tmp.123 = getv ? :_main;
-        symbol [ tripEndUtcHour %tmp.124 66 25 39 ];
+        symbol [ tripEndUtcHour %tmp.124 84 25 39 ];
         %tmp.124 = getv %tmp.123 :tripEndUtcHour;
         %tmp.125 = 0;
         %tmp.126 = gte %tmp.124 %tmp.125;
-        bf %tmp.126 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_66_15_70_8_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_66_15_70_8_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_66_46_70_8_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 67 12 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_66_46_70_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_66_46_70_8_stop" ]
+        bf %tmp.126 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_84_15_88_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_84_15_88_8_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_84_46_88_8_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 85 12 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_84_46_88_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_84_46_88_8_stop" ]
         %eh.14 = local;
-        symbol [ eh %eh.14 67 16 18 ];
-        symbol [ _main %tmp.128 67 21 26 ];
+        symbol [ eh %eh.14 85 16 18 ];
+        symbol [ _main %tmp.128 85 21 26 ];
         %tmp.128 = getv ? :_main;
-        symbol [ tripEndUtcHour %tmp.129 67 27 41 ];
+        symbol [ tripEndUtcHour %tmp.129 85 27 41 ];
         %tmp.129 = getv %tmp.128 :tripEndUtcHour;
         lputv %eh.14 %tmp.129;
-        symbol [ eh %eh.14 67 16 18 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 68 12 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_66_46_70_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_66_46_70_8_stop" ]
+        symbol [ eh %eh.14 85 16 18 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 86 12 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_84_46_88_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_84_46_88_8_stop" ]
         %em.15 = local;
-        symbol [ em %em.15 68 16 18 ];
-        symbol [ _main %tmp.131 68 21 26 ];
+        symbol [ em %em.15 86 16 18 ];
+        symbol [ _main %tmp.131 86 21 26 ];
         %tmp.131 = getv ? :_main;
-        symbol [ tripEndUtcMin %tmp.132 68 27 40 ];
+        symbol [ tripEndUtcMin %tmp.132 86 27 40 ];
         %tmp.132 = getv %tmp.131 :tripEndUtcMin;
         lputv %em.15 %tmp.132;
-        symbol [ em %em.15 68 16 18 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 69 12 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_22_69_38_begin:
+        symbol [ em %em.15 86 16 18 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 87 12 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_22_87_38_begin:
         %tmp.133 = lgetv %eh.14;
-        symbol [ eh %tmp.133 69 22 24 ];
+        symbol [ eh %tmp.133 87 22 24 ];
         %tmp.134 = 10;
         %tmp.135 = lt %tmp.133 %tmp.134;
-        bf %tmp.135 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_22_69_38_else_false;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_22_69_38_true:
+        bf %tmp.135 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_22_87_38_else_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_22_87_38_true:
         %tmp.136 = "0";
         push %tmp.136;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_22_69_38_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_22_69_38_else_false:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_22_87_38_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_22_87_38_else_false:
         %tmp.137 = "";
         push %tmp.137;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_22_69_38_end:
-        %tmp.138 = phi [%tmp.135 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_22_69_38_begin] [%tmp.136 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_22_69_38_true] [%tmp.137 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_22_69_38_else_false] [%tmp.138 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_22_69_38_end];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_22_87_38_end:
+        %tmp.138 = phi [%tmp.135 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_22_87_38_begin] [%tmp.136 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_22_87_38_true] [%tmp.137 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_22_87_38_else_false] [%tmp.138 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_22_87_38_end];
         %tmp.139 = lgetv %eh.14;
-        symbol [ eh %tmp.139 69 44 46 ];
-        symbol [ toString %tmp.140 69 47 55 ];
+        symbol [ eh %tmp.139 87 44 46 ];
+        symbol [ toString %tmp.140 87 47 55 ];
         %tmp.140 = getv function %tmp.139 :toString;
         %tmp.141 = invoke %tmp.139 %tmp.140();
         %tmp.142 = add %tmp.138 %tmp.141;
         %tmp.143 = ":";
         %tmp.144 = add %tmp.142 %tmp.143;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_67_69_83_begin:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_67_87_83_begin:
         %tmp.145 = lgetv %em.15;
-        symbol [ em %tmp.145 69 67 69 ];
+        symbol [ em %tmp.145 87 67 69 ];
         %tmp.146 = 10;
         %tmp.147 = lt %tmp.145 %tmp.146;
-        bf %tmp.147 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_67_69_83_else_false;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_67_69_83_true:
+        bf %tmp.147 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_67_87_83_else_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_67_87_83_true:
         %tmp.148 = "0";
         push %tmp.148;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_67_69_83_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_67_69_83_else_false:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_67_87_83_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_67_87_83_else_false:
         %tmp.149 = "";
         push %tmp.149;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_67_69_83_end:
-        %tmp.150 = phi [%tmp.147 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_67_69_83_begin] [%tmp.148 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_67_69_83_true] [%tmp.149 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_67_69_83_else_false] [%tmp.150 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_69_67_69_83_end];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_67_87_83_end:
+        %tmp.150 = phi [%tmp.147 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_67_87_83_begin] [%tmp.148 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_67_87_83_true] [%tmp.149 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_67_87_83_else_false] [%tmp.150 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_67_87_83_end];
         %tmp.151 = add %tmp.144 %tmp.150;
         %tmp.152 = lgetv %em.15;
-        symbol [ em %tmp.152 69 89 91 ];
-        symbol [ toString %tmp.153 69 92 100 ];
+        symbol [ em %tmp.152 87 89 91 ];
+        symbol [ toString %tmp.153 87 92 100 ];
         %tmp.153 = getv function %tmp.152 :toString;
         %tmp.154 = invoke %tmp.152 %tmp.153();
         %tmp.155 = add %tmp.151 %tmp.154;
         %tmp.156 = "Z";
         %tmp.157 = add %tmp.155 %tmp.156;
         lputv %endStr.13 %tmp.157;
-        symbol [ endStr %endStr.13 69 12 18 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_66_46_70_8_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_66_15_70_8_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_66_15_70_8_if_end:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_64_8_70_8_if_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 73 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
+        symbol [ endStr %endStr.13 87 12 18 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_84_46_88_8_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_84_15_88_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_84_15_88_8_if_end:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_82_8_88_8_if_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 91 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
         %nmVal.16 = local;
-        symbol [ nmVal %nmVal.16 73 12 17 ];
-        symbol [ _main %tmp.159 73 21 26 ];
+        symbol [ nmVal %nmVal.16 91 12 17 ];
+        symbol [ _main %tmp.159 91 21 26 ];
         %tmp.159 = getv ? :_main;
-        symbol [ totalDistanceM %tmp.160 73 27 41 ];
+        symbol [ totalDistanceM %tmp.160 91 27 41 ];
         %tmp.160 = getv %tmp.159 :totalDistanceM;
         %tmp.161 = as %tmp.160 Float;
-        symbol [ Float %tmp.161 73 45 50 ];
+        symbol [ Float %tmp.161 91 45 50 ];
         %tmp.162 = 1852.0;
         %tmp.163 = div %tmp.161 %tmp.162;
         lputv %nmVal.16 %tmp.163;
-        symbol [ nmVal %nmVal.16 73 12 17 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 74 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
+        symbol [ nmVal %nmVal.16 91 12 17 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 92 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
         %nmInt.17 = local;
-        symbol [ nmInt %nmInt.17 74 12 17 ];
+        symbol [ nmInt %nmInt.17 92 12 17 ];
         %tmp.164 = lgetv %nmVal.16;
-        symbol [ nmVal %tmp.164 74 20 25 ];
-        symbol [ toNumber %tmp.165 74 26 34 ];
+        symbol [ nmVal %tmp.164 92 20 25 ];
+        symbol [ toNumber %tmp.165 92 26 34 ];
         %tmp.165 = getv function %tmp.164 :toNumber;
         %tmp.166 = invoke %tmp.164 %tmp.165();
         lputv %nmInt.17 %tmp.166;
-        symbol [ nmInt %nmInt.17 74 12 17 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 75 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
+        symbol [ nmInt %nmInt.17 92 12 17 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 93 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
         %nmDec.18 = local;
-        symbol [ nmDec %nmDec.18 75 12 17 ];
+        symbol [ nmDec %nmDec.18 93 12 17 ];
         %tmp.167 = lgetv %nmVal.16;
-        symbol [ nmVal %tmp.167 75 22 27 ];
+        symbol [ nmVal %tmp.167 93 22 27 ];
         %tmp.168 = lgetv %nmInt.17;
-        symbol [ nmInt %tmp.168 75 30 35 ];
-        symbol [ toFloat %tmp.169 75 36 43 ];
+        symbol [ nmInt %tmp.168 93 30 35 ];
+        symbol [ toFloat %tmp.169 93 36 43 ];
         %tmp.169 = getv function %tmp.168 :toFloat;
         %tmp.170 = invoke %tmp.168 %tmp.169();
         %tmp.171 = sub %tmp.167 %tmp.170;
         %tmp.172 = 10.0;
         %tmp.173 = mul %tmp.171 %tmp.172;
-        symbol [ toNumber %tmp.174 75 55 63 ];
+        symbol [ toNumber %tmp.174 93 55 63 ];
         %tmp.174 = getv function %tmp.173 :toNumber;
         %tmp.175 = invoke %tmp.173 %tmp.174();
         lputv %nmDec.18 %tmp.175;
-        symbol [ nmDec %nmDec.18 75 12 17 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 76 8 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_8_76_36_if_stmt:
+        symbol [ nmDec %nmDec.18 93 12 17 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 94 8 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_94_8_94_36_if_stmt:
         %tmp.176 = lgetv %nmDec.18;
-        symbol [ nmDec %tmp.176 76 12 17 ];
+        symbol [ nmDec %tmp.176 94 12 17 ];
         %tmp.177 = 0;
         %tmp.178 = lt %tmp.176 %tmp.177;
-        bf %tmp.178 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_8_76_36_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_8_76_36_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_23_76_36_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 76 25 ]
+        bf %tmp.178 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_94_8_94_36_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_94_8_94_36_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_94_23_94_36_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 94 25 ]
         %tmp.179 = 0;
         lputv %nmDec.18 %tmp.179;
-        symbol [ nmDec %nmDec.18 76 25 30 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_23_76_36_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_8_76_36_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_76_8_76_36_if_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 77 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
+        symbol [ nmDec %nmDec.18 94 25 30 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_94_23_94_36_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_94_8_94_36_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_94_8_94_36_if_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 95 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
         %distStr.19 = local;
-        symbol [ distStr %distStr.19 77 12 19 ];
+        symbol [ distStr %distStr.19 95 12 19 ];
         %tmp.180 = lgetv %nmInt.17;
-        symbol [ nmInt %tmp.180 77 22 27 ];
-        symbol [ toString %tmp.181 77 28 36 ];
+        symbol [ nmInt %tmp.180 95 22 27 ];
+        symbol [ toString %tmp.181 95 28 36 ];
         %tmp.181 = getv function %tmp.180 :toString;
         %tmp.182 = invoke %tmp.180 %tmp.181();
         %tmp.183 = ".";
         %tmp.184 = add %tmp.182 %tmp.183;
         %tmp.185 = lgetv %nmDec.18;
-        symbol [ nmDec %tmp.185 77 47 52 ];
-        symbol [ toString %tmp.186 77 53 61 ];
+        symbol [ nmDec %tmp.185 95 47 52 ];
+        symbol [ toString %tmp.186 95 53 61 ];
         %tmp.186 = getv function %tmp.185 :toString;
         %tmp.187 = invoke %tmp.185 %tmp.186();
         %tmp.188 = add %tmp.184 %tmp.187;
         %tmp.189 = "NM";
         %tmp.190 = add %tmp.188 %tmp.189;
         lputv %distStr.19 %tmp.190;
-        symbol [ distStr %distStr.19 77 12 19 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 79 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
+        symbol [ distStr %distStr.19 95 12 19 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 97 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
         %altStr.20 = local;
-        symbol [ altStr %altStr.20 79 12 18 ];
-        %tmp.191 = "---FT";
+        symbol [ altStr %altStr.20 97 12 18 ];
+        %tmp.191 = "---";
         lputv %altStr.20 %tmp.191;
-        symbol [ altStr %altStr.20 79 12 18 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 80 8 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_80_8_83_8_if_stmt:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_80_12_80_74_begin:
-        symbol [ _main %tmp.193 80 12 17 ];
+        symbol [ altStr %altStr.20 97 12 18 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 98 8 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_98_8_101_8_if_stmt:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_98_12_98_74_begin:
+        symbol [ _main %tmp.193 98 12 17 ];
         %tmp.193 = getv ? :_main;
-        symbol [ maxAltitudeM %tmp.194 80 18 30 ];
+        symbol [ maxAltitudeM %tmp.194 98 18 30 ];
         %tmp.194 = getv %tmp.193 :maxAltitudeM;
         %tmp.195 = null;
         %tmp.196 = ne %tmp.194 %tmp.195;
-        bf %tmp.196 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_80_8_83_8_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_80_42_80_74_true:
-        symbol [ _main %tmp.198 80 43 48 ];
+        bf %tmp.196 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_98_8_101_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_98_42_98_74_true:
+        symbol [ _main %tmp.198 98 43 48 ];
         %tmp.198 = getv ? :_main;
-        symbol [ maxAltitudeM %tmp.199 80 49 61 ];
+        symbol [ maxAltitudeM %tmp.199 98 49 61 ];
         %tmp.199 = getv %tmp.198 :maxAltitudeM;
         %tmp.200 = as %tmp.199 Float;
-        symbol [ Float %tmp.200 80 65 70 ];
+        symbol [ Float %tmp.200 98 65 70 ];
         %tmp.201 = 0.0;
         %tmp.202 = gt %tmp.200 %tmp.201;
         push %tmp.202;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_80_42_80_74_end:
-        %tmp.203 = phi [%tmp.196 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_80_12_80_74_begin] [%tmp.202 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_80_42_80_74_true] [%tmp.203 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_80_42_80_74_end];
-        bf %tmp.203 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_80_8_83_8_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_80_8_83_8_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_80_79_83_8_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 81 12 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_80_79_83_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_80_79_83_8_stop" ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_98_42_98_74_end:
+        %tmp.203 = phi [%tmp.196 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_98_12_98_74_begin] [%tmp.202 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_98_42_98_74_true] [%tmp.203 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_98_42_98_74_end];
+        bf %tmp.203 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_98_8_101_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_98_8_101_8_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_98_79_101_8_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 99 12 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_98_79_101_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_98_79_101_8_stop" ]
         %altFt.21 = local;
-        symbol [ altFt %altFt.21 81 16 21 ];
-        symbol [ _main %tmp.205 81 26 31 ];
+        symbol [ altFt %altFt.21 99 16 21 ];
+        symbol [ _main %tmp.205 99 26 31 ];
         %tmp.205 = getv ? :_main;
-        symbol [ maxAltitudeM %tmp.206 81 32 44 ];
+        symbol [ maxAltitudeM %tmp.206 99 32 44 ];
         %tmp.206 = getv %tmp.205 :maxAltitudeM;
         %tmp.207 = as %tmp.206 Float;
-        symbol [ Float %tmp.207 81 48 53 ];
+        symbol [ Float %tmp.207 99 48 53 ];
         %tmp.208 = 3.28084;
         %tmp.209 = mul %tmp.207 %tmp.208;
-        symbol [ toNumber %tmp.210 81 66 74 ];
+        symbol [ toNumber %tmp.210 99 66 74 ];
         %tmp.210 = getv function %tmp.209 :toNumber;
         %tmp.211 = invoke %tmp.209 %tmp.210();
         lputv %altFt.21 %tmp.211;
-        symbol [ altFt %altFt.21 81 16 21 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 82 12 ]
+        symbol [ altFt %altFt.21 99 16 21 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 100 12 ]
         %tmp.212 = lgetv %altFt.21;
-        symbol [ altFt %tmp.212 82 21 26 ];
-        symbol [ toString %tmp.213 82 27 35 ];
+        symbol [ altFt %tmp.212 100 21 26 ];
+        symbol [ toString %tmp.213 100 27 35 ];
         %tmp.213 = getv function %tmp.212 :toString;
         %tmp.214 = invoke %tmp.212 %tmp.213();
-        %tmp.215 = "FT";
-        %tmp.216 = add %tmp.214 %tmp.215;
-        lputv %altStr.20 %tmp.216;
-        symbol [ altStr %altStr.20 82 12 18 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_80_79_83_8_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_80_8_83_8_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_80_8_83_8_if_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 85 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
-        %gsStr.22 = local;
-        symbol [ gsStr %gsStr.22 85 12 17 ];
-        %tmp.217 = "--KT";
-        lputv %gsStr.22 %tmp.217;
-        symbol [ gsStr %gsStr.22 85 12 17 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 86 8 ]
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_86_8_91_23_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_86_8_91_23_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_86_8_91_23_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_86_8_91_23_finally;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_86_8_91_23_beginTry:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_86_12_91_8_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 87 12 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_12_90_12_if_stmt:
-        symbol [ _main %tmp.219 87 17 22 ];
-        %tmp.219 = getv ? :_main;
-        %tmp.220 = as %tmp.219 VFRStopWatchView;
-        symbol [ VFRStopWatchView %tmp.220 87 26 42 ];
-        symbol [ gsSamples %tmp.221 87 44 53 ];
-        %tmp.221 = getv %tmp.220 :gsSamples;
-        %tmp.222 = 0;
-        %tmp.223 = gt %tmp.221 %tmp.222;
-        bf %tmp.223 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_12_90_12_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_12_90_12_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_59_90_12_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 88 16 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_59_90_12_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_59_90_12_stop" ]
-        %avg.23 = local;
-        symbol [ avg %avg.23 88 20 23 ];
-        symbol [ _main %tmp.225 88 27 32 ];
-        %tmp.225 = getv ? :_main;
-        %tmp.226 = as %tmp.225 VFRStopWatchView;
-        symbol [ VFRStopWatchView %tmp.226 88 36 52 ];
-        symbol [ gsSumKt %tmp.227 88 54 61 ];
-        %tmp.227 = getv %tmp.226 :gsSumKt;
-        symbol [ _main %tmp.229 88 65 70 ];
-        %tmp.229 = getv ? :_main;
-        %tmp.230 = as %tmp.229 VFRStopWatchView;
-        symbol [ VFRStopWatchView %tmp.230 88 74 90 ];
-        symbol [ gsSamples %tmp.231 88 92 101 ];
-        %tmp.231 = getv %tmp.230 :gsSamples;
-        symbol [ toFloat %tmp.232 88 102 109 ];
-        %tmp.232 = getv function %tmp.231 :toFloat;
-        %tmp.233 = invoke %tmp.231 %tmp.232();
-        %tmp.234 = div %tmp.227 %tmp.233;
-        lputv %avg.23 %tmp.234;
-        symbol [ avg %avg.23 88 20 23 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 89 16 ]
-        symbol [ Math %tmp.236 89 24 28 ];
-        %tmp.236 = getv ? :Math;
-        symbol [ round %tmp.237 89 29 34 ];
-        %tmp.237 = getv function %tmp.236 :round;
-        %tmp.238 = lgetv %avg.23;
-        symbol [ avg %tmp.238 89 35 38 ];
-        %tmp.239 = invoke %tmp.236 %tmp.237(%tmp.238);
-        symbol [ toNumber %tmp.240 89 40 48 ];
-        %tmp.240 = getv function %tmp.239 :toNumber;
-        %tmp.241 = invoke %tmp.239 %tmp.240();
-        symbol [ toString %tmp.242 89 51 59 ];
-        %tmp.242 = getv function %tmp.241 :toString;
-        %tmp.243 = invoke %tmp.241 %tmp.242();
-        %tmp.244 = "KT";
-        %tmp.245 = add %tmp.243 %tmp.244;
-        lputv %gsStr.22 %tmp.245;
-        symbol [ gsStr %gsStr.22 89 16 21 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_59_90_12_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_12_90_12_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_87_12_90_12_if_end:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_86_12_91_8_stop:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_86_8_91_23_endTry:
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_86_8_91_23_finally;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_86_8_91_23_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_86_8_91_23_catch:
-        %tmp.246 = exception;
-        push %tmp.246;
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 91 10 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_86_8_91_23_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_91_10_91_23_end" ]
-        %ex.24 = local;
-        symbol [ ex %ex.24 91 17 19 ];
-        %tmp.247 = dup %tmp.246;
-        lputv %ex.24 %tmp.247;
-        symbol [ ex %ex.24 91 17 19 ];
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_86_8_91_23_finally;
-        pop;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_86_8_91_23_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_91_10_91_23_end:
-        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_86_8_91_23_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_91_10_91_23_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_91_10_91_23_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_86_8_91_23_finally;
-        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_86_8_91_23_finally;
-        throw %tmp.246;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_86_8_91_23_finally:
-        jsrret;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_86_8_91_23_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 96 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
-        %lblX.25 = local;
-        symbol [ lblX %lblX.25 96 12 16 ];
-        %tmp.248 = lgetv %cx.6;
-        symbol [ cx %tmp.248 96 20 22 ];
-        %tmp.249 = 6;
-        %tmp.250 = sub %tmp.248 %tmp.249;
-        lputv %lblX.25 %tmp.250;
-        symbol [ lblX %lblX.25 96 12 16 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 97 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
-        %valX.26 = local;
-        symbol [ valX %valX.26 97 12 16 ];
-        %tmp.251 = lgetv %cx.6;
-        symbol [ cx %tmp.251 97 20 22 ];
-        %tmp.252 = 6;
-        %tmp.253 = add %tmp.251 %tmp.252;
-        lputv %valX.26 %tmp.253;
-        symbol [ valX %valX.26 97 12 16 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 98 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
-        %jrvc.27 = local;
-        symbol [ jrvc %jrvc.27 98 12 16 ];
-        symbol [ Graphics %tmp.254 98 20 28 ];
-        %tmp.254 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_RIGHT %tmp.255 98 29 47 ];
-        %tmp.255 = getv %tmp.254 :TEXT_JUSTIFY_RIGHT;
-        symbol [ Graphics %tmp.256 98 50 58 ];
-        %tmp.256 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_VCENTER %tmp.257 98 59 79 ];
-        %tmp.257 = getv %tmp.256 :TEXT_JUSTIFY_VCENTER;
-        %tmp.258 = bitor %tmp.255 %tmp.257;
-        lputv %jrvc.27 %tmp.258;
-        symbol [ jrvc %jrvc.27 98 12 16 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 99 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
-        %jlvc.28 = local;
-        symbol [ jlvc %jlvc.28 99 12 16 ];
-        symbol [ Graphics %tmp.259 99 20 28 ];
-        %tmp.259 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_LEFT %tmp.260 99 29 46 ];
-        %tmp.260 = getv %tmp.259 :TEXT_JUSTIFY_LEFT;
-        symbol [ Graphics %tmp.261 99 50 58 ];
-        %tmp.261 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_VCENTER %tmp.262 99 59 79 ];
-        %tmp.262 = getv %tmp.261 :TEXT_JUSTIFY_VCENTER;
-        %tmp.263 = bitor %tmp.260 %tmp.262;
-        lputv %jlvc.28 %tmp.263;
-        symbol [ jlvc %jlvc.28 99 12 16 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 100 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
-        %lFont.29 = local;
-        symbol [ lFont %lFont.29 100 12 17 ];
-        symbol [ Graphics %tmp.264 100 20 28 ];
-        %tmp.264 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.265 100 29 39 ];
-        %tmp.265 = getv %tmp.264 :FONT_SMALL;
-        lputv %lFont.29 %tmp.265;
-        symbol [ lFont %lFont.29 100 12 17 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 101 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
-        %vFont.30 = local;
-        symbol [ vFont %vFont.30 101 12 17 ];
-        symbol [ Graphics %tmp.266 101 20 28 ];
-        %tmp.266 = getm $.Toybox.Graphics;
-        symbol [ FONT_MEDIUM %tmp.267 101 29 40 ];
-        %tmp.267 = getv %tmp.266 :FONT_MEDIUM;
-        lputv %vFont.30 %tmp.267;
-        symbol [ vFont %vFont.30 101 12 17 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 104 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
-        %pitch.31 = local;
-        symbol [ pitch %pitch.31 104 12 17 ];
-        %tmp.268 = 28;
-        lputv %pitch.31 %tmp.268;
-        symbol [ pitch %pitch.31 104 12 17 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 105 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
-        %divY.32 = local;
-        symbol [ divY %divY.32 105 12 16 ];
-        %tmp.269 = lgetv %cy.7;
-        symbol [ cy %tmp.269 105 20 22 ];
-        %tmp.270 = 12;
-        %tmp.271 = add %tmp.269 %tmp.270;
-        lputv %divY.32 %tmp.271;
-        symbol [ divY %divY.32 105 12 16 ];
+        lputv %altStr.20 %tmp.214;
+        symbol [ altStr %altStr.20 100 12 18 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_98_79_101_8_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_98_8_101_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_98_8_101_8_if_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 103 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %ldgStr.22 = local;
+        symbol [ ldgStr %ldgStr.22 103 12 18 ];
+        symbol [ _main %tmp.216 103 22 27 ];
+        %tmp.216 = getv ? :_main;
+        symbol [ landings %tmp.217 103 28 36 ];
+        %tmp.217 = getv %tmp.216 :landings;
+        %tmp.218 = as %tmp.217 Number;
+        symbol [ Number %tmp.218 103 40 46 ];
+        symbol [ toString %tmp.219 103 48 56 ];
+        %tmp.219 = getv function %tmp.218 :toString;
+        %tmp.220 = invoke %tmp.218 %tmp.219();
+        lputv %ldgStr.22 %tmp.220;
+        symbol [ ldgStr %ldgStr.22 103 12 18 ];
 [ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 106 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
-        %row3Y.33 = local;
-        symbol [ row3Y %row3Y.33 106 12 17 ];
-        %tmp.272 = lgetv %divY.32;
-        symbol [ divY %tmp.272 106 20 24 ];
-        %tmp.273 = 14;
-        %tmp.274 = sub %tmp.272 %tmp.273;
-        lputv %row3Y.33 %tmp.274;
-        symbol [ row3Y %row3Y.33 106 12 17 ];
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %blockMs.23 = local;
+        symbol [ blockMs %blockMs.23 106 12 19 ];
+        symbol [ _main %tmp.222 106 23 28 ];
+        %tmp.222 = getv ? :_main;
+        symbol [ elapsed %tmp.223 106 29 36 ];
+        %tmp.223 = getv %tmp.222 :elapsed;
+        %tmp.224 = as %tmp.223 Number;
+        symbol [ Number %tmp.224 106 40 46 ];
+        lputv %blockMs.23 %tmp.224;
+        symbol [ blockMs %blockMs.23 106 12 19 ];
 [ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 107 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
-        %row2Y.34 = local;
-        symbol [ row2Y %row2Y.34 107 12 17 ];
-        %tmp.275 = lgetv %row3Y.33;
-        symbol [ row3Y %tmp.275 107 20 25 ];
-        %tmp.276 = lgetv %pitch.31;
-        symbol [ pitch %tmp.276 107 28 33 ];
-        %tmp.277 = sub %tmp.275 %tmp.276;
-        lputv %row2Y.34 %tmp.277;
-        symbol [ row2Y %row2Y.34 107 12 17 ];
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %blockSec.24 = local;
+        symbol [ blockSec %blockSec.24 107 12 20 ];
+        %tmp.225 = lgetv %blockMs.23;
+        symbol [ blockMs %tmp.225 107 23 30 ];
+        %tmp.226 = 1000;
+        %tmp.227 = div %tmp.225 %tmp.226;
+        lputv %blockSec.24 %tmp.227;
+        symbol [ blockSec %blockSec.24 107 12 20 ];
 [ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 108 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
-        %row1Y.35 = local;
-        symbol [ row1Y %row1Y.35 108 12 17 ];
-        %tmp.278 = lgetv %row2Y.34;
-        symbol [ row2Y %tmp.278 108 20 25 ];
-        %tmp.279 = lgetv %pitch.31;
-        symbol [ pitch %tmp.279 108 28 33 ];
-        %tmp.280 = sub %tmp.278 %tmp.279;
-        lputv %row1Y.35 %tmp.280;
-        symbol [ row1Y %row1Y.35 108 12 17 ];
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %bh.25 = local;
+        symbol [ bh %bh.25 108 12 14 ];
+        %tmp.228 = lgetv %blockSec.24;
+        symbol [ blockSec %tmp.228 108 17 25 ];
+        %tmp.229 = 3600;
+        %tmp.230 = div %tmp.228 %tmp.229;
+        lputv %bh.25 %tmp.230;
+        symbol [ bh %bh.25 108 12 14 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 109 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %bm.26 = local;
+        symbol [ bm %bm.26 109 12 14 ];
+        %tmp.231 = lgetv %blockSec.24;
+        symbol [ blockSec %tmp.231 109 18 26 ];
+        %tmp.232 = 3600;
+        %tmp.233 = mod %tmp.231 %tmp.232;
+        %tmp.234 = 60;
+        %tmp.235 = div %tmp.233 %tmp.234;
+        lputv %bm.26 %tmp.235;
+        symbol [ bm %bm.26 109 12 14 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 110 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %bs.27 = local;
+        symbol [ bs %bs.27 110 12 14 ];
+        %tmp.236 = lgetv %blockSec.24;
+        symbol [ blockSec %tmp.236 110 17 25 ];
+        %tmp.237 = 60;
+        %tmp.238 = mod %tmp.236 %tmp.237;
+        lputv %bs.27 %tmp.238;
+        symbol [ bs %bs.27 110 12 14 ];
 [ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 111 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
-        %row4Y.36 = local;
-        symbol [ row4Y %row4Y.36 111 12 17 ];
-        %tmp.281 = lgetv %divY.32;
-        symbol [ divY %tmp.281 111 20 24 ];
-        %tmp.282 = 22;
-        %tmp.283 = add %tmp.281 %tmp.282;
-        lputv %row4Y.36 %tmp.283;
-        symbol [ row4Y %row4Y.36 111 12 17 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 112 8 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop" ]
-        %row5Y.37 = local;
-        symbol [ row5Y %row5Y.37 112 12 17 ];
-        %tmp.284 = lgetv %row4Y.36;
-        symbol [ row4Y %tmp.284 112 20 25 ];
-        %tmp.285 = 30;
-        %tmp.286 = add %tmp.284 %tmp.285;
-        lputv %row5Y.37 %tmp.286;
-        symbol [ row5Y %row5Y.37 112 12 17 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 114 8 ]
-        %tmp.287 = lgetv %dc;
-        symbol [ dc %tmp.287 114 8 10 ];
-        symbol [ setColor %tmp.288 114 11 19 ];
-        %tmp.288 = getv function %tmp.287 :setColor;
-        symbol [ Graphics %tmp.289 114 20 28 ];
-        %tmp.289 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLUE %tmp.290 114 29 39 ];
-        %tmp.290 = getv %tmp.289 :COLOR_BLUE;
-        symbol [ Graphics %tmp.291 114 42 50 ];
-        %tmp.291 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.292 114 51 68 ];
-        %tmp.292 = getv %tmp.291 :COLOR_TRANSPARENT;
-        invoke %tmp.287 %tmp.288(%tmp.290, %tmp.292);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 115 8 ]
-        %tmp.293 = lgetv %dc;
-        symbol [ dc %tmp.293 115 8 10 ];
-        symbol [ drawText %tmp.294 115 11 19 ];
-        %tmp.294 = getv function %tmp.293 :drawText;
-        %tmp.295 = lgetv %lblX.25;
-        symbol [ lblX %tmp.295 115 20 24 ];
-        %tmp.296 = lgetv %row1Y.35;
-        symbol [ row1Y %tmp.296 115 26 31 ];
-        %tmp.297 = lgetv %lFont.29;
-        symbol [ lFont %tmp.297 115 33 38 ];
-        %tmp.298 = "OBT";
-        %tmp.299 = lgetv %jrvc.27;
-        symbol [ jrvc %tmp.299 115 47 51 ];
-        invoke %tmp.293 %tmp.294(%tmp.295, %tmp.296, %tmp.297, %tmp.298, %tmp.299);
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %timeStr.28 = local;
+        symbol [ timeStr %timeStr.28 111 12 19 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_111_22_113_71_begin:
+        %tmp.239 = lgetv %bh.25;
+        symbol [ bh %tmp.239 111 23 25 ];
+        %tmp.240 = 1;
+        %tmp.241 = gte %tmp.239 %tmp.240;
+        bf %tmp.241 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_111_22_113_71_else_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_111_22_113_71_true:
+        %tmp.242 = lgetv %bh.25;
+        symbol [ bh %tmp.242 112 14 16 ];
+        symbol [ toString %tmp.243 112 17 25 ];
+        %tmp.243 = getv function %tmp.242 :toString;
+        %tmp.244 = invoke %tmp.242 %tmp.243();
+        %tmp.245 = ":";
+        %tmp.246 = add %tmp.244 %tmp.245;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_37_112_53_begin:
+        %tmp.247 = lgetv %bm.26;
+        symbol [ bm %tmp.247 112 37 39 ];
+        %tmp.248 = 10;
+        %tmp.249 = lt %tmp.247 %tmp.248;
+        bf %tmp.249 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_37_112_53_else_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_37_112_53_true:
+        %tmp.250 = "0";
+        push %tmp.250;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_37_112_53_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_37_112_53_else_false:
+        %tmp.251 = "";
+        push %tmp.251;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_37_112_53_end:
+        %tmp.252 = phi [%tmp.249 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_37_112_53_begin] [%tmp.250 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_37_112_53_true] [%tmp.251 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_37_112_53_else_false] [%tmp.252 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_37_112_53_end];
+        %tmp.253 = add %tmp.246 %tmp.252;
+        %tmp.254 = lgetv %bm.26;
+        symbol [ bm %tmp.254 112 59 61 ];
+        symbol [ toString %tmp.255 112 62 70 ];
+        %tmp.255 = getv function %tmp.254 :toString;
+        %tmp.256 = invoke %tmp.254 %tmp.255();
+        %tmp.257 = add %tmp.253 %tmp.256;
+        %tmp.258 = ":";
+        %tmp.259 = add %tmp.257 %tmp.258;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_82_112_98_begin:
+        %tmp.260 = lgetv %bs.27;
+        symbol [ bs %tmp.260 112 82 84 ];
+        %tmp.261 = 10;
+        %tmp.262 = lt %tmp.260 %tmp.261;
+        bf %tmp.262 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_82_112_98_else_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_82_112_98_true:
+        %tmp.263 = "0";
+        push %tmp.263;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_82_112_98_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_82_112_98_else_false:
+        %tmp.264 = "";
+        push %tmp.264;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_82_112_98_end:
+        %tmp.265 = phi [%tmp.262 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_82_112_98_begin] [%tmp.263 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_82_112_98_true] [%tmp.264 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_82_112_98_else_false] [%tmp.265 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_112_82_112_98_end];
+        %tmp.266 = add %tmp.259 %tmp.265;
+        %tmp.267 = lgetv %bs.27;
+        symbol [ bs %tmp.267 112 104 106 ];
+        symbol [ toString %tmp.268 112 107 115 ];
+        %tmp.268 = getv function %tmp.267 :toString;
+        %tmp.269 = invoke %tmp.267 %tmp.268();
+        %tmp.270 = add %tmp.266 %tmp.269;
+        push %tmp.270;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_111_22_113_71_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_111_22_113_71_else_false:
+        %tmp.271 = lgetv %bm.26;
+        symbol [ bm %tmp.271 113 14 16 ];
+        symbol [ toString %tmp.272 113 17 25 ];
+        %tmp.272 = getv function %tmp.271 :toString;
+        %tmp.273 = invoke %tmp.271 %tmp.272();
+        %tmp.274 = ":";
+        %tmp.275 = add %tmp.273 %tmp.274;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_113_37_113_53_begin:
+        %tmp.276 = lgetv %bs.27;
+        symbol [ bs %tmp.276 113 37 39 ];
+        %tmp.277 = 10;
+        %tmp.278 = lt %tmp.276 %tmp.277;
+        bf %tmp.278 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_113_37_113_53_else_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_113_37_113_53_true:
+        %tmp.279 = "0";
+        push %tmp.279;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_113_37_113_53_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_113_37_113_53_else_false:
+        %tmp.280 = "";
+        push %tmp.280;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_113_37_113_53_end:
+        %tmp.281 = phi [%tmp.278 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_113_37_113_53_begin] [%tmp.279 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_113_37_113_53_true] [%tmp.280 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_113_37_113_53_else_false] [%tmp.281 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_113_37_113_53_end];
+        %tmp.282 = add %tmp.275 %tmp.281;
+        %tmp.283 = lgetv %bs.27;
+        symbol [ bs %tmp.283 113 59 61 ];
+        symbol [ toString %tmp.284 113 62 70 ];
+        %tmp.284 = getv function %tmp.283 :toString;
+        %tmp.285 = invoke %tmp.283 %tmp.284();
+        %tmp.286 = add %tmp.282 %tmp.285;
+        push %tmp.286;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_111_22_113_71_end:
+        %tmp.287 = phi [%tmp.241 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_111_22_113_71_begin] [%tmp.270 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_111_22_113_71_true] [%tmp.286 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_111_22_113_71_else_false] [%tmp.287 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_111_22_113_71_end];
+        lputv %timeStr.28 %tmp.287;
+        symbol [ timeStr %timeStr.28 111 12 19 ];
 [ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 116 8 ]
-        %tmp.300 = lgetv %dc;
-        symbol [ dc %tmp.300 116 8 10 ];
-        symbol [ setColor %tmp.301 116 11 19 ];
-        %tmp.301 = getv function %tmp.300 :setColor;
-        symbol [ Graphics %tmp.302 116 20 28 ];
-        %tmp.302 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.303 116 29 40 ];
-        %tmp.303 = getv %tmp.302 :COLOR_WHITE;
-        symbol [ Graphics %tmp.304 116 42 50 ];
-        %tmp.304 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.305 116 51 68 ];
-        %tmp.305 = getv %tmp.304 :COLOR_TRANSPARENT;
-        invoke %tmp.300 %tmp.301(%tmp.303, %tmp.305);
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %gStr.29 = local;
+        symbol [ gStr %gStr.29 116 12 16 ];
+        %tmp.288 = "--G";
+        lputv %gStr.29 %tmp.288;
+        symbol [ gStr %gStr.29 116 12 16 ];
 [ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 117 8 ]
-        %tmp.306 = lgetv %dc;
-        symbol [ dc %tmp.306 117 8 10 ];
-        symbol [ drawText %tmp.307 117 11 19 ];
-        %tmp.307 = getv function %tmp.306 :drawText;
-        %tmp.308 = lgetv %valX.26;
-        symbol [ valX %tmp.308 117 20 24 ];
-        %tmp.309 = lgetv %row1Y.35;
-        symbol [ row1Y %tmp.309 117 26 31 ];
-        %tmp.310 = lgetv %vFont.30;
-        symbol [ vFont %tmp.310 117 33 38 ];
-        %tmp.311 = lgetv %startStr.10;
-        symbol [ startStr %tmp.311 117 40 48 ];
-        %tmp.312 = lgetv %jlvc.28;
-        symbol [ jlvc %tmp.312 117 50 54 ];
-        invoke %tmp.306 %tmp.307(%tmp.308, %tmp.309, %tmp.310, %tmp.311, %tmp.312);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 119 8 ]
-        %tmp.313 = lgetv %dc;
-        symbol [ dc %tmp.313 119 8 10 ];
-        symbol [ setColor %tmp.314 119 11 19 ];
-        %tmp.314 = getv function %tmp.313 :setColor;
-        symbol [ Graphics %tmp.315 119 20 28 ];
-        %tmp.315 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLUE %tmp.316 119 29 39 ];
-        %tmp.316 = getv %tmp.315 :COLOR_BLUE;
-        symbol [ Graphics %tmp.317 119 42 50 ];
-        %tmp.317 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.318 119 51 68 ];
-        %tmp.318 = getv %tmp.317 :COLOR_TRANSPARENT;
-        invoke %tmp.313 %tmp.314(%tmp.316, %tmp.318);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 120 8 ]
-        %tmp.319 = lgetv %dc;
-        symbol [ dc %tmp.319 120 8 10 ];
-        symbol [ drawText %tmp.320 120 11 19 ];
-        %tmp.320 = getv function %tmp.319 :drawText;
-        %tmp.321 = lgetv %lblX.25;
-        symbol [ lblX %tmp.321 120 20 24 ];
-        %tmp.322 = lgetv %row2Y.34;
-        symbol [ row2Y %tmp.322 120 26 31 ];
-        %tmp.323 = lgetv %lFont.29;
-        symbol [ lFont %tmp.323 120 33 38 ];
-        %tmp.324 = "IBT";
-        %tmp.325 = lgetv %jrvc.27;
-        symbol [ jrvc %tmp.325 120 47 51 ];
-        invoke %tmp.319 %tmp.320(%tmp.321, %tmp.322, %tmp.323, %tmp.324, %tmp.325);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 121 8 ]
-        %tmp.326 = lgetv %dc;
-        symbol [ dc %tmp.326 121 8 10 ];
-        symbol [ setColor %tmp.327 121 11 19 ];
-        %tmp.327 = getv function %tmp.326 :setColor;
-        symbol [ Graphics %tmp.328 121 20 28 ];
-        %tmp.328 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.329 121 29 40 ];
-        %tmp.329 = getv %tmp.328 :COLOR_WHITE;
-        symbol [ Graphics %tmp.330 121 42 50 ];
-        %tmp.330 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.331 121 51 68 ];
-        %tmp.331 = getv %tmp.330 :COLOR_TRANSPARENT;
-        invoke %tmp.326 %tmp.327(%tmp.329, %tmp.331);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 122 8 ]
-        %tmp.332 = lgetv %dc;
-        symbol [ dc %tmp.332 122 8 10 ];
-        symbol [ drawText %tmp.333 122 11 19 ];
-        %tmp.333 = getv function %tmp.332 :drawText;
-        %tmp.334 = lgetv %valX.26;
-        symbol [ valX %tmp.334 122 20 24 ];
-        %tmp.335 = lgetv %row2Y.34;
-        symbol [ row2Y %tmp.335 122 26 31 ];
-        %tmp.336 = lgetv %vFont.30;
-        symbol [ vFont %tmp.336 122 33 38 ];
-        %tmp.337 = lgetv %endStr.13;
-        symbol [ endStr %tmp.337 122 40 46 ];
-        %tmp.338 = lgetv %jlvc.28;
-        symbol [ jlvc %tmp.338 122 48 52 ];
-        invoke %tmp.332 %tmp.333(%tmp.334, %tmp.335, %tmp.336, %tmp.337, %tmp.338);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 124 8 ]
-        %tmp.339 = lgetv %dc;
-        symbol [ dc %tmp.339 124 8 10 ];
-        symbol [ setColor %tmp.340 124 11 19 ];
-        %tmp.340 = getv function %tmp.339 :setColor;
-        symbol [ Graphics %tmp.341 124 20 28 ];
-        %tmp.341 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLUE %tmp.342 124 29 39 ];
-        %tmp.342 = getv %tmp.341 :COLOR_BLUE;
-        symbol [ Graphics %tmp.343 124 42 50 ];
-        %tmp.343 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.344 124 51 68 ];
-        %tmp.344 = getv %tmp.343 :COLOR_TRANSPARENT;
-        invoke %tmp.339 %tmp.340(%tmp.342, %tmp.344);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 125 8 ]
-        %tmp.345 = lgetv %dc;
-        symbol [ dc %tmp.345 125 8 10 ];
-        symbol [ drawText %tmp.346 125 11 19 ];
-        %tmp.346 = getv function %tmp.345 :drawText;
-        %tmp.347 = lgetv %lblX.25;
-        symbol [ lblX %tmp.347 125 20 24 ];
-        %tmp.348 = lgetv %row3Y.33;
-        symbol [ row3Y %tmp.348 125 26 31 ];
-        %tmp.349 = lgetv %lFont.29;
-        symbol [ lFont %tmp.349 125 33 38 ];
-        %tmp.350 = "DIST.";
-        %tmp.351 = lgetv %jrvc.27;
-        symbol [ jrvc %tmp.351 125 49 53 ];
-        invoke %tmp.345 %tmp.346(%tmp.347, %tmp.348, %tmp.349, %tmp.350, %tmp.351);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 126 8 ]
-        %tmp.352 = lgetv %dc;
-        symbol [ dc %tmp.352 126 8 10 ];
-        symbol [ setColor %tmp.353 126 11 19 ];
-        %tmp.353 = getv function %tmp.352 :setColor;
-        symbol [ Graphics %tmp.354 126 20 28 ];
-        %tmp.354 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.355 126 29 40 ];
-        %tmp.355 = getv %tmp.354 :COLOR_WHITE;
-        symbol [ Graphics %tmp.356 126 42 50 ];
-        %tmp.356 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.357 126 51 68 ];
-        %tmp.357 = getv %tmp.356 :COLOR_TRANSPARENT;
-        invoke %tmp.352 %tmp.353(%tmp.355, %tmp.357);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 127 8 ]
-        %tmp.358 = lgetv %dc;
-        symbol [ dc %tmp.358 127 8 10 ];
-        symbol [ drawText %tmp.359 127 11 19 ];
-        %tmp.359 = getv function %tmp.358 :drawText;
-        %tmp.360 = lgetv %valX.26;
-        symbol [ valX %tmp.360 127 20 24 ];
-        %tmp.361 = lgetv %row3Y.33;
-        symbol [ row3Y %tmp.361 127 26 31 ];
-        %tmp.362 = lgetv %vFont.30;
-        symbol [ vFont %tmp.362 127 33 38 ];
-        %tmp.363 = lgetv %distStr.19;
-        symbol [ distStr %tmp.363 127 40 47 ];
-        %tmp.364 = lgetv %jlvc.28;
-        symbol [ jlvc %tmp.364 127 49 53 ];
-        invoke %tmp.358 %tmp.359(%tmp.360, %tmp.361, %tmp.362, %tmp.363, %tmp.364);
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_117_8_125_24_beginTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_117_8_125_24_endTry @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_117_8_125_24_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_117_8_125_24_finally;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_117_8_125_24_beginTry:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_117_12_125_8_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 118 12 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_118_12_124_12_if_stmt:
+        symbol [ _main %tmp.290 118 17 22 ];
+        %tmp.290 = getv ? :_main;
+        symbol [ maxG %tmp.291 118 23 27 ];
+        %tmp.291 = getv %tmp.290 :maxG;
+        %tmp.292 = as %tmp.291 Float;
+        symbol [ Float %tmp.292 118 31 36 ];
+        %tmp.293 = 0.0;
+        %tmp.294 = gt %tmp.292 %tmp.293;
+        bf %tmp.294 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_118_12_124_12_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_118_12_124_12_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_118_45_124_12_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 119 16 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_118_45_124_12_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_118_45_124_12_stop" ]
+        %gv.30 = local;
+        symbol [ gv %gv.30 119 20 22 ];
+        symbol [ _main %tmp.296 119 25 30 ];
+        %tmp.296 = getv ? :_main;
+        symbol [ maxG %tmp.297 119 31 35 ];
+        %tmp.297 = getv %tmp.296 :maxG;
+        %tmp.298 = as %tmp.297 Float;
+        symbol [ Float %tmp.298 119 39 44 ];
+        lputv %gv.30 %tmp.298;
+        symbol [ gv %gv.30 119 20 22 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 120 16 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_118_45_124_12_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_118_45_124_12_stop" ]
+        %gi.31 = local;
+        symbol [ gi %gi.31 120 20 22 ];
+        %tmp.299 = lgetv %gv.30;
+        symbol [ gv %tmp.299 120 25 27 ];
+        symbol [ toNumber %tmp.300 120 28 36 ];
+        %tmp.300 = getv function %tmp.299 :toNumber;
+        %tmp.301 = invoke %tmp.299 %tmp.300();
+        lputv %gi.31 %tmp.301;
+        symbol [ gi %gi.31 120 20 22 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 121 16 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_118_45_124_12_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_118_45_124_12_stop" ]
+        %gd.32 = local;
+        symbol [ gd %gd.32 121 20 22 ];
+        %tmp.302 = lgetv %gv.30;
+        symbol [ gv %tmp.302 121 27 29 ];
+        %tmp.303 = lgetv %gi.31;
+        symbol [ gi %tmp.303 121 32 34 ];
+        symbol [ toFloat %tmp.304 121 35 42 ];
+        %tmp.304 = getv function %tmp.303 :toFloat;
+        %tmp.305 = invoke %tmp.303 %tmp.304();
+        %tmp.306 = sub %tmp.302 %tmp.305;
+        %tmp.307 = 100.0;
+        %tmp.308 = mul %tmp.306 %tmp.307;
+        symbol [ toNumber %tmp.309 121 55 63 ];
+        %tmp.309 = getv function %tmp.308 :toNumber;
+        %tmp.310 = invoke %tmp.308 %tmp.309();
+        lputv %gd.32 %tmp.310;
+        symbol [ gd %gd.32 121 20 22 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 122 16 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_122_16_122_38_if_stmt:
+        %tmp.311 = lgetv %gd.32;
+        symbol [ gd %tmp.311 122 20 22 ];
+        %tmp.312 = 0;
+        %tmp.313 = lt %tmp.311 %tmp.312;
+        bf %tmp.313 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_122_16_122_38_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_122_16_122_38_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_122_28_122_38_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 122 30 ]
+        %tmp.314 = 0;
+        lputv %gd.32 %tmp.314;
+        symbol [ gd %gd.32 122 30 32 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_122_28_122_38_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_122_16_122_38_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_122_16_122_38_if_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 123 16 ]
+        %tmp.315 = lgetv %gi.31;
+        symbol [ gi %tmp.315 123 23 25 ];
+        symbol [ toString %tmp.316 123 26 34 ];
+        %tmp.316 = getv function %tmp.315 :toString;
+        %tmp.317 = invoke %tmp.315 %tmp.316();
+        %tmp.318 = ".";
+        %tmp.319 = add %tmp.317 %tmp.318;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_123_46_123_62_begin:
+        %tmp.320 = lgetv %gd.32;
+        symbol [ gd %tmp.320 123 46 48 ];
+        %tmp.321 = 10;
+        %tmp.322 = lt %tmp.320 %tmp.321;
+        bf %tmp.322 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_123_46_123_62_else_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_123_46_123_62_true:
+        %tmp.323 = "0";
+        push %tmp.323;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_123_46_123_62_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_123_46_123_62_else_false:
+        %tmp.324 = "";
+        push %tmp.324;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_123_46_123_62_end:
+        %tmp.325 = phi [%tmp.322 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_123_46_123_62_begin] [%tmp.323 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_123_46_123_62_true] [%tmp.324 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_123_46_123_62_else_false] [%tmp.325 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_123_46_123_62_end];
+        %tmp.326 = add %tmp.319 %tmp.325;
+        %tmp.327 = lgetv %gd.32;
+        symbol [ gd %tmp.327 123 68 70 ];
+        symbol [ toString %tmp.328 123 71 79 ];
+        %tmp.328 = getv function %tmp.327 :toString;
+        %tmp.329 = invoke %tmp.327 %tmp.328();
+        %tmp.330 = add %tmp.326 %tmp.329;
+        %tmp.331 = "G";
+        %tmp.332 = add %tmp.330 %tmp.331;
+        lputv %gStr.29 %tmp.332;
+        symbol [ gStr %gStr.29 123 16 20 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_118_45_124_12_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_118_12_124_12_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_118_12_124_12_if_end:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_117_12_125_8_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_117_8_125_24_endTry:
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_117_8_125_24_finally;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_117_8_125_24_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_117_8_125_24_catch:
+        %tmp.333 = exception;
+        push %tmp.333;
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 125 10 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_117_8_125_24_catch" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_125_10_125_24_end" ]
+        %gex.33 = local;
+        symbol [ gex %gex.33 125 17 20 ];
+        %tmp.334 = dup %tmp.333;
+        lputv %gex.33 %tmp.334;
+        symbol [ gex %gex.33 125 17 20 ];
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_117_8_125_24_finally;
+        pop;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_117_8_125_24_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_125_10_125_24_end:
+        try @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_117_8_125_24_catch @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_125_10_125_24_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_125_10_125_24_end @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_117_8_125_24_finally;
+        jsr @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_117_8_125_24_finally;
+        throw %tmp.333;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_117_8_125_24_finally:
+        jsrret;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_117_8_125_24_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 128 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %jc.34 = local;
+        symbol [ jc %jc.34 128 12 14 ];
+        symbol [ Graphics %tmp.335 128 17 25 ];
+        %tmp.335 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.336 128 26 45 ];
+        %tmp.336 = getv %tmp.335 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.337 128 48 56 ];
+        %tmp.337 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.338 128 57 77 ];
+        %tmp.338 = getv %tmp.337 :TEXT_JUSTIFY_VCENTER;
+        %tmp.339 = bitor %tmp.336 %tmp.338;
+        lputv %jc.34 %tmp.339;
+        symbol [ jc %jc.34 128 12 14 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 129 8 ]
+        %tmp.340 = lgetv %dc;
+        symbol [ dc %tmp.340 129 8 10 ];
+        symbol [ setColor %tmp.341 129 11 19 ];
+        %tmp.341 = getv function %tmp.340 :setColor;
+        symbol [ Graphics %tmp.342 129 20 28 ];
+        %tmp.342 = getm $.Toybox.Graphics;
+        symbol [ COLOR_LT_GRAY %tmp.343 129 29 42 ];
+        %tmp.343 = getv %tmp.342 :COLOR_LT_GRAY;
+        symbol [ Graphics %tmp.344 129 44 52 ];
+        %tmp.344 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.345 129 53 70 ];
+        %tmp.345 = getv %tmp.344 :COLOR_TRANSPARENT;
+        invoke %tmp.340 %tmp.341(%tmp.343, %tmp.345);
 [ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 130 8 ]
-        %tmp.365 = lgetv %dc;
-        symbol [ dc %tmp.365 130 8 10 ];
-        symbol [ setColor %tmp.366 130 11 19 ];
-        %tmp.366 = getv function %tmp.365 :setColor;
-        symbol [ Graphics %tmp.367 130 20 28 ];
-        %tmp.367 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLUE %tmp.368 130 29 39 ];
-        %tmp.368 = getv %tmp.367 :COLOR_BLUE;
-        symbol [ Graphics %tmp.369 130 41 49 ];
-        %tmp.369 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.370 130 50 67 ];
-        %tmp.370 = getv %tmp.369 :COLOR_TRANSPARENT;
-        invoke %tmp.365 %tmp.366(%tmp.368, %tmp.370);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 131 8 ]
-        %tmp.371 = lgetv %dc;
-        symbol [ dc %tmp.371 131 8 10 ];
-        symbol [ setPenWidth %tmp.372 131 11 22 ];
-        %tmp.372 = getv function %tmp.371 :setPenWidth;
-        %tmp.373 = 2;
-        invoke %tmp.371 %tmp.372(%tmp.373);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 132 8 ]
-        %tmp.374 = lgetv %dc;
-        symbol [ dc %tmp.374 132 8 10 ];
-        symbol [ drawLine %tmp.375 132 11 19 ];
-        %tmp.375 = getv function %tmp.374 :drawLine;
-        %tmp.376 = lgetv %cx.6;
-        symbol [ cx %tmp.376 132 20 22 ];
-        %tmp.377 = lgetv %sepR.9;
-        symbol [ sepR %tmp.377 132 25 29 ];
-        %tmp.378 = sub %tmp.376 %tmp.377;
-        %tmp.379 = 8;
-        %tmp.380 = add %tmp.378 %tmp.379;
-        %tmp.381 = lgetv %divY.32;
-        symbol [ divY %tmp.381 132 35 39 ];
-        %tmp.382 = lgetv %cx.6;
-        symbol [ cx %tmp.382 132 41 43 ];
-        %tmp.383 = lgetv %sepR.9;
-        symbol [ sepR %tmp.383 132 46 50 ];
-        %tmp.384 = add %tmp.382 %tmp.383;
-        %tmp.385 = 8;
-        %tmp.386 = sub %tmp.384 %tmp.385;
-        %tmp.387 = lgetv %divY.32;
-        symbol [ divY %tmp.387 132 56 60 ];
-        invoke %tmp.374 %tmp.375(%tmp.380, %tmp.381, %tmp.386, %tmp.387);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 133 8 ]
-        %tmp.388 = lgetv %dc;
-        symbol [ dc %tmp.388 133 8 10 ];
-        symbol [ setPenWidth %tmp.389 133 11 22 ];
-        %tmp.389 = getv function %tmp.388 :setPenWidth;
-        %tmp.390 = 1;
-        invoke %tmp.388 %tmp.389(%tmp.390);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 135 8 ]
-        %tmp.391 = lgetv %dc;
-        symbol [ dc %tmp.391 135 8 10 ];
-        symbol [ setColor %tmp.392 135 11 19 ];
-        %tmp.392 = getv function %tmp.391 :setColor;
-        symbol [ Graphics %tmp.393 135 20 28 ];
-        %tmp.393 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLUE %tmp.394 135 29 39 ];
-        %tmp.394 = getv %tmp.393 :COLOR_BLUE;
-        symbol [ Graphics %tmp.395 135 42 50 ];
-        %tmp.395 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.396 135 51 68 ];
-        %tmp.396 = getv %tmp.395 :COLOR_TRANSPARENT;
-        invoke %tmp.391 %tmp.392(%tmp.394, %tmp.396);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 136 8 ]
-        %tmp.397 = lgetv %dc;
-        symbol [ dc %tmp.397 136 8 10 ];
-        symbol [ drawText %tmp.398 136 11 19 ];
-        %tmp.398 = getv function %tmp.397 :drawText;
-        %tmp.399 = lgetv %lblX.25;
-        symbol [ lblX %tmp.399 136 20 24 ];
-        %tmp.400 = lgetv %row4Y.36;
-        symbol [ row4Y %tmp.400 136 26 31 ];
-        %tmp.401 = lgetv %lFont.29;
-        symbol [ lFont %tmp.401 136 33 38 ];
-        %tmp.402 = "M.ALT";
-        %tmp.403 = lgetv %jrvc.27;
-        symbol [ jrvc %tmp.403 136 49 53 ];
-        invoke %tmp.397 %tmp.398(%tmp.399, %tmp.400, %tmp.401, %tmp.402, %tmp.403);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 137 8 ]
-        %tmp.404 = lgetv %dc;
-        symbol [ dc %tmp.404 137 8 10 ];
-        symbol [ setColor %tmp.405 137 11 19 ];
-        %tmp.405 = getv function %tmp.404 :setColor;
-        symbol [ Graphics %tmp.406 137 20 28 ];
-        %tmp.406 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.407 137 29 40 ];
-        %tmp.407 = getv %tmp.406 :COLOR_WHITE;
-        symbol [ Graphics %tmp.408 137 42 50 ];
-        %tmp.408 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.409 137 51 68 ];
-        %tmp.409 = getv %tmp.408 :COLOR_TRANSPARENT;
-        invoke %tmp.404 %tmp.405(%tmp.407, %tmp.409);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 138 8 ]
-        %tmp.410 = lgetv %dc;
-        symbol [ dc %tmp.410 138 8 10 ];
-        symbol [ drawText %tmp.411 138 11 19 ];
-        %tmp.411 = getv function %tmp.410 :drawText;
-        %tmp.412 = lgetv %valX.26;
-        symbol [ valX %tmp.412 138 20 24 ];
-        %tmp.413 = lgetv %row4Y.36;
-        symbol [ row4Y %tmp.413 138 26 31 ];
-        %tmp.414 = lgetv %vFont.30;
-        symbol [ vFont %tmp.414 138 33 38 ];
-        %tmp.415 = lgetv %altStr.20;
-        symbol [ altStr %tmp.415 138 40 46 ];
-        %tmp.416 = lgetv %jlvc.28;
-        symbol [ jlvc %tmp.416 138 48 52 ];
-        invoke %tmp.410 %tmp.411(%tmp.412, %tmp.413, %tmp.414, %tmp.415, %tmp.416);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 140 8 ]
-        %tmp.417 = lgetv %dc;
-        symbol [ dc %tmp.417 140 8 10 ];
-        symbol [ setColor %tmp.418 140 11 19 ];
-        %tmp.418 = getv function %tmp.417 :setColor;
-        symbol [ Graphics %tmp.419 140 20 28 ];
-        %tmp.419 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLUE %tmp.420 140 29 39 ];
-        %tmp.420 = getv %tmp.419 :COLOR_BLUE;
-        symbol [ Graphics %tmp.421 140 42 50 ];
-        %tmp.421 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.422 140 51 68 ];
-        %tmp.422 = getv %tmp.421 :COLOR_TRANSPARENT;
-        invoke %tmp.417 %tmp.418(%tmp.420, %tmp.422);
+        %tmp.346 = lgetv %dc;
+        symbol [ dc %tmp.346 130 8 10 ];
+        symbol [ drawText %tmp.347 130 11 19 ];
+        %tmp.347 = getv function %tmp.346 :drawText;
+        %tmp.348 = lgetv %cx.6;
+        symbol [ cx %tmp.348 130 20 22 ];
+        %tmp.349 = 42;
+        symbol [ Graphics %tmp.350 130 28 36 ];
+        %tmp.350 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.351 130 37 47 ];
+        %tmp.351 = getv %tmp.350 :FONT_XTINY;
+        %tmp.352 = "TRIP SUMMARY";
+        %tmp.353 = lgetv %jc.34;
+        symbol [ jc %tmp.353 130 65 67 ];
+        invoke %tmp.346 %tmp.347(%tmp.348, %tmp.349, %tmp.351, %tmp.352, %tmp.353);
 [ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 141 8 ]
-        %tmp.423 = lgetv %dc;
-        symbol [ dc %tmp.423 141 8 10 ];
-        symbol [ drawText %tmp.424 141 11 19 ];
-        %tmp.424 = getv function %tmp.423 :drawText;
-        %tmp.425 = lgetv %lblX.25;
-        symbol [ lblX %tmp.425 141 20 24 ];
-        %tmp.426 = lgetv %row5Y.37;
-        symbol [ row5Y %tmp.426 141 26 31 ];
-        %tmp.427 = lgetv %lFont.29;
-        symbol [ lFont %tmp.427 141 33 38 ];
-        %tmp.428 = "A.GS";
-        %tmp.429 = lgetv %jrvc.27;
-        symbol [ jrvc %tmp.429 141 48 52 ];
-        invoke %tmp.423 %tmp.424(%tmp.425, %tmp.426, %tmp.427, %tmp.428, %tmp.429);
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %lChar.35 = local;
+        symbol [ lChar %lChar.35 141 12 17 ];
+        %tmp.354 = 10;
+        lputv %lChar.35 %tmp.354;
+        symbol [ lChar %lChar.35 141 12 17 ];
 [ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 142 8 ]
-        %tmp.430 = lgetv %dc;
-        symbol [ dc %tmp.430 142 8 10 ];
-        symbol [ setColor %tmp.431 142 11 19 ];
-        %tmp.431 = getv function %tmp.430 :setColor;
-        symbol [ Graphics %tmp.432 142 20 28 ];
-        %tmp.432 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.433 142 29 40 ];
-        %tmp.433 = getv %tmp.432 :COLOR_WHITE;
-        symbol [ Graphics %tmp.434 142 42 50 ];
-        %tmp.434 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.435 142 51 68 ];
-        %tmp.435 = getv %tmp.434 :COLOR_TRANSPARENT;
-        invoke %tmp.430 %tmp.431(%tmp.433, %tmp.435);
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %vChar.36 = local;
+        symbol [ vChar %vChar.36 142 12 17 ];
+        %tmp.355 = 13;
+        lputv %vChar.36 %tmp.355;
+        symbol [ vChar %vChar.36 142 12 17 ];
 [ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 143 8 ]
-        %tmp.436 = lgetv %dc;
-        symbol [ dc %tmp.436 143 8 10 ];
-        symbol [ drawText %tmp.437 143 11 19 ];
-        %tmp.437 = getv function %tmp.436 :drawText;
-        %tmp.438 = lgetv %valX.26;
-        symbol [ valX %tmp.438 143 20 24 ];
-        %tmp.439 = lgetv %row5Y.37;
-        symbol [ row5Y %tmp.439 143 26 31 ];
-        %tmp.440 = lgetv %vFont.30;
-        symbol [ vFont %tmp.440 143 33 38 ];
-        %tmp.441 = lgetv %gsStr.22;
-        symbol [ gsStr %tmp.441 143 40 45 ];
-        %tmp.442 = lgetv %jlvc.28;
-        symbol [ jlvc %tmp.442 143 47 51 ];
-        invoke %tmp.436 %tmp.437(%tmp.438, %tmp.439, %tmp.440, %tmp.441, %tmp.442);
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_38_40_144_4_stop:
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %gap.37 = local;
+        symbol [ gap %gap.37 143 12 15 ];
+        %tmp.356 = 18;
+        lputv %gap.37 %tmp.356;
+        symbol [ gap %gap.37 143 12 15 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 145 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %rowY0.38 = local;
+        symbol [ rowY0 %rowY0.38 145 12 17 ];
+        %tmp.357 = lgetv %cy.7;
+        symbol [ cy %tmp.357 145 20 22 ];
+        %tmp.358 = 62;
+        %tmp.359 = sub %tmp.357 %tmp.358;
+        lputv %rowY0.38 %tmp.359;
+        symbol [ rowY0 %rowY0.38 145 12 17 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 146 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %rowY1.39 = local;
+        symbol [ rowY1 %rowY1.39 146 12 17 ];
+        %tmp.360 = lgetv %cy.7;
+        symbol [ cy %tmp.360 146 20 22 ];
+        %tmp.361 = 38;
+        %tmp.362 = sub %tmp.360 %tmp.361;
+        lputv %rowY1.39 %tmp.362;
+        symbol [ rowY1 %rowY1.39 146 12 17 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 147 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %rowY2.40 = local;
+        symbol [ rowY2 %rowY2.40 147 12 17 ];
+        %tmp.363 = lgetv %cy.7;
+        symbol [ cy %tmp.363 147 20 22 ];
+        %tmp.364 = 14;
+        %tmp.365 = sub %tmp.363 %tmp.364;
+        lputv %rowY2.40 %tmp.365;
+        symbol [ rowY2 %rowY2.40 147 12 17 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 148 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %divY.41 = local;
+        symbol [ divY %divY.41 148 12 16 ];
+        %tmp.366 = lgetv %cy.7;
+        symbol [ cy %tmp.366 148 20 22 ];
+        %tmp.367 = 2;
+        %tmp.368 = sub %tmp.366 %tmp.367;
+        lputv %divY.41 %tmp.368;
+        symbol [ divY %divY.41 148 12 16 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 149 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %rowY3.42 = local;
+        symbol [ rowY3 %rowY3.42 149 12 17 ];
+        %tmp.369 = lgetv %cy.7;
+        symbol [ cy %tmp.369 149 20 22 ];
+        %tmp.370 = 12;
+        %tmp.371 = add %tmp.369 %tmp.370;
+        lputv %rowY3.42 %tmp.371;
+        symbol [ rowY3 %rowY3.42 149 12 17 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 150 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %rowY4.43 = local;
+        symbol [ rowY4 %rowY4.43 150 12 17 ];
+        %tmp.372 = lgetv %cy.7;
+        symbol [ cy %tmp.372 150 20 22 ];
+        %tmp.373 = 36;
+        %tmp.374 = add %tmp.372 %tmp.373;
+        lputv %rowY4.43 %tmp.374;
+        symbol [ rowY4 %rowY4.43 150 12 17 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 151 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %rowY5.44 = local;
+        symbol [ rowY5 %rowY5.44 151 12 17 ];
+        %tmp.375 = lgetv %cy.7;
+        symbol [ cy %tmp.375 151 20 22 ];
+        %tmp.376 = 58;
+        %tmp.377 = add %tmp.375 %tmp.376;
+        lputv %rowY5.44 %tmp.377;
+        symbol [ rowY5 %rowY5.44 151 12 17 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 152 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop" ]
+        %rowY6.45 = local;
+        symbol [ rowY6 %rowY6.45 152 12 17 ];
+        %tmp.378 = lgetv %cy.7;
+        symbol [ cy %tmp.378 152 20 22 ];
+        %tmp.379 = 78;
+        %tmp.380 = add %tmp.378 %tmp.379;
+        lputv %rowY6.45 %tmp.380;
+        symbol [ rowY6 %rowY6.45 152 12 17 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 154 8 ]
+        %tmp.381 = self;
+        symbol [ drawStatRow %tmp.382 154 8 19 ];
+        %tmp.382 = getv function %tmp.381 :drawStatRow;
+        %tmp.383 = lgetv %dc;
+        symbol [ dc %tmp.383 154 20 22 ];
+        %tmp.384 = lgetv %cx.6;
+        symbol [ cx %tmp.384 154 24 26 ];
+        %tmp.385 = lgetv %rowY0.38;
+        symbol [ rowY0 %tmp.385 154 28 33 ];
+        %tmp.386 = "OBT";
+        %tmp.387 = lgetv %startStr.10;
+        symbol [ startStr %tmp.387 154 44 52 ];
+        %tmp.388 = lgetv %lChar.35;
+        symbol [ lChar %tmp.388 154 54 59 ];
+        %tmp.389 = lgetv %vChar.36;
+        symbol [ vChar %tmp.389 154 61 66 ];
+        %tmp.390 = lgetv %gap.37;
+        symbol [ gap %tmp.390 154 68 71 ];
+        invoke %tmp.381 %tmp.382(%tmp.383, %tmp.384, %tmp.385, %tmp.386, %tmp.387, %tmp.388, %tmp.389, %tmp.390);
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 155 8 ]
+        %tmp.391 = self;
+        symbol [ drawStatRow %tmp.392 155 8 19 ];
+        %tmp.392 = getv function %tmp.391 :drawStatRow;
+        %tmp.393 = lgetv %dc;
+        symbol [ dc %tmp.393 155 20 22 ];
+        %tmp.394 = lgetv %cx.6;
+        symbol [ cx %tmp.394 155 24 26 ];
+        %tmp.395 = lgetv %rowY1.39;
+        symbol [ rowY1 %tmp.395 155 28 33 ];
+        %tmp.396 = "IBT";
+        %tmp.397 = lgetv %endStr.13;
+        symbol [ endStr %tmp.397 155 44 50 ];
+        %tmp.398 = lgetv %lChar.35;
+        symbol [ lChar %tmp.398 155 54 59 ];
+        %tmp.399 = lgetv %vChar.36;
+        symbol [ vChar %tmp.399 155 61 66 ];
+        %tmp.400 = lgetv %gap.37;
+        symbol [ gap %tmp.400 155 68 71 ];
+        invoke %tmp.391 %tmp.392(%tmp.393, %tmp.394, %tmp.395, %tmp.396, %tmp.397, %tmp.398, %tmp.399, %tmp.400);
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 156 8 ]
+        %tmp.401 = self;
+        symbol [ drawStatRow %tmp.402 156 8 19 ];
+        %tmp.402 = getv function %tmp.401 :drawStatRow;
+        %tmp.403 = lgetv %dc;
+        symbol [ dc %tmp.403 156 20 22 ];
+        %tmp.404 = lgetv %cx.6;
+        symbol [ cx %tmp.404 156 24 26 ];
+        %tmp.405 = lgetv %rowY2.40;
+        symbol [ rowY2 %tmp.405 156 28 33 ];
+        %tmp.406 = "TIME";
+        %tmp.407 = lgetv %timeStr.28;
+        symbol [ timeStr %tmp.407 156 44 51 ];
+        %tmp.408 = lgetv %lChar.35;
+        symbol [ lChar %tmp.408 156 54 59 ];
+        %tmp.409 = lgetv %vChar.36;
+        symbol [ vChar %tmp.409 156 61 66 ];
+        %tmp.410 = lgetv %gap.37;
+        symbol [ gap %tmp.410 156 68 71 ];
+        invoke %tmp.401 %tmp.402(%tmp.403, %tmp.404, %tmp.405, %tmp.406, %tmp.407, %tmp.408, %tmp.409, %tmp.410);
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 159 8 ]
+        %tmp.411 = lgetv %dc;
+        symbol [ dc %tmp.411 159 8 10 ];
+        symbol [ setColor %tmp.412 159 11 19 ];
+        %tmp.412 = getv function %tmp.411 :setColor;
+        symbol [ Graphics %tmp.413 159 20 28 ];
+        %tmp.413 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLUE %tmp.414 159 29 39 ];
+        %tmp.414 = getv %tmp.413 :COLOR_BLUE;
+        symbol [ Graphics %tmp.415 159 41 49 ];
+        %tmp.415 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.416 159 50 67 ];
+        %tmp.416 = getv %tmp.415 :COLOR_TRANSPARENT;
+        invoke %tmp.411 %tmp.412(%tmp.414, %tmp.416);
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 160 8 ]
+        %tmp.417 = lgetv %dc;
+        symbol [ dc %tmp.417 160 8 10 ];
+        symbol [ setPenWidth %tmp.418 160 11 22 ];
+        %tmp.418 = getv function %tmp.417 :setPenWidth;
+        %tmp.419 = 2;
+        invoke %tmp.417 %tmp.418(%tmp.419);
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 161 8 ]
+        %tmp.420 = lgetv %dc;
+        symbol [ dc %tmp.420 161 8 10 ];
+        symbol [ drawLine %tmp.421 161 11 19 ];
+        %tmp.421 = getv function %tmp.420 :drawLine;
+        %tmp.422 = lgetv %cx.6;
+        symbol [ cx %tmp.422 161 20 22 ];
+        %tmp.423 = lgetv %sepR.9;
+        symbol [ sepR %tmp.423 161 25 29 ];
+        %tmp.424 = sub %tmp.422 %tmp.423;
+        %tmp.425 = 8;
+        %tmp.426 = add %tmp.424 %tmp.425;
+        %tmp.427 = lgetv %divY.41;
+        symbol [ divY %tmp.427 161 35 39 ];
+        %tmp.428 = lgetv %cx.6;
+        symbol [ cx %tmp.428 161 41 43 ];
+        %tmp.429 = lgetv %sepR.9;
+        symbol [ sepR %tmp.429 161 46 50 ];
+        %tmp.430 = add %tmp.428 %tmp.429;
+        %tmp.431 = 8;
+        %tmp.432 = sub %tmp.430 %tmp.431;
+        %tmp.433 = lgetv %divY.41;
+        symbol [ divY %tmp.433 161 56 60 ];
+        invoke %tmp.420 %tmp.421(%tmp.426, %tmp.427, %tmp.432, %tmp.433);
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 162 8 ]
+        %tmp.434 = lgetv %dc;
+        symbol [ dc %tmp.434 162 8 10 ];
+        symbol [ setPenWidth %tmp.435 162 11 22 ];
+        %tmp.435 = getv function %tmp.434 :setPenWidth;
+        %tmp.436 = 1;
+        invoke %tmp.434 %tmp.435(%tmp.436);
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 164 8 ]
+        %tmp.437 = self;
+        symbol [ drawStatRow %tmp.438 164 8 19 ];
+        %tmp.438 = getv function %tmp.437 :drawStatRow;
+        %tmp.439 = lgetv %dc;
+        symbol [ dc %tmp.439 164 20 22 ];
+        %tmp.440 = lgetv %cx.6;
+        symbol [ cx %tmp.440 164 24 26 ];
+        %tmp.441 = lgetv %rowY3.42;
+        symbol [ rowY3 %tmp.441 164 28 33 ];
+        %tmp.442 = "DIST";
+        %tmp.443 = lgetv %distStr.19;
+        symbol [ distStr %tmp.443 164 44 51 ];
+        %tmp.444 = lgetv %lChar.35;
+        symbol [ lChar %tmp.444 164 53 58 ];
+        %tmp.445 = lgetv %vChar.36;
+        symbol [ vChar %tmp.445 164 60 65 ];
+        %tmp.446 = lgetv %gap.37;
+        symbol [ gap %tmp.446 164 67 70 ];
+        invoke %tmp.437 %tmp.438(%tmp.439, %tmp.440, %tmp.441, %tmp.442, %tmp.443, %tmp.444, %tmp.445, %tmp.446);
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 165 8 ]
+        %tmp.447 = self;
+        symbol [ drawStatRow %tmp.448 165 8 19 ];
+        %tmp.448 = getv function %tmp.447 :drawStatRow;
+        %tmp.449 = lgetv %dc;
+        symbol [ dc %tmp.449 165 20 22 ];
+        %tmp.450 = lgetv %cx.6;
+        symbol [ cx %tmp.450 165 24 26 ];
+        %tmp.451 = lgetv %rowY4.43;
+        symbol [ rowY4 %tmp.451 165 28 33 ];
+        %tmp.452 = "LDG";
+        %tmp.453 = lgetv %ldgStr.22;
+        symbol [ ldgStr %tmp.453 165 44 50 ];
+        %tmp.454 = lgetv %lChar.35;
+        symbol [ lChar %tmp.454 165 53 58 ];
+        %tmp.455 = lgetv %vChar.36;
+        symbol [ vChar %tmp.455 165 60 65 ];
+        %tmp.456 = lgetv %gap.37;
+        symbol [ gap %tmp.456 165 67 70 ];
+        invoke %tmp.447 %tmp.448(%tmp.449, %tmp.450, %tmp.451, %tmp.452, %tmp.453, %tmp.454, %tmp.455, %tmp.456);
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 166 8 ]
+        %tmp.457 = self;
+        symbol [ drawStatRow %tmp.458 166 8 19 ];
+        %tmp.458 = getv function %tmp.457 :drawStatRow;
+        %tmp.459 = lgetv %dc;
+        symbol [ dc %tmp.459 166 20 22 ];
+        %tmp.460 = lgetv %cx.6;
+        symbol [ cx %tmp.460 166 24 26 ];
+        %tmp.461 = lgetv %rowY5.44;
+        symbol [ rowY5 %tmp.461 166 28 33 ];
+        %tmp.462 = "ALT";
+        %tmp.463 = lgetv %altStr.20;
+        symbol [ altStr %tmp.463 166 44 50 ];
+        %tmp.464 = lgetv %lChar.35;
+        symbol [ lChar %tmp.464 166 53 58 ];
+        %tmp.465 = lgetv %vChar.36;
+        symbol [ vChar %tmp.465 166 60 65 ];
+        %tmp.466 = lgetv %gap.37;
+        symbol [ gap %tmp.466 166 67 70 ];
+        invoke %tmp.457 %tmp.458(%tmp.459, %tmp.460, %tmp.461, %tmp.462, %tmp.463, %tmp.464, %tmp.465, %tmp.466);
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 167 8 ]
+        %tmp.467 = self;
+        symbol [ drawStatRow %tmp.468 167 8 19 ];
+        %tmp.468 = getv function %tmp.467 :drawStatRow;
+        %tmp.469 = lgetv %dc;
+        symbol [ dc %tmp.469 167 20 22 ];
+        %tmp.470 = lgetv %cx.6;
+        symbol [ cx %tmp.470 167 24 26 ];
+        %tmp.471 = lgetv %rowY6.45;
+        symbol [ rowY6 %tmp.471 167 28 33 ];
+        %tmp.472 = "G";
+        %tmp.473 = lgetv %gStr.29;
+        symbol [ gStr %tmp.473 167 44 48 ];
+        %tmp.474 = lgetv %lChar.35;
+        symbol [ lChar %tmp.474 167 53 58 ];
+        %tmp.475 = lgetv %vChar.36;
+        symbol [ vChar %tmp.475 167 60 65 ];
+        %tmp.476 = lgetv %gap.37;
+        symbol [ gap %tmp.476 167 67 70 ];
+        invoke %tmp.467 %tmp.468(%tmp.469, %tmp.470, %tmp.471, %tmp.472, %tmp.473, %tmp.474, %tmp.475, %tmp.476);
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_56_40_168_4_stop:
     }
 }
-[ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 147; @symbol_classdef = [VFRSummaryDelegate,147,6,24]; @symbol_extends<0> = [WatchUi,147,33,40]; @symbol_extends<1> = [BehaviorDelegate,147,41,57]; ]
+[ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 171; @symbol_classdef = [VFRSummaryDelegate,171,6,24]; @symbol_extends<0> = [WatchUi,171,33,40]; @symbol_extends<1> = [BehaviorDelegate,171,41,57]; ]
 class VFRSummaryDelegate extends WatchUi.BehaviorDelegate {
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 147; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 171; ]
     <init> {
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 147; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 171; ]
     static
     <init> {
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 148; @position = 16; @symbol_vardef = [_main,148,16,21]; @symbol_type<0> = [VFRStopWatchView,148,25,41]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 172; @position = 16; @symbol_vardef = [_main,172,16,21]; @symbol_type<0> = [VFRStopWatchView,172,25,41]; ]
     private
     var _main as VFRStopWatchView;
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 150; @symbol_functiondef = [initialize,150,13,23]; @symbol_param<0> = [mainView,150,24,32]; @symbol_param<0>_type<0> = [VFRStopWatchView,150,36,52]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 174; @symbol_functiondef = [initialize,174,13,23]; @symbol_param<0> = [mainView,174,24,32]; @symbol_param<0>_type<0> = [VFRStopWatchView,174,36,52]; ]
     function initialize(mainView as VFRStopWatchView) as Void {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_150_54_153_4_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 151 8 ]
-        symbol [ BehaviorDelegate %tmp.2 151 8 24 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_174_54_177_4_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 175 8 ]
+        symbol [ BehaviorDelegate %tmp.2 175 8 24 ];
         %tmp.2 = getv ? :BehaviorDelegate;
-        symbol [ initialize %tmp.3 151 25 35 ];
+        symbol [ initialize %tmp.3 175 25 35 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 152 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 176 8 ]
         %tmp.4 = lgetv %mainView;
-        symbol [ mainView %tmp.4 152 16 24 ];
-        symbol [ _main ? 152 8 13 ];
+        symbol [ mainView %tmp.4 176 16 24 ];
+        symbol [ _main ? 176 8 13 ];
         putv self :_main %tmp.4;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_150_54_153_4_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_174_54_177_4_stop:
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 156; @symbol_functiondef = [onBack,156,13,19]; @symbol_return<0> = [Boolean,156,25,32]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 180; @symbol_functiondef = [onBack,180,13,19]; @symbol_return<0> = [Boolean,180,25,32]; ]
     function onBack() as Boolean {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_156_33_160_4_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 157 8 ]
-        symbol [ _main %tmp.2 157 8 13 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_180_33_184_4_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 181 8 ]
+        symbol [ _main %tmp.2 181 8 13 ];
         %tmp.2 = getv ? :_main;
-        symbol [ clearBackupProperties %tmp.3 157 14 35 ];
+        symbol [ clearBackupProperties %tmp.3 181 14 35 ];
         %tmp.3 = getv function %tmp.2 :clearBackupProperties;
         invoke %tmp.2 %tmp.3();
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 158 8 ]
-        symbol [ WatchUi %tmp.4 158 8 15 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 182 8 ]
+        symbol [ WatchUi %tmp.4 182 8 15 ];
         %tmp.4 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.5 158 16 23 ];
+        symbol [ popView %tmp.5 182 16 23 ];
         %tmp.5 = getv function %tmp.4 :popView;
-        symbol [ WatchUi %tmp.6 158 24 31 ];
+        symbol [ WatchUi %tmp.6 182 24 31 ];
         %tmp.6 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.7 158 32 43 ];
+        symbol [ SLIDE_RIGHT %tmp.7 182 32 43 ];
         %tmp.7 = getv %tmp.6 :SLIDE_RIGHT;
         invoke %tmp.4 %tmp.5(%tmp.7);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 159 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 183 8 ]
         %tmp.8 = true;
         ret %tmp.8;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_156_33_160_4_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_180_33_184_4_stop:
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 162; @symbol_functiondef = [onSelect,162,13,21]; @symbol_return<0> = [Boolean,162,27,34]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 186; @symbol_functiondef = [onSelect,186,13,21]; @symbol_return<0> = [Boolean,186,27,34]; ]
     function onSelect() as Boolean {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_162_35_166_4_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 163 8 ]
-        symbol [ _main %tmp.2 163 8 13 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_186_35_190_4_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 187 8 ]
+        symbol [ _main %tmp.2 187 8 13 ];
         %tmp.2 = getv ? :_main;
-        symbol [ clearBackupProperties %tmp.3 163 14 35 ];
+        symbol [ clearBackupProperties %tmp.3 187 14 35 ];
         %tmp.3 = getv function %tmp.2 :clearBackupProperties;
         invoke %tmp.2 %tmp.3();
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 164 8 ]
-        symbol [ WatchUi %tmp.4 164 8 15 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 188 8 ]
+        symbol [ WatchUi %tmp.4 188 8 15 ];
         %tmp.4 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.5 164 16 23 ];
+        symbol [ popView %tmp.5 188 16 23 ];
         %tmp.5 = getv function %tmp.4 :popView;
-        symbol [ WatchUi %tmp.6 164 24 31 ];
+        symbol [ WatchUi %tmp.6 188 24 31 ];
         %tmp.6 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.7 164 32 43 ];
+        symbol [ SLIDE_RIGHT %tmp.7 188 32 43 ];
         %tmp.7 = getv %tmp.6 :SLIDE_RIGHT;
         invoke %tmp.4 %tmp.5(%tmp.7);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 165 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc" 189 8 ]
         %tmp.8 = true;
         ret %tmp.8;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_162_35_166_4_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRSummaryView_mc_186_35_190_4_stop:
     }
 }
 [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRSummaryView.mc"; @line = 1; ]

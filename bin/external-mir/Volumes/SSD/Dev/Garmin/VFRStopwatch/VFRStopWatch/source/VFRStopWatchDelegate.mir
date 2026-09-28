@@ -63,193 +63,333 @@ _Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc
         ret %tmp.5;
 _Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_21_33_24_4_stop:
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc"; @line = 27; @symbol_functiondef = [onPreviousPage,27,13,27]; @symbol_return<0> = [Boolean,27,33,40]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc"; @line = 28; @symbol_functiondef = [onPreviousPage,28,13,27]; @symbol_return<0> = [Boolean,28,33,40]; ]
     function onPreviousPage() as Boolean {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_27_41_30_4_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 28 8 ]
-        symbol [ _view %tmp.2 28 8 13 ];
-        %tmp.2 = getv ? :_view;
-        symbol [ subTimer %tmp.3 28 14 22 ];
-        %tmp.3 = getv function %tmp.2 :subTimer;
-        invoke %tmp.2 %tmp.3();
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_28_41_31_4_start:
 [ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 29 8 ]
+        symbol [ _view %tmp.2 29 8 13 ];
+        %tmp.2 = getv ? :_view;
+        symbol [ shortUpAction %tmp.3 29 14 27 ];
+        %tmp.3 = getv function %tmp.2 :shortUpAction;
+        invoke %tmp.2 %tmp.3();
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 30 8 ]
         %tmp.4 = true;
         ret %tmp.4;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_27_41_30_4_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_28_41_31_4_stop:
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc"; @line = 35; @symbol_functiondef = [onKeyPressed,35,13,25]; @symbol_param<0> = [keyEvent,35,26,34]; @symbol_param<0>_type<0> = [WatchUi,35,38,45]; @symbol_param<0>_type<1> = [KeyEvent,35,46,54]; @symbol_return<0> = [Boolean,35,59,66]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc"; @line = 38; @symbol_functiondef = [onKeyPressed,38,13,25]; @symbol_param<0> = [keyEvent,38,26,34]; @symbol_param<0>_type<0> = [WatchUi,38,38,45]; @symbol_param<0>_type<1> = [KeyEvent,38,46,54]; @symbol_return<0> = [Boolean,38,59,66]; ]
     function onKeyPressed(keyEvent as WatchUi.KeyEvent) as Boolean {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_35_67_41_4_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 36 8 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_36_8_39_8_if_stmt:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_38_67_49_4_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 39 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_38_67_49_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_38_67_49_4_stop" ]
+        %key.1 = local;
+        symbol [ key %key.1 39 12 15 ];
         %tmp.1 = lgetv %keyEvent;
-        symbol [ keyEvent %tmp.1 36 12 20 ];
-        symbol [ getKey %tmp.2 36 21 27 ];
+        symbol [ keyEvent %tmp.1 39 18 26 ];
+        symbol [ getKey %tmp.2 39 27 33 ];
         %tmp.2 = getv function %tmp.1 :getKey;
         %tmp.3 = invoke %tmp.1 %tmp.2();
-        symbol [ WatchUi %tmp.4 36 33 40 ];
-        %tmp.4 = getm $.Toybox.WatchUi;
-        symbol [ KEY_DOWN %tmp.5 36 41 49 ];
-        %tmp.5 = getv %tmp.4 :KEY_DOWN;
-        %tmp.6 = eq %tmp.3 %tmp.5;
-        bf %tmp.6 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_36_8_39_8_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_36_8_39_8_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_36_51_39_8_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 37 12 ]
-        symbol [ _view %tmp.8 37 12 17 ];
-        %tmp.8 = getv ? :_view;
-        symbol [ onDownPressed %tmp.9 37 18 31 ];
-        %tmp.9 = getv function %tmp.8 :onDownPressed;
-        invoke %tmp.8 %tmp.9();
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 38 12 ]
-        %tmp.10 = true;
-        ret %tmp.10;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_36_51_39_8_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_36_8_39_8_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_36_8_39_8_if_end:
+        lputv %key.1 %tmp.3;
+        symbol [ key %key.1 39 12 15 ];
 [ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 40 8 ]
-        %tmp.11 = false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_40_8_43_8_if_stmt:
+        %tmp.4 = lgetv %key.1;
+        symbol [ key %tmp.4 40 12 15 ];
+        symbol [ WatchUi %tmp.5 40 19 26 ];
+        %tmp.5 = getm $.Toybox.WatchUi;
+        symbol [ KEY_DOWN %tmp.6 40 27 35 ];
+        %tmp.6 = getv %tmp.5 :KEY_DOWN;
+        %tmp.7 = eq %tmp.4 %tmp.6;
+        bf %tmp.7 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_40_8_43_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_40_8_43_8_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_40_37_43_8_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 41 12 ]
+        symbol [ _view %tmp.9 41 12 17 ];
+        %tmp.9 = getv ? :_view;
+        symbol [ onDownPressed %tmp.10 41 18 31 ];
+        %tmp.10 = getv function %tmp.9 :onDownPressed;
+        invoke %tmp.9 %tmp.10();
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 42 12 ]
+        %tmp.11 = true;
         ret %tmp.11;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_35_67_41_4_stop:
-    }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc"; @line = 43; @symbol_functiondef = [onKeyReleased,43,13,26]; @symbol_param<0> = [keyEvent,43,27,35]; @symbol_param<0>_type<0> = [WatchUi,43,39,46]; @symbol_param<0>_type<1> = [KeyEvent,43,47,55]; @symbol_return<0> = [Boolean,43,60,67]; ]
-    function onKeyReleased(keyEvent as WatchUi.KeyEvent) as Boolean {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_43_68_57_4_start:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_40_37_43_8_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_40_8_43_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_40_8_43_8_if_end:
 [ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 44 8 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_44_8_55_8_if_stmt:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_44_8_47_8_if_stmt:
+        %tmp.12 = lgetv %key.1;
+        symbol [ key %tmp.12 44 12 15 ];
+        symbol [ WatchUi %tmp.13 44 19 26 ];
+        %tmp.13 = getm $.Toybox.WatchUi;
+        symbol [ KEY_UP %tmp.14 44 27 33 ];
+        %tmp.14 = getv %tmp.13 :KEY_UP;
+        %tmp.15 = eq %tmp.12 %tmp.14;
+        bf %tmp.15 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_44_8_47_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_44_8_47_8_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_44_35_47_8_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 45 12 ]
+        symbol [ _view %tmp.17 45 12 17 ];
+        %tmp.17 = getv ? :_view;
+        symbol [ onUpPressed %tmp.18 45 18 29 ];
+        %tmp.18 = getv function %tmp.17 :onUpPressed;
+        invoke %tmp.17 %tmp.18();
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 46 12 ]
+        %tmp.19 = true;
+        ret %tmp.19;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_44_35_47_8_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_44_8_47_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_44_8_47_8_if_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 48 8 ]
+        %tmp.20 = false;
+        ret %tmp.20;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_38_67_49_4_stop:
+    }
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc"; @line = 51; @symbol_functiondef = [onKeyReleased,51,13,26]; @symbol_param<0> = [keyEvent,51,27,35]; @symbol_param<0>_type<0> = [WatchUi,51,39,46]; @symbol_param<0>_type<1> = [KeyEvent,51,47,55]; @symbol_return<0> = [Boolean,51,60,67]; ]
+    function onKeyReleased(keyEvent as WatchUi.KeyEvent) as Boolean {
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_51_68_78_4_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 52 8 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_51_68_78_4_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_51_68_78_4_stop" ]
+        %key.1 = local;
+        symbol [ key %key.1 52 12 15 ];
         %tmp.1 = lgetv %keyEvent;
-        symbol [ keyEvent %tmp.1 44 12 20 ];
-        symbol [ getKey %tmp.2 44 21 27 ];
+        symbol [ keyEvent %tmp.1 52 18 26 ];
+        symbol [ getKey %tmp.2 52 27 33 ];
         %tmp.2 = getv function %tmp.1 :getKey;
         %tmp.3 = invoke %tmp.1 %tmp.2();
-        symbol [ WatchUi %tmp.4 44 33 40 ];
-        %tmp.4 = getm $.Toybox.WatchUi;
-        symbol [ KEY_DOWN %tmp.5 44 41 49 ];
-        %tmp.5 = getv %tmp.4 :KEY_DOWN;
-        %tmp.6 = eq %tmp.3 %tmp.5;
-        bf %tmp.6 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_44_8_55_8_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_44_8_55_8_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_44_51_55_8_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 45 12 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_44_51_55_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_44_51_55_8_stop" ]
-        %now.1 = local;
-        symbol [ now %now.1 45 16 19 ];
-        symbol [ System %tmp.7 45 22 28 ];
-        %tmp.7 = getm $.Toybox.System;
-        symbol [ getTimer %tmp.8 45 29 37 ];
-        %tmp.8 = getv function %tmp.7 :getTimer;
-        %tmp.9 = invoke %tmp.7 %tmp.8();
-        lputv %now.1 %tmp.9;
-        symbol [ now %now.1 45 16 19 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 46 12 ]
-        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_44_51_55_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_44_51_55_8_stop" ]
-        %dur.2 = local;
-        symbol [ dur %dur.2 46 16 19 ];
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_46_22_46_77_begin:
-        symbol [ _view %tmp.11 46 23 28 ];
-        %tmp.11 = getv ? :_view;
-        symbol [ downPressAt %tmp.12 46 29 40 ];
-        %tmp.12 = getv %tmp.11 :downPressAt;
-        %tmp.13 = 0;
-        %tmp.14 = eq %tmp.12 %tmp.13;
-        bf %tmp.14 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_46_22_46_77_else_false;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_46_22_46_77_true:
-        %tmp.15 = 0;
-        push %tmp.15;
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_46_22_46_77_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_46_22_46_77_else_false:
-        %tmp.16 = lgetv %now.1;
-        symbol [ now %tmp.16 46 54 57 ];
-        symbol [ _view %tmp.18 46 60 65 ];
-        %tmp.18 = getv ? :_view;
-        symbol [ downPressAt %tmp.19 46 66 77 ];
-        %tmp.19 = getv %tmp.18 :downPressAt;
-        %tmp.20 = sub %tmp.16 %tmp.19;
-        push %tmp.20;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_46_22_46_77_end:
-        %tmp.21 = phi [%tmp.14 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_46_22_46_77_begin] [%tmp.15 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_46_22_46_77_true] [%tmp.20 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_46_22_46_77_else_false] [%tmp.21 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_46_22_46_77_end];
-        lputv %dur.2 %tmp.21;
-        symbol [ dur %dur.2 46 16 19 ];
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 47 12 ]
-        symbol [ _view %tmp.22 47 12 17 ];
-        %tmp.22 = getv self :_view;
-        %tmp.23 = 0;
-        symbol [ downPressAt ? 47 18 29 ];
-        putv %tmp.22 :downPressAt %tmp.23;
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 48 12 ]
-        symbol [ _view %tmp.24 48 12 17 ];
-        %tmp.24 = getv self :_view;
-        %tmp.25 = 0;
-        symbol [ lastDownEventAt ? 48 18 33 ];
-        putv %tmp.24 :lastDownEventAt %tmp.25;
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 49 12 ]
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_49_12_53_12_if_stmt:
-        %tmp.26 = lgetv %dur.2;
-        symbol [ dur %tmp.26 49 16 19 ];
-        symbol [ _view %tmp.28 49 23 28 ];
-        %tmp.28 = getv ? :_view;
-        symbol [ DOWN_HOLD_MS %tmp.29 49 29 41 ];
-        %tmp.29 = getv %tmp.28 :DOWN_HOLD_MS;
-        %tmp.30 = gte %tmp.26 %tmp.29;
-        bf %tmp.30 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_49_12_53_12_if_else_false;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_49_12_53_12_if_true:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_49_43_51_12_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 50 16 ]
-        symbol [ _view %tmp.32 50 16 21 ];
-        %tmp.32 = getv ? :_view;
-        symbol [ openSettingsMenu %tmp.33 50 22 38 ];
-        %tmp.33 = getv function %tmp.32 :openSettingsMenu;
-        invoke %tmp.32 %tmp.33();
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_49_43_51_12_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_49_12_53_12_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_49_12_53_12_if_else_false:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_51_19_53_12_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 52 16 ]
-        symbol [ _view %tmp.35 52 16 21 ];
-        %tmp.35 = getv ? :_view;
-        symbol [ shortDownAction %tmp.36 52 22 37 ];
-        %tmp.36 = getv function %tmp.35 :shortDownAction;
-        invoke %tmp.35 %tmp.36();
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_51_19_53_12_stop:
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_49_12_53_12_if_end:
+        lputv %key.1 %tmp.3;
+        symbol [ key %key.1 52 12 15 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 53 8 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_53_8_64_8_if_stmt:
+        %tmp.4 = lgetv %key.1;
+        symbol [ key %tmp.4 53 12 15 ];
+        symbol [ WatchUi %tmp.5 53 19 26 ];
+        %tmp.5 = getm $.Toybox.WatchUi;
+        symbol [ KEY_DOWN %tmp.6 53 27 35 ];
+        %tmp.6 = getv %tmp.5 :KEY_DOWN;
+        %tmp.7 = eq %tmp.4 %tmp.6;
+        bf %tmp.7 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_53_8_64_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_53_8_64_8_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_53_37_64_8_start:
 [ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 54 12 ]
-        %tmp.37 = true;
-        ret %tmp.37;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_44_51_55_8_stop:
-        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_44_8_55_8_if_end;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_44_8_55_8_if_end:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 56 8 ]
-        %tmp.38 = false;
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_53_37_64_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_53_37_64_8_stop" ]
+        %now.2 = local;
+        symbol [ now %now.2 54 16 19 ];
+        symbol [ System %tmp.8 54 22 28 ];
+        %tmp.8 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.9 54 29 37 ];
+        %tmp.9 = getv function %tmp.8 :getTimer;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        lputv %now.2 %tmp.10;
+        symbol [ now %now.2 54 16 19 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 55 12 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_53_37_64_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_53_37_64_8_stop" ]
+        %dur.3 = local;
+        symbol [ dur %dur.3 55 16 19 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_55_22_55_77_begin:
+        symbol [ _view %tmp.12 55 23 28 ];
+        %tmp.12 = getv ? :_view;
+        symbol [ downPressAt %tmp.13 55 29 40 ];
+        %tmp.13 = getv %tmp.12 :downPressAt;
+        %tmp.14 = 0;
+        %tmp.15 = eq %tmp.13 %tmp.14;
+        bf %tmp.15 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_55_22_55_77_else_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_55_22_55_77_true:
+        %tmp.16 = 0;
+        push %tmp.16;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_55_22_55_77_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_55_22_55_77_else_false:
+        %tmp.17 = lgetv %now.2;
+        symbol [ now %tmp.17 55 54 57 ];
+        symbol [ _view %tmp.19 55 60 65 ];
+        %tmp.19 = getv ? :_view;
+        symbol [ downPressAt %tmp.20 55 66 77 ];
+        %tmp.20 = getv %tmp.19 :downPressAt;
+        %tmp.21 = sub %tmp.17 %tmp.20;
+        push %tmp.21;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_55_22_55_77_end:
+        %tmp.22 = phi [%tmp.15 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_55_22_55_77_begin] [%tmp.16 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_55_22_55_77_true] [%tmp.21 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_55_22_55_77_else_false] [%tmp.22 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_55_22_55_77_end];
+        lputv %dur.3 %tmp.22;
+        symbol [ dur %dur.3 55 16 19 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 56 12 ]
+        symbol [ _view %tmp.23 56 12 17 ];
+        %tmp.23 = getv self :_view;
+        %tmp.24 = 0;
+        symbol [ downPressAt ? 56 18 29 ];
+        putv %tmp.23 :downPressAt %tmp.24;
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 57 12 ]
+        symbol [ _view %tmp.25 57 12 17 ];
+        %tmp.25 = getv self :_view;
+        %tmp.26 = 0;
+        symbol [ lastDownEventAt ? 57 18 33 ];
+        putv %tmp.25 :lastDownEventAt %tmp.26;
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 58 12 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_58_12_62_12_if_stmt:
+        %tmp.27 = lgetv %dur.3;
+        symbol [ dur %tmp.27 58 16 19 ];
+        symbol [ _view %tmp.29 58 23 28 ];
+        %tmp.29 = getv ? :_view;
+        symbol [ DOWN_HOLD_MS %tmp.30 58 29 41 ];
+        %tmp.30 = getv %tmp.29 :DOWN_HOLD_MS;
+        %tmp.31 = gte %tmp.27 %tmp.30;
+        bf %tmp.31 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_58_12_62_12_if_else_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_58_12_62_12_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_58_43_60_12_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 59 16 ]
+        symbol [ _view %tmp.33 59 16 21 ];
+        %tmp.33 = getv ? :_view;
+        symbol [ onDownLongPress %tmp.34 59 22 37 ];
+        %tmp.34 = getv function %tmp.33 :onDownLongPress;
+        invoke %tmp.33 %tmp.34();
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_58_43_60_12_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_58_12_62_12_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_58_12_62_12_if_else_false:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_60_19_62_12_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 61 16 ]
+        symbol [ _view %tmp.36 61 16 21 ];
+        %tmp.36 = getv ? :_view;
+        symbol [ shortDownAction %tmp.37 61 22 37 ];
+        %tmp.37 = getv function %tmp.36 :shortDownAction;
+        invoke %tmp.36 %tmp.37();
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_60_19_62_12_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_58_12_62_12_if_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 63 12 ]
+        %tmp.38 = true;
         ret %tmp.38;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_43_68_57_4_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_53_37_64_8_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_53_8_64_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_53_8_64_8_if_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 65 8 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_65_8_76_8_if_stmt:
+        %tmp.39 = lgetv %key.1;
+        symbol [ key %tmp.39 65 12 15 ];
+        symbol [ WatchUi %tmp.40 65 19 26 ];
+        %tmp.40 = getm $.Toybox.WatchUi;
+        symbol [ KEY_UP %tmp.41 65 27 33 ];
+        %tmp.41 = getv %tmp.40 :KEY_UP;
+        %tmp.42 = eq %tmp.39 %tmp.41;
+        bf %tmp.42 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_65_8_76_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_65_8_76_8_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_65_35_76_8_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 66 12 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_65_35_76_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_65_35_76_8_stop" ]
+        %nowU.4 = local;
+        symbol [ nowU %nowU.4 66 16 20 ];
+        symbol [ System %tmp.43 66 23 29 ];
+        %tmp.43 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.44 66 30 38 ];
+        %tmp.44 = getv function %tmp.43 :getTimer;
+        %tmp.45 = invoke %tmp.43 %tmp.44();
+        lputv %nowU.4 %tmp.45;
+        symbol [ nowU %nowU.4 66 16 20 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 67 12 ]
+        [ "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_65_35_76_8_start" "_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_65_35_76_8_stop" ]
+        %durU.5 = local;
+        symbol [ durU %durU.5 67 16 20 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_67_23_67_75_begin:
+        symbol [ _view %tmp.47 67 24 29 ];
+        %tmp.47 = getv ? :_view;
+        symbol [ upPressAt %tmp.48 67 30 39 ];
+        %tmp.48 = getv %tmp.47 :upPressAt;
+        %tmp.49 = 0;
+        %tmp.50 = eq %tmp.48 %tmp.49;
+        bf %tmp.50 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_67_23_67_75_else_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_67_23_67_75_true:
+        %tmp.51 = 0;
+        push %tmp.51;
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_67_23_67_75_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_67_23_67_75_else_false:
+        %tmp.52 = lgetv %nowU.4;
+        symbol [ nowU %tmp.52 67 53 57 ];
+        symbol [ _view %tmp.54 67 60 65 ];
+        %tmp.54 = getv ? :_view;
+        symbol [ upPressAt %tmp.55 67 66 75 ];
+        %tmp.55 = getv %tmp.54 :upPressAt;
+        %tmp.56 = sub %tmp.52 %tmp.55;
+        push %tmp.56;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_67_23_67_75_end:
+        %tmp.57 = phi [%tmp.50 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_67_23_67_75_begin] [%tmp.51 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_67_23_67_75_true] [%tmp.56 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_67_23_67_75_else_false] [%tmp.57 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_67_23_67_75_end];
+        lputv %durU.5 %tmp.57;
+        symbol [ durU %durU.5 67 16 20 ];
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 68 12 ]
+        symbol [ _view %tmp.58 68 12 17 ];
+        %tmp.58 = getv self :_view;
+        %tmp.59 = 0;
+        symbol [ upPressAt ? 68 18 27 ];
+        putv %tmp.58 :upPressAt %tmp.59;
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 69 12 ]
+        symbol [ _view %tmp.60 69 12 17 ];
+        %tmp.60 = getv self :_view;
+        %tmp.61 = 0;
+        symbol [ lastUpEventAt ? 69 18 31 ];
+        putv %tmp.60 :lastUpEventAt %tmp.61;
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 70 12 ]
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_70_12_74_12_if_stmt:
+        %tmp.62 = lgetv %durU.5;
+        symbol [ durU %tmp.62 70 16 20 ];
+        symbol [ _view %tmp.64 70 24 29 ];
+        %tmp.64 = getv ? :_view;
+        symbol [ UP_HOLD_MS %tmp.65 70 30 40 ];
+        %tmp.65 = getv %tmp.64 :UP_HOLD_MS;
+        %tmp.66 = gte %tmp.62 %tmp.65;
+        bf %tmp.66 @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_70_12_74_12_if_else_false;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_70_12_74_12_if_true:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_70_42_72_12_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 71 16 ]
+        symbol [ _view %tmp.68 71 16 21 ];
+        %tmp.68 = getv ? :_view;
+        symbol [ onUpLongPress %tmp.69 71 22 35 ];
+        %tmp.69 = getv function %tmp.68 :onUpLongPress;
+        invoke %tmp.68 %tmp.69();
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_70_42_72_12_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_70_12_74_12_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_70_12_74_12_if_else_false:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_72_19_74_12_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 73 16 ]
+        symbol [ _view %tmp.71 73 16 21 ];
+        %tmp.71 = getv ? :_view;
+        symbol [ shortUpAction %tmp.72 73 22 35 ];
+        %tmp.72 = getv function %tmp.71 :shortUpAction;
+        invoke %tmp.71 %tmp.72();
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_72_19_74_12_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_70_12_74_12_if_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 75 12 ]
+        %tmp.73 = true;
+        ret %tmp.73;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_65_35_76_8_stop:
+        goto @_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_65_8_76_8_if_end;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_65_8_76_8_if_end:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 77 8 ]
+        %tmp.74 = false;
+        ret %tmp.74;
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_51_68_78_4_stop:
     }
-    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc"; @line = 59; @symbol_functiondef = [onMenu,59,13,19]; @symbol_return<0> = [Boolean,59,25,32]; ]
+    [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc"; @line = 80; @symbol_functiondef = [onMenu,80,13,19]; @symbol_return<0> = [Boolean,80,25,32]; ]
     function onMenu() as Boolean {
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_59_33_62_4_start:
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 60 8 ]
-        symbol [ WatchUi %tmp.1 60 8 15 ];
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_80_33_83_4_start:
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 81 8 ]
+        symbol [ WatchUi %tmp.1 81 8 15 ];
         %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.2 60 16 24 ];
+        symbol [ pushView %tmp.2 81 16 24 ];
         %tmp.2 = getv function %tmp.1 :pushView;
-        symbol [ Rez %tmp.6 60 29 32 ];
+        symbol [ Rez %tmp.6 81 29 32 ];
         %tmp.6 = getv ? :Rez;
-        symbol [ Menus %tmp.7 60 33 38 ];
+        symbol [ Menus %tmp.7 81 33 38 ];
         %tmp.7 = getv %tmp.6 :Menus;
-        symbol [ MainMenu %tmp.8 60 39 47 ];
+        symbol [ MainMenu %tmp.8 81 39 47 ];
         %tmp.8 = getv function ? %tmp.7 :MainMenu;
         %tmp.3 = newc %tmp.8 ();
-        symbol [ VFRStopWatchMenuDelegate %tmp.12 60 55 79 ];
+        symbol [ VFRStopWatchMenuDelegate %tmp.12 81 55 79 ];
         %tmp.12 = getv ? :VFRStopWatchMenuDelegate;
         %tmp.9 = newc %tmp.12 ();
-        symbol [ WatchUi %tmp.13 60 83 90 ];
+        symbol [ WatchUi %tmp.13 81 83 90 ];
         %tmp.13 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_UP %tmp.14 60 91 99 ];
+        symbol [ SLIDE_UP %tmp.14 81 91 99 ];
         %tmp.14 = getv %tmp.13 :SLIDE_UP;
         invoke %tmp.1 %tmp.2(%tmp.3, %tmp.9, %tmp.14);
-[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 61 8 ]
+[ "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc" 82 8 ]
         %tmp.15 = true;
         ret %tmp.15;
-_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_59_33_62_4_stop:
+_Volumes_SSD_Dev_Garmin_VFRStopwatch_VFRStopWatch_source_VFRStopWatchDelegate_mc_80_33_83_4_stop:
     }
 }
 [ @file = "/Volumes/SSD/Dev/Garmin/VFRStopwatch/VFRStopWatch/source/VFRStopWatchDelegate.mc"; @line = 1; ]
